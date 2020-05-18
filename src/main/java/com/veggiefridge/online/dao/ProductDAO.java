@@ -15,4 +15,6 @@ public interface ProductDAO {
 	public Product updateProduct(Product product);
 
 	public Product getProduct(int productid);
+	
+	/* public Product findById(Integer productId); */
 }

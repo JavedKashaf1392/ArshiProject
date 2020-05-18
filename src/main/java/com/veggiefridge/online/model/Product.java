@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "product")
@@ -19,25 +23,33 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productid;
 
-
+   @NotEmpty(message="Please Enter ProductName")
 	@Column(name="productName")
 	private String productName;
 	
+   @NotNull(message = "Please enter ProductPrice")
+   // @NotEmpty(message="Please Enter ProductPrice")
 	@Column(name="productPrice")
 	private double productPrice;
 	
+    @NotEmpty(message="Please Enter Quantity")
 	@Column(name="quantity")
 	private String quantity;
 	
+    @NotNull(message = "Please enter Discount")
+   // @NotEmpty(message="Please Enter Discount")
 	@Column(name="discount")
 	private float discount;
 	
+   @NotEmpty(message="Please Availability (Yes/No)")
 	@Column(name="isAvailable")
 	private String isAvailable;
 	
+    @NotEmpty(message="Please Enter Catagory")
 	@Column(name="category")
 	private String category;
 	
+    @NotEmpty(message="Please Enter Description")
 	@Column(name="description")
 	private String description;
 
