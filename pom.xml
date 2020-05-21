@@ -17,7 +17,7 @@
         <jsp-version>2.1</jsp-version>
         <jstl-version>1.2</jstl-version>
         <java.version>1.7</java.version>
-        <javax.validation.version>1.1.0.Final</javax.validation.version>
+         <javax.validation.version>1.1.0.Final</javax.validation.version>
        
     </properties>
        <dependencies>
@@ -107,16 +107,8 @@
             <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
-        
-  
-		<dependency>
-		    <groupId>org.webjars.bower</groupId>
-		    <artifactId>jquery</artifactId>
-		    <version>1.12.3</version>
-		</dependency>
-        
-  
-		<dependency>
+             
+        <dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>5.4.1.Final</version>
@@ -126,8 +118,8 @@
            <groupId>javax.validation</groupId>
            <artifactId>validation-api</artifactId>
            <version>${javax.validation.version}</version>
-        </dependency>
-             
+        </dependency>   
+          
        </dependencies>
        <build>
               <finalName>vf-online</finalName>

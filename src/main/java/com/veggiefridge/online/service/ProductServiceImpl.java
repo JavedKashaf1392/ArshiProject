@@ -49,13 +49,6 @@ public class ProductServiceImpl implements ProductService {
 	  public void setProductDAO(ProductDAO productDAO) { 
 		  this.productDAO = productDAO;
 		  }
-
-	/*
-	 * @Override public Product findById(Integer productId) { // TODO Auto-generated
-	 * method stub return null; }
-	 */
-
-	
 	 
 
 }

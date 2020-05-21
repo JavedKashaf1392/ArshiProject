@@ -1,10 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
+   
+   
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+ 
  <html>
 <head>
 
@@ -33,7 +37,7 @@ table {
    margin-left:auto; 
     margin-right:auto;
   border-collapse: collapse;
-  width: 50%;
+  width: 80%;
 
 }
 
@@ -102,7 +106,7 @@ function checkCheckBoxes(theForm) {
   <div><h2><p style="color:green;">Product Details</p></h2></div>
 
     <form metod="get" onsubmit="return checkCheckBoxes(this);">
-    
+  
    <table id="Table1"  border="1" align="center" cellspacing="0">
    <tr>     
 		            <th> </th>
@@ -113,7 +117,7 @@ function checkCheckBoxes(theForm) {
 					<th>Discount</th>
 					<th>Availability</th>
 					<th>Category</th>
-					<th>Description</th>
+					<th colspan="2">Description</th>
    
    </tr>
    <c:forEach var="product" items="${listProduct}">
@@ -137,6 +141,7 @@ function checkCheckBoxes(theForm) {
         
    
    </table>
+  
    <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/newProduct" />
     <input class="button button1" type="submit" value="Delete" 
                        formaction="${pageContext.request.contextPath}/deleteProduct" onclick="return confirm('Are you sure to delete?')" />
@@ -158,29 +163,28 @@ function checkCheckBoxes(theForm) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

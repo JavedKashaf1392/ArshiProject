@@ -6,13 +6,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
-	<classpathentry kind="var" path="M2_REPO/javax/servlet/jsp/jsp-api/2.1/jsp-api-2.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/javax/servlet/jsp/jsp-api/2.1/jsp-api-2.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/4.1.5.RELEASE/spring-core-4.1.5.RELEASE.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.1.5.RELEASE/spring-context-4.1.5.RELEASE.jar"/>
@@ -68,7 +68,7 @@
 	<classpathentry kind="lib" path="E:/Tomcat 9.x/bin/bootstrap.jar"/>
 	<classpathentry kind="lib" path="E:/Tomcat 9.x/bin/tomcat-juli.jar"/>
 	<classpathentry kind="lib" path="E:/Tomcat 9.x/lib/annotations-api.jar"/>
-	<classpathentry kind="lib" path="E:/Tomcat 9.x/lib/catalina.jar" sourcepath="C:/Users/admin/.m2/repository/org/apache/tomcat/tomcat-catalina/9.0.24/tomcat-catalina-9.0.24-sources.jar"/>
+	<classpathentry kind="lib" path="E:/Tomcat 9.x/lib/catalina.jar"/>
 	<classpathentry kind="lib" path="E:/Tomcat 9.x/lib/catalina-ant.jar"/>
 	<classpathentry kind="lib" path="E:/Tomcat 9.x/lib/catalina-ha.jar"/>
 	<classpathentry kind="lib" path="E:/Tomcat 9.x/lib/catalina-storeconfig.jar"/>
@@ -105,6 +105,11 @@
 			<attribute name="ignore_optional_problems" value="true"/>
 			<attribute name="m2e-apt" value="true"/>
 			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>

@@ -48,11 +48,6 @@ public class ProductDAOImpl implements ProductDAO {
 		 return (Product) sessionFactory.getCurrentSession().get( Product.class, productid);
 	}
 
-	/*
-	 * @Override public Product findById(Integer productId) { // TODO Auto-generated
-	 * method stub return null; }
-	 */
-
 	
 
 }

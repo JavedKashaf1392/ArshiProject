@@ -4,16 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,9 +20,9 @@ import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
-//@RequestMapping(value = "/product")
 public class ProductController {
-
+	
+	
 	private static final Logger logger = Logger.getLogger(ProductController.class);
 
 	public ProductController() {
@@ -81,14 +78,21 @@ public class ProductController {
 
 	
 	
-	  @RequestMapping(value = "/editProduct", method = RequestMethod.GET) public
-	  ModelAndView editProduct(HttpServletRequest request) { int productId =
-	  Integer.parseInt(request.getParameter("productid")); Product product =
-	  productService.getProduct(productId); ModelAndView model = new
-	  ModelAndView("productform"); model.addObject("product", product);
+	  @RequestMapping(value = "/editProduct", method = RequestMethod.GET) 
+	  public ModelAndView editProduct(HttpServletRequest request) { 
+		  int productId = Integer.parseInt(request.getParameter("productid"));
+		  Product product = productService.getProduct(productId); 
+		  ModelAndView model = new ModelAndView("productform"); model.addObject("product", product);
 	  
-	  return model; }
+	  return model;
+	  }
 	 
 	
-
 }
+	
+	
+	
+	
+	
+
+	
