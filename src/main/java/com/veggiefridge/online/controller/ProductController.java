@@ -20,7 +20,7 @@ import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
-@RequestMapping(value = "/product")
+//@RequestMapping(value = "/product")
 public class ProductController {
 	
 	
@@ -33,7 +33,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping(value = "/listProduct")
+	@RequestMapping(value = "/")
 	public ModelAndView listProduct(ModelAndView model) throws IOException {
 		List<Product> listProduct = productService.getAllProducts();
 		model.addObject("listProduct", listProduct);
