@@ -20,7 +20,7 @@ import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
-//@RequestMapping(value = "/product")
+@RequestMapping(value="/product")
 public class ProductController {
 	
 	
@@ -33,7 +33,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/listProduct")
 	public ModelAndView listProduct(ModelAndView model) throws IOException {
 		List<Product> listProduct = productService.getAllProducts();
 		model.addObject("listProduct", listProduct);
@@ -60,7 +60,7 @@ public class ProductController {
 		} else {
 			productService.updateProduct(product);
 		}
-		return "redirect:/";
+		return "redirect:/product/listProduct";
 	}
 
 	/*
@@ -74,7 +74,7 @@ public class ProductController {
 	@RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
 	public String deleteProduct(@RequestParam("productid") Integer productId) {
 		productService.deleteProduct(productId);
-		return "redirect:/ ";
+		return "redirect:/product/listProduct ";
 	}
 
 	
