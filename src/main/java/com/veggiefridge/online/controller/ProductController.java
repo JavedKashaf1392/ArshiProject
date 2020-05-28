@@ -27,7 +27,7 @@ public class ProductController {
 	private static final Logger logger = Logger.getLogger(ProductController.class);
 
 	public ProductController() {
-		System.out.println("EmployeeController()");
+		System.out.println("ProductController()");
 	}
 
 	@Autowired
