@@ -27,7 +27,7 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
+/* input[type=submit] {
   background-color: #4CAF50;
   color: white;
   margin-top:20px;
@@ -44,7 +44,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
-}
+} */
 
 .error {
    color:red; 
@@ -103,7 +103,7 @@ h2 {
     <div align="center">
     <div><h2><p style="color:green;">New/Edit Customer</p></h2></div>
        <!--  <h2>New/Edit Product</h2> -->
-        <form:form action="saveCustomer" method="post" modelAttribute="customer">
+        <form:form action="${pageContext.request.contextPath}/customer/saveCustomer" method="post" modelAttribute="customer">
         <table>
             <form:hidden path="customerid"/>
             <tr>
@@ -147,15 +147,13 @@ h2 {
                 <td><form:input path="confirmPassword" /></td>
                 <td><form:errors path="confirmPassword" cssClass="error"/></td> 
             </tr>
-           
-            <tr> 
-                <td colspan="2" align="center"><input type="submit" value="Save"></td>
-               
-                 <td colspan="2" align="center"><input type="submit" value="Back" onclick="history.back()"></td>
-               
-            </tr>
-            
-        </table>
+        
+        </table><br>
+           <div style='float:center;'>
+           <input type="submit" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;"value="Save">
+           <input type="reset" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="Reset">
+           <input type="button" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="Back" onclick="history.back()">
+            </div>
         </form:form>
     </div>
 </body>

@@ -9,7 +9,7 @@ public interface KioskLocationService {
 	
 	public void addLocation(KioskLocation kiosklocation);
 
-	public List<KioskLocation > getAllLocation();
+	public List<KioskLocation> getAllLocation();
 
 	public KioskLocation updateLocation(KioskLocation kiosklocation);
     

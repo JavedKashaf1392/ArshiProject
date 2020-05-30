@@ -2,10 +2,8 @@ package com.veggiefridge.online.controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.service.CustomerService;
 
@@ -52,32 +49,32 @@ public class CustomerController {
 	
 //	save and update customer
 	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-	public String saveCustomer( @Valid @ModelAttribute Customer customer,BindingResult result) {
+	public String saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult result) {
 		if (result.hasErrors()) {
 			return "customerform";
+			
 		} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
 			// customer other updating the customer 
 			customerService.addCustomer(customer);
 		} else {
 			customerService.updateCustomer(customer);
 		}
-		return "redirect:/";
+		return "redirect:/customer/listCustomer";
 	}
 
 //	edit customer
 	 @RequestMapping(value = "/editCustomer", method = RequestMethod.GET) 
 	    public ModelAndView editCustomer(HttpServletRequest request) { 
-		   int customerId = Integer.parseInt(request.getParameter("customerid"));
-		   Customer customer = customerService.getCustomer(customerId); 
+		   int customerid = Integer.parseInt(request.getParameter("customerid"));
+		   Customer customer = customerService.getCustomer(customerid); 
 		   ModelAndView model = new ModelAndView("customerform"); model.addObject("customer", customer);
-		  
 		  return model;
 		  }
 	 
 	 @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
 		public String deleteCustomer(@RequestParam("customerid") Integer customerId) {
 		 customerService.deleteCustomer(customerId);
-			return "redirect:/ ";
+			return "redirect:/customer/listCustomer ";
 		}
 	 
 }

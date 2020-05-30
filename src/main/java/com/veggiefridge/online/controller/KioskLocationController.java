@@ -23,7 +23,6 @@ import com.veggiefridge.online.dao.KioskLocationDAO;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.service.KioskLocationService;
 
-
 @Controller
 @RequestMapping(value ="/location")
 public class KioskLocationController {
@@ -36,9 +35,7 @@ public class KioskLocationController {
 
 	@Autowired
 	private KioskLocationService service;
-	
-	
-	
+		
 	  // get All Information
 	  @RequestMapping(value = "/listLocation")
 	  public ModelAndView listLocation(ModelAndView  model) throws IOException {
@@ -58,7 +55,7 @@ public class KioskLocationController {
 		}
 
 	
-	// save location
+	//save location
 	@RequestMapping(value = "/saveLocation", method = RequestMethod.POST)
 	public String saveLocation(@Valid @ModelAttribute("kiosklocation") KioskLocation kiosklocation,
 			BindingResult result) {

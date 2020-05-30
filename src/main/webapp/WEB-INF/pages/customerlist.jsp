@@ -5,8 +5,6 @@
    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
  
  
  <html>
@@ -105,12 +103,11 @@ function checkCheckBoxes(theForm) {
 
   <div><h2><p style="color:green;">Customer Details</p></h2></div>
 
-    <form method="get" onsubmit="return checkCheckBoxes(this);">
+    <form method="get" <%-- onsubmit="return checkCheckBoxes(this);" --%>>
   
    <table id="Table1"  border="1" align="center" cellspacing="0">
    <tr>     
-		            <th> </th>
-		           <!--  <th>CustomerId</th> -->
+		            <th></th>
 		            <th>First Name</th>
 		            <th>Last Name</th>
 					<th>Mobile</th>
@@ -123,11 +120,8 @@ function checkCheckBoxes(theForm) {
    
    </tr>
    <c:forEach var="customer" items="${listCustomer}">
-   <tr>
+                    <tr>
                     <td align="center"><input type="checkbox" class="checkboxId" name="customerid" value="${customer.customerid}"></td>
-                    
-                 <%--    <td align="center"><input type="checkbox" name="productid" value="${product.productid}"></td> --%>
-                   <%--  <td>${product.productid}</td> --%>
                     <td>${customer.firstName}</td>
                     <td>${customer.lastName}</td>
                     <td>${customer.mobile}</td>
@@ -136,18 +130,16 @@ function checkCheckBoxes(theForm) {
 				    <td>${customer.email}</td>
 					<%-- <td>${customer.password}</td> --%>
 					<%-- <td>${customer.confirmPassword}</td> --%>
-   </tr>
+                    </tr>
    
-    </c:forEach>
-        
-   
-   </table>
+                   </c:forEach>
+                   </table>
   
-   <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/newCustomer" />
-    <input class="button button1" type="submit" value="Delete" 
-                       formaction="${pageContext.request.contextPath}/deleteCustomer" onclick="return confirm('Are you sure to delete?')" />
-     <input class="button button1" type="submit" value="Update" formaction="${pageContext.request.contextPath}/editCustomer" />
-     <input class="button button1" type="submit" value="Search" formaction="${pageContext.request.contextPath}/searchCustomer" />
+     <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/customer/newCustomer" />
+     <input class="button button1" type="submit" value="Delete" 
+                       formaction="${pageContext.request.contextPath}/customer/deleteCustomer" onclick="return confirm('Are you sure to delete?')" />
+     <input class="button button1" type="submit" value="Update" formaction="${pageContext.request.contextPath}/customer/editCustomer" />
+     <input class="button button1" type="submit" value="Search" formaction="${pageContext.request.contextPath}/customer/searchCustomer" />
      </div>
    </form>
  

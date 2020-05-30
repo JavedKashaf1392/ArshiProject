@@ -6,43 +6,47 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "kiosklocation")
-public class KioskLocation implements Serializable{
+@Table(name ="kiosk")
+public class Kiosk implements Serializable {
 	
 	private static final long serialVersionUID = -3465813074586302847L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long locationid;
-	   
+	private long kioskId;
 	
-	@NotEmpty(message ="Location can't be empty")
+	@Column(name = "kioskName")
+	private String kioskName;
+	
 	@Column(name = "location")
 	private String location;
 	
-	@NotEmpty(message ="City can't be empty")
-	@Column(name = "cities")
-	private String  cities;
+	@Column(name = "city")
+	private String city;
 	
-	@NotEmpty(message ="State Can't be empty")
-	@Column(name="state")
-	private String  state;
+	@Column(name = "state")
+	private String state;
 	
-	
-	@NotEmpty(message ="Country Can't be empty")
 	@Column(name = "country")
-	private String   country;
-      
-	//getters and setters
-	public long getLocationid() {
-		return locationid;
+	private String country;
+
+	
+	public long getKioskId() {
+		return kioskId;
 	}
 
-	public void setLocationid(long locationid) {
-		this.locationid = locationid;
+	public void setKioskId(long kioskId) {
+		this.kioskId = kioskId;
+	}
+
+	public String getKioskName() {
+		return kioskName;
+	}
+
+	public void setKioskName(String kioskName) {
+		this.kioskName = kioskName;
 	}
 
 	public String getLocation() {
@@ -53,12 +57,12 @@ public class KioskLocation implements Serializable{
 		this.location = location;
 	}
 
-	public String getCities() {
-		return cities;
+	public String getCity() {
+		return city;
 	}
 
-	public void setCities(String cities) {
-		this.cities = cities;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getState() {
@@ -75,5 +79,9 @@ public class KioskLocation implements Serializable{
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

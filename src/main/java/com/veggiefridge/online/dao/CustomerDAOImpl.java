@@ -30,7 +30,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 //	get customer
 	@Override
 	public Customer getCustomer(int customerid) {
-		return (Customer) sessionFactory.getCurrentSession().get( Customer.class, customerid);
+		return (Customer) sessionFactory.getCurrentSession().get(Customer.class, customerid);
 	}
 
 //	update customer
@@ -43,7 +43,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 //	delete customer
 	@Override
 	public void deleteCustomer(Integer customerId) {
-		Customer customer =(Customer) sessionFactory.getCurrentSession().load( Customer.class, customerId);
+		Customer customer =(Customer) sessionFactory.getCurrentSession().load(Customer.class, customerId);
 		  if (null !=customer) {
 		  this.sessionFactory.getCurrentSession().delete(customer); 
 		  }

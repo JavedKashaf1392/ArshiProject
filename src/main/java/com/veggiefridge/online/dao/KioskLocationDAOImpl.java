@@ -48,9 +48,9 @@ public class KioskLocationDAOImpl implements KioskLocationDAO{
 					  }
 		}
 	
-	//edit location
+	 //get location
 	 public KioskLocation getLocation(long locationid) {
-		 return (KioskLocation) sessionFactory.getCurrentSession().get( KioskLocation.class, locationid);
+		 return (KioskLocation) sessionFactory.getCurrentSession().get(KioskLocation.class, locationid);
 		 
 	 }
 	
