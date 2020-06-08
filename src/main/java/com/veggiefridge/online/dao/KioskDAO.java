@@ -12,8 +12,8 @@ public interface KioskDAO {
 		
 	 public Kiosk updateKiosk(Kiosk kiosk);
 	    
-	 public void deleteKiosk(Long kioskId);
+	 public void deleteKiosk(Long id);
 	   
-	 public Kiosk getKiosk(long kioskId);
+	 public Kiosk getKiosk(long id);
 
 }

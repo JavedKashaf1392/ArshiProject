@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name ="kiosk")
@@ -15,7 +17,7 @@ public class Kiosk implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long kioskId;
+	private long id;
 	
 	@Column(name = "kioskName")
 	private String kioskName;
@@ -23,8 +25,8 @@ public class Kiosk implements Serializable {
 	@Column(name = "location")
 	private String location;
 	
-	@Column(name = "city")
-	private String city;
+	@Column(name = "cities")
+	private String cities;
 	
 	@Column(name = "state")
 	private String state;
@@ -33,12 +35,12 @@ public class Kiosk implements Serializable {
 	private String country;
 
 	
-	public long getKioskId() {
-		return kioskId;
+	public long getId() {
+		return id;
 	}
 
-	public void setKioskId(long kioskId) {
-		this.kioskId = kioskId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getKioskName() {
@@ -57,12 +59,12 @@ public class Kiosk implements Serializable {
 		this.location = location;
 	}
 
-	public String getCity() {
-		return city;
+	public String getCities() {
+		return cities;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setCities(String cities) {
+		this.cities = cities;
 	}
 
 	public String getState() {

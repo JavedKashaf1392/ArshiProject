@@ -10,9 +10,9 @@ public interface KioskService {
 
 	public Kiosk updateKiosk(Kiosk kiosk);
     
-	public void deleteKisok(Long kioskId); 
+	public void deleteKiosk(Long id); 
 	
-	public Kiosk getKiosk(long kioskId);
+	public Kiosk getKiosk(long id);
 	
 
 }

@@ -43,7 +43,6 @@ public class ProductController {
 
 	@RequestMapping(value = "/newProduct", method = RequestMethod.GET)
 	public ModelAndView newProduct(ModelAndView model) {
-		
 		Product product = new Product();
 		model.addObject("product", product);
 		model.setViewName("productform");

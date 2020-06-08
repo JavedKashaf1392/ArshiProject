@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
-   <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>    
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>   
 
@@ -107,21 +107,20 @@ th, td,tr {
  font-size:17px; 
  color:/*  #d0cdfa */ green;
 }    
-          </style>   
-          </head>
- 
-        <body> 
+        </style>   
+        </head>
+        <body>
+           
         <c:choose>
         <c:when test="${!empty listkiosk}">     
         <div><h2><p style="color:green;font-size:xx-large;">Kiosk Details</p></h2></div>
          
          <form method="get">
-         
+    
          <div style='float:right;'>
          <input type="text" name="searchText" value="${param.searchText}" placeholder="Search For Kiosk">
          <input type="submit" style="width:100px;cursor:pointer;margin: 5px 5px;font-size:16px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="Search" formaction="${pageContext.request.contextPath}/searchKiosk">
-            </div>
-            
+         </div>   
          <table>
         <th></th>
 		<th>KioskName</th>
@@ -129,13 +128,14 @@ th, td,tr {
 	    <th>City</th>
 		<th>State</th>
 		<th>Country</th>
+		
 		<c:forEach var="kiosk" items="${listkiosk}">
-				<tr> 
-				<td><input type="checkbox" class="chkCheckBoxId" value="${kiosk.kioskId}" name="kioskId">
+				<tr>  
+				<td><input type="checkbox" class="chkCheckBoxId" value="${kiosk.id}" name="id">
 				    </td>
 				    <td>${kiosk.kioskName}</td>
 				    <td>${kiosk.location}</td>
-					<td>${kiosk.city}</td>
+					<td>${kiosk.cities}</td>
 					<td>${kiosk.state}</td>
 					<td>${kiosk.country}</td>
 				    </tr>

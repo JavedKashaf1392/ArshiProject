@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.service.CustomerService;
+import com.veggiefridge.online.service.KioskLocationService;
 
 @Controller
 @RequestMapping(value="/customer")
@@ -28,7 +29,7 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
-
+	
 //	getAll Customer
 	@RequestMapping(value = "/listCustomer")
 	public ModelAndView listCustomer(ModelAndView model) throws IOException {
@@ -67,16 +68,18 @@ public class CustomerController {
 	    public ModelAndView editCustomer(HttpServletRequest request) { 
 		   int customerid = Integer.parseInt(request.getParameter("customerid"));
 		   Customer customer = customerService.getCustomer(customerid); 
-		   ModelAndView model = new ModelAndView("customerform"); model.addObject("customer", customer);
-		  return model;
+		   ModelAndView model = new ModelAndView("customerform");
+		   model.addObject("customer", customer);
+		   return model;
 		  }
 	 
+	 
+	 //delete customer
 	 @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
 		public String deleteCustomer(@RequestParam("customerid") Integer customerId) {
 		 customerService.deleteCustomer(customerId);
 			return "redirect:/customer/listCustomer ";
-		}
-	 
+		}	 
 }
 	
 	

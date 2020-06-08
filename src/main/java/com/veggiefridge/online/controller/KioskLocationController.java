@@ -44,10 +44,11 @@ public class KioskLocationController {
 	  model.setViewName("locationlist"); 
 	  return model; 
 	  }
-	       
-	     // AddLocation
-		@RequestMapping(value = "/newLocation", method = RequestMethod.GET)
-		public ModelAndView newLocation(ModelAndView model) {
+	     
+	  
+	   // AddLocation
+	  @RequestMapping(value = "/newLocation", method = RequestMethod.GET)
+	  public ModelAndView newLocation(ModelAndView model) {
 			KioskLocation kiosklocation = new KioskLocation();
 			model.addObject("kiosklocation", kiosklocation);
 			model.setViewName("locationform");
@@ -55,6 +56,7 @@ public class KioskLocationController {
 		}
 
 	
+	  
 	//save location
 	@RequestMapping(value = "/saveLocation", method = RequestMethod.POST)
 	public String saveLocation(@Valid @ModelAttribute("kiosklocation") KioskLocation kiosklocation,

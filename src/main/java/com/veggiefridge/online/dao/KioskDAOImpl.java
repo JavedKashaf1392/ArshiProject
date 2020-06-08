@@ -33,8 +33,8 @@ public class KioskDAOImpl implements KioskDAO {
 
 	//deleteKiosk
 	@Override
-	public void deleteKiosk(Long kioskId) {
-		Kiosk kiosk =(Kiosk) sessionFactory.getCurrentSession().load( Kiosk.class, kioskId);
+	public void deleteKiosk(Long id) {
+		Kiosk kiosk =(Kiosk) sessionFactory.getCurrentSession().load(Kiosk.class, id);
 		  if (null !=kiosk ) {
 		  this.sessionFactory.getCurrentSession().delete(kiosk); 
 		  }
@@ -42,8 +42,8 @@ public class KioskDAOImpl implements KioskDAO {
 
 	//getKiosk
 	@Override
-	public Kiosk getKiosk(long kioskId) {
-		 return (Kiosk) sessionFactory.getCurrentSession().get( Kiosk.class, kioskId);
+	public Kiosk getKiosk(long id) {
+		 return (Kiosk) sessionFactory.getCurrentSession().get(Kiosk.class, id);
 	}
 
 }

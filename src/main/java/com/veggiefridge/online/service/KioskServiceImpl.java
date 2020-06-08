@@ -36,15 +36,15 @@ public class KioskServiceImpl implements KioskService{
 
 	//deleteKisok
 	@Override
-	public void deleteKisok(Long kioskId) {
-		dao.deleteKiosk(kioskId);
+	public void deleteKiosk(Long id) {
+		dao.deleteKiosk(id);
 		
 	}
 
 	//getKiosk
 	@Override
-	public Kiosk getKiosk(long kioskId) {
-		return  dao.getKiosk(kioskId);
+	public Kiosk getKiosk(long id) {
+		return  dao.getKiosk(id);
 	}
 
 }

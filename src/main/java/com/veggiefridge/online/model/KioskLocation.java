@@ -10,7 +10,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "kiosklocation")
+@Table(name ="kiosklocation")
 public class KioskLocation implements Serializable{
 	
 	private static final long serialVersionUID = -3465813074586302847L;
