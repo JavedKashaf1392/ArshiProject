@@ -4,15 +4,20 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
+
+h2{
+ left: 50px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     width: 25%;
     height: 80px;
     align-content: center;
- left: 50px;
+    left: 50px;
     top: 50px;
-
     }
 form {
     border: 3px solid #f1f1f1;
@@ -42,6 +47,15 @@ button {
   cursor: pointer;
   width: 100%;
 }
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
 
 button:hover {
   opacity: 0.8;
@@ -50,8 +64,15 @@ button:hover {
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
-  background-color: #f44336;
+  background-color: #4CAF50;
 }
+
+.regbtn{
+  width: auto;
+  padding: 10px 18px;
+  background-color: #4CAF50;
+}
+
 
 .imgcontainer {
   text-align: center;
@@ -85,35 +106,35 @@ span.psw {
 }
 </style>
 </head>
-<body>
+ <body>
 
+  <form  method="post"  modelAttribute="user">
+  <h2>Log In VeggieFridge</h2>                                
+  
+    <div class="container">
+    <label for="email"><b>Email Id</b></label>
+    <input type="text" placeholder="Enter Email Id" name="email" required>
 
-<form action="login.htm" method="post">
-<h2>Login In Veggie Fridge</h2> 
-                                      
-  <div class="container">
-    <label for="uname"><b>Email Id</b></label>
-    <input type="text" placeholder="Enter Email Id" name="uname" required>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit" value="login.htm">Login</button>
-    <label>
+    <input type="submit" value="Login"  formaction="${pageContext.request.contextPath}/login/loginProcess">
+    
+      <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
+      </label>
+      </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn"  value="sidebar menu.htm">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-
-<div style="align-content: center">
-<a href="${pageContext.request.contextPath}/customer/newCustomer">new to Veggiefridge?Create an account</a>
-</div>
-
-</form>
-
+    <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn"  value="${pageContext.request.contextPath}/home/viewhome">Cancel</button>
+    <span class="psw"><a href="#">Forgot Password?</a></span>
+    </div>
+   
+    <div class="signup">
+    <%-- <a href="${pageContext.request.contextPath}/login/newCustomer">New To VeggieFridge?Create an account</a> --%>
+     New To VeggieFridge?Create an account <input type="submit" style="width:100px;cursor:pointer;margin: 5px 5px;font-size:10px;text-decoration:none;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="SignUp" action="${pageContext.request.contextPath}/login/newCustomer">
+    </div> 
+    
+</form> 
 </body>
 </html>

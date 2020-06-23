@@ -115,12 +115,11 @@ th, td,tr {
         <c:when test="${!empty listlocation}">     
         <div><h2><p style="color:green;font-size:xx-large;">Location Details</p></h2></div>
          
-         <form method="get">
-         
+        <form method="get">
          <div style='float:right;'>
          <input type="text" name="searchText" value="${param.searchText}" placeholder="Search For Location">
          <input type="submit" style="width:100px;cursor:pointer;margin: 5px 5px;font-size:16px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="Search" formaction="${pageContext.request.contextPath}/searchLocation">
-            </div>
+         </div>
             
             <table>
         <th></th>

@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value="/homescreen")
-public class HomeScreenController {
+@RequestMapping(value="/home")
+public class HomeController {
 	
-	public HomeScreenController() {
-		System.out.println("HomeScreen.HomeScreen()");
+	public HomeController() {
+		System.out.println("Home.Home()");
 	}
 	
 	 //view login
-	 @RequestMapping(value = "/viewhomescreeen", method = RequestMethod.GET)
+	 @RequestMapping(value = "/viewhome", method = RequestMethod.GET)
 	 public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
-	 ModelAndView mav = new ModelAndView("homescreen");
+	 ModelAndView mav = new ModelAndView("home");
 	 return mav;
 	  }
-	
+	 
 
 }
