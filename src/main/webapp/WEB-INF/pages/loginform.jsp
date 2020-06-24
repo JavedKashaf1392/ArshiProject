@@ -127,7 +127,7 @@ span.psw {
 
     <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn"  value="${pageContext.request.contextPath}/home/viewhome">Cancel</button>
-    <span class="psw"><a href="#">Forgot Password?</a></span>
+    <span class="psw"><a href="${pageContext.request.contextPath}/login/forgotPassword">Forgot Password?</a></span>
     </div>
    
     <div class="signup">

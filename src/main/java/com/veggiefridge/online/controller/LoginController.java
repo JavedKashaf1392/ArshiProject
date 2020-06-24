@@ -78,8 +78,22 @@ public class LoginController {
 		    }
 		    return mav;
 		  }
-		}
-		
+ 		
+		 //forgot password
+		 @RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
+		 public ModelAndView forgotPassword(HttpServletRequest request, HttpServletResponse response) {
+			 ModelAndView mav = new ModelAndView("forgotPassword");
+			 return mav;
+			 }
+
+       // generatelink
+		 @RequestMapping(value = "/generateLink", method = RequestMethod.POST)
+		 public ModelAndView generateLink(HttpServletRequest request, HttpServletResponse response) {
+			 ModelAndView mav = new ModelAndView("generateLink");
+			 return mav;
+		 }
+		 
+}
 		
 		
 		
