@@ -1,4 +1,5 @@
 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
@@ -23,7 +24,7 @@
     padding: 0;
     font-family: "Roboto", sans-serif;
 .mySlides {display: none}
-img {vertical-align: middle;}
+/* img {vertical-align: middle;} */
    
     {
     box-sizing: border-box;
@@ -50,7 +51,7 @@ img {vertical-align: middle;}
     height: 500px;
     margin-top:50px;
     background: #4CAF50; 
-    border:1px solid black; 
+    /* border:1px solid black;  */
     
 }
 .head{
@@ -66,10 +67,10 @@ img {vertical-align: middle;}
     padding: 20px;
     padding: 20px;
     margin-left:150px;
-    margin-right:100px;
+    /* margin-right:100px; */
     position:relative;
     width: 100%;
-   /*  margin-top:5px; */
+    margin-top:5px;
     /* background: #4CAF50; */
     border: 1px solid grey;
     height:2000px;
@@ -87,16 +88,17 @@ transform:scale(1.3);
  border:1px;
  float:left;
  margin-right:35%;
+ 
 }
 
 /* <-- serach operation--> */
 /* Style the search field */
 form.example input[type=text] {
-  padding: 8px;
+  padding:8px;
   font-size: 17px;
   border: 1px solid grey;
   float: left;
-  width: 45%;
+  width: 40%;
  /*  background: #f1f1f1; */
   margin-left:10%; 
 }
@@ -105,7 +107,7 @@ form.example input[type=text] {
 /* Style the submit button */
   form.example button {
   float: left;
-  width: 5%;
+  width: 4%;
   padding: 8px;
   background: #4CAF50;
   color: white;
@@ -123,10 +125,12 @@ form.example button:hover {
 .call{
 /* border:1px solid black; */
 float:right;
-margin-right:23%;
-margin-top: 4px;
+margin-right:20%;
+margin-top: 10px;
 height:40px;
-width: 15%;
+width:20%;
+/* border:1px solid black;  */
+
 }
  /* call end */
 
@@ -143,8 +147,8 @@ form.example::after {
   /* right  */
 .right{
 float: right;
-margin-top:18px;
-margin-right:12%;
+margin-top:30px;
+margin-right:9%;
 font:bold;
 font-size:16px;
 }
@@ -164,7 +168,7 @@ color: black;
   background-color: #4CAF50 ;
   margin-right:51%;
   margin-left: 337px;
-  /* border:1px solid black; */ 
+  /* border:1px solid black;  */
 }
 
 .navbar a {
@@ -195,7 +199,7 @@ color: black;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: black;
+  background-color: ;
 }
 
 .dropdown-content {
@@ -232,6 +236,7 @@ color: black;
     margin: 0;
     padding: 0;
     color: #d9d9d9;
+   /*  color:black; */
     /* box-sizing: border-box;
     font-family: 'Poppins', sans-serif; */ 
 } 
@@ -346,7 +351,7 @@ color: black;
     width: 100%;
     border: none;
     outline: none;
-    background:black;
+    background: #125688;
     font-size: 1.0625rem;
     font-weight: 500;
     cursor: pointer;
@@ -396,6 +401,7 @@ color: black;
   max-width: 1000px;
   position: relative;
   margin: auto;
+
 }
 
 /* Next & previous buttons */
@@ -404,7 +410,7 @@ color: black;
   position: absolute;
   top: 50%;
   width: auto;
-  padding: 16px;
+  padding: 18px;
   margin-top: -22px;
   color: white;
   font-weight: bold;
@@ -425,17 +431,17 @@ color: black;
   background-color: rgba(0,0,0,0.8);
 }
 
-/* Caption text */
+ /* Caption t
 .text {
  /*  color: #f2f2f2; */
   font-size: 15px;
   padding: 8px 12px;
-  position: absolute;
+  position:relative;
   bottom: 8px;
   width: 100%;
   text-align: center;
-}
-
+} 
+ */
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
@@ -491,13 +497,13 @@ color: black;
     
     <div class="logo">
     <spring:url value="/images" var="images" />
-    <img src="${images}/logo.jpg" width="150" height="120"/>
+    <img src="${images}/logo.jpg" width="140" height="110"/>
     </div>
     
     <div class="call"> 
     <a href="abc.htm">                        
     <spring:url value="/images" var="images" />
-    <img src="${images}/cartimage.jpg" width="75" height="60" style="float: right;"/>
+    <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
     </a>
                             
                             <span class="fas fa-phone-alt"></span>
@@ -524,7 +530,7 @@ color: black;
                 </div>  
   
 <div class="navbar">
-<div class="dropdown">
+ <div class="dropdown">
     <button class="dropbtn">Search By Catogary  
       <i class="fa fa-caret-down"></i>
     </button>
@@ -558,32 +564,23 @@ color: black;
       </div> 
                           
   <!--   close header  -->
-  
-   
-   
- 
-  <div class="slideshow-container" style="margin-top:16px; margin-right:26%;">
+  <div class="slideshow-container" style="margin-top:5px; margin-right:27%;">
 
   <div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
   <spring:url value="/images" var="images" />
-  <img src="${images}/f1.jpg" width="1300" height="280"/><br>
-  <div class="text">Caption Text</div>
+  <img src="${images}/c1.jpg" width="1300" height="350"/>
   </div>
 
   <div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
+ <!--  <div class="numbertext">2 / 3</div> -->
   <spring:url value="/images" var="images" />
-  <img src="${images}/f7.jpg" width="1300" height="280"/><br>
-  <div class="text">Caption Two</div>
+  <img src="${images}/c4.jpg" width="1300" height="350"/>
   </div>
 
-  <div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
+ <div class="mySlides fade">
  <spring:url value="/images" var="images" />
- <img src="${images}/f5.jpg" width="1300" height="280"/><br>
-  <div class="text">Caption Three</div>
-  </div>
+ <img src="${images}/c5.jpg" width="1300" height="350"/>
+ </div>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -617,26 +614,32 @@ function showSlides(n) {
 }
 </script>
 
-<div class="carousel"> 
- <table border="1" style="padding: 2px;">
+ <div class="carousel"> 
+   <table border="1">
    <tr>
    <th>
    <spring:url value="/images" var="images" />
-   <img src="${images}/app.jpg" width="320" height="150" />
+   <img src="${images}/app.jpg" width="320" height="200" />
    </th>
    <th>
    <spring:url value="/images" var="images" />
-   <img src="${images}/banana.jpg" width="320" height="150"/>
+   <img src="${images}/banana.jpg" width="320" height="200"/>
    </th>
    <th>
    <spring:url value="/images" var="images" />
-   <img src="${images}/mango.jpg"  width="320"  height="150"/>
+   <img src="${images}/mango.jpg"  width="320"  height="200"/>
    </th>
    <th>
    <spring:url value="/images" var="images" />
-   <img src="${images}/orange.jpg" width="320" height="150"/>
+   <img src="${images}/orange.jpg" width="320" height="200"/>
    </th>
    </tr> 
+    <tr>
+   <th>Apple</th>
+   <th>Banana</font></th>
+   <th>Mango</th>
+   <th>Orange</th>
+   </tr>
    <tr>
    <th>price:<font color="green">40/-</font></th>
    <th>price:<font color="green">40/-</font></th>
@@ -666,6 +669,12 @@ function showSlides(n) {
    <spring:url value="/images" var="images" />
    <img src="${images}/bringal.jpg" width="320" height="150"/>
    </th>
+   <tr>
+   <th>Poatto</th>
+   <th>onion</font></th>
+   <th>ladyfinger</th>
+   <th>bringal</th>
+   </tr>
    </tr> 
    <tr>
    <th>price: <font color="green">60/-</font></th>
@@ -694,6 +703,13 @@ function showSlides(n) {
    <img src="${images}/pome.jpg" width="320" height="150"/>
    </th>
    </tr>
+   <tr>
+   <th>cherry</th>
+   <th>chiku</font></th>
+   <th>watermelon</th>
+   <th>pome</th>
+   </tr>
+   
     <tr>
    <th>price: <font color="green">60/-</font></th>
    <th>price:<font color="green">40/-</font></th>
@@ -842,4 +858,4 @@ Message *</div>
      
   </body>
   </html>
- 
+  
