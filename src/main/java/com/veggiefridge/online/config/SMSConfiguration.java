@@ -8,20 +8,27 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+import com.veggiefridge.online.constants.VFOnlineConstants;
+
 /**
  * @author Akshay N Wakudkar
  *
  */
+
 public class SMSConfiguration {
 	
-	public void SendSMS() {
+	public void SendSMS(String numbers) {
 		
 		try {
 			  // construct data
-			String apiKey = "apikey=" + "y91y/WBUY+k-I9eap8G39CfNZm1GkaIAz7xSapWDgI";
-			String message = "&message=" + "VeggieFridge sends you reset password link given below: ";
-			String sender = "&sender=" + "TXTLCL";
-			String numbers = "&numbers=" + "917020385462";
+			String apiKey = VFOnlineConstants.SMS_APIKEY;
+			String message = VFOnlineConstants.SMS_MESSAGE;
+			String sender = VFOnlineConstants.SMS_CODE;
+		    numbers = "&numbers=" + "917020385462";
 			
 			//send data
 			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.textlocal.in/send/?").openConnection();
