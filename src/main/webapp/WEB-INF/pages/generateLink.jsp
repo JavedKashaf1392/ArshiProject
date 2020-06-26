@@ -44,7 +44,8 @@ color: green;
 <h3>Select one to Reset Password :</h3>
 <input type="radio" name="entity" value="Email"> Email</input>
 <input type="radio" name="entity" value="Text"> Text</input><br><br>
-<input  class="button button1" type="submit" value="Send">
+<input  class="button button1" type="submit" value="Send" formaction="${pageContext.request.contextPath}/login/loginView" />   
+
 <input   class="button button1" type="submit" value="Cancel">
 </form>
 </div>

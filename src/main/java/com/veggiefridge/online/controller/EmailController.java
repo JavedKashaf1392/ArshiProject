@@ -9,6 +9,7 @@ import java.io.InputStream;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.veggiefridge.online.constants.VFOnlineConstants;
+
 /**
  * @author Akshay N Wakudkar
  *
@@ -29,20 +32,26 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class EmailController {
 	
+	private static final Logger logger = Logger.getLogger(KioskController.class);
+
+	public EmailController() {
+		System.out.println("EmailController.EmailController()");
+	}
+	
 	 static String emailToRecipient, emailSubject, emailMessage;
-	    static final String emailFromRecipient = "akshayastar72@gmail.com";
+	    static final String emailFromRecipient = VFOnlineConstants.MAIL_EMAILFROMRECIPIENT; //"akshayastar72@gmail.com";
 	 
 	    static ModelAndView modelViewObj;
 	 
 	    @Autowired
 	    private JavaMailSender mailSenderObj;
 	 
-	    @RequestMapping(value = {"/", "emailForm"}, method = RequestMethod.GET)
-	    public ModelAndView showEmailForm(ModelMap model) {
-	        modelViewObj = new ModelAndView("emailForm");
-	        return  modelViewObj;       
-	    }
-	 
+//	    @RequestMapping(value = {"/", "emailForm"}, method = RequestMethod.GET)
+//	    public ModelAndView showEmailForm(ModelMap model) {
+//	        modelViewObj = new ModelAndView("emailForm");
+//	        return  modelViewObj;       
+//	    }
+//	 
 	    // This Method Is Used To Prepare The Email Message And Send It To The Client
 	    @RequestMapping(value = "sendEmail", method = RequestMethod.POST)
 	    public ModelAndView sendEmailToClient(HttpServletRequest request, final @RequestParam CommonsMultipartFile attachFileObj) {

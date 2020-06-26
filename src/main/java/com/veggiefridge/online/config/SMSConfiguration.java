@@ -29,9 +29,9 @@ public class SMSConfiguration {
 			String message = VFOnlineConstants.SMS_MESSAGE;
 			String sender = VFOnlineConstants.SMS_CODE;
 		    numbers = "&numbers=" + "917020385462";
-			
-			//send data
-			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.textlocal.in/send/?").openConnection();
+		    
+		    //send data
+			HttpURLConnection conn = (HttpURLConnection) new URL(VFOnlineConstants.SMS_URL).openConnection();
 			String data = apiKey + numbers + message + sender;
 			conn.setDoOutput(true);
 			conn.setRequestMethod("POST");

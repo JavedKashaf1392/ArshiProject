@@ -18,23 +18,20 @@ import com.veggiefridge.online.config.SMSConfiguration;
 @PropertySource(value = { "classpath:application.properties" })
 public class VFOnlineConstants {
 	
+	// SMS
 	@Value("${sms.textlocal.apiKey}")
-	public static String SMS_APIKEY = "sms.textlocal.apiKey";
+	public static String SMS_APIKEY ;  //= "sms.textlocal.apiKey"
 	
 	@Value("${sms.textlocal.message}")
-	public static String SMS_MESSAGE = "sms.textlocal.message";
+	public static String SMS_MESSAGE; // = "sms.textlocal.message";
 	
 	@Value("${sms.textlocal.code}")
-	public static String SMS_CODE = "sms.textlocal.code"; 
+	public static String SMS_CODE ;  //= "sms.textlocal.code"; 
 	
-	@Bean
-	public SMSConfiguration smsConfig() {
-		SMSConfiguration sc = new SMSConfiguration();
-//		sc.setSmsTextlocalApikey(sms.textlocal.apiKey);
-//		sc.setSmsTextlocalMessage(sms.textlocal.message);
-//		sc.setSmsTextlocalCode(sms.textlocal.code);
-        return sc;
-    }
+	@Value("${sms.textlocal.url}")
+	public static String SMS_URL;
 	
-
+	// MAIL
+	@Value("${mail.emailfromrecipient}")
+	public static String MAIL_EMAILFROMRECIPIENT;
 }
