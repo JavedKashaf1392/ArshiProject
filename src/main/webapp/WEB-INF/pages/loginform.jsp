@@ -107,11 +107,11 @@ span.psw {
 </style>
 </head>
  <body>
-
+   
   <form  method="post"  modelAttribute="user">
   <h2>Log In VeggieFridge</h2>                                
   
-    <div class="container">
+  
     <label for="email"><b>Email Id</b></label>
     <input type="text" placeholder="Enter Email Id" name="email" required>
 
@@ -133,7 +133,7 @@ span.psw {
     <div class="signup">
     <%-- <a href="${pageContext.request.contextPath}/login/newCustomer">New To VeggieFridge?Create an account</a> --%>
      New To VeggieFridge?Create an account <input type="submit" style="width:100px;cursor:pointer;margin: 5px 5px;font-size:10px;text-decoration:none;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="SignUp" action="${pageContext.request.contextPath}/login/newCustomer">
-    </div> 
+  
     
 </form> 
 </body>

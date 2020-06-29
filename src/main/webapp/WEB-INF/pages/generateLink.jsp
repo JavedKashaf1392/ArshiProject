@@ -34,6 +34,8 @@ color: green;
   margin:auto;
   text-align:center;
   margin-top:15%;
+   left: 50%;
+    top: 50%;
 }
 <title>Generate Link</title>
 </style>

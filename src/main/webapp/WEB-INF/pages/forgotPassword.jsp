@@ -4,15 +4,12 @@
 <html>
 <head>
 <style>
-
-body {
+  body {
     font-family: Arial, Helvetica, sans-serif;
-    width: 25%;
-    height: 80px;
+    
     align-content: center;
-    left: 50px;
-    top: 50px;
-    }
+
+    } 
 .button {
   border-radius: 5px;
   background-color: #4CAF50; /* Add */
@@ -34,14 +31,17 @@ color: green;
 .container {
   border-radius: 10px;
   border: 1px solid #008000;
-  max-width: 400px;
-  padding: 20px;
+  max-width: 270px;
+  padding: 40px;
   background-color: #ffffff;
   align: center;
   padding:auto;
   margin:auto;
   text-align:center;
   margin-top:15%;
+  left: 50%;
+  top: 50%;
+}
 }
 <title>Forgot Your Password ?</title>
 </style>
@@ -51,8 +51,8 @@ color: green;
 <form action="${pageContext.request.contextPath}/login/generateLink" th:action="@{/forgot-password}" th:object="${user}" method="post">
 <table>
 <tr>
-<td><label for="emailId">Email</label></td>
-<td><input th:field="*{emailId}" placeholder="Enter Email address" type="text" name="emailId"></input></td>
+<td><label for="emailId" style="font-size: 20px;">Email :</label></td>
+<td><input style="color: green;"  th:field="*{emailId}" placeholder="Enter Email address" type="text" name="emailId"></input></td>
 </tr>
 <tr>
 <td><input class="button clear" type="reset" value="Clear"/></td>

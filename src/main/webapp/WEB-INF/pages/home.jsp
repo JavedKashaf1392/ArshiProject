@@ -39,17 +39,17 @@
     width: 100%;
     height: 30px;
     /* background: #4CAF50; */
-    /* border:1px solid black; */
+   /*  border:1px solid black; */
 }
 .footer{
     margin-left:10%;
-    margin-right:9%;
+    margin-right:12%;
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    width: 82%;
+    width: 79%;
     height: 500px;
-    margin-top:50px;
+    margin-top:px;
     background: #4CAF50; 
     /* border:1px solid black;  */
     
@@ -71,19 +71,24 @@
     position:relative;
     width: 100%;
     margin-top:5px;
-    /* background: #4CAF50; */
-    border: 1px solid grey;
-    height:2000px;
-    transition:1s;
+   /*  background: #4CAF50; */
+    /*  border: 1px solid grey;  */
+     height:4000px;
+     transition:1s;
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: flex; 
+   /*  -webkit-box-align: center;
+     -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+       justify-content: center;
+      */    
 }
-.carousel img hover{
-
-transform:scale(1.3);
-}
-
 
 .logo{
- position:fixed;
+ position:absolute;
  width:30% 
  border:1px;
  float:left;
@@ -365,7 +370,7 @@ color: black;
  /*  background: #444; */
    /* color: #fff;  */
     padding: 20px;
-    margin-top:160px;
+    margin-top:130px;
     padding: 5px;
     font-size: 0.9375rem;
    background: white; 
@@ -489,6 +494,162 @@ color: black;
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
 }
+.container{
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+  /*   background: skyblue; */
+    margin-top: 20px;
+    margin-right: 23%;
+}
+
+.container ul{
+    padding:0px;
+    margin:0px;
+}
+
+
+.container ul li{
+    float:left;
+    list-style: none;
+    width:20%;
+    height:400px;
+  /*   background: pink; */
+    margin :24px 0px 24px 59px; 
+   /*  border:2px solid blue; */
+   border:1px solid #d9d9d9; 
+   box-sizing: border-box;
+     transition: 1s;
+  
+}
+.container ul li:hover{
+   /*  opacity: 0.7; */
+   
+     	transform: scale(1.2);
+		/* background:#FFEFD5;  */
+		z-index: 2;
+	  /*  box-shadow: 2px 2px 2px #000; */
+}
+
+.container ul li .product-meta{
+    width: 105%;
+    height:100px;
+    line-height: 50px;
+   /*  background: blue;  */   
+  /*  background: pink; */
+    text-align: left;
+    color:white;
+    font-size: 18px;
+   
+}
+.container ul li .product-img{
+  width: 60%;
+  background-position: center;
+  background-size: cover;
+  background: no-repeat #1864ff;
+  height: 150px;
+  /* border-radius: 3px 3px 0 0;
+  float:left; */
+}
+
+.container ul li .product-meta .divider {
+  border-top: 1px solid #e8eaea;
+  margin: 17px auto;
+  width: 90%;
+}
+.container ul li .product-meta .product-price-wrap {
+  width: 95%;
+  height:20%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+   grid-template-columns: auto auto;
+ /*  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; */
+}
+.container ul li .product-meta .product-price-wrap .left {
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+.container ul li .product-meta .product-price-wrap .left .price {
+ /*  color: #111; */
+  color:black;
+  font-weight: 700;
+}
+
+.container ul li .product-meta .product-price-wrap .left .old-price {
+  font-size: 14px;
+  text-decoration: line-through; 
+ /*  color: #999; */
+  color:black;
+  font-weight: 300;
+  position: relative;
+/*   display: block; */
+   color:black;
+}
+.container ul li .product-meta .product-price-wrap .right {
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.container ul li .product-meta .product-price-wrap .right .btn {
+  /* background-color: #1864ff; */
+  background-color:#4CAF50;
+  border: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 30px;
+  border-radius: 3px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.container ul li .product-meta .product-price-wrap .right .btn:hover, .card .product-meta .product-price-wrap .right .btn:focus, .card .product-meta .product-price-wrap .right .btn:active {
+  outline: none;
+  cursor: pointer;
+ /*  background-color: blue; */
+}
+ .container   ul li  .label-clip {
+ /*  background-color: #1864ff; */
+  background-color: #4CAF50;
+  border-radius: 0 3px 3px 3px;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  padding: 5px 10px;
+  z-index: 10;
+  top: -10px; 
+  left: 30px;
+  position: absolute;
+  
+}
+
+.container   ul li .label-clip::before {
+  content: '';
+  /* border-right-color: #123bb4 !important; */
+  border-right-color:#4CAF50 !important;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  height: 0;
+  width: 0;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  background: none !important;
+}
+@media screen and (max-width:1250px){
+    .container ul li{
+        width:40%;
+        margin-left: 40px;   
+    }
+  
+    
+    
+    
+
   </style>
   <body>
     
@@ -564,22 +725,22 @@ color: black;
       </div> 
                           
   <!--   close header  -->
-  <div class="slideshow-container" style="margin-top:5px; margin-right:27%;">
+  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
   <div class="mySlides fade">
   <spring:url value="/images" var="images" />
-  <img src="${images}/c1.jpg" width="1300" height="350"/>
+  <img src="${images}/f4.jpg" width="1300" height="400"/>
   </div>
 
   <div class="mySlides fade">
  <!--  <div class="numbertext">2 / 3</div> -->
   <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="350"/>
+  <img src="${images}/c4.jpg" width="1300" height="400"/>
   </div>
 
  <div class="mySlides fade">
  <spring:url value="/images" var="images" />
- <img src="${images}/c5.jpg" width="1300" height="350"/>
+ <img src="${images}/c5.jpg" width="1300" height="400"/>
  </div>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -612,123 +773,304 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
-</script>
-
- <div class="carousel"> 
-   <table border="1">
-   <tr>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/app.jpg" width="320" height="200" />
-   </th>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/banana.jpg" width="320" height="200"/>
-   </th>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/mango.jpg"  width="320"  height="200"/>
-   </th>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/orange.jpg" width="320" height="200"/>
-   </th>
-   </tr> 
-    <tr>
-   <th>Apple</th>
-   <th>Banana</font></th>
-   <th>Mango</th>
-   <th>Orange</th>
-   </tr>
-   <tr>
-   <th>price:<font color="green">40/-</font></th>
-   <th>price:<font color="green">40/-</font></th>
-   <th>price:<font color="green">40/-</font></th>
-   <th>price:<font color="green">40/-</font></th>
-   </tr>
-   </tabel>
-   </div> 
-   </table><br>
-   
-  <table border="1">
+   </script>
   
-   <tr>
-   <th>
+  <div class="carousel">
+  <div class="container">
+   <ul> 
+   <li>
+   <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/potato.jpg" width="320" height="150"/>
-   </th>
-   <th>
+   <img src="${images}/potato.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                   <div class="left">
+                   <span class="price">
+                   <span class="old-price">MRP 150</span>
+                    Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to Cart</button>
+                </div></div></div>
+           
+          <div class="label-clip">
+           Get 67% OFF
+         </div> 
+          </li>
+         
+    <li>
+   <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/onion.jpg" width="320" height="150"/>
-   </th>
-   <th>
+   <img src="${images}/bringal.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 50% OFF
+          </div>
+          </li>
+         
+           <li>
+   <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/ladyfinger.jpg" width="320" height="150"/>
-   </th>
-   <th>
+   <img src="${images}/ginger.jpeg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+           <div class="label-clip">
+           Get 40% OFF
+          </div> 
+          </li>
+            <li>
+   <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/bringal.jpg" width="320" height="150"/>
-   </th>
-   <tr>
-   <th>Poatto</th>
-   <th>onion</font></th>
-   <th>ladyfinger</th>
-   <th>bringal</th>
-   </tr>
-   </tr> 
-   <tr>
-   <th>price: <font color="green">60/-</font></th>
-   <th>price:<font color="green">40/-</font></th>
-   <th>price:<font color="green">50/-</font></th>
-   <th>price:<font color="green">30/-</font></th>
-   </tr> 
-  </table><br>
+   <img src="${images}/ladyfinger.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 40% OFF
+          </div> 
+          </li>
+            <li>
+            
+            
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/app.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/banana.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div>
+          </li>
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/cherry.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+           <div class="label-clip">
+           Get 67% OFF
+          </div>
+          </li>
+           <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/mango.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+          
+         
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/cabbage.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+           <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/carrot.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 67% OFF
+          </div>
+          </li>
+             <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/tomato.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+             <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/onion.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
   
-   <table border="1">
-   <tr>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/cherry.jpg" width="320" height="150"/>
-   </th>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/chiku.jpg" width="320" height="150"/>
-   </th>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/watermelon.jpg" width="320" height="150"/>
-   </th>
-   <th>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/pome.jpg" width="320" height="150"/>
-   </th>
-   </tr>
-   <tr>
-   <th>cherry</th>
-   <th>chiku</font></th>
-   <th>watermelon</th>
-   <th>pome</th>
-   </tr>
-   
-    <tr>
-   <th>price: <font color="green">60/-</font></th>
-   <th>price:<font color="green">40/-</font></th>
-   <th>price:<font color="green">50/-</font></th>
-   <th>price:<font color="green">30/-</font></th>
-   </tr>   
- </tabel>
- 
-  <table>
-     
-   <tr>
-   <td><h3 style="color: green;">Bank Offers</h3></td><br>
-   </tr>
-   <tr>
-   
+   <div class="second">
+  <spring:url value="/images" var="images" />
+  <img src="${images}/c4.jpg" width="1300" height="400"/>
+  </div><br><br>
+  
    <th>
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="300" height="150" />
+   <img src="${images}/icici.jpg" width="300" height="250" />
    </a>
    </th>
   
@@ -737,7 +1079,7 @@ function showSlides(n) {
    <th>
     <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg" width="300" height="150"/>
+   <img src="${images}/induslandbank.jpg" width="300" height="250"/>
     </a>
    </th>
   
@@ -746,7 +1088,7 @@ function showSlides(n) {
    <th>
     <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg" width="300" height="150"/>
+   <img src="${images}/paytm.jpg" width="300" height="250"/>
    </a>
    </th>
    
@@ -754,13 +1096,306 @@ function showSlides(n) {
     
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg" width="300" height="150"/>
+   <img src="${images}/standard.jpg" width="300" height="250"/>
    </a>
    </th>
    </tr>  
   </table>
-  </div>
+   
+   
+   <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/chiku.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+            </div></div>
+            <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+         
+    <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/orange.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+         
+           <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/pinapple.png" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/strawberry.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+            
+            
+             <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/guava.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+          <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/pears.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div>
+          </li>
+ <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/pumpkin.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>   
+          
+                   <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/tomato.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+            
+            
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/watermelon.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/orange.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+          <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/mango.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+       <div class="label-clip">
+           Get 67% OFF
+          </div>
+          </li>
+            <li>
+   <a href="#">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/chiku.jpg" class="product-img" />
+   </a>
+            <div class="product-meta">
+            <h4>Potato</h4>
+            <h6 style="color: black;">Fresh potato's fiber, potassium, vitamin C</h6>
+            <h5 style="color: black;"> Size:1 kg<h5>
+         <!--    <div class="divider"></div> -->
+            <div class="product-price-wrap" style="background-color:#f1f1f1;">
+                    <div class="left">
+                   <span class="old-price">MRP 150</span>
+                   <span class="price"> Rs 49.50 </span>
+            </div>
+            <div class="right">
+                 <button class="btn">Add to cart</button>
+                </div>
+           </div></div>
+         <div class="label-clip">
+           Get 67% OFF
+          </div> 
+          </li>
   
+  
+  <div class="third">
+  <spring:url value="/images" var="images" />
+  <img src="${images}/organic.jpg" width="1300" height="400"/>
+  </div><br><br>
+    </ul>
+    </div>
+    </div>
+ <!--  ............................  -->
       <div class="footer">
       <div class="main-content">
       <div class="left box">
