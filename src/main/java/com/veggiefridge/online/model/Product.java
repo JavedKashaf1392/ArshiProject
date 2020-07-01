@@ -1,7 +1,6 @@
 package com.veggiefridge.online.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,9 +24,9 @@ public class Product implements Serializable {
 	@Column(name="productName")
 	private String productName;
 	
-	@NotNull(message="Please Enter ProductPrice")
-	@Column(name="productPrice")
-	private double productPrice;
+	@NotNull(message="Please Enter Price")
+	@Column(name="price")
+	private double price;
 	
 	@NotEmpty(message="Please Enter Quantity")
 	@Column(name="quantity")
@@ -48,6 +47,43 @@ public class Product implements Serializable {
 	@NotEmpty(message="Please Enter Description")
 	@Column(name="description")
 	private String description;
+	
+	@NotNull(message="Please Enter  FinalPrice")
+	@Column(name="finalPrice")
+	private double finalPrice;
+	
+	@NotNull(message="Please Enter size")
+	@Column(name="size")
+	private float size;
+	
+	@NotNull(message="Please Enter  tax")
+	@Column(name="tax")
+	private float tax;
+	
+	
+	public double getFinalPrice() {
+		return finalPrice;
+	}
+
+	public void setFinalPrice(double finalPrice) {
+		this.finalPrice = finalPrice;
+	}
+
+	public float getSize() {
+		return size;
+	}
+
+	public void setSize(float size) {
+		this.size = size;
+	}
+
+	public float getTax() {
+		return tax;
+	}
+
+	public void setTax(float tax) {
+		this.tax = tax;
+	}
 
 	public int getProductid() {
 		return productid;
@@ -65,12 +101,12 @@ public class Product implements Serializable {
 		this.productName = productName;
 	}
 
-	public double getProductPrice() {
-		return productPrice;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getQuantity() {

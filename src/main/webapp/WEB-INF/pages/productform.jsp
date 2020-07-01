@@ -110,22 +110,31 @@ h2 {
                 <td>ProductName </td>
                 <td><form:input path="productName"  /><form:errors path="productName" cssClass="error"/></td>
             </tr>
-            <tr>
-                <td>ProductPrice </td>
-                <td><form:input path="productPrice" /></td>
-                <td><form:errors path="productPrice" cssClass="error" /></td> 
+            
+              <tr>
+                <td>Description </td>
+                <td><form:input path="description" /></td>
+                <td><form:errors path="description" cssClass="error"/></td> 
+            </tr> 
+              <tr>
+                <td>Size</td>
+                <td><form:input path="size" /></td>
+                <td><form:errors path="size" cssClass="error"/></td> 
             </tr>
+                   
             <tr>
+                <td>Price </td>
+                <td><form:input path="price" /></td>
+                <td><form:errors path="price" cssClass="error" /></td> 
+            </tr>
+           
+            <tr>
+          
                 <td>Quantity </td>
                 <td><form:input path="quantity" /></td>
                 <td><form:errors path="quantity"  cssClass="error"/></td> 
             </tr>
-            <tr>
-                <td>Discount </td>
-                <td><form:input path="discount" /></td>
-                <td><form:errors path="discount"  cssClass="error"/></td> 
-            </tr>
-            
+          
             <tr>
                 <td>IsAvailable </td>
                 <td><form:input path="isAvailable" /></td>
@@ -138,14 +147,28 @@ h2 {
                 <td><form:errors path="category" cssClass="error"/></td> 
             </tr>
             
+             <tr>
+                <td>Discount </td>
+                <td><form:input path="discount" /></td>
+                <td><form:errors path="discount"  cssClass="error"/></td> 
+            </tr>
+          
             <tr>
-                <td>Description </td>
-                <td><form:input path="description" /></td>
-                <td><form:errors path="description" cssClass="error"/></td> 
+                <td>Tax</td>
+                <td><form:input path="tax" /></td>
+                <td><form:errors path="tax" cssClass="error"/></td> 
             </tr>
            
+            <tr>
+                <td>FinalPrice</td>
+                <td><form:input path="finalPrice" /></td>
+                <td><form:errors path="finalPrice" cssClass="error"/></td> 
+            </tr>
+           
+            
+           
         </table><br>
-           <div style='float:center;'>
+            <div style='float:center;'>
            <input type="submit" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;"value="Save">
            <input type="reset" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="Reset">
            <input type="button" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="Back" onclick="history.back()">

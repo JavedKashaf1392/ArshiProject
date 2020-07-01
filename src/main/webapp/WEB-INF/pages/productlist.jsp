@@ -112,29 +112,33 @@ function checkCheckBoxes(theForm) {
 		            <th> </th>
 		           <!--  <th>ProductId</th> -->
 		            <th>ProductName</th>
-					<th>ProductPrice</th>
+		            <th>Description</th>
+		            <th>Size</th>
+					<th>Price</th>
 					<th>Quantity</th>
-					<th>Discount</th>
 					<th>Availability</th>
 					<th>Category</th>
-					<th colspan="2">Description</th>
+					<th>Discount</th>
+				    <th>Tax</th>
+					<th>FinalPrice</th>
    
    </tr>
    <c:forEach var="product" items="${listProduct}">
    <tr>
                     <td align="center"><input type="checkbox" class="checkboxId" name="productid" value="${product.productid}"></td>
                     
-                 <%--    <td align="center"><input type="checkbox" name="productid" value="${product.productid}"></td> --%>
+                   <%--<td align="center"><input type="checkbox" name="productid" value="${product.productid}"></td> --%>
                    <%--  <td>${product.productid}</td> --%>
                     <td>${product.productName}</td>
-					<td>${product.productPrice}</td>
+                    <td>${product.description}</td>
+                    <td>${product.size}</td>
+					<td>${product.price}</td>
 					<td>${product.quantity}</td>
-					<td>${product.discount}</td>
 					<td>${product.isAvailable}</td>
 					<td>${product.category}</td>
-					<td>${product.description}</td>
-					
-					
+					<td>${product.discount}</td>
+                    <td>${product.tax}</td>
+					<td>${product.finalPrice}</td>				
    </tr>
    
     </c:forEach>

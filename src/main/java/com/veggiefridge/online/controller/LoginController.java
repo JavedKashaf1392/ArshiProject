@@ -63,7 +63,7 @@ public class LoginController {
 		}
 	
 		
-		//login Process
+		 //login Process
 		 @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 		  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
 		  @ModelAttribute("User") User user) {
@@ -75,7 +75,7 @@ public class LoginController {
 		    } else {
 		    mav = new ModelAndView("user");
 		    mav.addObject("message", "EmailId or Password is wrong!!");
-		    }
+		     }
 		    return mav;
 		  }
  		
