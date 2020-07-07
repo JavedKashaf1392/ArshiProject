@@ -34,4 +34,10 @@ public class VFOnlineConstants {
 	// MAIL
 	@Value("${mail.emailfromrecipient}")
 	public static String MAIL_EMAILFROMRECIPIENT;
+	
+	@Value("${mail.emailsubject}")
+	public static String MAIL_EMAILSUBJECT;
+	
+	@Value("${mail.emailmessage}")
+	public static String MAIL_EMAILMESSAGE;
 }

@@ -38,9 +38,12 @@ public class EmailController {
 		System.out.println("EmailController.EmailController()");
 	}
 	
-	 static String emailToRecipient, emailSubject, emailMessage;
-	    static final String emailFromRecipient = VFOnlineConstants.MAIL_EMAILFROMRECIPIENT; //"akshayastar72@gmail.com";
+	 static String emailToRecipient; // emailSubject, emailMessage;
+	    static String emailfromrecipient = VFOnlineConstants.MAIL_EMAILFROMRECIPIENT; //"akshayastar72@gmail.com";
 	 
+	    static String emailsubject = VFOnlineConstants.MAIL_EMAILSUBJECT;
+	    		
+	    static String emailmessage = VFOnlineConstants.MAIL_EMAILMESSAGE;
 	    static ModelAndView modelViewObj;
 	 
 	    @Autowired
@@ -53,25 +56,25 @@ public class EmailController {
 //	    }
 //	 
 	    // This Method Is Used To Prepare The Email Message And Send It To The Client
-	    @RequestMapping(value = "sendEmail", method = RequestMethod.POST)
+	    @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
 	    public ModelAndView sendEmailToClient(HttpServletRequest request, final @RequestParam CommonsMultipartFile attachFileObj) {
 	 
 	        // Reading Email Form Input Parameters      
-	        emailSubject = request.getParameter("subject");
-	        emailMessage = request.getParameter("message");
+	        emailsubject = request.getParameter("subject");
+	        emailmessage = request.getParameter("message");
 	        emailToRecipient = request.getParameter("mailTo");
 	 
 	        // Logging The Email Form Parameters For Debugging Purpose
-	        System.out.println("\nReceipient?= " + emailToRecipient + ", Subject?= " + emailSubject + ", Message?= " + emailMessage + "\n");
+	        System.out.println("\nReceipient?= " + emailToRecipient + ", subject?= " + emailsubject + ", message?= " + emailmessage + "\n");
 	 
 	        mailSenderObj.send(new MimeMessagePreparator() {
 	            public void prepare(MimeMessage mimeMessage) throws Exception {
 	 
 	                MimeMessageHelper mimeMsgHelperObj = new MimeMessageHelper(mimeMessage, true, "UTF-8");             
 	                mimeMsgHelperObj.setTo(emailToRecipient);
-	                mimeMsgHelperObj.setFrom(emailFromRecipient);               
-	                mimeMsgHelperObj.setText(emailMessage);
-	                mimeMsgHelperObj.setSubject(emailSubject);
+	                mimeMsgHelperObj.setFrom(emailfromrecipient);               
+	                mimeMsgHelperObj.setText(emailmessage);
+	                mimeMsgHelperObj.setSubject(emailsubject);
 	 
 	                // Determine If There Is An File Upload. If Yes, Attach It To The Client Email              
 	                if ((attachFileObj != null) && (attachFileObj.getSize() > 0) && (!attachFileObj.equals(""))) {
