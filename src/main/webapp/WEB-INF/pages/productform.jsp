@@ -165,6 +165,12 @@ h2 {
                 <td><form:errors path="finalPrice" cssClass="error"/></td> 
             </tr>
            
+             <tr>
+                <td>ImageName</td>
+                <td><form:input path="imageName" /></td>
+                <td><form:errors path="imageName" cssClass="error"/></td> 
+            </tr>
+           
             
            
         </table><br>

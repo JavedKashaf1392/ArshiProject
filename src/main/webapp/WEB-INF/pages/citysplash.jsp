@@ -125,11 +125,11 @@ input[type=submit]:hover {
    
     <div class="col-75">
     
-      <select id="city" name="city">
+        <select id="city" name="city">
         <option value="none">Select City</option>
         <option value="pune">Pune</option>
         <option value="mumbai">Mumbai</option>
-      </select>
+        </select>
     </div>
   </div>
   <div style="text-align:center;">

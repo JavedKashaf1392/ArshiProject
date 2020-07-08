@@ -121,6 +121,8 @@ function checkCheckBoxes(theForm) {
 					<th>Discount</th>
 				    <th>Tax</th>
 					<th>FinalPrice</th>
+					<th>ImageName</th>
+					
    
    </tr>
    <c:forEach var="product" items="${listProduct}">
@@ -138,7 +140,9 @@ function checkCheckBoxes(theForm) {
 					<td>${product.category}</td>
 					<td>${product.discount}</td>
                     <td>${product.tax}</td>
-					<td>${product.finalPrice}</td>				
+					<td>${product.finalPrice}</td>
+					<td>${product.imageName}</td>				
+  
    </tr>
    
     </c:forEach>

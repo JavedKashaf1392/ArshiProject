@@ -60,6 +60,10 @@ public class Product implements Serializable {
 	@Column(name="tax")
 	private float tax;
 	
+	@Column(name="imageName")
+	private String imageName;
+	
+	
 	
 	public double getFinalPrice() {
 		return finalPrice;
@@ -147,6 +151,14 @@ public class Product implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 

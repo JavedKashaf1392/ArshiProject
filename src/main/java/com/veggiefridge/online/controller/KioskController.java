@@ -47,7 +47,7 @@ public class KioskController {
 	
 	
 	 //newKiosk
-	 @RequestMapping(value ="/newKiosk")
+	  @RequestMapping(value ="/newKiosk")
 	  public ModelAndView newKiosk(ModelAndView  model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("kiosk") Kiosk kiosk,BindingResult resultkiosk){
 	  List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
 	  model.addObject("listkiosklocation",listkiosklocation);
