@@ -204,6 +204,7 @@ input[type=submit]:hover {
  border:1px;
  float:left;
  margin-right:35%;
+ 
 }
 
 /* <-- serach operation--> */
@@ -240,7 +241,7 @@ form.example button:hover {
 .call{
 /* border:1px solid black; */
 float:right;
-margin-right:19%;
+margin-right:21%;
 margin-top: 10px;
 height:35px;
 width:20%;
@@ -263,7 +264,7 @@ form.example::after {
 .right{
 float: right;
 margin-top:30px;
-margin-right:7%;
+margin-right:9%;
 font:bold;
 font-size:16px;
 
@@ -780,48 +781,8 @@ color: black;
  
  
   </style>  
-  <body onload="myFunction()">
-  <div class="popUpMain">
-  <div class="popup">
- <!--  <h4 style="color: green;">Choose your city  to start shopping</h4> -->
-  <div class="row">
-  <div class="col-75">    
-     
-    <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
-    <!-- <div class="a" style="border:1px solid black;width:20%; position: fixed;"> -->
-    <spring:url value="/images" var="images" />
-    <img src="${images}/logo.jpg" width="140" height="100" style="margin-left:33%;"/>
-    
-
-       <h6 style="color:green; font-size:100%; margin-top:2%; margin-left: 9%;"><!-- Select your city and location to start shopping -->SELECT YOUR PREFERED CITY AND LOCATION</h6><br>
-       
-       <select id="cities" name="cities" style="margin-left: 4%; padding:15px;" required>
-       <option value=""style="color: black;">Select city</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
-       </c:forEach>
-       </select><br><br>
-        
-       <select id="location" name="location" style="margin-left: 4%;padding:15px;" required>
-       <option value="" style="color: black;">Select location</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
-       </c:forEach>
-      </select><br><br>
-      </div>
-      </div>
-
-                 <div style="text-align:center;">
-				<input type="submit" value="Continue"  style="width: 90%;  padding:14px; " class="submitId"/>
-			    </div><br></form>
-			
-			
-<h5 style="text-align: center;">Already have an account? <a href="#" style="color: red;text-decoration: none;">Login</a></h5>
-  
-			
-  </div>
- </div>
-    
+  <body >
+ 
    <!--  header -->
 
     <div class="header">
@@ -836,13 +797,15 @@ color: black;
     <spring:url value="/images" var="images" />
     <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
     </a>
+  <!--   <button style="font-size:20px; color: white;padding: 8px; border-color:#4CAF50;"><i class='fas fa-shopping-cart' style="color:white;">Cart<br style="color: white;">0 Items</i></button>
+     -->
                             
                             <span class="fas fa-phone-alt" style="color: black;"></span>
                             <span class="text" style="color: black;">+089-765432100</span>   
                             </div>
     
     
-   <div class="search">                                                 
+    <div class="search">                                                 
    <form class="example" action="action_page.php">
    <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search">
    <button type="submit"><i class="fa fa-search"></i></button>
@@ -891,7 +854,7 @@ color: black;
     </div>
 
  <div style="text-align:center;">
- <input type="submit" value="Continue" formaction="${pageContext.request.contextPath}/home/viewhome"/>
+ <input type="submit" value="Continue" style="width: 30%;"/>
  </div></p></form>
  </div>
 </div>
@@ -1205,22 +1168,7 @@ Message *</div>
 </div>
 </div>
  </div>
- <script>
-
-$(document).ready(function() {
-
-  setTimeout(function(){
-	  $('.popUpMain').css('display','block');
-	  },500); 
-
-});
-
-
-$('.submitId').click(function(){
-	  $('.popUpMain').css('display','none');
-	  });
-
-</script>
+ 
  
   
   </body>

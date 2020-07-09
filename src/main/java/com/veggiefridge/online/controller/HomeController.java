@@ -43,4 +43,20 @@ public class HomeController {
 	}
 	
 	
+	@RequestMapping("/continueLocation")  
+	public ModelAndView continueLocation(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
+	
+	{ 
+		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		List<Product> listProduct = productService.getAllProducts();
+		model.addObject("listkiosklocation",listkiosklocation);
+		model.addObject("listProduct", listProduct);
+		model.setViewName("newlocationhome");
+		return model; 
+	}  
+	
+	
+	
+	
+	
 }
