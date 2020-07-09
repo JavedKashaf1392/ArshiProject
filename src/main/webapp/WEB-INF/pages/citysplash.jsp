@@ -122,8 +122,8 @@ input[type=submit]:hover {
   <h3>Choose Your City</h3>
   
   <div class="row">
-   
-    <div class="col-75">
+    
+       <div class="col-75">
     
         <select id="city" name="city">
         <option value="none">Select City</option>

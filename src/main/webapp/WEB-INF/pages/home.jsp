@@ -1,6 +1,6 @@
 
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -10,12 +10,15 @@
         
         <head> 
         <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Home screen of VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
         <style>
+        
 body {font-family: Arial, Helvetica, sans-serif;}
 
 .row:after {
@@ -26,6 +29,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .col-75 {
   width: 100%;
   margin-top: 11px;
+  color: black;
 }
 input[type=text], select, textarea {
   width: 90%;
@@ -78,7 +82,7 @@ input[type=submit]:hover {
   padding: 20px;
   border: 1px solid #888;
   width: 22%;
-  margin-left: 66%;
+  margin-left: 68%;
  
 }
 
@@ -95,6 +99,31 @@ input[type=submit]:hover {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+ .popUpMain{ 
+  outline: #4CAF50 solid 10px;
+  display: none;   /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Sit on top */
+  padding-top: 75px;  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+ /*  overflow: auto; /* Enable scroll if needed */ */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  box-shadow: 1px 2px 5px 3px white;
+  
+  } 
+.popup {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  margin-left: 34%;
+  
 }
 </style>
         </head>
@@ -212,11 +241,11 @@ form.example button:hover {
 .call{
 /* border:1px solid black; */
 float:right;
-margin-right:21%;
+margin-right:19%;
 margin-top: 10px;
-height:40px;
+height:35px;
 width:20%;
-/* border:1px solid black;  */
+/* border:1px solid black; */
 
 }
  /* call end */
@@ -235,7 +264,7 @@ form.example::after {
 .right{
 float: right;
 margin-top:30px;
-margin-right:9%;
+margin-right:7%;
 font:bold;
 font-size:16px;
 
@@ -323,7 +352,7 @@ color: black;
  *{
     margin: 0;
     padding: 0;
-    color: #d9d9d9;
+   /*  color: #d9d9d9; */
    /*  color:black; */
     /* box-sizing: border-box;
     font-family: 'Poppins', sans-serif; */ 
@@ -745,14 +774,67 @@ color: black;
 @media screen and (max-width:1250px){
     .container ul li{
         width:40%;
+     
         margin-left: 40px;   
     }
     /* ........................................... */
-   
-  </style>
-  <body>
+ 
+ 
+  </style>  
+  <body onload="myFunction()">
+  <div class="popUpMain" >
+  <div class="popup">
+ <!--  <h4 style="color: green;">Choose your city  to start shopping</h4> -->
+  <div class="row">
+  <div class="col-75">    
+     
+    
+    <!-- <div class="a" style="border:1px solid black;width:20%; position: fixed;"> -->
+    <spring:url value="/images" var="images" />
+    <img src="${images}/logo.jpg" width="140" height="100" style="margin-left:33%;"/>
+    
+
+       <h4 style="color:green; font-size:110%; margin-top:2%; margin-left: 8%;">Select your city And location to start shopping</h4><br>
+       
+       <select id="cities" name="cities" style="margin-left: 4%; padding:15px;">
+       <option value=""style="color: black;">Select city</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
+       </c:forEach>
+       </select><br><br>
+        
+       <select id="location" name="location" style="margin-left: 4%;padding:15px;">
+       <option value="" style="color: black;">Select location</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
+       </c:forEach>
+      </select><br><br>
+      </div>
+      </div>
+
+ <div style="text-align:center;">
+				<input type="submit" value="Continue" style="width: 90%;  padding:14px;" class="submitId" />
+			</div><br>
+			
+			
+<h5 style="text-align: center;">Already have an account? <a href="#" style="color: green;text-decoration: none;">Login</a></h5>
+  
+			
+</div>
+ </div>
     
    <!--  header -->
+  
+  
+  <!--  <div class="wrapper">
+   <div class="overlay">
+    <form action="">
+      <input type="text">
+      <input type="text">
+      <button>Submit</button>
+    </form>
+    </div>
+   -->
     <div class="header">
     
     <div class="logo">
@@ -780,13 +862,18 @@ color: black;
    </div>
   
                 <div class="right" style="float: right;">
-                <a href="#">Login as Guest</a> |
-                <a href="${pageContext.request.contextPath}/login/loginView">Log in</a> |
-                <a href="${pageContext.request.contextPath}/login/newCustomer">Sign Up </a> |
+                <a href="#" style="text-decoration: none;">Login as Guest</a> |
+                <a href="${pageContext.request.contextPath}/login/loginView" style="text-decoration: none;">Log in</a> |
+                <a href="${pageContext.request.contextPath}/login/newCustomer" style="text-decoration: none;">Sign Up </a> |
                 
                 <!-- Trigger/Open The Modal -->
 <span class="fas fa-map-marker-alt" style="color: black;"></span>
-<button id="myBtn" style="color: black; text-decoration: none;font-size: 92%;">GaneshPet,Nagpur</button>
+<a href="#" id="myBtn" style="text-decoration: none;">GaneshPet,Nagpur</a> 
+ <i class="arrow down" style="  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);  border:solid black; 
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;"></i>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -800,21 +887,21 @@ color: black;
        <select id="cities" name="cities">
        <option value=""style="color: black;">Select city</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.cities}">${kiosklocation.cities}</option>
+       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
        </c:forEach>
        </select><br><br>
         
        <select id="location" name="location">
        <option value="" style="color: black;">Select location</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}">${kiosklocation.location}</option>
+       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
        </c:forEach>
       </select>
     </div>
     </div>
 
  <div style="text-align:center;">
- <input type="submit" value="Continue"/>
+ <input type="submit" value="Continue" formaction="${pageContext.request.contextPath}/home/viewhome"/>
  </div></p>
  </div>
 </div>
@@ -933,6 +1020,11 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
    </script> --%>
+   
+   
+ 
+    
+    
   
   <div class="carousel">
   <div class="container">
@@ -941,7 +1033,7 @@ function showSlides(n) {
  <!--  1 -->
    <li>
    <div class="product-img">
-   <h4 style="background-color: #4CAF50; float: right;">Get ${product.discount}% OFF</h4>
+   <h4 style="background-color: #4CAF50; float: right; color: white;">Get ${product.discount}% OFF</h4>
    <a href="#">
    <spring:url value="/images" var="images" />
    <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
@@ -949,7 +1041,7 @@ function showSlides(n) {
    </a>
    </div>
             <div class="product-meta">
-            <h4>${product.productName}</h4>
+            <h4 style="color: black;">${product.productName}</h4>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
              </div>
@@ -1120,8 +1212,27 @@ Message *</div>
                     </div>
 
 </div>
+</div>
+</div>
+ </div>
+ <script>
 
-     
+$(document).ready(function() {
+
+  setTimeout(function(){
+	  $('.popUpMain').css('display','block');
+	  },500); 
+
+});
+
+
+$('.submitId').click(function(){
+	  $('.popUpMain').css('display','none');
+	  });
+
+</script>
+ 
+  
   </body>
   </html>
   
