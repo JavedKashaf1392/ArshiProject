@@ -65,16 +65,13 @@ public class KioskController {
 			System.out.println("addKiosk method is running");
 			service.addKiosk(kiosk);
 		}
-		  
 		  return "redirect:/kiosk/listKiosk";
 		  //else {
 			 // System.out.println("updateKiosk method is running");
 			  //service.updateKiosk(kiosk);  
 		//}
- 	}
+ 	}        
 
-    
-    
 	// deletLocation
 	@RequestMapping(value = "/deleteKiosk", method = RequestMethod.GET)
 	public String deleteKiosk(@RequestParam("id") Long id, Model model) {

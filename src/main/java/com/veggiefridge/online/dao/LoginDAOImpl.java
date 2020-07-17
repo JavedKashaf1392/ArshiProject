@@ -19,7 +19,6 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Override
 	public Customer validateCustomer(User user) {
-		
 			return(Customer) sessionFactory.getCurrentSession().createQuery("from Customer where EmailId='" + user.getEmailId() + "' and password='" + user.getPassword()+ "'").list();	
 		   
 		}

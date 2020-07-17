@@ -50,7 +50,6 @@ input[type=text],select, textarea {
   box-sizing: border-box;
 }
    </style>
-   
    <div align="center">
    <div><h2><p style="color:green;">Add Kiosk</p></h2></div>
    <body>
@@ -117,7 +116,7 @@ input[type=text],select, textarea {
                     <select id="locationid" name="country">
                         <option value="">Select Country</option> 
                         <c:forEach items="${listkiosklocation}" var="kiosklocation">
-                            <option   value="${kiosklocation.country}">${kiosklocation.country}</option>
+                        <option   value="${kiosklocation.country}">${kiosklocation.country}</option>
                         </c:forEach>
                     </select>
                 </td>

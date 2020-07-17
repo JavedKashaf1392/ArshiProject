@@ -21,36 +21,35 @@ public class Customer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerid;
 
-	@NotEmpty(message="Please Enter FirstName")
+	
 	@Column(name="firstName")
 	private String firstName;
 	
-	@NotEmpty(message="Please Enter LastName")
+	
 	@Column(name="lastName")
 	private String lastName;
 	
-	@NotNull(message="Please Enter MobileNo")
+	
 	@Column(name="mobile")
 	private long mobile;
 	
-	@NotEmpty(message="Please Enter city")
+	
 	@Column(name="city")
 	private String city;
 	
-	@NotEmpty(message="Please Enter KioskLocation")
+	
 	@Column(name="kioskLocation")
 	private String kioskLocation;
 	
-	@Email
-	@NotEmpty(message="Please Enter Email")
+	
 	@Column(name="email")
 	private String email;
 	
-	@NotEmpty(message="Please Enter password")
+	
 	@Column(name="password")
 	private String password;
 	
-	@NotEmpty(message="Please Enter confirmPassword")
+	
 	@Column(name="confirmPassword")
 	private String confirmPassword;
 

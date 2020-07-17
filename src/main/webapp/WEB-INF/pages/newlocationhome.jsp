@@ -4,6 +4,7 @@
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
@@ -83,6 +84,7 @@ input[type=submit]:hover {
   border: 1px solid #888;
   width: 22%;
   margin-left: 68%;
+  border-radius: 4px;
  
 }
 
@@ -116,7 +118,8 @@ input[type=submit]:hover {
   box-shadow: 1px 2px 5px 3px white;
   
   } 
-.popup {
+.popup {/* 
+   /* background-color:#f1f1f1; */
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -175,6 +178,8 @@ input[type=submit]:hover {
     /* background: #4CAF50; */
 }
 .carousel{
+
+    
     padding: 20px;
     padding: 20px;
     margin-left:150px;
@@ -814,7 +819,7 @@ color: black;
    </div>
   
                 <div class="right" style="float: right;">
-                <a href="#" style="text-decoration: none;">Login as Guest</a> |
+                <a href="#" style="text-decoration: none;">hello Guest !</a> |
                 <a href="${pageContext.request.contextPath}/login/loginView" style="text-decoration: none;">Log in</a> |
                 <a href="${pageContext.request.contextPath}/login/newCustomer" style="text-decoration: none;">Sign Up </a> |
                 
@@ -822,7 +827,7 @@ color: black;
 <span class="fas fa-map-marker-alt" style="color: black;"></span>
 <a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
  <i class="arrow down" style="  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);  border:solid black; 
+  -webkit-transform: rotate(45deg);  border:gray; 
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;"></i>
@@ -830,21 +835,21 @@ color: black;
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content" >
   <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
+  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation" >
   <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
   <div class="row">
   <div class="col-75">
       
-       <select id="cities" name="cities">
-       <option value=""style="color: black;">Select city</option> 
+       <select id="cities" name="cities" required  style="background-color:#f1f1f1;">
+       <option value=""style="color: black;" >Select city</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
        </c:forEach>
        </select><br><br>
         
-       <select id="location" name="location">
+       <select id="location" name="location" required  style="background-color:#f1f1f1;">
        <option value="" style="color: black;">Select location</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
@@ -986,7 +991,7 @@ function showSlides(n) {
  <!--  1 -->
    <li>
    <div class="product-img">
-   <h4 style="background-color: #4CAF50; float: right; color: white;">Get ${product.discount}% OFF</h4>
+   <h4 style="background-color: #4CAF50; float: right; color:#d9d9d9;">Get ${product.discount}% OFF</h4>
    <a href="#">
    <spring:url value="/images" var="images" />
    <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;

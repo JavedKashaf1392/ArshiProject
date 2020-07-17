@@ -1,21 +1,134 @@
 
+   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
-
-  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
         
-        <head>
+        <head> 
         <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Home screen of VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+        <style>
+        
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.col-75 {
+  width: 100%;
+  margin-top: 11px;
+  color: black;
+}
+input[type=text], select, textarea {
+  width: 90%;
+  padding: 8px;
+ 
+  border: 1px solid #008000;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+  margin-top: 10px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 135px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 130%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 22%;
+  margin-left: 68%;
+  border-radius: 4px;
+ 
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+ .popUpMain{ 
+  outline: #4CAF50 solid 10px;
+  display: none;   /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Sit on top */
+  padding-top: 75px;  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+ /*  overflow: auto; /* Enable scroll if needed */ */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  box-shadow: 1px 2px 5px 3px white;
+  
+  } 
+.popup {/* 
+   /* background-color:#f1f1f1; */
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  margin-left: 34%;
+  
+}
+</style>
         </head>
         <style>
     
@@ -65,6 +178,8 @@
     /* background: #4CAF50; */
 }
 .carousel{
+
+    
     padding: 20px;
     padding: 20px;
     margin-left:150px;
@@ -74,7 +189,7 @@
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:3793px;
+     height:3840px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -131,11 +246,11 @@ form.example button:hover {
 .call{
 /* border:1px solid black; */
 float:right;
-margin-right:20%;
+margin-right:21%;
 margin-top: 10px;
-height:40px;
+height:35px;
 width:20%;
-/* border:1px solid black;  */
+/* border:1px solid black; */
 
 }
  /* call end */
@@ -154,9 +269,10 @@ form.example::after {
 .right{
 float: right;
 margin-top:30px;
-margin-right:9%;
+margin-right:14%;
 font:bold;
 font-size:16px;
+
 }
 
 .right a {
@@ -241,7 +357,7 @@ color: black;
  *{
     margin: 0;
     padding: 0;
-    color: #d9d9d9;
+   /*  color: #d9d9d9; */
    /*  color:black; */
     /* box-sizing: border-box;
     font-family: 'Poppins', sans-serif; */ 
@@ -663,12 +779,17 @@ color: black;
 @media screen and (max-width:1250px){
     .container ul li{
         width:40%;
+     
         margin-left: 40px;   
     }
-  </style>
-  <body>
-    
+    /* ........................................... */
+ 
+ 
+  </style>  
+  <body >
+ 
    <!--  header -->
+
     <div class="header">
     
     <div class="logo">
@@ -681,13 +802,15 @@ color: black;
     <spring:url value="/images" var="images" />
     <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
     </a>
+  <!--   <button style="font-size:20px; color: white;padding: 8px; border-color:#4CAF50;"><i class='fas fa-shopping-cart' style="color:white;">Cart<br style="color: white;">0 Items</i></button>
+     -->
                             
-                            <span class="fas fa-phone-alt"></span>
-                            <span class="text">+089-765432100</span>   
+                            <span class="fas fa-phone-alt" style="color: black;"></span>
+                            <span class="text" style="color: black;">+089-765432100</span>   
                             </div>
     
     
-   <div class="search">                                                 
+    <div class="search">                                                 
    <form class="example" action="action_page.php">
    <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search">
    <button type="submit"><i class="fa fa-search"></i></button>
@@ -696,17 +819,82 @@ color: black;
    </div>
   
                 <div class="right" style="float: right;">
-                <a href="#">Login as Guest</a> |
-                <a href="${pageContext.request.contextPath}/login/loginView">Log in</a> |
-                <a href="${pageContext.request.contextPath}/login/newCustomer">Sign Up </a> |
-                <select id="city" name="city">
-                <option value="Nagpur">Nagpur</option>
-                <option value="mumbai">Mumbai</option>
-                </select>
-                </div>  
+                hello,${customer.firstName} |
+              <%--   <a href="${pageContext.request.contextPath}/home/viewhome/" style="text-decoration: none;">Log Out</a> |
+                 --%>
+                <!-- Trigger/Open The Modal -->
+<span class="fas fa-map-marker-alt" style="color: black;"></span>
+<a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
+ <i class="arrow down" style="  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);  border:gray; 
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;"></i>|
+    <a href="${pageContext.request.contextPath}/home/viewhome/" style="text-decoration: none;">Log Out</a>
+                
   
-<div class="navbar">
- <div class="dropdown">
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+  <!-- <span class="close">&times;</span> -->
+  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation" >
+  <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
+  <div class="row">
+  <div class="col-75">
+      
+       <select id="cities" name="cities" required  style="background-color:#f1f1f1;">
+       <option value=""style="color: black;" >Select city</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
+       </c:forEach>
+       </select><br><br>
+        
+       <select id="location" name="location" required  style="background-color:#f1f1f1;">
+       <option value="" style="color: black;">Select location</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
+       </c:forEach>
+      </select>
+    </div>
+    </div>
+
+ <div style="text-align:center;">
+ <input type="submit" value="Continue" style="width: 30%;"/>
+ </div></p></form>
+ </div>
+</div>
+ </div>
+ <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+  
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+/* // When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+} */
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+  <div class="navbar">
+  <div class="dropdown">
     <button class="dropbtn">Search By Catogary  
       <i class="fa fa-caret-down"></i>
     </button>
@@ -738,14 +926,15 @@ color: black;
       </div>
       </div>
       </div> 
-                          
+      
+                      
   <!--   close header  -->
-  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
+ <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
-  <div class="mySlides fade">
+  <div class="mySlides fade"> -->
   <spring:url value="/images" var="images" />
-  <img src="${images}/f4.jpg" width="1300" height="400"/>
-  </div>
+  <img src="${images}/bigimage.jpg" width="1600" height="500" style="margin-top:15px;"/> 
+ <%--  </div>
 
   <div class="mySlides fade">
  <!--  <div class="numbertext">2 / 3</div> -->
@@ -788,28 +977,31 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
-   </script>
+   </script> --%>
+   
+   
+ 
+    
+    
   
   <div class="carousel">
-  
- 
   <div class="container">
-  <c:forEach var="product" items="${listProduct}">
    <ul> 
-  <!--  1 -->
+  <c:forEach var="product" items="${listProduct}">
+ <!--  1 -->
    <li>
    <div class="product-img">
-   <h4 style="background-color: #4CAF50; float: right;">Get ${product.discount}% OFF</h4>
+   <h4 style="background-color: #4CAF50; float: right; color: #d9d9d9;">Get ${product.discount}% OFF</h4>
    <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/potato.jpg"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
+   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
    background-size: cover; float: right; margin-left: 10%; margin-right: 23%;" >
    </a>
    </div>
             <div class="product-meta">
-            <h4>${product.productName}</h4>
+            <h4 style="color: black;">${product.productName}</h4>
             <h6 style="color: black;">${product.description}</h6>
-            <h5 style="color: black;"> Size:${product.size}g<h5>
+            <h6 style="color: black;"> Size:${product.size} g<h6>
              </div>
          <!--    <div class="divider"></div> -->
             <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
@@ -821,7 +1013,7 @@ function showSlides(n) {
   position: relative;
    color:black;">MRP</span>
                    <span class="old-price"> Rs ${product.price}</span>
-                 Rs ${product.finalPrice}
+                    Rs ${product.finalPrice}
                      </span>
             </div>
                 <div class="right">
@@ -832,9 +1024,9 @@ function showSlides(n) {
            Get 67% OFF
          </div>  -->
           </li>
-           </ul>
-       </c:forEach>
-          
+          </c:forEach>
+        
+      
    <div class="second">
   <spring:url value="/images" var="images" />
   <img src="${images}/c4.jpg" width="1300" height="400"/>
@@ -843,7 +1035,7 @@ function showSlides(n) {
    <th>
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="300" height="250" />
+   <img src="${images}/icici.jpg" width="300" height="300" />
    </a>
    </th>
   
@@ -852,7 +1044,7 @@ function showSlides(n) {
    <th>
     <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg" width="300" height="250"/>
+   <img src="${images}/induslandbank.jpg" width="300" height="300"/>
     </a>
    </th>
   
@@ -861,7 +1053,7 @@ function showSlides(n) {
    <th>
     <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg" width="300" height="250"/>
+   <img src="${images}/paytm.jpg" width="300" height="300"/>
    </a>
    </th>
    
@@ -869,23 +1061,19 @@ function showSlides(n) {
     
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg" width="300" height="250"/>
+   <img src="${images}/standard.jpg" width="300" height="300"/>
    </a>
    </th>
    </tr>  
   </table>
-   
-   
-  
-  
-         
+    <br>
   
   
   <div class="third">
   <spring:url value="/images" var="images" />
   <img src="${images}/organic.jpg" width="1300" height="400"/>
   </div><br><br>
-   
+    </ul>
     </div>
     </div>
  <!--  ............................  -->
@@ -982,8 +1170,12 @@ Message *</div>
                     </div>
 
 </div>
-
-     
+</div>
+</div>
+ </div>
+ 
+ 
+  
   </body>
   </html>
   
