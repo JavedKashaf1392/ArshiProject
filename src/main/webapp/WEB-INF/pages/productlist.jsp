@@ -140,9 +140,9 @@ function checkCheckBoxes(theForm) {
 					<td>${product.category}</td>
 					<td>${product.discount}</td>
                     <td>${product.tax}</td>
-					<td>${product.finalPrice}</td>
+					<td>${product.price-product.discount * product.price/100}</td>
 					<td>${product.imageName}</td>				
-  
+                     
    </tr>
    
     </c:forEach>

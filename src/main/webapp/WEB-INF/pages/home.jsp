@@ -8,7 +8,7 @@
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
-        
+      
         <head> 
         <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
@@ -265,7 +265,8 @@ button:hover {
 }
 hr {
   border: 1px solid #f1f1f1;
-  margin-bottom: 20px;
+   margin-bottom: 10px;
+   margin-top: 10px;
 }
 .account {
   padding: 16px;
@@ -1416,62 +1417,63 @@ Message *</div>
  <div class="register-content">
 <form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/home/saveCustomer" modelAttribute="customer" >
 
-      <h1 style="text-align: center; color: green; margin-top:2;">Sign Up</h1>
-      <p style="margin-top: 1%;">Please fill in this form to create an account.</p><br>
+      <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>
+      <p style="margin-top: 1%; margin-left: 2%;">Please fill in this form to create an account.</p>
       <hr>
   
   
-  <label for=" firstname" style="margin-left: 1%;">First Name :</label>
+  <label for=" firstname" style="margin-left: 2%;">First Name :</label>
   <spring:bind path="customer.firstName">
-  <input type="text" name="${status.expression}" value="${status.value}"  placeholder="First Name" required style=" width: 75%;
+  <input type="text" name="${status.expression}" value="${status.value}"  placeholder="First Name" required style="width: 67%;
   padding: 8px;
- margin: 3px 0 12px 0; 
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;"></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
   
   
   
-  <label for="lastname" style="margin-left: 1%;">Last Name :</label>
+  <label for="lastname" style="margin-left:2%;">Last Name :</label>
   <spring:bind path="customer.lastName">
-  <input type="text" name="${status.expression}" value="${status.value}" placeholder="last Name" required style=" width: 75%;
-  padding: 8px;
- margin: 3px 0 12px 0; 
+  <input type="text" name="${status.expression}" value="${status.value}" placeholder="last Name" required style=" width:67%;
+  padding: 8px;	
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;"></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
   
 
- <label for="mobile" style="margin-left: 1%;">Mobile:</label>
+ <label for="mobile" style="margin-left: 2%;">Mobile Num:</label>
  <spring:bind path="customer.mobile">
- <input type="text" name="${status.expression}" value="${status.value}" size="10" style="width: 75%;
+ <input type="text" name="${status.expression}" value="${status.value}" size="10" style="width: 67%;
   padding: 8px;
- margin: 3px 0 12px 0; 
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;"/></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"/></spring:bind>
   
   
-  <label for="city" style="margin-left: 1%;">Select City</label>
-  <select id="locationid" name="cities"  required  style="width: 75%;
+  <label for="city" style="margin-left: 2%;">Select City :</label>
+  <select id="locationid" name="cities"  required  style="width: 70%;
   padding: 8px;
- margin: 3px 0 12px 0; 
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;">
-       <option value=""style="color: black;">Select city</option> 
+  background: #f1f1f1;border-radius:4px;margin-left:4%;"> 
+       <option value="" style="margin-left: 2%;">Select city</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
        </c:forEach>
        </select>
         
-        <label for="location">Select Location</label>
-       <select id="locationid" name="location" required   style="width: 75%;
+       
+        <label for="location" style="margin-left:2%;">Select Location:</label>
+       <select id="locationid" name="location" required   style="width: 67%;
   padding: 8px;
- margin: 3px 0 12px 0; 
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;">
+  background: #f1f1f1;border-radius:4px;margin-left:1%;">
        <option value="" style="color: black;">Select location</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
@@ -1479,52 +1481,40 @@ Message *</div>
       </select>
        
        
-      <label for="email">Email</label>
+      <label for="email" style="margin-left:2%;">Email :</label>
       <spring:bind path="customer.email">
-      <input type="text" name="${status.expression}" value="${status.value}" placeholder="Enter Email"  required style="width: 75%;
+      <input type="email" name="${status.expression}" value="${status.value}" placeholder="Enter Email"  required style="width: 65%;
   padding: 8px;
- margin: 3px 0 12px 0; 
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;"></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:12%;"></spring:bind>
 
-      <label for="psw">Password</label>
+      <label for="psw" style="margin-left:2%;">Password:</label>
       <spring:bind path="customer.password">
-      <input type="text" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 70%;
+      <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 65%;
   padding: 8px;
- margin: 3px 0 12px 0; 
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;"></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:7%;"></spring:bind>
 
-      <label for="confirm-repeat">confirm Password</label>
+      <label for="confirm-repeat" style="margin-left:2%;">Confirm Psw:</label>
       <spring:bind path="customer.confirmPassword">
-      <input type="text"  name="${status.expression}" value="${status.value}" placeholder="Repeat Password" required style="width: 60%;
+      <input type="password"  name="${status.expression}" value="${status.value}" placeholder="Repeat Password" required style="width: 65%;
   padding: 8px;
- margin: 3px 0 12px 0; 
+  margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;"></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
  <hr>
       
         <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px;margin-left:2%;"> Remember me
         </label>
 
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p><br>
-
-       <!-- <div class="clearfix">
-        <button type="button" style=" float: left;
-  width: 50%; background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;border-radius:4px;">Sign Up</button>
-      </div>  -->
-          <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up">
+      <p style="margin-left: 2%;">By creating an account you agree to our <a href="#" style="color:dodgerblue;">Terms & Privacy</a>.</p><br>
+     <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up">
     
   </form>
    </div>

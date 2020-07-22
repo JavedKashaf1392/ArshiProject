@@ -178,8 +178,6 @@ input[type=submit]:hover {
     /* background: #4CAF50; */
 }
 .carousel{
-
-    
     padding: 20px;
     padding: 20px;
     margin-left:150px;
@@ -660,22 +658,6 @@ color: black;
     font-size: 18px;
    
 }
-  /*  .container ul li .product-img{
-  
-  width: 60%;
-  background-position: center;
-  background-size: cover;
-  background: no-repeat #1864ff;
-  height: 150px;
-  margin-right:10px;
-  
-}  */
-
-/* .container ul li .product-meta .divider {
-  border-top: 1px solid #e8eaea;
-  margin: 17px auto;
-  width: 90%;
-}  */
 .container ul li .product-meta{
 
 
@@ -687,11 +669,6 @@ color: black;
   display: grid; */
  -ms-grid-columns: auto auto;
  margin-top: 90%;
- 
- /*  grid-template-columns: auto auto; */
- /*  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; */
 }
 .container ul li  .product-price-wrap .left {
   -ms-grid-column-align: start;
@@ -725,30 +702,32 @@ color: black;
    color:black;
 }
 .container ul li  .product-price-wrap .right {
-  -ms-grid-column-align: end;
-      justify-self: end;
+ /*  -ms-grid-column-align: end;
+      justify-self: end; */
 }
 
 .container ul li  .product-price-wrap .right .btn {
-  float:left;
+  float:right;
+  left:50%;
   /* background-color: #1864ff; */
   background-color:#4CAF50;
   border: 0;
   color: #ffffff;
   font-size: 14px;
-  font-weight: 600;
-  padding: 10px 30px;
+  font-weight:600;
+  padding: 10px 20px;
   border-radius: 3px;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+   -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; 
+ 
 }
 .container ul li .product-price-wrap .right .btn:hover, .card .product-meta .product-price-wrap .right .btn:focus, .card .product-meta .product-price-wrap .right .btn:active {
   outline: none;
   cursor: pointer;
- /*  background-color: blue; */
+ background-color: green;
 }
-  /*  .container   ul li  .label-clip {
-   background-color: #1864ff; 
+ .label-clip {
+  background-color: #1864ff; 
   background-color: #4CAF50;
   border-radius: 0 3px 3px 3px;
   font-size: 14px;
@@ -756,18 +735,18 @@ color: black;
   font-weight: 600;
   text-align: center;
   padding: 5px 10px;
-  z-index: 10;
-  top: -10px; 
-  left: 30px;
-  position: absolute;
-  
-} */
+  z-index: 1;
+  top: -10px;
+  left: 128px;
+  position: relative;
+  width:38%;
+} 
 
-/* .container   ul li .label-clip::before {
+.label-clip::before {
   content: '';
   /* border-right-color: #123bb4 !important; */
   border-right-color:#4CAF50 !important;
-  position: absolute;
+  position:absolute;
   top: 0;
   left: -10px;
   height: 0;
@@ -775,11 +754,10 @@ color: black;
   border-right: 10px solid transparent;
   border-top: 10px solid transparent;
   background: none !important;
-}  */
+} 
 @media screen and (max-width:1250px){
     .container ul li{
         width:40%;
-     
         margin-left: 40px;   
     }
     /* ........................................... */
@@ -977,34 +955,30 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
-   </script> --%>
-   
-   
- 
-    
-    
+  </script> --%>
   
   <div class="carousel">
   <div class="container">
-   <ul> 
-  <c:forEach var="product" items="${listProduct}">
+  <ul>
+   
+ <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
-   <li>
-   <div class="product-img">
-   <h4 style="background-color: #4CAF50; float: right; color:#d9d9d9;">Get ${product.discount}% OFF</h4>
+  <li>
+  <div class="product-img">
+  <h4 class="label-clip">Get ${product.discount}% OFF</h4>
    <a href="#">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;" >
-   </a>
-   </div>
+  <spring:url value="/images" var="images" />
+  <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
+  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;" >
+  </a>
+  </div>
             <div class="product-meta">
             <h4 style="color: black;">${product.productName}</h4>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
-             </div>
-         <!--    <div class="divider"></div> -->
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
+            </div>
+       
+            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 78%">
                    <div class="left">
                    <span class="price">
                    <span class="mrp" style=" font-size: 14px;
@@ -1012,19 +986,16 @@ function showSlides(n) {
   font-weight: 300;
   position: relative;
    color:black;">MRP</span>
+ 
                    <span class="old-price"> Rs ${product.price}</span>
-                    Rs ${product.finalPrice}
+                    Rs ${product.price-product.discount * product.price/100}
                      </span>
-            </div>
+                </div>
                 <div class="right">
-                 <button class="btn">Add to Cart</button>
+                <button class="btn">Add to Cart</button>
                 </div></div> 
-           
-          <!-- <div class="label-clip">
-           Get 67% OFF
-         </div>  -->
-          </li>
-          </c:forEach>
+                </li>
+               </c:forEach>
         
       
    <div class="second">
@@ -1058,7 +1029,6 @@ function showSlides(n) {
    </th>
    
    <th>
-    
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
    <img src="${images}/standard.jpg" width="300" height="300"/>
@@ -1066,7 +1036,7 @@ function showSlides(n) {
    </th>
    </tr>  
   </table>
-    <br>
+  <br>
   
   
   <div class="third">
@@ -1074,7 +1044,7 @@ function showSlides(n) {
   <img src="${images}/organic.jpg" width="1300" height="400"/>
   </div><br><br>
     </ul>
-    </div>
+   </div>
     </div>
  <!--  ............................  -->
       <div class="footer">
