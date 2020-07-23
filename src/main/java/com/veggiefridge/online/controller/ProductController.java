@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.veggiefridge.online.model.Product;
@@ -32,15 +33,26 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-
-	@RequestMapping(value = "/listProduct")
-	public ModelAndView listProduct(ModelAndView model) throws IOException {
-		List<Product> listProduct = productService.getAllProducts();
-		model.addObject("listProduct", listProduct);
-		model.setViewName("productlist");
-		return model;
-	}
-
+	
+	
+	  
+	  @RequestMapping(value = "/listProduct")
+	  public ModelAndView
+	  listProduct(ModelAndView model) throws IOException { List<Product>
+	  listProduct = productService.getAllProducts(); model.addObject("listProduct",
+	  listProduct); model.setViewName("productlist"); return model; }
+	
+	  
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "/androidListProduct") public List<Product>
+	 * listProduct() throws IOException { List<Product> listProduct =
+	 * productService.getAllProducts(); return listProduct; }
+	 */
+	  
+	  
+	
 	@RequestMapping(value = "/newProduct", method = RequestMethod.GET)
 	public ModelAndView newProduct(ModelAndView model) {
 		Product product = new Product();
@@ -86,9 +98,15 @@ public class ProductController {
 	  
 	  return model;
 	  }
-	 
 	
+		        
+		  
+	  
+	  
+	  
 }
+
+
 	
 	
 	

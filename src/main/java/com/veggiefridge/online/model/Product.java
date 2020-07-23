@@ -1,5 +1,4 @@
 package com.veggiefridge.online.model;
-
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,47 +19,47 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productid;
 
-	@NotEmpty(message="Please Enter ProductName")
+	//@NotEmpty(message="Please Enter ProductName")
 	@Column(name="productName")
 	private String productName;
 	
-	@NotNull(message="Please Enter Price")
+	//@NotNull(message="Please Enter Price")
 	@Column(name="price")
 	private double price;
 	
-	@NotEmpty(message="Please Enter Quantity")
+	//@NotEmpty(message="Please Enter Quantity")
 	@Column(name="quantity")
 	private String quantity;
 	
-	@NotNull(message="Please Enter Discount")
+	//@NotNull(message="Please Enter Discount")
 	@Column(name="discount")
-	private float discount;
+	private int discount;
 	
-	@NotEmpty(message="Please Enter Avaibility")
+	//@NotEmpty(message="Please Enter Avaibility")
 	@Column(name="isAvailable")
 	private String isAvailable;
 	
-	@NotEmpty(message="Please Enter Category")
+	//@NotEmpty(message="Please Enter Category")
 	@Column(name="category")
 	private String category;
 	
-	@NotEmpty(message="Please Enter Description")
+	//@NotEmpty(message="Please Enter Description")
 	@Column(name="description")
 	private String description;
 	
-	@NotNull(message="Please Enter  FinalPrice")
+	//@NotNull(message="Please Enter  FinalPrice")
 	@Column(name="finalPrice")
 	private double finalPrice;
 	
-	@NotNull(message="Please Enter size")
+	//@NotNull(message="Please Enter size")
 	@Column(name="size")
 	private float size;
 	
-	@NotNull(message="Please Enter  tax")
+	//@NotNull(message="Please Enter  tax")
 	@Column(name="tax")
 	private float tax;
 	
-	@Column(name="imageName")
+	//@Column(name="imageName")
 	private String imageName;
 	
 	
@@ -121,11 +120,11 @@ public class Product implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public float getDiscount() {
+	public int getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(float discount) {
+	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
 
@@ -160,6 +159,4 @@ public class Product implements Serializable {
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
-
-
 }

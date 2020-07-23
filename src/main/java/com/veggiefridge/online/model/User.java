@@ -18,6 +18,17 @@ public class User implements Serializable {
 	
 	@Column(name="password")
 	private String password;
+	
+	@Column(name="age")
+	private int age;  
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 
 	public String getEmailId() {
 		return email;

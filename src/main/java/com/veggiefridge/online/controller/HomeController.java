@@ -1,6 +1,5 @@
 package com.veggiefridge.online.controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +37,8 @@ public class HomeController {
 	@Autowired
 	private CustomerService customerservice;
  
-    //list Product
+   
+	//list Product
 	@RequestMapping(value = "/viewhome")
 	public ModelAndView listProduct(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult resultcustomer) throws IOException {
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
@@ -68,7 +68,7 @@ public class HomeController {
 	
 	// save location
     @RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-	public ModelAndView saveKiosk(ModelAndView model,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+	public ModelAndView saveKiosk(ModelAndView model,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation) {
 
 		  if (customer.getCustomerid() == 0) { // if kiosk id is 0 then creating the
 			// kiosk other updating the kiosk
@@ -87,7 +87,24 @@ public class HomeController {
 		  //else {
 			 // System.out.println("updateKiosk method is running");
 			  //service.updateKiosk(kiosk);  
-		//}
- 	}        
+		//}			
+ 	}
+    
+    
+    
+
+	@RequestMapping("/regcontinueLocation")  
+	public ModelAndView regcontinueLocation(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
+	
+	{ 
+		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		List<Product> listProduct = productService.getAllProducts();
+		List<Customer> listCustomer = customerservice.getAllCustomers();
+		model.addObject("listCustomer", listCustomer);
+		model.addObject("listkiosklocation",listkiosklocation);
+		model.addObject("listProduct", listProduct);
+		model.setViewName("registerdhome");
+		return model; 
+	} 
 	}	
 

@@ -4,7 +4,7 @@
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
@@ -802,9 +802,6 @@ color: black;
     <spring:url value="/images" var="images" />
     <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
     </a>
-  <!--   <button style="font-size:20px; color: white;padding: 8px; border-color:#4CAF50;"><i class='fas fa-shopping-cart' style="color:white;">Cart<br style="color: white;">0 Items</i></button>
-     -->
-                            
                             <span class="fas fa-phone-alt" style="color: black;"></span>
                             <span class="text" style="color: black;">+089-765432100</span>   
                             </div>
@@ -819,7 +816,7 @@ color: black;
    </div>
   
                 <div class="right" style="float: right;">
-                hello,${customer.firstName} |
+                Hello,${sessionScope.email}
               <%--   <a href="${pageContext.request.contextPath}/home/viewhome/" style="text-decoration: none;">Log Out</a> |
                  --%>
                 <!-- Trigger/Open The Modal -->
@@ -830,7 +827,7 @@ color: black;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;"></i>|
-    <a href="${pageContext.request.contextPath}/home/viewhome/" style="text-decoration: none;">Log Out</a>
+  <a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
                 
   
 <!-- The Modal -->
@@ -839,7 +836,7 @@ color: black;
   <!-- Modal content -->
   <div class="modal-content">
   <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation" >
+  <form method="post" action="${pageContext.request.contextPath}/home/regcontinueLocation" modelAttribute="kioskLocation" >
   <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
   <div class="row">
   <div class="col-75">
@@ -986,7 +983,7 @@ function showSlides(n) {
   
   <div class="carousel">
   <div class="container">
-   <ul> 
+  <ul> 
   <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
    <li>
@@ -1004,7 +1001,7 @@ function showSlides(n) {
             <h6 style="color: black;"> Size:${product.size} g<h6>
              </div>
          <!--    <div class="divider"></div> -->
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
+                <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
                    <div class="left">
                    <span class="price">
                    <span class="mrp" style=" font-size: 14px;
@@ -1017,7 +1014,8 @@ function showSlides(n) {
                      </span>
             </div>
                 <div class="right">
-                 <button class="btn">Add to Cart</button>
+                <!--  <button class="btn">Add to Cart</button> -->
+                <a href="${pageContext.request.contextPath }/cart/buy/${product.productid}">Buy Now</a>
                 </div></div> 
            
           <!-- <div class="label-clip">
