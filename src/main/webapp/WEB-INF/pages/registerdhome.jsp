@@ -116,8 +116,8 @@ input[type=submit]:hover {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
   box-shadow: 1px 2px 5px 3px white;
-  
   } 
+  
 .popup {/* 
    /* background-color:#f1f1f1; */
   background-color: #fefefe;
@@ -126,11 +126,11 @@ input[type=submit]:hover {
   border: 1px solid #888;
   width: 30%;
   margin-left: 34%;
-  
 }
+
 </style>
-        </head>
-        <style>
+   </head>
+   <style>
     
     body{
     font-family: Arial;
@@ -552,18 +552,6 @@ color: black;
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
-
- /* Caption t
-.text {
- /*  color: #f2f2f2; */
-  font-size: 15px;
-  padding: 8px 12px;
-  position:relative;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-} 
- */
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
@@ -588,7 +576,6 @@ color: black;
 .active, .dot:hover {
   background-color: #717171;
 }
-
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -596,17 +583,14 @@ color: black;
   animation-name: fade;
   animation-duration: 1.5s;
 }
-
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
 }
-
 @keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
 }
-
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
@@ -619,13 +603,10 @@ color: black;
     margin-top: 20px;
     margin-right: 23%;
 }
-
 .container ul{
     padding:0px;
     margin:0px;
 }
-
-
 .container ul li{
     float:left;
     list-style: none;
@@ -657,28 +638,9 @@ color: black;
   /*  background: pink; */
     text-align: left;
     color:white;
-    font-size: 18px;
-   
+    font-size: 18px;  
 }
-  /*  .container ul li .product-img{
-  
-  width: 60%;
-  background-position: center;
-  background-size: cover;
-  background: no-repeat #1864ff;
-  height: 150px;
-  margin-right:10px;
-  
-}  */
-
-/* .container ul li .product-meta .divider {
-  border-top: 1px solid #e8eaea;
-  margin: 17px auto;
-  width: 90%;
-}  */
 .container ul li .product-meta{
-
-
 }
 .container ul li  .product-price-wrap {
   width: 100%;
@@ -687,12 +649,7 @@ color: black;
   display: grid; */
  -ms-grid-columns: auto auto;
  margin-top: 90%;
- 
- /*  grid-template-columns: auto auto; */
- /*  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; */
-}
+ }
 .container ul li  .product-price-wrap .left {
   -ms-grid-column-align: start;
       justify-self: start;
@@ -747,8 +704,8 @@ color: black;
   cursor: pointer;
  /*  background-color: blue; */
 }
-  /*  .container   ul li  .label-clip {
-   background-color: #1864ff; 
+ .label-clip {
+  background-color: #1864ff; 
   background-color: #4CAF50;
   border-radius: 0 3px 3px 3px;
   font-size: 14px;
@@ -756,18 +713,18 @@ color: black;
   font-weight: 600;
   text-align: center;
   padding: 5px 10px;
-  z-index: 10;
-  top: -10px; 
-  left: 30px;
-  position: absolute;
-  
-} */
+  z-index: 1;
+  top: -10px;
+  left: 128px;
+  position: relative;
+  width:38%;
+} 
 
-/* .container   ul li .label-clip::before {
+.label-clip::before {
   content: '';
   /* border-right-color: #123bb4 !important; */
   border-right-color:#4CAF50 !important;
-  position: absolute;
+  position:absolute;
   top: 0;
   left: -10px;
   height: 0;
@@ -775,7 +732,7 @@ color: black;
   border-right: 10px solid transparent;
   border-top: 10px solid transparent;
   background: none !important;
-}  */
+} 
 @media screen and (max-width:1250px){
     .container ul li{
         width:40%;
@@ -783,10 +740,8 @@ color: black;
         margin-left: 40px;   
     }
     /* ........................................... */
- 
- 
   </style>  
-  <body >
+  <body>
  
    <!--  header -->
 
@@ -807,9 +762,9 @@ color: black;
                             </div>
     
     
-    <div class="search">                                                 
-   <form class="example" action="action_page.php">
-   <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search">
+   <div class="search">                                                 
+   <form class="example">
+   <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search" id="myInput" onkeyup="myFunction()">
    <button type="submit"><i class="fa fa-search"></i></button>
    </form>
    </div>
@@ -828,8 +783,7 @@ color: black;
   display: inline-block;
   padding: 3px;"></i>|
   <a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
-                
-  
+           
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -975,31 +929,24 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
    </script> --%>
-   
-   
- 
-    
-    
-  
   <div class="carousel">
   <div class="container">
-  <ul> 
+  <ul id="myUL"> 
   <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
    <li>
    <div class="product-img">
-   <h4 style="background-color: #4CAF50; float: right; color: #d9d9d9;">Get ${product.discount}% OFF</h4>
-   <a href="#">
+   <h4 class="label-clip">Get ${product.discount}% OFF</h4>
    <spring:url value="/images" var="images" />
    <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;" >
-   </a>
+   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
    </div>
             <div class="product-meta">
-            <h4 style="color: black;">${product.productName}</h4>
+            <h5><a href="#" style="color: black;text-decoration: none;">${product.productName}</a></h5>
+            <%-- <h4 style="color: black;">${product.productName}</h4> --%>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
-             </div>
+            </div>
          <!--    <div class="divider"></div> -->
                 <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
                    <div class="left">
@@ -1010,24 +957,28 @@ function showSlides(n) {
   position: relative;
    color:black;">MRP</span>
                    <span class="old-price"> Rs ${product.price}</span>
-                    Rs ${product.finalPrice}
+                    Rs ${product.price-product.discount * product.price/100}
                      </span>
             </div>
                 <div class="right">
                 <!--  <button class="btn">Add to Cart</button> -->
-                <a href="${pageContext.request.contextPath }/cart/buy/${product.productid}">Buy Now</a>
-                </div></div> 
-           
-          <!-- <div class="label-clip">
-           Get 67% OFF
-         </div>  -->
+                <a href="${pageContext.request.contextPath }/cart/buy/${product.productid}" style="
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #4CAF50;
+        border-radius: 6px;
+        outline: none;">Add to cart</a>
+                </div></div>
           </li>
-          </c:forEach>
-        
-      
+         </c:forEach>
+         </ul>
+       
+       <%--  <br><br>
    <div class="second">
   <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
+  <img src="${images}/c4.jpg" width="1300" height="400" style="margin-top: 6px;"/>
   </div><br><br>
   
    <th>
@@ -1071,7 +1022,7 @@ function showSlides(n) {
   <spring:url value="/images" var="images" />
   <img src="${images}/organic.jpg" width="1300" height="400"/>
   </div><br><br>
-    </ul>
+    </ul> --%>
     </div>
     </div>
  <!--  ............................  -->
@@ -1171,9 +1122,24 @@ Message *</div>
 </div>
 </div>
  </div>
- 
- 
-  
+ <script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
   </body>
   </html>
   

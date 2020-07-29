@@ -4,7 +4,7 @@
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
@@ -40,12 +40,10 @@ input[type=text], select, textarea {
   border-radius: 4px;
   resize: vertical;
 }
-
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
-
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
@@ -56,11 +54,9 @@ input[type=submit] {
   float: center;
   margin-top: 10px;
 }
-
 input[type=submit]:hover {
   background-color: #45a049;
 }
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -75,7 +71,6 @@ input[type=submit]:hover {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
-
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
@@ -84,10 +79,8 @@ input[type=submit]:hover {
   border: 1px solid #888;
   width: 22%;
   margin-left: 68%;
-  border-radius: 4px;
- 
+  border-radius: 4px; 
 }
-
 /* The Close Button */
 .close {
   color: #aaaaaa;
@@ -95,7 +88,6 @@ input[type=submit]:hover {
   font-size: 28px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: #000;
@@ -144,7 +136,6 @@ input[type=submit]:hover {
     box-sizing: border-box;
 }
 }
-
 .header{
     margin-left:10%;
     position:relative;
@@ -209,7 +200,6 @@ input[type=submit]:hover {
  margin-right:35%;
  
 }
-
 /* <-- serach operation--> */
 /* Style the search field */
 form.example input[type=text] {
@@ -221,8 +211,6 @@ form.example input[type=text] {
  /*  background: #f1f1f1; */
   margin-left:10%; 
 }
-
-
 /* Style the submit button */
   form.example button {
   float: left;
@@ -252,15 +240,12 @@ width:20%;
 
 }
  /* call end */
-
-
 /* Clear floats */
 form.example::after {
   content: "";
   clear: both;
   display: table;
 }
-
   /*  end search */
 
   /* right  */
@@ -290,7 +275,6 @@ color: black;
   margin-left: 337px;
   /* border:1px solid black;  */
 }
-
 .navbar a {
  /*  margin-right:45%;
   margin-left: 26%; */
@@ -301,12 +285,10 @@ color: black;
   padding: 14px 16px;
   text-decoration: none;
 }
-
 .dropdown {
   float: left;
   overflow: hidden;
 }
-
 .dropdown .dropbtn {
   font-size: 18px;  
   border: none;
@@ -317,11 +299,9 @@ color: black;
   font-family: inherit;
   margin: 0;
 }
-
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: ;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;

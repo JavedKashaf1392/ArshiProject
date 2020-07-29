@@ -48,15 +48,13 @@ public class ShoppingCartController {
 			  // using method isExisting here
 			   int index = isExisting(productid, session);
 			   if (index == -1)
-			    cart.add(new Item(this.productservice.getProduct(productid), 1));
+			   cart.add(new Item(this.productservice.getProduct(productid), 1));
 			   else {
 			    int quantity = cart.get(index).getQuantity() + 1;
 			    cart.get(index).setQuantity(quantity);
 			   }
-
 			   session.setAttribute("cart", cart);
 			  }
-
 			  return "cart"; // page name
 			 }
 

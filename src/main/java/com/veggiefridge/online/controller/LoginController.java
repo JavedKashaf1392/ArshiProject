@@ -64,19 +64,19 @@ public class LoginController {
 		}
 		
            //save and update customer
-		@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-		public String saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult result) {
-			if (result.hasErrors()) {
-				return "newregistration";
+		//@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
+		//public String saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult result) {
+			//if (result.hasErrors()) {
+				//return "newregistration";
 				
-			} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+			//} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
 				// customer other updating the customer 
-			   custservice.addCustomer(customer);
-			} else {
-				custservice.updateCustomer(customer);
-			}
-			return "SuccessRegistration";
-		}
+			   //custservice.addCustomer(customer);
+			//} else {
+				//custservice.updateCustomer(customer);
+			//}
+			//return "SuccessRegistration";
+		//}
 	
 		
 		 //login Process

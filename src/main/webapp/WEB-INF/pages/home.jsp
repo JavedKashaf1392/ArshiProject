@@ -8,7 +8,6 @@
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
-      
         <head> 
         <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
@@ -18,8 +17,8 @@
         <title>Home screen of VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
-    
-     <style>
+        <style>
+     
      @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');   
 body {font-family: Arial, Helvetica, sans-serif;}
 {
@@ -140,8 +139,7 @@ input[type=submit]:hover {
   text-decoration: none;
   cursor: pointer;
 } */
- */
- 
+
 /* Extra styles for the cancel button */
 .cancelbtn {
   width: auto;
@@ -151,7 +149,6 @@ input[type=submit]:hover {
 .login {
   padding: 16px;
 }
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -195,29 +192,24 @@ button:hover {
   font-size: 35px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: red;
   cursor: pointer;
 }
-
 /* Add Zoom Animation */
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
-
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}
-}
-  
+} 
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
 }
-
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
@@ -259,9 +251,7 @@ button:hover {
   margin-left: 37%;
  /*  margin-top: 1%; */
   border-radius: 4px;
-  font-size: 83%;
-  
-  
+  font-size: 83%; 
 }
 hr {
   border: 1px solid #f1f1f1;
@@ -283,7 +273,7 @@ hr {
 </style>        
 </head>
         
-        <style>
+    <style>
     body{
     font-family: Arial;
     margin: 0;
@@ -373,8 +363,6 @@ form.example input[type=text] {
  /*  background: #f1f1f1; */
   margin-left:10%; 
 }
-
-
 /* Style the submit button */
   form.example button {
   float: left;
@@ -387,11 +375,9 @@ form.example input[type=text] {
   border-left: none; /* Prevent double borders */
   cursor: pointer;
 }
-
 form.example button:hover {
   background: green;
 }
-
 /* call */
 .call{
 /* border:1px solid black; */
@@ -401,20 +387,13 @@ margin-top: 10px;
 height:35px;
 width:20%;
 /* border:1px solid black; */
-
 }
- /* call end */
-
-
 /* Clear floats */
 form.example::after {
   content: "";
   clear: both;
   display: table;
 }
-
-  /*  end search */
-
   /* right  */
 .right{
 float: right;
@@ -995,7 +974,7 @@ color: black;
    border-radius: 5px;
     background-color:#f1f1f1;">
         
-      <button type="submit" style=" background-color: #4CAF50;
+  <button type="submit" style=" background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -1007,14 +986,17 @@ color: black;
       </label>
        </div>
 
-     <div class="login" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" formaction="${pageContext.request.contextPath}/home/viewhome" style="
-  width: auto;
-  padding: 10px 18px;
-  background-color: #4CAF50;
-  color:white;
-  border: none;border-radius:5px;">Cancel</button>
-      <span class="psw" style="float: right;"><a href="#" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
+   <div class="login" style="background-color:#f1f1f1">
+   <a href="${pageContext.request.contextPath }/login/logout" style="
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #4CAF50;
+        border-radius: 6px;
+        outline: none;">Cancel</a>
+        
+    <span class="psw" style="float: right;"><a href="#" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
     </div>
   <a href="##" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge?Create an account</a><button type="button" onclick="document.getElementById('id02').style.display='block'" class="submitId"  style="
   width: auto;
@@ -1027,10 +1009,6 @@ color: black;
 </div>
 
 <!-- .....................sign up............ -->
-
-
-
-<!-- ...................header part............... -->
     
      <!--  header -->
     <div class="header">
@@ -1043,8 +1021,7 @@ color: black;
     <a href="abc.htm">                        
     <spring:url value="/images" var="images" />
     <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
-    </a>
-                            
+    </a>                        
                             <span class="fas fa-phone-alt" style="color: black;"></span>
                             <span class="text" style="color: black;">+089-765432100</span>   
                             </div>
