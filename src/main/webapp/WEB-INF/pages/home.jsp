@@ -943,6 +943,7 @@ color: black;
                 <div style="text-align:center;">
 				<input type="submit" value="Continue"  style="width: 79%;  padding:12px; margin-left: 1%; margin-right: 1%;margin-top: 3%;"/>
 			    </div></form><br>
+
 <h5 style="text-align: center;margin-bottom:4%;">Already have an account? <a href="#"  onclick="document.getElementById('id01').style.display='block'" style="color:#4CAF50;text-decoration:none;hover:green;margin-bottom:4%;" class="submitId">Log In</a></h5>
 </div>
 </div>
@@ -1040,7 +1041,7 @@ color: black;
                 <a href="${pageContext.request.contextPath}/login/loginView" style="text-decoration: none;">Log in</a> |
                 <a href="${pageContext.request.contextPath}/login/newCustomer" style="text-decoration: none;">Sign Up </a> |
                 
-                <!-- Trigger/Open The Modal -->
+<!-- Trigger/Open The Modal -->
 <span class="fas fa-map-marker-alt" style="color: black;"></span>
 <a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
  <i class="arrow down" style="  transform: rotate(45deg);
@@ -1059,21 +1060,22 @@ color: black;
   <div class="row">
   <div class="col-75">
       
-       <select id="cities" name="cities">
+       <select id="cities" name="cities" id="sort-item">
        <option value=""style="color: black;">Select city</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
        </c:forEach>
        </select><br><br>
         
-       <select id="location" name="location">
-       <option value="" style="color: black;">Select location</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
-       </c:forEach>
+      <select id="location" name="location" id="sort-item">
+      <option value="" style="color: black;">Select location</option> 
+      <c:forEach items="${listkiosklocation}" var="kiosklocation">
+      <%--  <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option> --%>
+      <option value="${kiosklocation.cities eq kiosklocation.location}">${kiosklocation.cities eq kiosklocation.location}</option>
+      </c:forEach>
       </select>
-    </div>
-    </div>
+      </div>
+      </div>
 
  <div style="text-align:center;">
  <input type="submit" value="Continue" formaction="${pageContext.request.contextPath}/home/viewhome"/>
@@ -1529,6 +1531,17 @@ $('.submitId').click(function(){
 		  });
     
 	</script>
+  
+  <script type="text/javascript">
+  window.onload = function() {
+    var selItem = sessionStorage.getItem("SelItem");  
+    $('#sort-item').val(selItem);
+    }
+    $('#sort-item').change(function() { 
+        var selVal = $(this).val();
+        sessionStorage.setItem("SelItem", selVal);
+    });
+   </script>
   </body>
   </html>
   

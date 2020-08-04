@@ -16,6 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Home screen of VeggieFridge</title>
+        <script>document.getElementsByTagName("html")[0].className += " js";</script>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
         <style>
@@ -32,10 +33,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
   margin-top: 11px;
   color: black;
 }
+
 input[type=text], select, textarea {
   width: 90%;
   padding: 8px;
- 
   border: 1px solid #008000;
   border-radius: 4px;
   resize: vertical;
@@ -128,16 +129,16 @@ input[type=submit]:hover {
   margin-left: 34%;
 }
 
-</style>
+   </style>
    </head>
-   <style>
-    
+  
+   <style>  
     body{
     font-family: Arial;
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
-.mySlides {display: none}
+    .mySlides {display: none}
 /* img {vertical-align: middle;} */
    
     {
@@ -212,6 +213,7 @@ input[type=submit]:hover {
  
 }
 
+
 /* <-- serach operation--> */
 /* Style the search field */
 form.example input[type=text] {
@@ -282,8 +284,7 @@ color: black;
  .right a:hover {
         color: #4CAF50;
     }
-
-
+    
 /* end right */
 .navbar {
   overflow: hidden;
@@ -633,9 +634,6 @@ color: black;
     width: 105%;
     height:100px;
     line-height: 50px;
-    
-   /*  background: blue;  */   
-  /*  background: pink; */
     text-align: left;
     color:white;
     font-size: 18px;  
@@ -736,14 +734,11 @@ color: black;
 @media screen and (max-width:1250px){
     .container ul li{
         width:40%;
-     
-        margin-left: 40px;   
-    }
-    /* ........................................... */
-  </style>  
-  <body>
- 
-   <!--  header -->
+        margin-left: 40px;  
+     </style>
+    
+    <body>
+    <!--  header -->
 
     <div class="header">
     
@@ -832,11 +827,6 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 
-/* // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-} */
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -879,7 +869,7 @@ window.onclick = function(event) {
       </div> 
       
                       
-  <!--   close header  -->
+ <!--   close header  -->
  <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
   <div class="mySlides fade"> -->
@@ -928,27 +918,29 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
-   </script> --%>
+  </script> --%>
   <div class="carousel">
   <div class="container">
-  <ul id="myUL"> 
-  <c:forEach var="product" items="${listProduct}">
+  <ul id="myUL">
+   
+ <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
-   <li>
-   <div class="product-img">
-   <h4 class="label-clip">Get ${product.discount}% OFF</h4>
-   <spring:url value="/images" var="images" />
-   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
-   </div>
+  <li>
+  <div class="product-img">
+  <h4 class="label-clip">Get ${product.discount}% OFF</h4>
+   
+  <spring:url value="/images" var="images" />
+  <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
+  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
+  </div>
             <div class="product-meta">
-            <h5><a href="#" style="color: black;text-decoration: none;">${product.productName}</a></h5>
-            <%-- <h4 style="color: black;">${product.productName}</h4> --%>
+            <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
+           <%--  <h4 style="color: black;">${product.productName}</h4> --%>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
             </div>
-         <!--    <div class="divider"></div> -->
-                <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
+       
+            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 78%">
                    <div class="left">
                    <span class="price">
                    <span class="mrp" style=" font-size: 14px;
@@ -956,29 +948,31 @@ function showSlides(n) {
   font-weight: 300;
   position: relative;
    color:black;">MRP</span>
+ 
                    <span class="old-price"> Rs ${product.price}</span>
                     Rs ${product.price-product.discount * product.price/100}
                      </span>
-            </div>
+                </div>
                 <div class="right">
-                <!--  <button class="btn">Add to Cart</button> -->
-                <a href="${pageContext.request.contextPath }/cart/buy/${product.productid}" style="
-        padding: 10px 20px;
+       
+        <a href="${pageContext.request.contextPath}/cart/buy/${product.productid}" style="display: inline-block;
+        padding: 5px 10px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color: #4CAF50;
         border-radius: 6px;
-        outline: none;">Add to cart</a>
-                </div></div>
-          </li>
-         </c:forEach>
-         </ul>
-       
-       <%--  <br><br>
+        outline: none;margin-top:6px">Add to Cart</a>
+               
+               <!--  <button class="btn">Add to Cart</button> -->
+                </div></div> 
+                </li>
+               </c:forEach>
+        
+      
    <div class="second">
   <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400" style="margin-top: 6px;"/>
+  <img src="${images}/c4.jpg" width="1300" height="400"/>
   </div><br><br>
   
    <th>
@@ -1007,7 +1001,6 @@ function showSlides(n) {
    </th>
    
    <th>
-    
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
    <img src="${images}/standard.jpg" width="300" height="300"/>
@@ -1015,15 +1008,15 @@ function showSlides(n) {
    </th>
    </tr>  
   </table>
-    <br>
+  <br>
   
   
   <div class="third">
   <spring:url value="/images" var="images" />
   <img src="${images}/organic.jpg" width="1300" height="400"/>
   </div><br><br>
-    </ul> --%>
-    </div>
+    </ul>
+   </div>
     </div>
  <!--  ............................  -->
       <div class="footer">
@@ -1121,7 +1114,8 @@ Message *</div>
 </div>
 </div>
 </div>
- </div>
+</div>
+ 
  <script>
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -1139,7 +1133,7 @@ function myFunction() {
         }
     }
 }
-</script>
+</script> 
   </body>
   </html>
   

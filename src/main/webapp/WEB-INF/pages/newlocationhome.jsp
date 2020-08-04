@@ -800,14 +800,14 @@ color: black;
   <div class="row">
   <div class="col-75">
       
-       <select id="cities" name="cities" required  style="background-color:#f1f1f1;">
+       <select id="cities" name="cities" required  style="background-color:#f1f1f1;" id="sort-item">
        <option value=""style="color: black;" >Select city</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
        </c:forEach>
        </select><br><br>
         
-       <select id="location" name="location" required  style="background-color:#f1f1f1;">
+       <select id="location" name="location" required  style="background-color:#f1f1f1;" id="sort-item">
        <option value="" style="color: black;">Select location</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
@@ -1122,7 +1122,18 @@ Message *</div>
 </div>
 </div>
 </div>
- </div>
+</div>
+
+ <script type="text/javascript">
+  window.onload = function() {
+    var selItem = sessionStorage.getItem("SelItem");  
+    $('#sort-item').val(selItem);
+    }
+    $('#sort-item').change(function() { 
+        var selVal = $(this).val();
+        sessionStorage.setItem("SelItem", selVal);
+    });
+   </script>
  
  
   

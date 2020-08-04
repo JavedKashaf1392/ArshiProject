@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
   
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,28 +14,30 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <title>Basket</title>
  
-    <style>
+<style>
 @charset "utf-8";
 
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600); */
- @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');   
-html,
+/*  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');  */
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');   
+
+/* html,
 html a {
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-}
- body {font-family: Arial, Helvetica, sans-serif;}
+} */
 
 body {
   font-family: 'Montserrat', sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   background-color: #fff;
   color: #666;
-  /* font-family: 'Open Sans', sans-serif; */
   font-size: 62.5%;
   margin: 0 auto;
 }
 
 a {
+  font-family: 'Montserrat', sans-serif;
   border: 0 none;
   outline: 0;
   text-decoration: none;
@@ -50,6 +52,7 @@ p {
 }
 
 h1 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
   font-weight: normal;
   margin: 0;
@@ -58,6 +61,7 @@ h1 {
 
 input,
 button {
+  font-family: 'Montserrat', sans-serif;
   border: 0 none;
   outline: 0 none;
 }
@@ -425,22 +429,21 @@ aside {
 </head>
 
 <body>
-    
-    <h1 style="font-size:30px;text-align: center;margin: top10px;color: green;">Your cart items</h1>
+    <h1 style="font-size:30px;text-align: center;margin: top10px;color: green;font-family: 'Montserrat', sans-serif;">Your cart items</h1>
     <hr>
     <main>
       <div class="basket">
       <div class="basket-module">
-        <label for="promo-code">Enter a promotional code</label>
+        <label for="promo-code" style="font-family: 'Montserrat', sans-serif;">Enter a promotional code</label>
         <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
         <button class="promo-code-cta">Apply</button>
-      </div>
+        </div>
       <div class="basket-labels">
         <ul>
-          <li class="item item-heading" style="color: green">Item</li>
-          <li class="price" style="color: green">Price</li>
-          <li class="quantity" style="color: green">Quantity</li>
-          <li class="subtotal" style="color: green">Subtotal</li>
+          <li class="item item-heading" style="color: green;font-family: 'Montserrat', sans-serif;">Item</li>
+          <li class="price" style="color: green;font-family: 'Montserrat', sans-serif;">Price</li>
+          <li class="quantity" style="color: green;font-family: 'Montserrat', sans-serif;">Quantity</li>
+          <li class="subtotal" style="color: green;font-family: 'Montserrat', sans-serif;">Subtotal</li>
          </ul>
         </div>
 <c:set var="s" value="0"></c:set>
@@ -448,16 +451,18 @@ aside {
 <c:set var="s" value="${s+ item.product.price-item.product.discount * item.product.price/100 * item.product.quantity}"></c:set>
       <div class="basket-product">
       <div class="item">
-          <div class="product-image">
+
+<div class="product-image">
 <spring:url value="/images" var="images"/>
 <img src="${images}/${item.product.imageName}" class="product-frame"/>
-          </div>
-          <div class="product-details">
+</div>
+            <div class="product-details">
             <h1 style="color: red;"><strong><span class="item-quantity"></span></strong>${item.product.productName}</h1>
             <p><strong>${item.product.productName},${item.product.size}</strong></p>
             <p>Product Code - 232321939</p>
-           </div>
-        </div>
+            </div>
+            </div>
+        
         <div class="price">${item.product.price-item.product.discount * item.product.price/100}</div>
         <div class="quantity">
         <input type="number" value="${item.product.quantity}" class="quantity-field">
@@ -481,7 +486,7 @@ aside {
      <!-- ......continue shopping button......-->
       <aside>
       <div class="summary">
-        <div class="summary-total-items" style="color:green;"><span class="total-items" ></span> Items in your cart</div>
+        <div class="summary-total-items" style="color:green;font-family: 'Montserrat', sans-serif;"><span class="total-items" ></span> Items in your cart</div>
         <div class="summary-subtotal">
           <div class="subtotal-title" style="color: green;">Subtotal</div>
           <div class="subtotal-value final-value" id="basket-subtotal">${s}</div>
@@ -500,7 +505,15 @@ aside {
           <div class="total-value final-value" id="basket-total">${s}</div>
         </div>
         <div class="summary-checkout">
-          <button class="checkout-cta">Go to Secure Checkout</button>
+         <a href="${pageContext.request.contextPath}/cart/checkout" style="display: inline-block;
+        padding: 12px 85px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px">CheckOut</a>
+         <%--  <button class="checkout-cta" onclick="${pageContext.request.contextPath }/cart/checkout">Go to Secure Checkout</button> --%>
         </div>
       </div>
     </aside>
@@ -591,6 +604,8 @@ function recalculateCart(onlyTotal) {
     });
   }
 }
+
+
 /* Update quantity */
 function updateQuantity(quantityInput) {
   /* Calculate line price */
@@ -631,5 +646,3 @@ function removeItem(removeButton) {
     </script>
 </body>
 </html>
- 
-    

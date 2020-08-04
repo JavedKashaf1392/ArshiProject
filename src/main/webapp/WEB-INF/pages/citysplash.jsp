@@ -115,28 +115,26 @@ input[type=submit]:hover {
 <div class="container">
 
 <img src="/WEB-INF/images/vfg_icon.png" width="30" height="30" />
- <h2 style = "color:green;"> 
+<h2 style = "color:green;"> 
             VeggieFridge 
-        </h2> 
+</h2> 
        
   <h3>Choose Your City</h3>
   
   <div class="row">
     
-       <div class="col-75">
-    
+        <div class="col-75">
         <select id="city" name="city">
         <option value="none">Select City</option>
         <option value="pune">Pune</option>
         <option value="mumbai">Mumbai</option>
         </select>
-    </div>
+         </div>
   </div>
   <div style="text-align:center;">
 
- <input type="submit" value="Continue"/>
-   
-</div>
+ <input type="submit" value="Continue"/>  
+ </div>
 <h5>Already have an account? Login</h5>
   </div>
   </form>
