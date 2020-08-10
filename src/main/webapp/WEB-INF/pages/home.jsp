@@ -952,7 +952,7 @@ color: black;
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="${pageContext.request.contextPath }/login/doLogin" method="post">
+  <form class="modal-content animate" action="${pageContext.request.contextPath }/customer/doLogin" method="post"  modelAttribute="customer">
   <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;font-family: 'Montserrat', sans-serif;">Log In VeggieFridge</h2>
     <div class="login">
       <label for="email"><b>Email</b></label>

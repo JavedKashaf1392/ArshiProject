@@ -147,10 +147,10 @@ function checkCheckBoxes(theForm) {
    
     </c:forEach>
         
-   
+
    </table>
   
-   <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/product/newProduct" />
+   <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/product/newProduct"/>
     <input class="button button1" type="submit" value="Delete" 
                        formaction="${pageContext.request.contextPath}/product/deleteProduct" onclick="return confirm('Are you sure to delete?')" />
      <input class="button button1" type="submit" value="Update" formaction="${pageContext.request.contextPath}/product/editProduct" />

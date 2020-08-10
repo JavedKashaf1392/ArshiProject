@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +98,7 @@ span.psw {
  <body>
 <div style ="position:absolute;left:570px;top:40px;"><h4>Customer has been registered successfully</h4></div>
 
-<form action="${pageContext.request.contextPath}/login/loginProcess" method="post" modelAttribute="user">
+<form action="${pageContext.request.contextPath}/payment/pgRedirect" method="post" modelAttribute="user">
 <h2>Log In VeggieFridge</h2>                                  
   <div class="container">
     <label for="uname"><b>Email Id</b></label>

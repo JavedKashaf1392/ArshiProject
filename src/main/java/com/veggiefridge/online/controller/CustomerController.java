@@ -3,10 +3,12 @@ package com.veggiefridge.online.controller;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,13 +52,14 @@ public class CustomerController {
 	
 //	save and update customer
 	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-	public String saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult result) {
+	public String saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session) {
 		if (result.hasErrors()) {
 			return "customerform";
 			
 		} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
 			// customer other updating the customer 
 			customerService.addCustomer(customer);
+			session.setAttribute("customer", customer);
 		} else {
 			customerService.updateCustomer(customer);
 		}
@@ -79,8 +82,37 @@ public class CustomerController {
 		public String deleteCustomer(@RequestParam("customerid") Integer customerId) {
 		 customerService.deleteCustomer(customerId);
 			return "redirect:/customer/listCustomer ";
-		}	 
-}
+		}
+	 
+	
+	 @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
+	  public String loginCustomer(ModelMap model,@ModelAttribute("customer") Customer customer,HttpSession session) {
+		if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null) {
+		customer=customerService.loginCustomer(customer);
+		
+		if(customer!=null){
+			session.setAttribute("customer", customer);
+			return "redirect:/home/registeredhome";
+		}
+		else {
+			model.put("failed", "LoginFailed");
+			return "redirect:/customer/doLogin";
+		}
+		}
+		else {
+			return "redirect:/home/registeredhome";
+		}
+		}
+		
+				
+
+		  
+		  
+	  }
+	 
+	 
+	 
+
 	
 	
 	

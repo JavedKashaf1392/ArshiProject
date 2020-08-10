@@ -57,10 +57,14 @@ public class CustomerServiceImpl implements CustomerService {
 		 customerDAO.deleteCustomer(customerId);
 	}
 
-//	@Override
-//	public void deleteCustomer(Integer customerId) {
-//		 return customerDAO.getCustomer(customerid);
-//		
-//	}
+	
+	
+	public Customer loginCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		return customerDAO.loginCustomer(customer);
+	}
+
+	
+	
 
 }

@@ -15,5 +15,7 @@ public interface CustomerService {
 	public Customer updateCustomer(Customer customer);
 	
 	public void deleteCustomer(Integer customerId);
+	
+	public Customer loginCustomer(Customer customer);
 
 }
