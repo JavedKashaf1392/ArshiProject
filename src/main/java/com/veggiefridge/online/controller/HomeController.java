@@ -1,5 +1,4 @@
 package com.veggiefridge.online.controller;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -95,7 +94,6 @@ public class HomeController {
 
 	@RequestMapping("/regcontinueLocation")  
 	public ModelAndView regcontinueLocation(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
-	
 	{ 
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();

@@ -952,7 +952,7 @@ color: black;
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="${pageContext.request.contextPath }/customer/doLogin" method="post"  modelAttribute="customer">
+  <form class="modal-content animate" action="${pageContext.request.contextPath }/login/doLogin" method="post"  modelAttribute="customer">
   <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;font-family: 'Montserrat', sans-serif;">Log In VeggieFridge</h2>
     <div class="login">
       <label for="email"><b>Email</b></label>
@@ -982,12 +982,13 @@ color: black;
   border: none;
   cursor: pointer;
   width: 100%; border-radius: 5px;">Login</button>
+  
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
        </div>
 
-   <div class="login" style="background-color:#f1f1f1">
+   <div class="login" style="background-color:#f1f1f1;height:30px;">
    <a href="${pageContext.request.contextPath }/login/logout" style="
         padding: 8px 16px;
         text-align: center;
@@ -1006,7 +1007,7 @@ color: black;
   color: white;
   border: none; margin-top: 2%;margin-left: 2%;border-radius:5px;">SignUp</button> 
   </form>
-   <span style="color: red;">${message}</span>
+  <span style="color: red;">${failed}</span>
 </div>
 
 <!-- .....................sign up............ -->
@@ -1395,7 +1396,7 @@ Message *</div>
  
  <div class="register" id="id02">
  <div class="register-content">
-<form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/home/saveCustomer" modelAttribute="customer" >
+<form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/login/saveCustomer" modelAttribute="customer" >
 
       <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>
       <p style="margin-top: 1%; margin-left: 2%;">Please fill in this form to create an account.</p>

@@ -27,7 +27,6 @@ import com.veggiefridge.online.service.ProductService;
 
 @Controller
 @RequestMapping(value="/login")
-@SessionAttributes("user")
 public class LoginController {
 	
 	public LoginController() {
@@ -63,38 +62,32 @@ public class LoginController {
 			return model;
 		}
 		
-           //save and update customer
-		//@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-		//public String saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult result) {
-			//if (result.hasErrors()) {
-				//return "newregistration";
+       
+		//save and update customer
+		@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
+		public ModelAndView saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult  resultcustomer,BindingResult result,HttpSession session,ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation) {
+			if (result.hasErrors()) {
+				model.setViewName("home#");
+				return model; 
+				//return "customerform";
 				
-			//} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+			} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
 				// customer other updating the customer 
-			   //custservice.addCustomer(customer);
-			//} else {
-				//custservice.updateCustomer(customer);
-			//}
-			//return "SuccessRegistration";
-		//}
-	
+				custservice.addCustomer(customer);
+				session.setAttribute("customer", customer);
+				List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+				List<Product> listProduct = productService.getAllProducts();
+				List<Customer> listCustomer = custservice.getAllCustomers();
+				model.addObject("listCustomer", listCustomer);
+				model.addObject("listkiosklocation",listkiosklocation);
+				model.addObject("listProduct", listProduct);
+			} else {
+				custservice.updateCustomer(customer);
+			}
+			model.setViewName("registerdhome");
+			return model; 
+		}
 		
-		 //login Process
-		 @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-		  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-		  @ModelAttribute("User") User user) {
-		    ModelAndView mav = null;
-		    Customer customer = loginservice.validateCustomer(user);
-		    if (null != customer) {
-		    mav = new ModelAndView("welcome");
-		    mav.addObject("firstname", customer.getFirstName());
-		    } else {
-		    mav = new ModelAndView("user");
-		    mav.addObject("message", "EmailId or Password is wrong!!");
-		     }
-		    return mav;
-		  }
- 		
 		 //forgot password
 		 @RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
 		 public ModelAndView forgotPassword(HttpServletRequest request, HttpServletResponse response) {
@@ -102,7 +95,7 @@ public class LoginController {
 			 return mav;
 			 }
 
-       // generatelink
+       //generatelink
 		 @RequestMapping(value = "/generateLink", method = RequestMethod.POST)
 		 public ModelAndView generateLink(HttpServletRequest request, HttpServletResponse response) {
 			 ModelAndView mav = new ModelAndView("generateLink");
@@ -110,36 +103,44 @@ public class LoginController {
 		 }
           		 
 
-		    //login
-		    @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
-			public ModelAndView login(
-				@RequestParam("email") String email,
-				@RequestParam("password") String password,
-				HttpSession session,
-				ModelMap modelMap,ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation) {
-		    	if(email.equalsIgnoreCase("aq@gmail.com") && password.equalsIgnoreCase("abc")) {
-					session.setAttribute("email", email);
-					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-					List<Product> listProduct = productService.getAllProducts();
-					List<Customer> listCustomer = custservice.getAllCustomers();
-					model.addObject("listCustomer", listCustomer);
-					model.addObject("listkiosklocation",listkiosklocation);
-					model.addObject("listProduct", listProduct);
-					model.setViewName("registerdhome");
-					return model; 
-
-				} else {
-					model.addObject("error", "Invalid Account");
-					model.setViewName("home");
+		    //login customer from database
+		      @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
+			  public ModelAndView loginCustomer(ModelAndView model,@ModelAttribute("customer") Customer customer,BindingResult  resultcustomer,HttpSession session){
+				
+		    	if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
+			    customer=custservice.loginCustomer(customer);
+			    
+			   	
+			if(customer!=null){
+		    session.setAttribute("customer", customer);
+		    model.addObject("firstname", customer.getFirstName());
+		    List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		    List<Product> listProduct = productService.getAllProducts();
+		    List<Customer> listCustomer = custservice.getAllCustomers();
+		    model.addObject("listCustomer", listCustomer);
+			model.addObject("listkiosklocation",listkiosklocation);
+			model.addObject("listProduct", listProduct);
+			model.setViewName("registerdhome");
+			return model;
+		    	}
+				else {
+					model.addObject("failed", "EmailId or Password is wrong!!");
+					model.setViewName("home#");
 					return model;
 				}
-			
-		    }
+		    	}
 		    
+				else {
+					model.setViewName("registerdhome");
+					return model;
+				}
+				}
+		    
+		  
 		    //logout
 			@RequestMapping(value = "/logout", method = RequestMethod.GET)
 			public String logout(HttpSession session) {
-				session.removeAttribute("email");
+				session.removeAttribute("customer");
 				return "redirect:/home/viewhome";
 			}
 

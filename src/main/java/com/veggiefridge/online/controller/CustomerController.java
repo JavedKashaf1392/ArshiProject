@@ -1,5 +1,4 @@
 package com.veggiefridge.online.controller;
-
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.model.Customer;
+import com.veggiefridge.online.model.KioskLocation;
+import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
+import com.veggiefridge.online.service.ProductService;
 
 @Controller
 @RequestMapping(value="/customer")
@@ -31,6 +33,7 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+
 	
 //	getAll Customer
 	@RequestMapping(value = "/listCustomer")
@@ -66,6 +69,7 @@ public class CustomerController {
 		return "redirect:/customer/listCustomer";
 	}
 
+	
 //	edit customer
 	 @RequestMapping(value = "/editCustomer", method = RequestMethod.GET) 
 	    public ModelAndView editCustomer(HttpServletRequest request) { 
@@ -84,31 +88,13 @@ public class CustomerController {
 			return "redirect:/customer/listCustomer ";
 		}
 	 
-	
-	 @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
-	  public String loginCustomer(ModelMap model,@ModelAttribute("customer") Customer customer,HttpSession session) {
-		if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null) {
-		customer=customerService.loginCustomer(customer);
-		
-		if(customer!=null){
-			session.setAttribute("customer", customer);
-			return "redirect:/home/registeredhome";
-		}
-		else {
-			model.put("failed", "LoginFailed");
-			return "redirect:/customer/doLogin";
-		}
-		}
-		else {
-			return "redirect:/home/registeredhome";
-		}
 		}
 		
 				
 
 		  
 		  
-	  }
+	  
 	 
 	 
 	 

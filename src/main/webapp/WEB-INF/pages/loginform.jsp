@@ -108,7 +108,7 @@ span.psw {
 </head>
  <body>
    
-  <form  method="post"  modelAttribute="user">
+  <form  method="post" action="${pageContext.request.contextPath}/customer/doLogin" modelAttribute="customer">
   <h2>Log In VeggieFridge</h2>                                
   
   

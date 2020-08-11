@@ -2,12 +2,10 @@
  * 
  */
 package com.veggiefridge.online.constants;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-
 import com.veggiefridge.online.config.SMSConfiguration;
 
 /**

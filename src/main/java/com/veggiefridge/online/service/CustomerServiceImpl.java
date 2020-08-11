@@ -1,11 +1,9 @@
 package com.veggiefridge.online.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.veggiefridge.online.dao.CustomerDAO;
 import com.veggiefridge.online.model.Customer;
 
@@ -56,11 +54,8 @@ public class CustomerServiceImpl implements CustomerService {
 //		 customerDAO.getCustomer(customerId);
 		 customerDAO.deleteCustomer(customerId);
 	}
-
-	
 	
 	public Customer loginCustomer(Customer customer) {
-		// TODO Auto-generated method stub
 		return customerDAO.loginCustomer(customer);
 	}
 

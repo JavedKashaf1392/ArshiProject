@@ -9,7 +9,6 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.User;
 
@@ -74,7 +73,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 	}
 
-	@Override
+    @Override
 	public Customer loginCustomer(Customer customer) {
 		Session session=sessionFactory.openSession();	
 		Transaction tx= session.beginTransaction();

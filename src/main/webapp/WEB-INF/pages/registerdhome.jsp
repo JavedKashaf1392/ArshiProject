@@ -195,13 +195,6 @@ input[type=submit]:hover {
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex; 
-   /*  -webkit-box-align: center;
-     -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-       justify-content: center;
-      */    
 }
 
 .logo{
@@ -766,8 +759,8 @@ color: black;
    </div>
   
                 <div class="right" style="float: right;">
-                Hello,${sessionScope.email}
-              <%--   <a href="${pageContext.request.contextPath}/home/viewhome/" style="text-decoration: none;">Log Out</a> |
+                Hello,${customer.firstName}
+              <%--<a href="${pageContext.request.contextPath}/home/viewhome/" style="text-decoration: none;">Log Out</a> |
                  --%>
                 <!-- Trigger/Open The Modal -->
 <span class="fas fa-map-marker-alt" style="color: black;"></span>
