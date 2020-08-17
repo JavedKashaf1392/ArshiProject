@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,30 +25,43 @@ h3 {
 color: green;
 }
 .container {
-  border-radius: 10px;
-  border: 1px solid #008000;
-  max-width: 400px;
-  padding: 20px;
-  background-color: #ffffff;
-  align: center;
-  padding:auto;
-  margin:auto;
-  text-align:center;
-  margin-top:15%;
-   left: 50%;
-    top: 50%;
+  text-align: center;
+   margin-left:32%;
+   margin-top:10%;
+   font-family: 'Montserrat', sans-serif;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 450px;
+    max-width: 100%;
+	min-height: 100px;
 }
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
 <title>Generate Link</title>
 </style>
 </head>
 <body>
 <div class="container">
-<form action="${pageContext.request.contextPath}/login/forgotPassword" th:action="@{/Cancel}" th:object="${user}" method="post">
-<h3>Select one to Reset Password :</h3>
+  <form action="${pageContext.request.contextPath}/login/changePassword" th:action="@{/Cancel}" th:object="${user}" method="post">
+  <spring:url value="/images" var="images" />
+  <img src="${images}/logo.jpg" width="165" height="130"/>
+<h2 style="color:#4CAF50;">Authentication Required</h2>
+<h5 style="color:#4CAF50;">For your security, we need to authenticate your request. We've sent an link to the associate email. Please go to the email click it on link to complete verification.</h5>
 <input type="radio" name="entity" value="Email"> Email</input>
 <input type="radio" name="entity" value="Text"> Text</input><br><br>
-<input  class="button button1" type="submit" value="Send" formaction="${pageContext.request.contextPath}/login/loginView" />   
-
+<input  class="button button1" type="submit" value="Send"/>   
 <input   class="button button1" type="submit" value="Cancel">
 </form>
 </div>

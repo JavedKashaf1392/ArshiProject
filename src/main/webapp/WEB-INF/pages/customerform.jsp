@@ -120,11 +120,13 @@ h2 {
                 <td><form:input path="mobile" /></td>
                 <td><form:errors path="mobile" cssClass="error" /></td> 
             </tr>
+            
             <tr>
                 <td>City </td>
                 <td><form:input path="city" /></td>
                 <td><form:errors path="city"  cssClass="error"/></td> 
             </tr>
+            
             <tr>
                 <td>KIOSK Location </td>
                 <td><form:input path="kioskLocation" /></td>

@@ -428,7 +428,10 @@ aside {
 </style>
 </head>
 
-<body>
+    <body>
+    <%-- <spring:url value="/images" var="images" />
+    <img src="${images}/logo.jpg" width="100" height="115" style= margin-top:2%;"/> --%>
+    
     <h1 style="font-size:30px;text-align: center;margin: top10px;color: green;font-family: 'Montserrat', sans-serif;">Your cart items</h1>
     <hr>
     <main>

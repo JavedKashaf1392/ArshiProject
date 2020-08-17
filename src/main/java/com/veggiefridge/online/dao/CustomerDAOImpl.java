@@ -93,14 +93,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		return customer;
 	}
-
-	
-	/*
-	 * @Override public User findAccount(String userName ) { Session session=
-	 * (Session) sessionFactory.getCurrentSession(); Criteria crit = ((Criteria)
-	 * session).createCriteria(User.class); crit.add(Restrictions.eq("userName",
-	 * userName)); return (User) crit.uniqueResult(); }
-	 */
 }	
 
 

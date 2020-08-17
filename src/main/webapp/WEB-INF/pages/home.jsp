@@ -10,7 +10,6 @@
  <html lang="en" dir="ltr">
         <head> 
         <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -335,13 +334,7 @@ hr {
      display: -ms-flexbox;
      display: flex; 
      background-color:#f1f1f1;
-   /*  -webkit-box-align: center;
-     -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-       justify-content: center;
-      */    
+  
 }
 
 .logo{
@@ -817,11 +810,7 @@ color: black;
  -ms-grid-columns: auto auto;
  margin-top: 90%;
  
- /*  grid-template-columns: auto auto; */
- /*  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; */
-}
+
 .container ul li  .product-price-wrap .left {
   -ms-grid-column-align: start;
       justify-self: start;
@@ -950,10 +939,9 @@ color: black;
 
 <!-- ..................................login popup................. -->
 
-<div id="id01" class="modal">
-  
+   <div id="id01" class="modal">
   <form class="modal-content animate" action="${pageContext.request.contextPath }/login/doLogin" method="post"  modelAttribute="customer">
-  <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;font-family: 'Montserrat', sans-serif;">Log In VeggieFridge</h2>
+  <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;">Log In VeggieFridge</h2>
     <div class="login">
       <label for="email"><b>Email</b></label>
       <input type="email" placeholder="Enter Email" name="email" required  style="width: 100%;
@@ -998,7 +986,7 @@ color: black;
         border-radius: 6px;
         outline: none;">Cancel</a>
         
-    <span class="psw" style="float: right;"><a href="#" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
+    <span class="psw" style="float: right;"><a href="${pageContext.request.contextPath }/login/forgotPassword"" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
     </div>
   <a href="##" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge?Create an account</a><button type="button" onclick="document.getElementById('id02').style.display='block'" class="submitId"  style="
   width: auto;
@@ -1196,11 +1184,9 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
    </script> --%>
-   
-  
   <div class="carousel">
   <div class="container">
-   <ul> 
+  <ul> 
   <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
    <li>
@@ -1403,7 +1389,7 @@ Message *</div>
       <hr>
   
   
-  <label for=" firstname" style="margin-left: 2%;">First Name :</label>
+  <label for=" firstname" style="margin-left: 2%;">First Name:</label>
   <spring:bind path="customer.firstName">
   <input type="text" name="${status.expression}" value="${status.value}"  placeholder="First Name" required style="width: 67%;
   padding: 8px;
@@ -1457,7 +1443,7 @@ Message *</div>
   background: #f1f1f1;border-radius:4px;margin-left:1%;">
        <option value="" style="color: black;">Select location</option> 
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
+       <option value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
        </c:forEach>
       </select>
        
@@ -1499,8 +1485,8 @@ Message *</div>
     
   </form>
    </div>
- <script>
 
+<script>
 $(document).ready(function() {
 
   setTimeout(function(){
@@ -1514,7 +1500,7 @@ $('.submitId').click(function(){
 
 </script>
  
- <script>
+   <script>
 	// Get the modal
 	var login = document.getElementById('id01');
 	

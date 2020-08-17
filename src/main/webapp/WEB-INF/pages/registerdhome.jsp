@@ -8,21 +8,85 @@
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
-        
+ 
         <head> 
         <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Home screen of VeggieFridge</title>
         <script>document.getElementsByTagName("html")[0].className += " js";</script>
-        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
         <style>
         
 body {font-family: Arial, Helvetica, sans-serif;}
+ 
+body{
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    .mySlides {display: none}
+    {
+    box-sizing: border-box;
+}
+}
 
+.header{
+    margin-left:10%;
+    position:relative;
+    padding: 20px;
+    padding: 20px;
+    width: 100%;
+    height: 30px;
+}
+
+.logo{
+ position:absolute;
+ width:30% 
+ border:1px;
+ float:left;
+ margin-right:35%;
+}
+
+/* call */
+.call{
+/* border:1px solid black; */
+float:right;
+margin-right:22%;
+margin-top: 10px;
+height:35px;
+width:20%;
+font-size: 16px;
+/* border:1px solid black; */
+}
+.notification {
+  float:right;
+  background-color:#4CAF50;
+  color: white;
+  text-decoration: none;
+  padding: 12px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  margin-right:14%; 
+}
+
+.notification:hover {
+  background: green;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}  
+ /* call end */
 .row:after {
   content: "";
   display: table;
@@ -74,7 +138,7 @@ input[type=submit]:hover {
   height: 130%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -120,7 +184,7 @@ input[type=submit]:hover {
   } 
   
 .popup {/* 
-   /* background-color:#f1f1f1; */
+  /* background-color:#f1f1f1; */
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -128,34 +192,10 @@ input[type=submit]:hover {
   width: 30%;
   margin-left: 34%;
 }
-
    </style>
    </head>
   
    <style>  
-    body{
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    .mySlides {display: none}
-/* img {vertical-align: middle;} */
-   
-    {
-    box-sizing: border-box;
-}
-}
-
-.header{
-    margin-left:10%;
-    position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-    height: 30px;
-    /* background: #4CAF50; */
-   /*  border:1px solid black; */
-}
 .footer{
     margin-left:10%;
     margin-right:13%;
@@ -179,8 +219,6 @@ input[type=submit]:hover {
     /* background: #4CAF50; */
 }
 .carousel{
-
-    
     padding: 20px;
     padding: 20px;
     margin-left:150px;
@@ -196,17 +234,6 @@ input[type=submit]:hover {
      display: -ms-flexbox;
      display: flex; 
 }
-
-.logo{
- position:absolute;
- width:30% 
- border:1px;
- float:left;
- margin-right:35%;
- 
-}
-
-
 /* <-- serach operation--> */
 /* Style the search field */
 form.example input[type=text] {
@@ -214,12 +241,10 @@ form.example input[type=text] {
   font-size: 17px;
   border: 1px solid grey;
   float: left;
-  width: 40%;
+  width:40%;
  /*  background: #f1f1f1; */
   margin-left:10%; 
 }
-
-
 /* Style the submit button */
   form.example button {
   float: left;
@@ -236,21 +261,6 @@ form.example input[type=text] {
 form.example button:hover {
   background: green;
 }
-
-/* call */
-.call{
-/* border:1px solid black; */
-float:right;
-margin-right:21%;
-margin-top: 10px;
-height:35px;
-width:20%;
-/* border:1px solid black; */
-
-}
- /* call end */
-
-
 /* Clear floats */
 form.example::after {
   content: "";
@@ -266,7 +276,7 @@ float: right;
 margin-top:30px;
 margin-right:14%;
 font:bold;
-font-size:16px;
+font-size:18px;
 
 }
 
@@ -294,7 +304,7 @@ color: black;
   font-size: 20px;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 12px;
   text-decoration: none;
 }
 
@@ -655,12 +665,10 @@ color: black;
 .container ul li  .product-price-wrap .left .old-price {
   font-size: 14px;
   text-decoration: line-through; 
- /*  color: #999; */
   color:black;
   font-weight: 300;
   position: relative;
-/*   display: block; */
-   color:black;
+  color:black;
 }
 .container ul li  .product-price-wrap .left .old-price {
   font-size: 14px;
@@ -728,28 +736,151 @@ color: black;
     .container ul li{
         width:40%;
         margin-left: 40px;  
-     </style>
-    
-    <body>
-    <!--  header -->
+   }
+   </style>
+   
+  <style>
+  .menu {
+  display: none; /* Hidden by default */
+  position:absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  /*background-color: rgb(0,0,0);*/ /* Fallback color */
+ /* background-color: rgba(0,0,0,0.4);  Black w/ opacity */
+  padding-top: 60px;
+}
+  
+ .left_area h3{
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.left_area span{
+  color: white;
+}
+.sidebar{
+  background:#4CAF50;
+  margin-top:69px;
+  padding-top:20px;
+  position:absolute;
+  left: 0;
+  width: 320px;
+  height: 60%;
+  transition: 0.5s;
+  transition-property: right;
+  margin-left:63%;
+}
+
+.sidebar h4{
+  color:white;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.sidebar a{
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  text-decoration: none;
+  padding-left: 40px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transition-property: background;
+  
+}
+
+.sidebar a:hover{
+  background: green;
+}
+
+.sidebar i{
+  padding-right: 10px;
+}
+
+label #sidebar_btn{
+  z-index: 1;
+  transition: 0.5s;
+  transition-property: color;
+}
+
+label #sidebar_btn:hover{
+  color: #19B3D3;
+}
+
+#check:checked ~ .sidebar{
+  left: -190px;
+}
+
+#check:checked ~ .right.sidebar a span{
+  display:none;
+}
+
+#check:checked ~ .sidebar a{
+  font-size: 20px;
+  margin-left: 170px;
+  width: 80px;
+}
+#check{
+  display: none;
+} 
+.cartpopup{
+  display: none; /* Hidden by default */
+  position:absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 135px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 130%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+ /*  background-color: rgb(0,0,0); /* Fallback color */
+  /* background-color: rgba(0,0,0,0.8); */
+}
+
+/* Modal Content */
+.cart-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 22%;
+  margin-left: 60%;
+  border-radius: 4px;
+ 
+}
+ </style>
+  <body>
+ <!--  header -->
 
     <div class="header">
-    
     <div class="logo">
     <spring:url value="/images" var="images" />
     <img src="${images}/logo.jpg" width="140" height="110"/>
     </div>
     
-    <div class="call"> 
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
-    </a>
-                            <span class="fas fa-phone-alt" style="color: black;"></span>
-                            <span class="text" style="color: black;">+089-765432100</span>   
-                            </div>
-    
-    
+  <div class="call"> 
+  <span class="text" style="color: black;position: absolute;"><i class="fas fa-phone-alt" style="color:green;"></i>+089-765432100</span>
+  
+  <a href="#" class="notification">
+  <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
+  <span class="badge">0</span>
+  </a>  
+  </div>
+  <div id="id06" class="cartpopup">
+  <div class="cart-content">
+  <h4>Your cart is empty</h4>
+  </div>
+  </div> 
+  
+     
    <div class="search">                                                 
    <form class="example">
    <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search" id="myInput" onkeyup="myFunction()">
@@ -758,19 +889,37 @@ color: black;
    </div>
    </div>
   
-                <div class="right" style="float: right;">
-                Hello,${customer.firstName}
-              <%--<a href="${pageContext.request.contextPath}/home/viewhome/" style="text-decoration: none;">Log Out</a> |
-                 --%>
-                <!-- Trigger/Open The Modal -->
-<span class="fas fa-map-marker-alt" style="color: black;"></span>
-<a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
- <i class="arrow down" style="  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);  border:gray; 
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;"></i>|
-  <a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
+  
+        
+     <div class="right" style="float: right;">
+     <span  class='fas fa-user-circle' style="color:green;"></span> 
+     Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
+        
+        
+     <div id="id05" class="menu">
+     <div class="sidebar">
+     <center>
+     <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
+     <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello,${customer.firstName}</span>
+     </center>
+      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
+      <a href="#"><i class="fa fa-bars"></i><span>My Orders</span></a>
+      <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i><span>My Cart</span></a>
+      <a href="#"><i class='fas fa-wallet'></i><span>My Wallet</span></a>
+      <a href="#"><i class='fas fa-user-friends'></i><span>Membership</span></a>
+      <a href="#"><i class="fas fa-info-circle"></i><span>Ask us</span></a>
+      <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i><span>Log Out</span></a>
+      </div>
+      </div>
+       
+
+       <!-- Trigger/Open The Modal -->
+
+ <span class="fas fa-map-marker-alt" style="color:green;"></span>
+ <a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
+ |
+<span class='fas fa-sign-out-alt' style="color:green;"></span> 
+<a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
            
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -863,11 +1012,12 @@ window.onclick = function(event) {
       
                       
  <!--   close header  -->
+ 
  <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
   <div class="mySlides fade"> -->
   <spring:url value="/images" var="images" />
-  <img src="${images}/bigimage.jpg" width="1600" height="500" style="margin-top:15px;"/> 
+  <img src="${images}/bigimage.jpg" width="1600" height="450" style="margin-top:15px;"/> 
  <%--  </div>
 
   <div class="mySlides fade">
@@ -949,18 +1099,16 @@ function showSlides(n) {
                 <div class="right">
        
         <a href="${pageContext.request.contextPath}/cart/buy/${product.productid}" style="display: inline-block;
-        padding: 5px 10px;
+        padding: 8px 12px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color: #4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px">Add to Cart</a>
-               
-               <!--  <button class="btn">Add to Cart</button> -->
-                </div></div> 
-                </li>
-               </c:forEach>
+        outline: none;margin-top:6px"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+        </div></div> 
+        </li>
+        </c:forEach>
         
       
    <div class="second">
@@ -1004,10 +1152,7 @@ function showSlides(n) {
   <br>
   
   
-  <div class="third">
-  <spring:url value="/images" var="images" />
-  <img src="${images}/organic.jpg" width="1300" height="400"/>
-  </div><br><br>
+<br><br>
     </ul>
    </div>
     </div>
@@ -1107,8 +1252,12 @@ Message *</div>
 </div>
 </div>
 </div>
-</div>
+  
+  
  
+ 
+    
+
  <script>
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -1126,7 +1275,34 @@ function myFunction() {
         }
     }
 }
-</script> 
+</script>
+
+<script>
+// Get the modal
+var cartpopup = document.getElementById('id06');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == cartpopup) {
+    	cartpopup.style.display = "none";
+    }
+}
+</script>
+
+<script>
+// Get the modal
+var menu = document.getElementById('id05');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == menu) {
+    	menu.style.display = "none";
+    }
+}
+</script>
+
+
+  
   </body>
   </html>
   

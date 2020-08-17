@@ -5,6 +5,7 @@
    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%> 
  
  
  <html>
@@ -128,8 +129,6 @@ function checkCheckBoxes(theForm) {
 					<td>${customer.city}</td>
 					<td>${customer.kioskLocation}</td>
 				    <td>${customer.email}</td>
-					<%-- <td>${customer.password}</td> --%>
-					<%-- <td>${customer.confirmPassword}</td> --%>
                     </tr>
    
                    </c:forEach>

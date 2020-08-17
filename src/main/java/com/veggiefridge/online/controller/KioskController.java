@@ -57,16 +57,16 @@ public class KioskController {
 	
 	 
 	// save location
-    @RequestMapping(value = "/saveKiosk", method = RequestMethod.POST)
+    @RequestMapping(value ="/saveKiosk", method = RequestMethod.POST)
 	public String saveKiosk(@ModelAttribute("kiosk") Kiosk kiosk, BindingResult  resultkiosk,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
-
-		  if (kiosk.getId() == 0) { // if kiosk id is 0 then creating the
+		
+    	if (kiosk.getId() == 0) { // if kiosk id is 0 then creating the
 			// kiosk other updating the kiosk
 			System.out.println("addKiosk method is running");
 			service.addKiosk(kiosk);
 		}
-		  return "redirect:/kiosk/listKiosk";
-		  //else {
+		   return "redirect:/kiosk/listKiosk";
+		//else {
 			 // System.out.println("updateKiosk method is running");
 			  //service.updateKiosk(kiosk);  
 		//}

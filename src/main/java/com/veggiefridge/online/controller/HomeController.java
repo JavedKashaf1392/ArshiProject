@@ -104,5 +104,21 @@ public class HomeController {
 		model.setViewName("registerdhome");
 		return model; 
 	} 
+	    //Edit profile
+		@RequestMapping(value = "/editProfile")
+		public ModelAndView editProfile(ModelAndView model) {
+			model.setViewName("editprofile");
+			return model;
+		}
+	
+	
+		 //myCart
+		@RequestMapping(value = "/myCart")
+		public ModelAndView myCart(ModelAndView model) {
+			model.setViewName("cart");
+			return model;
+		}
+	
+	
 	}	
 

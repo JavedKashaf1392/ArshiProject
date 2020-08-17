@@ -61,6 +61,7 @@ input[type=text],select, textarea {
      var kiosk=e.options[e.selectedIndex].text;
      document.getElementById("kiosk").innerHTML=kiosk;
          }
+         
      </script>  -->
      <table>
         
@@ -92,7 +93,7 @@ input[type=text],select, textarea {
                     <select id="locationid" name="cities">
                         <option value="">Select City</option> 
                         <c:forEach items="${listkiosklocation}" var="kiosklocation">
-                            <option   value="${kiosklocation.cities}">${kiosklocation.cities}</option>
+                            <option value="${kiosklocation.cities}">${kiosklocation.cities}</option>
                         </c:forEach>
                     </select>
                 </td>

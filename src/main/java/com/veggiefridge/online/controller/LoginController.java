@@ -61,17 +61,10 @@ public class LoginController {
 			model.setViewName("newregistration");
 			return model;
 		}
-		
-       
 		//save and update customer
 		@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-		public ModelAndView saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult  resultcustomer,BindingResult result,HttpSession session,ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation) {
-			if (result.hasErrors()) {
-				model.setViewName("home#");
-				return model; 
-				//return "customerform";
-				
-			} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+		public ModelAndView saveCustomer(@ModelAttribute("customer")Customer customer,BindingResult  resultcustomer,HttpSession session,ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+			  if(customer.getCustomerid()==0) { // if customer id is 0 then creating the
 				// customer other updating the customer 
 				custservice.addCustomer(customer);
 				session.setAttribute("customer", customer);
@@ -101,8 +94,23 @@ public class LoginController {
 			 ModelAndView mav = new ModelAndView("generateLink");
 			 return mav;	 
 		 }
-          		 
-
+          		
+		 
+		 //change password link
+		 @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+		 public ModelAndView changePassword(HttpServletRequest request, HttpServletResponse response) {
+			 ModelAndView mav = new ModelAndView("changePassword");
+			 return mav;	 
+		 }
+		 
+		 //change password link
+		 @RequestMapping(value = "/loginForm", method = RequestMethod.POST)
+		 public ModelAndView loginForm(HttpServletRequest request, HttpServletResponse response) {
+			 ModelAndView mav = new ModelAndView("loginform");
+			 return mav;	 
+		 }
+          		
+		
 		    //login customer from database
 		      @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
 			  public ModelAndView loginCustomer(ModelAndView model,@ModelAttribute("customer") Customer customer,BindingResult  resultcustomer,HttpSession session){
