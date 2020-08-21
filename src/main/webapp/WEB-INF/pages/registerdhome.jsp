@@ -9,8 +9,17 @@
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
  
-        <head> 
-        <meta charset="utf-8">
+     <head> 
+     <meta charset="utf-8">
+	 <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
+	</script> 
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> 
+	</script> 
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"> 
+	</script>    
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -847,6 +856,7 @@ label #sidebar_btn:hover{
 
 /* Modal Content */
 .cart-content {
+ 
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -869,16 +879,18 @@ label #sidebar_btn:hover{
   <div class="call"> 
   <span class="text" style="color: black;position: absolute;"><i class="fas fa-phone-alt" style="color:green;"></i>+089-765432100</span>
   
-  <a href="#" class="notification">
+  <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
   <span class="badge">0</span>
   </a>  
   </div>
+  
   <div id="id06" class="cartpopup">
   <div class="cart-content">
-  <h4>Your cart is empty</h4>
+     Yout cart is Empty
   </div>
-  </div> 
+  </div>
+   
   
      
    <div class="search">                                                 
@@ -896,19 +908,19 @@ label #sidebar_btn:hover{
      Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
         
         
-     <div id="id05" class="menu">
-     <div class="sidebar">
-     <center>
-     <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
-     <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello,${customer.firstName}</span>
-     </center>
-      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="#"><i class="fa fa-bars"></i><span>My Orders</span></a>
-      <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i><span>My Cart</span></a>
-      <a href="#"><i class='fas fa-wallet'></i><span>My Wallet</span></a>
-      <a href="#"><i class='fas fa-user-friends'></i><span>Membership</span></a>
-      <a href="#"><i class="fas fa-info-circle"></i><span>Ask us</span></a>
-      <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i><span>Log Out</span></a>
+      <div id="id05" class="menu">
+      <div class="sidebar">
+      <center>
+      <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
+      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
+      </center>
+      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i> <span>My Account</span></a>
+      <a href="${pageContext.request.contextPath }/home/currentorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
+      <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
+      <a href="#"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
+      <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
+      <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
+      <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
       </div>
       </div>
        
@@ -1097,7 +1109,9 @@ function showSlides(n) {
                      </span>
                 </div>
                 <div class="right">
-       
+         
+        <%--  "${pageContext.request.contextPath}/cart/buy/${product.productid}"
+         --%>
         <a href="${pageContext.request.contextPath}/cart/buy/${product.productid}" style="display: inline-block;
         padding: 8px 12px;
         text-align: center;
@@ -1105,7 +1119,14 @@ function showSlides(n) {
         color: #ffffff;
         background-color: #4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+        outline: none;margin-top:6px" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+        
+        
+        
+            <!-- <button class="btn btn-success" onclick="window.location.href='#';"> 
+			<i class="fa fa-shopping-cart"></i> 
+			Add to cart -->
+		    </button> 
         </div></div> 
         </li>
         </c:forEach>
@@ -1252,11 +1273,6 @@ Message *</div>
 </div>
 </div>
 </div>
-  
-  
- 
- 
-    
 
  <script>
 function myFunction() {
@@ -1301,8 +1317,22 @@ window.onclick = function(event) {
 }
 </script>
 
+    <script> 
+	// Use find() function to extract the badge 
+	// count from '#group' container. 
+	$(document).ready(function() { 
+		$(".btn").click(function() { 
+			var val = parseInt($('#group').find('.badge').text()); 
 
-  
+			// Check for the button clicked 
+			if ($(this).hasClass('btn-danger')) { 
+				$('#group').find('.badge').text(val - 1); 
+			} else if ($(this).hasClass('btn-success')) { 
+				$('#group').find('.badge').text(val + 1); 
+			} 
+		}); 
+	}); 
+  </script> 
   </body>
   </html>
   

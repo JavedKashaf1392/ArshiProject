@@ -1,7 +1,6 @@
 package com.veggiefridge.online.model;
+import java.io.Serializable;
 import java.util.Date;
-
-import javax.management.loading.PrivateClassLoader;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,76 +10,57 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name ="order")
-public class Order {
+@Table(name = "Orders")
+public class Order implements Serializable {
        
 	private static final long serialVersionUID = -3465813074586302847L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "orderid", length = 50)
-    private String orderId;
+    private Long orderId;
     
     @Column(name ="Order_Date", nullable = false)
 	private Date orderDate;
-    
-    @Column(name = "Amount", nullable = false)
-    private double totalAmount;
-    
-    private int customerid;
      
-    public String getSource() {
-		return Source;
-	}
+    @Column(name = "totalAmount", nullable = false)
+    private double totalAmount;
 
-	public void setSource(String source) {
-		Source = source;
-	}
 
-	private String Source= "WEB";
-    
-	public String getOrderid() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderid(String orderid) {
-		this.orderId = orderid;
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
+
 
 	public Date getOrderDate() {
 		return orderDate;
 	}
 
+
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 
-
-	public double getAmount() {
+	public double getTotalAmount() {
 		return totalAmount;
 	}
 
-	public void setAmount(double amount) {
-		this.totalAmount = amount;
+
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
-	public int getCustomerid() {
-		return customerid;
-	}
-
-	public void setCustomerid(int customerid) {
-		this.customerid = customerid;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-    
-    
-    
-    
-
-	
+   	
 }

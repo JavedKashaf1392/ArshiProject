@@ -1,6 +1,5 @@
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
-  
   
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%> 
@@ -8,6 +7,7 @@
  <html>
  <head>
  <meta charset="utf-8">
+ <link rel="stylesheet" href="style.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,16 +15,29 @@
  <title>Basket</title>
  
 <style>
+@charset "utf-8";
+
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600); */
+/*  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');  */
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');   
+
+/* html,
+html a {
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+} */
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color:#f1f1f1;
- /*  color: #666; */
- /*  font-size: 62.5%; */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  background-color: #fff;
+  color: #666;
+  font-size: 62.5%;
   margin: 0 auto;
 }
 
 a {
+  font-family: 'Montserrat', sans-serif;
   border: 0 none;
   outline: 0;
   text-decoration: none;
@@ -39,6 +52,7 @@ p {
 }
 
 h1 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
   font-weight: normal;
   margin: 0;
@@ -47,6 +61,7 @@ h1 {
 
 input,
 button {
+  font-family: 'Montserrat', sans-serif;
   border: 0 none;
   outline: 0 none;
 }
@@ -218,7 +233,7 @@ li.subtotal:before {
 }
 
 .product-image {
-  width: 30%;
+  width: 35%;
 }
 
 .product-details {
@@ -253,7 +268,7 @@ aside {
 
 .summary {
   background-color: white;
-/*   border: 1px solid green; */
+  border: 1px solid green;
   padding: 1rem;
   position: fixed;
   width: 250px;
@@ -360,7 +375,7 @@ aside {
     margin-bottom: 1rem;
   }
   .product-image {
-    width: 30%;
+    width: 40%;
   }
   .product-details {
     width: 60%;
@@ -414,42 +429,35 @@ aside {
 </head>
 
     <body>
-    <div style="background-color:white;margin-left:15%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
-    
+   
     <main>
-    <div class="basket">
-        <div class="basket-module" style="background-color:white;padding:20px 5px;">
-        <label for="promo-code" style="font-size:15px;">Enter a promotional code</label>
-        <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
-        <button class="promo-code-cta" style="background-color: green;">Apply</button>
-        </div>
-        
-        <div class="basket-labels" style="background-color:green;width:101%;">
+      <div class="basket">
+      <div class="basket-labels">
         <ul>
-          <li class="item item-heading" style="color:white;font-size:16px;font-family:serif;">Item</li>
-          <li class="price" style="color: white;font-size:16px;">Price</li>
-          <li class="quantity" style="color:white;font-size:16px;">Quantity</li>
-          <li class="subtotal" style="color: white;font-size:16px;">Subtotal</li>
+          <li class="item item-heading" style="color: green;font-family: 'Montserrat', sans-serif;">Item</li>
+          <li class="price" style="color: green;font-family: 'Montserrat', sans-serif;">Price</li>
+          <li class="quantity" style="color: green;font-family: 'Montserrat', sans-serif;">Quantity</li>
+          <li class="subtotal" style="color: green;font-family: 'Montserrat', sans-serif;">Subtotal</li>
          </ul>
         </div>
 <c:set var="s" value="0"></c:set>
-<c:forEach var="item" items="${sessionScope.cart}">
+<c:forEach var="item" items="${sessionScope.customer}">
 <c:set var="s" value="${s+ item.product.price-item.product.discount * item.product.price/100 * item.product.quantity}"></c:set>
-      <div class="basket-product" style="background-color:white; width:101%;">
+      <div class="basket-product">
       <div class="item">
 
 <div class="product-image">
 <spring:url value="/images" var="images"/>
 <img src="${images}/${item.product.imageName}" class="product-frame"/>
 </div>
-            <div class="product-details" style="background-color:white;">
+            <div class="product-details">
             <h1 style="color: red;"><strong><span class="item-quantity"></span></strong>${item.product.productName}</h1>
             <p><strong>${item.product.productName},${item.product.size}</strong></p>
             <p>Product Code - 232321939</p>
             </div>
             </div>
         
-        <div class="price" style="ba">${item.product.price-item.product.discount * item.product.price/100}</div>
+        <div class="price">${item.product.price-item.product.discount * item.product.price/100}</div>
         <div class="quantity">
         <input type="number" value="${item.product.quantity}" class="quantity-field">
         </div>
@@ -459,35 +467,13 @@ aside {
       </div>
       </div>
       </c:forEach>
-      <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:green;
-        border-radius: 6px;
-        outline: none;margin-top:6px">Continue Shopping</a>
-        </div>
-      
+     
      <!-- ......continue shopping button......-->
       <aside>
       <div class="summary">
-        <div class="summary-total-items" style="color:green;font-family: 'Montserrat', sans-serif;font-size:15px;"><span class="total-items"></span> Items in your cart</div>
-        <div class="summary-subtotal">
-          <div class="subtotal-title" style="color: green;font-size: 15px;">Subtotal</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">${s}</div>
-          <div class="summary-promo hide">
-            <div class="promo-title">Promotion</div>
-            <div class="promo-value final-value" id="basket-promo"></div>
-          </div>
-        </div>
-        <div class="summary-delivery">
-    <spring:url value="/images" var="images" />
-    <img src="${images}/paytm.png" width="30" height="70"/>
-    
-        </div>
+        <div class="summary-total-items" style="color:green;font-family: 'Montserrat', sans-serif;"><span class="total-items" ></span> Items in your cart</div>
         <div class="summary-total">
-          <div class="total-title" style="font-size: 15px;">Total</div>
+          <div class="total-title">Total</div>
           <div class="total-value final-value" id="basket-total">${s}</div>
         </div>
         <div class="summary-checkout">
@@ -496,10 +482,9 @@ aside {
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:green;
+        background-color: #4CAF50;
         border-radius: 6px;
         outline: none;margin-top:6px">CheckOut</a>
-         <%--  <button class="checkout-cta" onclick="${pageContext.request.contextPath }/cart/checkout">Go to Secure Checkout</button> --%>
         </div>
       </div>
     </aside>

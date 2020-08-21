@@ -33,8 +33,8 @@ table, td, th {
 table {
    margin-left:auto; 
    margin-right:auto;
-  border-collapse: collapse;
-  width: 70%; 
+   border-collapse: collapse;
+   width: 70%; 
 
 }
 

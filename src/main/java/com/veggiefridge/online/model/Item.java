@@ -1,5 +1,4 @@
 package com.veggiefridge.online.model;
-
 public class Item {
 	
 	private Product product;

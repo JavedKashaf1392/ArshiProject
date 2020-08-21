@@ -37,12 +37,21 @@ public class ShoppingCartController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/buy/{productid}", method = RequestMethod.GET)
-	public String buy(@PathVariable("productid") int productid, HttpSession session) {
+	public ModelAndView buy(@PathVariable("productid") int productid, HttpSession session,ModelAndView model,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation) {
 		Product product = new Product();
 		if (session.getAttribute("cart") == null) {
 			List<Item> cart = new ArrayList<Item>();
 			cart.add(new Item(productservice.getProduct(productid), 1));
+			
 			session.setAttribute("cart", cart);
+			    List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+				List<Product> listProduct = productservice.getAllProducts();
+				List<Customer> listCustomer = customerService.getAllCustomers();
+				model.addObject("listCustomer", listCustomer);
+				model.addObject("listkiosklocation",listkiosklocation);
+				model.addObject("listProduct", listProduct);
+				model.setViewName("registerdhome");
+				return model; 
 		} else {
 			List<Item> cart = (List<Item>) session.getAttribute("cart");
 			  // using method isExisting here
@@ -54,8 +63,18 @@ public class ShoppingCartController {
 			    cart.get(index).setQuantity(quantity);
 			   }
 			   session.setAttribute("cart", cart);
+			    List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+				List<Product> listProduct = productservice.getAllProducts();
+				List<Customer> listCustomer = customerService.getAllCustomers();
+				model.addObject("listCustomer", listCustomer);
+				model.addObject("listkiosklocation",listkiosklocation);
+				model.addObject("listProduct", listProduct);
+				model.setViewName("registerdhome");
+				 
 			  }
-			  return "cart"; // page name
+		      
+		    model.setViewName("registerdhome");
+		return model;  // page name
 			 }
 
 			 @SuppressWarnings("unchecked")
@@ -96,7 +115,7 @@ public class ShoppingCartController {
 				}
 			 
 			 
-			//checkout
+			    //checkout
 				@RequestMapping(value = "/checkout")
 				public ModelAndView checkout(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult resultcustomer) throws IOException {
 					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
@@ -108,7 +127,4 @@ public class ShoppingCartController {
 					return model;
 				}
 				
-	
-	
-
 }

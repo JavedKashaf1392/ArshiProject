@@ -119,6 +119,38 @@ public class HomeController {
 			return model;
 		}
 	
+		
+		 //myCart
+		@RequestMapping(value = "/cart")
+		public ModelAndView Cart(ModelAndView model) {
+			model.setViewName("cart");
+			return model;
+		}
+	
+		
+		
+		 //myorder
+		@RequestMapping(value = "/myorder")
+		public ModelAndView myOrder(ModelAndView model) {
+			model.setViewName("myorder");
+			return model;
+		}
+		
+		//myorder
+				@RequestMapping(value = "/orderinfo")
+				public ModelAndView orderInfo(ModelAndView model) {
+					model.setViewName("orderinfo");
+					return model;
+				}
+		
+				
+				//currentorder
+				@RequestMapping(value = "/currentorder")
+				public ModelAndView currentOrder(ModelAndView model) {
+					model.setViewName("/CurrentOrder");
+					return model;
+				}
+	
 	
 	}	
 
