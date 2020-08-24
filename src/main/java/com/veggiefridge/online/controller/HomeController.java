@@ -142,12 +142,28 @@ public class HomeController {
 					model.setViewName("orderinfo");
 					return model;
 				}
+				
+				
+				//wallet
+				@RequestMapping(value ="/wallet")
+				public ModelAndView wallet(ModelAndView model) {
+					model.setViewName("wallet");
+					return model;
+				}
 		
 				
 				//currentorder
 				@RequestMapping(value = "/currentorder")
 				public ModelAndView currentOrder(ModelAndView model) {
 					model.setViewName("/CurrentOrder");
+					return model;
+				}
+	
+
+				//currentorder
+				@RequestMapping(value = "/chooseanamount")
+				public ModelAndView chooseAnAmount(ModelAndView model) {
+					model.setViewName("/chooseanamount");
 					return model;
 				}
 	

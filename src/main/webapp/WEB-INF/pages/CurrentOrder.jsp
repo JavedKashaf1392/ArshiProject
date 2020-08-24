@@ -68,7 +68,7 @@ background-color:#f1f1f1;
         color: #ffffff;
         background-color: #4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px">Order History</a>
+        outline: none;margin-top:6px">Deleivered</a>
         </div><br>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
 

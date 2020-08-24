@@ -16,7 +16,7 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "Orders")
 public class Order implements Serializable {
        
-	private static final long serialVersionUID = -3465813074586302847L;
+   private static final long serialVersionUID = -3465813074586302847L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +25,9 @@ public class Order implements Serializable {
     
     @Column(name ="Order_Date", nullable = false)
 	private Date orderDate;
+    
+    @Column(name ="Order_Status", nullable = false)
+	private String orderStatus;
      
     @Column(name = "totalAmount", nullable = false)
     private double totalAmount;

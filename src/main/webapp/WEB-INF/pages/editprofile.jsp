@@ -100,14 +100,22 @@ input[type=submit]:hover {
 </head>
 <body>
 
-<div style="background-color:white;margin-left:25%;margin-right:15%;width:45%;position:absolute;height:150%;text-align: center;">
+<div style="background-color:white;margin-left:25%;margin-right:15%;width:45%;position:absolute;height:130%;text-align: center;">
+  <a href="${pageContext.request.contextPath}/login/logout" style="display: inline-block;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:green;
+        border-radius: 6px;
+        outline: none;margin-left:40%;margin-top:10px;">Log Out</a>
 <spring:url value="/images" var="images" />
 <img src="${images}/logo.jpg" width="150" height="120" style="float: left; margin-top:2%;"/>
 <h2 style="color:green;margin-right:50%;">Arshi Qureshi</h2>
 <h4 style="margin-right:43%;">Email Id: Arshi@gamil.com</h4>
-<h5 style="margin-right:52%;">Last login 2 hours ago</h5>
-<hr style="color:light gray;">
-<h3 style="float:left;color:gray;">Update Your Profile</h3>
+
+
+<h3 style="float:left;color:green;">Update Your Profile</h3>
 
 <div class="container">
   <form action="/action_page.php">

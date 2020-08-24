@@ -415,7 +415,7 @@ aside {
 
     <body>
     <div style="background-color:white;margin-left:15%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
-    
+       
     <main>
     <div class="basket">
         <div class="basket-module" style="background-color:white;padding:20px 5px;">
@@ -459,6 +459,8 @@ aside {
       </div>
       </div>
       </c:forEach>
+      
+     
       <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
@@ -467,7 +469,10 @@ aside {
         background-color:green;
         border-radius: 6px;
         outline: none;margin-top:6px">Continue Shopping</a>
-        </div>
+     
+      </div>
+   
+     
       
      <!-- ......continue shopping button......-->
       <aside>

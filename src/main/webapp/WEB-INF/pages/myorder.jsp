@@ -5,6 +5,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <style>
 body{
 background-color:#f1f1f1;
@@ -70,7 +71,7 @@ background-color:#f1f1f1;
         color: #ffffff;
         background-color: #4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px">Current Order</a>
+        outline: none;margin-top:6px">Pendings</a>
         </div><br>
         
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">

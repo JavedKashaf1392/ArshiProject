@@ -1,6 +1,7 @@
 package com.veggiefridge.online.dao;
 
 import java.util.List;
+import javax.persistence.Query;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,7 +15,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	@Override
 	public void addProduct(Product product) {
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
@@ -46,6 +47,12 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public Product getProduct(int productid) {
 		
-		 return (Product) sessionFactory.getCurrentSession().get( Product.class, productid);
+		 return (Product) sessionFactory.getCurrentSession().get(Product.class, productid);
 	}
+	
+	
+	 
+	
+	
+	
 }

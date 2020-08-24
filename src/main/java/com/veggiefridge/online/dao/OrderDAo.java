@@ -10,8 +10,6 @@ public interface OrderDAo {
 	 public void saveOrder(Item item);
 	 
 	 public OrderDetails getOrderInfo(String orderId);
-	    
-	 public List<OrderDetails> listOrderDetailInfos(String orderId);
-	 
 
+	 public List<OrderDetails> listOrderDetailInfos(String orderId);
 }
