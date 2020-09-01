@@ -67,12 +67,12 @@ input[type=text],select, textarea {
         
         <tr>
         <td>KioskName</td>
-        <td>
-        <spring:bind path="kiosk.kioskName">
+   <td>
+   <spring:bind path="kiosk.kioskName">
    <input type="text" name="${status.expression}" value="${status.value}"><br>
    <form:errors path="firstName" cssClass="error" />
-        </spring:bind>
-        </td>
+   </spring:bind>
+   </td>
         </tr>
          
             <tr>

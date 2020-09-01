@@ -19,10 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
-import com.veggiefridge.online.model.User;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
-import com.veggiefridge.online.service.LoginService;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
@@ -35,9 +33,6 @@ public class LoginController {
 	
 	@Autowired
 	private CustomerService custservice;
-	
-	@Autowired
-	private LoginService loginservice;
 	
 	@Autowired
 	private ProductService productService;
@@ -61,10 +56,12 @@ public class LoginController {
 			model.setViewName("newregistration");
 			return model;
 		}
+		
+		
 		//save and update customer
 		@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
 		public ModelAndView saveCustomer(@ModelAttribute("customer")Customer customer,BindingResult  resultcustomer,HttpSession session,ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
-			  if(customer.getCustomerid()==0) { // if customer id is 0 then creating the
+	    if(customer.getCustomerid()==0) { // if customer id is 0 then creating the
 				// customer other updating the customer 
 				custservice.addCustomer(customer);
 				session.setAttribute("customer", customer);
@@ -110,7 +107,6 @@ public class LoginController {
 			 return mav;	 
 		 }
           		
-		
 		    //login customer from database
 		      @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
 			  public ModelAndView loginCustomer(ModelAndView model,@ModelAttribute("customer") Customer customer,BindingResult  resultcustomer,HttpSession session){
@@ -118,10 +114,11 @@ public class LoginController {
 		    	if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
 			    customer=custservice.loginCustomer(customer);
 			    
-			   	
 			if(customer!=null){
 		    session.setAttribute("customer", customer);
 		    model.addObject("firstname", customer.getFirstName());
+		    model.addObject("kioskLocation", customer.getLocation());
+		    model.addObject("city", customer.getCities());
 		    List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		    List<Product> listProduct = productService.getAllProducts();
 		    List<Customer> listCustomer = custservice.getAllCustomers();

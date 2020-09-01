@@ -1,14 +1,10 @@
 package com.veggiefridge.online.service;
 import java.util.List;
-import com.veggiefridge.online.model.Item;
-
+import com.veggiefridge.online.model.CartLine;
 public interface ShoppingCartService {
-
-    public List<Item>getAllItem();
 	
-	public void addItem(Item item);
+	public List<CartLine> getCartLine();
 	
-	public Item getItem(int id);
-	
-	
+	public String addCartLine(int productid);
+		
 }

@@ -1,6 +1,6 @@
 
-   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-   pageEncoding="ISO-8859-1" isELIgnored="false"%>
+  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -8,19 +8,42 @@
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
- 
      <head> 
+     
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+   
+   
+     
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+   <link href="css/shop-homepage.css" rel="stylesheet">
+     
      <meta charset="utf-8">
 	 <script src= 
 "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
 	</script> 
+	
 	<script src= 
 "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> 
 	</script> 
 	<script src= 
 "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"> 
 	</script>    
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home screen of VeggieFridge</title>
@@ -203,20 +226,15 @@ input[type=submit]:hover {
 }
    </style>
    </head>
-  
    <style>  
+
 .footer{
-    margin-left:10%;
+    margin-left:13%;
     margin-right:13%;
     position:relative;
-   /*  padding: 20px;
-    padding: 20px; */
-    width: 78%;
-    height: 500px;
-    margin-top:px;
+    width:74%;
+    height:500px;
     background: #4CAF50; 
-    /* border:1px solid black;  */
-    
 }
 .head{
     margin-left:10%;
@@ -237,7 +255,7 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:3840px;
+     height:3480px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -365,7 +383,7 @@ color: black;
 }
 /* ................... */
 
-   @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
  
  *{
     margin: 0;
@@ -421,13 +439,13 @@ color: black;
 .center .content .social a span{
     height: 40px;
     width: 40px;
-    /*  background: #1a1a1a;  */
-    background: white;
     line-height: 40px;
     text-align: center;
     font-size: 18px;
     border-radius: 50px;
     transition: 0.3s;
+    background-color:white;
+    color: white;
 }
 /* ...Left Content.... */
 .center .content .social a span:hover{
@@ -435,8 +453,8 @@ color: black;
 }
 .center .content .fas{
     font-size: 1.4375rem;
-   /*  background: #1a1a1a; */
-    background: white;
+    /* background: #1a1a1a; */
+    background-color:white;
     height: 45px;
     width: 45px;
     line-height: 45px;
@@ -803,7 +821,6 @@ color: black;
   box-sizing: border-box;
   transition: 0.5s;
   transition-property: background;
-  
 }
 
 .sidebar a:hover{
@@ -866,10 +883,10 @@ label #sidebar_btn:hover{
   border-radius: 4px;
  
 }
- </style>
-  <body>
+</style>
+<body>
  <!--  header -->
-
+    <div>
     <div class="header">
     <div class="logo">
     <spring:url value="/images" var="images" />
@@ -881,13 +898,19 @@ label #sidebar_btn:hover{
   
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
-  <span class="badge">0</span>
+  <div class="badge" id="output">1</div>
+  
+  <!-- <div id="c">0
+  </div>
+   -->
+  
+  
   </a>  
   </div>
   
   <div id="id06" class="cartpopup">
   <div class="cart-content">
-     Yout cart is Empty
+  Yout cart is Empty
   </div>
   </div>
    
@@ -903,11 +926,9 @@ label #sidebar_btn:hover{
   
   
         
-     <div class="right" style="float: right;">
-     <span  class='fas fa-user-circle' style="color:green;"></span> 
-     Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
-        
-        
+      <div class="right" style="float: right;">
+      <span  class='fas fa-user-circle' style="color:green;"></span> 
+      Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
       <div id="id05" class="menu">
       <div class="sidebar">
       <center>
@@ -917,7 +938,7 @@ label #sidebar_btn:hover{
       <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i> <span>My Account</span></a>
       <a href="${pageContext.request.contextPath }/home/currentorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
-      <a href="#"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
+      <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
       <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
@@ -925,10 +946,8 @@ label #sidebar_btn:hover{
       </div>
        
 
-       <!-- Trigger/Open The Modal -->
-
  <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
+ <a href="#" id="myBtn" style="text-decoration: none;">${customer.location},${customer.cities}</a> 
  |
 <span class='fas fa-sign-out-alt' style="color:green;"></span> 
 <a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
@@ -1021,10 +1040,8 @@ window.onclick = function(event) {
       </div>
       </div>
       </div> 
-      
-                      
+      </div>
  <!--   close header  -->
- 
  <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
   <div class="mySlides fade"> -->
@@ -1074,6 +1091,10 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
   </script> --%>
+  <hr style="margin-left: 12%;margin-right: 12%;">
+  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
+  <hr style="margin-left: 12%;margin-right: 12%;">
+ 
   <div class="carousel">
   <div class="container">
   <ul id="myUL">
@@ -1090,7 +1111,6 @@ function showSlides(n) {
   </div>
             <div class="product-meta">
             <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
-           <%--  <h4 style="color: black;">${product.productName}</h4> --%>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
             </div>
@@ -1104,68 +1124,67 @@ function showSlides(n) {
   position: relative;
    color:black;">MRP</span>
  
-                   <span class="old-price"> Rs ${product.price}</span>
+                   <span class="old-price">Rs ${product.price}</span>
                     Rs ${product.price-product.discount * product.price/100}
                      </span>
-                </div>
+                     </div>
                 <div class="right">
          
-        <%--  "${pageContext.request.contextPath}/cart/buy/${product.productid}"
-         --%>
-        <a href="${pageContext.request.contextPath}/cart/buy/${product.productid}" style="display: inline-block;
-        padding: 8px 12px;
+        <%-- "${pageContext.request.contextPath}/cart/buy/${product.productid}"
+         --%><!-- add/{productid}/product -->
+        
+        <a href="${pageContext.request.contextPath}/cart/buy/${product.productid}" style="display:inline-block;
+        padding: 8px 18px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color: #4CAF50;
+        background-color:#4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+        outline: none;margin-top:6px" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a> 
         
         
-        
-            <!-- <button class="btn btn-success" onclick="window.location.href='#';"> 
+         
+        <!-- class="btn btn-success" -->
+           
+         <%--  onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
+          --%>
+            <%-- <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
 			<i class="fa fa-shopping-cart"></i> 
-			Add to cart -->
-		    </button> 
+			Add to cart
+		    </button>  --%>
         </div></div> 
         </li>
         </c:forEach>
-        
-      
-   <div class="second">
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
-  </div><br><br>
-  
+  <hr style="margin-left: 12%;margin-right: 12%;">
+  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
+  <hr style="margin-left:4%;margin-right:1%;">
+       
+   <table style="border-spacing:28px;">
    <th>
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="300" height="300" />
+   <img src="${images}/icici.jpg" width="275" height="280" />
    </a>
    </th>
-  
-   
-   
+
    <th>
     <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg" width="300" height="300"/>
+   <img src="${images}/induslandbank.jpg" width="275" height="280"/>
     </a>
    </th>
-  
-   
-  
+ 
    <th>
     <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg" width="300" height="300"/>
+   <img src="${images}/paytm.jpg" width="275" height="280"/>
    </a>
    </th>
    
    <th>
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg" width="300" height="300"/>
+   <img src="${images}/standard.jpg" width="275" height="280"/>
    </a>
    </th>
    </tr>  
@@ -1173,7 +1192,7 @@ function showSlides(n) {
   <br>
   
   
-<br><br>
+    <br><br>
     </ul>
    </div>
     </div>
@@ -1183,24 +1202,32 @@ function showSlides(n) {
       <div class="left box">
 
 <h2>VeggieFridge</h2>
-<div class="content"> 
-                            <a href="#">About Us</a><br><br>
-                            <a  href="#">Privacy Policy</a><br><br>
-                            <a href="#">Help</a><br><br>
-                            <a href="#">Terms And Condition</a><br><br>
-                            <a href="#">Carriers</a><br><br>
-                            <a href="#">Affiliate</a><br><br>
-                            <a href="#">In News</a><br><br>
-                            <a href="#">vf instant</a><br><br>
-                            <a href="#">vf daily</a><br><br>
+<div class="content" style="color: white;"> 
+                            <a href="#" style="color: white;">About Us</a><br><br>
+                            <a href="#"style="color: white;">Privacy Policy</a><br><br>
+                            <a href="#"style="color: white;">Help</a><br><br>
+                            <a href="#"style="color: white;">Terms And Condition</a><br><br>
+                            <a href="#"style="color: white;">Carriers</a><br><br>
+                            <a href="#" style="color: white;">Affiliate</a><br><br>
+                            <a href="#"style="color: white;">In News</a><br><br>
+                            <a href="#"style="color: white;">vf instant</a><br><br>
+                            <a href="#"style="color: white;">vf daily</a><br><br>
 </div>
 </div>
 <div class="center box">
                     <h2>
 Address</h2>
-<div class="content">
-                        <div class="place">
-                            <span class="fas fa-map-marker-alt"></span>
+<div class="content" >
+                        <div class="place" >
+    <span class="fas fa-map-marker-alt" style="height:40px;
+    width: 40px;
+    line-height:40px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50px;
+    transition: 0.3s;
+    background-color:white;
+    color:black";></span>
                             <span class="text">Birendranagar, Surkhet</span>
                         </div>
 <div class="phone">
@@ -1266,7 +1293,8 @@ Message *</div>
                     <div class="bottom">
                     <center>
                     <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
-                    <span class="far fa-copyright"></span> 2020 All rights reserved.
+                    <span class="far fa-copyright"></span>
+                    <span> 2020 All rights reserved.</span>
                     </center>
                     </div>
 
@@ -1332,7 +1360,16 @@ window.onclick = function(event) {
 			} 
 		}); 
 	}); 
-  </script> 
-  </body>
-  </html>
+</script> 
+
+<script>
+$('#b').click(function() {
+    $('#c').html(function(i, val) { return val*1+1 });
+});
+</script>
+   
+   
+   
+</body>
+</html>
   

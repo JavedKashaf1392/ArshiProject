@@ -6,6 +6,14 @@
     <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
     <head>
     <style>
+    body{
+background-color:#f1f1f1;
+}
+
+
+* {
+  box-sizing: border-box;
+}
     
     .splash{
    text-align: center;
@@ -14,8 +22,8 @@
    font-family: 'Montserrat', sans-serif;
    background-color: #fff;
    border-radius: 10px;
-   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
+  /*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22); */
 	position: relative;
 	overflow: hidden;
 	width: 450px;

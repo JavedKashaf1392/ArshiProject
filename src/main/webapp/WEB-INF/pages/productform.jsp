@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
       
 <html>
-   <head>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
@@ -13,7 +15,7 @@
   box-sizing: border-box;
 }
 
-input[type=text], select, textarea {
+input[type=text],select, textarea {
   width: 120%;
   padding: 12px;
   margin-left:40px;
@@ -39,9 +41,6 @@ label {
   align:center;
   margin-left:20px;
 }
-
-
-
 input[type=submit]:hover {
   background-color: #45a049;
 } */

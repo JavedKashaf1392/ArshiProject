@@ -8,7 +8,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%> 
  
  
- <html>
+<html>
 <head>
 
 <style type="text/css">
@@ -79,10 +79,6 @@ div.a {
           border-radius: 12px;} /* Edit */ 
 .button4 {background-color: #4CAF50;
           border-radius: 12px;} /* Search */ 
-
-
-
-
 </head>
 </style>
 <body>
@@ -100,7 +96,7 @@ function checkCheckBoxes(theForm) {
     }
 }
 
-</script> 
+  </script> 
 
   <div><h2><p style="color:green;">Customer Details</p></h2></div>
 
@@ -120,17 +116,17 @@ function checkCheckBoxes(theForm) {
 					
    
    </tr>
+   
    <c:forEach var="customer" items="${listCustomer}">
                     <tr>
                     <td align="center"><input type="checkbox" class="checkboxId" name="customerid" value="${customer.customerid}"></td>
                     <td>${customer.firstName}</td>
                     <td>${customer.lastName}</td>
                     <td>${customer.mobile}</td>
-					<td>${customer.city}</td>
-					<td>${customer.kioskLocation}</td>
+					<td>${customer.cities}</td>
+					<td>${customer.location}</td>
 				    <td>${customer.email}</td>
                     </tr>
-   
                    </c:forEach>
                    </table>
   

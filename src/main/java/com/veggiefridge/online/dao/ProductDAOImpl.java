@@ -50,9 +50,4 @@ public class ProductDAOImpl implements ProductDAO {
 		 return (Product) sessionFactory.getCurrentSession().get(Product.class, productid);
 	}
 	
-	
-	 
-	
-	
-	
 }

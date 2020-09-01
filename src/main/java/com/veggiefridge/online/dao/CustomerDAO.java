@@ -1,9 +1,8 @@
 package com.veggiefridge.online.dao;
 import java.util.List;
 import com.veggiefridge.online.model.Customer;
-import com.veggiefridge.online.model.User;
 
-public interface CustomerDAO {
+    public interface CustomerDAO {
 
     public List<Customer> getAllCustomers();
 

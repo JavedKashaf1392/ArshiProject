@@ -83,7 +83,5 @@ public class Kiosk implements Serializable {
 		this.country = country;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	
 }

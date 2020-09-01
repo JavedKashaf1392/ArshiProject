@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
         <style>
      
-     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');   
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');   
 body {font-family: Arial, Helvetica, sans-serif;}
 {
 box-sizing: border-box;
@@ -163,7 +163,6 @@ input[type=submit]:hover {
   padding-top: 60px;
   box-shadow: 1px 2px 5px 3px white;
 }
-
 /* Modal Content/Box */
 .modal-content {
   
@@ -971,10 +970,10 @@ color: black;
   cursor: pointer;
   width: 100%; border-radius: 5px;">Login</button>
   
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-       </div>
+     <label>
+     <input type="checkbox" checked="checked" name="remember"> Remember me
+     </label>
+     </div>
 
    <div class="login" style="background-color:#f1f1f1;height:30px;">
    <a href="${pageContext.request.contextPath }/login/logout" style="
@@ -1375,13 +1374,9 @@ Message *</div>
 </div>
 </div>
 </div>
-
-
 <!-- .......................................signup....................... -->
- 
- 
- <div class="register" id="id02">
- <div class="register-content">
+<div class="register" id="id02">
+<div class="register-content">
 <form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/login/saveCustomer" modelAttribute="customer" >
 
       <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>

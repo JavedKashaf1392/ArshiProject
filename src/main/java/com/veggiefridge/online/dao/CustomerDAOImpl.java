@@ -10,7 +10,6 @@ import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.veggiefridge.online.model.Customer;
-import com.veggiefridge.online.model.User;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
@@ -86,6 +85,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		    tx.commit();
 		    session.close();
 		}
+		
 		catch (Exception e) {
 			tx.rollback();
 			session.close();

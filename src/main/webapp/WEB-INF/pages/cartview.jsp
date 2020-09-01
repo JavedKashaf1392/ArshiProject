@@ -410,7 +410,7 @@ aside{
         <button class="promo-code-cta" style="background-color: green;">Apply</button>
         </div>
         
-          <div class="basket-labels" style="background-color:#4CAF50;width:101%;padding: 0px 7px;">
+          <div class="basket-labels" style="background-color:green;width:101%;padding: 0px 7px;">
           <ul>
           <li class="item item-heading" style="color:white;font-size:16px;">Item</li>
           <li class="price" style="color: white;font-size:16px;">Price</li>
@@ -420,25 +420,25 @@ aside{
          </div>
 
 <c:set var="s" value="0"></c:set><%-- ${sessionScope.cart} --%>
-<c:forEach var="item" items="${listItem}">
-<c:set var="s" value="${s+ item.product.price-item.product.discount * item.product.price/100 * item.product.quantity}"></c:set>
+<c:forEach var="cartline" items="${cartlines}">
+<c:set var="s" value="${s+ cartline.product.price-cartline.product.discount * cartline.product.price/100 * cartline.product.quantity}"></c:set>
       <div class="basket-product" style="background-color:white; width:101%;padding:15px 7px;">
       <div class="item">
 
 <div class="product-image">
 <spring:url value="/images" var="images"/>
-<img src="${images}/${item.product.imageName}" class="product-frame"/>
+<img src="${images}/${cartline.product.imageName}"/>
 </div>
             <div class="product-details" style="background-color:white;">
-            <h1 style="color: red;"><strong></span></strong>${item.product.productName}</h1><!-- <span class="item-quantity"> -->
-            <p><strong>${item.product.productName},${item.product.size}</strong></p>
-            <p>Product Id -${item.product.productid} </p>
+            <h1 style="color: red;"><strong></span></strong>${cartline.product.productName}</h1><!-- <span class="item-quantity"> -->
+            <p><strong>${cart.product.productName},${cart.product.size}</strong></p>
+            <p>Product Id -${cart.product.productid} </p>
             </div>
             </div>
         
-        <div class="price" style="ba">${item.product.price-item.product.discount * item.product.price/100}</div>
+        <div class="price" style="ba">${cartline.product.price-cartline.product.discount * cartline.product.price/100}</div>
         <div class="quantity">
-        <input type="number" value="${item.product.quantity}" class="quantity-field">
+        <input type="number" value="${cartline.product.quantity}" class="quantity-field">
         </div>
         
 <%-- <div class="quantity">
@@ -447,10 +447,10 @@ aside{
 <input type="button" onclick="incrementValue()" value="+" />
 </div> --%>
         
-      <div class="subtotal">${item.product.price-item.product.discount * item.product.price/100}</div>
+      <div class="subtotal">${cartline.product.price-cartline.product.discount *cartline.product.price/100}</div>
       
       <div class="remove">
-      <a href="${pageContext.request.contextPath}/cart/delete/${item.product.productid}"><i class="fa fa-trash" style="color:green;padding:15px 15 px;margin-left:10" title="remove product"></i></a>
+      <a href="${pageContext.request.contextPath}/cart/delete/${cartline.product.productid}"><i class="fa fa-trash" style="color:green;padding:15px 15 px;margin-left:10" title="remove product"></i></a>
       </div>
       </div>
       </c:forEach>
@@ -459,7 +459,7 @@ aside{
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:#4CAF50;
+        background-color:green;
         border-radius: 6px;
         outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
      
@@ -496,17 +496,13 @@ aside{
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:#4CAF50;
+        background-color:green;
         border-radius: 6px;
         outline: none;margin-top:6px;font-size:10px;">CheckOut</a>
         </div>
       </div>
     </aside>
   </main>
-  <!-- Footer comes here -->
-  <jsp:include page="footer.jsp"/>
-  
-  
   <script>
  /* Set values + misc */
 var promoCode;
@@ -658,4 +654,4 @@ function decrementValue()
 </script>
 
 </body>
-</html>
+</html>>

@@ -10,8 +10,6 @@
 body{
 background-color:#f1f1f1;
 }
-
-
 * {
   box-sizing: border-box;
 }
@@ -61,18 +59,31 @@ background-color:#f1f1f1;
 <body>
 
 <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;">My Orders</h2></div><br>
-
-        
-        <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;">
+<table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
+<th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
+<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 <a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
+        padding: 10px 30px;
+        text-align:center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px">Pendings</a>
+       </th>
+
+<th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
+<a href="${pageContext.request.contextPath}/home/myorder" style="display: inline-block;
+        padding: 10px 30px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color: #4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px">Pendings</a>
-        </div><br>
+        outline: none;margin-top:6px">Delivered</a>
+      
+       </th> 
+       </table>
         
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
 
@@ -84,32 +95,32 @@ background-color:#f1f1f1;
     <th style="width:%;color:white;">Total Amount </th>
     </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13788</a></td>
+    <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
     <td>03-07-2020</td>
     <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
     <td>Rs 12000</td>
   </tr>
     <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13788</a></td>
+    <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
     <td>03-07-2020</td>
       <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
     <td>Rs 12000</td>
      
   </tr>
     <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13788</a></td>
+   <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
     <td>03-07-2020</td>
       <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
     <td>Rs 12000</td>
   </tr>
     <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13788</a></td>
+   <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
     <td>03-07-2020</td>
       <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
     <td>Rs 12000</td>
   </tr>
     <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13788</a></td>
+   <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
     <td>03-07-2020</td>
       <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
     <td>Rs 12000</td>

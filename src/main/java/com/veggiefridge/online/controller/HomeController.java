@@ -38,13 +38,14 @@ public class HomeController {
  
    
 	//list Product
-	@RequestMapping(value = "/viewhome")
-	public ModelAndView listProduct(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult resultcustomer) throws IOException {
+	@RequestMapping(value="/viewhome")
+	public ModelAndView listProduct(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer) throws IOException{
+		List<Customer> listCustomer = customerservice.getAllCustomers();
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
 		List<Product> listProduct = productService.getAllProducts();
 		model.addObject("listkiosklocation",listkiosklocation);
-	    model.addObject("customer", new Customer()); 
 		model.addObject("listProduct", listProduct);
+		model.addObject("listCustomer ", listCustomer);
 		model.setViewName("home");
 		return model;
 	}
@@ -143,11 +144,28 @@ public class HomeController {
 					return model;
 				}
 				
+				//myorder
+				@RequestMapping(value = "/repeatorder")
+				public ModelAndView repeatOrder(ModelAndView model) {
+					model.setViewName("repeatOrder");
+					return model;
+				}
+				
+				
 				
 				//wallet
 				@RequestMapping(value ="/wallet")
 				public ModelAndView wallet(ModelAndView model) {
 					model.setViewName("wallet");
+					return model;
+				}
+		
+				
+
+				//wallet
+				@RequestMapping(value ="/footer")
+				public ModelAndView footer(ModelAndView model) {
+					model.setViewName("footer");
 					return model;
 				}
 		
@@ -164,6 +182,29 @@ public class HomeController {
 				@RequestMapping(value = "/chooseanamount")
 				public ModelAndView chooseAnAmount(ModelAndView model) {
 					model.setViewName("/chooseanamount");
+					return model;
+				}
+				
+				
+				//currentorder
+				@RequestMapping(value = "/slider")
+				public ModelAndView slider(ModelAndView model) {
+					model.setViewName("/sliderjsp");
+					return model;
+				}
+	
+				
+				
+				//home
+				@RequestMapping(value = "/homepage")
+				public ModelAndView homePage(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult resultcustomer){
+					List<Customer> listCustomer = customerservice.getAllCustomers();
+					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
+					List<Product> listProduct = productService.getAllProducts();
+					model.addObject("listkiosklocation",listkiosklocation);
+				    model.addObject("listCustomer", listCustomer); 
+					model.addObject("listProduct", listProduct);
+					model.setViewName("/cartview");
 					return model;
 				}
 	

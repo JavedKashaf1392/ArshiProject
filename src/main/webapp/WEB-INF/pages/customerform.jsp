@@ -123,14 +123,14 @@ h2 {
             
             <tr>
                 <td>City </td>
-                <td><form:input path="city" /></td>
-                <td><form:errors path="city"  cssClass="error"/></td> 
+                <td><form:input path="cities" /></td>
+                <td><form:errors path="cities"  cssClass="error"/></td> 
             </tr>
             
             <tr>
                 <td>KIOSK Location </td>
-                <td><form:input path="kioskLocation" /></td>
-                <td><form:errors path="kioskLocation"  cssClass="error"/></td> 
+                <td><form:input path="location" /></td>
+                <td><form:errors path="location"  cssClass="error"/></td> 
             </tr>
             
             <tr>

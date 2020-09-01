@@ -193,7 +193,7 @@ input[type=submit]:hover {
         border-radius: 6px;
         outline: none;margin-top:10px;margin-right:70%;">Save Changes</a>
 </div>
-
+ 
 
 
 </div><br>
@@ -204,8 +204,7 @@ input[type=submit]:hover {
 <a href="#" style="text-decoration: none;color:green;font-size:20px;"><i class='fas fa-user-friends' style='color:green;'></i>     Membership</a><br><br>
 <a href="${pageContext.request.contextPath}/home/editProfile" style="text-decoration: none;color:green;font-size:20px;"><i class="fa fa-edit" style='color:green;'></i>     EditProfile</a><br><br>
 </div>
- 
-</script>
+  
 
 </body>
 </html>

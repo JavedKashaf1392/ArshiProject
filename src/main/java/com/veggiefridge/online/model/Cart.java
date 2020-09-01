@@ -1,37 +1,38 @@
 package com.veggiefridge.online.model;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-    @Entity
-    public class Cart{
-    
-    private static final long serialVersionUID = 1L;
-    
-    
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Entity
+@Table(name ="cart")
+public class Cart implements Serializable {
+
+    private static final long serialVersionUID = -3465813074586302847L;
+     
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-    @Column(name = "grandtotal")
+    
+	@Column(name = "grandtotal") 
 	private double grandTotal;
-    
-    @Column(name = "cart_lines")
+	 
+	@Column(name = "cartlines") 
 	private int cartLines;
-    
-    @OneToOne
-	private Customer customer;
+	 
+	@OneToOne
+    private Customer customer;
 
-    
 	public int getId() {
 		return id;
 	}
-
-	public void setId(int id) {
-		this.id = id;
+    
+	public void setId(int cartId) {
+		this.id =id;
 	}
 
 	public double getGrandTotal() {
@@ -58,17 +59,9 @@ import javax.persistence.OneToOne;
 		this.customer = customer;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@Override
+	public String toString() {
+		return "cart [id=" + id + ", grandTotal=" + grandTotal + ", cartLines=" + cartLines + ", customer=" + customer
+				+ "]";
 	}
-    
-    
-	
-
-    
-    
-    	
-    	
-   
-	
 }

@@ -1,11 +1,11 @@
 package com.veggiefridge.online.model;
-
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -33,12 +33,12 @@ public class Customer implements Serializable {
 	private long mobile;
 	
 	
-	@Column(name="city")
-	private String city;
+	@Column(name="cities")
+	private String cities;
 	
 	
-	@Column(name="kioskLocation")
-	private String kioskLocation;
+	@Column(name="location")
+	private String location;
 	
 	
 	@Column(name="email")
@@ -51,6 +51,17 @@ public class Customer implements Serializable {
 	
 	@Column(name="confirmPassword")
 	private String confirmPassword;
+	
+	@OneToOne
+	private Cart cart;
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public int getCustomerid() {
 		return customerid;
@@ -84,20 +95,20 @@ public class Customer implements Serializable {
 		this.mobile = mobile;
 	}
 
-	public String getCity() {
-		return city;
+	public String getCities() {
+		return cities;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setCities(String cities) {
+		this.cities = cities;
 	}
 
-	public String getKioskLocation() {
-		return kioskLocation;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setKioskLocation(String kioskLocation) {
-		this.kioskLocation = kioskLocation;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	public String getEmail() {

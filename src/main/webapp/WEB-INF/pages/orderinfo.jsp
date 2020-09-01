@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-     <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,26 +63,26 @@ background-color:#f1f1f1;
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
 
-<table id="myTable">
-  <tr class="header">
+    <table id="myTable">
+    <tr class="header">
     <th style="width:%;color:white;">Product Id</th>
-     <th style="color: white;">Product Image</th>
+    <th style="color: white;">Product Image</th>
     <th style="width:%;color:white;">Product Name</th>
     <th style="width:%;color:white;">Quantity</th>
     <th style="width:%;color:white;">Price</th> 
     <th style="width:%;color:white;">Total Amount </th>    
-  </tr>
+    </tr>
 
-<tr>
+    <tr>
     <td>1001</td>
-     <td><spring:url value="/images" var="images" />
+    <td><spring:url value="/images" var="images" />
     <img src="${images}/carrot.jpg" width="70" height="70"/></td>
     <td>Potato</td>
    
     <td>2</td>
     <td>25</td>
     <td>50</td>
-  </tr>
+    </tr>
     
     <tr>
     <td>1002</td>
@@ -92,7 +92,8 @@ background-color:#f1f1f1;
     <td>2</td>
     <td>25</td>
     <td>50</td>
-  </tr>
+    </tr>
+    
     <tr>
     <td>1003</td>
     <td><spring:url value="/images" var="images" />
@@ -101,31 +102,11 @@ background-color:#f1f1f1;
     <td>2</td>
     <td>25</td>
     <td>50</td>
-  </tr>
+    </tr>
    
-</table><br>
-       <a href="${pageContext.request.contextPath}/home/cart" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: green;
-        border-radius: 6px;
-        outline: none;margin-top:6px;
-        margin-left:15%;">Repeat Order</a>
-        
-        <a href="${pageContext.request.contextPath}/home/registeredhome" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: green;
-        border-radius: 6px;
-        outline: none;margin-top:6px;
-        ">Cancel</a>
-        </div>
- 
-    
+ </table><br>
+      
+         <input type="button" style="width:140px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:green;padding:12px;border:none;margin-left:15%;" value="Back" onclick="history.back()">
 
 <script>
 function myFunction() {

@@ -28,7 +28,7 @@ background-color:#f1f1f1;
 			0 10px 10px rgba(0,0,0,0.22); */
 	position: relative;
 	overflow: hidden;
-	width: 450px;
+	width: 550px;
     max-width: 100%;
 	min-height: 100px;
 }
@@ -72,33 +72,29 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-  <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;"><a href="#" style="color:green;text-decoration: none;font-size:15px;float: left;" >Home</a>My Wallet</h2></div><br>
-  <div class="splash" style="background-color:white;">
+  <div class="splash" style="background-color:white;padding: 70px 70px;">
   <div class="row">
   <div class="col-75"> 
-    
  <form method="post" action="${pageContext.request.contextPath}/login/generateLink" modelAttribute="kioskLocation">
- <h2 style="color:#4CAF50;"><i class='fas fa-wallet' style="font-size:50px;color:#4CAF50;"></i>Enter Amount</h2>    
- <h6 style="color:#4CAF50;font-size:85%; margin-top:2%; text-align:center;">Amount will be added in your VeggieFridge Wallet</h6>
- 
- <input type="text" name="${status.expression}" value="${status.value}" placeholder="Enter Amount"  required style="width: 77%;
-  padding: 12px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;">
- 
- <input type="submit" value="Continue"  style="width: 79%;  padding:12px; margin-left: 1%; margin-right: 1%;background-color:green;"/>
+ <i class="fa fa-check-circle" style="font-size:80px;color:green"></i>
+ <h1>Thank You !</h1>    
+ <h4 style="color:#4CAF50;font-size:85%; margin-top:2%; text-align:center;">For Shopping with Us</h4> 
+ <h5 style="color:#4CAF50;">Recieve your order to your pickup location </h5>
+ <span class="fas fa-map-marker-alt" style="color:green;font-size:25px;"></span>
+ <span style="color:black;">${customer.location},${customer.cities}</span><br><br>
+ <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+        padding: 10px 70px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:green;
+        border-radius: 6px;
+        outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
       </div>
       </div>
      </form>
     </div>
     
-    <script>
-   function handleChange(input) {
-    if (input.value < 0) input.value = 0;
-    if (input.value > 5000) input.value = 5000;
-  }
-</script>
+   
 </body>
 </html>

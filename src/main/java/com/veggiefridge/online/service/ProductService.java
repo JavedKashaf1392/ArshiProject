@@ -1,7 +1,6 @@
 package com.veggiefridge.online.service;
 
 import java.util.List;
-
 import com.veggiefridge.online.model.Product;
 
 public interface ProductService {

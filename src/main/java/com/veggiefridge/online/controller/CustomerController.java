@@ -35,8 +35,8 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	
-//	getAll Customer
-	@RequestMapping(value = "/listCustomer")
+    //getAll Customer
+	@RequestMapping(value ="/listCustomer")
 	public ModelAndView listCustomer(ModelAndView model) throws IOException {
 		List<Customer> listCustomer = customerService.getAllCustomers();
 		model.addObject("listCustomer", listCustomer);
