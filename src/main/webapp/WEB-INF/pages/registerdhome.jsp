@@ -436,7 +436,7 @@ color: black;
 .center .content .social a{
     padding: 0 2px;
 }
-.center .content .social a span{
+.center.content.social a span{
     height: 40px;
     width: 40px;
     line-height: 40px;
@@ -448,13 +448,12 @@ color: black;
     color: white;
 }
 /* ...Left Content.... */
-.center .content .social a span:hover{
-    background: #f12020;
+.center.content.social a span:hover{
+    background:#f12020;
 }
-.center .content .fas{
+.center.content .fas{
     font-size: 1.4375rem;
     /* background: #1a1a1a; */
-    background-color:white;
     height: 45px;
     width: 45px;
     line-height: 45px;
@@ -914,8 +913,6 @@ label #sidebar_btn:hover{
   </div>
   </div>
    
-  
-     
    <div class="search">                                                 
    <form class="example">
    <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search" id="myInput" onkeyup="myFunction()">
@@ -923,9 +920,6 @@ label #sidebar_btn:hover{
    </form>
    </div>
    </div>
-  
-  
-        
       <div class="right" style="float: right;">
       <span  class='fas fa-user-circle' style="color:green;"></span> 
       Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
@@ -935,7 +929,7 @@ label #sidebar_btn:hover{
       <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
       </center>
-      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i> <span>My Account</span></a>
+      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
       <a href="${pageContext.request.contextPath }/home/currentorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
@@ -1197,6 +1191,7 @@ function showSlides(n) {
    </div>
     </div>
  <!--  ............................  -->
+ 
       <div class="footer">
       <div class="main-content">
       <div class="left box">
@@ -1219,15 +1214,7 @@ function showSlides(n) {
 Address</h2>
 <div class="content" >
                         <div class="place" >
-    <span class="fas fa-map-marker-alt" style="height:40px;
-    width: 40px;
-    line-height:40px;
-    text-align: center;
-    font-size: 15px;
-    border-radius: 50px;
-    transition: 0.3s;
-    background-color:white;
-    color:black";></span>
+                            <span class="fas fa-map-marker-alt" style="background-color:white;padding:15px 15px;"></span>
                             <span class="text">Birendranagar, Surkhet</span>
                         </div>
 <div class="phone">
@@ -1242,7 +1229,13 @@ Address</h2>
 
                             <div class="social"> 
                             <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;"></span></a>
+                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;height: 40px;
+    width: 40px;
+    color:white;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50px;
+    transition: 0.3s;"></span></a>
                             <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;"></span></a>
                             <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;"></span></a>
                             <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;"></span></a>

@@ -192,6 +192,14 @@ public class HomeController {
 					model.setViewName("/sliderjsp");
 					return model;
 				}
+				
+				
+				//currentorder
+				@RequestMapping(value = "/header")
+				public ModelAndView header(ModelAndView model) {
+					model.setViewName("/header");
+					return model;
+				}
 	
 				
 				
