@@ -96,109 +96,12 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
-</style>
-</head>
-<body>
+    </style>
+    </head>
+    <body>
+<jsp:include page="header.jsp"/>
 
-<div style="background-color:white;margin-left:25%;margin-right:15%;width:45%;position:absolute;height:130%;text-align: center;">
-  <a href="${pageContext.request.contextPath}/login/logout" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:green;
-        border-radius: 6px;
-        outline: none;margin-left:40%;margin-top:10px;">Log Out</a>
-<spring:url value="/images" var="images" />
-<img src="${images}/logo.jpg" width="150" height="120" style="float: left; margin-top:2%;"/>
-<h2 style="color:green;margin-right:50%;">Arshi Qureshi</h2>
-<h4 style="margin-right:43%;">Email Id: Arshi@gamil.com</h4>
-
-
-<h3 style="float:left;color:green;">Update Your Profile</h3>
-
-<div class="container">
-  <form action="/action_page.php">
-    <div class="row">
-      <div class="col-25">
-        <label for="fname">First Name</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your first name..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Last Name</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your last name..">
-      </div>
-    </div>
-    
-    
-     <div class="row">
-      <div class="col-25">
-        <label for="email">EmailId</label>
-      </div>
-      <div class="col-75">
-        <input type="email" id="fname" name="firstname" placeholder="Your emailid..">
-      </div>
-    </div>
-     <div class="row">
-      <div class="col-25">
-        <label for="number">Mobile Nm</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your Mobile number..">
-      </div>
-    </div>
-    <h3 style="float:left;color:green;">Change Your Password</h3>
-    
-    <div class="row">
-      <div class="col-25">
-        <label for="password">Current Password</label>
-      </div>
-      <div class="col-75">
-        <input type="password" id="fname" name="firstname" placeholder="Your current password..">
-      </div>
-    </div>
-    
-    
-    <div class="row">
-      <div class="col-25">
-        <label for="password">New Password</label>
-      </div>
-      <div class="col-75">
-        <input type="password" id="fname" name="firstname" placeholder="Your current password..">
-      </div>
-    </div>
-    
-    
-    <div class="row">
-      <div class="col-25">
-        <label for="password">Confirm Password</label>
-      </div>
-      <div class="col-75">
-        <input type="password" id="fname" name="firstname" placeholder="Your current password..">
-      </div>
-    </div>
-  </form>
-   <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:green;
-        border-radius: 6px;
-        outline: none;margin-top:10px;margin-right:70%;">Save Changes</a>
-</div>
- 
-
-
-</div><br>
-
-<div style="background-color:white;margin-left:10%;padding:25px; width:12%;border-radius:8px;">
+<div style="background-color:white;margin-left:13%;padding:25px; width:12%;border-radius:8px;">
 <a href="#" style="text-decoration: none;color:green;font-size:20px;"><i class='fas fa-wallet' style='color:green;'></i>     My Wallet</a><br><br>
 <a href="${pageContext.request.contextPath}/home/currentorder" style="text-decoration: none;color:green;font-size:20px;"><i class="fa fa-bars" style='color:green;'></i>     My Orders</a><br><br>
 <a href="#" style="text-decoration: none;color:green;font-size:20px;"><i class='fas fa-user-friends' style='color:green;'></i>     Membership</a><br><br>

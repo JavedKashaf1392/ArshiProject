@@ -109,11 +109,11 @@ public class LoginController {
           		
 		    //login customer from database
 		      @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
-			  public ModelAndView loginCustomer(ModelAndView model,@ModelAttribute("customer") Customer customer,BindingResult  resultcustomer,HttpSession session){
+			  public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation,HttpSession session,ModelAndView model){
 				
 		    	if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
 			    customer=custservice.loginCustomer(customer);
-			    
+			
 			if(customer!=null){
 		    session.setAttribute("customer", customer);
 		    model.addObject("firstname", customer.getFirstName());

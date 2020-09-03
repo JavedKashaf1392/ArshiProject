@@ -1,5 +1,5 @@
 
-   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -108,7 +108,6 @@ input[type=submit]:hover {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
   box-shadow: 1px 2px 5px 3px white;
-  
   } 
 .popup {/* 
    /* background-color:#f1f1f1; */
@@ -129,45 +128,31 @@ input[type=submit]:hover {
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
-.mySlides {display: none}
+   .mySlides {display: none}
 /* img {vertical-align: middle;} */
    
     {
     box-sizing: border-box;
 }
 }
-.header{
-    margin-left:10%;
-    position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-    height: 30px;
-    /* background: #4CAF50; */
-   /*  border:1px solid black; */
-}
+
 .footer{
-    margin-left:10%;
+    margin-left:13%;
     margin-right:13%;
+    position:relative;
+    width:74%;
+    height:500px;
+    background: #4CAF50; 
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    width: 78%;
-    height: 500px;
-    margin-top:px;
-    background: #4CAF50; 
+    
+   
+  
     /* border:1px solid black;  */
     
 }
-.head{
-    margin-left:10%;
-    position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-    height: 20px;
-    /* background: #4CAF50; */
-}
+
 .carousel{
     padding: 20px;
     padding: 20px;
@@ -178,159 +163,14 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:3840px;
+     height:3480px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex; 
-   /*  -webkit-box-align: center;
-     -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-       justify-content: center;
-      */    
-}
-
-.logo{
- position:absolute;
- width:30% 
- border:1px;
- float:left;
- margin-right:35%;
- 
-}
-/* <-- serach operation--> */
-/* Style the search field */
-form.example input[type=text] {
-  padding:8px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width: 40%;
- /*  background: #f1f1f1; */
-  margin-left:10%; 
-}
-/* Style the submit button */
-  form.example button {
-  float: left;
-  width: 4%;
-  padding: 8px;
-  background: #4CAF50;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-}
-
-form.example button:hover {
-  background: green;
-}
-
-/* call */
-.call{
-/* border:1px solid black; */
-float:right;
-margin-right:21%;
-margin-top: 10px;
-height:35px;
-width:20%;
-/* border:1px solid black; */
 
 }
- /* call end */
-/* Clear floats */
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-  /*  end search */
-
-  /* right  */
-.right{
-float: right;
-margin-top:30px;
-margin-right:9%;
-font:bold;
-font-size:16px;
-
-}
-
-.right a {
-color: black;
-}
-
- .right a:hover {
-        color: #4CAF50;
-    }
-
-
-/* end right */
-.navbar {
-  overflow: hidden;
-  background-color: #4CAF50 ;
-  margin-right:51%;
-  margin-left: 337px;
-  /* border:1px solid black;  */
-}
-.navbar a {
- /*  margin-right:45%;
-  margin-left: 26%; */
-  float: left;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-.dropdown .dropbtn {
-  font-size: 18px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: ;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  /* background-color: #ddd; */
-  background-color:#4CAF50 ;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* ................... */
-
-   @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
  
  *{
     margin: 0;
@@ -614,7 +454,7 @@ color: black;
    /*  border:2px solid blue; */
    border:1px solid #d9d9d9; 
    box-sizing: border-box;
-     transition: 1s;
+   transition: 1s;
   
 }
 .container ul li:hover{
@@ -644,11 +484,11 @@ color: black;
 }
 .container ul li  .product-price-wrap {
   width: 100%;
-  height%;
+  height:21%;
   display: -ms-grid;
   display: grid; */
  -ms-grid-columns: auto auto;
- margin-top: 90%;
+  margin-top: 90%;
 }
 .container ul li  .product-price-wrap .left {
   -ms-grid-column-align: start;
@@ -706,6 +546,7 @@ color: black;
   cursor: pointer;
  background-color: green;
 }
+
  .label-clip {
   background-color: #1864ff; 
   background-color: #4CAF50;
@@ -747,152 +588,17 @@ color: black;
   <body >
  
    <!--  header -->
+   <jsp:include page="guestheader.jsp"/>
 
-    <div class="header">
-    
-    <div class="logo">
-    <spring:url value="/images" var="images" />
-    <img src="${images}/logo.jpg" width="140" height="110"/>
-    </div>
-    
-    <div class="call"> 
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
-    </a>
-  <!--   <button style="font-size:20px; color: white;padding: 8px; border-color:#4CAF50;"><i class='fas fa-shopping-cart' style="color:white;">Cart<br style="color: white;">0 Items</i></button>
-     -->
-                            
-                            <span class="fas fa-phone-alt" style="color: black;"></span>
-                            <span class="text" style="color: black;">+089-765432100</span>   
-                            </div>
-    
-    
-    <div class="search">                                                 
-   <form class="example" action="action_page.php">
-   <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search">
-   <button type="submit"><i class="fa fa-search"></i></button>
-   </form>
-   </div>
-   </div>
-  
-                <div class="right" style="float: right;">
-                <a href="#" style="text-decoration: none;">hello Guest !</a> |
-                <a href="${pageContext.request.contextPath}/login/loginView" style="text-decoration: none;">Log in</a> |
-                <a href="${pageContext.request.contextPath}/login/newCustomer" style="text-decoration: none;">Sign Up </a> |
-                
-                <!-- Trigger/Open The Modal -->
-<span class="fas fa-map-marker-alt" style="color: black;"></span>
-<a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
- <i class="arrow down" style="  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);  border:gray; 
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;"></i>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content" >
-  <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation" >
-  <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
-  <div class="row">
-  <div class="col-75">
-      
-       <select id="cities" name="cities" required  style="background-color:#f1f1f1;" id="sort-item">
-       <option value=""style="color: black;" >Select city</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
-       </c:forEach>
-       </select><br><br>
-        
-       <select id="location" name="location" required  style="background-color:#f1f1f1;" id="sort-item">
-       <option value="" style="color: black;">Select location</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
-       </c:forEach>
-      </select>
-    </div>
-    </div>
-
- <div style="text-align:center;">
- <input type="submit" value="Continue" style="width: 30%;"/>
- </div></p></form>
- </div>
-</div>
- </div>
- <script>
-// Get the modal
-var modal = document.getElementById("myModal");
-  
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-/* // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-} */
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-
-
-  <div class="navbar">
-  <div class="dropdown">
-    <button class="dropbtn">Search By Catogary  
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
-<div class="dropdown">
-    <button class="dropbtn">Discounts
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
- 
-  <div class="dropdown">
-    <button class="dropbtn">More 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      </div>
-      </div>
-      </div> 
-      
+   
                       
   <!--   close header  -->
  <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
   <div class="mySlides fade"> -->
   <spring:url value="/images" var="images" />
-  <img src="${images}/bigimage.jpg" width="1600" height="500" style="margin-top:15px;"/> 
- <%--  </div>
+  <img src="${images}/bigimage.jpg" width="1600" height="450" style="margin-top:12%;"/>
+ <%-- </div>
 
   <div class="mySlides fade">
  <!--  <div class="numbertext">2 / 3</div> -->
@@ -937,28 +643,32 @@ function showSlides(n) {
 }
   </script> --%>
   
+  <hr style="margin-left: 12%;margin-right: 12%;">
+  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
+  <hr style="margin-left: 12%;margin-right: 12%;">
+  
+  
   <div class="carousel">
   <div class="container">
+  
   <ul>
-   
- <c:forEach var="product" items="${listProduct}">
+  <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
   <li>
   <div class="product-img">
   <h4 class="label-clip">Get ${product.discount}% OFF</h4>
-   <a href="#">
+   
   <spring:url value="/images" var="images" />
   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;" >
-  </a>
+  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
   </div>
             <div class="product-meta">
-            <h4 style="color: black;">${product.productName}</h4>
+            <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
             </div>
        
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 78%">
+            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
                    <div class="left">
                    <span class="price">
                    <span class="mrp" style=" font-size: 14px;
@@ -967,26 +677,49 @@ function showSlides(n) {
   position: relative;
    color:black;">MRP</span>
  
-                   <span class="old-price"> Rs ${product.price}</span>
+                   <span class="old-price">Rs ${product.price}</span>
                     Rs ${product.price-product.discount * product.price/100}
                      </span>
-                </div>
-                <div class="right">
-                <button class="btn">Add to Cart</button>
-                </div></div> 
-                </li>
-               </c:forEach>
+                     </div>
+           
+        
+        <div class="right">
+         
+        <%-- "${pageContext.request.contextPath}/cart/buy/${product.productid}"
+         --%><!-- add/{productid}/product -->
+        
+        <a href="${pageContext.request.contextPath}/home/loginform" style="display:inline-block;
+        padding: 8px 18px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a> 
+        
+        
+         
+        <!-- class="btn btn-success" -->
+           
+         <%--  onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
+          --%>
+            <%-- <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
+			<i class="fa fa-shopping-cart"></i> 
+			Add to cart
+		    </button>  --%>
+        </div></div> 
+        </li>
+  </c:forEach>
         
       
-   <div class="second">
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
-  </div><br><br>
-  
+  <hr style="margin-left: 12%;margin-right: 12%;">
+  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
+  <hr style="margin-left:4%;margin-right:1%;">
+   <table style="border-spacing:30px;">
    <th>
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="300" height="300" />
+   <img src="${images}/icici.jpg" width="270" height="280" />
    </a>
    </th>
   
@@ -995,7 +728,7 @@ function showSlides(n) {
    <th>
     <a href="#">
    <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg" width="300" height="300"/>
+   <img src="${images}/induslandbank.jpg"  width="270" height="280"/>
     </a>
    </th>
   
@@ -1004,28 +737,23 @@ function showSlides(n) {
    <th>
     <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg" width="300" height="300"/>
+   <img src="${images}/paytm.jpg"  width="270" height="280"/>
    </a>
    </th>
    
    <th>
    <a href="abc.htm">
    <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg" width="300" height="300"/>
+   <img src="${images}/standard.jpg"  width="270" height="280"/>
    </a>
    </th>
    </tr>  
   </table>
   <br>
-  
-  
-  <div class="third">
-  <spring:url value="/images" var="images" />
-  <img src="${images}/organic.jpg" width="1300" height="400"/>
-  </div><br><br>
-    </ul>
+   </ul>
    </div>
-    </div>
+   </div>
+
  <!--  ............................  -->
       <div class="footer">
       <div class="main-content">
@@ -1033,15 +761,15 @@ function showSlides(n) {
 
 <h2>VeggieFridge</h2>
 <div class="content"> 
-                            <a href="#">About Us</a><br><br>
-                            <a  href="#">Privacy Policy</a><br><br>
-                            <a href="#">Help</a><br><br>
-                            <a href="#">Terms And Condition</a><br><br>
-                            <a href="#">Carriers</a><br><br>
-                            <a href="#">Affiliate</a><br><br>
-                            <a href="#">In News</a><br><br>
-                            <a href="#">vf instant</a><br><br>
-                            <a href="#">vf daily</a><br><br>
+                            <a href="#" style="color:white">About Us</a><br><br>
+                            <a  href="#" style="color:white">Privacy Policy</a><br><br>
+                            <a href="#"  style="color:white">Help</a><br><br>
+                            <a href="#"  style="color:white">Terms And Condition</a><br><br>
+                            <a href="#"  style="color:white">Carriers</a><br><br>
+                            <a href="#"  style="color:white">Affiliate</a><br><br>
+                            <a href="#"  style="color:white">In News</a><br><br>
+                            <a href="#"  style="color:white">vf instant</a><br><br>
+                            <a href="#"  style="color:white">vf daily</a><br><br>
 </div>
 </div>
 <div class="center box">
@@ -1064,11 +792,11 @@ Address</h2>
 
                             <div class="social"> 
                             <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;"></span></a>
-                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;"></span></a>
-                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;"></span></a>
+                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;color:white;"></span></a>
+                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;color:white;"></span></a>
+                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;color:white;"></span></a>
+                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;color:white;"></span></a>
+                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;color:white;"></span></a>
                             </div>
 
 </div>

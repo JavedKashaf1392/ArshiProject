@@ -1,48 +1,23 @@
 
   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-  pageEncoding="ISO-8859-1" isELIgnored="false"%>
+   pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
+  
+  
+   
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
-     <head> 
+ <head> 
      
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
    
-   
-     
-      <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>Shop Homepage - Start Bootstrap Template</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-   <link href="css/shop-homepage.css" rel="stylesheet">
-     
      <meta charset="utf-8">
-	 <script src= 
-"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
-	</script> 
-	
-	<script src= 
-"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> 
-	</script> 
-	<script src= 
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"> 
-	</script>    
+	    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -215,7 +190,7 @@ input[type=submit]:hover {
   box-shadow: 1px 2px 5px 3px white;
   } 
   
-.popup {/* 
+.popup{ /* 
   /* background-color:#f1f1f1; */
   background-color: #fefefe;
   margin: auto;
@@ -388,10 +363,7 @@ color: black;
  *{
     margin: 0;
     padding: 0;
-   /*  color: #d9d9d9; */
-   /*  color:black; */
-    /* box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; */ 
+  
 } 
 .main-content{
     display: flex;
@@ -436,24 +408,25 @@ color: black;
 .center .content .social a{
     padding: 0 2px;
 }
-.center.content.social a span{
+.center .content .social a span{
     height: 40px;
     width: 40px;
+    /*  background: #1a1a1a;  */
+    background: white;
     line-height: 40px;
     text-align: center;
     font-size: 18px;
     border-radius: 50px;
     transition: 0.3s;
-    background-color:white;
-    color: white;
 }
 /* ...Left Content.... */
-.center.content.social a span:hover{
-    background:#f12020;
+.center .content .social a span:hover{
+    background: #f12020;
 }
-.center.content .fas{
+.center .content .fas{
     font-size: 1.4375rem;
-    /* background: #1a1a1a; */
+   /*  background: #1a1a1a; */
+    background: white;
     height: 45px;
     width: 45px;
     line-height: 45px;
@@ -546,7 +519,6 @@ color: black;
         margin: 5px 0;
     }
 }
-
 /* .................... */
 /* Slideshow container */
 .slideshow-container {
@@ -920,8 +892,8 @@ label #sidebar_btn:hover{
    </form>
    </div>
    </div>
-      <div class="right" style="float: right;">
-      <span  class='fas fa-user-circle' style="color:green;"></span> 
+   <div class="right" style="float: right;">
+   <span  class='fas fa-user-circle' style="color:green;"></span> 
       Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
       <div id="id05" class="menu">
       <div class="sidebar">
@@ -1148,7 +1120,7 @@ function showSlides(n) {
 		    </button>  --%>
         </div></div> 
         </li>
-        </c:forEach>
+  </c:forEach>
   <hr style="margin-left: 12%;margin-right: 12%;">
   <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
   <hr style="margin-left:4%;margin-right:1%;">
@@ -1197,24 +1169,24 @@ function showSlides(n) {
       <div class="left box">
 
 <h2>VeggieFridge</h2>
-<div class="content" style="color: white;"> 
-                            <a href="#" style="color: white;">About Us</a><br><br>
-                            <a href="#"style="color: white;">Privacy Policy</a><br><br>
-                            <a href="#"style="color: white;">Help</a><br><br>
-                            <a href="#"style="color: white;">Terms And Condition</a><br><br>
-                            <a href="#"style="color: white;">Carriers</a><br><br>
-                            <a href="#" style="color: white;">Affiliate</a><br><br>
-                            <a href="#"style="color: white;">In News</a><br><br>
-                            <a href="#"style="color: white;">vf instant</a><br><br>
-                            <a href="#"style="color: white;">vf daily</a><br><br>
+<div class="content"> 
+                            <a href="#" style="color:white">About Us</a><br><br>
+                            <a  href="#" style="color:white">Privacy Policy</a><br><br>
+                            <a href="#"  style="color:white">Help</a><br><br>
+                            <a href="#"  style="color:white">Terms And Condition</a><br><br>
+                            <a href="#"  style="color:white">Carriers</a><br><br>
+                            <a href="#"  style="color:white">Affiliate</a><br><br>
+                            <a href="#"  style="color:white">In News</a><br><br>
+                            <a href="#"  style="color:white">vf instant</a><br><br>
+                            <a href="#"  style="color:white">vf daily</a><br><br>
 </div>
 </div>
 <div class="center box">
                     <h2>
 Address</h2>
-<div class="content" >
-                        <div class="place" >
-                            <span class="fas fa-map-marker-alt" style="background-color:white;padding:15px 15px;"></span>
+<div class="content">
+                        <div class="place">
+                            <span class="fas fa-map-marker-alt"></span>
                             <span class="text">Birendranagar, Surkhet</span>
                         </div>
 <div class="phone">
@@ -1229,17 +1201,11 @@ Address</h2>
 
                             <div class="social"> 
                             <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;height: 40px;
-    width: 40px;
-    color:white;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 50px;
-    transition: 0.3s;"></span></a>
-                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;"></span></a>
-                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;"></span></a>
+                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;color:white;"></span></a>
+                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;color:white;"></span></a>
+                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;color:white;"></span></a>
+                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;color:white;"></span></a>
+                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;color:white;"></span></a>
                             </div>
 
 </div>
@@ -1286,11 +1252,11 @@ Message *</div>
                     <div class="bottom">
                     <center>
                     <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
-                    <span class="far fa-copyright"></span>
-                    <span> 2020 All rights reserved.</span>
+                    <span class="far fa-copyright"></span> 2020 All rights reserved.
                     </center>
                     </div>
 
+</div>
 </div>
 </div>
 </div>

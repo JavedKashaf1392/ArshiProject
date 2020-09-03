@@ -10,39 +10,7 @@
 <head>
 <meta charset="ISO-8859-1">
    
-   <!-- jQuery -->
-   <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-   
-   
-     
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-   <link href="css/shop-homepage.css" rel="stylesheet">
-     
-     <meta charset="utf-8">
-	 <script src= 
-"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
-	</script> 
-	
-	<script src= 
-"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> 
-	</script> 
-	<script src= 
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"> 
-	</script>    
+    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +22,6 @@
         <style>
 
 body {font-family: Arial, Helvetica, sans-serif;
-      background-color:#f1f1f1;
 }
  
 body
@@ -87,7 +54,7 @@ body
 margin-right:%;
 margin-top:10px;
 font-size:18px;
-margin-left:48%;
+margin-left:45%;
 width: 100%;
 }
 
@@ -432,12 +399,12 @@ label #sidebar_btn:hover{
   margin-left: 60%;
   border-radius: 4px;
 }
- </style>
+</style>
    
-   <body>
-   <div style="position:fixed; margin-left:13%;
-    margin-right:13%;
-    width:74%; border: 1px solid #ccc;background-color:white;">
+    <body>
+    <div style="position:absolute; margin-left:8%;
+    margin-right:6%;
+    width:85%;border:;border:">
    
    <div class="header">
    <div class="logo">
@@ -445,42 +412,26 @@ label #sidebar_btn:hover{
    <img src="${images}/logo.jpg" width="140" height="110"/>
    </div>
     
-  <div class="call"> 
-  <span  class='fas fa-user-circle' style="color:green;"></span> 
-  Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
-      
-      <div id="id05" class="menu">
-      <div class="sidebar">
-      <center>
-      <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
-      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
-      </center>
-      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="${pageContext.request.contextPath }/home/currentorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
-      <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
-      <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
-      <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
-      <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
-      <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i><span>Log Out</span></a>
-      </div>
-      </div>
-       
+ <div class="call"> 
+         
  <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;color: black;">${customer.location},${customer.cities}</a> | 
+ <a href="#" id="myBtn" style="text-decoration: none;color: black;">${kiosklocation.location},${kiosklocation.cities}</a> | 
 
-<span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
+ <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
 
-<span class='fas fa-sign-out-alt' style="color:green;"></span> 
-<a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
+ <span class="fa fa-edit" style="color:green;"></span>
+ <a href="#" style="text-decoration: none;color: black;">Sign Up</a> | 
+ 
+ <span class='fas fa-unlock-alt' style="color:green;"></span>
+ <a href="#" style="text-decoration: none;color: black;">Hello,Sign In</a>
+ 
+ <!-- The Modal -->
+ <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
   <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/regcontinueLocation" modelAttribute="kioskLocation" >
+  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
   <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
   <div class="row">
   <div class="col-75">
@@ -505,7 +456,7 @@ label #sidebar_btn:hover{
  <input type="submit" value="Continue" style="width: 30%;"/>
  </div></p></form>
  </div>
-</div>
+ </div>
   </div>
   </div>
   
@@ -648,7 +599,6 @@ window.onclick = function(event) {
       <a href="#">Link 2</a>
       <a href="#">Link 3</a>
       </div>
-      
       </div>
       
     <div class="dropdown">

@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +62,7 @@ public class HomeController {
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
-		model.setViewName("newlocationhome");
+		model.setViewName("guest");
 		return model; 
 	} 
 	
@@ -194,13 +195,34 @@ public class HomeController {
 				}
 				
 				
-				//currentorder
+				//current order
 				@RequestMapping(value = "/header")
-				public ModelAndView header(ModelAndView model) {
-					model.setViewName("/header");
+				public ModelAndView header(ModelAndView model,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation) {
+					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+					List<Product> listProduct = productService.getAllProducts();
+					List<Customer> listCustomer = customerservice.getAllCustomers();
+					model.addObject("listCustomer", listCustomer);
+					model.addObject("listkiosklocation",listkiosklocation);
+					model.addObject("listProduct", listProduct);
 					return model;
 				}
 	
+				
+
+				//
+				@RequestMapping(value = "/guestHeader")
+				public ModelAndView guestHeader(ModelAndView model,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation) {
+					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+					List<Product> listProduct = productService.getAllProducts();
+					List<Customer> listCustomer = customerservice.getAllCustomers();
+					model.addObject("listCustomer", listCustomer);
+					model.addObject("listkiosklocation",listkiosklocation);
+					model.addObject("listProduct", listProduct);
+					model.setViewName("/guestheader");
+					return model;
+				}
+	
+				
 				
 				
 				//home
@@ -216,6 +238,56 @@ public class HomeController {
 					return model;
 				}
 	
+				
+				
+				//wallet
+				@RequestMapping(value ="/loginform")
+				public ModelAndView loginForm(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult resultcustomer) {
+					List<Customer> listCustomer = customerservice.getAllCustomers();
+					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
+					List<Product> listProduct = productService.getAllProducts();
+					model.addObject("listkiosklocation",listkiosklocation);
+				    model.addObject("listCustomer", listCustomer); 
+					model.addObject("listProduct", listProduct);
+					model.setViewName("loginform");
+					return model;
+				}
+		
+				
+				//currentorder
+				@RequestMapping(value = "/signup")
+				public ModelAndView signUp(ModelAndView model) {
+					model.setViewName("/signup");
+					return model;
+				}
+				
+				
+				 //addGuestCustomer
+			     
+				//save and update customer
+				@RequestMapping(value = "/addguestcustomer", method = RequestMethod.POST)
+				public ModelAndView addGuestCustomer(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+					
+						
+					 if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+						// customer other updating the customer 
+						customerservice.addCustomer(customer);
+						List<Customer> listCustomer = customerservice.getAllCustomers();
+						List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
+						List<Product> listProduct = productService.getAllProducts();
+						model.addObject("listkiosklocation",listkiosklocation);
+					    model.addObject("listCustomer", listCustomer); 
+						model.addObject("listProduct", listProduct);
+						session.setAttribute("customer", customer);
+						model.setViewName("registerdhome");
+					}
+					return model; 
+					
+				}
+}
+				
+				
+				
 	
-	}	
+		
 

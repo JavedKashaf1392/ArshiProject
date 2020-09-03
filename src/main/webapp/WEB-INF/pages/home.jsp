@@ -327,13 +327,12 @@ hr {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:3840px;
+     height:3000px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex; 
      background-color:#f1f1f1;
-  
 }
 
 .logo{
@@ -985,8 +984,8 @@ color: black;
         border-radius: 6px;
         outline: none;">Cancel</a>
         
-    <span class="psw" style="float: right;"><a href="${pageContext.request.contextPath }/login/forgotPassword"" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
-    </div>
+    <span class="psw" style="float: right;"><a href="${pageContext.request.contextPath }/login/forgotPassword" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
+   </div>
   <a href="##" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge?Create an account</a><button type="button" onclick="document.getElementById('id02').style.display='block'" class="submitId"  style="
   width: auto;
   padding: 10px 18px;
@@ -999,44 +998,14 @@ color: black;
 
 <!-- .....................sign up............ -->
     
-     <!--  header -->
-    <div class="header">
-    <div class="logo">
-    <spring:url value="/images" var="images" />
-    <img src="${images}/logo.jpg" width="140" height="110"/>
-    </div>
     
-    <div class="call"> 
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/cart.png" width="100" height="55" style="float: right;"/>
-    </a>                        
-                            <span class="fas fa-phone-alt" style="color: black;"></span>
-                            <span class="text" style="color: black;">+089-765432100</span>   
-                            </div>
-    
-    
-   <div class="search">                                                 
-   <form class="example" action="action_page.php">
-   <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search">
-   <button type="submit"><i class="fa fa-search"></i></button>
-   </form>
-   </div>
-   </div>
   
                 <div class="right" style="float: right;">
-                <a href="#" style="text-decoration: none;">Login as Guest</a> |
-                <a href="${pageContext.request.contextPath}/login/loginView" style="text-decoration: none;">Log in</a> |
-                <a href="${pageContext.request.contextPath}/login/newCustomer" style="text-decoration: none;">Sign Up </a> |
-                
+               
 <!-- Trigger/Open The Modal -->
-<span class="fas fa-map-marker-alt" style="color: black;"></span>
-<a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
- <i class="arrow down" style="  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);  border:solid black; 
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;"></i>
+
+<a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location}${kiosklocation.cities}</a> 
+ 
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -1089,7 +1058,7 @@ btn.onclick = function() {
 /* // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-} */
+}  */
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -1098,91 +1067,7 @@ window.onclick = function(event) {
   }
 }
 </script>
-  <div class="navbar">
-  <div class="dropdown">
-    <button class="dropbtn">Search By Catogary  
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
-<div class="dropdown">
-    <button class="dropbtn">Discounts
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
  
-  <div class="dropdown">
-    <button class="dropbtn">More 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      </div>
-      </div>
-      </div> 
-      
-                      
-  <!--   close header  -->
- <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
-
-  <div class="mySlides fade"> -->
-  <spring:url value="/images" var="images" />
-  <img src="${images}/bigimage.jpg" width="1600" height="500" style="margin-top:15px;"/> 
- <%--  </div>
-
-  <div class="mySlides fade">
- <!--  <div class="numbertext">2 / 3</div> -->
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
-  </div>
-
- <div class="mySlides fade">
- <spring:url value="/images" var="images" />
- <img src="${images}/c5.jpg" width="1300" height="400"/>
- </div>
-
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-   </script> --%>
   <div class="carousel">
   <div class="container">
   <ul> 
@@ -1225,153 +1110,7 @@ function showSlides(n) {
           </li>
           </c:forEach>
         
-      
-   <div class="second">
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
-  </div><br><br>
-  
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="300" height="300" />
-   </a>
-   </th>
-  
-   
-   
-   <th>
-    <a href="#">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg" width="300" height="300"/>
-    </a>
-   </th>
-  
-   
-  
-   <th>
-    <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg" width="300" height="300"/>
-   </a>
-   </th>
-   
-   <th>
-    
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg" width="300" height="300"/>
-   </a>
-   </th>
-   </tr>  
-  </table>
-    <br>
-  
-  
-  <div class="third">
-  <spring:url value="/images" var="images" />
-  <img src="${images}/organic.jpg" width="1300" height="400"/>
-  </div><br><br>
-    </ul>
-    </div>
-    </div>
- <!--  ...........footer.................  -->
-      
-      
-      <div class="footer">
-      <div class="main-content" style="color: #d9d9d9;">
-      <div class="left box">
-
-<h2>VeggieFridge</h2>
-<div class="content"> 
-                            <a href="#">About Us</a><br><br>
-                            <a  href="#">Privacy Policy</a><br><br>
-                            <a href="#">Help</a><br><br>
-                            <a href="#">Terms And Condition</a><br><br>
-                            <a href="#">Carriers</a><br><br>
-                            <a href="#">Affiliate</a><br><br>
-                            <a href="#">In News</a><br><br>
-                            <a href="#">vf instant</a><br><br>
-                            <a href="#">vf daily</a><br><br>
-</div>
-</div>
-<div class="center box">
-                    <h2>
-Address</h2>
-<div class="content">
-                        <div class="place">
-                            <span class="fas fa-map-marker-alt"></span>
-                            <span class="text">Birendranagar, Surkhet</span>
-                        </div>
-<div class="phone">
-                            <span class="fas fa-phone-alt"></span>
-                            <span class="text">+089-765432100</span>
-                        </div>
-<div class="email">
-                            <span class="fas fa-envelope"></span>
-                            <span class="text">abc@example.com</span>
-                        </div>
-
-
-                            <div class="social"> 
-                            <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;"></span></a>
-                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;"></span></a>
-                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;"></span></a>
-                            </div>
-
-</div>
-</div>
-<div class="right box" >
-                    <h2>
-Contact us</h2>
-<div class="content">
-                        <form action="#">
-                            <div class="email">
-                                <div class="text">
-Email *</div>
-<input type="email" required>
-                            </div>
-<div class="msg">
-                                <div class="text">
-Message *</div>
-<!-- NOTE: Due to more textarea tag I got an error. So I changed the textarea name to changeit. Please change that changeit name to textarea -->
-<changeit id=".msgForm" rows="2" cols="25" required></changeit> <!-- replace this changeit name to textarea -->
-
-                            <br />
-<div class="btn">
-<button type="submit">Send</button>
-                            </div>
-                            </form> <br>
-       
-    <h4 >Download Apps</h4><br>
-     <table>
-     <th> 
-    <a href="abc.htm">                      
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Apple-App-store-icon.png" width="100" height="40" style="float: right; margin-right:7%"/>
-    </a> 
-    </th>
-    <th>
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Google-App-store-icon.png" width="100" height="40" style="float: right;"/>
-    </a>      
-    </th>
-    </table>                         
-    </div>
-
-                    <div class="bottom">
-                    <center>
-                    <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
-                    <span class="far fa-copyright"></span> 2020 All rights reserved.
-                    </center>
-                    </div>
-
-</div>
-</div>
+ 
 </div>
 </div>
 <!-- .......................................signup....................... -->

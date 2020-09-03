@@ -1,52 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
     
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
+body {
+font-family: Arial, Helvetica, sans-serif;
+ background-color:#f1f1f1;
 
-h2{
- left: 50px;
-}
-.splash{
-   text-align: center;
-   margin-left:32%;
-   margin-top:5%;
-   font-family: 'Montserrat', sans-serif;
-   background-color: #fff;
-   border-radius: 10px;
-   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 450px;
-    max-width: 100%;
-	min-height: 100px;
-}
-  .alert {
-  padding: 20px;
-  background-color:  #4CAF50;
-  color: white;
 }
 
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closebtn:hover {
-  color: black;
-}
-
-
+/* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -55,7 +26,17 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+/* Full-width input fields */
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
+/* Set a style for all buttons */
 button {
   background-color: #4CAF50;
   color: white;
@@ -64,37 +45,26 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
-}
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+  border-radius:4px;
 }
 
 button:hover {
   opacity: 0.8;
 }
 
+/* Extra styles for the cancel button */
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #4CAF50;
+  border-radius:4px;
 }
 
-.regbtn{
-  width: auto;
-  padding: 10px 18px;
-  background-color: #4CAF50;
-}
-
-
+/* Center the image and position the close button */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
+  position: relative;
 }
 
 img.avatar {
@@ -104,12 +74,57 @@ img.avatar {
 
 .container {
   padding: 16px;
-   
 }
 
 span.psw {
   float: right;
   padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display:block; /* Hidden by default */
+  position: relative; /* Stay in place */
+ /*  z-index: 1; */ /* Sit on top */
+  left: 50;
+  top: 50;
+  width:35%; /* Full width */
+  height: 70%; /* Full height */
+/*   overflow: auto;  *//* Enable scroll if needed */
+ /*  background-color: rgb(0,0,0); /* Fallback color */
+ /*  background-color: rgba(0,0,0,0.4); */ /* Black w/ opacity */ */
+  margin-top: 50%;
+  margin-left:30%;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
 }
 
 /* Change styles for span and cancel button on extra small screens */
@@ -121,89 +136,61 @@ span.psw {
   .cancelbtn {
      width: 100%;
   }
-  .alert {
-  padding: 20px;
-  background-color:  #4CAF50;
-  color: white;
-}
-
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closebtn:hover {
-  color: black;
-}
-  @keyframes show {
-	0%, 49.99% {
-		opacity: 0;
-		z-index: 1;
-	}
-	
-	50%, 100% {
-		opacity: 1;
-		z-index: 5;
-	}
 }
 </style>
 </head>
- <body>
- <div class="splash">
- <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <strong>Sucess!</strong> Your Password have succesfully changed.
-</div>
- 
- 
-  <form  method="post" action="${pageContext.request.contextPath}/customer/doLogin" modelAttribute="customer">
-  <h2 style="color:#4CAF50;">Log In VeggieFridge</h2>                                
- 
-  <label style="margin-right:57%;">Email</label>
-  <input type="email" name="${status.expression}" value="${status.value}" placeholder="Enter Password"  required style="width: 80%;
-  padding: 12px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;border:1px gray;"><br>
-  
-  <label style="margin-right:57%;">Password</label>
-  <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password"  required style="width: 80%;
-  padding: 12px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px; border: 1pc gray;"><br>
- 
-  <input type="submit" value="Login"  style="width: 80%;  padding:12px;margin-left:3%; border-radius:4px;"/><br>
-   
-      <label style="float:left; margin-left:10%;">
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label><br>
+<body>
 
-    <div class="container" style="background-color:#f1f1f1;margin-left:10%;margin-right:10%; margin-top:2%;" >
-    <button type="button" class="cancelbtn"  value="${pageContext.request.contextPath}/home/viewhome" style="margin-right:35%;">Cancel</button>
-    <span class="psw"><a href="${pageContext.request.contextPath}/login/forgotPassword">Forgot Password?</a></span>
+
+
+<!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+ -->
+     <div  class="modal">
+     <form class="modal-content animate" action="${pageContext.request.contextPath }/login/doLogin" method="post" modelAttribute="customer">
+     <div class="imgcontainer">
+   <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
+   <spring:url value="/images" var="images" />
+   <img src="${images}/logo.jpg" width="150" height="100"/>
+      </div>
+     <div class="container">
+      <label for="uname"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
     </div>
-   
-    <div class="signup" style="margin-top:4%;font-size:100%;">
-    New To VeggieFridge?Create an account <a href="${pageContext.request.contextPath }/login/saveCustomer" style="
-        padding: 8px 16px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: #4CAF50;
-        border-radius: 6px;
-        outline: none;">SignUp</a>
-   </div>
 
-</form>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw"><a href="#">Forgot Password?</a></span>
+    </div>
+  <a href="${pageContext.request.contextPath }/home/signup" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;text-decoration: none;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge?Create an account</a><button type="button" onclick="${pageContext.request.contextPath }/home/signup" class="submitId"  
+  style="
+  width: auto;
+  padding: 10px 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none; margin-top: 2%;margin-left: 2%;border-radius:5px;">SignUp</button> 
+    
+ </form>
 </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
 </body>
 </html>
