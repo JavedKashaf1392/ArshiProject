@@ -1,7 +1,6 @@
 package com.veggiefridge.online.service;
 
 import java.util.List;
-
 import com.veggiefridge.online.model.Customer;
 
 public interface CustomerService {
@@ -17,5 +16,11 @@ public interface CustomerService {
 	public void deleteCustomer(Integer customerId);
 	
 	public Customer loginCustomer(Customer customer);
+	
+	public Customer getCustomerByEmail(String email);
+
+	public Customer getCustomerByMobile(long mobile);
+	
+	
 
 }

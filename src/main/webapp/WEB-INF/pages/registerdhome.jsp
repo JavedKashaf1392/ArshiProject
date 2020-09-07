@@ -39,6 +39,9 @@ body{
     box-sizing: border-box;
 }
 }
+hr{
+border:1px solid #f1f1f1;
+}
 
 .header{
     margin-left:10%;
@@ -1057,9 +1060,9 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
   </script> --%>
-  <hr style="margin-left: 12%;margin-right: 12%;">
+  <hr>
   <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
-  <hr style="margin-left: 12%;margin-right: 12%;">
+  <hr>
  
   <div class="carousel">
   <div class="container">
@@ -1090,7 +1093,7 @@ function showSlides(n) {
   position: relative;
    color:black;">MRP</span>
  
-                   <span class="old-price">Rs ${product.price}</span>
+                    <span class="old-price">Rs ${product.price}</span>
                     Rs ${product.price-product.discount * product.price/100}
                      </span>
                      </div>

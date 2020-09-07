@@ -55,6 +55,8 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+
+Forogt Password----------->page
 @keyframes show {
 	0%, 49.99% {
 		opacity: 0;
@@ -75,7 +77,8 @@ input[type=submit]:hover {
   <div class="row">
   <div class="col-75"> 
     
-  <form method="post" action="${pageContext.request.contextPath}/login/generateLink" modelAttribute="kioskLocation">
+  <form method="post" action="${pageContext.request.contextPath}/forgot/forPassword" >
+  
   <spring:url value="/images" var="images" />
   <img src="${images}/logo.jpg" width="165" height="130"/>
 
@@ -84,13 +87,14 @@ input[type=submit]:hover {
  <h6 style="color:#4CAF50;font-size:85%; margin-top:2%; text-align:center;">Enter the email associated with your VeggieFridge account</h6>
  
 <!--  <i style="font-size:50px;color:#4CAF50;" class="fa">&#xf199;</i> -->
-  <input type="email" name="${status.expression}" value="${status.value}" placeholder="Enter Email"  required style="width: 77%;
+  <input type="email" name="email" placeholder="Enter Email"  required style="width: 77%;
   padding: 12px;
   margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
   background: #f1f1f1;border-radius:4px;">
-  <input type="submit" value="Continue"  style="width: 79%;  padding:12px; margin-left: 1%; margin-right: 1%;"/>
+  
+ <input type="submit" value="Reset Password"  style="width: 79%;  padding:12px; margin-left: 1%; margin-right: 1%;"/>
       </div>
       </div>
 

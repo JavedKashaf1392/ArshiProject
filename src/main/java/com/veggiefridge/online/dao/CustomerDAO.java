@@ -2,7 +2,7 @@ package com.veggiefridge.online.dao;
 import java.util.List;
 import com.veggiefridge.online.model.Customer;
 
-    public interface CustomerDAO {
+    public interface CustomerDAO{
 
     public List<Customer> getAllCustomers();
 
@@ -16,7 +16,11 @@ import com.veggiefridge.online.model.Customer;
 	
 	public Customer loginCustomer(Customer customer);
 	
-	/* public User findAccount(String email); */
 	
+   public Customer getCustomerByEmail(String email);
+	
+	public Customer getCustomerByMobile(long mobile);
 
-}
+	
+	/*public User findAccount(String email); */
+	}

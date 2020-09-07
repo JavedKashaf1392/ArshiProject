@@ -50,16 +50,24 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	@Transactional
 	public void deleteCustomer(Integer customerId) {
-//		return customerDAO.getCustomer(customerId);
-//		 customerDAO.getCustomer(customerId);
+     //return customerDAO.getCustomer(customerId);
+       //customerDAO.getCustomer(customerId);
 		 customerDAO.deleteCustomer(customerId);
 	}
 	
 	public Customer loginCustomer(Customer customer) {
 		return customerDAO.loginCustomer(customer);
 	}
-
-	
-	
-
+    
+	//get Customer by email
+	@Override
+	public Customer getCustomerByEmail(String email) {
+		return customerDAO.getCustomerByEmail(email);
+	}
+    
+	//get Customer by mobile
+	@Override
+	public Customer getCustomerByMobile(long mobile) {
+		return customerDAO.getCustomerByMobile(mobile);
+	}
 }

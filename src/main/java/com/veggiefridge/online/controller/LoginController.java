@@ -1,11 +1,21 @@
 package com.veggiefridge.online.controller;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -15,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.KioskLocation;
@@ -39,6 +50,9 @@ public class LoginController {
 	
 	@Autowired
 	private KioskLocationService kiosklocationservice;
+	
+	@Autowired
+	private JavaMailSender mailSenderObj;
 	
 	
 	 //view login
@@ -106,13 +120,13 @@ public class LoginController {
 			 ModelAndView mav = new ModelAndView("loginform");
 			 return mav;	 
 		 }
-          		
-		    //login customer from database
+		 
+		     //login customer from database
 		      @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
 			  public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation,HttpSession session,ModelAndView model){
-				
-		    	if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
-			    customer=custservice.loginCustomer(customer);
+		    
+		    if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
+			 customer=custservice.loginCustomer(customer);
 			
 			if(customer!=null){
 		    session.setAttribute("customer", customer);
@@ -148,6 +162,10 @@ public class LoginController {
 				session.removeAttribute("customer");
 				return "redirect:/home/viewhome";
 			}
+			
+			
+			
+
 
 }
 

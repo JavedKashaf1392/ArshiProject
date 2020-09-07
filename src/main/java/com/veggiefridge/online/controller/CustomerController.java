@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.KioskLocation;
@@ -89,9 +90,39 @@ public class CustomerController {
 		}
 	 
 		
+	 
+	    //getAll Customer
+		@RequestMapping(value ="/androidlistCustomer")
+		@ResponseBody
+		public List<Customer> androidCustomer(){
+			List<Customer> listCustomer = customerService.getAllCustomers();
+			return listCustomer;
+		}
 		
-				
-     
+		
+//////////////////////////////////////////////////////////////
+/////////////////////////////////////////////// Customer API's
+
+
+// Login customer into database
+// http://localhost:8082/vf-online/android/login?email=me@gmail.com&password=90
+@ResponseBody
+@RequestMapping(value = "/login",method =RequestMethod.GET)
+public Customer loginCustomer(HttpServletRequest request) {
+String email = request.getParameter("email");
+String password = request.getParameter("password");
+System.out.println(email + password);
+Customer customer = new Customer();
+customer.setEmail(email);
+customer.setPassword(password);
+customer = customerService.loginCustomer(customer);
+
+if (customer != null){
+return customer;
+} else
+customer.setCustomerid(0);
+return customer;
+}
 }
 		  
 		  

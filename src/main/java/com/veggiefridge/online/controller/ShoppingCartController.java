@@ -38,13 +38,11 @@ public class ShoppingCartController {
 	@Autowired
 	private ShoppingCartService shoppingcartservice;
 	
-	
-	
 	@SuppressWarnings("unchecked")
     @RequestMapping(value = "/buy/{productid}", method = RequestMethod.GET)
 	public String buy(@PathVariable("productid") int productid, HttpSession session,ModelAndView model,@ModelAttribute("item")Item item){
 		Product product = new Product(); 
-		if(session.getAttribute("cart") == null) {
+		if(session.getAttribute("cart") == null){
 	    List<Item> cart = new ArrayList<Item>();
 	    cart.add(new Item(productservice.getProduct(productid), 1));
 	    session.setAttribute("cart", cart);
@@ -86,6 +84,10 @@ public class ShoppingCartController {
 			  return -1;
 			 }
 	
+			 
+			 
+			 
+			 
 	
 			 @RequestMapping(value = "/registerdhome", method = RequestMethod.GET)
 				public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,

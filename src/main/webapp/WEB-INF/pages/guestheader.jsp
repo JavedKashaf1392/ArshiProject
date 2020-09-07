@@ -30,9 +30,6 @@ body
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
-    .mySlides {display: none};
-   
-    
 }
 .header{
     position:relative;
@@ -50,15 +47,15 @@ body
 
 /* call */
 .call{
-/* border:1px solid black; */ 
-margin-right:%;
-margin-top:10px;
+/* border:1px solid black;   */
 font-size:18px;
-margin-left:45%;
-width: 100%;
+margin-top:1%;
+float: right;
+margin-right:7%;
 }
 
-.notification {
+
+  .notification {
   margin-left:4%;
   background-color:#4CAF50;
   color: white;
@@ -283,8 +280,7 @@ form.example button:hover {
   display: block;
 }
 /* ................... */
-</style>
-   
+  </style>
   <style>
   .menu {
   display: none; /* Hidden by default */
@@ -402,20 +398,20 @@ label #sidebar_btn:hover{
 </style>
    
     <body>
-    <div style="position:absolute; margin-left:8%;
-    margin-right:6%;
-    width:85%;border:;border:">
+   <div style="position:absolute;margin-left:7%;
+    margin-right:7%;
+    width:86%;border:1px solid #f1f1f1;">
    
    <div class="header">
    <div class="logo">
    <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg" width="140" height="110"/>
+   <img src="${images}/logo.jpg" width="150" height="110"/>
    </div>
     
  <div class="call"> 
          
  <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;color: black;">${kiosklocation.location},${kiosklocation.cities}</a> | 
+ <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${kiosklocation.location},${kiosklocation.cities}</a>  | 
 
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
 
@@ -460,8 +456,7 @@ label #sidebar_btn:hover{
   </div>
   </div>
   
-   
-  <div class="search" style="border:;margin-left:18%;width:100%;">                                                 
+  <div class="search" style="margin-left:18%;width:100%;border:;">                                                 
   <form class="example">
   <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:55%;padding:12px 12px;">
   <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>

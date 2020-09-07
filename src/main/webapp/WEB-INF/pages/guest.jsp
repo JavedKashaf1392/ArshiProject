@@ -22,6 +22,10 @@
         
 body {font-family: Arial, Helvetica, sans-serif;}
 
+hr{
+border:1px solid #f1f1f1;
+}
+
 .row:after {
   content: "";
   display: table;
@@ -52,7 +56,7 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
   float: center;
-  margin-top: 10px;
+  margin-top:10px;
 }
 input[type=submit]:hover {
   background-color: #45a049;
@@ -643,9 +647,9 @@ function showSlides(n) {
 }
   </script> --%>
   
-  <hr style="margin-left: 12%;margin-right: 12%;">
+  <hr>
   <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
-  <hr style="margin-left: 12%;margin-right: 12%;">
+  <hr>
   
   
   <div class="carousel">
@@ -679,26 +683,30 @@ function showSlides(n) {
  
                    <span class="old-price">Rs ${product.price}</span>
                     Rs ${product.price-product.discount * product.price/100}
-                     </span>
-                     </div>
+                    </span>
+            
+            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/home/loginform'" style="float:left;
+  /* background-color: #1864ff; */
+  background-color:#4CAF50;
+  border: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 28px;
+  border-radius: 3px;
+ margin-left:19%;margin-top:14%;"> 
+			
+			<i class="fa fa-shopping-cart"></i> 
+			Add to cart
+		    </button>
+                    </div>
            
         
         <div class="right">
          
         <%-- "${pageContext.request.contextPath}/cart/buy/${product.productid}"
          --%><!-- add/{productid}/product -->
-        
-        <a href="${pageContext.request.contextPath}/home/loginform" style="display:inline-block;
-        padding: 8px 18px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a> 
-        
-        
-         
+      
         <!-- class="btn btn-success" -->
            
          <%--  onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
@@ -709,13 +717,13 @@ function showSlides(n) {
 		    </button>  --%>
         </div></div> 
         </li>
-  </c:forEach>
+       </c:forEach>
         
       
-  <hr style="margin-left: 12%;margin-right: 12%;">
+  <hr>
   <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
-  <hr style="margin-left:4%;margin-right:1%;">
-   <table style="border-spacing:30px;">
+  <hr>
+  <table style="border-spacing:30px;">
    <th>
    <a href="abc.htm">
    <spring:url value="/images" var="images" />

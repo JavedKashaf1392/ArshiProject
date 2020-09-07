@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.veggiefridge.online.model.Customer;
 
 @Repository
-public class CustomerDAOImpl implements CustomerDAO {
+public class CustomerDAOImpl implements CustomerDAO{
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -21,14 +21,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	//	get all customers
+	//get all customers
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Customer> getAllCustomers() {
 		return sessionFactory.getCurrentSession().createQuery("from Customer").list(); 
 	}
 
-//	add customer
+     //add customer
 	@Override
 	public void addCustomer(Customer customer) {
 	Session session=sessionFactory.openSession();	
@@ -48,8 +48,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	//sessionFactory.getCurrentSession().saveOrUpdate(customer);
 	}
-
-//	get customer
+ 
+    //get customer
 	@Override
 	public Customer getCustomer(int customerid) {
 		return (Customer) sessionFactory.getCurrentSession().get(Customer.class, customerid);
@@ -69,23 +69,25 @@ public class CustomerDAOImpl implements CustomerDAO {
 		  if (null !=customer) {
 		  this.sessionFactory.getCurrentSession().delete(customer); 
 		  }
-		
 	}
 
-    @Override
+	
+    
+	@Override
 	public Customer loginCustomer(Customer customer) {
 		Session session=sessionFactory.openSession();	
 		Transaction tx= session.beginTransaction();
 	    String hql="from com.veggiefridge.online.model.Customer as customer where customer.email=?and customer.password=?";	
-		try {
-			Query query=session.createQuery(hql);
+	   
+	    try{
+	    	Query query=session.createQuery(hql);
 			query.setParameter(0,customer.getEmail());
 			query.setParameter(1,customer.getPassword());
 		    customer=(Customer) query.uniqueResult();
 		    tx.commit();
 		    session.close();
 		}
-		
+	    
 		catch (Exception e) {
 			tx.rollback();
 			session.close();
@@ -93,7 +95,56 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		return customer;
 	}
-}	
+
+	
+	//get Customer by email
+	@Override
+	public Customer getCustomerByEmail(String email) {
+		Customer customer = new Customer();
+		Session session=sessionFactory.openSession();	
+		Transaction tx= session.beginTransaction();
+	    String hql="from com.veggiefridge.online.model.Customer as customer where customer.email=?";	
+		try {
+			Query query=session.createQuery(hql);
+			query.setParameter(0,email);
+		    customer=(Customer) query.uniqueResult();
+		    tx.commit();
+		    session.close();
+		}
+		catch (Exception e) {
+			tx.rollback();
+			session.close();
+			e.printStackTrace();
+		}
+		return customer;
+		}
+	
+	//get Customer by mobile
+	@Override
+	public Customer getCustomerByMobile(long mobile) {
+		Customer customer = new Customer();
+		Session session=sessionFactory.openSession();	
+		Transaction tx= session.beginTransaction();
+	    String hql="from com.veggiefridge.online.model.Customer as customer where customer.mobile=?";	
+		try {
+			Query query=session.createQuery(hql);
+			query.setParameter(0,mobile);
+		    customer=(Customer) query.uniqueResult();
+		    tx.commit();
+		    session.close();
+		}
+		catch (Exception e) {
+			tx.rollback();
+			session.close();
+			e.printStackTrace();
+		}
+		return customer;
+		}
+	}
+	
+	
+	
+	
 
 
 

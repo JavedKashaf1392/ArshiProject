@@ -64,11 +64,8 @@ color: green;
   <form action="${pageContext.request.contextPath}/login/changePassword" th:action="@{/Cancel}" th:object="${user}" method="post">
   <spring:url value="/images" var="images" />
   <img src="${images}/logo.jpg" width="165" height="130"/>
-<h2 style="color:#4CAF50;">Authentication Required</h2>
+<h4 style="color:#4CAF50;">Authentication Required</h4>
 <h5 style="color:#4CAF50;">For your security, we need to authenticate your request. We've sent an link to the associate email. Please go to the email click it on link to complete verification.</h5>
-<input type="radio" name="entity" value="Email"> Email</input>
-<input type="radio" name="entity" value="Text"> Text</input><br><br>
-<input  class="button button1" type="submit" value="Send"/>   
-<input   class="button button1" type="submit" value="Cancel">
+
 </form>
 </div>
