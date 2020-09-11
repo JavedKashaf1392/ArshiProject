@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Configuration
 @PropertySource(value = {"classpath:application.properties"})
-public class PaytmDetails {
+public class PaytmDetails{
 	
 	    private String merchantId;
 

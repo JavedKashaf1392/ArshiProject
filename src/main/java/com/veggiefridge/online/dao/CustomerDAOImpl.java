@@ -78,7 +78,6 @@ public class CustomerDAOImpl implements CustomerDAO{
 		Session session=sessionFactory.openSession();	
 		Transaction tx= session.beginTransaction();
 	    String hql="from com.veggiefridge.online.model.Customer as customer where customer.email=?and customer.password=?";	
-	   
 	    try{
 	    	Query query=session.createQuery(hql);
 			query.setParameter(0,customer.getEmail());

@@ -1,9 +1,18 @@
 package com.veggiefridge.online.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 public class Item{
-
+    
+	private static final long serialVersionUID = -3465813074586302847L;
+		
 	private Product product;
-	 
+	
 	private int quantity;
 
 	public Product getProduct() {
@@ -22,8 +31,7 @@ public class Item{
 		this.quantity = quantity;
 	}
 
-	
-	public Item(Product product, int quantity) {
+	public Item(Product product,int quantity) {
 		super();
 		this.product = product;
 		this.quantity = quantity;

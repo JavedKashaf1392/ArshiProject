@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,7 +72,8 @@ public class CustomerController {
 	}
 
 	
-//	edit customer
+
+	//	edit customer
 	 @RequestMapping(value = "/editCustomer", method = RequestMethod.GET) 
 	    public ModelAndView editCustomer(HttpServletRequest request) { 
 		   int customerid = Integer.parseInt(request.getParameter("customerid"));
@@ -103,9 +105,8 @@ public class CustomerController {
 //////////////////////////////////////////////////////////////
 /////////////////////////////////////////////// Customer API's
 
-
 // Login customer into database
-// http://localhost:8082/vf-online/android/login?email=me@gmail.com&password=90
+// http://localhost:8082/vfs-online/android/login?email=me@gmail.com&password=90
 @ResponseBody
 @RequestMapping(value = "/login",method =RequestMethod.GET)
 public Customer loginCustomer(HttpServletRequest request) {
@@ -125,10 +126,7 @@ return customer;
 }
 }
 		  
-		  
-	  
-	 
-	 
+		 
 	 
 
 	

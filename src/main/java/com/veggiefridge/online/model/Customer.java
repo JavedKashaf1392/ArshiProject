@@ -48,21 +48,9 @@ public class Customer implements Serializable {
 	@Column(name="password")
 	private String password;
 	
-	
 	@Column(name="confirmPassword")
 	private String confirmPassword;
 	
-	@OneToOne
-	private Cart cart;
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-
 	public int getCustomerid() {
 		return customerid;
 	}

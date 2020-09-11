@@ -24,11 +24,11 @@
 	<mvc:resources mapping="/images/**" location="/WEB-INF/images/" /> 
 	
 	 <!-- Spring Email Sender Bean Configuration -->
-    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
         <property name="username" value="aq570975@gmail.com"/>
-        <property name="password" value="arshi@#1234"/>
+        <property name="password" value="Arshigmail@#@#12"/>
         <property name="javaMailProperties">
         <props>
                 <prop key="mail.smtp.auth">true</prop>
@@ -40,7 +40,8 @@
             </props>
         </property>
     </bean>
-     
+    
+    
     <!-- Spring Email Attachment Configuration -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- Maximum Upload Size In Bytes -->

@@ -62,10 +62,10 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
-	public String saveProduct( @Valid @ModelAttribute Product product,BindingResult result) {
+	public String saveProduct( @Valid @ModelAttribute Product product,BindingResult result){
 		if (result.hasErrors()) {
 			return "productform";
-		} else if (product.getProductid() == 0) { // if employee id is 0 then creating the
+		}else if(product.getProductid() == 0) { // if employee id is 0 then creating the
 			// employee other updating the employee
 			productService.addProduct(product);
 		} else {

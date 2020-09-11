@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name ="customerqr")
-
 public class QRCode implements Serializable {
 	
 	private static final long serialVersionUID = -3465813074586302847L;

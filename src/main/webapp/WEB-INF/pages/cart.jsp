@@ -71,13 +71,13 @@ button:focus {
  background-color:green;
 }
 
-/* img,
+ img,
 .basket-module,
 .basket-labels,
 .basket-product {
   width: 100%;
 }
- */
+ 
 input,
 button,
 .basket,
@@ -98,7 +98,7 @@ button,
 .subtotal-value:before,
 .total-value:before,
 .promo-value:before {
-  content: 'Rs';
+  content: ;
 }
 
 .hide {
@@ -415,20 +415,18 @@ aside{
 </style>
 </head>
 
-    <body>
-   <jsp:include page="header.jsp"/>
-   
+   <body>
+   <%-- <jsp:include page="header.jsp"/> --%>
    <div style="background-color:white;margin-left:13%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
    
-   <main style="margin-top:7%;">
+   <main>
     <div class="basket">
-        
-        <!-- <div class="basket-module" style="background-color:white;">
+        <div class="basket-module" style="background-color:white;">
         <label for="promo-code"><h2 style="color:green;">Enter a promotional code</h2></label>
         <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field" style="width:35%;">
         <button class="promo-code-cta" style="background-color:#4CAF50;">Apply</button>
         </div>
-         -->
+        
           <div class="basket-labels" style="background-color:#4CAF50;width:101%;padding:0px 7px;">
           <ul>
           <li class="item item-heading" style="color:white;font-size:16px;">Item</li>
@@ -440,6 +438,7 @@ aside{
 
 <c:set var="s" value="0"></c:set>
 <c:forEach var="item" items="${sessionScope.cart}">
+
 <c:set var="s" value="${s+ item.product.price-item.product.discount * item.product.price/100 * item.product.quantity}"></c:set>
       <div class="basket-product" style="background-color:white; width:101%;padding:15px 7px;">
       <div class="item">
@@ -455,6 +454,7 @@ aside{
             </div>
             </div>
         
+      <!--   &#8377; -->
         <div class="price" style="ba">${item.product.price-item.product.discount * item.product.price/100}</div>
         <div class="quantity">
         <input type="number" value="${item.product.quantity}" class="quantity-field">
@@ -469,7 +469,7 @@ aside{
       <div class="subtotal">${item.product.price-item.product.discount * item.product.price/100}</div>
       
       <div class="remove">
-      <a href="${pageContext.request.contextPath}/cart/delete/${item.product.productid}"><i class="fa fa-trash" style="color:green;padding:15px 15 px;margin-left:10" title="remove product"></i></a>
+      <a href="${pageContext.request.contextPath}/cart/delete/${item.product.productid}" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash" style="color:green;padding:15px 15 px;margin-left:10" title="remove product"></i></a>
       </div>
       </div>
       </c:forEach>
@@ -510,7 +510,7 @@ aside{
         </div>
         
         <div class="summary-checkout">
-        <a href="${pageContext.request.contextPath}/cart/saveOrder" style="display: inline-block;
+        <a href="${pageContext.request.contextPath}/home/thanks" style="display: inline-block;
         padding: 15px 85px;
         text-align: center;
         text-decoration: none;

@@ -1,12 +1,21 @@
 package com.veggiefridge.online.controller;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Properties;
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -62,9 +71,7 @@ public class ForgotPasswordController {
 	
 	}
 	
-	
 
-	
 	@RequestMapping(value ="/forgotPassword")
 	public Map<String, String> forgotPassword(HttpServletRequest request) {
 		Map<String,String> response = new LinkedHashMap<>();
@@ -144,40 +151,88 @@ public class ForgotPasswordController {
 		}
 		
 		return response;
-		
-
 	}
 	
+	      
 	//forPassword
 	@RequestMapping(value ="/forPassword")
-	public String forPassword(HttpServletRequest request){
+	public String forPassword(HttpServletRequest request)throws MessagingException{
     Customer customer=new Customer();
     String email = request.getParameter("email");
-    if(!email.isEmpty()){
-	customer=customerservice.getCustomerByEmail(email);
+   
+   if(!email.isEmpty()){
+   customer=customerservice.getCustomerByEmail(email);
 	if (customer != null){
 	//print a simple debug info
 	System.out.println("email"+email);
 	//create a simple email object
-	SimpleMailMessage smm= new SimpleMailMessage();
-	smm.setTo(email);
-	smm.setSubject("forgotPassword");
-	smm.setText("<html><body>hi,<br/><a href='http://localhost:8080/vf-online/forgot/newPassword/"+email+"/'> Click here</a> to reset password</body></html>");
-	
-	//send an email
-	mailSenderObj.send(smm);
+	//SimpleMailMessage smm=new SimpleMailMessage();
+    //smm.setTo(email);
+	//smm.setSubject("forgotPassword");
+	/*
+	 * smm.
+	 * setText("<html><body>hi,<br/><a href='http://localhost:8080/vf-online/forgot/newPassword/"
+	 * +email+"/'>Click here</a> to reset password</body></html>");
+	 */
+		  MimeMessage mimeMessage = mailSenderObj.createMimeMessage();
+		  MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+		  String htmlMsg = "<html><body><img name=\"_1170:827\" src=\"page_001.jpg\" height=\"70\" width=\"27\" border=\"0\" usemap=\"#Map\"></div><h1 style=\"color:green\">VeggieFridge</h1> <h4>Eat Healthy,Drink Healthy</h4></br>hi,Arshi<br/><h3>Subject</h3>: Reset Password</br><h2>We have received your request for reset password. Follow this link to reset your customer account password at VeggieFridge.</h2> <a href='http://localhost:8080/vf-online/forgot/newPassword/"+ 
+		  		email+"/'>Click here</a> to reset password</body></html>";
+		  
+		  //mimeMessage.setContent(htmlMsg, "text/html"); /** Use this or below line **/
+		  helper.setText(htmlMsg, true); // Use this or above line.
+		  helper.setTo(email);
+		  mailSenderObj.send(mimeMessage);
+		  System.out.println("message sent succesfully");
 	
     }
-	else {
+	
+	else{
 		System.out.println("Invalid Email");
 	}
-	
+     
     }
     else {
-    	System.out.println("Invalid Email");
-    }
+    	System.out.println("Invalid Email");	
+	}
 	return "checkMail";	
 	}
+	
+	
+	
+	 //send attachment
+	 @RequestMapping(value ="sendMail")
+	 public void sendMail(final String from, final String to,final String subject,final String msg) {  
+	        try {  
+	        MimeMessage message = mailSenderObj.createMimeMessage();  
+	        MimeMessageHelper helper = new MimeMessageHelper(message, true);  
+	        helper.setFrom("aq570975@gmail.com");  
+	        helper.setTo("aq570975@gmail.com");  
+	        helper.setSubject("forgot password");  
+	        helper.setText("forgotPasswordpage");  
+	        // attach the file  
+	        FileSystemResource file = new FileSystemResource(new File("vf-online/WEB-INF/pages/footer.jsp"));  
+	        helper.addAttachment("forgotpassword", file);//file will be sent by this name  
+	        
+	        mailSenderObj.send(message);  
+	        }catch(MessagingException e){e.printStackTrace();}  
+	    }  
+	
+	
+	 
+	 @RequestMapping(value = "/passwordChanged", method = RequestMethod.POST)
+	 public String setNewPassword(@ModelAttribute("customer")Customer customer, ModelMap map) {
+
+		 // forgotPasswordService.setNewPassword(signUp.getEmail(), signUp.getPassword());
+	     map.addAttribute("msg", "Password changed Successfully..");
+	     return "home";
+	 }
+	   
+	
+	
+	
+	
+	
 	
 	}	
 	

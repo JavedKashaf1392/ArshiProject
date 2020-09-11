@@ -2,19 +2,34 @@
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
   
   
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%> 
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
 
- <html>
- <head>
- <meta charset="utf-8">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <title>Basket</title>
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="ISO-8859-1">
+   <meta charset="utf-8">
+	 <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
+	</script> 
+	
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> 
+	</script> 
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"> 
+	</script>    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home screen of VeggieFridge</title>
+        <script>document.getElementsByTagName("html")[0].className += " js";</script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
  
-<style>
+ <style>
 
 body {
   background-color:#f1f1f1;
@@ -56,13 +71,13 @@ button:focus {
  background-color:green;
 }
 
-img,
+ img,
 .basket-module,
 .basket-labels,
 .basket-product {
   width: 100%;
 }
-
+ 
 input,
 button,
 .basket,
@@ -83,7 +98,7 @@ button,
 .subtotal-value:before,
 .total-value:before,
 .promo-value:before {
-  content: 'Rs';
+  content: ;
 }
 
 .hide {
@@ -120,12 +135,12 @@ label {
   margin-bottom: 0.3125rem;
 }
 
-.promo-code-field {
+ .promo-code-field {
   border: 1px solid #ccc;
-  padding: 0.5rem;
+ /*  padding: 0.5rem; */
   text-transform: uppercase;
   transition: all 0.2s linear;
-  width: 48%;
+  width:20%;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -237,7 +252,7 @@ li.subtotal:before {
   width: 3.75rem;
 }
 aside{
-  float: right;
+  float:right;
   position: relative;
   width: 30%;
 }
@@ -245,7 +260,7 @@ aside{
   background-color: white;
 /*   border: 1px solid green; */
   padding: 1rem;
-  position: fixed;
+  position:relative;
   width: 250px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -400,17 +415,19 @@ aside{
 </style>
 </head>
 
-    <body>
-    <div style="background-color:white;margin-left:13%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
-    <main>
+   <body>
+   <%-- <jsp:include page="header.jsp"/> --%>
+   <div style="background-color:white;margin-left:13%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
+   
+   <main>
     <div class="basket">
-        <div class="basket-module" style="background-color:white;padding:5px 7px;">
+        <div class="basket-module" style="background-color:white;">
         <label for="promo-code"><h2 style="color:green;">Enter a promotional code</h2></label>
-        <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
-        <button class="promo-code-cta" style="background-color: green;">Apply</button>
+        <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field" style="width:35%;">
+        <button class="promo-code-cta" style="background-color:#4CAF50;">Apply</button>
         </div>
         
-          <div class="basket-labels" style="background-color:green;width:101%;padding: 0px 7px;">
+          <div class="basket-labels" style="background-color:#4CAF50;width:101%;padding:0px 7px;">
           <ul>
           <li class="item item-heading" style="color:white;font-size:16px;">Item</li>
           <li class="price" style="color: white;font-size:16px;">Price</li>
@@ -419,26 +436,28 @@ aside{
           </ul>
          </div>
 
-<c:set var="s" value="0"></c:set><%-- ${sessionScope.cart} --%>
-<c:forEach var="cartline" items="${cartlines}">
-<c:set var="s" value="${s+ cartline.product.price-cartline.product.discount * cartline.product.price/100 * cartline.product.quantity}"></c:set>
+<c:set var="s" value="0"></c:set>
+<c:forEach var="item" items="${sessionScope.cart}">
+
+<c:set var="s" value="${s+ item.product.price-item.product.discount * item.product.price/100 * item.product.quantity}"></c:set>
       <div class="basket-product" style="background-color:white; width:101%;padding:15px 7px;">
       <div class="item">
 
 <div class="product-image">
 <spring:url value="/images" var="images"/>
-<img src="${images}/${cartline.product.imageName}"/>
+<img src="${images}/${item.product.imageName}" class="product-frame"/>
 </div>
             <div class="product-details" style="background-color:white;">
-            <h1 style="color: red;"><strong></span></strong>${cartline.product.productName}</h1><!-- <span class="item-quantity"> -->
-            <p><strong>${cart.product.productName},${cart.product.size}</strong></p>
-            <p>Product Id -${cart.product.productid} </p>
+            <h1 style="color: red;"><strong></span></strong>${item.product.productName}</h1><!-- <span class="item-quantity"> -->
+            <p><strong>${item.product.productName},${item.product.size}</strong></p>
+            <p>Product Id -${item.product.productid} </p>
             </div>
             </div>
         
-        <div class="price" style="ba">${cartline.product.price-cartline.product.discount * cartline.product.price/100}</div>
+      <!--   &#8377; -->
+        <div class="price" style="ba">${item.product.price-item.product.discount * item.product.price/100}</div>
         <div class="quantity">
-        <input type="number" value="${cartline.product.quantity}" class="quantity-field">
+        <input type="number" value="${item.product.quantity}" class="quantity-field">
         </div>
         
 <%-- <div class="quantity">
@@ -447,10 +466,10 @@ aside{
 <input type="button" onclick="incrementValue()" value="+" />
 </div> --%>
         
-      <div class="subtotal">${cartline.product.price-cartline.product.discount *cartline.product.price/100}</div>
+      <div class="subtotal">${item.product.price-item.product.discount * item.product.price/100}</div>
       
       <div class="remove">
-      <a href="${pageContext.request.contextPath}/cart/delete/${cartline.product.productid}"><i class="fa fa-trash" style="color:green;padding:15px 15 px;margin-left:10" title="remove product"></i></a>
+      <a href="${pageContext.request.contextPath}/cart/delete/${item.product.productid}" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash" style="color:green;padding:15px 15 px;margin-left:10" title="remove product"></i></a>
       </div>
       </div>
       </c:forEach>
@@ -459,7 +478,7 @@ aside{
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:green;
+        background-color:#4CAF50;
         border-radius: 6px;
         outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
      
@@ -482,7 +501,7 @@ aside{
     
     <div class="summary-delivery">
     <spring:url value="/images" var="images" />
-    <img src="${images}/paytm.png" width="30" height="70"/>
+    <img src="${images}/paytm.png" width="30" height="70" style="width: 100%;"/>
     
          </div>
          <div class="summary-total" style="padding:5px 5px;">
@@ -491,18 +510,24 @@ aside{
         </div>
         
         <div class="summary-checkout">
-        <a href="${pageContext.request.contextPath}/cart/saveOrder" style="display: inline-block;
+        <a href="${pageContext.request.contextPath}/home/thanks" style="display: inline-block;
         padding: 15px 85px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:green;
+        background-color:#4CAF50;
         border-radius: 6px;
         outline: none;margin-top:6px;font-size:10px;">CheckOut</a>
         </div>
-      </div>
-    </aside>
-  </main>
+        </div>
+        </aside>
+        </main>
+    
+  
+   
+  <!-- Footer comes here -->
+ 
+  
   <script>
  /* Set values + misc */
 var promoCode;
@@ -654,4 +679,4 @@ function decrementValue()
 </script>
 
 </body>
-</html>>
+</html>

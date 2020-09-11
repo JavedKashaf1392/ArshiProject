@@ -1098,11 +1098,12 @@ function showSlides(n) {
                      </span>
                      </div>
                 <div class="right">
-         
+       <%--   ${pageContext.request.contextPath }/cart/ordernow/${product.productid} --%>
         <%-- "${pageContext.request.contextPath}/cart/buy/${product.productid}"
          --%><!-- add/{productid}/product -->
+       <%--  /cart/add/${product.id}/product --%>
         
-        <a href="${pageContext.request.contextPath}/cart/buy/${product.productid}" style="display:inline-block;
+        <a href="${pageContext.request.contextPath }/cart/add/${product.productid}" style="display:inline-block;
         padding: 8px 18px;
         text-align: center;
         text-decoration: none;
