@@ -16,8 +16,7 @@ import com.veggiefridge.online.model.Customer;
 	
 	public Customer loginCustomer(Customer customer);
 	
-	
-   public Customer getCustomerByEmail(String email);
+    public Customer getCustomerByEmail(String email);
 	
 	public Customer getCustomerByMobile(long mobile);
 

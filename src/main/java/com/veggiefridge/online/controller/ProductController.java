@@ -2,10 +2,8 @@ package com.veggiefridge.online.controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.ProductService;
 
@@ -82,7 +79,7 @@ public class ProductController {
 	 * ModelAndView("redirect:/"); }
 	 */
 
-	@RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
+	@RequestMapping(value ="/deleteProduct", method = RequestMethod.GET)
 	public String deleteProduct(@RequestParam("productid") Integer productId) {
 		productService.deleteProduct(productId);
 		return "redirect:/product/listProduct ";

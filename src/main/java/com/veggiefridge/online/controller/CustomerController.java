@@ -87,7 +87,7 @@ public class CustomerController {
 	 //delete customer
 	 @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
 		public String deleteCustomer(@RequestParam("customerid") Integer customerId) {
-		 customerService.deleteCustomer(customerId);
+		customerService.deleteCustomer(customerId);
 			return "redirect:/customer/listCustomer ";
 		}
 	 

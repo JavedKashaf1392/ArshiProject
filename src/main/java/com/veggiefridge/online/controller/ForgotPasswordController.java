@@ -154,7 +154,7 @@ public class ForgotPasswordController {
 	}
 	
 	      
-	//forPassword
+	   //forPassword
 	@RequestMapping(value ="/forPassword")
 	public String forPassword(HttpServletRequest request)throws MessagingException{
     Customer customer=new Customer();

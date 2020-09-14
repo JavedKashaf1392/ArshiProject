@@ -6,26 +6,27 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import com.veggiefridge.online.dao.CartItemDAO;
+import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Item;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
-import com.veggiefridge.online.model.TempOrderDetails;
+import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
 import com.veggiefridge.online.service.ProductService;
-import com.veggiefridge.online.service.ShoppingCartService;
 
 @Controller
 @RequestMapping(value="/cart")
@@ -41,21 +42,22 @@ public class ShoppingCartController {
 	private KioskLocationService kiosklocationservice;
 	
 	@Autowired
-	private ShoppingCartService shoppingcartservice;
+	private CartService cartservice;
 	
+	private static final Logger logger = LoggerFactory.logger(ShoppingCartController.class);
 	
 	
 	 @SuppressWarnings("unchecked")
 	 @RequestMapping(value ="/ordernow/{productid}", method = RequestMethod.GET)
 	 public String ordernow(@PathVariable(value = "productid") int productid, ModelMap mm, HttpSession session) {
 
-	   if (session.getAttribute("cart") == null) {
+	   if(session.getAttribute("cart") == null){
 	   List<Item> cart = new ArrayList<Item>();
 	   cart.add(new Item(this.productservice.getProduct(productid), 1));
 	   session.setAttribute("cart", cart);
 	  } 
 	   else {
-	   List<Item> cart = (List<Item>) session.getAttribute("cart");
+	   List<Item> cart =(List<Item>) session.getAttribute("cart");
 
 	   // using method isExisting here
 	   int index = isExisting(productid, session);
@@ -112,7 +114,7 @@ public class ShoppingCartController {
 					return model; 
 				}
 			 
-			   //checkout 
+			    //checkout 
 				@RequestMapping(value ="/paymnet")
 				public ModelAndView myOrder(ModelAndView model) {
 					model.setViewName("checkout");
@@ -127,26 +129,50 @@ public class ShoppingCartController {
 				}
 				
 				
-				@RequestMapping(value="/add/{productid}",method = RequestMethod.GET)
-				public String addCartLine(@PathVariable(value ="productid")int productid){
-				TempOrderDetails tod= shoppingcartservice.getByProduct(productid);
-				if(tod==null) {
-				// add a new cartLine if a new product is getting added	
-				tod= new TempOrderDetails();
-				Product product= productservice.getProduct(productid);
-				// transfer the product details to TempOrderDetails 
-				tod.setProductName(product.getProductName());
-				tod.setSize(product.getSize());
-				tod.setFinalPrice(product.getFinalPrice());
-				tod.setCategory(product.getCategory());
-				tod.setDescription(product.getDescription());
-				tod.setQuantity(product.getQuantity());
-				//insert a new TempOrderDetails
-				shoppingcartservice.addTempOrderDetails(tod);
+				//saveOrder
+				@RequestMapping(value = "/addToCart/{productid}")
+				public String addToCart(@PathVariable int productid){
+				CartItem cartitem=cartservice.getByCartPageAndProduct(productid);
+				if(cartitem==null) {
+			    // add a new cartLine if a new product is getting added
+				cartitem=new CartItem();
+				System.out.println("add a new cartLine if a new product is getting added");
+				Product product = productservice.getProduct(productid);
+				System.out.println("get Product");
+				// transfer the product details to cartitem
+	
+				cartitem.setProduct(product);
+				cartitem.setProductCount(1);
+				cartitem.setBuyingPrice(product.getFinalPrice());
+                cartitem.setTotal(product.getFinalPrice());				
+                // insert a new cartLine
+    			cartservice.add(cartitem);
+    			System.out.println("item is adding into cart");
 				}
-				return "redirect:/cart/TempOrderDetails";
+				 return "redirect:/cart/listCartItem";
+					
+				}
 				
-				}	
+			    //listCartItem
+				@RequestMapping(value ="/listCartItem")
+				public ModelAndView listCartItem(ModelAndView model){
+					List<CartItem> listcartitem = cartservice.getAllCartItem();
+					model.addObject("listcartitem", listcartitem);
+					model.setViewName("cartitemlist");
+					return model;
+				}
 				
 				
+				//deleteCartItem
+				@RequestMapping(value ="/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
+				public String deleteProduct(@RequestParam("cartitemid") Integer cartitemid){
+					CartItem cartitem=cartservice.get(cartitemid);
+					// remove the cartLine
+					cartservice.remove(cartitem);
+					return "redirect:/cart/listCartItem";
+				}
+				
+               
+				
+			
 }

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.veggiefridge.online.model.Kiosk;
 
-
 @Repository
 public class KioskDAOImpl implements KioskDAO {
 	
