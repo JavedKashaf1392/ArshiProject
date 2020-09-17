@@ -27,9 +27,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
+import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
 import com.veggiefridge.online.service.ProductService;
@@ -53,6 +56,10 @@ public class LoginController {
 	
 	@Autowired
 	private JavaMailSender mailSenderObj;
+	
+	@Autowired
+	private CartService cartservice;
+	
 	
 	
 	 //view login
@@ -121,21 +128,23 @@ public class LoginController {
 			 return mav;	 
 		 }
 		 
-		     //login customer from database
-		      @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
-			  public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation,HttpSession session,ModelAndView model){
-		    
-		    if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
-			 customer=custservice.loginCustomer(customer);
-			
-			if(customer!=null){
+		 
+		   //login customer from database
+		   @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
+		   public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation,HttpSession session,ModelAndView model){
+		   if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
+		   customer=custservice.loginCustomer(customer);
+		   System.out.println("list cartitem");
+		   if(customer!=null){
 		    session.setAttribute("customer", customer);
 		    model.addObject("firstname", customer.getFirstName());
 		    model.addObject("kioskLocation", customer.getLocation());
 		    model.addObject("city", customer.getCities());
+		    List<CartItem> listcartitem = cartservice.getAllCartItem();
 		    List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		    List<Product> listProduct = productService.getAllProducts();
 		    List<Customer> listCustomer = custservice.getAllCustomers();
+		    model.addObject("listcartitem", listcartitem);
 		    model.addObject("listCustomer", listCustomer);
 			model.addObject("listkiosklocation",listkiosklocation);
 			model.addObject("listProduct", listProduct);
@@ -162,11 +171,6 @@ public class LoginController {
 				session.removeAttribute("customer");
 				return "redirect:/home/viewhome";
 			}
-			
-			
-			
-
-
 }
 
 

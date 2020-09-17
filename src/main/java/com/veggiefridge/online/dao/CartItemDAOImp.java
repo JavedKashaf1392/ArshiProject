@@ -61,14 +61,12 @@ public class CartItemDAOImp implements CartItemDAO {
 		}
 	}
 
-	
 
-	
 	//getByCartPageAndProduct
 	@Override
 	public CartItem getByCartPageAndProduct(int productid){
 	
-	String query ="FROM CartLine WHERE  product.id =:productid";
+	String query ="FROM CartLine WHERE product.productid =:productid";
 		try {
 			System.out.println("cartdaogetByCartPageAndProduct");
 			return (CartItem) sessionFactory.getCurrentSession().createQuery(query).
@@ -90,12 +88,21 @@ public class CartItemDAOImp implements CartItemDAO {
 	
 	@Override
 	public boolean remove(CartItem cartitem) {
+		
 		try {			
 			sessionFactory.getCurrentSession().delete(cartitem);
 			return true;
-		}catch(Exception ex) {
+		}
+		catch(Exception ex) {
 			return false;
 		}	
+	}
+
+	
+	@Override
+	public List<CartItem> listAvailable(int cartpageid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

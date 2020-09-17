@@ -2,7 +2,6 @@ package com.veggiefridge.online.dao;
 
 import java.util.List;
 import javax.persistence.Query;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;

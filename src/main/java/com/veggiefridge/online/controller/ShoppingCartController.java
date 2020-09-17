@@ -1,5 +1,4 @@
 package com.veggiefridge.online.controller;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +54,7 @@ public class ShoppingCartController {
 	   List<Item> cart = new ArrayList<Item>();
 	   cart.add(new Item(this.productservice.getProduct(productid), 1));
 	   session.setAttribute("cart", cart);
-	  } 
+	   } 
 	   else {
 	   List<Item> cart =(List<Item>) session.getAttribute("cart");
 
@@ -101,12 +100,14 @@ public class ShoppingCartController {
 	 
 	
 
-			 @RequestMapping(value = "/registerdhome", method = RequestMethod.GET)
+			 @RequestMapping(value ="/registerdhome", method = RequestMethod.GET)
 				public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
 						  @ModelAttribute("kiosklocation") KioskLocation kiosklocation,ModelAndView model) {
 				 List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 					List<Product> listProduct = productservice.getAllProducts();
 					List<Customer> listCustomer = customerService.getAllCustomers();
+					List<CartItem> listcartitem = cartservice.getAllCartItem();
+					model.addObject("listcartitem", listcartitem);
 					model.addObject("listCustomer", listCustomer);
 					model.addObject("listkiosklocation",listkiosklocation);
 					model.addObject("listProduct", listProduct);
@@ -121,12 +122,15 @@ public class ShoppingCartController {
 					return model;
 				}
 				 
+				
+				
 				//saveOrder
 				@RequestMapping(value = "/saveOrder")
 				public ModelAndView saveOrder(ModelAndView model) {
 					model.setViewName("thanks");
 					return model;
 				}
+			
 				
 				
 				//saveOrder
@@ -149,7 +153,7 @@ public class ShoppingCartController {
     			cartservice.add(cartitem);
     			System.out.println("item is adding into cart");
 				}
-				 return "redirect:/cart/listCartItem";
+				 return "redirect:/cart/registerdhome";
 					
 				}
 				
@@ -163,16 +167,35 @@ public class ShoppingCartController {
 				}
 				
 				
+				
 				//deleteCartItem
 				@RequestMapping(value ="/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
-				public String deleteProduct(@RequestParam("cartitemid") Integer cartitemid){
+				public String deleteProduct(@PathVariable("cartitemid") int cartitemid){
 					CartItem cartitem=cartservice.get(cartitemid);
 					// remove the cartLine
 					cartservice.remove(cartitem);
 					return "redirect:/cart/listCartItem";
 				}
 				
-               
+
+				//deleteCartItem
+				@RequestMapping(value ="/deleteCartItems/{cartitemid}", method = RequestMethod.GET)
+				public String deleteProducts(@PathVariable("cartitemid") int cartitemid){
+					CartItem cartitem=cartservice.get(cartitemid);
+					// remove the cartLine
+					cartservice.remove(cartitem);
+					return "redirect:/cart/registerdhome";
+				}
 				
 			
+				//listCartItem
+				@RequestMapping(value ="/listcart")
+				public ModelAndView listCartItems(ModelAndView model){
+					List<CartItem> listcartitem = cartservice.getAllCartItem();
+					model.addObject("listcartitem", listcartitem);
+					model.setViewName("cartlist");
+					return model;
+				}
+			
+				
 }

@@ -1,23 +1,16 @@
-
   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
-  
-  
-   
-
+ 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
- <head> 
-     
-   
-    <title>Shop Homepage - Start Bootstrap Template</title>
+ <head>
+ <title>VeggieFridge</title>
 
-     <meta charset="utf-8">
-	    
+        <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -204,6 +197,7 @@ input[type=submit]:hover {
 }
    </style>
    </head>
+   
    <style>  
 
 .footer{
@@ -738,7 +732,10 @@ color: black;
         width:40%;
         margin-left: 40px;  
    }
+   
+
    </style>
+   </head>
    
   <style>
   .menu {
@@ -831,35 +828,35 @@ label #sidebar_btn:hover{
 #check{
   display: none;
 } 
-.cartpopup{
-  display: none; /* Hidden by default */
-  position:absolute; /* Stay in place */
+
+/* The Modal (background) */
+.pagecart{
+  display:none; /* Hidden by default */
+  position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 135px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 130%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
- /*  background-color: rgb(0,0,0); /* Fallback color */
-  /* background-color: rgba(0,0,0,0.8); */
+  height: 100%; /* Full height */
+  padding-top:60px;
 }
 
-/* Modal Content */
-.cart-content {
- 
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 22%;
-  margin-left: 60%;
-  border-radius: 4px;
- 
+/* Modal Content/Box */
+.pagecartcontent{
+  background-color:#f1f1f1;
+  text-align:center;
+  float:right;
+  margin-right:13%;
+  width:30%; /* Could be more or less, depending on screen size */
+  height:50%;
+  margin-top:2%;
 }
+
 </style>
 <body>
  <!--  header -->
+ 
+
     <div>
     <div class="header">
     <div class="logo">
@@ -869,25 +866,13 @@ label #sidebar_btn:hover{
     
   <div class="call"> 
   <span class="text" style="color: black;position: absolute;"><i class="fas fa-phone-alt" style="color:green;"></i>+089-765432100</span>
-  
   <a href="#" class="notification" id="group">
-  <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
+  <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id08').style.display='block'"></i></span>
   <div class="badge" id="output">1</div>
-  
-  <!-- <div id="c">0
-  </div>
-   -->
-  
-  
   </a>  
   </div>
   
-  <div id="id06" class="cartpopup">
-  <div class="cart-content">
-  Yout cart is Empty
-  </div>
-  </div>
-   
+    
    <div class="search">                                                 
    <form class="example">
    <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search" id="myInput" onkeyup="myFunction()">
@@ -895,8 +880,9 @@ label #sidebar_btn:hover{
    </form>
    </div>
    </div>
-   <div class="right" style="float: right;">
-   <span  class='fas fa-user-circle' style="color:green;"></span> 
+   
+      <div class="right" style="float: right;">
+      <span  class='fas fa-user-circle' style="color:green;"></span> 
       Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
       <div id="id05" class="menu">
       <div class="sidebar">
@@ -906,7 +892,7 @@ label #sidebar_btn:hover{
       </center>
       <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
       <a href="${pageContext.request.contextPath }/home/currentorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
-      <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
+      <a href="${pageContext.request.contextPath }/cart/listCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
@@ -952,7 +938,7 @@ label #sidebar_btn:hover{
  <input type="submit" value="Continue" style="width: 30%;"/>
  </div></p></form>
  </div>
-</div>
+ </div>
  </div>
  <script>
 // Get the modal
@@ -1063,7 +1049,6 @@ function showSlides(n) {
   <hr>
   <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
   <hr>
- 
   <div class="carousel">
   <div class="container">
   <ul id="myUL">
@@ -1265,6 +1250,68 @@ Message *</div>
 </div>
 </div>
 
+<div id="id08" class="pagecart">
+ <div class="pagecartcontent">
+ <table border="2" >
+<tr>
+<th>Options</th>
+<th >Id</th>
+<th>Photo</th>
+<th >Name</th>
+<th >Price</th>
+<th >Quantity</th>
+<th >Sub Total</th>
+</tr>
+<c:set var="s" value="0"></c:set>
+<c:forEach var="cartitem" items="${listcartitem}">
+<c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
+<tr>
+<td><a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}">Remove</a></td>
+<td>${cartitem.cartitemid }</td>
+
+<td>
+<spring:url value="/images" var="images"/>
+<img src="${images}/${cartitem.product.imageName}" class="product-frame" style="width:40%;"/>
+</td>
+
+<td>${cartitem.product.productName }</td>
+<td>${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</td>
+<td>${cartitem.product.quantity}</td>
+<td>${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100*cartitem.product.quantity}</td>
+</tr>
+</c:forEach>
+<tr><td colspan="6" align="right">Sum</td>
+<td>${s}</td>
+
+</tr>
+</table>
+ <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
+        <div class="summary-checkout">
+         <a href="${pageContext.request.contextPath }/cart/listCartItem" style="display: inline-block;
+        padding: 15px 85px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px;font-size:10px;">CheckOut</a>
+        
+</div>
+</div>
+ 
+
+
+
+
+
+<!-- .....................close..................... -->
  <script>
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -1330,9 +1377,19 @@ $('#b').click(function() {
     $('#c').html(function(i, val) { return val*1+1 });
 });
 </script>
-   
-   
-   
+
+
+<script>
+// Get the modal
+var cart = document.getElementById('id08');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == cart) {
+        cart.style.display = "none";
+    }
+}
+</script>
 </body>
 </html>
   

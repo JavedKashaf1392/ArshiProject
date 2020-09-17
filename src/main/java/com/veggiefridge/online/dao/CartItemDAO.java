@@ -14,12 +14,14 @@ public interface CartItemDAO {
 		
 	    public boolean update(CartItem cartitem);
 		
-		// fetch the CartLine based on cartId and productId
+		//fetch the CartLine based on cartId and productId
 		public CartItem getByCartPageAndProduct(int productid);
 		
 		public List<CartItem> getAllCartItem();
 		
 		public boolean remove(CartItem cartitem);
-        
+		
+		public List<CartItem> listAvailable(int cartpageid);
+		
 		
 }

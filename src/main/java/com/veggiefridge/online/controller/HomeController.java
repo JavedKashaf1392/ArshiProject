@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Kiosk;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
+import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
 import com.veggiefridge.online.service.ProductService;
@@ -36,6 +38,10 @@ public class HomeController {
 	
 	@Autowired
 	private CustomerService customerservice;
+	
+
+	@Autowired
+	private CartService cartservice;
  
    
 	//list Product
@@ -100,6 +106,8 @@ public class HomeController {
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();
 		List<Customer> listCustomer = customerservice.getAllCustomers();
+		List<CartItem> listcartitem = cartservice.getAllCartItem();
+		model.addObject("listcartitem", listcartitem);
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
@@ -186,15 +194,14 @@ public class HomeController {
 					return model;
 				}
 				
-				
+			
 				//currentorder
 				@RequestMapping(value = "/slider")
 				public ModelAndView slider(ModelAndView model) {
 					model.setViewName("/sliderjsp");
 					return model;
 				}
-				
-				
+							
 				//current order
 				@RequestMapping(value = "/header")
 				public ModelAndView header(ModelAndView model,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation) {
@@ -262,8 +269,7 @@ public class HomeController {
 				}
 				
 				
-				 //addGuestCustomer
-			     
+			    //addGuestCustomer
 				//save and update customer
 				@RequestMapping(value = "/addguestcustomer", method = RequestMethod.POST)
 				public ModelAndView addGuestCustomer(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
@@ -284,6 +290,16 @@ public class HomeController {
 					return model; 
 					
 				}
+				
+				
+				//currentorder
+				@RequestMapping(value = "/up")
+				public ModelAndView Up(ModelAndView model) {
+					model.setViewName("/registerdhome");
+					return model;
+				}
+				
+				
 }
 				
 				

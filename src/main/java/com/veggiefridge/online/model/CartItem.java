@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,10 +30,20 @@ public class CartItem{
 	@Column(name = "isavailable")
 	private boolean available = true;
 	
+	@Column(name ="cartpageid")
+	private int cartpageid;	
+	
+	public int getCartpageid() {
+		return cartpageid;
+	}
+
+	public void setCartpageid(int cartpageid) {
+		this.cartpageid = cartpageid;
+	}
+
 	@OneToOne
 	private Product product;
 	
-
 	public Product getProduct() {
 		return product;
 	}

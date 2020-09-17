@@ -101,7 +101,7 @@ function checkCheckBoxes(theForm) {
     }
 }
 
-</script> 
+   </script> 
 
   <div><h2><p style="color:green;">Product Details</p></h2></div>
 
