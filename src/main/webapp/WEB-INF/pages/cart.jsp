@@ -483,13 +483,11 @@ aside{
         outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
      
       </div>
-   
-     
-      
+  
      <!-- ......continue shopping button......-->
       <aside>
       <div class="summary">
-      <div class="summary-total-items" style="color:green;"><span class="total-items" style="color:red;font-size:20px;"></span><h3>Items in your cart</h3></div>
+      <div style="color:green;"><span ${customer.cartpage.cartitem} style="color:red;font-size:20px;"></span><h3>Items in your cart</h3></div>
       <div class="summary-subtotal" style="padding:5px 10px;">
       <h3 class="subtotal-title" style="color:green;font-size:px;">Subtotal</h3>
       <h4 class="subtotal-value final-value" id="basket-subtotal">${s}</h4>

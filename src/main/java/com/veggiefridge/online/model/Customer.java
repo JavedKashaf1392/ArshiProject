@@ -1,6 +1,5 @@
 package com.veggiefridge.online.model;
 import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,7 +52,6 @@ public class Customer implements Serializable {
 	
 	@Column(name="confirmPassword")
 	private String confirmPassword;
-	
 	
 	@OneToOne(mappedBy="customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private CartPage cartpage;

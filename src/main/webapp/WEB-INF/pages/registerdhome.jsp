@@ -868,7 +868,7 @@ label #sidebar_btn:hover{
   <span class="text" style="color: black;position: absolute;"><i class="fas fa-phone-alt" style="color:green;"></i>+089-765432100</span>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id08').style.display='block'"></i></span>
-  <div class="badge" id="output">1</div>
+  <div class="badge" id="output">${customer.cartpage.cartitem}</div>
   </a>  
   </div>
   
@@ -1088,7 +1088,7 @@ function showSlides(n) {
          --%><!-- add/{productid}/product -->
        <%--  /cart/add/${product.id}/product --%>
                                      
-        <a href="${pageContext.request.contextPath }/cart/addToCart/${product.productid}" style="display:inline-block;
+        <a href="${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}" style="display:inline-block;
         padding: 8px 18px;
         text-align: center;
         text-decoration: none;

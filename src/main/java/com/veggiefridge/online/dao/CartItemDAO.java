@@ -1,10 +1,11 @@
 package com.veggiefridge.online.dao;
 import java.util.List;
 import com.veggiefridge.online.model.CartItem;
+import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Product;
 
-public interface CartItemDAO {
+        public interface CartItemDAO {
 	
 	    public List<CartItem> list(int cartpageid);
 		
@@ -23,5 +24,7 @@ public interface CartItemDAO {
 		
 		public List<CartItem> listAvailable(int cartpageid);
 		
+		public boolean updateCartPage(CartPage cartpage);
 		
+		public CartItem getByCartPageAndProduct(int productid,int cartpageid);
 }

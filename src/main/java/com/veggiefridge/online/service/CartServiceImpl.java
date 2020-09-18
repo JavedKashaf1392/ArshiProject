@@ -1,11 +1,17 @@
 package com.veggiefridge.online.service;
 
 import java.util.List;
+import javax.servlet.http.HttpSession;
+import javax.swing.ListCellRenderer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.veggiefridge.online.dao.CartItemDAO;
+import com.veggiefridge.online.dao.ProductDAO;
 import com.veggiefridge.online.model.CartItem;
+import com.veggiefridge.online.model.CartPage;
+import com.veggiefridge.online.model.Customer;
 
 @Service
 @Transactional
@@ -14,6 +20,9 @@ public class CartServiceImpl implements CartService{
 	@Autowired
 	private CartItemDAO cartitemdao;
 
+	@Autowired
+	private HttpSession session;
+	
 	@Override
 	@Transactional
 	public CartItem get(int cartitemid) {
@@ -57,9 +66,39 @@ public class CartServiceImpl implements CartService{
 		
 		}catch(Exception ex) {
 			return false;
-		}	
-
+		}
 	}
+		
+    //get cartPage
+	@Transactional
+	private	CartPage getCartPage(){
+			return ((Customer)session.getAttribute("customer")).getCartpage();
+		}
+	
+	
+	
+     //getCartItem by cartpageid
+	@Transactional
+	public List<CartItem> getAllCartItems(){
+		return cartitemdao.list(getCartPage().getCartpageid());
+	}
+
+	
+	@Override
+	public CartItem getByCartPageAndProducts(int productid, int cartpageid) {
+		return cartitemdao.getByCartPageAndProduct(productid, cartpageid);
+	}
+
+	@Override
+	public boolean updateCartPage(CartPage cartpage) {
+		return cartitemdao.updateCartPage(cartpage);
+	}
+
+	@Override
+	public List<CartItem> list(int cartpageid) {
+		return  cartitemdao.list(cartpageid);
+	}
+	
 }
 	
 	

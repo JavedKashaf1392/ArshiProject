@@ -1,6 +1,7 @@
 package com.veggiefridge.online.service;
 import java.util.List;
 import com.veggiefridge.online.model.CartItem;
+import com.veggiefridge.online.model.CartPage;
 
 public interface CartService {
 	
@@ -15,6 +16,12 @@ public interface CartService {
       
       public boolean remove(CartItem cartitem);
       
-				
+      // fetch the CartLine based on cartId and productId cartpageid
+      public CartItem getByCartPageAndProducts(int productid,int cartpageid);
+     			
+      public boolean updateCartPage(CartPage cartpage);
+      
+      public List<CartItem> list(int cartpageid);
+		
     
 }

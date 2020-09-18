@@ -5,8 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name ="cartitem")
@@ -33,6 +36,17 @@ public class CartItem{
 	@Column(name ="cartpageid")
 	private int cartpageid;	
 	
+	@Column(name ="cartitemno")
+	private int cartItemNo;
+	
+	public int getCartItemNo() {
+		return cartItemNo;
+	}
+
+	public void setCartItemNo(int cartItemNo) {
+		this.cartItemNo = cartItemNo;
+	}
+
 	public int getCartpageid() {
 		return cartpageid;
 	}

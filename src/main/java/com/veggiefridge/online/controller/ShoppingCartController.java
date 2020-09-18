@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.dao.CartItemDAO;
 import com.veggiefridge.online.model.CartItem;
+import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Item;
 import com.veggiefridge.online.model.KioskLocation;
@@ -42,6 +43,9 @@ public class ShoppingCartController {
 	
 	@Autowired
 	private CartService cartservice;
+	
+	@Autowired
+	private HttpSession session;
 	
 	private static final Logger logger = LoggerFactory.logger(ShoppingCartController.class);
 	
@@ -171,6 +175,8 @@ public class ShoppingCartController {
 				//deleteCartItem
 				@RequestMapping(value ="/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
 				public String deleteProduct(@PathVariable("cartitemid") int cartitemid){
+					
+					
 					CartItem cartitem=cartservice.get(cartitemid);
 					// remove the cartLine
 					cartservice.remove(cartitem);
@@ -182,12 +188,18 @@ public class ShoppingCartController {
 				@RequestMapping(value ="/deleteCartItems/{cartitemid}", method = RequestMethod.GET)
 				public String deleteProducts(@PathVariable("cartitemid") int cartitemid){
 					CartItem cartitem=cartservice.get(cartitemid);
+				
+					// deduct the cart
+					// update the cart
+					CartPage cartpage = this.getCartPage();	
+					cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.getTotal());
+					cartpage.setCartitem(cartpage.getCartitem() - 1);		
+					cartservice.updateCartPage(cartpage);
 					// remove the cartLine
 					cartservice.remove(cartitem);
 					return "redirect:/cart/registerdhome";
 				}
 				
-			
 				//listCartItem
 				@RequestMapping(value ="/listcart")
 				public ModelAndView listCartItems(ModelAndView model){
@@ -198,4 +210,53 @@ public class ShoppingCartController {
 				}
 			
 				
+				
+			    //get cartPage
+				private	CartPage getCartPage(){
+						return ((Customer)session.getAttribute("customer")).getCartpage();
+					}
+				
+				
+				   //add cartitem
+				  @RequestMapping(value ="/addToCartPageItem/{productid}")
+				  public String addCartItems(@PathVariable int productid){		
+					   
+					    CartPage cartpage = this.getCartPage();
+						CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
+						if(cartitem==null){
+						
+							//add a new cartItem if a new product is getting added
+							cartitem = new CartItem();
+							Product product = productservice.getProduct(productid);
+							// transfer the product details to cartLine
+							cartitem.setCartpageid(cartpage.getCartpageid());
+							cartitem.setProduct(product);
+							cartitem.setProductCount(1);
+							cartitem.setBuyingPrice(product.getFinalPrice());
+							cartitem.setTotal(product.getFinalPrice());
+							cartitem.setCartItemNo(cartitem.getCartItemNo()+1);
+							
+							// insert a new cartLine
+							cartservice.add(cartitem);
+							System.out.println("cartitem is added");
+							
+							// update the cart
+							cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
+							cartpage.setCartitem(cartpage.getCartitem() + 1);
+							cartservice.updateCartPage(cartpage);
+							System.out.println("cartpage updated");
+						}
+						return "redirect:/cart/listCustomerCartItem"; 
+				
+				  }
+				  
+					//listCartItem
+					@RequestMapping(value ="/listCustomerCartItem")
+					public ModelAndView listCustomerCartItem(ModelAndView model ){
+						List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+						model.addObject("listcustomercartitem", listcustomercartitem);
+						model.setViewName("customercartlist");
+						return model;
+					}
+				  
 }
