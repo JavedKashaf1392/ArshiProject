@@ -73,7 +73,7 @@ background-color:#f1f1f1;
        </th>
 
 <th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
-<a href="${pageContext.request.contextPath}/home/myorder" style="display: inline-block;
+<a href="${pageContext.request.contextPath}/order/listorder" style="display: inline-block;
         padding: 10px 30px;
         text-align: center;
         text-decoration: none;
@@ -92,40 +92,17 @@ background-color:#f1f1f1;
     <th style="width:%;color:white;">Order Id</th>
     <th style="width:%;color:white;">Order Date</th>
      <th style="width:%;color:white;">Order Status</th>
-    <th style="width:%;color:white;">Total Amount </th>
+    <th style="width:%;color:white;">Total Amount</th>
     </tr>
+  <c:forEach var="orderitemdetails" items="${listorderitemdetails}">
   <tr>
-    <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
-    <td>03-07-2020</td>
-    <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
-    <td>Rs 12000</td>
+    <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;"></a>${orderitemdetails.orderItemDetailsId}</td>
+    <td>${orderitemdetails.orderDate}</td>
+    <td><i class="fa fa-check-circle" style="color:green"></i>${orderitemdetails.orderStatus}</td>
+    <td>${orderitemdetails.orderTotal}</td>
   </tr>
-    <tr>
-    <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
-    <td>03-07-2020</td>
-      <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
-    <td>Rs 12000</td>
-     
-  </tr>
-    <tr>
-   <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
-    <td>03-07-2020</td>
-      <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
-    <td>Rs 12000</td>
-  </tr>
-    <tr>
-   <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
-    <td>03-07-2020</td>
-      <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
-    <td>Rs 12000</td>
-  </tr>
-    <tr>
-   <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;">13789</a></td>
-    <td>03-07-2020</td>
-      <td><i class="fa fa-check-circle" style="color:green"></i>Delivered</td>
-    <td>Rs 12000</td>
-  </tr>
- 
+  </c:forEach>
+   
 </table>
 
 <script>

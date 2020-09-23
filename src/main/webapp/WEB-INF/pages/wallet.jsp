@@ -107,7 +107,7 @@ background-color:#f1f1f1;
         background-color:orange;
         border-radius: 6px;
         outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:40px;color:white"></span></a>
-Membership Id:7
+Membership Id:3
        </th>
 
 <th style="background-color:white;padding:15px 70px; width:%;border-radius:8px;">     
@@ -119,7 +119,7 @@ Membership Id:7
         background-color:#00cccc;
         border-radius: 6px;
         outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:40px;"></span></a>
-        Balance:2000.00
+        Balance:5000.00
 
 
        </th>       
@@ -134,7 +134,7 @@ Membership Id:7
         background-color:red;
         border-radius: 6px;
         outline: none;margin-top:6px"><span class="fa fa-thumbs-up" style="font-size:35px;color:white"></span></a>
-        Card:1001
+        Card:11
        </th>
        
 <th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px;">     
@@ -148,7 +148,7 @@ Membership Id:7
         background-color: #4CAF50;
         border-radius: 6px;
         outline: none;margin-top:6px"><span class="fa fa-shopping-cart" style="font-size:35px;color:white"></span></a>
-        Transaction:3
+        Transaction:0
        </th>
        </table>
         

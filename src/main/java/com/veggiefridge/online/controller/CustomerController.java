@@ -61,7 +61,7 @@ public class CustomerController {
 		if (result.hasErrors()) {
 			return "customerform";
 			
-		} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+		}else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
 			// customer other updating the customer 
 			customerService.addCustomer(customer);
 			session.setAttribute("customer", customer);

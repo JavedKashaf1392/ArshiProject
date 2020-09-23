@@ -34,9 +34,8 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDAO.getCustomer(customerid);
 	}
 	
-	
 	/*
-	 * public void setCustomerDAO(CustomerDAO customerDAO) { this.customerDAO =
+	 * pu;blic void setCustomerDAO(CustomerDAO customerDAO) { this.customerDAO =
 	 * customerDAO; }
 	 */
      

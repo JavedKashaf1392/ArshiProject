@@ -891,10 +891,10 @@ label #sidebar_btn:hover{
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
       </center>
       <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="${pageContext.request.contextPath }/home/currentorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
-      <a href="${pageContext.request.contextPath }/cart/listCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
+      <a href="${pageContext.request.contextPath }/order/listorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
+      <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
-      <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
+      <a href="${pageContext.request.contextPath }/cart/joinmembership"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
       <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
       </div>
@@ -1249,9 +1249,19 @@ Message *</div>
 </div>
 </div>
 </div>
+<a href="${pageContext.request.contextPath}/member/addMember/${customer.customerid}" style="display:inline-block;
+        padding: 5px 12px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px">Yes</a>
 
 <div id="id08" class="pagecart">
  <div class="pagecartcontent">
+  <c:choose>
+  <c:when test="${not empty listcustomercartitem}">
  <table border="2" >
 <tr>
 <th>Options</th>
@@ -1263,7 +1273,7 @@ Message *</div>
 <th >Sub Total</th>
 </tr>
 <c:set var="s" value="0"></c:set>
-<c:forEach var="cartitem" items="${listcartitem}">
+<c:forEach var="cartitem" items="${listcustomercartitem}">
 <c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
 <tr>
 <td><a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}">Remove</a></td>
@@ -1285,16 +1295,9 @@ Message *</div>
 
 </tr>
 </table>
- <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
+
         <div class="summary-checkout">
-         <a href="${pageContext.request.contextPath }/cart/listCartItem" style="display: inline-block;
+         <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="display: inline-block;
         padding: 15px 85px;
         text-align: center;
         text-decoration: none;
@@ -1305,12 +1308,16 @@ Message *</div>
         
 </div>
 </div>
+</div>
+</c:when>
+<c:otherwise>
+<h3 class="text-center">Your Cart is Empty!</h3>
+</c:otherwise>
+</c:choose>
+
+
+
  
-
-
-
-
-
 <!-- .....................close..................... -->
  <script>
 function myFunction() {

@@ -418,7 +418,8 @@ aside{
    <body>
    <%-- <jsp:include page="header.jsp"/> --%>
    <div style="background-color:white;margin-left:13%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
-   
+            <c:choose>
+		    <c:when test="${not empty listcustomercartitem}">
    <main>
     <div class="basket">
         <!-- <div class="basket-module" style="background-color:white;">
@@ -437,7 +438,7 @@ aside{
          </div>
 
 <c:set var="s" value="0"></c:set>
-<c:forEach var="cartitem" items="${listcartitem}">
+<c:forEach var="cartitem" items="${listcustomercartitem}">
 
 <c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
       <div class="basket-product" style="background-color:white; width:101%;padding:15px 7px;">
@@ -483,13 +484,23 @@ aside{
         outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
      
       </div>
-   
-     
+      </c:when>
       
+      <c:otherwise>
+			
+			<div class="jumbotron">
+				
+				<h3 class="text-center">Your Cart is Empty!</h3>
+			
+			</div>
+		
+		</c:otherwise>
+		</c:choose>
      <!-- ......continue shopping button......-->
       <aside>
       <div class="summary">
-      <div class="summary-total-items" style="color:green;"><span class="total-items" style="color:red;font-size:20px;"></span><h3>Items in your cart</h3></div>
+      <h1>${customer.cartpage.cartitem}</h1>item in Your cart
+      <!-- <div class="summary-total-items" style="color:green;"><span class="total-items" style="color:red;font-size:20px;"></span><h3>Items in your cart</h3></div> -->
       <div class="summary-subtotal" style="padding:5px 10px;">
       <div class="subtotal-title" style="color:green;font-size:px;">Subtotal</div>
       <div class="subtotal-value final-value" id="basket-subtotal">${s}</div>
@@ -510,7 +521,7 @@ aside{
          </div>
         
         <div class="summary-checkout">
-        <a href="${pageContext.request.contextPath}/home/thanks" style="display: inline-block;
+        <a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrder" style="display: inline-block;
         padding: 15px 85px;
         text-align: center;
         text-decoration: none;

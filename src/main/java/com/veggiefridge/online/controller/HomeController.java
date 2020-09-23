@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.model.CartItem;
+import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Kiosk;
 import com.veggiefridge.online.model.KioskLocation;
@@ -42,6 +43,17 @@ public class HomeController {
 
 	@Autowired
 	private CartService cartservice;
+	
+	@Autowired
+	HttpSession session;
+	
+	
+
+    //get cartPage
+	private	CartPage getCartPage(){
+			return ((Customer)session.getAttribute("customer")).getCartpage();
+		}
+	
  
    
 	//list Product
@@ -106,8 +118,8 @@ public class HomeController {
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();
 		List<Customer> listCustomer = customerservice.getAllCustomers();
-		List<CartItem> listcartitem = cartservice.getAllCartItem();
-		model.addObject("listcartitem", listcartitem);
+		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+		model.addObject("listcustomercartitem", listcustomercartitem);
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);

@@ -39,6 +39,9 @@ public class CartItem{
 	@Column(name ="cartitemno")
 	private int cartItemNo;
 	
+	@OneToOne
+	private Product product;
+	
 	public int getCartItemNo() {
 		return cartItemNo;
 	}
@@ -55,8 +58,7 @@ public class CartItem{
 		this.cartpageid = cartpageid;
 	}
 
-	@OneToOne
-	private Product product;
+	
 	
 	public Product getProduct() {
 		return product;

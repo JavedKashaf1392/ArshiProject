@@ -82,6 +82,7 @@ input[type=submit]:hover {
  <h5 style="color:#4CAF50;">Recieve your order to your pickup location </h5>
  <span class="fas fa-map-marker-alt" style="color:green;font-size:25px;"></span>
  <span style="color:black;">${customer.location},${customer.cities}</span><br><br>
+ 
  <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
         padding: 10px 70px;
         text-align: center;

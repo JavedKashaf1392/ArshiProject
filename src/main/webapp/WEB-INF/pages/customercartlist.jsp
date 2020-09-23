@@ -32,7 +32,7 @@
 <title>Insert title here</title>
 </head>
 <body style="height:50%;width:50%;">
-<c:set var="availableCount" value="${customer.cartpage.cartitem}" />
+
 <div class="container">
 	
 	        <c:choose>

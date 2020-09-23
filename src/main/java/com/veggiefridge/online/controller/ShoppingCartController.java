@@ -110,8 +110,8 @@ public class ShoppingCartController {
 				 List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 					List<Product> listProduct = productservice.getAllProducts();
 					List<Customer> listCustomer = customerService.getAllCustomers();
-					List<CartItem> listcartitem = cartservice.getAllCartItem();
-					model.addObject("listcartitem", listcartitem);
+					List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+					model.addObject("listcustomercartitem", listcustomercartitem);
 					model.addObject("listCustomer", listCustomer);
 					model.addObject("listkiosklocation",listkiosklocation);
 					model.addObject("listProduct", listProduct);
@@ -126,8 +126,7 @@ public class ShoppingCartController {
 					return model;
 				}
 				 
-				
-				
+	
 				//saveOrder
 				@RequestMapping(value = "/saveOrder")
 				public ModelAndView saveOrder(ModelAndView model) {
@@ -135,8 +134,6 @@ public class ShoppingCartController {
 					return model;
 				}
 			
-				
-				
 				//saveOrder
 				@RequestMapping(value = "/addToCart/{productid}")
 				public String addToCart(@PathVariable int productid){
@@ -175,15 +172,20 @@ public class ShoppingCartController {
 				//deleteCartItem
 				@RequestMapping(value ="/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
 				public String deleteProduct(@PathVariable("cartitemid") int cartitemid){
-					
-					
 					CartItem cartitem=cartservice.get(cartitemid);
+					
+					// deduct the cart
+					// update the cart
+					CartPage cartpage = this.getCartPage();	
+					cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.getTotal());
+					cartpage.setCartitem(cartpage.getCartitem() - 1);		
+					cartservice.updateCartPage(cartpage);
 					// remove the cartLine
 					cartservice.remove(cartitem);
-					return "redirect:/cart/listCartItem";
+					return "redirect:/cart/listCustomerCartItem";
 				}
 				
-
+				
 				//deleteCartItem
 				@RequestMapping(value ="/deleteCartItems/{cartitemid}", method = RequestMethod.GET)
 				public String deleteProducts(@PathVariable("cartitemid") int cartitemid){
@@ -199,6 +201,7 @@ public class ShoppingCartController {
 					cartservice.remove(cartitem);
 					return "redirect:/cart/registerdhome";
 				}
+				
 				
 				//listCartItem
 				@RequestMapping(value ="/listcart")
@@ -225,7 +228,7 @@ public class ShoppingCartController {
 						CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
 						if(cartitem==null){
 						
-							//add a new cartItem if a new product is getting added
+							   //add a new cartItem if a new product is getting added
 							cartitem = new CartItem();
 							Product product = productservice.getProduct(productid);
 							// transfer the product details to cartLine
@@ -246,7 +249,7 @@ public class ShoppingCartController {
 							cartservice.updateCartPage(cartpage);
 							System.out.println("cartpage updated");
 						}
-						return "redirect:/cart/listCustomerCartItem"; 
+						return "redirect:/cart/registerdhome"; 
 				
 				  }
 				  
@@ -255,8 +258,14 @@ public class ShoppingCartController {
 					public ModelAndView listCustomerCartItem(ModelAndView model ){
 						List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 						model.addObject("listcustomercartitem", listcustomercartitem);
-						model.setViewName("customercartlist");
+						model.setViewName("cartitemlist");
 						return model;
 					}
-				  
+					
+					//
+					@RequestMapping(value = "/joinmembership")
+					public ModelAndView joinMembership(ModelAndView model) {
+						model.setViewName("joinmemebership");
+						return model;
+					}				
 }
