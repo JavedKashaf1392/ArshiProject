@@ -177,7 +177,7 @@ input[type=submit]:hover {
   z-index: 1001; /* Sit on top */
   padding-top: 75px;  /* Location of the box */
   left: 0;
-  top: 0;
+  top: 0;                          
   width: 100%; /* Full width */
   height: 100%; /* Full height */
  /*  overflow: auto; /* Enable scroll if needed */ */
@@ -891,7 +891,7 @@ label #sidebar_btn:hover{
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
       </center>
       <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="${pageContext.request.contextPath }/order/listorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
+      <a href="${pageContext.request.contextPath }/order/fetchallorderbystatus"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="${pageContext.request.contextPath }/cart/joinmembership"><i class='fas fa-user-friends'></i> <span>Membership</span></a>

@@ -12,11 +12,12 @@ import com.veggiefridge.online.config.SMSConfiguration;
  * @author Akshay N Wakudkar
  *
  */
+
 @Configuration
-@PropertySource(value = { "classpath:application.properties" })
+@PropertySource(value = { "classpath:application.properties"})
 public class VFOnlineConstants {
 	
-	// SMS
+	//SMS
 	@Value("${sms.textlocal.apiKey}")
 	public static String SMS_APIKEY ;  //= "sms.textlocal.apiKey"
 	
@@ -38,4 +39,10 @@ public class VFOnlineConstants {
 	
 	@Value("${mail.emailmessage}")
 	public static String MAIL_EMAILMESSAGE;
+	
+	//@Value("${order.pickup.status}")
+	public static final String PICKUP_STATUS="pending";
+	
+	public static final String PICKUPSTATUS="delivered";
+
 }

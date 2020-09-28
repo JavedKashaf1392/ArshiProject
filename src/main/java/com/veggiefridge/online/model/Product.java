@@ -64,7 +64,6 @@ public class Product implements Serializable {
 	private String imageName;
 	
 	
-	
 	public double getFinalPrice() {
 		return finalPrice;
 	}

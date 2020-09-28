@@ -27,4 +27,11 @@ import com.veggiefridge.online.model.Product;
 		public boolean updateCartPage(CartPage cartpage);
 		
 		public CartItem getByCartPageAndProduct(int productid,int cartpageid);
+		
+		public CartItem getCustomerCart(int cartpageid);
+		
+		public boolean deleteList(List<CartItem> cartitem);
+		
+		
+		
 }

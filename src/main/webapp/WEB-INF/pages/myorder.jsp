@@ -6,6 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
+ 
+
+
+
 <style>
 body{
 background-color:#f1f1f1;
@@ -59,10 +67,11 @@ background-color:#f1f1f1;
 <body>
 
 <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;">My Orders</h2></div><br>
+
 <table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
 <th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+<a href="${pageContext.request.contextPath }/order/fetchallorderbystatus" style="display: inline-block;
         padding: 10px 30px;
         text-align:center;
         text-decoration: none;
@@ -72,8 +81,8 @@ background-color:#f1f1f1;
         outline: none;margin-top:6px">Pendings</a>
        </th>
 
-<th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
-<a href="${pageContext.request.contextPath}/order/listorder" style="display: inline-block;
+ <th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
+ <a href="${pageContext.request.contextPath}/order/fetchdelorderbystatus" style="display: inline-block;
         padding: 10px 30px;
         text-align: center;
         text-decoration: none;
@@ -94,11 +103,12 @@ background-color:#f1f1f1;
      <th style="width:%;color:white;">Order Status</th>
     <th style="width:%;color:white;">Total Amount</th>
     </tr>
-  <c:forEach var="orderitemdetails" items="${listorderitemdetails}">
+    
+  <c:forEach var="orderitemdetails" items="${fetchdelorderbystatus}">
   <tr>
-    <td><a href="${pageContext.request.contextPath }/home/repeatorder" style=";font-size:100%;color:dodgerblue;"></a>${orderitemdetails.orderItemDetailsId}</td>
+    <td><a href="${pageContext.request.contextPath }/order/allOrderItem" style=";font-size:100%;color:dodgerblue;">${orderitemdetails.orderItemDetailsId}</a></td>
     <td>${orderitemdetails.orderDate}</td>
-    <td><i class="fa fa-check-circle" style="color:green"></i>${orderitemdetails.orderStatus}</td>
+    <td><i class="fa fa-check-circle" style="color:green"></i>${orderitemdetails.pickupStatus}</td>
     <td>${orderitemdetails.orderTotal}</td>
   </tr>
   </c:forEach>

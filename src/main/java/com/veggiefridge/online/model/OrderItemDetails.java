@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name ="orderitemdetails")
-public class OrderItemDetails{
+public class OrderItemDetails {
 	
 	private static final long serialVersionUID = -3465813074586302847L;
 	
@@ -43,7 +43,7 @@ public class OrderItemDetails{
 	private int totalBillAmount;  
 
 	@Column(name="platformSource")
-	private String platformSource;
+	private String platformSource="web";
 	
 	@Column(name="totalProductsCount")
 	private int totalProductsCount;
@@ -133,9 +133,4 @@ public class OrderItemDetails{
 	public void setRemainingProductsCount(int remainingProductsCount) {
 		this.remainingProductsCount = remainingProductsCount;
 	}
-
-	
-
-
-	
 }

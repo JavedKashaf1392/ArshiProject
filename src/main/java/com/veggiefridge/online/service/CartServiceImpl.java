@@ -98,6 +98,17 @@ public class CartServiceImpl implements CartService{
 	public List<CartItem> list(int cartpageid) {
 		return  cartitemdao.list(cartpageid);
 	}
+
+	@Override
+	public boolean deleteList(List<CartItem> cartitem) {
+		
+		return cartitemdao.deleteList(cartitem);
+	}
+
+	@Override
+	public CartItem getCustomerCart(int cartpageid) {
+		return cartitemdao.getCustomerCart(cartpageid);
+	}
 	
 }
 	

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,6 +24,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 @Repository
+@Transactional
 public class QRCodeDaoImpl implements QRCodeDAO{
 	
 	@Autowired
@@ -127,6 +130,19 @@ public class QRCodeDaoImpl implements QRCodeDAO{
         } catch (Exception e) {
             System.err.println(e);
         }
+	}
+
+	
+	@Override
+	public boolean saveOrder(QRCode qrcode) {
+		
+		try {			
+			sessionFactory.getCurrentSession().persist(qrcode);			
+			return true;
+		}
+		catch(Exception ex) {
+			return false;
+		}
 	}
 }
     

@@ -1,83 +1,95 @@
 package com.veggiefridge.online.model;
-import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ManyToAny;
+
 @Entity
-@Table(name ="customerqr")
-public class QRCode implements Serializable {
-	
+@Table(name ="qrcode")
+public class QRCode {
 	private static final long serialVersionUID = -3465813074586302847L;
-
+ 
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int qrcodeid;
 	
-	@Column(name = "customerid")
-	private String customerid;
+	@ManyToOne
+	private Customer customer;
 	
-	@Column(name = "transactionid")
-	private String transactionid;
+	@ManyToOne
+	@JoinColumn(name = "membershipid")
+	private MembershipWallet Membershipwallet;
 	
-	@Column(name = "date")
-	private String date;
+	@OneToOne
+    private OrderItemDetails orderitemdetails;
 	
-	@Column(name = "isValid")
-	private String isValid;
+	@Column(name = "isvalid")
+    private boolean isValid;
 	
-	@Column(name = "qrcodestring")
-	private String qrcodestring;
+     @Column(name = "source")
+    private String Source ="web";
 
-	public String getId() {
-		return id;
+	public int getQrcodeid() {
+		return qrcodeid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setQrcodeid(int qrcodeid) {
+		this.qrcodeid = qrcodeid;
 	}
 
-	public String getCustomerid() {
-		return customerid;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerid(String customerid) {
-		this.customerid = customerid;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public String getTransactionid() {
-		return transactionid;
+	public MembershipWallet getMembershipwallet() {
+		return Membershipwallet;
 	}
 
-	public void setTransactionid(String transactionid) {
-		this.transactionid = transactionid;
+	public void setMembershipwallet(MembershipWallet membershipwallet) {
+		Membershipwallet = membershipwallet;
 	}
 
-	public String getDate() {
-		return date;
+	public OrderItemDetails getOrderitemdetails() {
+		return orderitemdetails;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setOrderitemdetails(OrderItemDetails orderitemdetails) {
+		this.orderitemdetails = orderitemdetails;
 	}
 
-	public String getIsValid() {
+	public boolean isValid() {
 		return isValid;
 	}
 
-	public void setIsValid(String isValid) {
+	public void setValid(boolean isValid) {
 		this.isValid = isValid;
 	}
 
-	public String getQrcodestring() {
-		return qrcodestring;
+	public String getSource() {
+		return Source;
 	}
 
-	public void setQrcodestring(String qrcodestring) {
-		this.qrcodestring = qrcodestring;
+	public void setSource(String source) {
+		Source = source;
 	}
-
+     
 }
+
+	
+	
+
+

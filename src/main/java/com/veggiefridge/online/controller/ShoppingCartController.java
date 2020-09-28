@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.dao.CartItemDAO;
+import com.veggiefridge.online.dao.OrderDao;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Item;
 import com.veggiefridge.online.model.KioskLocation;
+import com.veggiefridge.online.model.OrderItemDetails;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
@@ -54,7 +56,7 @@ public class ShoppingCartController {
 	 @RequestMapping(value ="/ordernow/{productid}", method = RequestMethod.GET)
 	 public String ordernow(@PathVariable(value = "productid") int productid, ModelMap mm, HttpSession session) {
 
-	   if(session.getAttribute("cart") == null){
+	   if(session.getAttribute("cart") == null) {
 	   List<Item> cart = new ArrayList<Item>();
 	   cart.add(new Item(this.productservice.getProduct(productid), 1));
 	   session.setAttribute("cart", cart);
@@ -133,17 +135,19 @@ public class ShoppingCartController {
 					model.setViewName("thanks");
 					return model;
 				}
-			
-				//saveOrder
-				@RequestMapping(value = "/addToCart/{productid}")
-				public String addToCart(@PathVariable int productid){
+
+				 
+				 //saveOrder
+				@RequestMapping(value ="/addToCart/{productid}")
+				public String addToCart(@PathVariable int productid) {   
 				CartItem cartitem=cartservice.getByCartPageAndProduct(productid);
-				if(cartitem==null) {
-			    // add a new cartLine if a new product is getting added
+				if(cartitem==null){
+			    // add a new cartItem if a new product is getting added
 				cartitem=new CartItem();
-				System.out.println("add a new cartLine if a new product is getting added");
+				System.out.println("add a new cartItem if a new product is getting added");
 				Product product = productservice.getProduct(productid);
 				System.out.println("get Product");
+				
 				// transfer the product details to cartitem
 	
 				cartitem.setProduct(product);
@@ -167,12 +171,10 @@ public class ShoppingCartController {
 					return model;
 				}
 				
-				
-				
-				//deleteCartItem
+				    //deleteCartItem
 				@RequestMapping(value ="/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
 				public String deleteProduct(@PathVariable("cartitemid") int cartitemid){
-					CartItem cartitem=cartservice.get(cartitemid);
+				CartItem cartitem=cartservice.get(cartitemid);
 					
 					// deduct the cart
 					// update the cart
@@ -219,11 +221,10 @@ public class ShoppingCartController {
 						return ((Customer)session.getAttribute("customer")).getCartpage();
 					}
 				
-				
 				   //add cartitem
 				  @RequestMapping(value ="/addToCartPageItem/{productid}")
-				  public String addCartItems(@PathVariable int productid){		
-					   
+				  public String addCartItems(@PathVariable int productid){	
+					    
 					    CartPage cartpage = this.getCartPage();
 						CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
 						if(cartitem==null){
@@ -253,7 +254,8 @@ public class ShoppingCartController {
 				
 				  }
 				  
-					//listCartItem
+					  
+				     //listCartItem
 					@RequestMapping(value ="/listCustomerCartItem")
 					public ModelAndView listCustomerCartItem(ModelAndView model ){
 						List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -262,10 +264,13 @@ public class ShoppingCartController {
 						return model;
 					}
 					
-					//
+					
+					  //joinmemebership
 					@RequestMapping(value = "/joinmembership")
 					public ModelAndView joinMembership(ModelAndView model) {
 						model.setViewName("joinmemebership");
 						return model;
-					}				
+					}
+													
 }
+

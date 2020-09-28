@@ -1,9 +1,19 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
+ 
+
+
+
 <style>
 body{
 background-color:#f1f1f1;
@@ -60,7 +70,8 @@ background-color:#f1f1f1;
 
 <table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
 <th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
+<a href="${pageContext.request.contextPath}/order/fetchallorderbystatus" style="display: inline-block;
         padding: 10px 30px;
         text-align:center;
         text-decoration: none;
@@ -70,8 +81,8 @@ background-color:#f1f1f1;
         outline: none;margin-top:6px">Pendings</a>
        </th>
 
-<th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
-<a href="${pageContext.request.contextPath}/home/myorder" style="display: inline-block;
+ <th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
+ <a href="${pageContext.request.contextPath}/order/fetchdelorderbystatus" style="display: inline-block;
         padding: 10px 30px;
         text-align: center;
         text-decoration: none;
@@ -82,45 +93,28 @@ background-color:#f1f1f1;
       
        </th> 
        </table>
+        
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
 
-
-    <table id="myTable">
+<table id="myTable">
     <tr class="header">
     <th style="width:%;color:white;">Order Id</th>
     <th style="width:%;color:white;">Order Date</th>
-    <th style="width:%;color:white;">Order Status</th>
-    <th style="width:%;color:white;">Total Amount </th>
-    <th style="width:%;color:white;">Pickup Location</th>
- 
+     <th style="width:%;color:white;">Order Status</th>
+    <th style="width:%;color:white;">Total Amount</th>
+    </tr>
+    
+  <c:forEach var="orderitemdetails" items="${fetchallorderbystatus}">
+  <tr>
+    <td><a href="${pageContext.request.contextPath }/order/allOrderItem" style=";font-size:100%;color:dodgerblue;">${orderitemdetails.orderItemDetailsId}</a></td>
+    <td>${orderitemdetails.orderDate}</td>
+    <td><i class="fa fa-dot-circle-o" style="font-size:15px;color:orange"></i>${orderitemdetails.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
+    <td>${orderitemdetails.orderTotal}</td>
   </tr>
-    
-    <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style=";font-size:100%;color:dodgerblue;">13788</a></td>
-    <td>03-07-2020</td>
-    <td><i class="fa fa-circle" style="color:orange"></i>Pending</td>
-    <td>Rs 12000</td>
-   <td><i class="fa fa-gift" style="color:green;"></i>${customer.location},${customer.cities}</td>
-    </tr>
-    
-    <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style=";font-size:100%;color:dodgerblue;">13789</a></td>
-    <td>03-07-2020</td>
-    <td><i class="fa fa-circle" style="color:orange"></i>Pending</td>
-    <td>Rs 12000</td>
-    <td><i class="fa fa-gift" style="color:green;"></i>${customer.location},${customer.cities}</td>
-    </tr>
-    
-    <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style=";font-size:100%;color:dodgerblue;">13780</a></td>
-    <td>03-07-2020</td>
-    <td><i class="fa fa-circle" style="color:orange"></i>Pending</td>
-    <td>Rs 12000</td>
-    <td><i class="fa fa-gift" style="color:green;"></i>${customer.location},${customer.cities}</td>
-    </tr>
-    </table>
+  </c:forEach>
+  </table>
 
-<script>
+  <script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");

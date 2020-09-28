@@ -21,7 +21,7 @@ public class CartItemDAOImp implements CartItemDAO{
 	}
 
 	
-	//1list
+	// 1 list
 	@Override
 	public List<CartItem> list(int cartpageid){
 		String query = "FROM CartItem WHERE cartpageid =:cartpageid";
@@ -90,7 +90,7 @@ public class CartItemDAOImp implements CartItemDAO{
 	return sessionFactory.getCurrentSession().createQuery("from CartItem").list();
 	}
 
-	//7 remove
+	   //7 remove
 	@Override
 	public boolean remove(CartItem cartitem) {
 		
@@ -145,7 +145,35 @@ public class CartItemDAOImp implements CartItemDAO{
 		}
 	}
 
+
+	@Override
+	public boolean deleteList(List<CartItem> cartitem) {
+		try {			
+			sessionFactory.getCurrentSession().delete(cartitem);
+			return true;
+		}
+		catch(Exception ex) {
+			return false;
+		}	
 	}
+
+    //getCustomerCart
+	@Transactional
+	@Override
+	public CartItem getCustomerCart(int cartpageid) {
+	String query ="FROM CartItem WHERE cartpageid =:cartpageid";
+	try {
+		System.out.println("cart and cartpageid");
+		return (CartItem) sessionFactory.getCurrentSession().createQuery(query).
+				setParameter("cartpageid", cartpageid)
+				.uniqueResult();
+	
+	}catch(Exception ex) {
+		return null;
+
+	}
+	}
+}
 
 	
 	

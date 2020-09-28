@@ -32,4 +32,9 @@ public class QRCodeServiceImpl implements QRCodeService {
 		qrCodeDAO.generate_qr(image_name, qrCodeData);
 	}
 
+	@Override
+	public boolean saveOrder(QRCode qrcode) {
+		return qrCodeDAO.saveOrder(qrcode);
+	}
+
 }

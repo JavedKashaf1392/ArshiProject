@@ -1,15 +1,12 @@
 package com.veggiefridge.online.test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.sql.SQLException;
-
+import java.util.Date;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import com.veggiefridge.online.model.QRCode;
 import com.veggiefridge.online.service.QRCodeServiceImpl;
 
@@ -46,12 +43,13 @@ class TestQRCode {
 	@Test
 	final void testInsertCustomer() throws SQLException {
 		QRCode customerqr = new QRCode();
-		customerqr.setId("4");
-		customerqr.setCustomerid("004");
-		customerqr.setTransactionid("VF2020JUN");
-		customerqr.setDate("23JUN");
-		customerqr.setIsValid("2:00");
-		customerqr.setQrcodestring("www.veggiefridge.com");
+		/* customerqr.setId("4"); */
+		/* customerqr.setCustomerid("004"); */
+		/*
+		 * customerqr.setTransactionid("VF2020JUN"); customerqr.setDate(new Date());
+		 * customerqr.setIsValid("2:00");
+		 * customerqr.setQrcodestring("www.veggiefridge.com");
+		 */
 		service.insertCustomerqr(customerqr);
 	}
 

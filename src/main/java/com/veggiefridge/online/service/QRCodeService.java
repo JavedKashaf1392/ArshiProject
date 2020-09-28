@@ -10,4 +10,5 @@ public interface QRCodeService {
 	 
 	 public void generate_qr(String image_name,String qrCodeData) ;
 
+	 public boolean saveOrder(QRCode qrcode);
 }

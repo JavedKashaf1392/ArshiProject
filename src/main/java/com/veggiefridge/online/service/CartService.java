@@ -16,12 +16,15 @@ public interface CartService {
       
       public boolean remove(CartItem cartitem);
       
-      // fetch the CartLine based on cartId and productId cartpageid
+      //fetch the CartLine based on cartId and productId cartpageid
       public CartItem getByCartPageAndProducts(int productid,int cartpageid);
      			
       public boolean updateCartPage(CartPage cartpage);
       
       public List<CartItem> list(int cartpageid);
+      
+      public boolean deleteList(List<CartItem> cartitem);
 		
+      public CartItem getCustomerCart(int cartpageid);
     
 }

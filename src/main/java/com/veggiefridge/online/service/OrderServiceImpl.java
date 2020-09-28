@@ -33,10 +33,10 @@ public class OrderServiceImpl implements OrderService {
 		return null;
 	}
 
+	
 	@Override
-	public List<OrderItem> listOrderOrderItem(String orderItemDetailsId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderItem> listOrderItem(int orderItemDetailsId) {
+		return orderdao.listOrderItem(orderItemDetailsId);
 	}
 
 	@Override
@@ -47,6 +47,31 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public boolean saveOrderItem(OrderItem orderitem) {
 		return orderdao.saveOrderItem(orderitem);
+	}
+	
+	@Override
+	public List<OrderItemDetails> list(int customerid) {
+		return orderdao.list(customerid);
+	}
+
+	@Override
+	public OrderItemDetails get(int orderItemDetailsId){
+		return orderdao.get(orderItemDetailsId);
+	}
+
+	@Override
+	public List<OrderItem> getAllOrderItem() {
+		return orderdao.getAllOrderItem();
+	}
+
+	@Override
+	public List<OrderItemDetails> listOrderItemDetails(){
+		return orderdao.listOrderItemDetails();
+	}
+
+	@Override
+	public List<OrderItemDetails> listdelOrderItemDetails() {
+		return orderdao.listdelOrderItemDetails();
 	}
 
 }

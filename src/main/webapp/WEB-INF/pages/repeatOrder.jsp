@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,13 +56,7 @@ background-color:#f1f1f1;
 </style>
 </head>
 <body>
-
 <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;">Order Info</h2></div><br>
-
-    <div style="text-align: center;background-color: white;margin-right:70%;margin-left:15%;">
-    <h2 style="color: green;">Order Summery</h2>
-    <h4>OrderId: 101<h4>
-   <h4 style="color: red;">Total:Rs 1200</h4></div>
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
 
@@ -69,43 +66,26 @@ background-color:#f1f1f1;
     <th style="color: white;">Product Image</th>
     <th style="width:%;color:white;">Product Name</th>
     <th style="width:%;color:white;">Quantity</th>
-    <th style="width:%;color:white;">Price</th> 
     <th style="width:%;color:white;">Total Amount </th>    
     </tr>
-
+    
+    
+    <c:forEach var="orderitem" items="${listAllOrderitem}">
     <tr>
-    <td>1001</td>
+    <td>${orderitem.product.productid}</td>
     <td><spring:url value="/images" var="images" />
-    <img src="${images}/carrot.jpg" width="70" height="70"/></td>
-    <td>Potato</td>
+    <img src="${images}/${orderitem.product.imageName}" width="70" height="70"/></td>
+    <td>${orderitem.product.productName}</td>
    
-    <td>2</td>
-    <td>25</td>
-    <td>50</td>
+    <td>${orderitem.product.quantity}</td>
+    <td>${orderitem.totalAmount}</td>
     </tr>
+    </c:forEach>
+ 
     
-    <tr>
-    <td>1002</td>
-    <td><spring:url value="/images" var="images" />
-    <img src="${images}/bringal.jpg" width="70" height="70"/></td>
-    <td>Onion</td>
-    <td>2</td>
-    <td>25</td>
-    <td>50</td>
-    </tr>
-    
-    <tr>
-    <td>1003</td>
-    <td><spring:url value="/images" var="images" />
-    <img src="${images}/potato.jpg" width="70" height="70"/></td>
-    <td>Ginger</td>
-    <td>2</td>
-    <td>25</td>
-    <td>50</td>
-    </tr>
    
  </table><br>
-        <a href="${pageContext.request.contextPath}/home/cart" style="display: inline-block;
+        <a href="${pageContext.request.contextPath}/order/repeatOrder" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
         text-decoration: none;

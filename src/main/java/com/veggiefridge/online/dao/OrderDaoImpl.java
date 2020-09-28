@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
@@ -50,8 +52,8 @@ public class OrderDaoImpl implements OrderDao{
 	
 	    
 	@Override
-	public List<OrderItem> listOrderItem(String orderItemDetailsId) {
-		String query = "FROM OrderItem  WHERE orderItemDetailsId= : orderItemDetailsId ";
+	public List<OrderItem> listOrderItem(int orderItemDetailsId) {
+		String query = "FROM OrderItem  WHERE orderitemdetails.orderItemDetailsId= : orderItemDetailsId";
 		return sessionFactory.getCurrentSession()
 								.createQuery(query)
 									.setParameter("orderItemDetailsId",orderItemDetailsId)
@@ -67,7 +69,7 @@ public class OrderDaoImpl implements OrderDao{
 
 
 	@Override
-	public OrderItemDetails getOrderItemDetails(String orderItemDetailsId) {
+	public OrderItemDetails getOrderItemDetails(int orderItemDetailsId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -84,10 +86,61 @@ public class OrderDaoImpl implements OrderDao{
 		}
 	    
 	}
+
+
+	@Override
+	public List<OrderItemDetails> list(int customerid) {
+		String query = "FROM OrderItemDetails  WHERE customer.customerid =:customerid";
+		return sessionFactory.getCurrentSession()
+								.createQuery(query)
+									.setParameter("customerid",customerid)
+										.list();
+	}
+
+	
+
+	@Override
+	public OrderItemDetails get(int orderItemDetailsId) {
+		return (OrderItemDetails) sessionFactory.getCurrentSession().get(OrderItemDetails.class, orderItemDetailsId);
+	}
+
+	
+	@Override
+	public List<OrderItem> getAllOrderItem() {
+		return sessionFactory.getCurrentSession().createQuery("from OrderItem").list();
+	}
+
+
+	@Override
+	public List<OrderItemDetails> listOrderItemDetails(){
+		
+		String query = "FROM OrderItemDetails WHERE  pickupStatus =:pickupStatus";
+		return sessionFactory.getCurrentSession()
+									.createQuery(query)
+										.setParameter("pickupStatus",VFOnlineConstants.PICKUP_STATUS)
+										.list();	
+	}
+
+
+	@Override
+	public List<OrderItemDetails> listdelOrderItemDetails() {
+		String query = "FROM OrderItemDetails WHERE  pickupStatus =:pickupStatus";
+		return sessionFactory.getCurrentSession()
+									.createQuery(query)
+										.setParameter("pickupStatus",VFOnlineConstants.PICKUPSTATUS)
+										.list();	
+	}
+	}
+	
+	
+	
+
+
+	
 	
 
    
-}
+
 	
 	
 	

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class CartPage{
 	  
       private static final long serialVersionUID = -3465813074586302847L;
-     
+      
       @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private int cartpageid;
@@ -25,7 +25,7 @@ public class CartPage{
 	  
       @OneToOne
 	  private Customer customer;
-
+      
 	public int getCartpageid() {
 		return cartpageid;
 	}

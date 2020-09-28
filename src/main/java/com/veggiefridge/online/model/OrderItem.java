@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,9 +22,17 @@ public class OrderItem {
 	@OneToOne
 	private Product product;
 	
-    @Column(name="orderItemDetailsId")
+	@Column(name="orderItemDetailsId")
 	private int orderItemDetailsId;
 	
+	public int getOrderItemDetailsId() {
+		return orderItemDetailsId;
+	}
+
+	public void setOrderItemDetailsId(int orderItemDetailsId) {
+		this.orderItemDetailsId = orderItemDetailsId;
+	}
+
 	@Column(name = "orderstatus")
 	private String orderstatus;
 	
@@ -53,13 +62,6 @@ public class OrderItem {
 		this.product = product;
 	}
 
-	public int getOrderItemDetailsId() {
-		return orderItemDetailsId;
-	}
-
-	public void setOrderItemDetailsId(int orderItemDetailsId) {
-		this.orderItemDetailsId = orderItemDetailsId;
-	}
 
 	public String getOrderstatus() {
 		return orderstatus;

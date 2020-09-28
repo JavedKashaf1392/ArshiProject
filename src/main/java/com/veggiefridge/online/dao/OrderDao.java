@@ -9,11 +9,22 @@ public interface OrderDao {
 	
 	    public boolean saveOrder(OrderItemDetails orderitemdetails);
 	    
-	    public List<OrderItem> listOrderItem(String orderItemDetailsId);
+	    public List<OrderItem> listOrderItem(int orderItemDetailsId);
 	    
-	    public OrderItemDetails getOrderItemDetails(String orderItemDetailsId);
+	    public OrderItemDetails getOrderItemDetails(int orderItemDetailsId);
 	       
 	    public List<OrderItemDetails> getAllOrderItemDetails();
 	    
 	    public boolean saveOrderItem(OrderItem orderitem);
+	    
+	    public List<OrderItemDetails>  list(int customerid);
+	    
+	    public OrderItemDetails get(int orderItemDetailsId);
+	    
+		public List<OrderItem> getAllOrderItem();
+		
+		public List<OrderItemDetails> listOrderItemDetails();
+		
+		public List<OrderItemDetails> listdelOrderItemDetails();
+		
 }

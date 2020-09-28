@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
@@ -54,6 +55,7 @@ public class Customer implements Serializable {
 	private String confirmPassword;
 	
 	@OneToOne(mappedBy="customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "cartpageid")
 	private CartPage cartpage;
 	
 	public CartPage getCartpage() {
