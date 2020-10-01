@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <table id="myTable">
     <tr class="header">
     <th style="width:%;color:white;">Product Id</th>
@@ -29,8 +30,7 @@
     <td>${orderitem.product.productName}</td>
    
     <td>${orderitem.product.quantity}</td>
-    <td>${orderitem.product.totalAmount}</td>
-    <td>${orderitem.}</td>
+    <td>${orderitem.totalAmount}</td>
     </tr>
     </c:forEach>
  

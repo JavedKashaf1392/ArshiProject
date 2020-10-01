@@ -46,7 +46,7 @@ public class KioskController {
 	}
 	
 	
-	 //newKiosk
+	    //newKiosk
 	  @RequestMapping(value ="/newKiosk")
 	  public ModelAndView newKiosk(ModelAndView  model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("kiosk") Kiosk kiosk,BindingResult resultkiosk){
 	  List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
@@ -56,7 +56,7 @@ public class KioskController {
 	 }
 	
 	 
-	// save location
+	//save location
     @RequestMapping(value ="/saveKiosk", method = RequestMethod.POST)
 	public String saveKiosk(@ModelAttribute("kiosk") Kiosk kiosk, BindingResult  resultkiosk,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
 		

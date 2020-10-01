@@ -53,7 +53,7 @@ public class OrderDaoImpl implements OrderDao{
 	    
 	@Override
 	public List<OrderItem> listOrderItem(int orderItemDetailsId) {
-		String query = "FROM OrderItem  WHERE orderitemdetails.orderItemDetailsId= : orderItemDetailsId";
+		String query = "FROM OrderItem WHERE orderItemDetailsId= :orderItemDetailsId";
 		return sessionFactory.getCurrentSession()
 								.createQuery(query)
 									.setParameter("orderItemDetailsId",orderItemDetailsId)

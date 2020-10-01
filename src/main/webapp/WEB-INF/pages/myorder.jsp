@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,7 +105,7 @@ background-color:#f1f1f1;
     
   <c:forEach var="orderitemdetails" items="${fetchdelorderbystatus}">
   <tr>
-    <td><a href="${pageContext.request.contextPath }/order/allOrderItem" style=";font-size:100%;color:dodgerblue;">${orderitemdetails.orderItemDetailsId}</a></td>
+    <td><a href="${pageContext.request.contextPath }/order/listOrderItem/${orderitemdetails.orderItemDetailsId}" style=";font-size:100%;color:dodgerblue;">${orderitemdetails.orderItemDetailsId}</a></td>
     <td>${orderitemdetails.orderDate}</td>
     <td><i class="fa fa-check-circle" style="color:green"></i>${orderitemdetails.pickupStatus}</td>
     <td>${orderitemdetails.orderTotal}</td>

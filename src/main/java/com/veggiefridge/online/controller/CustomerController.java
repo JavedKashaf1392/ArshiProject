@@ -25,7 +25,7 @@ import com.veggiefridge.online.service.ProductService;
 
 @Controller
 @RequestMapping(value="/customer")
-public class CustomerController {
+public class CustomerController{
 	
 	private static final Logger logger = Logger.getLogger(CustomerController.class);
 

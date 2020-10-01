@@ -69,23 +69,20 @@ background-color:#f1f1f1;
     <th style="width:%;color:white;">Total Amount </th>    
     </tr>
     
-    
-    <c:forEach var="orderitem" items="${listAllOrderitem}">
+    <c:forEach var="orderitem" items="${listorderitem}">
     <tr>
     <td>${orderitem.product.productid}</td>
     <td><spring:url value="/images" var="images" />
     <img src="${images}/${orderitem.product.imageName}" width="70" height="70"/></td>
     <td>${orderitem.product.productName}</td>
-   
     <td>${orderitem.product.quantity}</td>
     <td>${orderitem.totalAmount}</td>
     </tr>
     </c:forEach>
- 
+    </table>
     
    
- </table><br>
-        <a href="${pageContext.request.contextPath}/order/repeatOrder" style="display: inline-block;
+    <a href="${pageContext.request.contextPath}/order/repeatOrder${orderitem.orderItemDetailsId}" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
         text-decoration: none;
@@ -94,6 +91,8 @@ background-color:#f1f1f1;
         border-radius: 6px;
         outline: none;margin-top:6px;
         margin-left:15%;">RepeatOrder</a>
+       
+       
       
         <a href="${pageContext.request.contextPath}/home/registeredhome" style="display: inline-block;
         padding: 10px 50px;

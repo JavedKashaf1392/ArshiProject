@@ -21,7 +21,6 @@ import com.veggiefridge.online.service.ProductService;
 @RequestMapping(value="/product")
 public class ProductController {
 	
-	
 	private static final Logger logger = Logger.getLogger(ProductController.class);
 
 	public ProductController() {

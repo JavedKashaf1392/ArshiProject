@@ -54,20 +54,20 @@ public class HomeController {
 			return ((Customer)session.getAttribute("customer")).getCartpage();
 		}
 	
- 
    
-	//list Product
+	
+	 //list Product
 	@RequestMapping(value="/viewhome")
 	public ModelAndView listProduct(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer) throws IOException{
 		List<Customer> listCustomer = customerservice.getAllCustomers();
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
 		List<Product> listProduct = productService.getAllProducts();
 		model.addObject("listkiosklocation",listkiosklocation);
-		model.addObject("listProduct", listProduct);
-		model.addObject("listCustomer ", listCustomer);
+		model.addObject("listProduct",listProduct);
+		model.addObject("listCustomer ",listCustomer);
 		model.setViewName("home");
 		return model;
-	}
+	    }
 	
 	
 	@RequestMapping("/continueLocation")  

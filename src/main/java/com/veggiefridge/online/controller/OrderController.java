@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.constants.VFOnlineConstants;
@@ -112,7 +114,9 @@ public class OrderController {
 		return model;
 		}
 		
-		   //listOrders
+		
+		
+		 //listOrders
 		@RequestMapping(value ="/listOrders")
 		public ModelAndView listOrders(ModelAndView model){
 			List<OrderItemDetails> listorderitemdetails=orderservice.list(this.getCartPage().getCustomer().getCustomerid());
@@ -120,19 +124,20 @@ public class OrderController {
 			return model;
 		}
 		
-		   //listOrderidOrde
-		@RequestMapping(value ="/listOrderItem/{orderItemDetailsId}")
-		public ModelAndView listOrderItem(ModelAndView model,@PathVariable("orderItemDetailsId") int orderItemDetailsId){
-			OrderItemDetails orderItemDetails=orderservice.get(orderItemDetailsId);
-			List<OrderItem> listorderitem=orderservice.listOrderItem(orderItemDetails.getOrderItemDetailsId());
+		 
+		 //listOrderidOrde
+		@RequestMapping(value ="/listOrderItem/{orderItemDetailsId}",method = RequestMethod.GET)
+		public ModelAndView listOrderItem(ModelAndView model,@PathVariable(value="orderItemDetailsId")int orderItemDetailsId){
+			OrderItemDetails orderitemdetails=orderservice.get(orderItemDetailsId);
+			List<OrderItem> listorderitem=orderservice.listOrderItem(orderitemdetails.getOrderItemDetailsId());
+			System.out.println("listOrderItem by OrderId"+listorderitem);
 			model.addObject("listorderitem", listorderitem);
-			model.setViewName("orderlist");
+			model.setViewName("repeatOrder");
 			return model;
-		    }
+		}
 		
 		
-		
-		  //get All Information
+		//get All Information
 		@RequestMapping(value ="/allOrderItem")
 		public ModelAndView allOrderItem(ModelAndView model){
 			List<OrderItem> listAllOrderitem = orderservice.getAllOrderItem();
@@ -141,18 +146,19 @@ public class OrderController {
 			return model;
 		}
 		
+		
 		         //repeat Order
-		        @RequestMapping(value ="/repeatOrder")
-				public String repeatOrder(ModelAndView model){
-		        
-		        List<OrderItem> listAllOrderitem = orderservice.getAllOrderItem();
+		        @RequestMapping(value ="/repeatOrder{orderItemDetailsId}", method = RequestMethod.GET)
+				public String repeatOrder(ModelAndView model,@PathVariable(value = "orderItemDetailsId")int orderItemDetailsId){
+		        OrderItemDetails orderitemdetails=orderservice.get(orderItemDetailsId);
+		        List<OrderItem> listorderitem=orderservice.listOrderItem(orderitemdetails.getOrderItemDetailsId());
 		        CartPage cartpage=this.getCartPage(); 	
 		        CartItem cartitem= cartservice.getCustomerCart(this.getCartPage().getCartpageid());
 				/* CartItem cartitem= cartservice.getCustomerCart(cartpage.getCartpageid()); */
-			    for(int i=0; i<listAllOrderitem.size(); i++){
+			    for(int i=0; i<listorderitem.size(); i++){
 			    cartitem=new CartItem();
 			    cartitem.setCartpageid(this.getCartPage().getCartpageid());
-			    cartitem.setProduct(listAllOrderitem.get(i).getProduct());
+			    cartitem.setProduct(listorderitem.get(i).getProduct());
 			    cartservice.add(cartitem);                                                
 			    System.out.println("cartitem is added");                                  
 			    // update the cart                                                        
@@ -177,9 +183,8 @@ public class OrderController {
 					return model;
 				}
 				
-		
-				
-				 //listCartItem
+				 
+				//listCartItem
 				@RequestMapping(value ="/fetchdelorderbystatus")
 				public ModelAndView fetchDelOrderByStatus(ModelAndView model){
 					
