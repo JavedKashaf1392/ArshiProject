@@ -20,7 +20,7 @@ import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Kiosk;
 import com.veggiefridge.online.model.OrderItem;
-import com.veggiefridge.online.model.OrderItemDetails;
+import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.QRCode;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
@@ -54,11 +54,12 @@ public class OrderController {
 			return ((Customer)session.getAttribute("customer")).getCartpage();
 		}
 
-	    //getAll Order
-		@RequestMapping(value ="/listorder")
+	
+	     //getAll Order
+		@RequestMapping(value ="/listdeliveredorder")
 		public ModelAndView listOrder(ModelAndView model) throws IOException {
-			List<OrderItemDetails> listorderitemdetails=orderservice.getAllOrderItemDetails();
-			model.addObject("listorderitemdetails", listorderitemdetails);
+			List<Orders> listdeliveredorders = orderservice.listdeliveredOrders();
+			model.addObject("listdeliveredorders", listdeliveredorders);
 			model.setViewName("myorder");
 			return model;
 		}
@@ -69,18 +70,17 @@ public class OrderController {
 		public ModelAndView checkoutAndSaveOrder(ModelAndView model){
 		List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
 		
-		OrderItemDetails orderItemdetails = new OrderItemDetails();
-		orderItemdetails.setCustomer(this.getCartPage().getCustomer());
-		orderItemdetails.setDeliveredProductsCount(0);
-		orderItemdetails.setPickupStatus(VFOnlineConstants.PICKUP_STATUS); 
+		Orders orders = new Orders();
+		orders.setCustomer(this.getCartPage().getCustomer());
+		orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS); 
 		System.out.println("pickup status"+VFOnlineConstants.PICKUP_STATUS);
-		orderItemdetails.setOrderDate(new Date());
-		orderservice.saveOrder(orderItemdetails); 
+		orders.setOrderDate(new Date());
+		orderservice.saveOrder(orders); 
 		System.out.println("Order added in order tabel");
 		
 		for(int i=0; i<cartitem.size(); i++) {
 			OrderItem orderitem= new OrderItem();
-			orderitem.setOrderItemDetailsId(orderItemdetails.getOrderItemDetailsId());
+			orderitem.setOrderid(orders.getOrderid());
 			orderitem.setProduct(cartitem.get(i).getProduct());
 			orderitem.setProductQuantity(cartitem.get(i).getProductCount());
 			orderitem.setSource("web");
@@ -105,7 +105,7 @@ public class OrderController {
          
 		QRCode qrcode= new QRCode();
 		qrcode.setCustomer(this.getCartPage().getCustomer());
-        qrcode.setOrderitemdetails(orderItemdetails);
+        qrcode.setOrders(orders);
         qrcode.setValid(true);
         qrcodeservice.saveOrder(qrcode);
         System.out.println("order added into qrcode");
@@ -114,27 +114,32 @@ public class OrderController {
 		return model;
 		}
 		
-		
-		
-		 //listOrders
-		@RequestMapping(value ="/listOrders")
-		public ModelAndView listOrders(ModelAndView model){
-			List<OrderItemDetails> listorderitemdetails=orderservice.list(this.getCartPage().getCustomer().getCustomerid());
-			model.setViewName("myorder");
-			return model;
-		}
-		
 		 
-		 //listOrderidOrde
-		@RequestMapping(value ="/listOrderItem/{orderItemDetailsId}",method = RequestMethod.GET)
-		public ModelAndView listOrderItem(ModelAndView model,@PathVariable(value="orderItemDetailsId")int orderItemDetailsId){
-			OrderItemDetails orderitemdetails=orderservice.get(orderItemDetailsId);
-			List<OrderItem> listorderitem=orderservice.listOrderItem(orderitemdetails.getOrderItemDetailsId());
+		 //delivered order item
+		@RequestMapping(value ="/listOrderItem/{orderid}",method = RequestMethod.GET)
+		public ModelAndView listOrderItem(ModelAndView model,@PathVariable(value="orderid")int orderid){
+			Orders orders=orderservice.getOrder(orderid);
+			List<OrderItem> listorderitem=orderservice.listOrderItem(orders.getOrderid());
 			System.out.println("listOrderItem by OrderId"+listorderitem);
 			model.addObject("listorderitem", listorderitem);
 			model.setViewName("repeatOrder");
 			return model;
 		}
+		
+
+		 //pending Order item
+		@RequestMapping(value ="/listOrderItems/{orderid}",method = RequestMethod.GET)
+		public ModelAndView listOrderItems(ModelAndView model,@PathVariable(value="orderid")int orderid){
+			Orders orders=orderservice.getOrder(orderid);
+			List<OrderItem> listorderitem=orderservice.listOrderItem(orders.getOrderid());
+			System.out.println("listOrderItem by OrderId"+listorderitem);
+			model.addObject("listorderitem", listorderitem);
+			model.setViewName("orderinfo");
+			return model;
+		}
+		
+		
+		
 		
 		
 		//get All Information
@@ -148,10 +153,10 @@ public class OrderController {
 		
 		
 		         //repeat Order
-		        @RequestMapping(value ="/repeatOrder{orderItemDetailsId}", method = RequestMethod.GET)
-				public String repeatOrder(ModelAndView model,@PathVariable(value = "orderItemDetailsId")int orderItemDetailsId){
-		        OrderItemDetails orderitemdetails=orderservice.get(orderItemDetailsId);
-		        List<OrderItem> listorderitem=orderservice.listOrderItem(orderitemdetails.getOrderItemDetailsId());
+		        @RequestMapping(value ="/repeatOrder{orderid}", method = RequestMethod.GET)
+				public String repeatOrder(ModelAndView model,@PathVariable(value = "orderid")int orderid){
+		        Orders orders=orderservice.getOrder(orderid);
+		        List<OrderItem> listorderitem=orderservice.listOrderItem(orders.getOrderid());
 		        CartPage cartpage=this.getCartPage(); 	
 		        CartItem cartitem= cartservice.getCustomerCart(this.getCartPage().getCartpageid());
 				/* CartItem cartitem= cartservice.getCustomerCart(cartpage.getCartpageid()); */
@@ -173,24 +178,23 @@ public class OrderController {
 		        
 		        
 		         //listCartItem
-				@RequestMapping(value ="/fetchallorderbystatus")
-				public ModelAndView fetchAllOrderByStatus(ModelAndView model){
-					
-					List<OrderItemDetails> fetchallorderbystatus=orderservice.listOrderItemDetails();
-					System.out.println("fetch All orderItemdetails");
-					model.addObject("fetchallorderbystatus", fetchallorderbystatus);
+				@RequestMapping(value = "/pendingorders")
+				public ModelAndView fetchAllPendingOrders(ModelAndView model){
+					List<Orders> fetchallpendingorders=orderservice.listpendingOrders();
+					System.out.println("fetch AllPending orderItemdetails");
+					model.addObject("fetchallpendingorders", fetchallpendingorders);
 					model.setViewName("CurrentOrder");
 					return model;
 				}
 				
 				 
 				//listCartItem
-				@RequestMapping(value ="/fetchdelorderbystatus")
+				@RequestMapping(value ="/deliveredorder")
 				public ModelAndView fetchDelOrderByStatus(ModelAndView model){
 					
-					List<OrderItemDetails> fetchdelorderbystatus=orderservice.listdelOrderItemDetails();
+					List<Orders> fetchalldeliveredorders=orderservice.listdeliveredOrders();
 					System.out.println("fetch All orderItemdetails");
-					model.addObject("fetchdelorderbystatus",fetchdelorderbystatus);
+					model.addObject("fetchalldeliveredorders",fetchalldeliveredorders);
 					model.setViewName("myorder");
 					return model;
 				}

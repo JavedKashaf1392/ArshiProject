@@ -1,6 +1,5 @@
 package com.veggiefridge.online.dao;
 
-import com.veggiefridge.online.model.OrderItemDetails;
 import com.veggiefridge.online.model.QRCode;
 
 public interface QRCodeDAO {

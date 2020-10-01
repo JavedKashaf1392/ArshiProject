@@ -16,9 +16,9 @@ import org.hibernate.annotations.ManyToAny;
 @Entity
 @Table(name ="qrcode")
 public class QRCode {
+	
 	private static final long serialVersionUID = -3465813074586302847L;
  
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int qrcodeid;
@@ -31,7 +31,7 @@ public class QRCode {
 	private MembershipWallet Membershipwallet;
 	
 	@OneToOne
-    private OrderItemDetails orderitemdetails;
+    private Orders orders;
 	
 	@Column(name = "isvalid")
     private boolean isValid;
@@ -62,13 +62,13 @@ public class QRCode {
 	public void setMembershipwallet(MembershipWallet membershipwallet) {
 		Membershipwallet = membershipwallet;
 	}
-
-	public OrderItemDetails getOrderitemdetails() {
-		return orderitemdetails;
+     
+	public Orders getOrders() {
+		return orders;
 	}
 
-	public void setOrderitemdetails(OrderItemDetails orderitemdetails) {
-		this.orderitemdetails = orderitemdetails;
+	public void setOrders(Orders orders) {
+		this.orders = orders;
 	}
 
 	public boolean isValid() {

@@ -94,15 +94,7 @@ background-color:#f1f1f1;
        
        
       
-        <a href="${pageContext.request.contextPath}/home/registeredhome" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: green;
-        border-radius: 6px;
-        outline: none;margin-top:6px;">Cancel</a>
-        </div>
+       <input type="button" style="width:140px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:green;padding:12px;border:none;margin-left:%;" value="Back" onclick="history.back()">
 
 <script>
 function myFunction() {

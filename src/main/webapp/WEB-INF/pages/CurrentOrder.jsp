@@ -69,7 +69,7 @@ background-color:#f1f1f1;
 <table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
 <th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-<a href="${pageContext.request.contextPath}/order/fetchallorderbystatus" style="display: inline-block;
+<a href="${pageContext.request.contextPath}/order/pendingorders" style="display: inline-block;
         padding: 10px 30px;
         text-align:center;
         text-decoration: none;
@@ -80,7 +80,7 @@ background-color:#f1f1f1;
        </th>
 
  <th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
- <a href="${pageContext.request.contextPath}/order/fetchdelorderbystatus" style="display: inline-block;
+ <a href="${pageContext.request.contextPath}/order/deliveredorder" style="display: inline-block;
         padding: 10px 30px;
         text-align: center;
         text-decoration: none;
@@ -102,12 +102,12 @@ background-color:#f1f1f1;
     <th style="width:%;color:white;">Total Amount</th>
     </tr>
     
-  <c:forEach var="orderitemdetails" items="${fetchallorderbystatus}">
+  <c:forEach var="orders" items="${fetchallpendingorders}">
   <tr>
-    <td><a href="${pageContext.request.contextPath }/order/listOrderItem/${orderitemdetails.orderItemDetailsId}" style=";font-size:100%;color:dodgerblue;">${orderitemdetails.orderItemDetailsId}</a></td>
-    <td>${orderitemdetails.orderDate}</td>
-    <td><i class="fa fa-dot-circle-o" style="font-size:15px;color:orange"></i>${orderitemdetails.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
-    <td>${orderitemdetails.orderTotal}</td>
+    <td><a href="${pageContext.request.contextPath }/order/listOrderItems/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">${orders.orderid}</a></td>
+    <td>${orders.orderDate}</td>
+    <td><i class="fa fa-dot-circle-o" style="font-size:15px;color:orange"></i>${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
+    <td>${orders.orderTotal}</td>
   </tr>
   </c:forEach>
   </table>

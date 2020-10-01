@@ -22,15 +22,15 @@ public class OrderItem {
 	@OneToOne
 	private Product product;
 	
-	@Column(name="orderItemDetailsId")
-	private int orderItemDetailsId;
+	@Column(name="orderid")
+	private int orderid;
 	
-	public int getOrderItemDetailsId() {
-		return orderItemDetailsId;
+	public int getOrderid() {
+		return orderid;
 	}
 
-	public void setOrderItemDetailsId(int orderItemDetailsId) {
-		this.orderItemDetailsId = orderItemDetailsId;
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
 	}
 
 	@Column(name = "orderstatus")

@@ -23,7 +23,6 @@ import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Item;
 import com.veggiefridge.online.model.KioskLocation;
-import com.veggiefridge.online.model.OrderItemDetails;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;

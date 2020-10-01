@@ -3,28 +3,26 @@ import java.util.List;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.OrderItem;
-import com.veggiefridge.online.model.OrderItemDetails;
+import com.veggiefridge.online.model.Orders;
 
 public interface OrderDao {
 	
-	    public boolean saveOrder(OrderItemDetails orderitemdetails);
+	    public boolean saveOrder(Orders orders);
 	    
-	    public List<OrderItem> listOrderItem(int orderItemDetailsId);
+	    public List<OrderItem> listOrderItem(int orderid);
 	    
-	    public OrderItemDetails getOrderItemDetails(int orderItemDetailsId);
+	    public Orders getOrder(int orderid);
 	       
-	    public List<OrderItemDetails> getAllOrderItemDetails();
+	    public List<OrderItem> getAllOrders();
 	    
 	    public boolean saveOrderItem(OrderItem orderitem);
 	    
-	    public List<OrderItemDetails>  list(int customerid);
-	    
-	    public OrderItemDetails get(int orderItemDetailsId);
+	    public List<Orders>  list(int customerid);
 	    
 		public List<OrderItem> getAllOrderItem();
 		
-		public List<OrderItemDetails> listOrderItemDetails();
+		public List<Orders> listpendingOrders();
 		
-		public List<OrderItemDetails> listdelOrderItemDetails();
+		public List<Orders> listdeliveredOrders();
 		
 }

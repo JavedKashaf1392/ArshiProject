@@ -15,24 +15,21 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="orderitemdetails")
-public class OrderItemDetails {
+@Table(name ="orders")
+public class Orders{
 	
 	private static final long serialVersionUID = -3465813074586302847L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int orderItemDetailsId;
+	private int orderid;
 
 	@ManyToOne
 	private Customer customer;
 	
 	@Column(name = "ordertotal")
 	private double orderTotal;
-	
-//	@OneToMany(mappedBy="orderitemdetails", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	private List<OrderItem> orderItems = new ArrayList<>();
-	
+
 	@Column(name="orderdate")
 	private Date orderDate;
 	
@@ -54,12 +51,12 @@ public class OrderItemDetails {
 	@Column(name="remainingProductsCount")
 	private int remainingProductsCount;
 
-	public int getOrderItemDetailsId() {
-		return orderItemDetailsId;
+	public int getOrderid() {
+		return orderid;
 	}
 
-	public void setOrderItemDetailsId(int orderItemDetailsId) {
-		this.orderItemDetailsId = orderItemDetailsId;
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
 	}
 
 	public Customer getCustomer() {
@@ -133,4 +130,14 @@ public class OrderItemDetails {
 	public void setRemainingProductsCount(int remainingProductsCount) {
 		this.remainingProductsCount = remainingProductsCount;
 	}
+
+	@Override
+	public String toString() {
+		return "Orders [orderid=" + orderid + ", customer=" + customer + ", orderTotal=" + orderTotal + ", orderDate="
+				+ orderDate + ", pickupStatus=" + pickupStatus + ", totalBillAmount=" + totalBillAmount
+				+ ", platformSource=" + platformSource + ", totalProductsCount=" + totalProductsCount
+				+ ", deliveredProductsCount=" + deliveredProductsCount + ", remainingProductsCount="
+				+ remainingProductsCount + "]";
+	}
+	
 }
