@@ -68,7 +68,6 @@ background-color:#f1f1f1;
     <th style="width:%;color:white;">Quantity</th>
     <th style="width:%;color:white;">Total Amount </th>    
     </tr>
-    
     <c:forEach var="orderitem" items="${listorderitem}">
     <tr>
     <td>${orderitem.product.productid}</td>
@@ -78,24 +77,21 @@ background-color:#f1f1f1;
     <td>${orderitem.product.quantity}</td>
     <td>${orderitem.totalAmount}</td>
     </tr>
-    </c:forEach>
     </table>
     
-   
-    <a href="${pageContext.request.contextPath}/order/repeatOrder${orderitem.orderItemDetailsId}" style="display: inline-block;
+    <a href="${pageContext.request.contextPath}/order/repeatOrder${orderitem.orderid}" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color: green;
         border-radius: 6px;
-        outline: none;margin-top:6px;
+        outline: none;
         margin-left:15%;">RepeatOrder</a>
-       
-       
-      
+      </c:forEach>
+     
        <input type="button" style="width:140px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:green;padding:12px;border:none;margin-left:%;" value="Back" onclick="history.back()">
-
+      
 <script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;

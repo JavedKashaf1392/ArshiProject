@@ -1,3 +1,4 @@
+  
   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
@@ -832,31 +833,31 @@ label #sidebar_btn:hover{
 /* The Modal (background) */
 .pagecart{
   display:none; /* Hidden by default */
-  position: fixed; /* Stay in place */
+  position:absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   padding-top:60px;
+ 
 }
 
 /* Modal Content/Box */
 .pagecartcontent{
+  overflow:scroll;
   background-color:#f1f1f1;
   text-align:center;
   float:right;
-  margin-right:13%;
+  margin-right:210px;
   width:30%; /* Could be more or less, depending on screen size */
-  height:50%;
-  margin-top:2%;
+  height:30%;
+  margin-top:17px;
 }
 
 </style>
 <body>
  <!--  header -->
- 
-
     <div>
     <div class="header">
     <div class="logo">
@@ -887,6 +888,7 @@ label #sidebar_btn:hover{
       <div id="id05" class="menu">
       <div class="sidebar">
       <center>
+      
       <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
       </center>
@@ -1001,7 +1003,7 @@ window.onclick = function(event) {
 
   <div class="mySlides fade"> -->
   <spring:url value="/images" var="images" />
-  <img src="${images}/bigimage.jpg" width="1600" height="450" style="margin-top:15px;"/> 
+  <img src="${images}/organic.jpg" width="1600" height="450" style="margin-top:15px;"/> 
  <%--  </div>
 
   <div class="mySlides fade">
@@ -1089,13 +1091,13 @@ function showSlides(n) {
        <%--  /cart/add/${product.id}/product --%>
                                      
         <a href="${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}" style="display:inline-block;
-        padding: 8px 18px;
+         padding: 8px 18px; 
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color:#4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a> 
+        outline: none;margin-top:2%;" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a> 
         
         
          
@@ -1258,60 +1260,51 @@ Message *</div>
         border-radius: 6px;
         outline: none;margin-top:6px">Yes</a>
 
-<div id="id08" class="pagecart">
- <div class="pagecartcontent">
+  <div id="id08" class="pagecart">
+  <div class="pagecartcontent">
   <c:choose>
   <c:when test="${not empty listcustomercartitem}">
- <table border="2" >
-<tr>
-<th>Options</th>
-<th >Id</th>
-<th>Photo</th>
-<th >Name</th>
-<th >Price</th>
-<th >Quantity</th>
-<th >Sub Total</th>
-</tr>
-<c:set var="s" value="0"></c:set>
-<c:forEach var="cartitem" items="${listcustomercartitem}">
-<c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
-<tr>
-<td><a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}">Remove</a></td>
-<td>${cartitem.cartitemid }</td>
-
+ 
+ <table style="width:93%;  border-collapse: separate;
+        border-spacing: 0 12px;overflow: scroll;margin-left:4%;margin-right:1%;">
+ 
+ <c:set var="s" value="0"></c:set>
+ <c:forEach var="cartitem" items="${listcustomercartitem}">
+ <c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
+<tr style="background-color:white;">
 <td>
 <spring:url value="/images" var="images"/>
-<img src="${images}/${cartitem.product.imageName}" class="product-frame" style="width:40%;"/>
+<img src="${images}/${cartitem.product.imageName}" width="70" height="70"/>
 </td>
-
 <td>${cartitem.product.productName }</td>
 <td>${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</td>
 <td>${cartitem.product.quantity}</td>
-<td>${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100*cartitem.product.quantity}</td>
+<%-- <td><a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}">Remove</a></td> --%>
+<td><a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}"><span style="font-size:20px;color:green;padding:15px 15 px;margin-left:10" title="remove product;">&#10006;</span></a></td>
 </tr>
 </c:forEach>
-<tr><td colspan="6" align="right">Sum</td>
-<td>${s}</td>
-
-</tr>
 </table>
-
+        
+        <span style="color: green;">Total:</span> &#x20B9; ${s}
         <div class="summary-checkout">
-         <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="display: inline-block;
-        padding: 15px 85px;
+        <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="display: inline-block;
+        padding: 10px 50px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color:#4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px;font-size:10px;">CheckOut</a>
+        outline: none;margin-top:6px;font-size:15px;">Go To CheckOut</a> 
         
 </div>
 </div>
 </div>
 </c:when>
+
 <c:otherwise>
-<h3 class="text-center">Your Cart is Empty!</h3>
+<div style="margin-top:15%;background-color:white;padding:30px 40px;margin-left:5%;">
+<h4>Your cart is empty. Start shopping now!</h4>
+</div>
 </c:otherwise>
 </c:choose>
 

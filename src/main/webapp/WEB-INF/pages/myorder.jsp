@@ -89,30 +89,28 @@ background-color:#f1f1f1;
         background-color: #4CAF50;
         border-radius: 6px;
         outline: none;margin-top:6px">Delivered</a>
-      
        </th> 
        </table>
         
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
-
-<table id="myTable">
+ <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
+    <table id="myTable">
     <tr class="header">
     <th style="width:%;color:white;">Order Id</th>
     <th style="width:%;color:white;">Order Date</th>
-     <th style="width:%;color:white;">Order Status</th>
+    <th style="width:%;color:white;">Order Status</th>
     <th style="width:%;color:white;">Total Amount</th>
     </tr>
-    
   <c:forEach var="orders" items="${fetchalldeliveredorders}">
-  <tr>
+    <tr>
     <td><a href="${pageContext.request.contextPath }/order/listOrderItem/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">${orders.orderid}</a></td>
     <td>${orders.orderDate}</td>
     <td><i class="fa fa-check-circle" style="color:green"></i>${orders.pickupStatus}</td>
     <td>${orders.orderTotal}</td>
-  </tr>
-  </c:forEach>
+    </tr>
    
-</table>
+        </c:forEach>
+        </table>
+ <input type="button" style="width:140px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:green;padding:12px;border:none;margin-left:15%;" value="Back" onclick="history.back()">
 
 <script>
 function myFunction() {

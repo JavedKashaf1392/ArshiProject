@@ -106,7 +106,7 @@ background-color:#f1f1f1;
   <tr>
     <td><a href="${pageContext.request.contextPath }/order/listOrderItems/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">${orders.orderid}</a></td>
     <td>${orders.orderDate}</td>
-    <td><i class="fa fa-dot-circle-o" style="font-size:15px;color:orange"></i>${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
+    <td><i class="fa fa-circle-o-notch fa-spin" style="font-size:15px;color:orange;"></i>${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
     <td>${orders.orderTotal}</td>
   </tr>
   </c:forEach>

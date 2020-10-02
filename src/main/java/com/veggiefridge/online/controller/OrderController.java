@@ -154,7 +154,7 @@ public class OrderController {
 		
 		         //repeat Order
 		        @RequestMapping(value ="/repeatOrder{orderid}", method = RequestMethod.GET)
-				public String repeatOrder(ModelAndView model,@PathVariable(value = "orderid")int orderid){
+				public String repeatOrder(ModelAndView model,@PathVariable(value ="orderid")int orderid){
 		        Orders orders=orderservice.getOrder(orderid);
 		        List<OrderItem> listorderitem=orderservice.listOrderItem(orders.getOrderid());
 		        CartPage cartpage=this.getCartPage(); 	
