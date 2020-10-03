@@ -57,6 +57,17 @@ public class Customer implements Serializable {
 	@Column(name="confirmPassword")
 	private String confirmPassword;
 	
+	@Column(name="newPassword")
+	private String newPassword;
+	
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
 	@OneToOne(mappedBy="customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "cartpageid")
 	private CartPage cartpage;

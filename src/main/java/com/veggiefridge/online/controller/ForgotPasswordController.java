@@ -14,6 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.DefaultEditorKit.CutAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamSource;
@@ -35,7 +36,7 @@ import com.veggiefridge.online.service.MailService;
 
 @Controller
 @RequestMapping(value="/forgot")
-public class ForgotPasswordController {
+public class ForgotPasswordController{
 	
 	@Autowired
 	private MailService mailService;
@@ -218,23 +219,28 @@ public class ForgotPasswordController {
 	        }catch(MessagingException e){e.printStackTrace();}  
 	    }  
 	
-	
 	 
-	 @RequestMapping(value = "/passwordChanged", method = RequestMethod.POST)
+	 @RequestMapping(value ="/passwordChanged", method = RequestMethod.POST)
 	 public String setNewPassword(@ModelAttribute("customer")Customer customer, ModelMap map) {
-
-		 // forgotPasswordService.setNewPassword(signUp.getEmail(), signUp.getPassword());
-	     map.addAttribute("msg", "Password changed Successfully..");
-	     return "home";
+     
+	 customer=customerservice.getCustomerByEmail(customer.getEmail());
+     if(customer!=null){	 
+     //update password and Acct Status $ Displyay Successe Message	
+    	 customer.setPassword(customer.getNewPassword());
+         customerservice.updateCustomer(customer);
+         System.out.println("update customer successfully");
 	 }
-	   
+     return "redirect:/home/loginform";
+	 }
+}
+   
 	
 	
 	
 	
 	
 	
-	}	
+
 	
 
 

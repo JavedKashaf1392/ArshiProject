@@ -32,10 +32,18 @@ public class OrderItem {
 	public void setOrderid(int orderid) {
 		this.orderid = orderid;
 	}
-
-	@Column(name = "orderstatus")
-	private String orderstatus;
+  
+	@Column(name = "productStatus")
+	private String productstatus;
 	
+	public String getProductstatus() {
+		return productstatus;
+	}
+
+	public void setProductstatus(String productstatus) {
+		this.productstatus = productstatus;
+	}
+
 	@Column(name ="source")
 	private String source="web";
 	
@@ -60,15 +68,6 @@ public class OrderItem {
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-
-
-	public String getOrderstatus() {
-		return orderstatus;
-	}
-
-	public void setOrderstatus(String orderstatus) {
-		this.orderstatus = orderstatus;
 	}
 
 	public String getSource() {

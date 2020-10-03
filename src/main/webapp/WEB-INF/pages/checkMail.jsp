@@ -56,6 +56,7 @@ color: green;
 		opacity: 1;
 		z-index: 5;
 	}
+	
 <title>Generate Link</title>
 </style>
 </head>
@@ -66,6 +67,14 @@ color: green;
   <img src="${images}/logo.jpg" width="165" height="130"/>
 <h4 style="color:#4CAF50;">Authentication Required</h4>
 <h5 style="color:#4CAF50;">For your security, we need to authenticate your request. We've sent an link to the associate email. Please go to the email click it on link to complete verification.</h5>
+<a href="https://mail.google.com/mail/u/0/?tab=km#inbox" style="display: inline-block;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px;font-size:15px;">Go to gamil</a>
 </form>
 </div>
 

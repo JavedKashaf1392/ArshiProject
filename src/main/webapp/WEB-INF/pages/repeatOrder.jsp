@@ -78,7 +78,7 @@ background-color:#f1f1f1;
     <td>${orderitem.totalAmount}</td>
     </tr>
     </table>
-    
+                                   
     <a href="${pageContext.request.contextPath}/order/repeatOrder${orderitem.orderid}" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;

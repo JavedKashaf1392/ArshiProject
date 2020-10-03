@@ -75,18 +75,27 @@ input[type=submit]:hover {
 
 </head>
 <body>
-<div class="splash">
+  <div class="splash">
   <div class="row">
   <div class="col-75"> 
     
  <form method="post" action="${pageContext.request.contextPath}/forgot/passwordChanged" modelAttribute="customer">
+ 
  <spring:url value="/images" var="images" />
  <img src="${images}/logo.jpg" width="130" height="100"/>
+ 
  <h2 style="color:#4CAF50;">Create new password</h2>
- <h5 style="color:#4CAF50;">We will ask for this password whenever you sign in</h5>    
+ <h5 style="color:#4CAF50;">We will ask for this password whenever you sign in</h5>
+ 
+ <input type="email" name="email" placeholder="Enter Email"  required style="width: 77%;
+  padding: 12px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;">    
    
   <label style="margin-right:55%;">New Password</label>
-  <input type="password" name="password" placeholder="Enter Password"  required style="width: 77%;
+  <input type="password" name="newPassword" placeholder="Enter Password"  required style="width: 77%;
   padding: 12px;
   margin: 3px 0 12px 0; 
   display: inline-block;
@@ -94,7 +103,7 @@ input[type=submit]:hover {
   background: #f1f1f1;border-radius:4px;"><br>
   
   <label style="margin-right:55%;">Confirm Password</label>
-  <input type="password" name="confirmPassword"  placeholder="Confirm Password"  required style="width: 77%;
+  <input type="password" name="newPassword"  placeholder="Confirm Password"  required style="width: 77%;
   padding: 12px;
   margin: 3px 0 12px 0; 
   display: inline-block;
