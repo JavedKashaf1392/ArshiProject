@@ -43,10 +43,8 @@ public class Customer implements Serializable {
 	@Column(name="cities")
 	private String cities;
 	
-	
 	@Column(name="location")
 	private String location;
-	
 	
 	@Column(name="email")
 	private String email;
@@ -60,6 +58,17 @@ public class Customer implements Serializable {
 	@Column(name="newPassword")
 	private String newPassword;
 	
+	@Column(name="confirmnewPassword")
+	private String confirmNewPassword;
+	
+	public String getConfirmNewPassword() {
+		return confirmNewPassword;
+	}
+
+	public void setConfirmNewPassword(String confirmNewPassword) {
+		this.confirmNewPassword = confirmNewPassword;
+	}
+
 	public String getNewPassword() {
 		return newPassword;
 	}

@@ -33,22 +33,14 @@ public class ProductController {
 	
 	  
 	  @RequestMapping(value = "/listProduct")
-	  public ModelAndView
-	  listProduct(ModelAndView model) throws IOException { List<Product>
-	  listProduct = productService.getAllProducts(); model.addObject("listProduct",
-	  listProduct); model.setViewName("productlist"); return model; }
+	  public ModelAndView listProduct(ModelAndView model) throws IOException {
+	  List<Product> listProduct = productService.getAllProducts();
+	  model.addObject("listProduct", listProduct);
+	  model.setViewName("productlist"); 
+	  return model; 
+	  }
 	
 	  
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "/androidListProduct") public List<Product>
-	 * listProduct() throws IOException { List<Product> listProduct =
-	 * productService.getAllProducts(); return listProduct; }
-	 */
-	  
-	  
-	
 	@RequestMapping(value = "/newProduct", method = RequestMethod.GET)
 	public ModelAndView newProduct(ModelAndView model) {
 		Product product = new Product();
@@ -85,7 +77,6 @@ public class ProductController {
 	}
 
 	
-	
 	  @RequestMapping(value = "/editProduct", method = RequestMethod.GET) 
 	  public ModelAndView editProduct(HttpServletRequest request) { 
 		  int productId = Integer.parseInt(request.getParameter("productid"));
@@ -95,11 +86,14 @@ public class ProductController {
 	  return model;
 	  }
 	
-		        
-		  
 	  
-	  
-	  
+	  @ResponseBody
+	  @RequestMapping(value ="/listProducts")
+	  public List<Product> listandroidProduct(ModelAndView model) throws IOException {
+	  List<Product> listProduct = productService.getAllProducts();
+	  model.addObject("listProduct", listProduct);
+	  return listProduct; 
+	  }
 }
 
 

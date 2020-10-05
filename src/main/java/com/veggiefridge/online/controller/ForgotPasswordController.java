@@ -4,25 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Properties;
-import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.swing.text.DefaultEditorKit.CutAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamSource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,13 +22,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.MailService;
 
 @Controller
 @RequestMapping(value="/forgot")
-public class ForgotPasswordController{
+public class ForgotPasswordController {
 	
 	@Autowired
 	private MailService mailService;
@@ -62,14 +55,24 @@ public class ForgotPasswordController{
 	
 	
 	
-	@RequestMapping(value="/newPassword/{email}" )
-	public String resetPassword(@PathVariable String email,Map<String,String> model)
-	{
-		//check if the email id is valid and registered with us.
-		
-		model.put("email", email);
-		return "changePassword";
+	//@RequestMapping(value="/newPassword/{email}" )
+	//public String resetPassword(@PathVariable String email,Map<String,String> model)
+	//{
+		 //check if the email id is valid and registered with us.
+		//model.put("email", email);
+		//return "changePassword";
+	//}
 	
+	
+	@RequestMapping(value="/newPassword/{email}")
+	public String resetPassword(@PathVariable String email,Model model)
+	
+	{
+		 //check if the email id is valid and registered with us.
+		Customer customer=new Customer();
+		customer.setEmail(email);
+		model.addAttribute("customer", customer);
+		return "changePassword";
 	}
 	
 
@@ -199,9 +202,7 @@ public class ForgotPasswordController{
 	return "checkMail";	
 	}
 	
-	
-	
-	 //send attachment
+	   //send attachment
 	 @RequestMapping(value ="sendMail")
 	 public void sendMail(final String from, final String to,final String subject,final String msg) {  
 	        try {  
@@ -220,16 +221,21 @@ public class ForgotPasswordController{
 	    }  
 	
 	 
+	  //mapping set New Password
 	 @RequestMapping(value ="/passwordChanged", method = RequestMethod.POST)
-	 public String setNewPassword(@ModelAttribute("customer")Customer customer, ModelMap map) {
+	 public String setNewPassword(@ModelAttribute("customer")Customer cust, ModelMap map) {
      
-	 customer=customerservice.getCustomerByEmail(customer.getEmail());
-     if(customer!=null){	 
-     //update password and Acct Status $ Displyay Successe Message	
-    	 customer.setPassword(customer.getNewPassword());
+     Customer customer=customerservice.getCustomerByEmail(cust.getEmail());
+	 if(customer!=null){   	
+     
+       //update password and Acct Status $ Displyay Successe Message	
+    	 
+		 customer.setPassword(cust.getNewPassword());
+		 customer.setConfirmPassword(cust.getConfirmNewPassword());
          customerservice.updateCustomer(customer);
          System.out.println("update customer successfully");
 	 }
+	 
      return "redirect:/home/loginform";
 	 }
 }
