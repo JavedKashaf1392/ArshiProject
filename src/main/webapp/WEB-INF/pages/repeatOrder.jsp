@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
+    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
     
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -8,6 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home screen of VeggieFridge</title>
+        <script>document.getElementsByTagName("html")[0].className += " js";</script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -28,9 +36,7 @@ background-color:#f1f1f1;
   border: 1px solid #ddd;
   margin-bottom: 12px;
   margin-left:15%; 
-  
 }
-
 #myTable {
   border-collapse: collapse;
   width: 70%;
@@ -40,22 +46,20 @@ background-color:#f1f1f1;
    margin-right:auto;
    background-color: white;
 }
-
 #myTable th, #myTable td {
   text-align: left;
   padding: 12px;
 }
-
 #myTable tr {
   border-bottom: 1px solid #ddd;
 }
-
 #myTable tr.header, #myTable tr:hover {
   background-color: forestgreen;
 }
 </style>
 </head>
 <body>
+
 <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;">Order Info</h2></div><br>
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
@@ -68,6 +72,7 @@ background-color:#f1f1f1;
     <th style="width:%;color:white;">Quantity</th>
     <th style="width:%;color:white;">Total Amount </th>    
     </tr>
+    
     <c:forEach var="orderitem" items="${listorderitem}">
     <tr>
     <td>${orderitem.product.productid}</td>
@@ -76,10 +81,13 @@ background-color:#f1f1f1;
     <td>${orderitem.product.productName}</td>
     <td>${orderitem.product.quantity}</td>
     <td>${orderitem.totalAmount}</td>
-    </tr>
-    </table>
-                                   
-    <a href="${pageContext.request.contextPath}/order/repeatOrder${orderitem.orderid}" style="display: inline-block;
+    </tr>    
+    </c:forEach>
+    </table><br>   
+
+  <form  modelAttribute="orders">
+  <table>
+  <a href="${pageContext.request.contextPath}/order/repeatOrder${orderid}" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
         text-decoration: none;
@@ -88,10 +96,10 @@ background-color:#f1f1f1;
         border-radius: 6px;
         outline: none;
         margin-left:15%;">RepeatOrder</a>
-      </c:forEach>
-     
-       <input type="button" style="width:140px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:green;padding:12px;border:none;margin-left:%;" value="Back" onclick="history.back()">
-      
+            </table>
+            </form> 
+<input type="button" style="width:140px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:green;padding:12px;border:none;margin-left:15%;" value="Back" onclick="history.back()">
+
 <script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
@@ -111,7 +119,6 @@ function myFunction() {
     }       
   }
 }
-</script>
-
+</script>           
 </body>
 </html>

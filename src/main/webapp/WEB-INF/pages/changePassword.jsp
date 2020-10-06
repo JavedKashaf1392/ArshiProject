@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
     
  <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
@@ -27,7 +27,6 @@ background-color:#f1f1f1;
 * {
   box-sizing: border-box;
 }
-
 
 .splash{
    text-align: center;
@@ -80,6 +79,7 @@ input[type=submit]:hover {
 		z-index: 5;
 	}
 }
+
   </style>
   </head>
   <body>
@@ -111,7 +111,7 @@ input[type=submit]:hover {
     
     <tr>
     <td>Your Email:</td>
-    <td><form:input path="email"></form:input> </td>
+    <td><form:input path="email" readonly="true"></form:input> </td>
     </tr>
        
     <tr>
@@ -120,10 +120,10 @@ input[type=submit]:hover {
     <td><form:password path="newPassword"></form:password></td>
     </tr>
     
-    <tr>
+    <%-- <tr>
     <td>Confirm Password</td>
     <td><form:password path="confirmNewPassword"/>  </td>
-    </tr>
+    </tr> --%>
     <tr>
     <td><input type="submit" value="changePassword" onclick="return validatePwds()"></td>
     </tr>

@@ -231,7 +231,6 @@ public class ForgotPasswordController {
        //update password and Acct Status $ Displyay Successe Message	
     	 
 		 customer.setPassword(cust.getNewPassword());
-		 customer.setConfirmPassword(cust.getConfirmNewPassword());
          customerservice.updateCustomer(customer);
          System.out.println("update customer successfully");
 	 }

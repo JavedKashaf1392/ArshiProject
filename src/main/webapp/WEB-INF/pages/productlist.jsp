@@ -127,8 +127,7 @@ function checkCheckBoxes(theForm) {
    </tr>
    <c:forEach var="product" items="${listProduct}">
    <tr>
-                    <td align="center"><input type="checkbox" class="checkboxId" name="productid" value="${product.productid}"></td>
-                    
+                   <td align="center"><input type="checkbox" class="checkboxId" name="productid" value="${product.productid}"></td>
                    <%--<td align="center"><input type="checkbox" name="productid" value="${product.productid}"></td> --%>
                    <%--  <td>${product.productid}</td> --%>
                     <td>${product.productName}</td>

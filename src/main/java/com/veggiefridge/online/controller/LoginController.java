@@ -136,9 +136,10 @@ public class LoginController {
 		 }
 		 
 		 
-		    //login customer from database
+		      //login customer from database
 		   @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
 		   public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation,HttpSession session,ModelAndView model){
+		   
 		   if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
 		   customer=custservice.loginCustomer(customer);
 		   System.out.println("list cartitem");

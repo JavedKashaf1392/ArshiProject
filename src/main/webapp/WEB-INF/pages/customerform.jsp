@@ -144,11 +144,11 @@ h2 {
                 <td><form:errors path="password" cssClass="error"/></td> 
             </tr>
             
-            <tr>
+            <%-- <tr>
                 <td>Confirm Password </td>
                 <td><form:input path="confirmPassword" /></td>
                 <td><form:errors path="confirmPassword" cssClass="error"/></td> 
-            </tr>
+            </tr> --%>
         
         </table><br>
            <div style='float:center;'>

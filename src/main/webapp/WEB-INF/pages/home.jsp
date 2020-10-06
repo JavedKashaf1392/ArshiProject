@@ -1168,7 +1168,7 @@ window.onclick = function(event) {
        </select>
         
        
-        <label for="location" style="margin-left:2%;">Select Location:</label>
+       <label for="location" style="margin-left:2%;">Select Location:</label>
        <select id="locationid" name="location" required   style="width: 67%;
   padding: 8px;
   margin: 3px 0 12px 0; 
@@ -1184,7 +1184,8 @@ window.onclick = function(event) {
        
       <label for="email" style="margin-left:2%;">Email :</label>
       <spring:bind path="customer.email">
-      <input type="email" name="${status.expression}" value="${status.value}" placeholder="Enter Email"  required style="width: 65%;
+  
+  <input type="email" name="${status.expression}" value="${status.value}" placeholder="Enter Email"  required style="width: 65%;
   padding: 8px;
   margin: 3px 0 12px 0; 
   display: inline-block;
@@ -1199,7 +1200,7 @@ window.onclick = function(event) {
   display: inline-block;
   border: none;
   background: #f1f1f1;border-radius:4px;margin-left:7%;"></spring:bind>
-
+<%-- 
       <label for="confirm-repeat" style="margin-left:2%;">Confirm Psw:</label>
       <spring:bind path="customer.confirmPassword">
       <input type="password"  name="${status.expression}" value="${status.value}" placeholder="Repeat Password" required style="width: 65%;
@@ -1207,14 +1208,14 @@ window.onclick = function(event) {
   margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind> --%>
  <hr>
       
         <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px;margin-left:2%;"> Remember me
         </label>
 
-      <p style="margin-left: 2%;">By creating an account you agree to our <a href="#" style="color:dodgerblue;">Terms & Privacy</a>.</p><br>
+     <p style="margin-left: 2%;">By creating an account you agree to our <a href="#" style="color:dodgerblue;">Terms & Privacy</a>.</p><br>
      <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up">
     
   </form>

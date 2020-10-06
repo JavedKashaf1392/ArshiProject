@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -26,19 +25,15 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerid;
-
 	
 	@Column(name="firstName")
 	private String firstName;
 	
-	
 	@Column(name="lastName")
 	private String lastName;
 	
-	
 	@Column(name="mobile")
 	private long mobile;
-	
 	
 	@Column(name="cities")
 	private String cities;
@@ -52,22 +47,16 @@ public class Customer implements Serializable {
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="confirmPassword")
-	private String confirmPassword;
+	/*
+	 * @Column(name="confirmPassword") private String confirmPassword;
+	 */
 	
 	@Column(name="newPassword")
 	private String newPassword;
 	
-	@Column(name="confirmnewPassword")
-	private String confirmNewPassword;
-	
-	public String getConfirmNewPassword() {
-		return confirmNewPassword;
-	}
-
-	public void setConfirmNewPassword(String confirmNewPassword) {
-		this.confirmNewPassword = confirmNewPassword;
-	}
+	/*
+	 * @Column(name="confirmnewPassword") private String confirmNewPassword;
+	 */
 
 	public String getNewPassword() {
 		return newPassword;
@@ -152,14 +141,4 @@ public class Customer implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
-	
-
 }

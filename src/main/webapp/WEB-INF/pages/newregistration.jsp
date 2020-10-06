@@ -144,12 +144,13 @@ h2 {
                 <td><form:errors path="password" cssClass="error"/></td> 
             </tr>
             
-            <tr>
+         <%--    <tr>
                 <td>Confirm Password </td>
                 <td><form:input path="confirmPassword" /></td>
                 <td><form:errors path="confirmPassword" cssClass="error"/></td> 
             </tr>
-        
+         --%>
+         
         </table><br>
            <div style='float:center;'>
            <input type="submit" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;"value="Save">
