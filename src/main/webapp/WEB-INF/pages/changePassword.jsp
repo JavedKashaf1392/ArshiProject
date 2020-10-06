@@ -115,15 +115,14 @@ input[type=submit]:hover {
     </tr>
        
     <tr>
-
     <td>Enter New Password</td>
     <td><form:password path="newPassword"></form:password></td>
     </tr>
     
-    <%-- <tr>
+    <tr>
     <td>Confirm Password</td>
-    <td><form:password path="confirmNewPassword"/>  </td>
-    </tr> --%>
+    <td><form:password path="confirmPassword"/>  </td>
+    </tr>
     <tr>
     <td><input type="submit" value="changePassword" onclick="return validatePwds()"></td>
     </tr>
@@ -132,13 +131,14 @@ input[type=submit]:hover {
       </div>
       </div>
       </div>
+     <!--   -->
   
      
       <script type="text/javascript">
 
       function validatePwds(){
     	    var newPwd = $('#newPassword').val();
-    	    var confirmPwd = $('#confirmNewPassword').val();
+    	    var confirmPwd = $('#confirmPassword').val();
     	    if(newPwd!=confirmPwd){
     	    $('#errId').text('New Password And Confirm Password Should Be Same');
     	    return false;

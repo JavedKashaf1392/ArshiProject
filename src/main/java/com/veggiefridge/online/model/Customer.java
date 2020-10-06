@@ -47,16 +47,25 @@ public class Customer implements Serializable {
 	@Column(name="password")
 	private String password;
 	
-	/*
-	 * @Column(name="confirmPassword") private String confirmPassword;
-	 */
+   @Column(name="confirmPassword") 
+   private String confirmPassword;
+	 
 	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	@Column(name="newPassword")
 	private String newPassword;
 	
-	/*
-	 * @Column(name="confirmnewPassword") private String confirmNewPassword;
-	 */
+	
+	  @Column(name="confirmnewPassword") 
+	  private String confirmNewPassword;
+	 
 
 	public String getNewPassword() {
 		return newPassword;

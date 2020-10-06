@@ -7,6 +7,12 @@
       
    <html>
    <head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Home screen of VeggieFridge</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">    
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
 * {
@@ -104,6 +110,8 @@ h2 {
     <div><h2><p style="color:green;">New/Edit Customer</p></h2></div>
        <!--  <h2>New/Edit Product</h2> -->
         <form:form action="${pageContext.request.contextPath}/customer/saveCustomer" method="post" modelAttribute="customer">
+        <font color='red'><span id="errId"></span></font>
+       
         <table>
             <form:hidden path="customerid"/>
             <tr>
@@ -144,13 +152,13 @@ h2 {
                 <td><form:errors path="password" cssClass="error"/></td> 
             </tr>
             
-            <%-- <tr>
+             <tr>
                 <td>Confirm Password </td>
                 <td><form:input path="confirmPassword" /></td>
                 <td><form:errors path="confirmPassword" cssClass="error"/></td> 
-            </tr> --%>
+            </tr> 
         
-        </table><br>
+           </table><br>
            <div style='float:center;'>
            <input type="submit" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;"value="Save">
            <input type="reset" style="width:60px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;" value="Reset">
@@ -158,6 +166,21 @@ h2 {
             </div>
         </form:form>
     </div>
+    
+    
+    <script type="text/javascript">
+
+      function validatePwds(){
+    	    var newPwd = $('#newPassword').val();
+    	    var confirmPwd = $('#confirmPassword').val();
+    	    if(newPwd!=confirmPwd){
+    	    $('#errId').text('New Password And Confirm Password Should Be Same');
+    	    return false;
+    	    }
+    	    return true;
+    	}
+
+      </script>
 </body>
 </html> 
     

@@ -16,6 +16,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -223,12 +224,12 @@ public class ForgotPasswordController {
 	 
 	  //mapping set New Password
 	 @RequestMapping(value ="/passwordChanged", method = RequestMethod.POST)
-	 public String setNewPassword(@ModelAttribute("customer")Customer cust, ModelMap map) {
+	 public String setNewPassword(@ModelAttribute("customer")Customer cust, ModelMap map,BindingResult resultcust) {
      
      Customer customer=customerservice.getCustomerByEmail(cust.getEmail());
 	 if(customer!=null){   	
      
-       //update password and Acct Status $ Displyay Successe Message	
+     //update password and Acct Status $ Displyay Successe Message	
     	 
 		 customer.setPassword(cust.getNewPassword());
          customerservice.updateCustomer(customer);

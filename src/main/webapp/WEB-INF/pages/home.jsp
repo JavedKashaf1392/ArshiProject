@@ -1194,13 +1194,13 @@ window.onclick = function(event) {
 
       <label for="psw" style="margin-left:2%;">Password:</label>
       <spring:bind path="customer.password">
-      <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 65%;
+  <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 65%;
   padding: 8px;
   margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
   background: #f1f1f1;border-radius:4px;margin-left:7%;"></spring:bind>
-<%-- 
+
       <label for="confirm-repeat" style="margin-left:2%;">Confirm Psw:</label>
       <spring:bind path="customer.confirmPassword">
       <input type="password"  name="${status.expression}" value="${status.value}" placeholder="Repeat Password" required style="width: 65%;
@@ -1208,7 +1208,7 @@ window.onclick = function(event) {
   margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind> --%>
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind> 
  <hr>
       
         <label>
