@@ -75,7 +75,10 @@ background-color:#f1f1f1;
     <td><spring:url value="/images" var="images" />
     <img src="${images}/${orderitem.product.imageName}" width="70" height="70"/></td>
     <td>${orderitem.product.productName}</td>
+     <td>${orderitem.product.quantity}</td>
     <td>${orderitem.product.price}</td>
+     <td>${orderitem.totalAmount}</td>
+    
     </tr>
     </c:forEach>
    

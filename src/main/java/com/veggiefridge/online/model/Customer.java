@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -47,6 +48,7 @@ public class Customer implements Serializable {
 	@Column(name="password")
 	private String password;
 	
+   @Transient	
    @Column(name="confirmPassword") 
    private String confirmPassword;
 	 
@@ -61,11 +63,6 @@ public class Customer implements Serializable {
 
 	@Column(name="newPassword")
 	private String newPassword;
-	
-	
-	  @Column(name="confirmnewPassword") 
-	  private String confirmNewPassword;
-	 
 
 	public String getNewPassword() {
 		return newPassword;

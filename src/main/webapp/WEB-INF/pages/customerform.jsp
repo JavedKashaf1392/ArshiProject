@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -7,6 +8,7 @@
       
    <html>
    <head>
+   
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,7 +17,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">    
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
-* {
+
+*{
   box-sizing: border-box;
 }
 
@@ -33,25 +36,6 @@ label {
   display: inline-block;
 }
 
-/* input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  margin-top:20px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-  align:center;
-  margin-left:20px;
-}
-
-
-
-input[type=submit]:hover {
-  background-color: #45a049;
-} */
-
 .error {
    color:red; 
  }
@@ -63,12 +47,6 @@ input[type=submit]:hover {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-/* .container {
-  border-radius: 10px;
-  border: 1px solid #008000;
-  max-width: 600px;
-  padding: 50px;
 }
 
 .col-25 {
@@ -102,6 +80,7 @@ input[type=submit]:hover {
 h2 {
   color: green;
 }
+
 </style>
 <title>New/Edit Customer</title>
 </head>

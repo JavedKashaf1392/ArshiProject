@@ -67,7 +67,7 @@ box-sizing: border-box;
  select{
   width:80%;
   padding: 8px;
-  background-color:#f1f1f1;
+  /* background-color:#f1f1f1; */
   border-radius: 4px;
   resize: vertical;
   align-content: center;
@@ -229,7 +229,7 @@ button:hover {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
   padding-top: 60px;
   box-shadow: 1px 2px 5px 3px white;
 }
@@ -266,7 +266,6 @@ hr {
   clear: both;
   display: table;
 }
-
 }
 </style>        
 </head>
@@ -900,10 +899,11 @@ color: black;
     /* ..................MainPopup......................... */
   </style>  
   <body>
+ 
  <div class="mainsplash">
  <div class="splash">
-  <div class="row">
-  <div class="col-75">  
+ <div class="row">
+ <div class="col-75">  
     
     <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
     <spring:url value="/images" var="images" />
@@ -940,7 +940,7 @@ color: black;
    <div id="id01" class="modal">
   <form class="modal-content animate" action="${pageContext.request.contextPath }/login/doLogin" method="post"  modelAttribute="customer">
   <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;">Log In VeggieFridge</h2>
-    <div class="login">
+      <div class="login">
       <label for="email"><b>Email</b></label>
       <input type="email" placeholder="Enter Email" name="email" required  style="width: 100%;
   padding: 14px 22px;
@@ -949,7 +949,7 @@ color: black;
   border: 1px solid #ccc;
   box-sizing: border-box;
    border-radius: 5px;
-    background-color:#f1f1f1;">
+  /*   background-color:#f1f1f1; */">
 
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required style="width: 100%;
@@ -959,7 +959,7 @@ color: black;
   border: 1px solid #ccc;
   box-sizing: border-box;
    border-radius: 5px;
-    background-color:#f1f1f1;">
+   /*  background-color:#f1f1f1; */">
         
   <button type="submit" style=" background-color: #4CAF50;
   color: white;
@@ -974,7 +974,7 @@ color: black;
      </label>
      </div>
 
-   <div class="login" style="background-color:#f1f1f1;height:30px;">
+   <div class="login" style="background-color:#f1f1f1;height:60px;">
    <a href="${pageContext.request.contextPath }/login/logout" style="
         padding: 8px 16px;
         text-align: center;
@@ -997,10 +997,8 @@ color: black;
 </div>
 
 <!-- .....................sign up............ -->
-    
-    
-  
-                <div class="right" style="float: right;">
+
+<div class="right" style="float: right;">
                
 <!-- Trigger/Open The Modal -->
 
@@ -1113,10 +1111,13 @@ window.onclick = function(event) {
  
 </div>
 </div>
-<!-- .......................................signup....................... -->
+
+<!-- .......................................signup.......................-->
 <div class="register" id="id02">
 <div class="register-content">
 <form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/login/saveCustomer" modelAttribute="customer" >
+
+<font color='red'style="font-size:10x;text-align: center;"><span id="errId"></span></font>
 
       <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>
       <p style="margin-top: 1%; margin-left: 2%;">Please fill in this form to create an account.</p>
@@ -1131,8 +1132,6 @@ window.onclick = function(event) {
   display: inline-block;
   border: none;
   background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
-  
-  
   
   <label for="lastname" style="margin-left:2%;">Last Name :</label>
   <spring:bind path="customer.lastName">
@@ -1192,6 +1191,7 @@ window.onclick = function(event) {
   border: none;
   background: #f1f1f1;border-radius:4px;margin-left:12%;"></spring:bind>
 
+      
       <label for="psw" style="margin-left:2%;">Password:</label>
       <spring:bind path="customer.password">
   <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 65%;
@@ -1199,28 +1199,30 @@ window.onclick = function(event) {
   margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:7%;"></spring:bind>
+  background: #f1f1f1;border-radius:4px;margin-left:7%;"  id="txtPassword" 
+  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" id="psw"></spring:bind>
 
+      
       <label for="confirm-repeat" style="margin-left:2%;">Confirm Psw:</label>
       <spring:bind path="customer.confirmPassword">
-      <input type="password"  name="${status.expression}" value="${status.value}" placeholder="Repeat Password" required style="width: 65%;
+      <input type="password"  name="${status.expression}" value="${status.value}" placeholder="confirm Password" required style="width: 65%;
   padding: 8px;
   margin: 3px 0 12px 0; 
   display: inline-block;
   border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind> 
- <hr>
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"  id="txtConfirmPassword" ></spring:bind> 
+  <hr>
       
         <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px;margin-left:2%;"> Remember me
         </label>
 
      <p style="margin-left: 2%;">By creating an account you agree to our <a href="#" style="color:dodgerblue;">Terms & Privacy</a>.</p><br>
-     <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up">
+     <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up" onclick="return Validate()"  id="btnSubmit">
     
   </form>
    </div>
-
+  
 <script>
 $(document).ready(function() {
 
@@ -1264,6 +1266,38 @@ $('.submitId').click(function(){
         sessionStorage.setItem("SelItem", selVal);
     });
    </script>
+   
+    <script type="text/javascript">
+
+      function validatePwds(){
+    	    var newPwd = $('#customer.password').val();
+    	    var confirmPwd = $('#customer.confirmPassword').val();
+    	    if(newPwd!=confirmPwd){
+    	    $('#errId').text('New Password And Confirm Password Is Not Match');
+    	    return false;
+    	    }
+    	    return true;
+    	}
+
+      </script>
+      
+      <script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("txtPassword").value;
+        var confirmPassword = document.getElementById("txtConfirmPassword").value;
+        if (password != confirmPassword) {
+        	 $('#errId').text('New Password And Confirm Password Is Not Match');
+            /* alert("Password And Confirm Password Is Not Match."); */
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
+   
+   
+   
   </body>
   </html>
   

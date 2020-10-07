@@ -128,12 +128,7 @@ public class OrderController {
 		return model;
 	}
 
-	
-	
-	
-	
-	
-	
+
 	  //pending Order item
 	@RequestMapping(value = "/listOrderItems/{orderid}", method = RequestMethod.GET)
 	public ModelAndView listOrderItems(ModelAndView model,@PathVariable(value = "orderid") int orderid) {
