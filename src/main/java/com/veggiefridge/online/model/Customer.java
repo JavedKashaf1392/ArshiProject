@@ -48,9 +48,9 @@ public class Customer implements Serializable {
 	@Column(name="password")
 	private String password;
 	
-   @Transient	
-   @Column(name="confirmPassword") 
-   private String confirmPassword;
+    @Transient	
+    @Column(name="confirmPassword") 
+    private String confirmPassword;
 	 
 	
 	public String getConfirmPassword() {
@@ -61,6 +61,7 @@ public class Customer implements Serializable {
 		this.confirmPassword = confirmPassword;
 	}
 
+	@Transient
 	@Column(name="newPassword")
 	private String newPassword;
 

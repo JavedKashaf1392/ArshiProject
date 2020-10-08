@@ -312,6 +312,13 @@ public class HomeController {
 				}
 				
 				
+				//template
+				@RequestMapping(value = "/temp")
+				public ModelAndView template(ModelAndView model) {
+					model.setViewName("/template");
+					return model;
+				}
+				
 }
 				
 				

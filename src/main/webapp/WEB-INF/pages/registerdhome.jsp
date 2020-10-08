@@ -854,7 +854,6 @@ label #sidebar_btn:hover{
   height:30%;
   margin-top:17px;
 }
-
 </style>
 <body>
  <!--  header -->
@@ -1251,6 +1250,7 @@ Message *</div>
 </div>
 </div>
 </div>
+
 <a href="${pageContext.request.contextPath}/member/addMember/${customer.customerid}" style="display:inline-block;
         padding: 5px 12px;
         text-align: center;
@@ -1262,55 +1262,102 @@ Message *</div>
 
   <div id="id08" class="pagecart">
   <div class="pagecartcontent">
-  <c:choose>
-  <c:when test="${not empty listcustomercartitem}">
+
+
+<cartpopup>
+<c:choose>
+<c:when test="${not empty listcustomercartitem}">
  
- <table style="width:93%;  border-collapse: separate;
-        border-spacing: 0 12px;overflow: scroll;margin-left:4%;margin-right:1%;">
+  <main style="clear:both;
+  font-size: 0.75rem;
+  overflow: hidden;
+  width:450px;">
+  <div class="basket">
+      
+          <div class="basket-labels" style="background-color:#4CAF50;width:100%;padding:0px 7px; float: left;">
+          <ul style="list-style: none;
+  margin: 0;
+  padding: 0;">
+          <li class="item item-heading" style="color:white;font-size:16px;
+  display: inline-block;
+  padding: 0.625rem 0; width:20%;margin-right:12%; padding-left: 1.375rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;">Item</li>
+  
+          <li class="price" style="color: white;font-size:16px;
+  display: inline-block;
+  padding: 0.625rem 0;width: 15%;">Price</li>
+          <li class="quantity" style="color:white;font-size:16px;
+  display: inline-block;
+  padding: 0.625rem 0;width: 15%;">Quantity</li>
+          <li class="subtotal" style="color: white;font-size:16px;
+  display: inline-block;
+  padding: 0.625rem 0;width: 15%;">Subtotal</li>
+          </ul>
+          </div>
+
+<c:set var="s" value="0"></c:set>
+<c:forEach var="cartitem" items="${listcustomercartitem}">
+
+  <c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
+  
+  <div class="basket-product" style="background-color:white;width:100%;
+  padding:5px 7px;">
  
- <c:set var="s" value="0"></c:set>
- <c:forEach var="cartitem" items="${listcustomercartitem}">
- <c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
-<tr style="background-color:white;">
-<td>
+<div class="item">
+<div class="product-image" style="width:15%;">
 <spring:url value="/images" var="images"/>
-<img src="${images}/${cartitem.product.imageName}" width="70" height="70"/>
-</td>
-<td>${cartitem.product.productName }</td>
-<td>${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</td>
-<td>${cartitem.product.quantity}</td>
-<%-- <td><a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}">Remove</a></td> --%>
-<td><a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}"><span style="font-size:20px;color:green;padding:15px 15 px;margin-left:10" title="remove product;">&#10006;</span></a></td>
-</tr>
-</c:forEach>
-</table>
+<img src="${images}/${cartitem.product.imageName}" class="product-frame"width="70" height="70"/>
+</div>
+            <div class="product-details" style="background-color:white;width:65%">
+            <h1 style="color:red;font-size:0.95rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;"><strong></span></strong>${cartitem.product.productName}</h1><!-- <span class="item-quantity"> -->
+            <p><strong>${cartitem.product.productName},${cartitem.product.size}</strong></p>
+           <p style=" margin: 0.75rem 0 0;">Product Id -${cartitem.product.productid} </p>
+            </div>
+            </div>
         
-        <span style="color: green;">Total:</span> &#x20B9; ${s}
-        <div class="summary-checkout">
-        <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="display: inline-block;
+        <!--   &#8377; -->
+        <div class="price" style="ba">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</div>
+        <div class="quantity">
+        <input type="number" value="${cartitem.product.quantity}" class="quantity-field">
+        </div>
+               
+      <div class="subtotal">${cartitem.product.price-cartitem.product.discount * cartitem.product.price/100}</div>
+      
+      <div class="remove">
+      <a href="${pageContext.request.contextPath}/cart/deleteCartItems/${cartitem.cartitemid}" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash" style="color:green;padding:15px 15 px;margin-left:10" title="remove product"></i></a>
+      </div>
+      </div>
+      </c:forEach>
+      
+      <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color:#4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">Go To CheckOut</a> 
+        outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
+     
+      </div>
+      </c:when>
+      
+      <c:otherwise>
+			
+			<div class="jumbotron">
+				
+				<h3 class="text-center">Your Cart is Empty!</h3>
+			
+			</div>
+		
+		</c:otherwise>
+		</c:choose>
+        </cartpopup>
         
-</div>
-</div>
-</div>
-</c:when>
-
-<c:otherwise>
-<div style="margin-top:15%;background-color:white;padding:30px 40px;margin-left:5%;">
-<h4>Your cart is empty. Start shopping now!</h4>
-</div>
-</c:otherwise>
-</c:choose>
-
-
-
- 
 <!-- .....................close..................... -->
  <script>
 function myFunction() {

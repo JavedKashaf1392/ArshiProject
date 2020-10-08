@@ -486,12 +486,10 @@ aside{
       </div>
       </c:when>
       
-      <c:otherwise>
+            <c:otherwise>
 			
 			<div class="jumbotron">
-				
-				<h3 class="text-center">Your Cart is Empty!</h3>
-			
+			<h3 class="text-center">Your Cart is Empty!</h3>
 			</div>
 		
 		</c:otherwise>

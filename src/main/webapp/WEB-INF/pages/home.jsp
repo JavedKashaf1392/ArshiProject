@@ -1117,7 +1117,7 @@ window.onclick = function(event) {
 <div class="register-content">
 <form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/login/saveCustomer" modelAttribute="customer" >
 
-<font color='red'style="font-size:10x;text-align: center;"><span id="errId"></span></font>
+<font color='red'style="font-size:16px;text-align: center;"><span id="errId"></span></font>
 
       <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>
       <p style="margin-top: 1%; margin-left: 2%;">Please fill in this form to create an account.</p>

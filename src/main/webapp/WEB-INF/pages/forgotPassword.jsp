@@ -77,7 +77,7 @@ Forogt Password----------->page
   <div class="row">
   <div class="col-75"> 
     
-  <form method="post" action="${pageContext.request.contextPath}/forgot/forPassword" >
+  <form method="post" action="${pageContext.request.contextPath}/forgot/forPassword">
   
   <spring:url value="/images" var="images" />
   <img src="${images}/logo.jpg" width="165" height="130"/>

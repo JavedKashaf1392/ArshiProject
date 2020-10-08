@@ -181,8 +181,14 @@ public class ForgotPasswordController {
 	 */
 		  MimeMessage mimeMessage = mailSenderObj.createMimeMessage();
 		  MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+			/*
+			 * String htmlMsg =
+			 * "<html><body><img name=\"_1170:827\" src=\"page_001.jpg\" height=\"70\" width=\"27\" border=\"0\" usemap=\"#Map\"></div><h1 style=\"color:green\">VeggieFridge</h1> <h4>Eat Healthy,Drink Healthy</h4></br>hi,Arshi<br/><h3>Subject</h3>: Reset Password</br><h2>We have received your request for reset password. Follow this link to reset your customer account password at VeggieFridge.</h2> <a href='http://localhost:8080/vf-online/forgot/newPassword/"
+			 * + email+"/'>Click here</a> to reset password</body></html>";
+			 */
+		  
 		  String htmlMsg = "<html><body><img name=\"_1170:827\" src=\"page_001.jpg\" height=\"70\" width=\"27\" border=\"0\" usemap=\"#Map\"></div><h1 style=\"color:green\">VeggieFridge</h1> <h4>Eat Healthy,Drink Healthy</h4></br>hi,Arshi<br/><h3>Subject</h3>: Reset Password</br><h2>We have received your request for reset password. Follow this link to reset your customer account password at VeggieFridge.</h2> <a href='http://localhost:8080/vf-online/forgot/newPassword/"+ 
-		  		email+"/'>Click here</a> to reset password</body></html>";
+			  		"/'>Click here</a> to reset password</body></html>";
 		  
 		  //mimeMessage.setContent(htmlMsg, "text/html"); /** Use this or below line **/
 		  helper.setText(htmlMsg, true); // Use this or above line.
