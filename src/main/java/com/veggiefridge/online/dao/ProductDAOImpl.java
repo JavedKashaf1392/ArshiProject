@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.model.Product;
 
 @Repository
@@ -48,5 +50,15 @@ public class ProductDAOImpl implements ProductDAO {
 		
 		 return (Product) sessionFactory.getCurrentSession().get(Product.class, productid);
 	}
+
 	
-}
+	@Override
+	public List<Product> getProductsBycatogary(String category) {
+		String query = "FROM Product WHERE category =:category";
+		return sessionFactory.getCurrentSession()
+									.createQuery(query)
+										.setParameter("category",category)
+										.list();	
+	}
+	}
+	

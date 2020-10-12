@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.ProductService;
 
@@ -30,8 +32,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	
-	  
+  
 	  @RequestMapping(value = "/listProduct")
 	  public ModelAndView listProduct(ModelAndView model) throws IOException {
 	  List<Product> listProduct = productService.getAllProducts();
@@ -59,7 +60,7 @@ public class ProductController {
 		} else {
 			productService.updateProduct(product);
 		}
-		return "redirect:/product/listProduct";
+		return "redirect:/product/viewAll";
 	}
 
 	/*
@@ -75,7 +76,7 @@ public class ProductController {
 		productService.deleteProduct(productId);
 		return "redirect:/product/listProduct ";
 	}
-
+    
 	
 	  @RequestMapping(value = "/editProduct", method = RequestMethod.GET) 
 	  public ModelAndView editProduct(HttpServletRequest request) { 
@@ -94,8 +95,43 @@ public class ProductController {
 	  model.addObject("listProduct", listProduct);
 	  return listProduct; 
 	  }
+	  
+	  
+	  
+	    @RequestMapping(value="/viewAll",method=RequestMethod.GET)
+		public String getAllProducts(HttpServletRequest req,Model model) {
+			
+			String category="";
+			String prodStr=req.getParameter("category");
+			
+			if(prodStr==null){
+				List<Product> listAllproducts=productService.getAllProducts();
+				System.out.println(listAllproducts);
+				if(!listAllproducts.isEmpty()) {
+					model.addAttribute("productcatg",listAllproducts);
+					return "productlist";
+			}
+			}
+			
+			else{
+				if( prodStr!=null &&  !prodStr.equals("")) {
+					category=prodStr;
+			   }
+				List<Product> productcatg=productService.getProductsBycatogary(category);
+				model.addAttribute("productcatg", productcatg);
+				return "productlist";
+				
+			}
+			
+			return "productlist";
+			
+			
+			
+	  
+	  
 }
 
+}
 
 	
 	

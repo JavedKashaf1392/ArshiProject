@@ -14,4 +14,6 @@ public interface ProductService {
 	public Product getProduct(int productid);
 
 	public Product updateProduct(Product product);
+	
+	public List<Product> getProductsBycatogary(String category);
 }

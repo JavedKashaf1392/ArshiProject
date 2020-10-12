@@ -1,5 +1,5 @@
   
-  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,6 +9,17 @@
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
  <head>
+ 
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('#prodId').on('change', function() {
+                this.form.submit();
+            });
+        });
+        </script>
+ 
  <title>VeggieFridge</title>
 
         <meta charset="utf-8">
@@ -862,7 +873,7 @@ label #sidebar_btn:hover{
     <div class="logo">
     <spring:url value="/images" var="images" />
     <img src="${images}/logo.jpg" width="140" height="110"/>
-    </div>
+    </div>                                     
     
   <div class="call"> 
   <span class="text" style="color: black;position: absolute;"><i class="fas fa-phone-alt" style="color:green;"></i>+089-765432100</span>
@@ -962,18 +973,38 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-</script>
+
+    </script>
+    
+    
+	<form action="doLogin">
+	<table align="center">
+	<tr>
+	<td>
+	<select name="category" id="prodId">
+	<option value="">Search</option>
+	<option value="Milk">Milk</option>
+	<option value="Leafy Vegetables">Leafy Vegetables</option>
+	<option value="Fruit Vegetables">Fruit Vegetables</option>
+	</select>
+	</td>
+	</tr>
+	</table>
+	</form>
+	
   <div class="navbar">
   <div class="dropdown">
-    <button class="dropbtn">Search By Catogary  
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
+  <button class="dropbtn">Search By Catogary  
+  <i class="fa fa-caret-down"></i>
+  </button>
+      
+      <div class="dropdown-content">
+      <a href="#">Leafy Vegetables</a>
+      <a href="#">Fruit Vegetables</a>
+      <a href="#">MIlk</a>
+      </div>
   </div> 
+  
 <div class="dropdown">
     <button class="dropbtn">Discounts
       <i class="fa fa-caret-down"></i>
@@ -990,13 +1021,14 @@ window.onclick = function(event) {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="#">24*7 Customer care</a>
+      <a href="#">Download Our App</a>
+      <a href="#"></a>
       </div>
       </div>
       </div> 
       </div>
+      
  <!--   close header  -->
  <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
@@ -1054,7 +1086,7 @@ function showSlides(n) {
   <div class="container">
   <ul id="myUL">
    
- <c:forEach var="product" items="${listProduct}">
+ <c:forEach var="product" items="${productcatg}">
  <!--  1 -->
   <li>
   <div class="product-img">
@@ -1149,9 +1181,9 @@ function showSlides(n) {
   
   
     <br><br>
-    </ul>
+   </ul>
    </div>
-    </div>
+   </div>
  <!--  ............................  -->
  
       <div class="footer">
@@ -1437,6 +1469,9 @@ window.onclick = function(event) {
     }
 }
 </script>
+
+
+        
 </body>
 </html>
   

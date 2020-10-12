@@ -46,6 +46,13 @@ public class ProductServiceImpl implements ProductService {
 	  public void setProductDAO(ProductDAO productDAO) { 
 		  this.productDAO = productDAO;
 		  }
+
+	@Override
+	public List<Product> getProductsBycatogary(String category) {
+		return productDAO.getProductsBycatogary(category);
+	}
+	  
+	  
 	 
 
 }

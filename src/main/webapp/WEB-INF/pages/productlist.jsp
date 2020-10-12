@@ -1,16 +1,27 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   <%@page contentType="text/html" pageEncoding="UTF-8"%>
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-   
    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
- 
- 
+
+
 <html>
 <head>
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#prodId').on('change', function() {
+                this.form.submit();
+            });
+        });
+        </script>
+
+
+
 
 <style type="text/css">
 div {
@@ -88,6 +99,27 @@ div.a {
 </style>
 <body>
 
+    <form action="viewAll">
+	<table align="center">
+	
+	<tr>
+	<td>
+	<select name="category" id="prodId">
+	<option value="">--Select--</option>
+	<option value="Milk">Milk</option>
+	<option value="Leafy Vegetables">Leafy Vegetables</option>
+	<option value="Fruit Vegetables">Fruit Vegetables</option>
+	</select>
+	</td>
+	</tr>
+	</table>
+	</form>
+
+
+
+
+
+
 <script type="text/javascript" language="JavaScript">
 
 function checkCheckBoxes(theForm) {
@@ -125,7 +157,7 @@ function checkCheckBoxes(theForm) {
 					
    
    </tr>
-   <c:forEach var="product" items="${listProduct}">
+   <c:forEach var="product" items="${productcatg}">
    <tr>
                    <td align="center"><input type="checkbox" class="checkboxId" name="productid" value="${product.productid}"></td>
                    <%--<td align="center"><input type="checkbox" name="productid" value="${product.productid}"></td> --%>
@@ -145,22 +177,17 @@ function checkCheckBoxes(theForm) {
    </tr>
    
     </c:forEach>
-        
-
-   </table>
+    </table>
   
-   <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/product/newProduct"/>
+    <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/product/newProduct"/>
     <input class="button button1" type="submit" value="Delete" 
                        formaction="${pageContext.request.contextPath}/product/deleteProduct" onclick="return confirm('Are you sure to delete?')" />
-     <input class="button button1" type="submit" value="Update" formaction="${pageContext.request.contextPath}/product/editProduct" />
-     <input class="button button1" type="submit" value="Search" formaction="${pageContext.request.contextPath}/product/searchProduct" />
-     </div>
+   <input class="button button1" type="submit" value="Update" formaction="${pageContext.request.contextPath}/product/editProduct" />
+   <input class="button button1" type="submit" value="Search" formaction="${pageContext.request.contextPath}/product/searchProduct" />
+   </div>
    </form>
- 
-  
-   
-</body>
-</html>
+  </body>
+  </html>
  
 
 

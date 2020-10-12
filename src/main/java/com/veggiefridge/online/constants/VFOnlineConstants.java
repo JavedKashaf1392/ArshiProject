@@ -44,5 +44,7 @@ public class VFOnlineConstants {
 	public static final String PICKUP_STATUS="pending";
 	
 	public static final String PICKUPSTATUS="delivered";
+	
+	public static final String organic="organic";
 
 }

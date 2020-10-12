@@ -70,7 +70,7 @@ background-color:#f1f1f1;
 <table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
 <th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-<a href="${pageContext.request.contextPath }/order/pendingorders" style="display: inline-block;
+<a href="${pageContext.request.contextPath}/order/pendingorders" style="display: inline-block;
         padding: 10px 30px;
         text-align:center;
         text-decoration: none;

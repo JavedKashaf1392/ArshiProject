@@ -136,42 +136,54 @@ public class LoginController {
 		 }
 		 
 		 
-		      //login customer from database
-		   @RequestMapping(value ="/doLogin", method = RequestMethod.POST)
-		   public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation,HttpSession session,ModelAndView model){
+		     //login customer from database
+		   @RequestMapping(value ="/doLogin")
+		   public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultkiosklocation,HttpSession session,ModelAndView model,HttpServletRequest req){
 		   
 		   if(customer.getEmail()!=null && customer.getPassword()!=null && session.getAttribute("customer")==null){
 		   customer=custservice.loginCustomer(customer);
 		   System.out.println("list cartitem");
+		  
 		   if(customer!=null){
-		    session.setAttribute("customer", customer);
-		    model.addObject("customerid",customer.getCustomerid());
-		    model.addObject("firstname", customer.getFirstName());
-		    model.addObject("kioskLocation", customer.getLocation());
-		    model.addObject("city", customer.getCities());
-		    List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-		    List<Product> listProduct = productService.getAllProducts();
+		   session.setAttribute("customer", customer);
+		   model.addObject("customerid",customer.getCustomerid());
+		   model.addObject("firstname", customer.getFirstName());
+		   model.addObject("kioskLocation", customer.getLocation());
+		   model.addObject("city", customer.getCities());
+		   List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		    //List<Product> listProduct = productService.getAllProducts();
 		    List<Customer> listCustomer = custservice.getAllCustomers();
 		    List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 			model.addObject("listcustomercartitem", listcustomercartitem);
 		    model.addObject("listCustomer", listCustomer);
 			model.addObject("listkiosklocation",listkiosklocation);
-			model.addObject("listProduct", listProduct);
-			model.setViewName("registerdhome");
-			return model;
-		    	}
-				else {
-					model.addObject("failed", "EmailId or Password is wrong!!");
-					model.setViewName("home#");
-					return model;
+			//model.addObject("listProduct", listProduct);
+			
+			String category="";
+			String prodStr=req.getParameter("category");
+			if(prodStr==null){
+				List<Product> listAllproducts=productService.getAllProducts();
+				System.out.println(listAllproducts);
+				if(!listAllproducts.isEmpty()) {
+			    model.addObject("productcatg",listAllproducts);
+			    model.setViewName("registerdhome");
 				}
-		    	}
-		    
-				else {
-					model.setViewName("registerdhome");
-					return model;
+			}
+			else {
+				
+				if(prodStr!=null && !prodStr.equals("")){
+					category=prodStr;
 				}
-				}
+				 List<Product> productcatg=productService.getProductsBycatogary(category);
+				 model.addObject("productcatg", productcatg);
+				 model.setViewName("registerdhome");
+			
+			}
+		   
+		   }
+		   }
+		   return model;
+		   }
 		    
 		  
 		    //logout

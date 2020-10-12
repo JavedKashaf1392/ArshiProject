@@ -65,7 +65,7 @@ public class OrderController {
 		return model;
 	}
 
-	// checkoutAndSaveOrder
+	   //checkoutAndSaveOrder
 	@RequestMapping(value = "/checkoutAndSaveOrder")
 	public ModelAndView checkoutAndSaveOrder(ModelAndView model) {
 		List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -183,6 +183,7 @@ public class OrderController {
 		model.setViewName("CurrentOrder");
 		return model;
 	}
+	
 
 	// listCartItem
 	@RequestMapping(value = "/deliveredorder")
