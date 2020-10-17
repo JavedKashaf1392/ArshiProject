@@ -24,7 +24,7 @@ import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.service.KioskLocationService;
 
 @Controller
-@RequestMapping(value ="/location")
+@RequestMapping(value = "/location")
 public class KioskLocationController {
 
 	private static final Logger logger = Logger.getLogger(KioskLocationController.class);
@@ -35,29 +35,26 @@ public class KioskLocationController {
 
 	@Autowired
 	private KioskLocationService service;
-		
-	  // get All Information
-	  @RequestMapping(value = "/listLocation")
-	  public ModelAndView listLocation(ModelAndView  model) throws IOException {
-	  List<KioskLocation> listlocation =service.getAllLocation(); 
-	  model.addObject("listlocation",listlocation);
-	  model.setViewName("locationlist"); 
-	  return model; 
-	  }
-	     
-	  
-	   // AddLocation
-	  @RequestMapping(value = "/newLocation", method = RequestMethod.GET)
-	  public ModelAndView newLocation(ModelAndView model) {
-			KioskLocation kiosklocation = new KioskLocation();
-			model.addObject("kiosklocation", kiosklocation);
-			model.setViewName("locationform");
-			return model;
-		}
 
-	
-	  
-	//save location
+	// get All Information
+	@RequestMapping(value = "/listLocation")
+	public ModelAndView listLocation(ModelAndView model) throws IOException {
+		List<KioskLocation> listlocation = service.getAllLocation();
+		model.addObject("listlocation", listlocation);
+		model.setViewName("locationlist");
+		return model;
+	}
+
+	// AddLocation
+	@RequestMapping(value = "/newLocation", method = RequestMethod.GET)
+	public ModelAndView newLocation(ModelAndView model) {
+		KioskLocation kiosklocation = new KioskLocation();
+		model.addObject("kiosklocation", kiosklocation);
+		model.setViewName("locationform");
+		return model;
+	}
+
+	// save location
 	@RequestMapping(value = "/saveLocation", method = RequestMethod.POST)
 	public String saveLocation(@Valid @ModelAttribute("kiosklocation") KioskLocation kiosklocation,
 			BindingResult result) {
@@ -73,15 +70,14 @@ public class KioskLocationController {
 		return "redirect:/location/listLocation";
 	}
 
-	
 	// deletLocation
 	@RequestMapping(value = "/deleteLocation", method = RequestMethod.GET)
-	public String deleteLocation(@RequestParam("locationid") Long locationId,Model model) {
-	    service.deleteLocation(locationId);
-		model.addAttribute("message", "KioskLocation '"+locationId+"' record Deleted");
+	public String deleteLocation(@RequestParam("locationid") Long locationId, Model model) {
+		service.deleteLocation(locationId);
+		model.addAttribute("message", "KioskLocation '" + locationId + "' record Deleted");
 		return "redirect:/location/listLocation";
 	}
-      
+
 	// editLocation
 	@RequestMapping(value = "/editLocation", method = RequestMethod.GET)
 	public ModelAndView editLocation(HttpServletRequest request) {
@@ -104,8 +100,5 @@ public class KioskLocationController {
 	 * 
 	 * }
 	 */
-	
-	
-	
-	
+
 }

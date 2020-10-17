@@ -55,7 +55,6 @@ public class OrderController {
 		return ((Customer) session.getAttribute("customer")).getCartpage();
 	}
 
-	
 	// getAll Order
 	@RequestMapping(value = "/listdeliveredorder")
 	public ModelAndView listOrder(ModelAndView model) throws IOException {
@@ -65,7 +64,7 @@ public class OrderController {
 		return model;
 	}
 
-	   //checkoutAndSaveOrder
+	// checkoutAndSaveOrder
 	@RequestMapping(value = "/checkoutAndSaveOrder")
 	public ModelAndView checkoutAndSaveOrder(ModelAndView model) {
 		List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -114,24 +113,23 @@ public class OrderController {
 		return model;
 	}
 
-	
-	  //delivered order item
+	// delivered order item
 	@RequestMapping(value = "/listOrderItem/{orderid}", method = RequestMethod.GET)
-	public ModelAndView listOrderItem(ModelAndView model,@PathVariable(value = "orderid") int orderid,@ModelAttribute("orders")Orders order,BindingResult resultorder){
+	public ModelAndView listOrderItem(ModelAndView model, @PathVariable(value = "orderid") int orderid,
+			@ModelAttribute("orders") Orders order, BindingResult resultorder) {
 		Orders orders = orderservice.getOrder(orderid);
 		List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 		System.out.println("listOrderItem by OrderId" + listorderitem);
-		order=new Orders();
-		model.addObject("order",order);
+		order = new Orders();
+		model.addObject("order", order);
 		model.addObject("listorderitem", listorderitem);
 		model.setViewName("repeatOrder");
 		return model;
 	}
 
-
-	  //pending Order item
+	// pending Order item
 	@RequestMapping(value = "/listOrderItems/{orderid}", method = RequestMethod.GET)
-	public ModelAndView listOrderItems(ModelAndView model,@PathVariable(value = "orderid") int orderid) {
+	public ModelAndView listOrderItems(ModelAndView model, @PathVariable(value = "orderid") int orderid) {
 		Orders orders = orderservice.getOrder(orderid);
 		List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 		System.out.println("listOrderItem by OrderId" + listorderitem);
@@ -140,7 +138,7 @@ public class OrderController {
 		return model;
 	}
 
-	  //get All Information
+	// get All Information
 	@RequestMapping(value = "/allOrderItem")
 	public ModelAndView allOrderItem(ModelAndView model) {
 		List<OrderItem> listAllOrderitem = orderservice.getAllOrderItem();
@@ -149,8 +147,7 @@ public class OrderController {
 		return model;
 	}
 
-	 
-	 //repeat Order
+	// repeat Order
 	@RequestMapping(value = "/repeatOrder{orderid}", method = RequestMethod.GET)
 	public String repeatOrder(ModelAndView model, @PathVariable(value = "orderid") int orderid) {
 		Orders orders = orderservice.getOrder(orderid);
@@ -158,7 +155,7 @@ public class OrderController {
 		CartPage cartpage = this.getCartPage();
 		CartItem cartitem = cartservice.getCustomerCart(this.getCartPage().getCartpageid());
 		/* CartItem cartitem= cartservice.getCustomerCart(cartpage.getCartpageid()); */
-		for (int i = 0; i< listorderitem.size(); i++) {
+		for (int i = 0; i < listorderitem.size(); i++) {
 			cartitem = new CartItem();
 			cartitem.setCartpageid(this.getCartPage().getCartpageid());
 			cartitem.setProduct(listorderitem.get(i).getProduct());
@@ -183,7 +180,6 @@ public class OrderController {
 		model.setViewName("CurrentOrder");
 		return model;
 	}
-	
 
 	// listCartItem
 	@RequestMapping(value = "/deliveredorder")

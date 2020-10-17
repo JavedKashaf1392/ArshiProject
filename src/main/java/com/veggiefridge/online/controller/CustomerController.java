@@ -1,4 +1,5 @@
 package com.veggiefridge.online.controller;
+
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +25,9 @@ import com.veggiefridge.online.service.KioskLocationService;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
-@RequestMapping(value="/customer")
-public class CustomerController{
-	
+@RequestMapping(value = "/customer")
+public class CustomerController {
+
 	private static final Logger logger = Logger.getLogger(CustomerController.class);
 
 	public CustomerController() {
@@ -36,16 +37,15 @@ public class CustomerController{
 	@Autowired
 	private CustomerService customerService;
 
-	
-    //getAll Customer
-	@RequestMapping(value ="/listCustomer")
+	// getAll Customer
+	@RequestMapping(value = "/listCustomer")
 	public ModelAndView listCustomer(ModelAndView model) throws IOException {
 		List<Customer> listCustomer = customerService.getAllCustomers();
 		model.addObject("listCustomer", listCustomer);
 		model.setViewName("customerlist");
 		return model;
 	}
-	
+
 //	add customer
 	@RequestMapping(value = "/newCustomer", method = RequestMethod.GET)
 	public ModelAndView newCustomer(ModelAndView model) {
@@ -54,15 +54,16 @@ public class CustomerController{
 		model.setViewName("customerform");
 		return model;
 	}
-	
+
 //	save and update customer
 	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-	public String saveCustomer(@Valid @ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session) {
+	public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,
+			HttpSession session) {
 		if (result.hasErrors()) {
 			return "customerform";
-			
-		}else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
-			// customer other updating the customer 
+
+		} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+			// customer other updating the customer
 			customerService.addCustomer(customer);
 			session.setAttribute("customer", customer);
 		} else {
@@ -71,68 +72,51 @@ public class CustomerController{
 		return "redirect:/customer/listCustomer";
 	}
 
-	
+	// edit customer
+	@RequestMapping(value = "/editCustomer", method = RequestMethod.GET)
+	public ModelAndView editCustomer(HttpServletRequest request) {
+		int customerid = Integer.parseInt(request.getParameter("customerid"));
+		Customer customer = customerService.getCustomer(customerid);
+		ModelAndView model = new ModelAndView("customerform");
+		model.addObject("customer", customer);
+		return model;
+	}
 
-	//	edit customer
-	 @RequestMapping(value = "/editCustomer", method = RequestMethod.GET) 
-	    public ModelAndView editCustomer(HttpServletRequest request) { 
-		   int customerid = Integer.parseInt(request.getParameter("customerid"));
-		   Customer customer = customerService.getCustomer(customerid); 
-		   ModelAndView model = new ModelAndView("customerform");
-		   model.addObject("customer", customer);
-		   return model;
-		  }
-	 
-	 
-	 //delete customer
-	 @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
-		public String deleteCustomer(@RequestParam("customerid") Integer customerId) {
+	// delete customer
+	@RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
+	public String deleteCustomer(@RequestParam("customerid") Integer customerId) {
 		customerService.deleteCustomer(customerId);
-			return "redirect:/customer/listCustomer ";
-		}
-	 
-		
-	 
-	    //getAll Customer
-		@RequestMapping(value ="/androidlistCustomer")
-		@ResponseBody
-		public List<Customer> androidCustomer(){
-			List<Customer> listCustomer = customerService.getAllCustomers();
-			return listCustomer;
-		}
-		
-		
+		return "redirect:/customer/listCustomer ";
+	}
+
+	// getAll Customer
+	@RequestMapping(value = "/androidlistCustomer")
+	@ResponseBody
+	public List<Customer> androidCustomer() {
+		List<Customer> listCustomer = customerService.getAllCustomers();
+		return listCustomer;
+	}
+
 //////////////////////////////////////////////////////////////
 /////////////////////////////////////////////// Customer API's
 
 // Login customer into database
 // http://localhost:8082/vfs-online/android/login?email=me@gmail.com&password=90
-@ResponseBody
-@RequestMapping(value = "/login",method =RequestMethod.GET)
-public Customer loginCustomer(HttpServletRequest request) {
-String email = request.getParameter("email");
-String password = request.getParameter("password");
-System.out.println(email + password);
-Customer customer = new Customer();
-customer.setEmail(email);
-customer.setPassword(password);
-customer = customerService.loginCustomer(customer);
+	@ResponseBody
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public Customer loginCustomer(HttpServletRequest request) {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		System.out.println(email + password);
+		Customer customer = new Customer();
+		customer.setEmail(email);
+		customer.setPassword(password);
+		customer = customerService.loginCustomer(customer);
 
-if (customer != null){
-return customer;
-} else
-customer.setCustomerid(0);
-return customer;
+		if (customer != null) {
+			return customer;
+		} else
+			customer.setCustomerid(0);
+		return customer;
+	}
 }
-}
-		  
-		 
-	 
-
-	
-	
-	
-	
-	
-
-	

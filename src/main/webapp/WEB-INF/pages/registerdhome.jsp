@@ -10,16 +10,6 @@
  <html lang="en" dir="ltr">
  <head>
  
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        
-        <script type="text/javascript">
-        $(document).ready(function() {
-            $('#prodId').on('change', function() {
-                this.form.submit();
-            });
-        });
-        </script>
- 
  <title>VeggieFridge</title>
 
         <meta charset="utf-8">
@@ -209,7 +199,6 @@ input[type=submit]:hover {
 }
    </style>
    </head>
-   
    <style>  
 
 .footer{
@@ -745,7 +734,6 @@ color: black;
         margin-left: 40px;  
    }
    
-
    </style>
    </head>
    
@@ -865,8 +853,9 @@ label #sidebar_btn:hover{
   height:30%;
   margin-top:17px;
 }
-</style>
-<body>
+
+  </style>
+  <body>
  <!--  header -->
     <div>
     <div class="header">
@@ -973,39 +962,22 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-    </script>
-    
-    
-	<form action="doLogin">
-	<table align="center">
-	<tr>
-	<td>
-	<select name="category" id="prodId">
-	<option value="">Search</option>
-	<option value="Milk">Milk</option>
-	<option value="Leafy Vegetables">Leafy Vegetables</option>
-	<option value="Fruit Vegetables">Fruit Vegetables</option>
-	</select>
-	</td>
-	</tr>
-	</table>
-	</form>
-	
+</script>
+  
   <div class="navbar">
   <div class="dropdown">
   <button class="dropbtn">Search By Catogary  
   <i class="fa fa-caret-down"></i>
-  </button>
       
+      </button>
       <div class="dropdown-content">
       <a href="#">Leafy Vegetables</a>
       <a href="#">Fruit Vegetables</a>
       <a href="#">MIlk</a>
       </div>
-  </div> 
+      </div> 
   
-<div class="dropdown">
+    <div class="dropdown">
     <button class="dropbtn">Discounts
       <i class="fa fa-caret-down"></i>
     </button>
@@ -1028,57 +1000,10 @@ window.onclick = function(event) {
       </div>
       </div> 
       </div>
-      
- <!--   close header  -->
- <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
-
-  <div class="mySlides fade"> -->
+ 
   <spring:url value="/images" var="images" />
   <img src="${images}/organic.jpg" width="1600" height="450" style="margin-top:15px;"/> 
- <%--  </div>
-
-  <div class="mySlides fade">
- <!--  <div class="numbertext">2 / 3</div> -->
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
-  </div>
-
- <div class="mySlides fade">
- <spring:url value="/images" var="images" />
- <img src="${images}/c5.jpg" width="1300" height="400"/>
- </div>
-
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-  </script> --%>
+ 
   <hr>
   <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
   <hr>
@@ -1086,7 +1011,7 @@ function showSlides(n) {
   <div class="container">
   <ul id="myUL">
    
- <c:forEach var="product" items="${productcatg}">
+ <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
   <li>
   <div class="product-img">
@@ -1132,14 +1057,14 @@ function showSlides(n) {
         
         
          
-        <!-- class="btn btn-success" -->
-           
+         <!-- class="btn btn-success" -->
          <%--  onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
           --%>
             <%-- <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
 			<i class="fa fa-shopping-cart"></i> 
 			Add to cart
 		    </button>  --%>
+        
         </div></div> 
         </li>
   </c:forEach>

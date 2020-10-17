@@ -17,7 +17,7 @@ import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity                           
 @Table(name ="customer")
 public class Customer implements Serializable {
 
@@ -52,7 +52,22 @@ public class Customer implements Serializable {
     @Column(name="confirmPassword") 
     private String confirmPassword;
 	 
+	@Transient
+	@Column(name="newPassword")
+	private String newPassword;
 	
+	
+	@Column(name="role")
+	private String role;
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
@@ -60,10 +75,8 @@ public class Customer implements Serializable {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-
-	@Transient
-	@Column(name="newPassword")
-	private String newPassword;
+	
+	
 
 	public String getNewPassword() {
 		return newPassword;

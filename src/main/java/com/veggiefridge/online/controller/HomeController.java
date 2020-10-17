@@ -48,13 +48,10 @@ public class HomeController {
 	HttpSession session;
 	
 	
-
-    //get cartPage
-	private	CartPage getCartPage(){
-			return ((Customer)session.getAttribute("customer")).getCartpage();
-		}
-	
-   
+	// get cartPage
+	private CartPage getCartPage() {
+		return ((Customer) session.getAttribute("customer")).getCartpage();
+	}
 	
 	 //list Product
 	@RequestMapping(value="/viewhome")
@@ -244,7 +241,7 @@ public class HomeController {
 				
 				
 				
-				//home
+				   //home
 				@RequestMapping(value = "/homepage")
 				public ModelAndView homePage(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult resultcustomer){
 					List<Customer> listCustomer = customerservice.getAllCustomers();
@@ -316,6 +313,15 @@ public class HomeController {
 				@RequestMapping(value = "/temp")
 				public ModelAndView template(ModelAndView model) {
 					model.setViewName("/template");
+					return model;
+				}
+				
+				
+
+				//home
+				@RequestMapping(value = "/login")
+				public ModelAndView login(ModelAndView model) {
+					model.setViewName("/loginform");
 					return model;
 				}
 				
