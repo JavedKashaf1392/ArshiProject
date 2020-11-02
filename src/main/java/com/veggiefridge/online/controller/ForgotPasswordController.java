@@ -30,7 +30,7 @@ import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.MailService;
 
 @Controller
-@RequestMapping(value = "/forgot")
+@RequestMapping(value ="/forgot")
 public class ForgotPasswordController {
 
 	@Autowired

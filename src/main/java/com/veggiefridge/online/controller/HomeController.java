@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +47,6 @@ public class HomeController {
 	
 	@Autowired
 	HttpSession session;
-	
 	
 	// get cartPage
 	private CartPage getCartPage() {
@@ -155,7 +155,7 @@ public class HomeController {
 			return model;
 		}
 		
-		//myorder
+		        //myorder
 				@RequestMapping(value = "/orderinfo")
 				public ModelAndView orderInfo(ModelAndView model) {
 					model.setViewName("orderinfo");

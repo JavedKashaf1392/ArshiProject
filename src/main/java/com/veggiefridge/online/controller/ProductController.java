@@ -20,7 +20,7 @@ import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
-@RequestMapping(value = "/product")
+@RequestMapping(value ="/product")
 public class ProductController {
 
 	private static final Logger logger = Logger.getLogger(ProductController.class);
@@ -93,6 +93,7 @@ public class ProductController {
 		return listProduct;
 	}
 
+	
 	@RequestMapping(value = "/viewAll", method = RequestMethod.GET)
 	public String getAllProducts(HttpServletRequest req, Model model) {
 

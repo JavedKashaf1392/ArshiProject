@@ -30,7 +30,7 @@ import com.veggiefridge.online.service.OrderService;
 import com.veggiefridge.online.service.QRCodeService;
 
 @Controller
-@RequestMapping(value = "/order")
+@RequestMapping(value ="/order")
 public class OrderController {
 
 	private static final Logger logger = Logger.getLogger(CustomerController.class);

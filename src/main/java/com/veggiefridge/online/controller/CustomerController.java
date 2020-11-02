@@ -119,4 +119,26 @@ public class CustomerController {
 			customer.setCustomerid(0);
 		return customer;
 	}
+	
+	
+	     //edit customer
+		@RequestMapping(value = "/searchCustomer", method = RequestMethod.GET)
+		public ModelAndView searchCustomer(HttpServletRequest request) {
+			int customerid = Integer.parseInt(request.getParameter("customerid"));
+			Customer customer = customerService.getCustomer(customerid);
+			ModelAndView model = new ModelAndView("cust");
+			model.addObject("customer", customer);
+			return model;
+		}
+		
+		
+		@RequestMapping(value = "/vendorform")
+		public ModelAndView orderInfo(ModelAndView model) {
+			Customer customer = new Customer();
+			model.addObject("customer", customer);
+			model.setViewName("vendorform");
+			return model;
+		}
+		
+		
 }

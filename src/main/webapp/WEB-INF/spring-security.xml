@@ -1,27 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans
-	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans  
-    http://www.springframework.org/schema/beans/spring-beans.xsd  
-    http://www.springframework.org/schema/security  
-    http://www.springframework.org/schema/security/spring-security.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<security:http auto-config="true" use-expressions="false">
-		<security:intercept-url pattern="/*"
-			access="ROLE_USER" />
-		<security:form-login />
-		<security:logout />
-	</security:http>
+	<!-- <http auto-config="true"> only admin access <intercept-url pattern="/admin" 
+		access="hasRole('ROLE_ADMIN')" /> only user access (who is registered) <intercept-url 
+		pattern="/user" access="hasRole('ROLE_USER')" /> rest of the world <intercept-url 
+		pattern="/**" access="permitAll" /> <intercept-url pattern="/login" access="permitAll" 
+		/> <form-login login-page="/loginform.jsp" login-processing-url="/appLogin" 
+		username-parameter="username" password-parameter="password" default-target-url='/common' 
+		always-use-default-target='true' /> <logout logout-url="/appLogout" logout-success-url="/login"/> 
+		<access-denied-handler error-page="/access-denied"/> </http> <authentication-manager> 
+		<authentication-provider> <user-service> <user name="Namo" password="{noop}namo123" 
+		authorities="ROLE_ADMIN" /> <user name="Arshi" password="{noop}arshi123" 
+		authorities="ROLE_USER"/> <mysqlm/user-service> </authentication-provider> 
+		</authentication-manager> -->
 
-	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="nick" password="nick"
-					authorities="ROLE_USER" />
-			</security:user-service>
-		</security:authentication-provider>
-	</security:authentication-manager>
+	<http auto-config="true">
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/home" access="permitAll" />
+		<intercept-url pattern="/admin"
+			access="hasRole('ADMIN')" />
+		<intercept-url pattern="/user" access="hasRole('USER')" />
+		<form-login login-page="/login"
+			login-processing-url="/appLogin" username-parameter="email"
+			password-parameter="password" always-use-default-target="true"
+			default-target-url="/defaultTarget" />
+		<access-denied-handler
+			error-page="/Access_Denied" />
+		<csrf disabled="true" />
+	</http>
 
-</beans:beans>  
+	<!-- <authentication-manager> <authentication-provider user-service-ref="myUserDetailsService"> 
+		<user-service> <user name="bill@gmail.com" password="abc123" authorities="ROLE_USER" 
+		/> <user name="admin@gmail.com" password="root123" authorities="ROLE_ADMIN" 
+		/> </user-service> </authentication-provider> </authentication-manager> -->
+
+	<!-- <authentication-manager>
+		<authentication-provider
+			user-service-ref="userDetailsService">
+			<password-encoder hash="md5" />
+		</authentication-provider>
+	</authentication-manager> -->
+	
+	 <!-- spring authentication configuration via database -->
+    <authentication-manager>
+		<authentication-provider>
+ 			<jdbc-user-service data-source-ref="dataSource"
+ 				authorities-by-username-query="select email, role from customer where email = ?"
+ 				users-by-username-query="select email,password,'true' as enabled from customer where email = ?"
+ 			/>
+ 		</authentication-provider>
+	</authentication-manager>
+	
+	
+    <!-- database configuration (database = MySql) -->
+    <beans:bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName"
+            value="com.mysql.jdbc.Driver" />
+        <beans:property name="url"
+            value="jdbc:mysql://localhost:3306/vfonlinedb" />
+        <beans:property name="username" value="online" />
+        <beans:property name="password" value="online123" />
+    </beans:bean>
+</beans:beans>
+

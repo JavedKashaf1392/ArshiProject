@@ -8,10 +8,12 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>VeggirFridge_online</name>
 
-	<!-- Specifying the Versions of Spring, Hiberante, MySQL etc -->
-	<properties>
-		<spring.version>4.1.5.RELEASE</spring.version>
+	    <!-- Specifying the Versions of Spring, Hiberante, MySQL etc -->
+	    <properties>
+		<!-- <spring.version>4.1.5.RELEASE</spring.version> -->
+		<spring.version>4.2.4.RELEASE</spring.version>
 		<hibernate.version>4.3.8.Final</hibernate.version>
+		<spring.security.version>4.0.3.RELEASE</spring.security.version>
 		<mysql.version>8.0.12</mysql.version>
 		<junit-version>4.11</junit-version>
 		<servlet-api-version>3.1.0</servlet-api-version>
@@ -19,7 +21,6 @@
 		<jstl-version>1.2</jstl-version>
 		<java.version>1.8</java.version>
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
-		<spring.security.version>4.0.2.RELEASE</spring.security.version>
 
 	</properties>
 	<dependencies>
@@ -245,7 +246,7 @@
 
 
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>4.0.2.RELEASE</version>
@@ -261,16 +262,29 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 			<version>4.0.2.RELEASE</version>
-		</dependency>
+		</dependency> -->
 
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.0.2.RELEASE</version>
 		</dependency>
+ -->
+ 
+ <!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 
 	</dependencies>
 	<build>

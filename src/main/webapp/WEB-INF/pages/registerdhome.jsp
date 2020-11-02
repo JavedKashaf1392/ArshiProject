@@ -900,7 +900,6 @@ label #sidebar_btn:hover{
       <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
       </div>
       </div>
-       
 
  <span class="fas fa-map-marker-alt" style="color:green;"></span>
  <a href="#" id="myBtn" style="text-decoration: none;">${customer.location},${customer.cities}</a> 
@@ -1291,15 +1290,14 @@ Message *</div>
       </div>
       </c:forEach>
       
-      <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+      <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color:#4CAF50;
         border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
-     
+        outline: none;margin-top:6px;font-size:15px;">CheckOut</a>
       </div>
       </c:when>
       

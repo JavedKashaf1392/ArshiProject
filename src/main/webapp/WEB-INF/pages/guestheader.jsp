@@ -416,10 +416,10 @@ label #sidebar_btn:hover{
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
 
  <span class="fa fa-edit" style="color:green;"></span>
- <a href="#" style="text-decoration: none;color: black;">Sign Up</a> | 
+ <a href="${pageContext.request.contextPath}/home/signup" style="text-decoration: none;color: black;">Sign Up</a> | 
  
  <span class='fas fa-unlock-alt' style="color:green;"></span>
- <a href="#" style="text-decoration: none;color: black;">Hello,Sign In</a>
+ <a href="${pageContext.request.contextPath}/home/loginform" style="text-decoration: none;color: black;">Hello,Sign In</a>
  
  <!-- The Modal -->
  <div id="myModal" class="modal">
@@ -462,7 +462,7 @@ label #sidebar_btn:hover{
   <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
-  <div class="badge" id="output">1</div>
+  <div class="badge" id="output">0</div>
   </a> 
   </form>
   <div id="id06" class="cartpopup">
@@ -532,6 +532,7 @@ label #sidebar_btn:hover{
  </div>
 </div> --%>
  </div>
+ 
  <script>
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -554,6 +555,7 @@ window.onclick = function(event) {
   }
 }
 </script>
+
   <div class="navbar">
   <div class="dropdown">
     <button class="dropbtn">Search By Catogary  

@@ -1,4 +1,3 @@
-
 package com.veggiefridge.online.model;
 import java.io.Serializable;
 import javax.persistence.CascadeType;

@@ -146,7 +146,7 @@ span.psw {
 <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
  -->
      <div  class="modal">
-     <form class="modal-content animate" action="${pageContext.request.contextPath }/login/doLogin" method="post" modelAttribute="customer">
+     <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
      <div class="imgcontainer">
    <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
    <spring:url value="/images" var="images" />
