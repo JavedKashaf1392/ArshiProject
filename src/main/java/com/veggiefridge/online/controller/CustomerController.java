@@ -1,6 +1,9 @@
 package com.veggiefridge.online.controller;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -55,15 +58,21 @@ public class CustomerController {
 		return model;
 	}
 
-//	save and update customer
+    //save and update customer
 	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
 	public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,
-			HttpSession session) {
+			HttpSession session) throws NoSuchAlgorithmException {
 		if (result.hasErrors()) {
 			return "customerform";
 
 		} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
-			// customer other updating the customer
+			//customer other updating the customer
+			    String passwordToHash =customer.getPassword();
+		        byte[] salt = getSalt();
+		        String roles="User";
+		        String securePassword = get_SHA_512_SecurePassword(passwordToHash, salt);
+		        customer.setPassword(securePassword);
+		        customer.setRole(roles);
 			customerService.addCustomer(customer);
 			session.setAttribute("customer", customer);
 		} else {
@@ -71,7 +80,38 @@ public class CustomerController {
 		}
 		return "redirect:/customer/listCustomer";
 	}
-
+	
+	   private static String get_SHA_512_SecurePassword(String passwordToHash, byte[] salt)
+	    {
+	        String generatedPassword = null;
+	        try {
+	            MessageDigest md = MessageDigest.getInstance("SHA-512");
+	            md.update(salt);
+	            byte[] bytes = md.digest(passwordToHash.getBytes());
+	            StringBuilder sb = new StringBuilder();
+	            for(int i=0; i< bytes.length ;i++)
+	            {
+	                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+	            }
+	            generatedPassword = sb.toString();
+	        } 
+	        catch (NoSuchAlgorithmException e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        return generatedPassword;
+	    }
+	     
+		
+		//Add salt
+	    private static byte[] getSalt() throws NoSuchAlgorithmException
+	    {
+	        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+	        byte[] salt = new byte[16];
+	        sr.nextBytes(salt);
+	        return salt;
+	    }
+	
 	// edit customer
 	@RequestMapping(value = "/editCustomer", method = RequestMethod.GET)
 	public ModelAndView editCustomer(HttpServletRequest request) {

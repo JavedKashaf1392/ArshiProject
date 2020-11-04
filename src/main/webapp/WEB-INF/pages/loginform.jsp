@@ -139,13 +139,18 @@ span.psw {
 }
 </style>
 </head>
-<body>
-
-
+<body onload='document.loginForm.username.focus();'>
 
 <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
  -->
-     <div  class="modal">
+        <div  class="modal">
+        <c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
+		
+		<c:if test="${not empty msg}">
+			<div class="msg">${msg}</div>
+		</c:if>
      <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
      <div class="imgcontainer">
    <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
@@ -160,6 +165,8 @@ span.psw {
       <input type="password" placeholder="Enter Password" name="password" required>
         
       <button type="submit">Login</button>
+	  <input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>

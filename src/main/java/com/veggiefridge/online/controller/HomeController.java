@@ -67,20 +67,19 @@ public class HomeController {
 	    }
 	
 	
-	@RequestMapping("/continueLocation")  
-	public ModelAndView continueLocation(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
-	
-	{ 
-		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-		List<Product> listProduct = productService.getAllProducts();
-		List<Customer> listCustomer = customerservice.getAllCustomers();
-		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation",listkiosklocation);
-		model.addObject("listProduct", listProduct);
-		model.setViewName("guest");
-		return model; 
-	} 
-	
+		/*
+		 * @RequestMapping("/continueLocation") public ModelAndView
+		 * continueLocation(ModelAndView model,@ModelAttribute("kiosklocation")
+		 * KioskLocation kiosklocation,BindingResult resultlocation)
+		 * 
+		 * { List<KioskLocation> listkiosklocation
+		 * =kiosklocationservice.getAllLocation(); List<Product> listProduct =
+		 * productService.getAllProducts(); List<Customer> listCustomer =
+		 * customerservice.getAllCustomers(); model.addObject("listCustomer",
+		 * listCustomer); model.addObject("listkiosklocation",listkiosklocation);
+		 * model.addObject("listProduct", listProduct); model.setViewName("guest");
+		 * return model; }
+		 */
 	
 	// save location
     @RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
@@ -270,12 +269,12 @@ public class HomeController {
 				}
 		
 				
-				//currentorder
-				@RequestMapping(value = "/signup")
-				public ModelAndView signUp(ModelAndView model) {
-					model.setViewName("/signup");
-					return model;
-				}
+				/*
+				 * //currentorder
+				 * 
+				 * @RequestMapping(value = "/signup") public ModelAndView signUp(ModelAndView
+				 * model) { model.setViewName("/signup"); return model; }
+				 */
 				
 				
 			    //addGuestCustomer

@@ -685,7 +685,7 @@ function showSlides(n) {
                     Rs ${product.price-product.discount * product.price/100}
                     </span>
             
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/home/loginform'" style="float:left;
+            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
   /* background-color: #1864ff; */
   background-color:#4CAF50;
   border: 0;

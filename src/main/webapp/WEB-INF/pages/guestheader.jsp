@@ -416,18 +416,21 @@ label #sidebar_btn:hover{
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
 
  <span class="fa fa-edit" style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/home/signup" style="text-decoration: none;color: black;">Sign Up</a> | 
+ <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> | 
  
  <span class='fas fa-unlock-alt' style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/home/loginform" style="text-decoration: none;color: black;">Hello,Sign In</a>
+ <a href="${pageContext.request.contextPath}/login" style="text-decoration: none;color: black;">Hello,Sign In</a>
  
+  Dear<strong>${user}</strong>
+  
+    <a href="<c:url value="/logout" />">Logout</a>
  <!-- The Modal -->
  <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
   <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
+  <form method="post" action="${pageContext.request.contextPath}/continueLocation" modelAttribute="kioskLocation">
   <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
   <div class="row">
   <div class="col-75">
@@ -490,15 +493,8 @@ label #sidebar_btn:hover{
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
       <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
       </div>
-      </div>
-       
-
- <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;">${customer.location},${customer.cities}</a> 
- |
-<span class='fas fa-sign-out-alt' style="color:green;"></span> 
-<a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
-           
+      </div> 
+ --%>       
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -530,7 +526,7 @@ label #sidebar_btn:hover{
  <input type="submit" value="Continue" style="width: 30%;"/>
  </div></p></form>
  </div>
-</div> --%>
+</div> 
  </div>
  
  <script>
@@ -562,12 +558,9 @@ window.onclick = function(event) {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="#">Fruit Vegetable</a>
+      <a href="#">leafy vegetable</a>
+      <a href="#">Milk</a>
     </div>
   </div> 
 <div class="dropdown">
@@ -585,23 +578,16 @@ window.onclick = function(event) {
   </div> 
  
   <div class="dropdown">
-    <button class="dropbtn">More 
+    <button class="dropbtn">Manage
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="${pageContext.request.contextPath }/product/viewAll">Manage Product</a>
+      <a href="${pageContext.request.contextPath }/kiosk/listKiosk">Manage kiosk</a>
+      <a href="${pageContext.request.contextPath }/location/listLocation">Manage Location</a>
       </div>
       </div>
       
-    <div class="dropdown">
-    <button class="dropbtn">Home
-    </button>
-      </div>
       </div> 
       </div>
      

@@ -902,18 +902,19 @@ label #sidebar_btn:hover{
       </div>
 
  <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;">${customer.location},${customer.cities}</a> 
+ <a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location},${kiosklocation.cities}</a> 
  |
 <span class='fas fa-sign-out-alt' style="color:green;"></span> 
 <a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
-           
+
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
   <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/regcontinueLocation" modelAttribute="kioskLocation" >
+  <form method="post" action="${pageContext.request.contextPath}/regcontinueLocation" modelAttribute="kioskLocation" >
   <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
   <div class="row">
   <div class="col-75">
@@ -975,26 +976,15 @@ window.onclick = function(event) {
       <a href="#">MIlk</a>
       </div>
       </div> 
-  
-    <div class="dropdown">
-    <button class="dropbtn">Discounts
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
  
-  <div class="dropdown">
-    <button class="dropbtn">More 
+   <div class="dropdown">
+    <button class="dropbtn">Manage
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">24*7 Customer care</a>
-      <a href="#">Download Our App</a>
-      <a href="#"></a>
+      <a href="${pageContext.request.contextPath }/product/viewAll">Manage Product</a>
+      <a href="${pageContext.request.contextPath }/kiosk/listKiosk">Manage kiosk</a>
+      <a href="${pageContext.request.contextPath }/location/listLocation">Manage Location</a>
       </div>
       </div>
       </div> 

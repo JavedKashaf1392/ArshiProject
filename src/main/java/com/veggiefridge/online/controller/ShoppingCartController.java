@@ -179,6 +179,7 @@ public class ShoppingCartController {
 		return "redirect:/cart/listCustomerCartItem";
 	}
 
+	
 	// deleteCartItem
 	@RequestMapping(value = "/deleteCartItems/{cartitemid}", method = RequestMethod.GET)
 	public String deleteProducts(@PathVariable("cartitemid") int cartitemid) {
