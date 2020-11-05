@@ -185,7 +185,7 @@ public class AppController {
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
 			model.addObject("error","Invalid username and password!");
-			/*getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION")*/
+			getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION");
 		}
 
 		if (logout != null) {

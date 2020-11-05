@@ -3,6 +3,7 @@ package com.veggiefridge.online.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.security.Principal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -140,7 +141,7 @@ public class LoginController {
 	@RequestMapping(value = "/doLogin")
 	public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult resultcustomer,
 			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, BindingResult resultkiosklocation,
-			HttpSession session, ModelAndView model, HttpServletRequest req) {
+			HttpSession session, ModelAndView model, HttpServletRequest req,Principal principal) {
 
 		if (customer.getEmail() != null && customer.getPassword() != null && session.getAttribute("customer") == null) {
 			customer = custservice.loginCustomer(customer);
@@ -148,10 +149,12 @@ public class LoginController {
 
 			if (customer != null) {
 				session.setAttribute("customer", customer);
+				String un=principal.getName();
 				model.addObject("customerid", customer.getCustomerid());
 				model.addObject("firstname", customer.getFirstName());
 				model.addObject("kioskLocation", customer.getLocation());
 				model.addObject("city", customer.getCities());
+				model.addObject("un", un);
 				List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
 				List<Product> listProduct = productService.getAllProducts();
 				List<Customer> listCustomer = custservice.getAllCustomers();

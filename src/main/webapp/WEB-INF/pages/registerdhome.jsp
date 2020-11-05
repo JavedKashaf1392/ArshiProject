@@ -883,7 +883,7 @@ label #sidebar_btn:hover{
    
       <div class="right" style="float: right;">
       <span  class='fas fa-user-circle' style="color:green;"></span> 
-      Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
+      Hello<span onclick="document.getElementById('id05').style.display='block'">,${un}</span> | 
       <div id="id05" class="menu">
       <div class="sidebar">
       <center>

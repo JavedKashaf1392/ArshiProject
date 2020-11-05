@@ -497,7 +497,7 @@ aside{
      <!-- ......continue shopping button......-->
       <aside>
       <div class="summary">
-      <h1>${customer.cartpage.cartitem}</h1>item in Your cart
+     <h1>${customer.cartpage.cartitem}</h1>item in Your cart
       <!-- <div class="summary-total-items" style="color:green;"><span class="total-items" style="color:red;font-size:20px;"></span><h3>Items in your cart</h3></div> -->
       <div class="summary-subtotal" style="padding:5px 10px;">
       <div class="subtotal-title" style="color:green;font-size:px;">Subtotal</div>

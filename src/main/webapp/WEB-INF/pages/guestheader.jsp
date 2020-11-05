@@ -421,9 +421,6 @@ label #sidebar_btn:hover{
  <span class='fas fa-unlock-alt' style="color:green;"></span>
  <a href="${pageContext.request.contextPath}/login" style="text-decoration: none;color: black;">Hello,Sign In</a>
  
-  Dear<strong>${user}</strong>
-  
-    <a href="<c:url value="/logout" />">Logout</a>
  <!-- The Modal -->
  <div id="myModal" class="modal">
 
