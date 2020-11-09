@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -39,7 +40,10 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
-
+	/*
+	 * @Autowired private PasswordEncoder passwordEncoder;
+	 */
+	 
 	// getAll Customer
 	@RequestMapping(value = "/listCustomer")
 	public ModelAndView listCustomer(ModelAndView model) throws IOException {
@@ -67,12 +71,14 @@ public class CustomerController {
 
 		} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
 			//customer other updating the customer
-			    String passwordToHash =customer.getPassword();
-		        byte[] salt = getSalt();
-		        String roles="User";
-		        String securePassword = get_SHA_512_SecurePassword(passwordToHash, salt);
-		        customer.setPassword(securePassword);
-		        customer.setRole(roles);
+			
+			  String passwordToHash =customer.getPassword();
+			  byte[] salt = getSalt();
+		      String roles="ROLE_USER";
+			  String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
+			  customer.setPassword(securePassword);
+		      customer.setRole(roles);
+				/* customer.setPassword(passwordEncoder.encode(customer.getPassword())); */
 			customerService.addCustomer(customer);
 			session.setAttribute("customer", customer);
 		} else {
@@ -81,11 +87,11 @@ public class CustomerController {
 		return "redirect:/customer/listCustomer";
 	}
 	
-	   private static String get_SHA_512_SecurePassword(String passwordToHash, byte[] salt)
+	   private static String get_SHA_256_SecurePassword(String passwordToHash, byte[] salt)
 	    {
 	        String generatedPassword = null;
 	        try {
-	            MessageDigest md = MessageDigest.getInstance("SHA-512");
+	            MessageDigest md = MessageDigest.getInstance("SHA-256");
 	            md.update(salt);
 	            byte[] bytes = md.digest(passwordToHash.getBytes());
 	            StringBuilder sb = new StringBuilder();
@@ -102,7 +108,6 @@ public class CustomerController {
 	        return generatedPassword;
 	    }
 	     
-		
 		//Add salt
 	    private static byte[] getSalt() throws NoSuchAlgorithmException
 	    {

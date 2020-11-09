@@ -51,20 +51,33 @@ public class AppController {
 	@Autowired
 	private HttpSession session;
 
-
-	@RequestMapping(value="/")  
-	public ModelAndView continueLocation(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
+	/*
+	 * @RequestMapping(value="/") public ModelAndView continueLocation(ModelAndView
+	 * model,@ModelAttribute("kiosklocation") KioskLocation
+	 * kiosklocation,BindingResult resultlocation)
+	 * 
+	 * { List<KioskLocation> listkiosklocation
+	 * =kiosklocationservice.getAllLocation(); List<Product> listProduct =
+	 * productService.getAllProducts(); List<Customer> listCustomer =
+	 * customerservice.getAllCustomers(); model.addObject("listCustomer",
+	 * listCustomer); model.addObject("listkiosklocation",listkiosklocation);
+	 * model.addObject("listProduct", listProduct); model.setViewName("home");
+	 * return model; }
+	 */
 	
-	{ 
-		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-		List<Product> listProduct = productService.getAllProducts();
-		List<Customer> listCustomer = customerservice.getAllCustomers();
-		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation",listkiosklocation);
-		model.addObject("listProduct", listProduct);
-		model.setViewName("guest");
-		return model; 
-	} 
+	      //list Product
+		@RequestMapping(value="/")
+		public ModelAndView listProduct(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer) throws IOException{
+			List<Customer> listCustomer = customerservice.getAllCustomers();
+			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
+			List<Product> listProduct = productService.getAllProducts();
+			model.addObject("listkiosklocation",listkiosklocation);
+			model.addObject("listProduct",listProduct);
+			model.addObject("listCustomer ",listCustomer);
+			model.setViewName("home");
+			return model;
+		    }
+		
 	
 	@RequestMapping("/continueLocation")  
 	public ModelAndView continueLoc(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
@@ -106,7 +119,7 @@ public class AppController {
 	      if (auth != null){    
 	         new SecurityContextLogoutHandler().logout(request, response, auth);
 	      }
-	      return "welcome";
+	      return "login";
 	   }
 
 	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)

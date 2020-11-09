@@ -10,8 +10,22 @@
 		http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
+		
+	<!-- 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> -->
+		
+ <!-- <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+ <beans:constructor-arg value="512" />
+ </beans:bean> -->
 
-	<http auto-config="true">
+  <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+ <beans:constructor-arg value = "256" />
+ </beans:bean> 
+ 
+<!-- <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+     <beans:constructor-arg value= "512"/>
+</beans:bean>  -->  
+          
+	    <http auto-config="true">
 		<intercept-url pattern="/" access="permitAll" />
 		
 		<intercept-url pattern="/kiosk/**" access="hasRole('ROLE_ADMIN')" />
@@ -51,24 +65,30 @@
 	<!-- spring authentication configuration via database -->
 	<authentication-manager>
 		<authentication-provider>
-			<!-- <user-service>
-				<user name="admin@gmail.com" password="arshi"
+	<!-- <password-encoder ref="passwordEncoder" hash="sha-256" /> --> 
+		<!--  <password-encoder hash="bcrypt">
+        </password-encoder>  -->
+		<!--  <user-service>
+				<user name="admin@gmail.com" password="c8ec6e9596b74e4411a7eef25a65d3787e7adad007e6bd54c70c3131a59e533ds"
 					authorities="ROLE_ADMIN" />
 				<user name="user@gmail.com" password="bakbak"
 					authorities="ROLE_USER" />
-			</user-service> -->
-		<jdbc-user-service data-source-ref="dataSource"
+			</user-service>  -->
+			
+		 <jdbc-user-service data-source-ref="dataSource"
 		 authorities-by-username-query="select email, role from customer where email = ?" 
-		 users-by-username-query="select email,password,'true' as enabled from customer where email = ?" />
+		 users-by-username-query="select email,password,'true' as enabled from customer where email = ?" /> 
 				
 		</authentication-provider>
 	    </authentication-manager>
 
 	<!-- database configuration (database = MySql) -->
-	 <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+	 <beans:bean
+	  id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" /> <beans:property 
 		name="url" value="jdbc:mysql://localhost:3306/vfonlinedb" /> <beans:property 
 		name="username" value="online" /> <beans:property name="password" value="online123" 
-		/> </beans:bean> 
-</beans:beans>
+		/> 
+	</beans:bean> 
+    </beans:beans>
 

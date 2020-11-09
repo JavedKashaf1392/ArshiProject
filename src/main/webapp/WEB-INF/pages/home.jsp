@@ -905,7 +905,7 @@ color: black;
  <div class="row">
  <div class="col-75">  
     
-    <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
+    <form method="post" action="${pageContext.request.contextPath}/continueLocation" modelAttribute="kioskLocation">
     <spring:url value="/images" var="images" />
     <img src="${images}/logo.jpg" width="160" height="115" style= margin-top:2%;"/>
     
@@ -938,7 +938,7 @@ color: black;
 <!-- ..................................login popup................. -->
 
    <div id="id01" class="modal">
-  <form class="modal-content animate" action="${pageContext.request.contextPath }/login/doLogin" method="post"  modelAttribute="customer">
+  <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post"  modelAttribute="customer">
   <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;">Log In VeggieFridge</h2>
       <div class="login">
       <label for="email"><b>Email</b></label>
