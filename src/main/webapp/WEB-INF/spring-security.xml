@@ -11,16 +11,21 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
 		
-	<!-- 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> -->
-		
- <!-- <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
- <beans:constructor-arg value="512" />
- </beans:bean> -->
-
-  <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
- <beans:constructor-arg value = "256" />
+	<!-- <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+		 -->
+ <!--  <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+<beans:constructor-arg value= "256" /> 
  </beans:bean> 
+ -->
+ <!-- <beans:bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+</beans:bean>  -->
  
+ <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+ <beans:constructor-arg value = "256" />
+ </beans:bean>  
+ 
+ 	<!--  <beans:bean id="passwordEncoder" class="com.veggiefridge.online.controller.PwdEncryptAndDecryptWithAES"/> -->
+    
 <!-- <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
      <beans:constructor-arg value= "512"/>
 </beans:bean>  -->  
@@ -63,22 +68,23 @@
 	</http>
 
 	<!-- spring authentication configuration via database -->
-	<authentication-manager>
+	    <authentication-manager>
 		<authentication-provider>
-	<!-- <password-encoder ref="passwordEncoder" hash="sha-256" /> --> 
-		<!--  <password-encoder hash="bcrypt">
-        </password-encoder>  -->
-		<!--  <user-service>
-				<user name="admin@gmail.com" password="c8ec6e9596b74e4411a7eef25a65d3787e7adad007e6bd54c70c3131a59e533ds"
+		
+	 <password-encoder ref="passwordEncoder" hash="sha-256" />
+	
+		<!-- <user-service>
+				<user name="admin@gmail.com" password="381b79013d583ecd49ba70bbfa9f0069f79a9d97169b6f8a06d98663a06ca9ff"
 					authorities="ROLE_ADMIN" />
-				<user name="user@gmail.com" password="bakbak"
+				<user name="user@gmail.com" password="381b79013d583ecd49ba70bbfa9f0069f79a9d97169b6f8a06d98663a06ca9ff"
 					authorities="ROLE_USER" />
-			</user-service>  -->
-			
+			</user-service> 
+			 -->
+		 	
 		 <jdbc-user-service data-source-ref="dataSource"
 		 authorities-by-username-query="select email, role from customer where email = ?" 
 		 users-by-username-query="select email,password,'true' as enabled from customer where email = ?" /> 
-				
+		 
 		</authentication-provider>
 	    </authentication-manager>
 

@@ -41,10 +41,14 @@ public class ForgotPasswordController {
 
 	@Autowired
 	private JavaMailSender mailSenderObj;
+	
+	@Autowired
+	private EncryptPassword enPwd;
 
 	// ResetPassword
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
 	public String resetRequest(@RequestParam(value = "email") String email, HttpServletRequest request) {
+		
 		email = request.getParameter("email");
 		Customer customer = new Customer();
 		if (!email.isEmpty()) {
@@ -217,7 +221,7 @@ public class ForgotPasswordController {
 						+ "   <!-- <a href='http://localhost:8080/vf-online/forgot/newPassword"
 						+ "		  		email+\"/'>Click here</a> to reset password</body></html>-->\r\n"
 						+ "         \r\n" + "         <a href='http://localhost:8080/vf-online/forgot/newPassword/"
-						+ email + "		  		/' style=\"display: inline-block;\r\n"
+						+email + "		  		/' style=\"display: inline-block;\r\n"
 						+ "        padding: 10px 40px;\r\n" + "        text-align: center;\r\n"
 						+ "        text-decoration: none;\r\n" + "        color: #ffffff;\r\n"
 						+ "        background-color:#4CAF50;\r\n" + "        border-radius: 6px;\r\n"
@@ -312,6 +316,7 @@ public class ForgotPasswordController {
 
 			// update password and Acct Status $ Displyay Successe Message
 
+			/* customer.setPassword(cust.getNewPassword()); */
 			customer.setPassword(cust.getNewPassword());
 			customerservice.updateCustomer(customer);
 			System.out.println("update customer successfully");

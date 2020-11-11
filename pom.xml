@@ -8,8 +8,8 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>VeggirFridge_online</name>
 
-	    <!-- Specifying the Versions of Spring, Hiberante, MySQL etc -->
-	    <properties>
+	<!-- Specifying the Versions of Spring, Hiberante, MySQL etc -->
+	<properties>
 		<!-- <spring.version>4.1.5.RELEASE</spring.version> -->
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<hibernate.version>4.3.8.Final</hibernate.version>
@@ -25,11 +25,19 @@
 	</properties>
 	<dependencies>
 	
-	<dependency>  
-    <groupId>org.springframework.security</groupId>  
-    <artifactId>spring-security-taglibs</artifactId>  
-    <version>4.0.3.RELEASE</version>  
-    </dependency> 
+		<!-- https://mvnrepository.com/artifact/org.webjars.npm/sha -->
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>sha</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/taglibs/standard -->
 		<dependency>
@@ -252,34 +260,19 @@
 
 
 
-		<!-- <dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>4.0.2.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>4.0.2.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>4.0.2.RELEASE</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> 
+			<version>4.0.2.RELEASE</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-config</artifactId> <version>4.0.2.RELEASE</version> 
+			</dependency> <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-core</artifactId> <version>4.0.2.RELEASE</version> 
+			</dependency> -->
 
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
-		<!-- <dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>4.0.2.RELEASE</version>
-		</dependency>
- -->
- 
- <!-- Spring Security -->
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> 
+			<version>4.0.2.RELEASE</version> </dependency> -->
+
+		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>

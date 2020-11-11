@@ -40,6 +40,10 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private EncryptPassword enpwd;
+	
 	/*
 	 * @Autowired private PasswordEncoder passwordEncoder;
 	 */
@@ -71,15 +75,14 @@ public class CustomerController {
 
 		} else if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
 			//customer other updating the customer
-			
-			  String passwordToHash =customer.getPassword();
-			  byte[] salt = getSalt();
+			    //String passwordToHash =customer.getPassword();
+		        //byte[] salt = getSalt();
 		      String roles="ROLE_USER";
-			  String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
-			  customer.setPassword(securePassword);
 		      customer.setRole(roles);
-				/* customer.setPassword(passwordEncoder.encode(customer.getPassword())); */
-			customerService.addCustomer(customer);
+		        //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
+		        //customer.setPassword(securePassword);
+			  customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
+			  customerService.addCustomer(customer);
 			session.setAttribute("customer", customer);
 		} else {
 			customerService.updateCustomer(customer);
