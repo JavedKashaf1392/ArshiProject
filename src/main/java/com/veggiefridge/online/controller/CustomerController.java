@@ -66,7 +66,7 @@ public class CustomerController {
 		return model;
 	}
 
-    //save and update customer
+       //save and update customer
 	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
 	public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,
 			HttpSession session) throws NoSuchAlgorithmException {

@@ -26,10 +26,11 @@ body{
 }
 }
 .footer{
-    margin-left:13%;
-    margin-right:13%;
+   /*  margin-left:13%;
+    margin-right:13%; */
     position:fixed;
-    width:74%;
+   /*  width:74%; */
+    width:100%;
     height: 500px;
     background: #4CAF50; 
     margin-top:50%;

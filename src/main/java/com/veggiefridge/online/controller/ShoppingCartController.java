@@ -246,8 +246,11 @@ public class ShoppingCartController {
 	// listCartItem
 	@RequestMapping(value = "/listCustomerCartItem")
 	public ModelAndView listCustomerCartItem(ModelAndView model) {
-		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
-		model.addObject("listcustomercartitem", listcustomercartitem);
+		/*
+		 * List<CartItem> listcustomercartitem =
+		 * cartservice.list(this.getCartPage().getCartpageid());
+		 * model.addObject("listcustomercartitem", listcustomercartitem);
+		 */
 		model.setViewName("cartitemlist");
 		return model;
 	}

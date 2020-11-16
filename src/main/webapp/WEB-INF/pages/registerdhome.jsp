@@ -29,6 +29,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 <style>
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -41,26 +42,6 @@ body {
 	mySlides {display: none
 }
 
-{
-box-sizing
-
-
-
-
-:
-
-
- 
-
-
-border-box
-
-
-
-
-;
-}
-}
 hr {
 	border: 1px solid #f1f1f1;
 }
@@ -1007,9 +988,10 @@ label #sidebar_btn:hover {
 				<span
 					onclick="document.getElementById('id05').style.display='block'">Hello:
 					${pageContext.request.userPrincipal.name}</span> |
-               <span> <a href="/<c:url value="/logout" />">
-						Logout</a></span>
+               
 			</c:if>
+			<span> <a href="<c:url value="/logout" />">
+						Logout</a></span>
 
 			<!-- The Modal -->
 			<div id="myModal" class="modal">
@@ -1115,8 +1097,6 @@ label #sidebar_btn:hover {
 			</security:authorize>
 		</div>
 	</div>
-
-
 
 	<spring:url value="/images" var="images" />
 	<img src="${images}/organic.jpg" width="1600" height="450"

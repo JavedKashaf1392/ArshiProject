@@ -1,6 +1,7 @@
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+  <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
   <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
@@ -9,40 +10,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-   
-   <!-- jQuery -->
-   <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-   
-   
-     
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-   <link href="css/shop-homepage.css" rel="stylesheet">
-     
-     <meta charset="utf-8">
-	 <script src= 
-"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
-	</script> 
-	
-	<script src= 
-"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> 
-	</script> 
-	<script src= 
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"> 
-	</script>    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +22,6 @@
         <style>
 
 body {font-family: Arial, Helvetica, sans-serif;
-      background-color:#f1f1f1;
 }
  
 body
@@ -63,16 +30,13 @@ body
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
-    .mySlides {display: none};
-   
-    
 }
 .header{
     position:relative;
     padding: 20px;
     padding: 20px;
     width: 100%;
-    height: 30px;
+    /* height:30px; */
 }
 
 .logo{
@@ -83,20 +47,18 @@ body
 
 /* call */
 .call{
-/* border:1px solid black; */ 
-margin-right:%;
-margin-top:10px;
-font-size:18px;
-margin-left:48%;
-width: 100%;
+/* border:1px solid black;   */
+font-size:16px;
+float: right;
+margin-right:6%;
 }
 
-.notification {
+  .notification {
   margin-left:4%;
   background-color:#4CAF50;
   color: white;
   text-decoration: none;
-  padding: 14px 28px;
+  padding: 12px 24px;
   position: relative;
   display: inline-block;
   border-radius:4px;
@@ -111,7 +73,7 @@ width: 100%;
   position: absolute;
   top: -10px;
   right: -10px;
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 50%;
   background-color: red;
   color: white;
@@ -141,21 +103,21 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
+/* input[type=submit] {
   background-color: #4CAF50;
   color: white;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   float: center;
-  margin-top: 10px;
+  margin-top:px;
 }
 
 input[type=submit]:hover {
   background-color: #45a049;
 }
-
+ */
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -242,7 +204,7 @@ form.example input[type=text] {
 
   form.example button {
   width:5%;
-  padding:10px 10px;
+  padding:8px 7px;
   background: #4CAF50;
   color:white;
   font-size:17px;
@@ -259,8 +221,7 @@ form.example button:hover {
 .navbar {
   overflow: hidden;
   background-color:#4CAF50 ;
-  margin-top:1%;
-  
+  margin-top:16px;
 }
 .navbar a {
   float:left;
@@ -268,7 +229,6 @@ form.example button:hover {
   color: white;
   text-align: center;
   text-decoration: none;
-  padding:4px 8px;
 }
 
 .dropdown {
@@ -277,11 +237,11 @@ form.example button:hover {
 }
 
 .dropdown .dropbtn {
-  font-size: 18px;  
+  font-size: 16px;  
   border: none;
   outline: none;
   color: white;
-  padding: 14px 16px;
+  padding: 10px 15px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -316,8 +276,7 @@ form.example button:hover {
   display: block;
 }
 /* ................... */
-</style>
-   
+  </style>
   <style>
   .menu {
   display: none; /* Hidden by default */
@@ -431,56 +390,45 @@ label #sidebar_btn:hover{
   width: 22%;
   margin-left: 60%;
   border-radius: 4px;
+
 }
- </style>
+   </style>
+    <body>
+    <div style="position:absolute;margin-left:11%;
+    margin-right:20%;
+    width:80%;border:1px solid #f1f1f1;">
    
-   <body>
-   <div style="position:fixed; margin-left:13%;
-    margin-right:13%;
-    width:74%; border: 1px solid #ccc;background-color:white;">
-   
-   <div class="header">
-   <div class="logo">
+   <div class="logo" style="margin-top:5px;">
    <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg" width="140" height="110"/>
+   <img src="${images}/logo.jpg" width="150" height="90"/>
    </div>
+   
+  <!--  <div class="header"> -->
+   <%--  <div class="logo">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/logo.jpg" width="150" height="110"/>
+   </div> --%>
     
-  <div class="call"> 
-  <span  class='fas fa-user-circle' style="color:green;"></span> 
-  Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
-      
-      <div id="id05" class="menu">
-      <div class="sidebar">
-      <center>
-      <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
-      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
-      </center>
-      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="${pageContext.request.contextPath }/home/currentorder"><i class="fa fa-bars"></i> <span>My Orders</span></a>
-      <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
-      <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
-      <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
-      <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
-      <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i><span>Log Out</span></a>
-      </div>
-      </div>
-       
- <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;color: black;">${customer.location},${customer.cities}</a> | 
+ <div class="call" style="margin-top:5px;"> 
+         
+ <span class="fas fa-map-marker-alt" style="color:green;"></span><%-- ${kiosklocation.location},${kiosklocation.cities} --%>
+ <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">Mihan,Nagpur</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
 
-<span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
+ <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
 
-<span class='fas fa-sign-out-alt' style="color:green;"></span> 
-<a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
+ <span class="fa fa-edit" style="color:green;"></span>
+ <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> | 
+ 
+ <span class='fas fa-unlock-alt' style="color:green;"></span>
+ <a href="${pageContext.request.contextPath}/login" style="text-decoration: none;color: black;">Hello,Sign In</a>
+ 
+ <!-- The Modal -->
+ <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
   <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/regcontinueLocation" modelAttribute="kioskLocation" >
+  <form method="post" action="${pageContext.request.contextPath}/continueLocation" modelAttribute="kioskLocation">
   <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
   <div class="row">
   <div class="col-75">
@@ -505,20 +453,19 @@ label #sidebar_btn:hover{
  <input type="submit" value="Continue" style="width: 30%;"/>
  </div></p></form>
  </div>
-</div>
-  </div>
-  </div>
+ </div>
+ </div>
   
-   
-  <div class="search" style="border:;margin-left:18%;width:100%;">                                                 
+  <div class="search" style="margin-left:18%;width:100%;margin-top:32px;">                                                 
   <form class="example">
-  <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:55%;padding:12px 12px;">
+  <input type="text" placeholder="Search For Vegetabels,Milk And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:55%;padding:10px 10px;">
   <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
-  <div class="badge" id="output">1</div>
+  <div class="badge" id="output">0</div>
   </a> 
   </form>
+  
   <div id="id06" class="cartpopup">
   <div class="cart-content">
   Yout cart is Empty
@@ -544,15 +491,8 @@ label #sidebar_btn:hover{
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
       <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
       </div>
-      </div>
-       
-
- <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;">${customer.location},${customer.cities}</a> 
- |
-<span class='fas fa-sign-out-alt' style="color:green;"></span> 
-<a href="${pageContext.request.contextPath }/login/logout"style= "text-decoration: none;">Log Out</a>
-           
+      </div> 
+ --%>       
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -584,8 +524,9 @@ label #sidebar_btn:hover{
  <input type="submit" value="Continue" style="width: 30%;"/>
  </div></p></form>
  </div>
-</div> --%>
+</div> 
  </div>
+ 
  <script>
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -614,12 +555,9 @@ window.onclick = function(event) {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="#">Fruit Vegetable</a>
+      <a href="#">leafy vegetable</a>
+      <a href="#">Milk</a>
     </div>
   </div> 
 <div class="dropdown">
@@ -635,9 +573,8 @@ window.onclick = function(event) {
       <a href="#">Link 3</a>
     </div>
   </div> 
- 
   <div class="dropdown">
-    <button class="dropbtn">More 
+    <button class="dropbtn">More
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -647,16 +584,26 @@ window.onclick = function(event) {
       <a href="#">Link 1</a>
       <a href="#">Link 2</a>
       <a href="#">Link 3</a>
-      </div>
-      
-      </div>
-      
-    <div class="dropdown">
-    <button class="dropbtn">Home
+    </div>
+  </div> 
+ 
+ <security:authorize access="hasRole('ADMIN')">  
+  <div class="dropdown">
+    <button class="dropbtn">Manage
+      <i class="fa fa-caret-down"></i>
     </button>
+    <div class="dropdown-content">
+      <a href="${pageContext.request.contextPath }/product/viewAll">Manage Product</a>
+      <a href="${pageContext.request.contextPath }/kiosk/listKiosk">Manage kiosk</a>
+      <a href="${pageContext.request.contextPath }/location/listLocation">Manage Location</a>
       </div>
+      </div>
+      </security:authorize>
+						
+      
       </div> 
       </div>
+     
      
      <script>
      function myFunction() {

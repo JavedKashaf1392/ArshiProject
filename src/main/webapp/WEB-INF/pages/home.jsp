@@ -937,7 +937,16 @@ color: black;
 
 <!-- ..................................login popup................. -->
 
-   <div id="id01" class="modal">
+  <div id="id01" class="modal">
+          
+          <c:if test="${not empty error}">
+		  <div class="error">${error}</div>
+		  </c:if>
+		
+		<c:if test="${not empty msg}">
+		<div class="msg">${msg}</div>
+		</c:if>
+		
   <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post"  modelAttribute="customer">
   <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;">Log In VeggieFridge</h2>
       <div class="login">
@@ -993,7 +1002,6 @@ color: black;
   color: white;
   border: none; margin-top: 2%;margin-left: 2%;border-radius:5px;">SignUp</button> 
   </form>
-  <span style="color: red;">${failed}</span>
 </div>
 
 <!-- .....................sign up............ -->

@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -119,7 +118,7 @@ public class AppController {
 	      if (auth != null){    
 	         new SecurityContextLogoutHandler().logout(request, response, auth);
 	      }
-	      return "login";
+	      return "redirect:/login";
 	   }
 
 	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
@@ -196,6 +195,7 @@ public class AppController {
 			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
+		
 		if (error != null) {
 			model.addObject("error","Invalid username and password!");
 			getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION");

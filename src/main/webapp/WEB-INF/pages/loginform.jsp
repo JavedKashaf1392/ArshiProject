@@ -12,9 +12,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
+
 font-family: Arial, Helvetica, sans-serif;
  background-color:#f1f1f1;
 
+}
+
+.msg {
+    text-align:center;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: white;/* #31708f */
+	background-color:#4CAF50;  /* #d9edf7 */
+	border-color: #bce8f1;
 }
 
 /* Full-width input fields */
@@ -26,6 +38,7 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
 /* Full-width input fields */
 input[type=email], input[type=password] {
   width: 100%;
@@ -153,11 +166,11 @@ span.psw {
 		</c:if>
 		
 		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
-      <font color="red">
+        <font color="red">
         Your login attempt was not successful due to <br/><br/>
         <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
-      </font>
-       </c:if>
+        </font>
+        </c:if>
      
     <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
    

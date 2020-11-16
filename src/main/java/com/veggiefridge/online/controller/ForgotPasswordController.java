@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.MailService;
@@ -67,12 +66,11 @@ public class ForgotPasswordController {
 	// model.put("email", email);
 	// return "changePassword";
 	// }
-
+	
 	@RequestMapping(value = "/newPassword/{email}")
 	public String resetPassword(@PathVariable String email, Model model)
-
 	{
-		// check if the email id is valid and registered with us.
+		 //check if the email id is valid and registered with us.
 		Customer customer = new Customer();
 		customer.setEmail(email);
 		model.addAttribute("customer", customer);
@@ -265,13 +263,8 @@ public class ForgotPasswordController {
 						+ "                            </div>\r\n" + "  \r\n"
 						+ "<h6 style=\"color:red;\">This is a system generated email, please do not reply</h6>    \r\n"
 						+ " \r\n" + "    \r\n" + " </form>\r\n" + " </div>\r\n" + "</body>\r\n" + "</html>", true); // Use
-																													// this
-																													// or
-																													// above
-																													// line.
-
+					
 				helper.setTo(email);
-
 				mailSenderObj.send(mimeMessage);
 				System.out.println("message sent succesfully");
 
@@ -287,7 +280,7 @@ public class ForgotPasswordController {
 		return "checkMail";
 	}
 
-	// send attachment
+	 //send attachment
 	@RequestMapping(value = "sendMail")
 	public void sendMail(final String from, final String to, final String subject, final String msg) {
 		try {
@@ -300,14 +293,13 @@ public class ForgotPasswordController {
 			// attach the file
 			FileSystemResource file = new FileSystemResource(new File("vf-online/WEB-INF/pages/footer.jsp"));
 			helper.addAttachment("forgotpassword", file);// file will be sent by this name
-
 			mailSenderObj.send(message);
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
 	}
 
-	// mapping set New Password
+	   //mapping set New Password
 	@RequestMapping(value = "/passwordChanged", method = RequestMethod.POST)
 	public String setNewPassword(@ModelAttribute("customer") Customer cust, ModelMap map, BindingResult resultcust) {
 
@@ -317,7 +309,7 @@ public class ForgotPasswordController {
 			// update password and Acct Status $ Displyay Successe Message
 
 			/* customer.setPassword(cust.getNewPassword()); */
-			customer.setPassword(cust.getNewPassword());
+			customer.setPassword(EncryptPassword.sha256(cust.getNewPassword()));
 			customerservice.updateCustomer(customer);
 			System.out.println("update customer successfully");
 		}

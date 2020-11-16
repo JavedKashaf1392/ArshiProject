@@ -35,6 +35,8 @@
 		
 		<intercept-url pattern="/kiosk/**" access="hasRole('ROLE_ADMIN')" />
 		
+		<intercept-url pattern="/customer/**" access="hasRole('ROLE_ADMIN')" />
+		
 		<intercept-url pattern="/product/**" access="hasRole('ROLE_ADMIN')" />
 		
 	    <intercept-url pattern="/location/**" access="hasRole('ROLE_ADMIN')" />
@@ -57,7 +59,7 @@
 			/> <intercept-url pattern="/location/listLocation" access="hasRole('ADMIN')" 
 			/> -->
 
-		<form-login login-page="/login?login_error=1"
+		<form-login login-page="/login"
 			login-processing-url="/appLogin" username-parameter="email"
 			password-parameter="password" always-use-default-target="true"
 			default-target-url="/defaultTarget" />

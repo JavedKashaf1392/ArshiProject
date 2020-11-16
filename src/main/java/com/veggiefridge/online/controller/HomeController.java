@@ -122,6 +122,7 @@ public class HomeController {
 		model.setViewName("registerdhome");
 		return model; 
 	} 
+	
 	    //Edit profile
 		@RequestMapping(value = "/editProfile")
 		public ModelAndView editProfile(ModelAndView model) {
@@ -321,6 +322,14 @@ public class HomeController {
 				@RequestMapping(value = "/login")
 				public ModelAndView login(ModelAndView model) {
 					model.setViewName("/loginform");
+					return model;
+				}
+				
+
+				//home
+				@RequestMapping(value = "/join")
+				public ModelAndView join(ModelAndView model) {
+					model.setViewName("/joinmemebership");
 					return model;
 				}
 				

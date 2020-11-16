@@ -1,3 +1,4 @@
+    
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -10,8 +11,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-   
-    
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@ body
     padding: 20px;
     padding: 20px;
     width: 100%;
-    height: 30px;
+    /* height:30px; */
 }
 
 .logo{
@@ -49,19 +49,17 @@ body
 /* call */
 .call{
 /* border:1px solid black;   */
-font-size:18px;
-margin-top:1%;
+font-size:16px;
 float: right;
-margin-right:7%;
+margin-right:6%;
 }
-
 
   .notification {
   margin-left:4%;
   background-color:#4CAF50;
   color: white;
   text-decoration: none;
-  padding: 14px 28px;
+  padding: 12px 24px;
   position: relative;
   display: inline-block;
   border-radius:4px;
@@ -76,7 +74,7 @@ margin-right:7%;
   position: absolute;
   top: -10px;
   right: -10px;
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 50%;
   background-color: red;
   color: white;
@@ -104,21 +102,6 @@ input[type=text], select, textarea {
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
-}
-
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: center;
-  margin-top: 10px;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
 }
 
 /* The Modal (background) */
@@ -207,7 +190,7 @@ form.example input[type=text] {
 
   form.example button {
   width:5%;
-  padding:10px 10px;
+  padding:8px 7px;
   background: #4CAF50;
   color:white;
   font-size:17px;
@@ -224,8 +207,7 @@ form.example button:hover {
 .navbar {
   overflow: hidden;
   background-color:#4CAF50 ;
-  margin-top:1%;
-  
+  margin-top:16px;
 }
 .navbar a {
   float:left;
@@ -233,7 +215,6 @@ form.example button:hover {
   color: white;
   text-align: center;
   text-decoration: none;
-  padding:4px 8px;
 }
 
 .dropdown {
@@ -242,11 +223,11 @@ form.example button:hover {
 }
 
 .dropdown .dropbtn {
-  font-size: 18px;  
+  font-size: 16px;  
   border: none;
   outline: none;
   color: white;
-  padding: 14px 16px;
+  padding: 10px 15px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -396,23 +377,28 @@ label #sidebar_btn:hover{
   margin-left: 60%;
   border-radius: 4px;
 }
-</style>
-   
+    </style>
     <body>
-   <div style="position:absolute;margin-left:7%;
-    margin-right:7%;
-    width:86%;border:1px solid #f1f1f1;">
    
-   <div class="header">
-   <div class="logo">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg" width="150" height="110"/>
-   </div>
+   <!--   
+   <div style="position:absolute;margin-left:11%;
+    margin-right:20%;
+    width:80%;border:1px solid #f1f1f1;">
+    -->
     
- <div class="call"> 
+   <div style="margin-left:11%;
+    margin-right:20%;
+    width:80%;border:1px solid #f1f1f1;">
+    
+   <div class="logo" style="margin-top:5px;">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/logo.jpg" width="150" height="90"/>
+   </div> 
+   
+ <div class="call" style="margin-top:5px;"> 
          
  <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${kiosklocation.location},${kiosklocation.cities}</a>  | 
+ <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
 
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
 
@@ -454,18 +440,18 @@ label #sidebar_btn:hover{
  </div></p></form>
  </div>
  </div>
-  </div>
-  </div>
+ </div>
   
-  <div class="search" style="margin-left:18%;width:100%;border:;">                                                 
+  <div class="search" style="margin-left:18%;width:100%;margin-top:34px;">                                                 
   <form class="example">
-  <input type="text" placeholder="Search For Vegetabels Fruits And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:55%;padding:12px 12px;">
+  <input type="text" placeholder="Search For Vegetabels,Milk And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:55%;padding:10px 10px;">
   <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
   <div class="badge" id="output">0</div>
   </a> 
   </form>
+  
   <div id="id06" class="cartpopup">
   <div class="cart-content">
   Yout cart is Empty
@@ -549,7 +535,6 @@ window.onclick = function(event) {
   }
 }
 </script>
-
   <div class="navbar">
   <div class="dropdown">
     <button class="dropbtn">Search By Catogary  
@@ -574,6 +559,19 @@ window.onclick = function(event) {
       <a href="#">Link 3</a>
     </div>
   </div> 
+  <div class="dropdown">
+    <button class="dropbtn">More
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div> 
  
  <security:authorize access="hasRole('ADMIN')">  
   <div class="dropdown">
@@ -587,10 +585,10 @@ window.onclick = function(event) {
       </div>
       </div>
       </security:authorize>
-						
-      
       </div> 
       </div>
+      </div>
+     
      
      <script>
      function myFunction() {
