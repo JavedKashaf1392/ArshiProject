@@ -37,7 +37,9 @@ body
     padding: 0;
     font-family: "Roboto", sans-serif;
 }
- 
+      
+      /* Slider Css */
+      
     .galleryContainer{
     width: 100%;
     height: 500px;
@@ -234,27 +236,23 @@ body
     to {opacity: 1;margin-top: 0px;}
 }
 
+/* CLOSE SLIDER CSS */
 
 /* footercoder  */
 
 .footer{
-    margin-left:13%;
-    margin-right:13%; 
+    /* margin-left:13%;
+    margin-right:13%;  */
     position:relative;
-    width:74%; 
-   /*  width:100%; */
+    /* width:75%;  */
+    width:100%; 
     height:500px;
     background: #4CAF50; 
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    
-   
-  
     /* border:1px solid black;  */
-    
 }
-
 .carousel{
     padding: 20px;
     padding: 20px;
@@ -270,10 +268,9 @@ body
      display: -webkit-box;
      display: -ms-flexbox;
      display: flex; 
-
 }
+
  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
- 
  *{
     margin: 0;
     padding: 0;
@@ -287,7 +284,7 @@ body
 }
 .main-content .box{
     flex-basis: 50%;
-    padding: 10px 20px;
+    padding: 20px 80px;
 }
 .box h2{
     font-size: 1.125rem;
@@ -438,6 +435,7 @@ body
 }
 
 /* .................... */
+
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
@@ -531,7 +529,160 @@ body
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
 }
+
+/* PRODUCT CSS */
+
 .container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  /*   background: skyblue; */
+    margin-top: 20px;
+    margin-right:11%;
+}
+
+.container ul{
+    padding:0px;
+    margin:0px;
+}
+
+.container ul li{
+    float:left;
+    list-style: none;
+    width:20%;
+    height:410px;
+  /*   background: pink; */
+    margin :24px 0px 24px 59px; 
+   /*  border:2px solid blue; */
+   border:1px solid #d9d9d9; 
+   box-sizing: border-box;
+   transition: 1s;
+  
+}
+.container ul li:hover{
+   /*  opacity: 0.7; */
+   
+     	transform: scale(1.1);
+		/* background:#FFEFD5;  */
+		z-index: 2;
+	  /*  box-shadow: 2px 2px 2px #000; */
+}
+
+.container ul li .product-meta{
+    width: 105%;
+    height:100px;
+    line-height: 50px;
+   /*  background: blue;  */   
+  /*  background: pink; */
+    text-align: left;
+    color:white;
+    font-size: 18px;
+   
+}
+.container ul li .product-meta{
+
+
+}
+.container ul li  .product-price-wrap {
+  width: 100%;
+  height:21%;
+  display: -ms-grid;
+  display: grid; */
+ -ms-grid-columns: auto auto;
+  margin-top: 90%;
+}
+.container ul li  .product-price-wrap .left {
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+.container ul li .product-price-wrap .left .price {
+ /*  color: #111; */
+  color:black;
+  font-weight: 700;
+}
+
+.container ul li  .product-price-wrap .left .old-price {
+  font-size: 14px;
+  text-decoration: line-through; 
+ /*  color: #999; */
+  color:black;
+  font-weight: 300;
+  position: relative;
+/*   display: block; */
+   color:black;
+}
+.container ul li  .product-price-wrap .left .old-price {
+  font-size: 14px;
+  text-decoration: line-through; 
+ /*  color: #999; */
+  color:black;
+  font-weight: 300;
+  position: relative;
+/*   display: block; */
+   color:black;
+}
+.container ul li  .product-price-wrap .right {
+ /*  -ms-grid-column-align: end;
+      justify-self: end; */
+}
+
+.container ul li  .product-price-wrap .right .btn {
+  float:right;
+  left:50%;
+  /* background-color: #1864ff; */
+  background-color:#4CAF50;
+  border: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight:600;
+  padding: 10px 20px;
+  border-radius: 3px;
+   -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; 
+ 
+}
+.container ul li .product-price-wrap .right .btn:hover, .card .product-meta .product-price-wrap .right .btn:focus, .card .product-meta .product-price-wrap .right .btn:active {
+  outline: none;
+  cursor: pointer;
+ background-color: green;
+}
+
+ .label-clip {
+  background-color: #1864ff; 
+  background-color: #4CAF50;
+  border-radius: 0 3px 3px 3px;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  padding: 5px 10px;
+  z-index: 1;
+  top: -10px;
+  left: 128px;
+  position: relative;
+  width:38%;
+} 
+
+.label-clip::before {
+  content: '';
+  /* border-right-color: #123bb4 !important; */
+  border-right-color:#4CAF50 !important;
+  position:absolute;
+  top: 0;
+  left: -10px;
+  height: 0;
+  width: 0;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  background: none !important;
+} 
+@media screen and (max-width:1250px){
+    .container ul li{
+        width:40%;
+        margin-left: 40px;   
+    }
+    .container{
     width: 100%;
     margin: auto;
     overflow: hidden;
@@ -700,25 +851,40 @@ body
         <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
         <div class="imageHolder">
      <spring:url value="/images" var="images" />
-	<img src="${images}/img_1.jpg"/>1366X768
-            <p class="captionText">Caption Text-01</p>
+	<img src="${images}/organic.jpg"/>1366X768
+            <p class="captionText">Organic Vegetables</p>
+        </div>
+         <div class="imageHolder">
+           <spring:url value="/images" var="images" />
+	<img src="${images}/indian cheery.jpg" />
+            <p class="captionText">indian cheery</p>
         </div>
         <div class="imageHolder">
             <spring:url value="/images" var="images" />
-	<img src="${images}/img_2.jpg" />
-            <p class="captionText">Caption Text-02</p>
+	<img src="${images}/fresh mango.jpg" />
+            <p class="captionText">fresh mango</p>
         </div>
         <div class="imageHolder">
             <spring:url value="/images" var="images" />
-	<img src="${images}/img_3.jpg" />
-            <p class="captionText">Caption Text-03</p>
+	<img src="${images}/c5.jpg" />
+            <p class="captionText">Pineapple</p>
+        </div>
+        <div class="imageHolder">
+            <spring:url value="/images" var="images" />
+	<img src="${images}/bigimage2.jpg" />
+            <p class="captionText">Cleaning</p>
         </div>
         <div class="imageHolder">
            <spring:url value="/images" var="images" />
-	<img src="${images}/img_4.jpg" />
-            <p class="captionText">Caption Text-04</p>
+	<img src="${images}/lastimg.jpg" />
+            <p class="captionText">Grocerry</p>
         </div>
-    </div>
+         <div class="imageHolder">
+           <spring:url value="/images" var="images" />
+	<img src="${images}/f4.jpg" />
+            <p class="captionText">fruits</p>
+        </div>
+        </div>
     <div id="dotsContainer"></div>
 </div>
 <script src="myScript.js">
@@ -909,11 +1075,81 @@ function playPauseSlides() {
         playPauseBtn.style.backgroundPositionY="-33px"
     }
 }
-</script>
-
+     </script>
+  
+  <!--  ALL PRODUCT -->
+      
+  <!-- <div class="carousel"> -->
+  <div class="container">    
+  <ul>
+  <c:forEach var="product" items="${listProduct}">
+ <!--  1 -->
+  <li>
+  <div class="product-img">
+  <h4 class="label-clip">Get ${product.discount}% OFF</h4>
+   
+  <spring:url value="/images" var="images" />
+  <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
+  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
+  </div>
+            <div class="product-meta">
+            <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
+            <h6 style="color: black;">${product.description}</h6>
+            <h6 style="color: black;"> Size:${product.size} g<h6>
+            </div>
        
-       
-       
+            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
+                   <div class="left">
+                   <span class="price">
+                   <span class="mrp" style=" font-size: 14px;
+  color:black;
+  font-weight: 300;
+  position: relative;
+   color:black;">MRP</span>
+ 
+                   <span class="old-price">Rs ${product.price}</span>
+                    Rs ${product.price-product.discount * product.price/100}
+                    </span>
+            
+            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
+  /* background-color: #1864ff; */
+  background-color:#4CAF50;
+  border: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 30px;
+  border-radius: 3px;
+ margin-left:19%;margin-top:14%;"> 
+			
+			<i class="fa fa-shopping-cart"></i> 
+			Add to cart
+		    </button>
+            </div>
+           
+        
+        <div class="right">
+         
+        <%-- "${pageContext.request.contextPath}/cart/buy/${product.productid}"
+         --%><!-- add/{productid}/product -->
+      
+        <!-- class="btn btn-success" -->
+           
+         <%--  onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
+          --%>
+            <%-- <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
+			<i class="fa fa-shopping-cart"></i> 
+			Add to cart
+		    </button>  --%>
+        </div></div> 
+        </li>
+       </c:forEach>
+       </ul>
+       </div>
+      <!--  CLOSE PRODUCT -->
+      
+      <!--  Footer Code -->
+      
       <div class="footer">
       <div class="main-content">
       <div class="left box">
@@ -1001,7 +1237,7 @@ Message *</div>
 
                     <div class="bottom">
                     <center>
-                    <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
+                    <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">veggiefridge</a> | </span>
                     <span class="far fa-copyright"></span> 2020 All rights reserved.
                     </center>
                     </div>

@@ -593,9 +593,7 @@ input[type=submit]:hover {
  
    <!--  header -->
    <jsp:include page = "header.jsp"/>
-
-   
-                      
+                
   <!--   close header  -->
  <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
 
@@ -650,7 +648,6 @@ function showSlides(n) {
   <hr>
   <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
   <hr>
-  
    -->
   <div class="carousel">
   <div class="container">

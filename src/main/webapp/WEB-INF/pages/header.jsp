@@ -1,3 +1,4 @@
+    
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -103,21 +104,6 @@ label {
   display: inline-block;
 }
 
-/* input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: center;
-  margin-top:px;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
- */
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -310,10 +296,10 @@ form.example button:hover {
   position:absolute;
   left: 0;
   width: 320px;
-  height: 60%;
+  height: 59%;
   transition: 0.5s;
   transition-property: right;
-  margin-left:63%;
+  margin-left:71%;
 }
 
 .sidebar h4{
@@ -390,37 +376,67 @@ label #sidebar_btn:hover{
   width: 22%;
   margin-left: 60%;
   border-radius: 4px;
-
 }
-   </style>
+ input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+  margin-top:2px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+} 
+    </style>
     <body>
-    <div style="position:absolute;margin-left:11%;
+   
+   <!--   
+   <div style="position:absolute;margin-left:11%;
     margin-right:20%;
     width:80%;border:1px solid #f1f1f1;">
-   
+    -->
+    
+   <div style="margin-left:11%;
+    margin-right:20%;
+    width:80%;border:1px solid #f1f1f1;">
+    
    <div class="logo" style="margin-top:5px;">
    <spring:url value="/images" var="images" />
    <img src="${images}/logo.jpg" width="150" height="90"/>
-   </div>
+   </div> 
    
-  <!--  <div class="header"> -->
-   <%--  <div class="logo">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg" width="150" height="110"/>
-   </div> --%>
-    
  <div class="call" style="margin-top:5px;"> 
-         
- <span class="fas fa-map-marker-alt" style="color:green;"></span><%-- ${kiosklocation.location},${kiosklocation.cities} --%>
- <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">Mihan,Nagpur</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
-
- <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
-
- <span class="fa fa-edit" style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> | 
  
+ <security:authorize access="hasAnyRole('ADMIN', 'USER')">  
+ <span class='fas fa-user-circle' style="color:green;"></span>
+ <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Welcome : ${pageContext.request.userPrincipal.name}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
+ </security:authorize> 
+  
+  <security:authorize access="hasRole('USER')">
+  <span class="fas fa-map-marker-alt" style="color:green;"></span><%-- ${kiosklocation.location},${kiosklocation.cities} --%>
+  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;"> HiTectCity,Mumbai</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
+  </security:authorize>
+  
+ <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
+ 
+ <%--  <security:authorize access="permitAll">
+ <span class="fa fa-edit" style="color:green;"></span>
+ <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> |  
+ </security:authorize>
+ 
+ <security:authorize access="permitAll">
  <span class='fas fa-unlock-alt' style="color:green;"></span>
  <a href="${pageContext.request.contextPath}/login" style="text-decoration: none;color: black;">Hello,Sign In</a>
+  </security:authorize> --%>
+  
+ <security:authorize access="hasAnyRole('ADMIN', 'USER')">   
+ | <span class='fas fa-sign-out-alt' style="color:green;"></span>
+   <a href="<c:url value="/logout" />" style="text-decoration: none;color: black;"> Logout</a>
+ </security:authorize>  
  
  <!-- The Modal -->
  <div id="myModal" class="modal">
@@ -456,15 +472,15 @@ label #sidebar_btn:hover{
  </div>
  </div>
   
-  <div class="search" style="margin-left:18%;width:100%;margin-top:32px;">                                                 
+  <div class="search" style="margin-left:18%;width:100%;margin-top:34px;">                                                 
   <form class="example">
   <input type="text" placeholder="Search For Vegetabels,Milk And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:55%;padding:10px 10px;">
   <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
   <div class="badge" id="output">0</div>
-  </a> 
-  </form>
+  </a>
+ </form>
   
   <div id="id06" class="cartpopup">
   <div class="cart-content">
@@ -475,8 +491,8 @@ label #sidebar_btn:hover{
  
   
       <div class="right" style="float: right;">
-      <%-- <span  class='fas fa-user-circle' style="color:green;"></span> 
-      Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> | 
+     <%--  <span  class='fas fa-user-circle' style="color:green;"></span> 
+      Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> |  --%>
       <div id="id05" class="menu">
       <div class="sidebar">
       <center>
@@ -492,7 +508,7 @@ label #sidebar_btn:hover{
       <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
       </div>
       </div> 
- --%>       
+       
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -560,6 +576,7 @@ window.onclick = function(event) {
       <a href="#">Milk</a>
     </div>
   </div> 
+  <security:authorize access="hasRole('USER')">
 <div class="dropdown">
     <button class="dropbtn">Discounts
       <i class="fa fa-caret-down"></i>
@@ -573,6 +590,9 @@ window.onclick = function(event) {
       <a href="#">Link 3</a>
     </div>
   </div> 
+  </security:authorize>
+  
+  <security:authorize access="hasRole('USER')">
   <div class="dropdown">
     <button class="dropbtn">More
       <i class="fa fa-caret-down"></i>
@@ -585,7 +605,8 @@ window.onclick = function(event) {
       <a href="#">Link 2</a>
       <a href="#">Link 3</a>
     </div>
-  </div> 
+  </div>
+  </security:authorize> 
  
  <security:authorize access="hasRole('ADMIN')">  
   <div class="dropdown">
@@ -598,10 +619,20 @@ window.onclick = function(event) {
       <a href="${pageContext.request.contextPath }/location/listLocation">Manage Location</a>
       </div>
       </div>
-      </security:authorize>
-						
-      
+     </security:authorize> 
+     
+ 
+    <security:authorize access="hasRole('USER')">    
+    <div class="dropdown">
+    <button class="dropbtn">Join Membership
+    </button>
+    </div>
+    </security:authorize>
+     
+      </div>
+     
       </div> 
+      </div>
       </div>
      
      

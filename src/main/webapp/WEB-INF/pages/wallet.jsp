@@ -141,18 +141,17 @@ input[type=submit]:hover {
 }
 
 .footer{
-    margin-left:13%;
-    margin-right:13%;
+   /*  margin-left:13%;
+    margin-right:13%; */
     position:relative;
-    width:74%;
+   /*  width:74%; */
+   width:100%;
     height:500px;
     background: #4CAF50; 
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
     
-   
-  
     /* border:1px solid black;  */
     
 }
@@ -189,7 +188,7 @@ input[type=submit]:hover {
 }
 .main-content .box{
     flex-basis: 50%;
-    padding: 10px 20px;
+    padding: 10px 80px;
 }
 .box h2{
     font-size: 1.125rem;
@@ -587,6 +586,46 @@ input[type=submit]:hover {
     }
     /* ........................................... */
  
+/* #myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 70%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-left:15%; 
+  margin-right:auto;
+} */
+
+ #myTable {
+   margin-left:auto; 
+   margin-right:auto;
+  text-align: center;
+  border-collapse: collapse;
+  width: 70%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  align-content: center;
+  background-color:white;
+} 
+
+#myTable th, #myTable td {
+  text-align: center;
+  padding: 12px;
+  
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: forestgreen;
+  
+}
  
   </style>  
   <body >
@@ -654,111 +693,146 @@ function showSlides(n) {
    -->
   <div class="carousel">
   <div class="container">
-  
- <%--  <ul>
-  <c:forEach var="product" items="${listProduct}">
- <!--  1 -->
-  <li>
-  <div class="product-img">
-  <h4 class="label-clip">Get ${product.discount}% OFF</h4>
-   
-  <spring:url value="/images" var="images" />
-  <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
-  </div>
-            <div class="product-meta">
-            <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
-            <h6 style="color: black;">${product.description}</h6>
-            <h6 style="color: black;"> Size:${product.size} g<h6>
-            </div>
+  <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;"><a href="#" style="color:green;text-decoration: none;font-size:15px;float: left;" >Home</a>My Wallet</h2></div><br>
+<div style="margin-top:7%;">
+
+<table style="margin-left:13%;width:10%;cellspacing:2%; border-spacing:28px;">
+       <th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px; margin-left:auto; 
+   margin-right:auto;
+  text-align: center;
+  border-collapse: collapse;
+  width: 70%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  align-content: center;
+  background-color:white;
+}">     
+<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
+
+<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:orange;
+        border-radius: 6px;
+        outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:40px;color:white"></span></a>
+Membership Id:3
+       </th>
+
+<th style="background-color:white;padding:15px 70px; width:%;border-radius:8px;">     
+<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#00cccc;
+        border-radius: 6px;
+        outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:40px;"></span></a>
+        Balance:5000.00
+
+
+       </th>       
+       <th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px;">     
+<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
+
+<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:red;
+        border-radius: 6px;
+        outline: none;margin-top:6px"><span class="fa fa-thumbs-up" style="font-size:35px;color:white"></span></a>
+        Card:11
+       </th>
        
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
-                   <div class="left">
-                   <span class="price">
-                   <span class="mrp" style=" font-size: 14px;
-  color:black;
-  font-weight: 300;
-  position: relative;
-   color:black;">MRP</span>
+<th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px;">     
+<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
+
+<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:6px"><span class="fa fa-shopping-cart" style="font-size:35px;color:white"></span></a>
+        Transaction:0
+       </th>
+       </table>
+        
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name" style=" background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 70%;
+  font-size: 16px;
+  padding: 12px 20px 12px 0px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-left:15%; 
+  margin-right:30%;">
+
+<table id="myTable">
+    <tr class="header">
+    <th style="width:%;color:white;">Transaction Id</th>
+    <th style="width:%;color:white;">Date</th>
+     <th style="width:%;color:white;">Status</th>
+    <th style="width:%;color:white;">Amount</th>
+    </tr>
+  <tr>
+    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13788</a></td>
+    <td>03-07-2020</td>
+    <td><i class="" style="color:green"></i>Debit</td>
+    <td>Rs 1000</td>
+  </tr>
+    <tr>
+    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13789</a></td>
+    <td>03-07-2020</td>
+      <td><i class="" style="color:green"></i>Debit</td>
+    <td>Rs 1000</td>
+     
+  </tr>
+    <tr>
+    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13790</a></td>
+    <td>03-07-2020</td>
+      <td><i  style="color:green"></i>Debit</td>
+    <td>Rs 1000</td>
+  </tr>
+</table>
+  <a href="${pageContext.request.contextPath}/home/chooseanamount" style="display: inline-block;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:green;
+        border-radius: 6px;
+        outline: none;margin-top:6px;margin-left:15%;">Add Balance</a>
+      
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+  
+}
+</script>
+  
  
-                   <span class="old-price">Rs ${product.price}</span>
-                    Rs ${product.price-product.discount * product.price/100}
-                    </span>
-            
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
-  /* background-color: #1864ff; */
-  background-color:#4CAF50;
-  border: 0;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 7px 28px;
-  border-radius: 3px;
- margin-left:19%;margin-top:14%;"> 
-			
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button>
-                    </div>
-           
-        
-        <div class="right">
-         
-        "${pageContext.request.contextPath}/cart/buy/${product.productid}"
-        <!-- add/{productid}/product -->
-      
-        <!-- class="btn btn-success" -->
-           
-          onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
-         
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button> 
-        </div></div> 
-        </li>
-       </c:forEach>
-        
-      
-  <hr>
-  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
-  <hr>
-  <table style="border-spacing:30px;">
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="270" height="280" />
-   </a>
-   </th>
-  
-   
-   
-   <th>
-    <a href="#">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg"  width="270" height="280"/>
-    </a>
-   </th>
-  
-   
-  
-   <th>
-    <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   </tr>  
-  </table>
-  <br>
-   </ul> --%>
    </div>
    </div>
 

@@ -7,7 +7,6 @@
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <html>
 <head>
 
@@ -19,9 +18,6 @@
             });
         });
         </script>
-
-
-
 
 <style type="text/css">
 div {
@@ -92,9 +88,6 @@ div.a {
 .button4 {background-color: #4CAF50;
           border-radius: 12px;} /* Search */ 
 
-
-
-
 </head>
 </style>
 <body>
@@ -115,11 +108,6 @@ div.a {
 	</table>
 	</form>
 
-
-
-
-
-
 <script type="text/javascript" language="JavaScript">
 
 function checkCheckBoxes(theForm) {
@@ -134,10 +122,10 @@ function checkCheckBoxes(theForm) {
 }
 
    </script> 
+   
+   <div><h2><p style="color:green;">Product Details</p></h2></div>
 
-  <div><h2><p style="color:green;">Product Details</p></h2></div>
-
-    <form metod="get" onsubmit="return checkCheckBoxes(this);">
+   <form metod="get" onsubmit="return checkCheckBoxes(this);">
   
    <table id="Table1"  border="1" align="center" cellspacing="0">
    <tr>     

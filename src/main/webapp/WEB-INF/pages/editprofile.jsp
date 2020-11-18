@@ -800,7 +800,7 @@ input[type=submit]:hover {
    <!--  header -->
  <jsp:include page = "header.jsp"/>
  
-   <div class="galleryContainer">
+ <!--   <div class="galleryContainer">
     <div class="slideShowContainer">
         <div id="playPause" onclick="playPauseSlides()"></div>
         <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
@@ -824,7 +824,7 @@ input[type=submit]:hover {
         </div>
     </div>
     <div id="dotsContainer"></div>
-</div>
+</div> -->
 <script src="myScript.js">
     var slideIndex,slides,dots,captionText;
 function initGallery(){

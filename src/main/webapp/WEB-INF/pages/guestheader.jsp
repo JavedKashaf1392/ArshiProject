@@ -377,6 +377,20 @@ label #sidebar_btn:hover{
   margin-left: 60%;
   border-radius: 4px;
 }
+ input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+  margin-top:2px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+} 
     </style>
     <body>
    
@@ -396,18 +410,26 @@ label #sidebar_btn:hover{
    </div> 
    
  <div class="call" style="margin-top:5px;"> 
-         
- <span class="fas fa-map-marker-alt" style="color:green;"></span>
- <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
-
- <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
-
- <span class="fa fa-edit" style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> | 
  
+  <security:authorize access="permitAll">
+  <span class="fas fa-map-marker-alt" style="color:green;"></span>
+  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
+  </security:authorize>
+  
+  <security:authorize access="permitAll"> 
+ <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
+ </security:authorize>
+ 
+  <security:authorize access="permitAll">
+ <span class="fa fa-edit" style="color:green;"></span>
+ <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> |  
+ </security:authorize>
+ 
+ <security:authorize access="permitAll">
  <span class='fas fa-unlock-alt' style="color:green;"></span>
  <a href="${pageContext.request.contextPath}/login" style="text-decoration: none;color: black;">Hello,Sign In</a>
- 
+  </security:authorize>
+  
  <!-- The Modal -->
  <div id="myModal" class="modal">
 
@@ -559,6 +581,7 @@ window.onclick = function(event) {
       <a href="#">Link 3</a>
     </div>
   </div> 
+  
   <div class="dropdown">
     <button class="dropbtn">More
       <i class="fa fa-caret-down"></i>
@@ -585,6 +608,7 @@ window.onclick = function(event) {
       </div>
       </div>
       </security:authorize>
+      </div> 
       </div> 
       </div>
       </div>
