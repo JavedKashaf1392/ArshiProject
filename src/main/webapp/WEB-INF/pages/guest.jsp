@@ -1092,10 +1092,21 @@ function playPauseSlides() {
   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
   </div>
-            <div class="product-meta">
+             <div class="product-meta" style="margin-left:10px;">
             <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
+            <c:choose>
+		    <c:when test="${product.quantity < 1}">
+		    <span style="color:red">OUT OF STOCK !</span>
+				</c:when>
+				<c:otherwise>				
+					
+					<%-- <h6>Qty. Available:${product.quantity}</h6> --%>
+						
+				</c:otherwise>
+			
+			</c:choose>
             </div>
        
             <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">

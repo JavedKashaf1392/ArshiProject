@@ -18,9 +18,13 @@
         <title>Home screen of VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+       <link rel="icon" type="image/x-icon" href="favicon.png">
         <style>
         
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+font-family: Arial, Helvetica, sans-serif;
+background-color: white;
+}
 
 hr{
 border:1px solid #f1f1f1;
@@ -139,24 +143,20 @@ input[type=submit]:hover {
     box-sizing: border-box;
 }
 }
-
 .footer{
-    margin-left:13%;
-    margin-right:13%;
+   /*  margin-left:13%;
+    margin-right:13%; */
     position:relative;
-    width:74%;
+    width:100%;
     height:500px;
     background: #4CAF50; 
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    
-   
-  
     /* border:1px solid black;  */
+    margin-top: auto;
     
 }
-
 .carousel{
     padding: 20px;
     padding: 20px;
@@ -167,7 +167,7 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:350px;
+     height:1000px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -585,180 +585,283 @@ input[type=submit]:hover {
         width:40%;
         margin-left: 40px;   
     }
-    /* ........................................... */
- 
- 
+    
+    /* .....................slider css...................... */
+    .galleryContainer{
+    width: 100%;
+    height: 500px;
+    max-width: 1000px;
+    margin: auto;
+    user-select: none;
+    box-shadow: 0px 0px 3px 1px #00000078;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.galleryContainer .slideShowContainer{
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    background-color: gainsboro;
+    position: relative;
+}
+.galleryContainer .slideShowContainer #playPause{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background-image: url(images/playPause.png);
+    background-repeat: no-repeat;
+    z-index: 5;
+    background-size: cover;
+    margin: 5px;
+    cursor: pointer;
+}
+.galleryContainer .slideShowContainer #playPause:hover{
+    opacity: .7;
+}
+.galleryContainer .slideShowContainer .imageHolder{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+.galleryContainer .slideShowContainer .imageHolder img{
+    width: 100%;
+    height: 100%;
+}
+.galleryContainer .slideShowContainer .imageHolder .captionText{
+    display: none;
+}
+
+.galleryContainer .slideShowContainer .leftArrow,.galleryContainer .slideShowContainer .rightArrow{
+    width: 50px;
+    background: #00000036;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: background 0.5s;
+    height: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.galleryContainer .slideShowContainer .rightArrow{
+    left: auto;
+    right: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.galleryContainer .slideShowContainer .leftArrow:hover,.galleryContainer .slideShowContainer .rightArrow:hover{
+    background: #000000a8;
+    cursor: pointer;
+}
+.galleryContainer .arrow{
+    display: inline-block;
+    border: 3px solid white;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-bottom: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.galleryContainer .arrow.arrowLeft{
+    transform: rotateZ(-135deg);
+}
+.galleryContainer .arrow.arrowRight{
+    transform: rotateZ(45deg);
+}
+
+
+.galleryContainer .slideShowContainer>.captionTextHolder{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    background: #00000047;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+}
+.galleryContainer .slideShowContainer>.captionTextHolder>.captionText{
+    margin: 0;
+}
+
+.galleryContainer #dotsContainer{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.galleryContainer #dotsContainer .dots{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: #bbb;
+    cursor: pointer;
+    transition:background-color 0.5s;
+}
+.galleryContainer #dotsContainer .dots:first-child{
+    margin-left: 0;
+}
+.galleryContainer #dotsContainer .dots:hover,.galleryContainer #dotsContainer .dots.active{
+    background-color: #717171;;
+}
+
+.galleryContainer .moveLeftCurrentSlide{
+    animation-name: moveLeftCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+
+}
+.galleryContainer .moveLeftNextSlide{
+    animation-name: moveLeftNext;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveLeftCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: -100%;opacity: 1;}
+}
+@keyframes moveLeftNext {
+    from {margin-left: 100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+
+
+.galleryContainer .moveRightCurrentSlide{
+    animation-name: moveRightCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+.galleryContainer .moveRightPrevSlide{
+    animation-name: moveRightPrev;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveRightCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: 100%;opacity: 1;}
+}
+@keyframes moveRightPrev {
+    from {margin-left: -100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+.slideTextFromBottom {
+    animation-name: slideTextFromBottom;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromBottom {
+    from {opacity: 0;margin-top: 100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+.slideTextFromTop {
+    animation-name: slideTextFromTop;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromTop {
+    from {opacity: 0;margin-top: -100px}
+    to {opacity: 1;margin-top: 0px;}
+}
   </style>  
   <body >
  
    <!--  header -->
-   <jsp:include page = "header.jsp"/>
-                
-  <!--   close header  -->
- <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
-
-  <div class="mySlides fade"> -->
-  <%-- <spring:url value="/images" var="images" />
-  <img src="${images}/bigimage.jpg" width="1600" height="450" style="margin-top:12%;"/>
- </div>
-
-  <div class="mySlides fade">
- <!--  <div class="numbertext">2 / 3</div> -->
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
-  </div>
-
- <div class="mySlides fade">
- <spring:url value="/images" var="images" />
- <img src="${images}/c5.jpg" width="1300" height="400"/>
- </div>
-
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-  </script> --%>
-<!--   
-  <hr>
-  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
-  <hr>
-   -->
-  <div class="carousel">
-  <div class="container">
-  
- <%--  <ul>
-  <c:forEach var="product" items="${listProduct}">
- <!--  1 -->
-  <li>
-  <div class="product-img">
-  <h4 class="label-clip">Get ${product.discount}% OFF</h4>
-   
-  <spring:url value="/images" var="images" />
-  <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
-  </div>
-            <div class="product-meta">
-            <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
-            <h6 style="color: black;">${product.description}</h6>
-            <h6 style="color: black;"> Size:${product.size} g<h6>
-            </div>
-       
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
-                   <div class="left">
-                   <span class="price">
-                   <span class="mrp" style=" font-size: 14px;
-  color:black;
-  font-weight: 300;
-  position: relative;
-   color:black;">MRP</span>
+ <jsp:include page ="userheader.jsp"/>
  
-                   <span class="old-price">Rs ${product.price}</span>
-                    Rs ${product.price-product.discount * product.price/100}
-                    </span>
-            
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
-  /* background-color: #1864ff; */
-  background-color:#4CAF50;
-  border: 0;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 7px 28px;
-  border-radius: 3px;
- margin-left:19%;margin-top:14%;"> 
-			
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button>
-                    </div>
-           
-        
-        <div class="right">
-         
-        "${pageContext.request.contextPath}/cart/buy/${product.productid}"
-        <!-- add/{productid}/product -->
-      
-        <!-- class="btn btn-success" -->
-           
-          onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
-         
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button> 
-        </div></div> 
-        </li>
-       </c:forEach>
-        
-      
-  <hr>
-  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
-  <hr>
-  <table style="border-spacing:30px;">
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="270" height="280" />
-   </a>
-   </th>
+  <!--  <div class="sidemenu" style="margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color: #f1f1f1;
+  position: absolute;
+  height:75%;
+  /*overflow: auto;*/
+  margin-left:15%;">
   
-   
-   
-   <th>
-    <a href="#">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg"  width="270" height="280"/>
-    </a>
-   </th>
+  <a class="active" href="#home" style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; ">My Account</a>
   
-   
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Edit Profile</a> 
   
-   <th>
-    <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   </tr>  
-  </table>
-  <br>
-   </ul> --%>
-   </div>
-   </div>
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Cart</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Order</a>
+  
+  <a href="#about"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "-> - My Wallet</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Customer Service</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Customer Service</a>
+  </div>
 
+ <div class="center" style=" margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+  margin-left:30%;">
+  <h2>Responsive Sidebar Example</h2>
+  <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or less.</p>
+  <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
+  <h3>Resize the browser window to see the effect.</h3>
+  </div> -->
  <!--  ............................  -->
       <div class="footer">
       <div class="main-content">
@@ -867,8 +970,8 @@ Message *</div>
         sessionStorage.setItem("SelItem", selVal);
     });
    </script>
- 
- 
+   
+  <!-- ..............slider script.................. -->
   
   </body>
   </html>

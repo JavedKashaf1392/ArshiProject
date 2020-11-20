@@ -21,7 +21,10 @@
        <link rel="icon" type="image/x-icon" href="favicon.png">
         <style>
         
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+font-family: Arial, Helvetica, sans-serif;
+background-color: white;
+}
 
 hr{
 border:1px solid #f1f1f1;
@@ -140,7 +143,6 @@ input[type=submit]:hover {
     box-sizing: border-box;
 }
 }
-
 .footer{
    /*  margin-left:13%;
     margin-right:13%; */
@@ -151,13 +153,10 @@ input[type=submit]:hover {
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    
-   
-  
     /* border:1px solid black;  */
+    margin-top:auto;
     
 }
-
 .carousel{
     padding: 20px;
     padding: 20px;
@@ -168,7 +167,7 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:350px;
+     height:550px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -587,7 +586,6 @@ input[type=submit]:hover {
         margin-left: 40px;   
     }
     
-    
     /* .....................slider css...................... */
     .galleryContainer{
     width: 100%;
@@ -723,9 +721,6 @@ input[type=submit]:hover {
     background-color: #717171;;
 }
 
-
-
-
 .galleryContainer .moveLeftCurrentSlide{
     animation-name: moveLeftCurrent;
     animation-duration: 0.5s;
@@ -787,249 +782,280 @@ input[type=submit]:hover {
     from {opacity: 0;margin-top: -100px}
     to {opacity: 1;margin-top: 0px;}
 }
-    
-    
-    
-    
-    
-    
-    
+/* update profile */
+.profilepress-edit-profile-status {
+  width: 400px;
+  text-align: center;
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: medium none;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 8px 5px;
+  margin: auto;
+}
+
+.memo-edprofile-success {
+  width: 400px;
+  text-align: center;
+  background-color: #2ecc71;
+  color: #ffffff;
+  border: medium none;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 8px 5px;
+  margin: auto;
+}
+
+#sc-edprofile {
+  background: #f0f0f0;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 8px;
+  margin-bottom: 2%;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+
+#sc-edprofile h1 {
+  background: #3399cc;
+  padding: 20px 0;
+  font-size: 140%;
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+}
+
+div#sc-edprofile .sc-container {
+  background: #f0f0f0;
+  padding: 6% 4%;
+}
+
+div#sc-edprofile input[type="email"],
+div#sc-edprofile input[type="text"],
+div#sc-edprofile input[type="password"], div#sc-edprofile select, div#sc-edprofile textarea {
+  width: 92%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 4%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 95%;
+  color: #555;
+}
+
+div#sc-edprofile select {
+  width: 100%;
+}
+
+div#sc-edprofile textarea {
+  height: 100px;
+}
+
+div#sc-edprofile input[type="submit"] {
+  width: 100%;
+  background: #3399cc;
+  border: 0;
+  padding: 4%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
+  color: #fff;
+  cursor: pointer;
+  transition: background .3s;
+  -webkit-transition: background .3s;
+}
+
+div#sc-edprofile input[type="submit"]:hover {
+  background: #2288bb;
+}
+
   </style>  
   <body >
  
    <!--  header -->
- <jsp:include page = "header.jsp"/>
+   <jsp:include page ="userheader.jsp"/>
  
- <!--   <div class="galleryContainer">
-    <div class="slideShowContainer">
-        <div id="playPause" onclick="playPauseSlides()"></div>
-        <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
-        <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
-        <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
-        <div class="imageHolder">
-            <img src="file:///E:/veggeiefirdge_Git_Project_vfonline/images/img_1.jpg">1366X768
-            <p class="captionText">Caption Text-01</p>
-        </div>
-        <div class="imageHolder">
-            <img src="file:///E:/veggeiefirdge_Git_Project_vfonline/images/img_2.jpg">
-            <p class="captionText">Caption Text-02</p>
-        </div>
-        <div class="imageHolder">
-            <img src="file:///E:/veggeiefirdge_Git_Project_vfonline/images/img_3.jpg">
-            <p class="captionText">Caption Text-03</p>
-        </div>
-        <div class="imageHolder">
-            <img src="file:///E:/veggeiefirdge_Git_Project_vfonline/images/img_4.jpg">
-            <p class="captionText">Caption Text-04</p>
-        </div>
-    </div>
-    <div id="dotsContainer"></div>
-</div> -->
-<script src="myScript.js">
-    var slideIndex,slides,dots,captionText;
-function initGallery(){
-    slideIndex = 0;
-    slides=document.getElementsByClassName("imageHolder");
-    slides[slideIndex].style.opacity=1;
-
-    captionText=document.querySelector(".captionTextHolder .captionText");
-    captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
-
-    //disable nextPrevBtn if slide count is one
-    if(slides.length<2){
-        var nextPrevBtns=document.querySelector(".leftArrow,.rightArrow");
-        nextPrevBtns.style.display="none";
-        for (i = 0; i < nextPrevBtn.length; i++) {
-            nextPrevBtn[i].style.display="none";
-        }
-    }
-
-    //add dots
-    dots=[];
-    var dotsContainer=document.getElementById("dotsContainer"),i;
-    for (i = 0; i < slides.length; i++) {
-        var dot=document.createElement("span");
-        dot.classList.add("dots");
-        dotsContainer.append(dot);
-        dot.setAttribute("onclick","moveSlide("+i+")");
-        dots.push(dot);
-    }
-    dots[slideIndex].classList.add("active");
-}
-initGallery();
-function plusSlides(n) {
-    moveSlide(slideIndex+n);
-}
-function moveSlide(n){
-    var i;
-    var current,next;
-    var moveSlideAnimClass={
-          forCurrent:"",
-          forNext:""
-    };
-    var slideTextAnimClass;
-    if(n>slideIndex) {
-        if(n >= slides.length){n=0;}
-        moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
-        moveSlideAnimClass.forNext="moveLeftNextSlide";
-        slideTextAnimClass="slideTextFromTop";
-    }else if(n<slideIndex){
-        if(n<0){n=slides.length-1;}
-        moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
-        moveSlideAnimClass.forNext="moveRightPrevSlide";
-        slideTextAnimClass="slideTextFromBottom";
-    }
-
-    if(n!=slideIndex){
-        next = slides[n];
-        current=slides[slideIndex];
-        for (i = 0; i < slides.length; i++) {
-            slides[i].className = "imageHolder";
-            slides[i].style.opacity=0;
-            dots[i].classList.remove("active");
-        }
-        current.classList.add(moveSlideAnimClass.forCurrent);
-        next.classList.add(moveSlideAnimClass.forNext);
-        dots[n].classList.add("active");
-        slideIndex=n;
-        captionText.style.display="none";
-        captionText.className="captionText "+slideTextAnimClass;
-        captionText.innerText=slides[n].querySelector(".captionText").innerText;
-        captionText.style.display="block";
-    }
-
-}
-var timer=null;
-function setTimer(){
-    timer=setInterval(function () {
-        plusSlides(1) ;
-    },3000);
-}
-setTimer();
-function playPauseSlides() {
-    var playPauseBtn=document.getElementById("playPause");
-    if(timer==null){
-        setTimer();
-        playPauseBtn.style.backgroundPositionY="0px"
-    }else{
-        clearInterval(timer);
-        timer=null;
-        playPauseBtn.style.backgroundPositionY="-33px"
-    }
-}
- 
-    </script>
-
-  <div class="carousel">
-  <div class="container">
-  
- <%--  <ul>
-  <c:forEach var="product" items="${listProduct}">
- <!--  1 -->
-  <li>
-  <div class="product-img">
-  <h4 class="label-clip">Get ${product.discount}% OFF</h4>
+   <div class="centercontent" style="background-color:;margin-top:15px;">
    
-  <spring:url value="/images" var="images" />
-  <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
+   <div class="sidemenu" style="margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color:;
+  position: absolute;
+  height:700px;
+  /*overflow: auto;*/
+  margin-left:15%;border:1px solid #ddd;">
+  
+  <a class="active" href="#home" style=" display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;background-color:green; ">My Account</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Edit Profile</a> 
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Cart</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Order</a>
+  
+  <a href="#about"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "-> - My Wallet</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Customer Service</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
   </div>
-            <div class="product-meta">
-            <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
-            <h6 style="color: black;">${product.description}</h6>
-            <h6 style="color: black;"> Size:${product.size} g<h6>
-            </div>
-       
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
-                   <div class="left">
-                   <span class="price">
-                   <span class="mrp" style=" font-size: 14px;
-  color:black;
-  font-weight: 300;
-  position: relative;
-   color:black;">MRP</span>
- 
-                   <span class="old-price">Rs ${product.price}</span>
-                    Rs ${product.price-product.discount * product.price/100}
-                    </span>
-            
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
-  /* background-color: #1864ff; */
-  background-color:#4CAF50;
-  border: 0;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 7px 28px;
-  border-radius: 3px;
- margin-left:19%;margin-top:14%;"> 
-			
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button>
-                    </div>
-           
-        
-        <div class="right">
-         
-        "${pageContext.request.contextPath}/cart/buy/${product.productid}"
-        <!-- add/{productid}/product -->
-      
-        <!-- class="btn btn-success" -->
-           
-          onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
-         
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button> 
-        </div></div> 
-        </li>
-       </c:forEach>
-        
-      
+  
+  <div class="center" style=" margin-left: 200px;
+  padding: 1px 16px;
+  height: 700px;
+  margin-left:32%; background-color: white;margin-right:13%;">
+  
+  <h3>Edit Profile Details </h3>
   <hr>
-  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
-  <hr>
-  <table style="border-spacing:30px;">
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="270" height="280" />
-   </a>
-   </th>
-  
-   
-   
-   <th>
-    <a href="#">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg"  width="270" height="280"/>
-    </a>
-   </th>
-  
-   
-  
-   <th>
-    <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   </tr>  
-  </table>
-  <br>
-   </ul> --%>
-   </div>
-   </div>
+  <form action="/action_page.php">
+    <div>
+      <div>
+        <label for="fname">First Name *</label>
+      </div>
+      <div>
+        <input type="text" id="fname" name="firstname" style=" width:80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;">
+      </div>
+    </div>
 
+      <div>
+      <div>
+        <label for="lname">Last Name *</label>
+      </div>
+      <div >
+        <input type="text" id="lname" name="lastname" style=" width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;">
+      </div>
+    </div>
+    
+      <div>
+      <div>
+        <label for="lname">Date of Birth *</label>
+      </div>
+      <div >
+        <input type="text" id="lname" name="lastname" style=" width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;">
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="fname">Mobile Number *</label>
+      </div>
+      <div>
+        <input type="text" id="fname" name="firstname" style=" width:80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;">
+      </div>
+    </div>
+
+       <div>
+      <div>
+        <label for="fname">Email *</label>
+      </div>
+      <div>
+        <input type="text" id="fname" name="firstname" style=" width:80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;">
+      </div>
+    </div>
+    
+      <div>
+      <div>
+        <label for="fname">Password *</label>
+      </div>
+      <div>
+        <input type="text" id="fname" name="firstname" style=" width:80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;">
+      </div>
+    </div>
+    
+    <div>
+      <div>
+        <label for="fname">Confirm Password *</label>
+      </div>
+      <div>
+        <input type="text" id="fname" name="firstname" style=" width:80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;">
+      </div>
+    </div>
+    
+    
+    <div class="row" style="margin-top:2%;">
+      <input type="submit" value="SAVE CHANGES">
+        <input type="submit" value="CANCEL">
+    </div>
+  </form>
+  </div>
+  </div>
+ 
+ 
  <!--  ............................  -->
       <div class="footer">
       <div class="main-content">

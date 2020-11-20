@@ -249,8 +249,8 @@ body
 
 /* footercoder  */
 
-.footer{
-   /*  margin-left:13%;
+.footer {
+   /*margin-left:13%;
     margin-right:13%;  */
     position:relative;
    /*  width:75%;  */
@@ -260,8 +260,7 @@ body
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    margin-top: 5px;
-   
+   /*  margin-top: 40px; */
     /* border:1px solid black;  */
     margin-top: auto;
     
@@ -273,10 +272,10 @@ body
     /* margin-right:100px; */
     position:relative;
     width: 100%;
-    margin-top:5px;
+    margin-top:10px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:3480px;
+     height:3490px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -732,22 +731,16 @@ body
 		z-index: 2;
 	  /*  box-shadow: 2px 2px 2px #000; */
 }
-
 .container ul li .product-meta{
     width: 105%;
     height:100px;
     line-height: 50px;
-    
    /*  background: blue;  */   
-  /*  background: pink; */
+   /*  background: pink; */
     text-align: left;
     color:white;
     font-size: 18px;
-   
-}
-.container ul li .product-meta{
-
-
+    margin-left:20px;
 }
 .container ul li  .product-price-wrap {
   width: 100%;
@@ -1092,7 +1085,7 @@ function playPauseSlides() {
         timer=null;
         playPauseBtn.style.backgroundPositionY="-33px"
     }
-}
+    }
      </script>
        
       <!--  ALL PRODUCT -->
@@ -1111,12 +1104,24 @@ function playPauseSlides() {
   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
   </div>
-            <div class="product-meta">
+  
+            <div class="product-meta" style="margin-left:10px;">
             <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
+            <c:choose>
+		    <c:when test="${product.quantity < 1}">
+		    <span style="color:red">OUT OF STOCK !</span>
+				</c:when>
+				<c:otherwise>				
+					
+					<%-- <h6>Qty. Available:${product.quantity}</h6> --%>
+						
+				</c:otherwise>
+			
+			</c:choose>
             </div>
-       
+             
             <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
                    <div class="left">
                    <span class="price">
@@ -1130,7 +1135,7 @@ function playPauseSlides() {
                     Rs ${product.price-product.discount * product.price/100}
                     </span>
             
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
+  <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
   /* background-color: #1864ff; */
   background-color:#4CAF50;
   border: 0;

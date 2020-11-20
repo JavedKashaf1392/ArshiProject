@@ -134,7 +134,7 @@ public class HomeController {
 		 //myCart
 		@RequestMapping(value = "/myCart")
 		public ModelAndView myCart(ModelAndView model) {
-			model.setViewName("cart");
+			model.setViewName("cartitemlist");
 			return model;
 		}
 	
@@ -142,7 +142,7 @@ public class HomeController {
 		 //myCart
 		@RequestMapping(value = "/cart")
 		public ModelAndView Cart(ModelAndView model) {
-			model.setViewName("cart");
+			model.setViewName("cartitemlist");
 			return model;
 		}
 	

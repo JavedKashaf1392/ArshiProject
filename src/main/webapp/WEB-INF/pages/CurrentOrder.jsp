@@ -150,9 +150,7 @@ input[type=submit]:hover {
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    
-   
-  
+    margin-top:auto;
     /* border:1px solid black;  */
     
 }
@@ -167,7 +165,7 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:350px;
+     height:1000px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -586,229 +584,87 @@ input[type=submit]:hover {
         margin-left: 40px;   
     }
     /* ........................................... */
-    body{
-background-color:#f1f1f1;
-}
-* {
-  box-sizing: border-box;
-}
 
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 70%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-  margin-left:15%; 
-  margin-right:auto;
-}
-
-#myTable {
-   margin-left:auto; 
-   margin-right:auto;
-  text-align: center;
-  border-collapse: collapse;
-  width: 70%;
-  border: 1px solid #ddd;
-  font-size: 18px;
-  align-content: center;
-  background-color:white;
-}
-
-#myTable th, #myTable td {
-  text-align: center;
-  padding: 12px;
-  
-}
-
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-
-#myTable tr.header, #myTable tr:hover {
-  background-color: forestgreen;
-  
-}
- 
- 
   </style>  
   <body >
  
    <!--  header -->
-   <jsp:include page = "header.jsp"/>
-
-   
-                      
-  <!--   close header  -->
- <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
-
-  <div class="mySlides fade"> -->
-  <%-- <spring:url value="/images" var="images" />
-  <img src="${images}/bigimage.jpg" width="1600" height="450" style="margin-top:12%;"/>
- </div>
-
-  <div class="mySlides fade">
- <!--  <div class="numbertext">2 / 3</div> -->
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
+   <jsp:include page = "userheader.jsp"/>
+  
+   <div class="centercontent" style="background-color: #f1f1f1;margin-top:10px;">
+   <div class="sidemenu" style="margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color:white;
+  position: absolute;
+  height:700px;
+  /*overflow: auto;*/
+  margin-left:15%;">
+  
+  <a class="active" href="#home" style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; ">My Account</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Edit Profile</a> 
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Cart</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Order</a>
+  
+  <a href="#about"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "-> - My Wallet</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Customer Service</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Back</a>
   </div>
+  <vr>
 
- <div class="mySlides fade">
- <spring:url value="/images" var="images" />
- <img src="${images}/c5.jpg" width="1300" height="400"/>
- </div>
-
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-  </script> --%>
-<!--   
-  <hr>
-  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
-  <hr>
+ <div class="center" style=" margin-left: 200px;
+  padding: 1px 16px;
+  height: 700px;
+  margin-left:30%; background-color: ;margin-right:13%;">
   
-   -->
-  <div class="carousel">
-  <div class="container">
-  
- <%--  <ul>
-  <c:forEach var="product" items="${listProduct}">
- <!--  1 -->
-  <li>
-  <div class="product-img">
-  <h4 class="label-clip">Get ${product.discount}% OFF</h4>
-   
-  <spring:url value="/images" var="images" />
-  <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-  background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
-  </div>
-            <div class="product-meta">
-            <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
-            <h6 style="color: black;">${product.description}</h6>
-            <h6 style="color: black;"> Size:${product.size} g<h6>
-            </div>
-       
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
-                   <div class="left">
-                   <span class="price">
-                   <span class="mrp" style=" font-size: 14px;
-  color:black;
-  font-weight: 300;
-  position: relative;
-   color:black;">MRP</span>
- 
-                   <span class="old-price">Rs ${product.price}</span>
-                    Rs ${product.price-product.discount * product.price/100}
-                    </span>
-            
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'" style="float:left;
-  /* background-color: #1864ff; */
-  background-color:#4CAF50;
-  border: 0;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 7px 28px;
-  border-radius: 3px;
- margin-left:19%;margin-top:14%;"> 
-			
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button>
-                    </div>
-           
-        
-        <div class="right">
-         
-        "${pageContext.request.contextPath}/cart/buy/${product.productid}"
-        <!-- add/{productid}/product -->
-      
-        <!-- class="btn btn-success" -->
-           
-          onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
-         
-            <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button> 
-        </div></div> 
-        </li>
-       </c:forEach>
-        
-      
-  <hr>
-  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Bank Offers</h1>
-  <hr>
-  <table style="border-spacing:30px;">
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/icici.jpg" width="270" height="280" />
-   </a>
-   </th>
-  
-   
-   
-   <th>
-    <a href="#">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/induslandbank.jpg"  width="270" height="280"/>
-    </a>
-   </th>
-  
-   
-  
-   <th>
-    <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/paytm.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   
-   <th>
-   <a href="abc.htm">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/standard.jpg"  width="270" height="280"/>
-   </a>
-   </th>
-   </tr>  
-  </table>
-  <br>
-   </ul> --%>
-   <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;">My Orders</h2></div><br>
-
-<table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
+  <h3>My Orders</h3>
+  <table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
 <th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 <a href="${pageContext.request.contextPath}/order/pendingorders" style="display: inline-block;
@@ -830,26 +686,54 @@ function showSlides(n) {
         background-color: #4CAF50;
         border-radius: 6px;
         outline: none;margin-top:6px">Delivered</a>
-      
        </th> 
        </table>
         
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name" style="background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 45%;
+  font-size: 16px;
+  padding: 10px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-left:15%; 
+  margin-right:auto;">
+  
 
-<table id="myTable">
-    <tr class="header">
-    <th style="width:%;color:white;">Order Id</th>
-    <th style="width:%;color:white;">Order Date</th>
-     <th style="width:%;color:white;">Order Status</th>
-    <th style="width:%;color:white;">Total Amount</th>
+<table id="myTable" style=" margin-left:auto; 
+  margin-right:auto;
+  text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  align-content: center;
+  background-color:white; margin-bottom: 50px;">
+    
+    <tr class="header" style=" border-bottom: 1px solid #ddd;
+  text-align: center; border-bottom: 1px solid #ddd;
+  text-align: center;background-color: forestgreen">
+    <th style="width:%;color:white;text-align: center;
+  padding: 12px;">Order Id</th>
+    <th style="width:%;color:white;text-align: center;
+  padding: 12px;">Order Date</th>
+     <th style="width:%;color:white;text-align: center;
+  padding: 12px;">Order Status</th>
+    <th style="width:%;color:white;text-align: center;
+  padding: 12px;">Total Amount</th>
     </tr>
     
   <c:forEach var="orders" items="${fetchallpendingorders}">
-  <tr>
-    <td><a href="${pageContext.request.contextPath }/order/listOrderItems/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">${orders.orderid}</a></td>
-    <td>${orders.orderDate}</td>
-    <td><i class="fa fa-circle-o-notch fa-spin" style="font-size:15px;color:orange;"></i>${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
-    <td>${orders.orderTotal}</td>
+  <tr style=" border-bottom: 1px solid #ddd;">
+    <td style=" text-align: center;
+  padding: 16px;"><a href="${pageContext.request.contextPath }/order/listOrderItems/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">${orders.orderid}</a></td>
+    <td style=" text-align: center;
+  padding: 16px;">${orders.orderDate}</td>
+    <td style=" text-align: center;
+  padding: 16px;"><i class="fa fa-circle-o-notch fa-spin" style="font-size:15px;color:orange;"></i>${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
+    <td style=" text-align: center;
+  padding: 16px;">${orders.orderTotal}</td>
   </tr>
   </c:forEach>
   </table>
@@ -873,13 +757,12 @@ function myFunction() {
     }       
   }
 }
-   </script>
-   </div>
-   </div>
-   
+</script>
+  
+  </div>
 
  <!--  ............................  -->
-      <div class="footer">
+      <div class="footer" style="margin-top: auto;">
       <div class="main-content">
       <div class="left box">
  

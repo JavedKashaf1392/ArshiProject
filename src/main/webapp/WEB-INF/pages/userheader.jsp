@@ -33,6 +33,7 @@ body
     font-family: "Roboto", sans-serif;
 }
 .header{
+    background-color:white;
     position:relative;
     padding: 20px;
     padding: 20px;
@@ -48,6 +49,7 @@ body
 
 /* call */
 .call{
+background-color:w
 /* border:1px solid black;   */
 font-size:16px;
 float: right;
@@ -387,8 +389,8 @@ label #sidebar_btn:hover{
   float: center;
   margin-top:2px;
 }
-
 input[type=submit]:hover {
+
   background-color: #45a049;
 } 
     </style>
@@ -400,9 +402,9 @@ input[type=submit]:hover {
     width:80%;border:1px solid #f1f1f1;">
     -->
     
-   <div style="margin-left:11%;
+   <div style="margin-left:15%;
     margin-right:20%;
-    width:80%;border:1px solid #f1f1f1;">
+    width:72%;border:1px solid #f1f1f1;">
     
    <div class="logo" style="margin-top:5px;">
    <spring:url value="/images" var="images" />
@@ -565,7 +567,11 @@ window.onclick = function(event) {
   }
 }
 </script>
-  <div class="navbar">
+   <div class="navbar">
+   <div class="dropdown">
+   <button class="dropbtn">Home  
+   </button>
+  </div> 
   <div class="dropdown">
     <button class="dropbtn">Search By Catogary  
       <i class="fa fa-caret-down"></i>

@@ -18,9 +18,13 @@
         <title>Home screen of VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+       <link rel="icon" type="image/x-icon" href="favicon.png">
         <style>
         
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+font-family: Arial, Helvetica, sans-serif;
+background-color: white;
+}
 
 hr{
 border:1px solid #f1f1f1;
@@ -139,23 +143,20 @@ input[type=submit]:hover {
     box-sizing: border-box;
 }
 }
-
 .footer{
    /*  margin-left:13%;
     margin-right:13%; */
     position:relative;
-   /*  width:74%; */
-   width:100%;
+    width:100%;
     height:500px;
     background: #4CAF50; 
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    
     /* border:1px solid black;  */
+    margin-top: auto;
     
 }
-
 .carousel{
     padding: 20px;
     padding: 20px;
@@ -166,7 +167,7 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:350px;
+     height:1000px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -188,7 +189,7 @@ input[type=submit]:hover {
 }
 .main-content .box{
     flex-basis: 50%;
-    padding: 10px 80px;
+    padding: 10px 20px;
 }
 .box h2{
     font-size: 1.125rem;
@@ -584,258 +585,279 @@ input[type=submit]:hover {
         width:40%;
         margin-left: 40px;   
     }
-    /* ........................................... */
- 
-/* #myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 70%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-  margin-left:15%; 
-  margin-right:auto;
-} */
-
- #myTable {
-   margin-left:auto; 
-   margin-right:auto;
-  text-align: center;
-  border-collapse: collapse;
-  width: 70%;
-  border: 1px solid #ddd;
-  font-size: 18px;
-  align-content: center;
-  background-color:white;
-} 
-
-#myTable th, #myTable td {
-  text-align: center;
-  padding: 12px;
-  
+    
+    /* .....................slider css...................... */
+    .galleryContainer{
+    width: 100%;
+    height: 500px;
+    max-width: 1000px;
+    margin: auto;
+    user-select: none;
+    box-shadow: 0px 0px 3px 1px #00000078;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.galleryContainer .slideShowContainer{
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    background-color: gainsboro;
+    position: relative;
+}
+.galleryContainer .slideShowContainer #playPause{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background-image: url(images/playPause.png);
+    background-repeat: no-repeat;
+    z-index: 5;
+    background-size: cover;
+    margin: 5px;
+    cursor: pointer;
+}
+.galleryContainer .slideShowContainer #playPause:hover{
+    opacity: .7;
+}
+.galleryContainer .slideShowContainer .imageHolder{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+.galleryContainer .slideShowContainer .imageHolder img{
+    width: 100%;
+    height: 100%;
+}
+.galleryContainer .slideShowContainer .imageHolder .captionText{
+    display: none;
 }
 
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-  text-align: center;
+.galleryContainer .slideShowContainer .leftArrow,.galleryContainer .slideShowContainer .rightArrow{
+    width: 50px;
+    background: #00000036;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: background 0.5s;
+    height: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.galleryContainer .slideShowContainer .rightArrow{
+    left: auto;
+    right: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.galleryContainer .slideShowContainer .leftArrow:hover,.galleryContainer .slideShowContainer .rightArrow:hover{
+    background: #000000a8;
+    cursor: pointer;
+}
+.galleryContainer .arrow{
+    display: inline-block;
+    border: 3px solid white;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-bottom: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.galleryContainer .arrow.arrowLeft{
+    transform: rotateZ(-135deg);
+}
+.galleryContainer .arrow.arrowRight{
+    transform: rotateZ(45deg);
 }
 
-#myTable tr.header, #myTable tr:hover {
-  background-color: forestgreen;
-  
+
+.galleryContainer .slideShowContainer>.captionTextHolder{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    background: #00000047;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
 }
- 
+.galleryContainer .slideShowContainer>.captionTextHolder>.captionText{
+    margin: 0;
+}
+
+.galleryContainer #dotsContainer{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.galleryContainer #dotsContainer .dots{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: #bbb;
+    cursor: pointer;
+    transition:background-color 0.5s;
+}
+.galleryContainer #dotsContainer .dots:first-child{
+    margin-left: 0;
+}
+.galleryContainer #dotsContainer .dots:hover,.galleryContainer #dotsContainer .dots.active{
+    background-color: #717171;;
+}
+
+.galleryContainer .moveLeftCurrentSlide{
+    animation-name: moveLeftCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+
+}
+.galleryContainer .moveLeftNextSlide{
+    animation-name: moveLeftNext;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveLeftCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: -100%;opacity: 1;}
+}
+@keyframes moveLeftNext {
+    from {margin-left: 100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+
+
+.galleryContainer .moveRightCurrentSlide{
+    animation-name: moveRightCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+.galleryContainer .moveRightPrevSlide{
+    animation-name: moveRightPrev;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveRightCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: 100%;opacity: 1;}
+}
+@keyframes moveRightPrev {
+    from {margin-left: -100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+.slideTextFromBottom {
+    animation-name: slideTextFromBottom;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromBottom {
+    from {opacity: 0;margin-top: 100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+.slideTextFromTop {
+    animation-name: slideTextFromTop;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromTop {
+    from {opacity: 0;margin-top: -100px}
+    to {opacity: 1;margin-top: 0px;}
+}
   </style>  
   <body >
  
    <!--  header -->
-   <jsp:include page = "header.jsp"/>
-
-   
-                      
-  <!--   close header  -->
- <!--  <div class="slideshow-container" style="margin-top:13px; margin-right:27%;">
-
-  <div class="mySlides fade"> -->
-  <%-- <spring:url value="/images" var="images" />
-  <img src="${images}/bigimage.jpg" width="1600" height="450" style="margin-top:12%;"/>
- </div>
-
-  <div class="mySlides fade">
- <!--  <div class="numbertext">2 / 3</div> -->
-  <spring:url value="/images" var="images" />
-  <img src="${images}/c4.jpg" width="1300" height="400"/>
+ <jsp:include page ="userheader.jsp"/>
+ 
+   <div class="sidemenu" style="margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color: #f1f1f1;
+  position: absolute;
+  height:75%;
+  /*overflow: auto;*/
+  margin-left:15%;">
+  
+  <a class="active" href="#home" style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; ">My Account</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Edit Profile</a> 
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Cart</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - MY Order</a>
+  
+  <a href="#about"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "-> - My Wallet</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Customer Service</a>
+  
+  <a href="#home"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Membership</a>
+  
+  <a href="#news"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Email Address</a>
+  
+  <a href="#contact"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Customer Service</a>
   </div>
 
- <div class="mySlides fade">
- <spring:url value="/images" var="images" />
- <img src="${images}/c5.jpg" width="1300" height="400"/>
- </div>
-
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-  </script> --%>
-<!--   
-  <hr>
-  <h1 style="color:gray;font-size:140%;margin-top:2%;text-align: center;">Vegetables And Milk</h1>
-  <hr>
-  
-   -->
-  <div class="carousel">
-  <div class="container">
-  <div style="background-color:white;margin-left:15%;margin-right:15%;"><h2 style="color: green; text-align: center;style="background-color:white;"><a href="#" style="color:green;text-decoration: none;font-size:15px;float: left;" >Home</a>My Wallet</h2></div><br>
-<div style="margin-top:7%;">
-
-<table style="margin-left:13%;width:10%;cellspacing:2%; border-spacing:28px;">
-       <th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px; margin-left:auto; 
-   margin-right:auto;
-  text-align: center;
-  border-collapse: collapse;
-  width: 70%;
-  border: 1px solid #ddd;
-  font-size: 18px;
-  align-content: center;
-  background-color:white;
-}">     
-<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:orange;
-        border-radius: 6px;
-        outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:40px;color:white"></span></a>
-Membership Id:3
-       </th>
-
-<th style="background-color:white;padding:15px 70px; width:%;border-radius:8px;">     
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#00cccc;
-        border-radius: 6px;
-        outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:40px;"></span></a>
-        Balance:5000.00
-
-
-       </th>       
-       <th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px;">     
-<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:red;
-        border-radius: 6px;
-        outline: none;margin-top:6px"><span class="fa fa-thumbs-up" style="font-size:35px;color:white"></span></a>
-        Card:11
-       </th>
-       
-<th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px;">     
-<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: #4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px"><span class="fa fa-shopping-cart" style="font-size:35px;color:white"></span></a>
-        Transaction:0
-       </th>
-       </table>
-        
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name" style=" background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 70%;
-  font-size: 16px;
-  padding: 12px 20px 12px 0px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-  margin-left:15%; 
-  margin-right:30%;">
-
-<table id="myTable">
-    <tr class="header">
-    <th style="width:%;color:white;">Transaction Id</th>
-    <th style="width:%;color:white;">Date</th>
-     <th style="width:%;color:white;">Status</th>
-    <th style="width:%;color:white;">Amount</th>
-    </tr>
-  <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13788</a></td>
-    <td>03-07-2020</td>
-    <td><i class="" style="color:green"></i>Debit</td>
-    <td>Rs 1000</td>
-  </tr>
-    <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13789</a></td>
-    <td>03-07-2020</td>
-      <td><i class="" style="color:green"></i>Debit</td>
-    <td>Rs 1000</td>
-     
-  </tr>
-    <tr>
-    <td><a href="${pageContext.request.contextPath }/home/orderinfo" style="text-decoration:none;font-size:100%;color:black;">13790</a></td>
-    <td>03-07-2020</td>
-      <td><i  style="color:green"></i>Debit</td>
-    <td>Rs 1000</td>
-  </tr>
-</table>
-  <a href="${pageContext.request.contextPath}/home/chooseanamount" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:green;
-        border-radius: 6px;
-        outline: none;margin-top:6px;margin-left:15%;">Add Balance</a>
-      
-
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-  
-}
-</script>
-  
- 
-   </div>
-   </div>
-
+ <div class="center" style=" margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+  margin-left:30%;">
+  </div>
  <!--  ............................  -->
       <div class="footer">
       <div class="main-content">
@@ -944,8 +966,8 @@ Message *</div>
         sessionStorage.setItem("SelItem", selVal);
     });
    </script>
- 
- 
+   
+  <!-- ..............slider script.................. -->
   
   </body>
   </html>
