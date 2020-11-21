@@ -137,17 +137,19 @@ input[type=submit]:hover {
     padding: 0;
     font-family: "Roboto", sans-serif;
    .mySlides {display: none}
-/* img {vertical-align: middle;} */
+    /* img {vertical-align: middle;} */
    
     {
     box-sizing: border-box;
 }
+
 }
+
 .footer{
-   /*  margin-left:13%;
-    margin-right:13%; */
+    margin-left:15%;
+    margin-right:13%;
     position:relative;
-    width:100%;
+    width:75%;
     height:500px;
     background: #4CAF50; 
     position:relative;
@@ -874,17 +876,17 @@ div#sc-edprofile input[type="submit"]:hover {
 }
 
   </style>  
-  <body >
+  <body>
  
    <!--  header -->
-   <jsp:include page ="userheader.jsp"/>
+  <jsp:include page ="userheader.jsp"/>
  
-   <div class="centercontent" style="background-color:;margin-top:15px;">
+  <div class="centercontent" style="background-color:;margin-top:15px;margin-bottom:20px;">
    
-   <div class="sidemenu" style="margin: 0;
+  <div class="sidemenu" style="margin: 0;
   padding: 0;
   width: 250px;
-  background-color:;
+  background-color:#f1f1f1;
   position: absolute;
   height:700px;
   /*overflow: auto;*/
@@ -893,7 +895,7 @@ div#sc-edprofile input[type="submit"]:hover {
   <a class="active" href="#home" style=" display: block;
   color: white;
   padding: 16px;
-  text-decoration: none;background-color:green; ">My Account</a>
+  text-decoration: none;background-color:#4CAF50; ">My Account</a>
   
   <a href="#news"  style=" display: block;
   color: black;
@@ -918,32 +920,22 @@ div#sc-edprofile input[type="submit"]:hover {
   <a href="#home"  style=" display: block;
   color: black;
   padding: 16px;
-  text-decoration: none; "> - Membership</a>
+  text-decoration: none;"> - Membership</a>
   
-  <a href="#news"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
   color: black;
   padding: 16px;
-  text-decoration: none; "> - Email Address</a>
+  text-decoration: none; "> - Pending Orders</a>
   
-  <a href="#contact"  style=" display: block;
+  <a href="${pageContext.request.contextPath}/order/deliveredorder"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Deliverd Orders</a>
+  
+  <a href="#news"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Customer Service</a>
-  
-  <a href="#home"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Membership</a>
-  
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Email Address</a>
-  
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Email Address</a>
   
   <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
   </div>
@@ -1054,7 +1046,6 @@ div#sc-edprofile input[type="submit"]:hover {
   </form>
   </div>
   </div>
- 
  
  <!--  ............................  -->
       <div class="footer">

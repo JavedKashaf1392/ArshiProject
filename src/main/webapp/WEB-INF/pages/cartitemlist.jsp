@@ -144,17 +144,17 @@ input[type=submit]:hover {
 }
 }
 .footer{
-   /*  margin-left:13%;
-    margin-right:13%; */
+    margin-left:15%;
+    margin-right:13%; 
     position:relative;
-    width:100%;
+    width:75%;
     height:500px;
     background: #4CAF50; 
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
     /* border:1px solid black;  */
-    margin-top: auto;
+    margin-top:auto;
     
 }
 .carousel{
@@ -167,7 +167,7 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:1000px;
+     height:550px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -782,86 +782,120 @@ input[type=submit]:hover {
     from {opacity: 0;margin-top: -100px}
     to {opacity: 1;margin-top: 0px;}
 }
+/* update profile */
+.profilepress-edit-profile-status {
+  width: 400px;
+  text-align: center;
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: medium none;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 8px 5px;
+  margin: auto;
+}
+
+.memo-edprofile-success {
+  width: 400px;
+  text-align: center;
+  background-color: #2ecc71;
+  color: #ffffff;
+  border: medium none;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 8px 5px;
+  margin: auto;
+}
+
+#sc-edprofile {
+  background: #f0f0f0;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 8px;
+  margin-bottom: 2%;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+
+#sc-edprofile h1 {
+  background: #3399cc;
+  padding: 20px 0;
+  font-size: 140%;
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+}
+
+div#sc-edprofile .sc-container {
+  background: #f0f0f0;
+  padding: 6% 4%;
+}
+
+div#sc-edprofile input[type="email"],
+div#sc-edprofile input[type="text"],
+div#sc-edprofile input[type="password"], div#sc-edprofile select, div#sc-edprofile textarea {
+  width: 92%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 4%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 95%;
+  color: #555;
+}
+
+div#sc-edprofile select {
+  width: 100%;
+}
+
+div#sc-edprofile textarea {
+  height: 100px;
+}
+
+div#sc-edprofile input[type="submit"] {
+  width: 100%;
+  background: #3399cc;
+  border: 0;
+  padding: 4%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
+  color: #fff;
+  cursor: pointer;
+  transition: background .3s;
+  -webkit-transition: background .3s;
+}
+
+div#sc-edprofile input[type="submit"]:hover {
+  background: #2288bb;
+}
+
   </style>  
   <body >
  
    <!--  header -->
- <jsp:include page ="userheader.jsp"/>
+  <jsp:include page ="userheader.jsp"/>
  
-  <!--  <div class="sidemenu" style="margin: 0;
-  padding: 0;
-  width: 250px;
-  background-color: #f1f1f1;
-  position: absolute;
-  height:75%;
-  /*overflow: auto;*/
-  margin-left:15%;">
+  <div class="centercontent" style="margin-top:30px;height:20%;">
   
-  <a class="active" href="#home" style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; ">My Account</a>
+  <span style="margin-left:15%;font-size:150%;">There are no items in your cart.</span>
+  <hr style="margin-left:15%;margin-right:13%">
   
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Edit Profile</a> 
+  <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;margin-top:10px;font-size:15px;margin-bottom:5%;margin-left:15%;">Continue Shopping</a>
   
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - MY Cart</a>
-  
-  <a href="#contact"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - MY Order</a>
-  
-  <a href="#about"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "-> - My Wallet</a>
-  
-  <a href="#home"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Membership</a>
-  
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Email Address</a>
-  
-  <a href="#contact"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Customer Service</a>
-  
-  <a href="#home"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Membership</a>
-  
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Email Address</a>
-  
-  <a href="#contact"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Customer Service</a>
   </div>
-
- <div class="center" style=" margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-  margin-left:30%;">
-  <h2>Responsive Sidebar Example</h2>
-  <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or less.</p>
-  <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
-  <h3>Resize the browser window to see the effect.</h3>
-  </div> -->
+ 
+ 
  <!--  ............................  -->
       <div class="footer">
       <div class="main-content">

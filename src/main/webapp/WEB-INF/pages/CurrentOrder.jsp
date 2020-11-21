@@ -20,7 +20,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
         <style>
         
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+font-family: Arial, Helvetica, sans-serif;
+}
 
 hr{
 border:1px solid #f1f1f1;
@@ -36,18 +38,20 @@ border:1px solid #f1f1f1;
   margin-top: 11px;
   color: black;
 }
+
 input[type=text], select, textarea {
   width: 90%;
   padding: 8px;
- 
   border: 1px solid #008000;
   border-radius: 4px;
   resize: vertical;
 }
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
+
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
@@ -127,34 +131,29 @@ input[type=submit]:hover {
         </head>
         <style>
     
-    body{
+    body {
     font-family: Arial;
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
    .mySlides {display: none}
-/* img {vertical-align: middle;} */
-   
-    {
-    box-sizing: border-box;
-}
+ /* img {vertical-align: middle;} */
 }
 
 .footer{
-    /* margin-left:13%;
-    margin-right:13%; */
+
+    margin-left:15%;
+    margin-right:13%;
     position:relative;
-    width:100%;
+    width:75%;
     height:500px;
     background: #4CAF50; 
     position:relative;
-   /*  padding: 20px;
+   /*padding: 20px;
     padding: 20px; */
     margin-top:auto;
     /* border:1px solid black;  */
-    
 }
-
 .carousel{
     padding: 20px;
     padding: 20px;
@@ -586,25 +585,26 @@ input[type=submit]:hover {
     /* ........................................... */
 
   </style>  
-  <body >
- 
-   <!--  header -->
-   <jsp:include page = "userheader.jsp"/>
+  <body>
   
-   <div class="centercontent" style="background-color: #f1f1f1;margin-top:10px;">
-   <div class="sidemenu" style="margin: 0;
+  <!--  header -->
+  <jsp:include page = "userheader.jsp"/>
+  
+  <div class="centercontent"  style="background-color:;margin-top:15px;margin-bottom:;">
+   
+  <div class="sidemenu" style="margin: 0;
   padding: 0;
   width: 250px;
-  background-color:white;
+  background-color:#f1f1f1;
   position: absolute;
   height:700px;
   /*overflow: auto;*/
-  margin-left:15%;">
+  margin-left:15%;border:1px solid #ddd;">
   
   <a class="active" href="#home" style=" display: block;
   color: black;
   padding: 16px;
-  text-decoration: none; ">My Account</a>
+  text-decoration: none;background-color:#4CAF50">My Account</a>
   
   <a href="#news"  style=" display: block;
   color: black;
@@ -631,51 +631,48 @@ input[type=submit]:hover {
   padding: 16px;
   text-decoration: none; "> - Membership</a>
   
-  <a href="#news"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
   color: black;
   padding: 16px;
-  text-decoration: none; "> - Email Address</a>
+  text-decoration: none; "> - Pending Orders</a>
   
-  <a href="#contact"  style=" display: block;
+  <a href="${pageContext.request.contextPath}/order/deliveredorder"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Delieverd Orders</a>
+  
+  <a href="#news"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Customer Service</a>
   
-  <a href="#home"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Membership</a>
+   <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
   
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Email Address</a>
-  
-  <a href="#contact"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Back</a>
   </div>
-  <vr>
 
  <div class="center" style=" margin-left: 200px;
   padding: 1px 16px;
   height: 700px;
-  margin-left:30%; background-color: ;margin-right:13%;">
+  margin-left:32%; background-color: ;margin-right:13%;">
   
-  <h3>My Orders</h3>
-  <table style="margin-left:13%;width:5%;cellspacing:2%; border-spacing:28px;">
-<th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
+  <h3>Pendings</h3>
+  <hr>
+<%--   <table style="width:5%;position: fixed;">
+  
+  <th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
+
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
+ 
+  
 <a href="${pageContext.request.contextPath}/order/pendingorders" style="display: inline-block;
         padding: 10px 30px;
         text-align:center;
         text-decoration: none;
         color: #ffffff;
         background-color:#4CAF50;
-        border-radius: 6px;
+        border-radius:6px;
         outline: none;margin-top:6px">Pendings</a>
-       </th>
+        </th>
 
  <th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
  <a href="${pageContext.request.contextPath}/order/deliveredorder" style="display: inline-block;
@@ -687,20 +684,20 @@ input[type=submit]:hover {
         border-radius: 6px;
         outline: none;margin-top:6px">Delivered</a>
        </th> 
-       </table>
-        
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name" style="background-image: url('/css/searchicon.png');
+       </table> --%>
+ 
+ <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name" style="background-image: url('/css/searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
   width: 45%;
   font-size: 16px;
   padding: 10px 20px 12px 40px;
   border: 1px solid #ddd;
-  margin-bottom: 12px;
-  margin-left:15%; 
-  margin-right:auto;">
-  
-
+  margin-bottom: 5px;
+  margin-left:47%; 
+  margin-right:auto;
+  margin-top: 5px;">      
+       
 <table id="myTable" style=" margin-left:auto; 
   margin-right:auto;
   text-align: center;
@@ -709,11 +706,11 @@ input[type=submit]:hover {
   border: 1px solid #ddd;
   font-size: 18px;
   align-content: center;
-  background-color:white; margin-bottom: 50px;">
+  background-color:white; margin-bottom: 50px;margin-top:%;">
     
-    <tr class="header" style=" border-bottom: 1px solid #ddd;
+  <tr class="header" style=" border-bottom: 1px solid #ddd;
   text-align: center; border-bottom: 1px solid #ddd;
-  text-align: center;background-color: forestgreen">
+  text-align: center;background-color: #4CAF50">
     <th style="width:%;color:white;text-align: center;
   padding: 12px;">Order Id</th>
     <th style="width:%;color:white;text-align: center;
@@ -731,7 +728,7 @@ input[type=submit]:hover {
     <td style=" text-align: center;
   padding: 16px;">${orders.orderDate}</td>
     <td style=" text-align: center;
-  padding: 16px;"><i class="fa fa-circle-o-notch fa-spin" style="font-size:15px;color:orange;"></i>${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
+  padding: 16px;">${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
     <td style=" text-align: center;
   padding: 16px;">${orders.orderTotal}</td>
   </tr>

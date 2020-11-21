@@ -55,7 +55,7 @@ public class OrderController {
 		return ((Customer) session.getAttribute("customer")).getCartpage();
 	}
 
-	// getAll Order
+	//getAll Order
 	@RequestMapping(value = "/listdeliveredorder")
 	public ModelAndView listOrder(ModelAndView model) throws IOException {
 		List<Orders> listdeliveredorders = orderservice.listdeliveredOrders();
@@ -64,7 +64,7 @@ public class OrderController {
 		return model;
 	}
 
-	// checkoutAndSaveOrder
+	 //checkoutAndSaveOrder
 	@RequestMapping(value = "/checkoutAndSaveOrder")
 	public ModelAndView checkoutAndSaveOrder(ModelAndView model) {
 		List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -147,7 +147,7 @@ public class OrderController {
 		return model;
 	}
 
-	// repeat Order
+	 //repeat Order
 	@RequestMapping(value = "/repeatOrder{orderid}", method = RequestMethod.GET)
 	public String repeatOrder(ModelAndView model, @PathVariable(value = "orderid") int orderid) {
 		Orders orders = orderservice.getOrder(orderid);
