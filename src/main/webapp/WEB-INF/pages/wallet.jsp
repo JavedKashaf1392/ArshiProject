@@ -658,48 +658,42 @@ input[type=submit]:hover {
   <h3>My Wallet</h3>
   <hr>
   
-<table style="margin-left:13%;width:10%;cellspacing:2%; border-spacing:28px;">
-       <th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px; margin-left:auto; 
-   margin-right:auto;
+  <table style="cellspacing:2%; border-spacing:10px;">
+       
+  <th style="background-color:white;padding:15px 55px;border-radius:8px; 
   text-align: center;
-  border-collapse: collapse;
-  width: 70%;
   border: 1px solid #ddd;
-  font-size: 18px;
-  align-content: center;
-  background-color:white;
-}">     
-<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
+  font-size:15px;">
+     
+  <a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+        padding:10px 15px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color:orange;
-        border-radius: 6px;
-        outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:40px;color:white"></span></a>
+        border-radius:6px;
+        outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:35px;color:white"></span></a>
 Membership Id:3
        </th>
 
-<th style="background-color:white;padding:15px 70px; width:%;border-radius:8px;">     
+<th style="background-color:white;padding:15px 35px;border-radius:8px; border: 1px solid #ddd;">     
 <a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
+        padding: 10px 15px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color:#00cccc;
         border-radius: 6px;
-        outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:40px;"></span></a>
+        outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:35px;"></span></a>
         Balance:5000.00
 
 
        </th>       
-       <th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px;">     
+       <th style="background-color:white;padding:15px 65px; width:%;border-radius:8px;border: 1px solid #ddd;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
 <a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
+        padding: 10px 15px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
@@ -709,11 +703,11 @@ Membership Id:3
         Card:11
        </th>
        
-<th style="background-color:white;padding:15px 70px; width:5%;border-radius:8px;">     
+<th style="background-color:white;padding:15px 45px; width:5%;border-radius:8px;border: 1px solid #ddd;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
 <a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
-        padding: 15px 25px;
+        padding: 10px 15px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
