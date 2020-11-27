@@ -169,12 +169,11 @@ public class LoginController {
 		}
 		return model;
 	}
-
-	// logout
+   
+	 //logout
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("customer");
 		return "redirect:/home/viewhome";
 	}
-
 }

@@ -850,8 +850,8 @@ body
   
     <body>
 
-    <!--  HEADERCODE -->
-   <jsp:include page = "header.jsp"/>
+   <!--  HEADERCODE -->
+   <jsp:include page ="header.jsp"/>
       
     <!--  SLIDERCODE -->
     <div class="galleryContainer" style="margin-top:%;">

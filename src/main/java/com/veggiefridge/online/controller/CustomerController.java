@@ -43,10 +43,7 @@ public class CustomerController {
 	
 	@Autowired
 	private EncryptPassword enpwd;
-	
-	/*
-	 * @Autowired private PasswordEncoder passwordEncoder;
-	 */
+
 	 
 	// getAll Customer
 	@RequestMapping(value = "/listCustomer")
@@ -82,7 +79,9 @@ public class CustomerController {
 		        //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
 		        //customer.setPassword(securePassword);
 			  customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
+			  
 			  customerService.addCustomer(customer);
+			  logger.info("Customer Registered successfully");
 			session.setAttribute("customer", customer);
 		} else {
 			customerService.updateCustomer(customer);
@@ -176,15 +175,6 @@ public class CustomerController {
 			Customer customer = customerService.getCustomer(customerid);
 			ModelAndView model = new ModelAndView("cust");
 			model.addObject("customer", customer);
-			return model;
-		}
-		
-		
-		@RequestMapping(value = "/vendorform")
-		public ModelAndView orderInfo(ModelAndView model) {
-			Customer customer = new Customer();
-			model.addObject("customer", customer);
-			model.setViewName("vendorform");
 			return model;
 		}
 		

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.veggiefridge.online.model.QRCode;
+import com.veggiefridge.online.model.QrCode;
 import com.veggiefridge.online.service.QRCodeServiceImpl;
 
 class TestQRCode {
@@ -42,7 +42,7 @@ class TestQRCode {
 	
 	@Test
 	final void testInsertCustomer() throws SQLException {
-		QRCode customerqr = new QRCode();
+		QrCode customerqr = new QrCode();
 		/* customerqr.setId("4"); */
 		/* customerqr.setCustomerid("004"); */
 		/*
@@ -55,7 +55,7 @@ class TestQRCode {
 
 	@Test
 	final void testGetCustomerqr() throws SQLException {
-		QRCode customerqr = service.getCustomerqr("3");
+		QrCode customerqr = service.getCustomerqr("3");
 		System.out.println(customerqr.toString()); 
 	}
 

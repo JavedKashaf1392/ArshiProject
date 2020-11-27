@@ -63,7 +63,7 @@ public class Product implements Serializable {
 	@Column(name="tax")
 	private float tax;
 	
-	//@Column(name="imageName")
+	@Column(name="imageName")
 	private String imageName;
 	
 	

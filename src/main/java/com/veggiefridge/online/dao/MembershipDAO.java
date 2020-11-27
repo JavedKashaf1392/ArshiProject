@@ -1,15 +1,15 @@
 package com.veggiefridge.online.dao;
 import java.util.List;
 import com.veggiefridge.online.model.CartItem;
-import com.veggiefridge.online.model.MembershipWallet;
+import com.veggiefridge.online.model.Membership;
 
 public interface MembershipDAO {
 	
-	public boolean add(MembershipWallet msw);
+	public boolean add(Membership msw);
 	
-	public MembershipWallet getByCustomer(int customerid);
+	public Membership getByCustomer(int customerid);
 	
-    public MembershipWallet get(int MembershipID);
+    public Membership get(int MembershipID);
     
     
     

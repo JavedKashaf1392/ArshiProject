@@ -418,7 +418,7 @@ input[type=submit]:hover {
   
   <security:authorize access="hasRole('USER')">
   <span class="fas fa-map-marker-alt" style="color:green;"></span><%-- ${kiosklocation.location},${kiosklocation.cities} --%>
-  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;"> HiTectCity,Mumbai</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
+  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
   </security:authorize>
   
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
@@ -444,7 +444,7 @@ input[type=submit]:hover {
   <!-- Modal content -->
   <div class="modal-content">
   <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/continueLocation" modelAttribute="kioskLocation">
+  <form method="post" action="${pageContext.request.contextPath}/cart/changeLocation" modelAttribute="kioskLocation">
   <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
   <div class="row">
   <div class="col-75">
@@ -505,7 +505,7 @@ input[type=submit]:hover {
       <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
-      <a href="${pageContext.request.contextPath }/login/logout"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
+      <a href="<c:url value="/logout" />"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
       </div>
       </div> 
        
@@ -567,7 +567,7 @@ window.onclick = function(event) {
 </script>
   <div class="navbar">
   <div class="dropdown">
-    <button class="dropbtn">Search By Catogary  
+    <button class="dropbtn">Search By Category  
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -608,7 +608,7 @@ window.onclick = function(event) {
   </div>
   </security:authorize> 
  
- <security:authorize access="hasRole('ADMIN')">  
+  <security:authorize access="hasRole('ADMIN')">  
   <div class="dropdown">
     <button class="dropbtn">Manage
       <i class="fa fa-caret-down"></i>

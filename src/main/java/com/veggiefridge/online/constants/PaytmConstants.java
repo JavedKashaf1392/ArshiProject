@@ -27,6 +27,6 @@ public class PaytmConstants {
 	//@Value("${paytm.paytmUrl}")
 	public static final String PAYTM_URL="https://securegw-stage.paytm.in/order/process";
 	
-    public static final String CALLBACK_URL="http://localhost:8080/pgresponse";
+    public static final String CALLBACK_URL="http://localhost:9090/pgresponse";
 }
 

@@ -9,8 +9,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="membershipwallet")
-public class MembershipWallet {
+@Table(name ="membership")
+public class Membership {
 	
 	private static final long serialVersionUID = -3465813074586302847L;
 	

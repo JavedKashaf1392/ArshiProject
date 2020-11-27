@@ -658,14 +658,15 @@ input[type=submit]:hover {
   <h3>My Wallet</h3>
   <hr>
   
+  
   <table style="cellspacing:2%; border-spacing:10px;">
-       
+  
   <th style="background-color:white;padding:15px 55px;border-radius:8px; 
   text-align: center;
   border: 1px solid #ddd;
   font-size:15px;">
      
-  <a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+  <a href="#" style="display: inline-block;
         padding:10px 15px;
         text-align: center;
         text-decoration: none;
@@ -677,7 +678,7 @@ Membership Id:3
        </th>
 
 <th style="background-color:white;padding:15px 35px;border-radius:8px; border: 1px solid #ddd;">     
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+<a href="#" style="display: inline-block;
         padding: 10px 15px;
         text-align: center;
         text-decoration: none;
@@ -692,7 +693,7 @@ Membership Id:3
        <th style="background-color:white;padding:15px 65px; width:%;border-radius:8px;border: 1px solid #ddd;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+<a href="#" style="display: inline-block;
         padding: 10px 15px;
         text-align: center;
         text-decoration: none;
@@ -706,7 +707,7 @@ Membership Id:3
 <th style="background-color:white;padding:15px 45px; width:5%;border-radius:8px;border: 1px solid #ddd;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
-<a href="${pageContext.request.contextPath}/home/currentorder" style="display: inline-block;
+<a href="#" style="display: inline-block;
         padding: 10px 15px;
         text-align: center;
         text-decoration: none;
@@ -718,10 +719,6 @@ Membership Id:3
        </th>
        </table>
   
-
-       
-       
- 
  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name" style="background-image: url('/css/searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
@@ -787,7 +784,17 @@ Membership Id:3
     <td style=" text-align: center;
   padding: 16px;">500</td>
   </tr>
+  
   </table>
+  <a href="${pageContext.request.contextPath}/home/chooseanamount" style="display: inline-block;
+        padding: 10px 50px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:#4CAF50;
+        border-radius: 6px;
+        outline: none;">Add Balance</a>
+      
 
   <script>
 function myFunction() {

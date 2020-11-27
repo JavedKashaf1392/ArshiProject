@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.mysql.cj.xdevapi.Statement;
-import com.veggiefridge.online.model.QRCode;
+import com.veggiefridge.online.model.QrCode;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -98,19 +98,19 @@ public class QRCodeDaoImpl implements QRCodeDAO{
 //	}
 
 	@Override
-	public void insertCustomerqr(QRCode customerqr) {
+	public void insertCustomerqr(QrCode customerqr) {
 
 		sessionFactory.getCurrentSession().saveOrUpdate(customerqr);
 	}
 
 	@Override
-	public QRCode getCustomerqr(String id) {
+	public QrCode getCustomerqr(String id) {
 		
 //		while(resultSet.next()) {
 //			
 //			QRCodeDaoImpl.generate_qr(resultSet.getString("customerid"),resultSet.getString("qrcodestring"));
 //		
-		return (QRCode) sessionFactory.getCurrentSession().get(QRCode.class, id);
+		return (QrCode) sessionFactory.getCurrentSession().get(QrCode.class, id);
 	}
 
 	@Override
@@ -132,9 +132,8 @@ public class QRCodeDaoImpl implements QRCodeDAO{
         }
 	}
 
-	
 	@Override
-	public boolean saveOrder(QRCode qrcode) {
+	public boolean saveOrder(QrCode qrcode) {
 		
 		try {			
 			sessionFactory.getCurrentSession().persist(qrcode);			

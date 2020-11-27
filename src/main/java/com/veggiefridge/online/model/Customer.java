@@ -56,7 +56,6 @@ public class Customer implements Serializable {
 	@Column(name="newPassword")
 	private String newPassword;
 	
-	
 	@Column(name="role")
 	private String role;
 	
@@ -77,7 +76,6 @@ public class Customer implements Serializable {
 	}
 	
 	
-
 	public String getNewPassword() {
 		return newPassword;
 	}

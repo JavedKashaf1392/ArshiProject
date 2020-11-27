@@ -559,7 +559,7 @@ window.onclick = function(event) {
 </script>
   <div class="navbar">
   <div class="dropdown">
-    <button class="dropbtn">Search By Catogary  
+    <button class="dropbtn">Search By Category  
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">

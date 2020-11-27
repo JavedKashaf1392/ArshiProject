@@ -99,7 +99,7 @@ color: black;
 </head>
 <body>
 
-   <form action="${pageContext.request.contextPath}/home/addguestcustomer" method="post" modelAttribute="customer">
+   <form action="${pageContext.request.contextPath}/member/addguestcustomer" method="post" modelAttribute="customer">
    <div class="container">
    <h3 style="color: green;text-align: center;">Sign Up</h3>
    <hr>

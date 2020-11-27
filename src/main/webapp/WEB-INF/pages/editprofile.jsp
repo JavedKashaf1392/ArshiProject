@@ -1041,7 +1041,7 @@ div#sc-edprofile input[type="submit"]:hover {
     
     <div class="row" style="margin-top:2%;">
       <input type="submit" value="SAVE CHANGES">
-        <input type="submit" value="CANCEL">
+      <input type="submit" value="CANCEL">
     </div>
   </form>
   </div>

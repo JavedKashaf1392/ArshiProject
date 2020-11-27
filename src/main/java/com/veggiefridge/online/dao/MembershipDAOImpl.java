@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.veggiefridge.online.model.CartItem;
-import com.veggiefridge.online.model.MembershipWallet;
+import com.veggiefridge.online.model.Membership;
 
 @Repository
 @Transactional
@@ -21,11 +21,11 @@ public class MembershipDAOImpl implements MembershipDAO{
 
 	@Transactional
 	@Override
-	public boolean add(MembershipWallet msw) {
+	public boolean add(Membership msw) {
 		
 		try {
 			sessionFactory.getCurrentSession().persist(msw);
-			System.out.println("add MembershipWallet method is running");
+			System.out.println("add Membership method is running");
 			return true;
 		}
 		catch(Exception ex) {
@@ -37,11 +37,11 @@ public class MembershipDAOImpl implements MembershipDAO{
 	
 	@Transactional
 	@Override
-	public MembershipWallet getByCustomer(int customerid) {
-		String query ="FROM MembershipWallet WHERE customer.customerid =:customerid";
+	public Membership getByCustomer(int customerid) {
+		String query ="FROM Membership WHERE customer.customerid =:customerid";
 		try {
 			System.out.println("getByCustomer");
-			return (MembershipWallet) sessionFactory.getCurrentSession().createQuery(query).
+			return (Membership) sessionFactory.getCurrentSession().createQuery(query).
 					setParameter("customerid", customerid).uniqueResult();
 		
 		}catch(Exception ex) {
@@ -52,8 +52,8 @@ public class MembershipDAOImpl implements MembershipDAO{
 
 	@Transactional
 	@Override
-	public MembershipWallet get(int MembershipID) {
-		return (MembershipWallet) sessionFactory.getCurrentSession().get(MembershipWallet.class,MembershipID);
+	public Membership get(int MembershipID) {
+		return (Membership) sessionFactory.getCurrentSession().get(Membership.class,MembershipID);
 	}
 
 	

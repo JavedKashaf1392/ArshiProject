@@ -177,6 +177,14 @@ public class HomeController {
 					model.setViewName("wallet");
 					return model;
 				}
+				
+
+				//wallet
+				@RequestMapping(value ="/pickupaddress")
+				public ModelAndView pickupaddress(ModelAndView model) {
+					model.setViewName("pickupaddress");
+					return model;
+				}
 		
 				
 
@@ -278,27 +286,6 @@ public class HomeController {
 				 */
 				
 				
-			    //addGuestCustomer
-				//save and update customer
-				@RequestMapping(value = "/addguestcustomer", method = RequestMethod.POST)
-				public ModelAndView addGuestCustomer(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
-					
-						
-					 if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
-						// customer other updating the customer 
-						customerservice.addCustomer(customer);
-						List<Customer> listCustomer = customerservice.getAllCustomers();
-						List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
-						List<Product> listProduct = productService.getAllProducts();
-						model.addObject("listkiosklocation",listkiosklocation);
-					    model.addObject("listCustomer", listCustomer); 
-						model.addObject("listProduct", listProduct);
-						session.setAttribute("customer", customer);
-						model.setViewName("registerdhome");
-					}
-					return model; 
-					
-				}
 				
 				
 				//currentorder

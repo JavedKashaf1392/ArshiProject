@@ -11,6 +11,7 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,6 @@ import com.veggiefridge.online.dao.OrderDao;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
-import com.veggiefridge.online.model.Item;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CartService;
@@ -51,54 +51,6 @@ public class ShoppingCartController {
 
 	private static final Logger logger = LoggerFactory.logger(ShoppingCartController.class);
 
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/ordernow/{productid}", method = RequestMethod.GET)
-	public String ordernow(@PathVariable(value = "productid") int productid, ModelMap mm, HttpSession session) {
-
-		if (session.getAttribute("cart") == null) {
-			List<Item> cart = new ArrayList<Item>();
-			cart.add(new Item(this.productservice.getProduct(productid), 1));
-			session.setAttribute("cart", cart);
-		} else {
-			List<Item> cart = (List<Item>) session.getAttribute("cart");
-
-			// using method isExisting here
-			int index = isExisting(productid, session);
-			if (index == -1)
-				cart.add(new Item(this.productservice.getProduct(productid), 1));
-			else {
-				int quantity = cart.get(index).getQuantity() + 1;
-				cart.get(index).setQuantity(quantity);
-			}
-
-			session.setAttribute("cart", cart);
-		}
-
-		return "cart"; // page name
-	}
-
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/delete/{productid}", method = RequestMethod.GET)
-	public String delete(@PathVariable(value = "productid") int productid, HttpSession session) {
-		List<Item> cart = (List<Item>) session.getAttribute("cart");
-		int index = isExisting(productid, session);
-		cart.remove(index);
-		session.setAttribute("cart", cart);
-		return "cart";
-	}
-
-	@SuppressWarnings("unchecked")
-	private int isExisting(int productid, HttpSession session) {
-
-		List<Item> cart = (List<Item>) session.getAttribute("cart");
-
-		for (int i = 0; i < cart.size(); i++)
-
-			if (cart.get(i).getProduct().getProductid() == productid)
-				return i;
-
-		return -1;
-	}
 
 	@RequestMapping(value = "/registerdhome", method = RequestMethod.GET)
 	public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
@@ -129,7 +81,7 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	// saveOrder
+	 //saveOrder
 	@RequestMapping(value = "/addToCart/{productid}")
 	public String addToCart(@PathVariable int productid) {
 		CartItem cartitem = cartservice.getByCartPageAndProduct(productid);
@@ -261,5 +213,20 @@ public class ShoppingCartController {
 		model.setViewName("joinmemebership");
 		return model;
 	}
+	
+	
+	@RequestMapping("/changeLocation")  
+	public ModelAndView continueLoc(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
+	
+	{ 
+		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		List<Product> listProduct = productservice.getAllProducts();
+		List<Customer> listCustomer = customerService.getAllCustomers();
+		model.addObject("listCustomer", listCustomer);
+		model.addObject("listkiosklocation",listkiosklocation);
+		model.addObject("listProduct", listProduct);
+		model.setViewName("registerdhome");
+		return model; 
+	} 
 
 }

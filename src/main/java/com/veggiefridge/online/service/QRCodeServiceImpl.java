@@ -3,9 +3,8 @@ package com.veggiefridge.online.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.veggiefridge.online.dao.QRCodeDAO;
-import com.veggiefridge.online.model.QRCode;
+import com.veggiefridge.online.model.QrCode;
 
 @Service
 @Transactional
@@ -16,13 +15,13 @@ public class QRCodeServiceImpl implements QRCodeService {
 	
 	@Override
 	@Transactional
-	public void insertCustomerqr(QRCode customerqr) {
+	public void insertCustomerqr(QrCode customerqr) {
 		qrCodeDAO.insertCustomerqr(customerqr);
 	}
 
 	@Override
 	@Transactional
-	public QRCode getCustomerqr(String id) {
+	public QrCode getCustomerqr(String id) {
 		return qrCodeDAO.getCustomerqr(id);
 	}
 
@@ -33,7 +32,7 @@ public class QRCodeServiceImpl implements QRCodeService {
 	}
 
 	@Override
-	public boolean saveOrder(QRCode qrcode) {
+	public boolean saveOrder(QrCode qrcode) {
 		return qrCodeDAO.saveOrder(qrcode);
 	}
 

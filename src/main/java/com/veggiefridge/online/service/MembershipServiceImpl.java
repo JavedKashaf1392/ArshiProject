@@ -3,18 +3,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.veggiefridge.online.dao.MembershipDAO;
-import com.veggiefridge.online.model.MembershipWallet;
+import com.veggiefridge.online.model.Membership;
 
 @Service
 @Transactional
-public class MembershipWalletServiceImpl implements MembershipWalletService{
+public class MembershipServiceImpl implements MembershipService{
 
 	@Autowired
 	private MembershipDAO  membershipdao;
 	
 	@Transactional
 	@Override
-	public boolean add(MembershipWallet msw) {
+	public boolean add(Membership msw) {
 		try {
 			membershipdao.add(msw);
 			System.out.println("service add Membership method is running");
@@ -28,7 +28,7 @@ public class MembershipWalletServiceImpl implements MembershipWalletService{
 
 	@Transactional
 	@Override
-	public MembershipWallet getByCustomer(int customerid) {
+	public Membership getByCustomer(int customerid) {
 		System.out.println("service getByCustomer method is running");
 		return membershipdao.getByCustomer(customerid);
 	}
@@ -36,7 +36,7 @@ public class MembershipWalletServiceImpl implements MembershipWalletService{
 	
 	@Transactional
 	@Override
-	public MembershipWallet get(int MembershipID) {
+	public Membership get(int MembershipID) {
 		return membershipdao.get(MembershipID);
 	}
 

@@ -31,17 +31,18 @@
 </beans:bean>  -->  
           
 	    <http auto-config="true">
+	    
 		<intercept-url pattern="/" access="permitAll" />
 		
 		<intercept-url pattern="/kiosk/**" access="hasRole('ROLE_ADMIN')" />
 		
-		<intercept-url pattern="/customer/**" access="hasRole('ROLE_ADMIN')" />
-		
 		<intercept-url pattern="/product/**" access="hasRole('ROLE_ADMIN')" />
 		
 	    <intercept-url pattern="/location/**" access="hasRole('ROLE_ADMIN')" />
-		
+	
 		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
+		
+	
 		
 		<!-- <intercept-url pattern="/user" access="hasAuthority('USER')" /> -->
 		<!-- <intercept-url pattern="/kiosk/listKiosk" access="hasAuthority('ADMIN')" 
@@ -54,6 +55,8 @@
 		<intercept-url pattern="/order/**" access="hasRole('ROLE_USER')" />
 		
 	    <intercept-url pattern="/member/**" access="hasRole('ROLE_USER')" />
+	    
+	    <intercept-url pattern="/login	/**" access="hasRole('ROLE_USER')" />
 		
 		<!-- <intercept-url pattern="/product/listProduct" access="hasRole('ADMIN')" 
 			/> <intercept-url pattern="/location/listLocation" access="hasRole('ADMIN')" 
@@ -86,7 +89,6 @@
 		 <jdbc-user-service data-source-ref="dataSource"
 		 authorities-by-username-query="select email, role from customer where email = ?" 
 		 users-by-username-query="select email,password,'true' as enabled from customer where email = ?" /> 
-		 
 		</authentication-provider>
 	    </authentication-manager>
 

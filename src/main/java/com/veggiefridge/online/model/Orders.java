@@ -27,10 +27,10 @@ public class Orders{
 	@ManyToOne
 	private Customer customer;
 	
-	@Column(name = "ordertotal")
+	@Column(name = "orderTotal")
 	private double orderTotal;
 
-	@Column(name="orderdate")
+	@Column(name="orderDate")
 	private Date orderDate;
 	
 	@Column(name="pickupStatus")

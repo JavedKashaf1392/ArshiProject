@@ -23,7 +23,7 @@ import com.veggiefridge.online.model.Kiosk;
 import com.veggiefridge.online.model.OrderItem;
 import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Product;
-import com.veggiefridge.online.model.QRCode;
+import com.veggiefridge.online.model.QrCode;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.OrderService;
@@ -102,12 +102,12 @@ public class OrderController {
 			System.out.println("remove item from cart");
 		}
 
-		QRCode qrcode = new QRCode();
-		qrcode.setCustomer(this.getCartPage().getCustomer());
-		qrcode.setOrders(orders);
-		qrcode.setValid(true);
-		qrcodeservice.saveOrder(qrcode);
-		System.out.println("order added into qrcode");
+		//QrCode qrcode = new QrCode();
+		//qrcode.setCustomer(this.getCartPage().getCustomer());
+		//qrcode.setOrders(orders);
+		//qrcode.setValid(true);
+		//qrcodeservice.saveOrder(qrcode);
+		//System.out.println("order added into qrcode");
 
 		model.setViewName("thanks");
 		return model;

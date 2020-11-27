@@ -1,15 +1,15 @@
 package com.veggiefridge.online.dao;
 
-import com.veggiefridge.online.model.QRCode;
+import com.veggiefridge.online.model.QrCode;
 
 public interface QRCodeDAO {
 	
-	 public void insertCustomerqr(QRCode customerqr);
+	 public void insertCustomerqr(QrCode customerqr);
 	 
-	 public QRCode getCustomerqr(String id);
+	 public QrCode getCustomerqr(String id);
 	 
 	 public void generate_qr(String image_name,String qrCodeData);
 	 
-	 public boolean saveOrder(QRCode qrcode);
+	 public boolean saveOrder(QrCode qrcode);
 	 
 }
