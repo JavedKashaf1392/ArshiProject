@@ -66,6 +66,7 @@
 			login-processing-url="/appLogin" username-parameter="email"
 			password-parameter="password" always-use-default-target="true"
 			default-target-url="/defaultTarget" />
+			
 		<!-- default-target-url="/defaultTarget" -->
 		<access-denied-handler
 			error-page="/Access_Denied" />

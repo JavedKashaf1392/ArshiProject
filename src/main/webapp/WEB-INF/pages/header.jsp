@@ -413,7 +413,7 @@ input[type=submit]:hover {
  
  <security:authorize access="hasAnyRole('ADMIN', 'USER')">  
  <span class='fas fa-user-circle' style="color:green;"></span>
- <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Welcome : ${pageContext.request.userPrincipal.name}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
+ <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Hello,${customerModel.firstName}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
  </security:authorize> 
   
   <security:authorize access="hasRole('USER')">
@@ -478,7 +478,7 @@ input[type=submit]:hover {
   <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
-  <div class="badge" id="output">0</div>
+  <div class="badge" id="output">${customerModel.cartpage.cartitem}</div>
   </a>
  </form>
   

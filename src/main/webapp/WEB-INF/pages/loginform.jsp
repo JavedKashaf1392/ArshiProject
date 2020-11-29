@@ -11,11 +11,22 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {
+
+body{
 
 font-family: Arial, Helvetica, sans-serif;
  background-color:#f1f1f1;
 
+}
+.errormsg{
+text-align:center;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: white;/* #31708f */
+	background-color:#4CAF50;  /* #d9edf7 */
+	border-color: #bce8f1;
 }
 
 .msg {
@@ -108,13 +119,15 @@ span.psw {
  /*  background-color: rgba(0,0,0,0.4); */ /* Black w/ opacity */ */
   margin-top: 50%;
   margin-left:30%;
+  
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
+ /*  border: 1px solid #888; */
+   border:1px solid #ddd;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
@@ -150,6 +163,7 @@ span.psw {
      width: 100%;
   }
 }
+
 </style>
 </head>
 <body onload='document.loginForm.username.focus();'>
@@ -166,20 +180,20 @@ span.psw {
 		</c:if>
 		
 		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
-        <font color="red">
-        Your login attempt was not successful due to <br/><br/>
-        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+        <font color="red" class="errormsg">
+        Your login attempt was not successful due to <br/><br/><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
         </font>
         </c:if>
      
     <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
    
-     <div class="imgcontainer">
+   <div class="imgcontainer">
    <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
    <spring:url value="/images" var="images" />
    <img src="${images}/logo.jpg" width="150" height="100"/>
       </div>
-     <div class="container">
+      
+      <div class="container">
       <label for="uname"><b>Email</b></label>
       <input type="email" placeholder="Enter Email" name="email" required>
 
@@ -195,7 +209,7 @@ span.psw {
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button"  class="cancelbtn" onclick="history.back()">Cancel</button>
       <span class="psw"><a href="#">Forgot Password?</a></span>
     </div>
   <a href="${pageContext.request.contextPath }/home/signup" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;text-decoration: none;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge?Create an account</a><button type="button" onclick="${pageContext.request.contextPath }/home/signup" class="submitId"  

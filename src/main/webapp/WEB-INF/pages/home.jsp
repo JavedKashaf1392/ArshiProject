@@ -1123,9 +1123,9 @@ window.onclick = function(event) {
 <!-- .......................................signup.......................-->
 <div class="register" id="id02">
 <div class="register-content">
-<form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/login/saveCustomer" modelAttribute="customer" >
+<form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/addguestcustomer" modelAttribute="customer" >
 
-<font color='red'style="font-size:16px;text-align: center;"><span id="errId"></span></font>
+     <font color='red'style="font-size:16px;text-align: center;"><span id="errId"></span></font>
 
       <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>
       <p style="margin-top: 1%; margin-left: 2%;">Please fill in this form to create an account.</p>
@@ -1186,7 +1186,7 @@ window.onclick = function(event) {
        <c:forEach items="${listkiosklocation}" var="kiosklocation">
        <option value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
        </c:forEach>
-      </select>
+       </select>
        
        
       <label for="email" style="margin-left:2%;">Email :</label>
@@ -1201,7 +1201,7 @@ window.onclick = function(event) {
 
       
       <label for="psw" style="margin-left:2%;">Password:</label>
-      <spring:bind path="customer.password">
+  <spring:bind path="customer.password">
   <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 65%;
   padding: 8px;
   margin: 3px 0 12px 0; 
@@ -1302,10 +1302,6 @@ $('.submitId').click(function(){
     }
 </script>
 
-
-   
-   
-   
   </body>
   </html>
   

@@ -23,6 +23,7 @@ import com.veggiefridge.online.dao.OrderDao;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
+import com.veggiefridge.online.model.CustomerModel;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CartService;
@@ -159,7 +160,7 @@ public class ShoppingCartController {
 
 	// get cartPage
 	private CartPage getCartPage() {
-		return ((Customer) session.getAttribute("customer")).getCartpage();
+		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
 	// add cartitem
@@ -191,19 +192,17 @@ public class ShoppingCartController {
 			cartservice.updateCartPage(cartpage);
 			System.out.println("cartpage updated");
 		}
-		return "redirect:/cart/registerdhome";
+		return "redirect:/cart/listCustomerCartItem";
 
 	}
 
 	// listCartItem
 	@RequestMapping(value = "/listCustomerCartItem")
 	public ModelAndView listCustomerCartItem(ModelAndView model) {
-		/*
-		 * List<CartItem> listcustomercartitem =
-		 * cartservice.list(this.getCartPage().getCartpageid());
-		 * model.addObject("listcustomercartitem", listcustomercartitem);
-		 */
-		model.setViewName("cartitemlist");
+		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+		model.addObject("listcustomercartitem", listcustomercartitem);
+		//model.setViewName("cartitemlist");
+		model.setViewName("newcart");
 		return model;
 	}
 

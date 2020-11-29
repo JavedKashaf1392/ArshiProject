@@ -6,6 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -48,20 +51,10 @@ public class AppController {
 	
 	@Autowired
 	private HttpSession session;
+	
+	
+	private static final Logger logger = LoggerFactory.logger(MembershipController.class);
 
-	/*
-	 * @RequestMapping(value="/") public ModelAndView continueLocation(ModelAndView
-	 * model,@ModelAttribute("kiosklocation") KioskLocation
-	 * kiosklocation,BindingResult resultlocation)
-	 * 
-	 * { List<KioskLocation> listkiosklocation
-	 * =kiosklocationservice.getAllLocation(); List<Product> listProduct =
-	 * productService.getAllProducts(); List<Customer> listCustomer =
-	 * customerservice.getAllCustomers(); model.addObject("listCustomer",
-	 * listCustomer); model.addObject("listkiosklocation",listkiosklocation);
-	 * model.addObject("listProduct", listProduct); model.setViewName("home");
-	 * return model; }
-	 */
 	
 	      //list Product
 		@RequestMapping(value="/")
@@ -138,22 +131,13 @@ public class AppController {
 		return userName;
 	}
 	
-	//@RequestMapping(value="/login")
-	//public ModelAndView visitAdmin(){
-		//ModelAndView model = new ModelAndView("loginform");
-		//model.addObject("title", "login");
-		//model.addObject("message", "This page demonstrates how to use Spring security.");
-		//return model;
-	//}
-	
-
 	// get cartPage
 	private CartPage getCartPage() {
 		return ((Customer) session.getAttribute("customer")).getCartpage();
 	}
 	
 	
-	@RequestMapping(value="/defaultTarget")  
+	@RequestMapping(value="/defaultTarget")
 	public ModelAndView defaultTarget(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
 	
 	{ 
@@ -167,8 +151,7 @@ public class AppController {
 		return model; 
 	} 
 	
-
-
+		
 	@RequestMapping("/regcontinueLocation")  
 	public ModelAndView regcontinueLocation(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
 	{ 
@@ -184,7 +167,9 @@ public class AppController {
 	
 	//currentorder
 	@RequestMapping(value = "/signup")
-	public ModelAndView signUp(ModelAndView model) {
+	public ModelAndView signUp(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		model.addObject("listkiosklocation",listkiosklocation);
 		model.setViewName("/signup");
 		return model;
 	}
@@ -224,6 +209,34 @@ public class AppController {
 		}
 
 		return error;
+	}
+	
+	
+    //addGuestCustomer
+	//save and update customer
+	@RequestMapping(value = "/addguestcustomer", method = RequestMethod.POST)
+	public ModelAndView addGuestCustomer(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+			
+		 if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+			// customer other updating the customer 
+			 String roles="ROLE_USER";
+		      customer.setRole(roles);
+		       //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
+		        //customer.setPassword(securePassword);
+			customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
+			customerservice.addCustomer(customer);
+			logger.info("customer add succesfully");
+			List<Customer> listCustomer = customerservice.getAllCustomers();
+			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
+			List<Product> listProduct = productService.getAllProducts();
+			model.addObject("listkiosklocation",listkiosklocation);
+		    model.addObject("listCustomer", listCustomer); 
+			model.addObject("listProduct", listProduct);
+			session.setAttribute("customer", customer);
+			model.setViewName("loginform");
+		}
+		return model; 
+		
 	}
 	
 }

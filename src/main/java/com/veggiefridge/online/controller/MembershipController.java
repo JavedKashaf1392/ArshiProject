@@ -66,31 +66,4 @@ public class MembershipController {
 	}
 	
 	
-	
-    //addGuestCustomer
-	//save and update customer
-	@RequestMapping(value = "/addguestcustomer", method = RequestMethod.POST)
-	public ModelAndView addGuestCustomer(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
-			
-		 if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
-			// customer other updating the customer 
-			 String roles="ROLE_USER";
-		      customer.setRole(roles);
-		       //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
-		        //customer.setPassword(securePassword);
-			customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
-			customerservice.addCustomer(customer);
-			logger.info("customer add succesfully");
-			List<Customer> listCustomer = customerservice.getAllCustomers();
-			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
-			List<Product> listProduct = productService.getAllProducts();
-			model.addObject("listkiosklocation",listkiosklocation);
-		    model.addObject("listCustomer", listCustomer); 
-			model.addObject("listProduct", listProduct);
-			session.setAttribute("customer", customer);
-			model.setViewName("registerdhome");
-		}
-		return model; 
-		
-	}
 }

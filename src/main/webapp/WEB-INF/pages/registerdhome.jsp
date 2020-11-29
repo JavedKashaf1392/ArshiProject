@@ -1153,18 +1153,7 @@ function playPauseSlides() {
            
         
         <div class="right">
-         
-        <%-- "${pageContext.request.contextPath}/cart/buy/${product.productid}"
-         --%><!-- add/{productid}/product -->
-      
-        <!-- class="btn btn-success" -->
-           
-         <%--  onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"  
-          --%>
-            <%-- <button  id="b" type="button" onclick="window.location.href='${pageContext.request.contextPath}/cart/buy/${product.productid}'"> 
-			<i class="fa fa-shopping-cart"></i> 
-			Add to cart
-		    </button>  --%>
+       
         </div></div> 
         </li>
        </c:forEach>
