@@ -3,10 +3,13 @@ package com.veggiefridge.online.controller;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +22,7 @@ import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
+import com.veggiefridge.online.model.CustomerModel;
 import com.veggiefridge.online.model.Kiosk;
 import com.veggiefridge.online.model.OrderItem;
 import com.veggiefridge.online.model.Orders;
@@ -52,7 +56,7 @@ public class OrderController {
 
 	// get cartPage
 	private CartPage getCartPage() {
-		return ((Customer) session.getAttribute("customer")).getCartpage();
+		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
 	//getAll Order
@@ -109,7 +113,7 @@ public class OrderController {
 		//qrcodeservice.saveOrder(qrcode);
 		//System.out.println("order added into qrcode");
 
-		model.setViewName("thanks");
+		model.setViewName("pickupaddress");
 		return model;
 	}
 
@@ -126,7 +130,7 @@ public class OrderController {
 		model.setViewName("repeatOrder");
 		return model;
 	}
-
+    
 	// pending Order item
 	@RequestMapping(value = "/listOrderItems/{orderid}", method = RequestMethod.GET)
 	public ModelAndView listOrderItems(ModelAndView model, @PathVariable(value = "orderid") int orderid) {
@@ -181,7 +185,7 @@ public class OrderController {
 		return model;
 	}
 
-	// listCartItem
+	//listCartItem
 	@RequestMapping(value = "/deliveredorder")
 	public ModelAndView fetchDelOrderByStatus(ModelAndView model) {
 
@@ -191,5 +195,18 @@ public class OrderController {
 		model.setViewName("myorder");
 		return model;
 	}
+	
+	@RequestMapping(value = "/showPickupStatus", method = RequestMethod.GET)
+	public String getAllStatus(HttpServletRequest req, Model model) {
+		String pickupStatus = "";
+		String picstatus = req.getParameter("pickupStatus");
+		if (picstatus != null && !picstatus.equals("")) {
+			pickupStatus = picstatus;
+			List<Orders> picsts = orderservice.getOrdersByStatus(pickupStatus, this.getCartPage().getCustomer().getCustomerid());
+			model.addAttribute("picsts", picsts);
+			return "CurrentOrder";
+		}
+		return "CurrentOrder";
 
+	}
 }

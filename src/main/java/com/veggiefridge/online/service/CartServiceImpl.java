@@ -109,6 +109,11 @@ public class CartServiceImpl implements CartService{
 	public CartItem getCustomerCart(int cartpageid) {
 		return cartitemdao.getCustomerCart(cartpageid);
 	}
+
+	@Override
+	public boolean add(CartPage cartpage) {
+		return cartitemdao.add(cartpage);
+	}
 	
 }
 	

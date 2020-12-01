@@ -26,5 +26,7 @@ public interface CartService {
       public boolean deleteList(List<CartItem> cartitem);
 		
       public CartItem getCustomerCart(int cartpageid);
+      
+      public boolean add(CartPage cartpage);
     
 }

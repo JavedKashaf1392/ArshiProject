@@ -133,7 +133,7 @@ public class ShoppingCartController {
 	}
 
 	
-	// deleteCartItem
+	//deleteCartItem
 	@RequestMapping(value = "/deleteCartItems/{cartitemid}", method = RequestMethod.GET)
 	public String deleteProducts(@PathVariable("cartitemid") int cartitemid) {
 		CartItem cartitem = cartservice.get(cartitemid);
@@ -163,12 +163,15 @@ public class ShoppingCartController {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-	// add cartitem
+     //add cartitem
 	@RequestMapping(value = "/addToCartPageItem/{productid}")
 	public String addCartItems(@PathVariable int productid) {
 
 		CartPage cartpage = this.getCartPage();
 		CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
+		
+		 // if cart id is 0 then creating the
+			// cart other updating the cart
 		if (cartitem == null) {
 
 			// add a new cartItem if a new product is getting added
@@ -185,16 +188,17 @@ public class ShoppingCartController {
 			// insert a new cartLine
 			cartservice.add(cartitem);
 			System.out.println("cartitem is added");
-
 			// update the cart
 			cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
 			cartpage.setCartitem(cartpage.getCartitem() + 1);
 			cartservice.updateCartPage(cartpage);
 			System.out.println("cartpage updated");
 		}
+	
 		return "redirect:/cart/listCustomerCartItem";
 
 	}
+	
 
 	// listCartItem
 	@RequestMapping(value = "/listCustomerCartItem")
@@ -229,3 +233,4 @@ public class ShoppingCartController {
 	} 
 
 }
+

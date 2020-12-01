@@ -32,6 +32,8 @@ import com.veggiefridge.online.model.Product;
 		
 		public boolean deleteList(List<CartItem> cartitem);
 		
+	    public boolean add(CartPage cartpage);
+		
 		
 		
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -218,12 +217,16 @@ public class AppController {
 	public ModelAndView addGuestCustomer(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
 			
 		 if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
-			// customer other updating the customer 
+			 // customer other updating the customer 
 			 String roles="ROLE_USER";
-		      customer.setRole(roles);
-		       //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
-		        //customer.setPassword(securePassword);
-			customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
+		     customer.setRole(roles);
+		     //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
+		     //customer.setPassword(securePassword);
+		     // create a new cart
+		    //CartPage cartpage= new CartPage();
+		    //cartpage.setCustomer(customer);
+		    //customer.setCartpage(cartpage);
+		    customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
 			customerservice.addCustomer(customer);
 			logger.info("customer add succesfully");
 			List<Customer> listCustomer = customerservice.getAllCustomers();

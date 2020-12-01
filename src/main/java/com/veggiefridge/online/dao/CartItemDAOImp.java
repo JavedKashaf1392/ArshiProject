@@ -173,6 +173,20 @@ public class CartItemDAOImp implements CartItemDAO{
 
 	}
 	}
+
+
+	@Override
+	public boolean add(CartPage cartpage) {
+		try {
+			sessionFactory.getCurrentSession().persist(cartpage);
+			System.out.println("add new cart for customer");
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
 }
 
 	

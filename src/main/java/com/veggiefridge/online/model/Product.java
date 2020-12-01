@@ -33,8 +33,16 @@ public class Product implements Serializable {
 	
 	//@NotEmpty(message="Please Enter Quantity")
 	@Column(name="quantity")
-	private String quantity;
+	private  int quantity;
 	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	//@NotNull(message="Please Enter Discount")
 	@Column(name="discount")
 	private int discount;
@@ -115,13 +123,6 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public String getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
-	}
 
 	public int getDiscount() {
 		return discount;

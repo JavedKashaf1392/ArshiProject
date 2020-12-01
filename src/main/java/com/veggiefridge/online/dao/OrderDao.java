@@ -4,6 +4,7 @@ import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.OrderItem;
 import com.veggiefridge.online.model.Orders;
+import com.veggiefridge.online.model.Product;
 
 public interface OrderDao {
 	
@@ -24,5 +25,7 @@ public interface OrderDao {
 		public List<Orders> listpendingOrders();
 		
 		public List<Orders> listdeliveredOrders();
+		
+		public List<Orders> getOrdersByStatus(String pickupStatus,int customerid);
 		
 }

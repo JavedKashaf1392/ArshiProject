@@ -22,5 +22,7 @@ public interface OrderService {
 	public List<Orders> listpendingOrders();
 	
 	public List<Orders> listdeliveredOrders();
+	
+	public List<Orders> getOrdersByStatus(String pickupStatus,int customerid);
 
 }

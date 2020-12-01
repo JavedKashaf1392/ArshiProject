@@ -66,4 +66,9 @@ public class OrderServiceImpl implements OrderService {
 	public List<Orders> listdeliveredOrders() {
 		return orderdao.listdeliveredOrders();
 	}
+
+	@Override
+	public List<Orders> getOrdersByStatus(String pickupStatus, int customerid) {
+		return orderdao.getOrdersByStatus(pickupStatus, customerid);
+	}
 }

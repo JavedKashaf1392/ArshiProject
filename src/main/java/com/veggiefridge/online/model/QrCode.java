@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "qrCodes")
+@Table(name = "qrcode")
 
 public class QrCode implements Serializable {
 	

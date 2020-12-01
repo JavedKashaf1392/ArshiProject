@@ -119,6 +119,17 @@ public class OrderDaoImpl implements OrderDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public List<Orders> getOrdersByStatus(String pickupStatus, int customerid) {
+		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customerid = :customerid";
+		return sessionFactory.getCurrentSession()
+				.createQuery(query)
+					.setParameter("pickupStatus", pickupStatus)
+					.setParameter("customerid", customerid)
+						.list();
+	}
 	}
 	
 	
