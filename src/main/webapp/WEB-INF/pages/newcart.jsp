@@ -521,7 +521,7 @@ aside{
          </div>
         
         <div class="summary-checkout">
-        <a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrder" style="display: inline-block;
+        <a href="${pageContext.request.contextPath}/order/PickupAddress" style="display: inline-block;
         padding: 15px 85px;
         text-align: center;
         text-decoration: none;

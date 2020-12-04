@@ -215,7 +215,7 @@ public class OrderController {
 	
 	
 	//PickupAddress
-	@RequestMapping(value ="PickupAddress")
+	@RequestMapping(value ="/PickupAddress")
 	public ModelAndView PickupAddress(ModelAndView model) {
 		model.setViewName("pickupaddress");
 		return model;
@@ -227,6 +227,13 @@ public class OrderController {
 		model.setViewName("editprofile");
 		return model;
 	}
+	
+	    //myCart
+		@RequestMapping(value = "/paymentoption")
+		public ModelAndView myCart(ModelAndView model) {
+			model.setViewName("payment");
+			return model;
+		}
 
 
 	

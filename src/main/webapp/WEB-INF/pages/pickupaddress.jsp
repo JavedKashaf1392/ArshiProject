@@ -143,7 +143,7 @@ span.price {
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+      <form action="${pageContext.request.contextPath}/order/paymentoption">
       
         <div class="row">
           <div class="col-50">
