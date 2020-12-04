@@ -593,36 +593,36 @@ input[type=submit]:hover {
   
   <div class="centercontent" style="background-color:;margin-top:10px;">
    
-  <div class="sidemenu" style="margin: 0;
+ <div class="sidemenu" style="margin: 0;
   padding: 0;
   width: 250px;
-  background-color:white;
+  background-color:#f1f1f1;
   position: absolute;
   height:700px;
   /*overflow: auto;*/
   margin-left:15%;border:1px solid #ddd;">
   
   <a class="active" href="#home" style=" display: block;
-  color: black;
+  color: white;
   padding: 16px;
-  text-decoration: none;background-color:#4CAF50">My Account</a>
+  text-decoration: none;background-color:#4CAF50; ">My Account</a>
   
-  <a href="#news"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/editProfile"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Edit Profile</a> 
   
-  <a href="#news"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - MY Cart</a>
   
-  <a href="#contact"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - MY Order</a>
   
-  <a href="#about"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/home/wallet" style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "-> - My Wallet</a>
@@ -630,7 +630,7 @@ input[type=submit]:hover {
   <a href="#home"  style=" display: block;
   color: black;
   padding: 16px;
-  text-decoration: none; "> - Membership</a>
+  text-decoration: none;"> - Membership</a>
   
   <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
   color: black;
@@ -640,18 +640,17 @@ input[type=submit]:hover {
   <a href="${pageContext.request.contextPath}/order/deliveredorder"  style=" display: block;
   color: black;
   padding: 16px;
-  text-decoration: none; "> - Delieverd Orders</a>
+  text-decoration: none; "> - Deliverd Orders</a>
   
   <a href="#news"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Customer Service</a>
   
-   <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
-  
+  <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
   </div>
-
- <div class="center" style=" margin-left: 200px;
+  
+  <div class="center" style=" margin-left: 200px;
   padding: 1px 16px;
   height: 700px;
   margin-left:32%; background-color: ;margin-right:13%;">

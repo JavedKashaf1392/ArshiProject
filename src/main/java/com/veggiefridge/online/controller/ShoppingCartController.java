@@ -149,7 +149,7 @@ public class ShoppingCartController {
 		return "redirect:/cart/registerdhome";
 	}
 
-	// listCartItem
+	//listCartItem
 	@RequestMapping(value = "/listcart")
 	public ModelAndView listCartItems(ModelAndView model) {
 		List<CartItem> listcartitem = cartservice.getAllCartItem();
@@ -163,46 +163,83 @@ public class ShoppingCartController {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-     //add cartitem
-	@RequestMapping(value = "/addToCartPageItem/{productid}")
-	public String addCartItems(@PathVariable int productid) {
-
-		CartPage cartpage = this.getCartPage();
-		CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
-		
-		 // if cart id is 0 then creating the
+   
+	 //add cartitem
+	//@RequestMapping(value = "/addToCartPageItem/{productid}")
+	//public String addCartItems(@PathVariable int productid) {
+	   // CartPage cartpage = this.getCartPage();
+		//CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
+	    //if (cartpage.getCartpageid() == 0) { // if employee id is 0 then creating the
+			// employee other updating the employee
+	    	//cartpage.setCartitem(1);
+	    	//cartpage.setCustomer(cartpage.getCustomer());
+			//cartservice.add(cartpage);
+		 //if cart id is 0 then creating the
 			// cart other updating the cart
-		if (cartitem == null) {
+		//if (cartitem == null) {
 
 			// add a new cartItem if a new product is getting added
-			cartitem = new CartItem();
-			Product product = productservice.getProduct(productid);
+			//cartitem = new CartItem();
+			//Product product = productservice.getProduct(productid);
 			// transfer the product details to cartLine
-			cartitem.setCartpageid(cartpage.getCartpageid());
-			cartitem.setProduct(product);
-			cartitem.setProductCount(1);
-			cartitem.setBuyingPrice(product.getFinalPrice());
-			cartitem.setTotal(product.getFinalPrice());
-			cartitem.setCartItemNo(cartitem.getCartItemNo() + 1);
+			//cartitem.setCartpageid(cartpage.getCartpageid());
+			//cartitem.setProduct(product);
+			//cartitem.setProductCount(1);
+			//cartitem.setBuyingPrice(product.getFinalPrice());
+			//cartitem.setTotal(product.getFinalPrice());
+			//cartitem.setCartItemNo(cartitem.getCartItemNo() + 1);
 
 			// insert a new cartLine
-			cartservice.add(cartitem);
-			System.out.println("cartitem is added");
+			//cartservice.add(cartitem);
+			//System.out.println("cartitem is added");
+		
 			// update the cart
-			cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
-			cartpage.setCartitem(cartpage.getCartitem() + 1);
-			cartservice.updateCartPage(cartpage);
-			System.out.println("cartpage updated");
+			//cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
+			//cartpage.setCartitem(cartpage.getCartitem() + 1);
+			//cartservice.updateCartPage(cartpage);
+			//System.out.println("cartpage updated");
+	       //}
+		//return "redirect:/cart/listCustomerCartItem";
+	       //}
+	
+	
+	    //add cartitem
+		@RequestMapping(value = "/addToCartPageItem/{productid}")
+		public String addCartItems(@PathVariable int productid) {
+
+			CartPage cartpage = this.getCartPage();
+			CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
+			if (cartitem == null) {
+
+				// add a new cartItem if a new product is getting added
+				cartitem = new CartItem();
+				Product product = productservice.getProduct(productid);
+				// transfer the product details to cartLine
+				cartitem.setCartpageid(cartpage.getCartpageid());
+				cartitem.setProduct(product);
+				cartitem.setProductCount(1);
+				cartitem.setBuyingPrice(product.getFinalPrice());
+				cartitem.setTotal(product.getFinalPrice());
+				cartitem.setCartItemNo(cartitem.getCartItemNo() + 1);
+
+				// insert a new cartLine
+				cartservice.add(cartitem);
+				System.out.println("cartitem is added");
+
+				// update the cart
+				cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
+				cartpage.setCartitem(cartpage.getCartitem() + 1);
+				cartservice.updateCartPage(cartpage);
+				System.out.println("cartpage updated");
+			}
+			return "redirect:/cart/listCustomerCartItem";
+
 		}
-	
-		return "redirect:/cart/listCustomerCartItem";
 
-	}
-	
-
-	// listCartItem
+	//listCartItem
 	@RequestMapping(value = "/listCustomerCartItem")
-	public ModelAndView listCustomerCartItem(ModelAndView model) {
+	public ModelAndView listCustomerCartItem(ModelAndView model,@ModelAttribute CartPage cartpage, BindingResult result) {
+		//List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		model.addObject("listcustomercartitem", listcustomercartitem);
 		//model.setViewName("cartitemlist");
@@ -210,13 +247,6 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	// joinmemebership
-	@RequestMapping(value = "/joinmembership")
-	public ModelAndView joinMembership(ModelAndView model) {
-		model.setViewName("joinmemebership");
-		return model;
-	}
-	
 	
 	@RequestMapping("/changeLocation")  
 	public ModelAndView continueLoc(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 

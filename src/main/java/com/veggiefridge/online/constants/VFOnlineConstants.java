@@ -46,5 +46,7 @@ public class VFOnlineConstants {
 	public static final String PICKUPSTATUS="delivered";
 	
 	public static final String organic="organic";
+	
+	public static final String qrCodeIsValid="true";
 
 }

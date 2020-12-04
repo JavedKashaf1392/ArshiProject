@@ -415,12 +415,12 @@ input[type=submit]:hover {
  
  <security:authorize access="hasAnyRole('ADMIN', 'USER')">  
  <span class='fas fa-user-circle' style="color:green;"></span>
- <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Welcome : ${pageContext.request.userPrincipal.name}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
+ <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Hello,${customerModel.firstName}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
  </security:authorize> 
   
   <security:authorize access="hasRole('USER')">
   <span class="fas fa-map-marker-alt" style="color:green;"></span><%-- ${kiosklocation.location},${kiosklocation.cities} --%>
-  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;"> ${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
+  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${customerModel.cities},${customerModel.location}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
   </security:authorize>
   
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
@@ -480,7 +480,7 @@ input[type=submit]:hover {
   <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
-  <div class="badge" id="output">0</div>
+  <div class="badge" id="output">${customerModel.cartpage.cartitem}</div>
   </a>
  </form>
   
@@ -501,9 +501,9 @@ input[type=submit]:hover {
       <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
       </center>
-      <a href="${pageContext.request.contextPath }/home/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
+      <a href="${pageContext.request.contextPath }/order/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
       <a href="${pageContext.request.contextPath }/order/pendingorders"><i class="fa fa-bars"></i> <span>My Orders</span></a>
-      <a href="${pageContext.request.contextPath }/home/myCart"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
+      <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>

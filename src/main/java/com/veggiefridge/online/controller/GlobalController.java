@@ -41,7 +41,8 @@ public class GlobalController {
 					customerModel.setId(customer.getCustomerid());
 					customerModel.setFirstName(customer.getFirstName());
 					customerModel.setRole(customer.getRole());
-					
+					customerModel.setCities(customer.getCities());
+					customerModel.setLocation(customer.getLocation());
 					if(customer.getRole().equals("ROLE_USER")) {
 						customerModel.setCartpage(customer.getCartpage());					
 					}				

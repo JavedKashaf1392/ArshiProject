@@ -474,6 +474,7 @@ aside{
       </div>
       </div>
       </c:forEach>
+     
       <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
@@ -482,6 +483,7 @@ aside{
         background-color:#4CAF50;
         border-radius: 6px;
         outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
+        
      
       </div>
       </c:when>
@@ -497,7 +499,7 @@ aside{
      <!-- ......continue shopping button......-->
       <aside>
       <div class="summary">
-      <h1></h1>item in Your cart
+      <h1>${customerModel.cartpage.cartitem}</h1>item in Your cart
       <!-- <div class="summary-total-items" style="color:green;"><span class="total-items" style="color:red;font-size:20px;"></span><h3>Items in your cart</h3></div> -->
       <div class="summary-subtotal" style="padding:5px 10px;">
       <div class="subtotal-title" style="color:green;font-size:px;">Subtotal</div>

@@ -897,22 +897,22 @@ div#sc-edprofile input[type="submit"]:hover {
   padding: 16px;
   text-decoration: none;background-color:#4CAF50; ">My Account</a>
   
-  <a href="#news"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/editProfile"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Edit Profile</a> 
   
-  <a href="#news"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - MY Cart</a>
   
-  <a href="#contact"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - MY Order</a>
   
-  <a href="#about"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/home/wallet" style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "-> - My Wallet</a>

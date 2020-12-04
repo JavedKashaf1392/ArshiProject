@@ -223,9 +223,9 @@ public class AppController {
 		     //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
 		     //customer.setPassword(securePassword);
 		     // create a new cart
-		    //CartPage cartpage= new CartPage();
-		    //cartpage.setCustomer(customer);
-		    //customer.setCartpage(cartpage);
+		    CartPage cartpage= new CartPage();
+		    cartpage.setCustomer(customer);
+		    customer.setCartpage(cartpage);
 		    customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
 			customerservice.addCustomer(customer);
 			logger.info("customer add succesfully");
@@ -240,6 +240,22 @@ public class AppController {
 		}
 		return model; 
 		
+	}
+	
+	
+	 //myCart
+	@RequestMapping(value = "/paymentoption")
+	public ModelAndView myCart(ModelAndView model) {
+		model.setViewName("payment");
+		return model;
+	}
+	
+
+	 //myCart
+	@RequestMapping(value = "/payopt")
+	public ModelAndView payopt(ModelAndView model) {
+		model.setViewName("/payopt");
+		return model;
 	}
 	
 }

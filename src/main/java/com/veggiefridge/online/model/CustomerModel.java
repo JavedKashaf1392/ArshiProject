@@ -2,6 +2,8 @@ package com.veggiefridge.online.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+
 public class CustomerModel implements Serializable {
 	
 	private int id;
@@ -13,6 +15,26 @@ public class CustomerModel implements Serializable {
 	private String role;
 	
 	private CartPage cartpage;
+	
+	private String cities;
+	
+	public String getCities() {
+		return cities;
+	}
+
+	public void setCities(String cities) {
+		this.cities = cities;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	private String location;
 
 	public int getId() {
 		return id;

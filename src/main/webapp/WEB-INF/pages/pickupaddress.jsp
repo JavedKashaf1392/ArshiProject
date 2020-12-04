@@ -133,7 +133,7 @@ span.price {
 </style>
 </head>
 <body>
-   <div class="logo" style="margin-left:10%;">
+    <div class="logo" style="margin-left:10%;">
     <spring:url value="/images" var="images" />
     <img src="${images}/logo.jpg" width="160" height="110"/>
     
@@ -203,7 +203,8 @@ span.price {
           <input type="checkbox" checked="checked" name="sameadr"> Pickup address same as billing
         </label>
         <input type="submit" value="ADD ADDRESS" class="btn">
-         <input type="submit" value="CANCEL" class="cancel">
+        <input type="submit" value="CANCEL" class="cancel">
+        <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
       </form>
     </div>
   </div>

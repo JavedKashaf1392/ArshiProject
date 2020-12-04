@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.veggiefridge.online.constants.PaytmConstants;
 import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
@@ -98,21 +100,22 @@ public class OrderController {
 			CartItem cartitems = cartservice.get(cartitem.get(i).getCartitemid());
 			cartservice.remove(cartitems);
 			System.out.println("remove item from cart");
-
 			CartPage cartpage = this.getCartPage();
 			cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.get(i).getTotal());
 			cartpage.setCartitem(cartpage.getCartitem() - 1);
 			cartservice.updateCartPage(cartpage);
 			System.out.println("remove item from cart");
 		}
-
-		//QrCode qrcode = new QrCode();
-		//qrcode.setCustomer(this.getCartPage().getCustomer());
-		//qrcode.setOrders(orders);
-		//qrcode.setValid(true);
-		//qrcodeservice.saveOrder(qrcode);
-		//System.out.println("order added into qrcode");
-
+		QrCode qrcode = new QrCode();
+		qrcode.setCustomerid(this.getCartPage().getCustomer().getCustomerid());
+		qrcode.setDate(new Date());
+		qrcode.setIsValid(VFOnlineConstants.qrCodeIsValid);
+		qrcode.setMembershipId(0);
+		qrcode.setOrderId(orders.getOrderid());
+		qrcode.setSource("WEB");
+		qrcode.setType(VFOnlineConstants.PICKUP_STATUS);
+		qrcodeservice.saveOrder(qrcode);
+		System.out.println("QR Code Generated For Order");
 		model.setViewName("pickupaddress");
 		return model;
 	}
@@ -209,4 +212,24 @@ public class OrderController {
 		return "CurrentOrder";
 
 	}
+	
+	
+	//PickupAddress
+	@RequestMapping(value ="PickupAddress")
+	public ModelAndView PickupAddress(ModelAndView model) {
+		model.setViewName("pickupaddress");
+		return model;
+	}
+	
+	 //Edit profile
+	@RequestMapping(value = "/editProfile")
+	public ModelAndView editProfile(ModelAndView model) {
+		model.setViewName("editprofile");
+		return model;
+	}
+
+
+	
+	
+	
 }
