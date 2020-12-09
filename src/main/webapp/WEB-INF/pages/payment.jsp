@@ -40,7 +40,7 @@ border:1px solid #f1f1f1;
   <div style="border: 1px solid #ddd;margin-right:30%;margin-left:25%;padding:50px 50px;">
   
   <table style="cellspacing:2%; border-spacing:10px;margin-top:1%;">
-  
+  <!-- #DCDCDC -->
   <th style="background-color:#DCDCDC;padding:px px;border-radius:px; 
   text-align: center;
   border: 1px solid #ddd;
@@ -51,50 +51,49 @@ border:1px solid #f1f1f1;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:black;
+        background-color:white;
         border-radius:6px;
-        outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:35px;color:white"></span></a>
+        outline: none;margin-top:6px"><span  class='far fa-credit-card' style="font-size:50px;color:black"></span></a>
        <!--  Membership Id:3 -->
        </th>
 
-<th style="background-color:white;padding:px px;border-radius:px; border: 1px solid #ddd;height:20px;width:180px;">     
-<a href="#" style="display: inline-block;
+<th style="background-color:#DCDCDC;padding:px px;border-radius:px; border: 1px solid #ddd;height:20px;width:180px;">     
+<a href="${pageContext.request.contextPath}/payment" style="display: inline-block;
         padding: 10px 15px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:black;
+        background-color:white;
         border-radius: 6px;
-        outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:35px;"></span></a>
+        outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:50px;color:black;"></span></a>
       <!--   Balance:5000.00 -->
-
-
-       </th>       
-       <th style="background-color:white;padding:px px; width:%;border-radius:px;border: 1px solid #ddd;height:20px;width:180px;">     
+       </th>
+           
+       <th style="background-color:#DCDCDC;padding:px px; width:%;border-radius:px;border: 1px solid #ddd;height:20px;width:180px;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
-<a href="#" style="display: inline-block;
+<a href="${pageContext.request.contextPath}/payment" style="display: inline-block;
         padding: 10px 15px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:black;
+        background-color:white;
         border-radius: 6px;
-        outline: none;margin-top:6px"><span class="fa fa-thumbs-up" style="font-size:35px;color:white"></span></a>
+        outline: none;margin-top:6px"><span class="fa fa-bank" style="font-size:50px;color:black"></span></a>
       <!--   Card:11 -->
        </th>
        
-<th style="background-color:white;padding:px px; width:%;border-radipx;border: 1px solid #ddd;height:100px;width:180px;">     
+<th style="background-color:#DCDCDC;padding:px px; width:%;border-radipx;border: 1px solid #ddd;height:100px;width:180px;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
-<a href="#" style="display: inline-block;
+<a href="${pageContext.request.contextPath}/payment" style="display: inline-block;
         padding: 10px 15px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:black;
+        background-color:white;
         border-radius: 6px;
-        outline: none;margin-top:6px"><span class="fa fa-shopping-cart" style="font-size:35px;color:white"></span></a>
+        outline: none;margin-top:6px"><span class="fa fa-shopping-cart" style="font-size:50px;color:black"></span></a>
        <!--  Transaction:0 -->
        </th>
        </table>

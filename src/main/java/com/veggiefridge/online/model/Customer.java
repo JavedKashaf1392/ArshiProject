@@ -36,7 +36,7 @@ public class Customer implements Serializable {
 	@Column(name="mobile")
 	private long mobile;
 	
-	@Column(name="cities")
+	@Column(name="city")
 	private String cities;
 	
 	@Column(name="location")

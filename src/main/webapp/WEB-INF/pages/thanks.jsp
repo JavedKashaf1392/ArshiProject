@@ -2,6 +2,9 @@
 <html>
 <head>
  <meta charset="utf-8">
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
  
  
 	 <script src= 
@@ -9,12 +12,20 @@
 	</script> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Home screen of VeggieFridge</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+
 <style>
 
 
 body{
-background-color:#f1f1f1;
+background-color:white;
 }
 
 * {
@@ -70,12 +81,141 @@ input[type=submit]:hover {
 		opacity: 1;
 		z-index: 5;
 	}
+/* .................Progrees bar................ */
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+    margin-left:12%;
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    background-color: #311B92
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #616161;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px 10px 0px;
+    float: right
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    background-color: #000000
+}
 
 
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey
+}
+
+#progressbar .active {
+    color: seagreen;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content:"\f007"
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030"
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: green;
+}
+
+.progress {
+    height: 20px
+}
+
+.progress-bar {
+    background-color:green;
+    
+}
 </style>
 </head>
 <body>
-  <div class="splash" style="background-color:white;padding: 70px 70px;">
+
+    <div class="logo" style="margin-left:10%;">
+    <spring:url value="/images" var="images" />
+    <img src="${images}/logo.jpg" width="160" height="110" style="position: absolute;"/>
+   
+                    <form id="msform">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active" id="account"><strong>Address</strong></li>
+                        <li class="active" id="account"><strong>Payment</strong></li>
+                        <li class="active" id="account"><strong>Confirm</strong></li>
+                    </ul>
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br> <!-- fieldsets -->
+                   
+                </form>
+                </div>
+    <hr style="border-bottom: 0px">
+    
+    
+   <div style="background-color:#f1f1f1;padding: 10px 20px;margin-top:;">
+  <div class="splash" style="background-color:white;padding: 70px 70px;border: 1px solid #ddd;">
   <div class="row">
   <div class="col-75"> 
  <form method="post" action="${pageContext.request.contextPath}/login/generateLink" modelAttribute="kioskLocation">
@@ -84,7 +224,7 @@ input[type=submit]:hover {
  <h4 style="color:#4CAF50;font-size:85%; margin-top:2%; text-align:center;">For Shopping with Us</h4> 
  <h5 style="color:#4CAF50;">Recieve your order to your pickup location </h5>
  <span class="fas fa-map-marker-alt" style="color:green;font-size:25px;"></span>
- <span style="color:black;">${customer.location},${customer.cities}</span><br><br>
+ <span style="color:black;">${customerModel.cities},${customerModel.location}</span><br><br>
  
  <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
         padding: 10px 70px;
@@ -97,6 +237,7 @@ input[type=submit]:hover {
       </div>
       </div>
      </form>
+    </div>
     </div>
     
    

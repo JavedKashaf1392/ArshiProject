@@ -18,6 +18,28 @@ public class CustomerModel implements Serializable {
 	
 	private String cities;
 	
+	
+	private String lastName;
+	
+	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public long getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
+	}
+
+	private long mobile;
+	
 	public String getCities() {
 		return cities;
 	}

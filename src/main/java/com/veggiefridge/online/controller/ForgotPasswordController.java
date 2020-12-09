@@ -159,7 +159,7 @@ public class ForgotPasswordController {
 		return response;
 	}
 
-	// forPassword
+	//forPassword
 	@RequestMapping(value = "/forPassword")
 	public String forPassword(HttpServletRequest request) throws MessagingException {
 		Customer customer = new Customer();
@@ -169,7 +169,7 @@ public class ForgotPasswordController {
 			customer = customerservice.getCustomerByEmail(email);
 			if (customer != null) {
 				// print a simple debug info
-				System.out.println("email" + email);
+				System.out.println("Your email Is" + email);
 				// create a simple email object
 				// SimpleMailMessage smm=new SimpleMailMessage();
 				// smm.setTo(email);

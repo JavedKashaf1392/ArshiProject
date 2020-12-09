@@ -40,6 +40,9 @@ public class GlobalController {
 					// set the name and the id
 					customerModel.setId(customer.getCustomerid());
 					customerModel.setFirstName(customer.getFirstName());
+					customerModel.setEmail(customer.getEmail());
+					customerModel.setLastName(customer.getLastName());
+					customerModel.setMobile(customer.getMobile());
 					customerModel.setRole(customer.getRole());
 					customerModel.setCities(customer.getCities());
 					customerModel.setLocation(customer.getLocation());
