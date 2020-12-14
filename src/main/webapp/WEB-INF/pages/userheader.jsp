@@ -502,7 +502,7 @@ input[type=submit]:hover {
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
       </center>
       <a href="${pageContext.request.contextPath }/order/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="${pageContext.request.contextPath }/order/pendingorders"><i class="fa fa-bars"></i> <span>My Orders</span></a>
+      <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>

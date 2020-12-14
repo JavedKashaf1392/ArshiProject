@@ -125,7 +125,4 @@ public class Payment implements Serializable {
 		this.platformSource = platformSource;
 	}
 
-	
-	
-
 }

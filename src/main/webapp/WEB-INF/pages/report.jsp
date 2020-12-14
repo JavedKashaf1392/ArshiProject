@@ -44,9 +44,10 @@
                       
                     </tr> --%>
                     <tr>
-       <c:forEach items="${parameters}" var="entry">
-      Key = ${entry.key}, value = ${entry.value}<br>
-     </c:forEach>
+     <c:forEach items="${parameters}" var="entry">
+       ${entry.key} = ${entry.value}<br>
+     </c:forEach> 
+
 
                     
                     

@@ -5,6 +5,8 @@ import javax.transaction.Transactional;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.veggiefridge.online.model.PGResponse;
 import com.veggiefridge.online.model.Payment;
 import com.veggiefridge.online.model.QrCode;
 
@@ -20,6 +22,18 @@ public class PaymentDAOImpl implements PaymentDAO {
 
 		try {			
 			sessionFactory.getCurrentSession().persist(payment);			
+			return true;
+		}
+		catch(Exception ex) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean savePayment(PGResponse pgresponse) {
+
+		try {			
+			sessionFactory.getCurrentSession().persist(pgresponse);			
 			return true;
 		}
 		catch(Exception ex) {

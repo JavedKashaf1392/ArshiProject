@@ -31,7 +31,7 @@
  
 <style>
      body {
-  background-color:#f1f1f1;
+ /*  background-color:#f1f1f1; */
 }
 a {
   border: 0 none;
@@ -420,7 +420,7 @@ aside{
    <div style="background-color:white;margin-left:13%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
             <c:choose>
 		    <c:when test="${not empty listcustomercartitem}">
-   <main>
+   <main style="background-color:#f1f1f1;">
     <div class="basket">
         <!-- <div class="basket-module" style="background-color:white;">
         <label for="promo-code"><h2 style="color:green;">Enter a promotional code</h2></label>
@@ -486,19 +486,10 @@ aside{
         
      
       </div>
-      </c:when>
-      
-            <c:otherwise>
-			
-			<div class="jumbotron">
-			<h3 class="text-center">Your Cart is Empty!</h3>
-			</div>
-		
-		</c:otherwise>
-		</c:choose>
+     
      <!-- ......continue shopping button......-->
       <aside>
-      <div class="summary">
+      <div class="summary" style="border:1px solid #ddd;">
       <h1>${customerModel.cartpage.cartitem}</h1>item in Your cart
       <!-- <div class="summary-total-items" style="color:green;"><span class="total-items" style="color:red;font-size:20px;"></span><h3>Items in your cart</h3></div> -->
       <div class="summary-subtotal" style="padding:5px 10px;">
@@ -533,6 +524,16 @@ aside{
         </div>
         </aside>
         </main>
+         </c:when>
+      
+            <c:otherwise>
+			<div class="jumbotron">
+			<h3 class="text-center" style="text-align: center;">Your Cart is Empty!</h3>
+			<hr>
+			</div>
+		
+		</c:otherwise>
+		</c:choose>
     
   
    

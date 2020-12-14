@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.paytm.pg.merchant.PaytmChecksum;
 import com.veggiefridge.online.constants.PaytmConstants;
 import com.veggiefridge.online.model.Customer;
+import com.veggiefridge.online.model.PGResponse;
+import com.veggiefridge.online.service.PaymentService;
 
 @Controller
 public class PaymentController {
@@ -25,6 +27,10 @@ public class PaymentController {
 	
 	@Autowired
 	private Environment env;
+	
+	@Autowired
+	private PaymentService paymentservice;
+
 	
 	@RequestMapping("/payment")
 	public String home(@ModelAttribute("customer")Customer customer,BindingResult result) {
@@ -63,29 +69,51 @@ public class PaymentController {
 	        parameters.put("CHECKSUMHASH", checkSum);
 	        modelAndView.addAllObjects(parameters);
 	        return modelAndView;
-	    
 	    }
-	 
-	 
-	 @RequestMapping(value = "/pgresponse")
+	 	
+	    @RequestMapping(value = "/pgresponse")
 	    public String getResponseRedirect(HttpServletRequest request, Model model) {
-
 	        Map<String, String[]> mapData = request.getParameterMap();
 	        TreeMap<String, String> parameters = new TreeMap<String, String>();
+			/*
+			 * PGResponse pgresponse= new PGResponse();
+			 * pgresponse.setBankName(mapData.get("BANKNAME")[1]);
+			 * paymentservice.savePayment(pgresponse);
+			 * System.out.println("pgresponse"+pgresponse);
+			 */
 	        mapData.forEach((key, val) -> parameters.put(key, val[0]));
 	        String paytmChecksum = "";
 	        if (mapData.containsKey("CHECKSUMHASH")) {
 	            paytmChecksum = mapData.get("CHECKSUMHASH")[0];
+	            
 	        }
 	        String result;
-
 	        boolean isValideChecksum = false;
 	        System.out.println("RESULT : "+parameters.toString());
-	        try {
+	          PGResponse pgresponse= new PGResponse();
+			  pgresponse.setBankName(parameters.get("BANKNAME"));
+			  pgresponse.setBankTransactionId(parameters.get("BANKTXNID"));
+			  pgresponse.setCurrency(parameters.get("CURRENCY"));
+			  pgresponse.setGateWayName(parameters.get("GATEWAYNAME"));
+			  pgresponse.setmID(parameters.get("MID"));
+			  pgresponse.setOrderId(parameters.get("ORDERID"));
+              pgresponse.setPaymentMode(parameters.get("PAYMENTMODE"));
+              pgresponse.setResCode(parameters.get("RESPCODE"));
+              pgresponse.setResMsg(parameters.get("Txn Success"));
+			  pgresponse.setStatus(parameters.get("STATUS"));
+			  pgresponse.setTxnAmount(parameters.get("TXNAMOUNT"));
+			  pgresponse.setTxnDate(parameters.get("TXNDATE"));
+			  pgresponse.setTxnId(parameters.get("TXNID"));
+			  paymentservice.savePayment(pgresponse);
+			  System.out.println("pgresponse"+pgresponse);
+	        try{
 	            isValideChecksum = validateCheckSum(parameters, paytmChecksum);
 	            if (isValideChecksum && parameters.containsKey("RESPCODE")) {
+	            	
 	                if (parameters.get("RESPCODE").equals("01")) {
 	                    result = "Payment Successful";
+						/* PGResponse pgresponse= new PGResponse(); */
+	                    System.out.println("Payment Succesfull");
 	                } else {
 	                    result = "Payment Failed";
 	                }
@@ -94,6 +122,7 @@ public class PaymentController {
 	            }
 	        } catch (Exception e) {
 	            result = e.toString();
+	           
 	        }
 	        model.addAttribute("result",result);
 	        parameters.remove("CHECKSUMHASH");

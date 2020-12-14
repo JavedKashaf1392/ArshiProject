@@ -26,6 +26,8 @@ public interface OrderDao {
 		
 		public List<Orders> listdeliveredOrders();
 		
-		public List<Orders> getOrdersByStatus(String pickupStatus,int customerid);
+		public List<Orders> getPendingOrders(int customerid);
+		
+		public List<Orders> getDeliveredOrders(int customerid);
 		
 }

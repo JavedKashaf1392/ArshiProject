@@ -21,7 +21,6 @@ import com.veggiefridge.online.service.CustomerService;
 @Transactional
 public class OrderDaoImpl implements OrderDao{
 
-
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -70,17 +69,6 @@ public class OrderDaoImpl implements OrderDao{
 		}
 	    
 	}
-
-
-	@Override
-	public List<Orders> list(int customerid) {
-		String query = "FROM Orders  WHERE customer.customerid =:customerid";
-		return sessionFactory.getCurrentSession()
-								.createQuery(query)
-									.setParameter("customerid",customerid)
-										.list();
-	}
-
 	@Override
 	public Orders getOrder(int Orderid) {
 		return (Orders) sessionFactory.getCurrentSession().get(Orders.class, Orderid);
@@ -113,23 +101,43 @@ public class OrderDaoImpl implements OrderDao{
 										.list();	
 	}
 
-
 	@Override
 	public List<OrderItem> getAllOrders() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 
 	@Override
-	public List<Orders> getOrdersByStatus(String pickupStatus, int customerid) {
-		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customerid = :customerid";
+	public List<Orders> list(int customerid) {
+		String query = "FROM Orders  WHERE customer.customerid =:customerid";
+		return sessionFactory.getCurrentSession()
+								.createQuery(query)
+									.setParameter("customerid",customerid)
+										.list();
+	}
+	
+	@Override
+	public List<Orders>  getPendingOrders(int customerid) {
+		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid";
 		return sessionFactory.getCurrentSession()
 				.createQuery(query)
-					.setParameter("pickupStatus", pickupStatus)
+					.setParameter("pickupStatus", VFOnlineConstants.PICKUP_STATUS)
 					.setParameter("customerid", customerid)
 						.list();
 	}
+
+
+	@Override
+	public List<Orders> getDeliveredOrders(int customerid) {
+		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid";
+		return sessionFactory.getCurrentSession()
+				.createQuery(query)
+					.setParameter("pickupStatus", VFOnlineConstants.PICKUPSTATUS)
+					.setParameter("customerid", customerid)
+						.list();
+	}
+	
 	}
 	
 	

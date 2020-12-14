@@ -10,15 +10,85 @@
  <html lang="en" dir="ltr">
         
         <head> 
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Home screen of VeggieFridge</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
-        <style>
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Home screen of VeggieFridge</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+  <style>
+  
+  /* The Modal (background) */
+.orderpopup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.orderpopup-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+               
+  .cancelorder{
+  display: inline-block;
+  padding: 8px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color:#DC143C;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+.cancelorder:hover {background-color:#B22222}
+
+.cancelorder:active{
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
         
 body {
 font-family: Arial, Helvetica, sans-serif;
@@ -65,88 +135,13 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 135px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 130%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-}
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 22%;
-  margin-left: 68%;
-  border-radius: 4px; 
-}
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
- .popUpMain{ 
-  outline: #4CAF50 solid 10px;
-  display: none;   /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1001; /* Sit on top */
-  padding-top: 75px;  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
- /*  overflow: auto; /* Enable scroll if needed */ */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-  box-shadow: 1px 2px 5px 3px white;
-  } 
-.popup {/* 
-   /* background-color:#f1f1f1; */
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-  margin-left: 34%;
-  
-}
-</style>
-        </head>
-        <style>
-    
-    body {
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-   .mySlides {display: none}
- /* img {vertical-align: middle;} */
-}
-
 .footer{
 
     margin-left:15%;
     margin-right:13%;
     position:relative;
     width:75%;
-    height:500px;
+  /*   height:500px; */
     background: #4CAF50; 
     position:relative;
    /*padding: 20px;
@@ -171,8 +166,7 @@ input[type=submit]:hover {
      display: flex; 
 
 }
- @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
- 
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
  *{
     margin: 0;
     padding: 0;
@@ -336,256 +330,12 @@ input[type=submit]:hover {
     }
 }
 
-/* .................... */
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-
-}
-
-/* Next & previous buttons */
- .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 18px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
- /* Caption t
-.text {
- /*  color: #f2f2f2; */
-  font-size: 15px;
-  padding: 8px 12px;
-  position:relative;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-} 
- */
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-.container{
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-  /*   background: skyblue; */
-    margin-top: 20px;
-    margin-right: 23%;
-}
-
-.container ul{
-    padding:0px;
-    margin:0px;
-}
 
 
-.container ul li{
-    float:left;
-    list-style: none;
-    width:20%;
-    height:400px;
-  /*   background: pink; */
-    margin :24px 0px 24px 59px; 
-   /*  border:2px solid blue; */
-   border:1px solid #d9d9d9; 
-   box-sizing: border-box;
-   transition: 1s;
-  
-}
-.container ul li:hover{
-   /*  opacity: 0.7; */
-   
-     	transform: scale(1.1);
-		/* background:#FFEFD5;  */
-		z-index: 2;
-	  /*  box-shadow: 2px 2px 2px #000; */
-}
 
-.container ul li .product-meta{
-    width: 105%;
-    height:100px;
-    line-height: 50px;
-    
-   /*  background: blue;  */   
-  /*  background: pink; */
-    text-align: left;
-    color:white;
-    font-size: 18px;
-   
-}
-.container ul li .product-meta{
-
-
-}
-.container ul li  .product-price-wrap {
-  width: 100%;
-  height:21%;
-  display: -ms-grid;
-  display: grid; */
- -ms-grid-columns: auto auto;
-  margin-top: 90%;
-}
-.container ul li  .product-price-wrap .left {
-  -ms-grid-column-align: start;
-      justify-self: start;
-}
-
-.container ul li .product-price-wrap .left .price {
- /*  color: #111; */
-  color:black;
-  font-weight: 700;
-}
-
-.container ul li  .product-price-wrap .left .old-price {
-  font-size: 14px;
-  text-decoration: line-through; 
- /*  color: #999; */
-  color:black;
-  font-weight: 300;
-  position: relative;
-/*   display: block; */
-   color:black;
-}
-.container ul li  .product-price-wrap .left .old-price {
-  font-size: 14px;
-  text-decoration: line-through; 
- /*  color: #999; */
-  color:black;
-  font-weight: 300;
-  position: relative;
-/*   display: block; */
-   color:black;
-}
-.container ul li  .product-price-wrap .right {
- /*  -ms-grid-column-align: end;
-      justify-self: end; */
-}
-
-.container ul li  .product-price-wrap .right .btn {
-  float:right;
-  left:50%;
-  /* background-color: #1864ff; */
-  background-color:#4CAF50;
-  border: 0;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight:600;
-  padding: 10px 20px;
-  border-radius: 3px;
-   -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out; 
- 
-}
-.container ul li .product-price-wrap .right .btn:hover, .card .product-meta .product-price-wrap .right .btn:focus, .card .product-meta .product-price-wrap .right .btn:active {
-  outline: none;
-  cursor: pointer;
- background-color: green;
-}
-
- .label-clip {
-  background-color: #1864ff; 
-  background-color: #4CAF50;
-  border-radius: 0 3px 3px 3px;
-  font-size: 14px;
-  color: #ffffff;
-  font-weight: 600;
-  text-align: center;
-  padding: 5px 10px;
-  z-index: 1;
-  top: -10px;
-  left: 128px;
-  position: relative;
-  width:38%;
-} 
-
-.label-clip::before {
-  content: '';
-  /* border-right-color: #123bb4 !important; */
-  border-right-color:#4CAF50 !important;
-  position:absolute;
-  top: 0;
-  left: -10px;
-  height: 0;
-  width: 0;
-  border-right: 10px solid transparent;
-  border-top: 10px solid transparent;
-  background: none !important;
-} 
-@media screen and (max-width:1250px){
-    .container ul li{
-        width:40%;
-        margin-left: 40px;   
-    }
-    /* ........................................... */
-
-  </style>  
-  <body>
+ </style> 
+ </head> 
+ <body>
   
   <!--  header -->
   <jsp:include page = "userheader.jsp"/>
@@ -631,12 +381,12 @@ input[type=submit]:hover {
   padding: 16px;
   text-decoration: none;"> - Membership</a>
   
-  <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Pending Orders</a>
   
-  <a href="${pageContext.request.contextPath}/order/deliveredorder"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Deliverd Orders</a>
@@ -656,35 +406,6 @@ input[type=submit]:hover {
   
   <h3>Pendings</h3>
   <hr>
-<%--   <table style="width:5%;position: fixed;">
-  
-  <th style="background-color:white;padding:10px 40px; width:5%;border-radius:8px;">     
-
-<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
- 
-  
-<a href="${pageContext.request.contextPath}/order/pendingorders" style="display: inline-block;
-        padding: 10px 30px;
-        text-align:center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#4CAF50;
-        border-radius:6px;
-        outline: none;margin-top:6px">Pendings</a>
-        </th>
-
- <th style="background-color:white;padding:10px 40px; width:%;border-radius:8px;">     
- <a href="${pageContext.request.contextPath}/order/deliveredorder" style="display: inline-block;
-        padding: 10px 30px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: #4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px">Delivered</a>
-       </th> 
-       </table> --%>
- 
  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order.." title="Type in a name" style="background-image: url('/css/searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
@@ -718,9 +439,10 @@ input[type=submit]:hover {
   padding: 12px;">Order Status</th>
     <th style="width:%;color:white;text-align: center;
   padding: 12px;">Total Amount</th>
+  <th></th>
     </tr>
     
-  <c:forEach var="orders" items="${fetchallpendingorders}">
+  <c:forEach var="orders" items="${pendingOrders}">
   <tr style=" border-bottom: 1px solid #ddd;">
     <td style=" text-align: center;
   padding: 16px;"><a href="${pageContext.request.contextPath }/order/listOrderItems/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">${orders.orderid}</a></td>
@@ -730,33 +452,13 @@ input[type=submit]:hover {
   padding: 16px;">${orders.pickupStatus}</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
     <td style=" text-align: center;
   padding: 16px;">${orders.orderTotal}</td>
+    <td>                  
+ <button class="cancelorder" id="myBtn">CANCEL</button>                
+    </td>
   </tr>
   </c:forEach>
-  </table>
-
-  <script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
-  
+  </table> 
   </div>
-
  <!--  ............................  -->
       <div class="footer" style="margin-top: auto;">
       <div class="main-content">
@@ -854,17 +556,45 @@ Message *</div>
 </div>
 </div>
 
+<!-- The Modal -->
+<div id="myModal" class="orderpopup">
 
- <script type="text/javascript">
-  window.onload = function() {
-    var selItem = sessionStorage.getItem("SelItem");  
-    $('#sort-item').val(selItem);
-    }
-    $('#sort-item').change(function() { 
-        var selVal = $(this).val();
-        sessionStorage.setItem("SelItem", selVal);
-    });
-   </script>
+  <!-- Modal content -->
+  <div class="orderpopup-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
  
   </body>
   </html>

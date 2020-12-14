@@ -1,10 +1,11 @@
+
 package com.veggiefridge.online.controller;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.jboss.logging.Logger;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.paytm.pg.merchant.PaytmChecksum;
 import com.veggiefridge.online.constants.PaytmConstants;
 import com.veggiefridge.online.constants.VFOnlineConstants;
@@ -139,8 +139,6 @@ public class OrderController {
 		return model;
 	}
 	
-	
-
 	// delivered order item
 	@RequestMapping(value = "/listOrderItem/{orderid}", method = RequestMethod.GET)
 	public ModelAndView listOrderItem(ModelAndView model, @PathVariable(value = "orderid") int orderid,
@@ -219,23 +217,7 @@ public class OrderController {
 		model.setViewName("myorder");
 		return model;
 	}
-	
-	@RequestMapping(value = "/showPickupStatus", method = RequestMethod.GET)
-	public String getAllStatus(HttpServletRequest req, Model model) {
-		String pickupStatus = "";
-		String picstatus = req.getParameter("pickupStatus");
-		if (picstatus != null && !picstatus.equals("")) {
-			pickupStatus = picstatus;
-			List<Orders> picsts = orderservice.getOrdersByStatus(pickupStatus, this.getCartPage().getCustomer().getCustomerid());
-			model.addAttribute("picsts", picsts);
-			return "CurrentOrder";
-		}
-		return "CurrentOrder";
-
-	}
-	
-	
-	
+		
 	//PickupAddress
 	@RequestMapping(value ="/PickupAddress")
 	public ModelAndView PickupAddress(ModelAndView model) {
@@ -272,7 +254,6 @@ public class OrderController {
 				@RequestMapping(value = "/checkoutAndSaveOrderPayOnline")
 				public ModelAndView checkoutAndSaveOrderPayOnline(ModelAndView model) throws Exception {
 					List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
-
 					Orders orders = new Orders();
 					orders.setCustomer(this.getCartPage().getCustomer());
 					orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS);
@@ -290,7 +271,6 @@ public class OrderController {
 						orderitem.setTotalAmount(cartitem.get(i).getTotal());
 						orderservice.saveOrderItem(orderitem);
 						System.out.println("List of cartitem added in orderitem table");
-
 						System.out.println("cartpage updated");
 					}
 
@@ -322,23 +302,22 @@ public class OrderController {
 					payment.setPaymentStatus("pending");
 					payment.setModeOfPayment("PayOnilne");
 					payment.setPlatformSource("WEB");
-					payment.setTotalBillAmount(orders.getTotalBillAmount());
+					 payment.setTotalBillAmount(orders.getTotalBillAmount());
 					 paymentservice.savePayment(payment);
 					
 					/* payment */
 					/* paytmDetailPojo.getPaytmUrl()*/
 			        ModelAndView modelAndView = new ModelAndView("redirect:" +"https://securegw-stage.paytm.in/order/process");
 			        TreeMap<String, String> parameters = new TreeMap<>();
-			        System.out.println(parameters);
 			        PaytmConstants.details.forEach((k, v) -> parameters.put(k, v));
 			        parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
 			        parameters.put("EMAIL", env.getProperty("paytm.email"));
-			        parameters.put("ORDER_ID", "1190");
-			        parameters.put("TXN_AMOUNT", "11");
-			        parameters.put("CUST_ID", "2442");
+			        parameters.put("ORDER_ID", "4278");
+			        parameters.put("TXN_AMOUNT", "26");
+			        parameters.put("CUST_ID", "5279");
 			        parameters.put("INDUSTRY_TYPE_ID","Retail");
 			        parameters.put("CHANNEL_ID", "WEB");
-			      
+			        System.out.println(parameters);
 			        String checkSum = getCheckSum(parameters);
 			        parameters.put("CHECKSUMHASH", checkSum);
 			        modelAndView.addAllObjects(parameters);
@@ -467,9 +446,7 @@ public class OrderController {
 					model.setViewName("thankyou");
 					return model;
 				}
-				
-				
-
+			
 			    private boolean validateCheckSum(TreeMap<String, String> parameters, String paytmChecksum) throws Exception {
 			        return PaytmChecksum.verifySignature(parameters,
 			                PaytmConstants.merchantKey, paytmChecksum);
@@ -479,5 +456,23 @@ public class OrderController {
 			private String getCheckSum(TreeMap<String, String> parameters) throws Exception {
 				return PaytmChecksum.generateSignature(parameters, PaytmConstants.merchantKey);
 			}	
+			
+			
+			@RequestMapping(value = "/showPendingOrders{customerid}", method = RequestMethod.GET)
+			public String showPendingOrders(HttpServletRequest req, Model model) {
+					List<Orders> pendingOrders = orderservice.getPendingOrders(this.getCartPage().getCustomer().getCustomerid());
+					model.addAttribute("pendingOrders", pendingOrders);
+					return "CurrentOrder";
+				}
+				
+			
+			@RequestMapping(value = "/showDeliveredOrders{customerid}", method = RequestMethod.GET)
+			public String showDeliveredOrders(HttpServletRequest req, Model model) {
+					List<Orders> deliveredOrders = orderservice.getDeliveredOrders(this.getCartPage().getCustomer().getCustomerid());
+					model.addAttribute("deliveredOrders",deliveredOrders);
+					return "myorder";
+				}
+				
+			
 
 }

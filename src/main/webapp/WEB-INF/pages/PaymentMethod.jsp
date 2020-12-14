@@ -282,16 +282,7 @@ span.price {
 					<table
 						style="cellspacing: 2%; border-spacing: 10px; margin-top: 1%;">
 						<!-- #DCDCDC -->
-						<th
-							style="background-color: #DCDCDC; padding: px px; border-radius: px; text-align: center; border: 1px solid #ddd; font-size: 15px; height: 20px; width: 180px;">
-
-							<a
-							href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayATKiosk"
-							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
-								class='far fa-credit-card' style="font-size: 50px; color: black"></span></a>
-							<!--  Membership Id:3 -->
-						</th>
-
+						
 						<th
 							style="background-color: #DCDCDC; padding: px px; border-radius: px; border: 1px solid #ddd; height: 20px; width: 180px;">
 							<a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayByWallet"
@@ -309,7 +300,7 @@ span.price {
 								class="fa fa-bank" style="font-size: 50px; color: black"></span></a>
 							<!--   Card:11 -->
 						</th>
-
+					
 						<th
 							style="background-color: #DCDCDC; padding: px px; width: %; border-radipx; border: 1px solid #ddd; height: 100px; width: 180px;">
 							<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
@@ -319,17 +310,40 @@ span.price {
 								class="fa fa-shopping-cart"
 								style="font-size: 50px; color: black"></span></a> <!--  Transaction:0 -->
 						</th>
+						<th
+							style="background-color: #DCDCDC; padding: px px; border-radius: px; text-align: center; border: 1px solid #ddd; font-size: 15px; height: 20px; width: 180px;">
+
+							<a
+							href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayATKiosk"
+							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
+								class='far fa-credit-card' style="font-size: 50px; color: black"></span></a>
+							<!--  Membership Id:3 -->
+						</th>
 						<tr>
-							<td style="text-align:center;">Pay At Kiosk</td>
 							<td style="text-align:center;">Wallet</td>
 							<td style="text-align:center;">Pay Online</td>
 							<td style="text-align:center;">UPI</td>
+							<td style="text-align:center;">Pay AT Kiosk</td>
 						</tr>
 					</table>
 				</div>
+	<input
+						type="button"
+						style="background-color: #4CAF50;
+	color: white;
+	padding: 6px;
+	margin: 10px 0;
+	border: none;
+	width: 18%;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 17px;
+	margin-left:10%;"
+    value="BACK" onclick="history.back()" class="back">
 
 
 			</div>
+			
 		</div>
 
 	 <div class="col-25">

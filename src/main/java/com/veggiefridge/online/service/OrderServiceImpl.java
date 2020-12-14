@@ -64,11 +64,19 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Orders> listdeliveredOrders() {
-		return orderdao.listdeliveredOrders();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public List<Orders> getOrdersByStatus(String pickupStatus, int customerid) {
-		return orderdao.getOrdersByStatus(pickupStatus, customerid);
+	public List<Orders> getPendingOrders(int customerid) {
+		
+		return orderdao.getPendingOrders(customerid);
 	}
+
+	@Override
+	public List<Orders> getDeliveredOrders(int customerid) {
+		return orderdao.getDeliveredOrders(customerid);
+	}
+
 }

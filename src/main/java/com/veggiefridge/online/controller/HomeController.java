@@ -320,6 +320,14 @@ public class HomeController {
 					return model;
 				}
 				
+				
+				
+				 //myCart
+				@RequestMapping(value = "/popUp")
+				public ModelAndView popUp(ModelAndView model) {
+					model.setViewName("popup");
+					return model;
+				}
 }
 				
 				

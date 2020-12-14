@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.veggiefridge.online.dao.PaymentDAO;
+import com.veggiefridge.online.model.PGResponse;
 import com.veggiefridge.online.model.Payment;
 
 @Service
@@ -18,6 +19,11 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public boolean savePayment(Payment payment) {
 		return paymentdao.savePayment(payment);
+	}
+
+	@Override
+	public boolean savePayment(PGResponse pgresponse) {
+		return paymentdao.savePayment(pgresponse);
 	}
 	
 	

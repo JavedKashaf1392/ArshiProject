@@ -41,9 +41,9 @@ public class VFOnlineConstants {
 	public static String MAIL_EMAILMESSAGE;
 	
 	//@Value("${order.pickup.status}")
-	public static final String PICKUP_STATUS="pending";
+	public static final String PICKUP_STATUS="Pending";
 	
-	public static final String PICKUPSTATUS="delivered";
+	public static final String PICKUPSTATUS="Delivered";
 	
 	public static final String organic="organic";
 	

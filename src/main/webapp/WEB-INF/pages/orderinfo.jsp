@@ -632,12 +632,12 @@ input[type=submit]:hover {
   padding: 16px;
   text-decoration: none;"> - Membership</a>
   
-  <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Pending Orders</a>
   
-  <a href="${pageContext.request.contextPath}/order/deliveredorder"  style=" display: block;
+  <a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Deliverd Orders</a>

@@ -212,7 +212,7 @@ span.psw {
       <button type="button"  class="cancelbtn" onclick="history.back()">Cancel</button>
       <span class="psw"><a href="${pageContext.request.contextPath }/login/forgotPassword">Forgot Password?</a></span>
     </div>
-  <a href="${pageContext.request.contextPath }/home/signup" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;text-decoration: none;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge? Create an account</a><button type="button" onclick="${pageContext.request.contextPath }/home/signup" class="submitId"  
+  <a href="${pageContext.request.contextPath }/signup" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;text-decoration: none;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge? Create an account</a><button type="button" onclick="${pageContext.request.contextPath }/signup" class="submitId"  
   style="
   width: auto;
   padding: 10px 18px;
