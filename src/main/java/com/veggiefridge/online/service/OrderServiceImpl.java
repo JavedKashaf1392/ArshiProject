@@ -79,4 +79,9 @@ public class OrderServiceImpl implements OrderService {
 		return orderdao.getDeliveredOrders(customerid);
 	}
 
+	@Override
+	public Orders updateOrders(Orders orders) {
+		return orderdao.updateOrders(orders);
+	}
+
 }

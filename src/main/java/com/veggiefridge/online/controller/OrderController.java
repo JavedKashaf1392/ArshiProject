@@ -34,11 +34,13 @@ import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Payment;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.model.QrCode;
+import com.veggiefridge.online.model.Wallet;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.OrderService;
 import com.veggiefridge.online.service.PaymentService;
 import com.veggiefridge.online.service.QRCodeService;
+import com.veggiefridge.online.service.WalletService;
 
 @Controller
 @RequestMapping(value ="/order")
@@ -66,6 +68,9 @@ public class OrderController {
 
 	@Autowired
 	private Environment env;
+	
+   @Autowired
+	private WalletService walletservice;
 
 	// get cartPage
 	private CartPage getCartPage() {
@@ -139,7 +144,7 @@ public class OrderController {
 		return model;
 	}
 	
-	// delivered order item
+	 //delivered order item
 	@RequestMapping(value = "/listOrderItem/{orderid}", method = RequestMethod.GET)
 	public ModelAndView listOrderItem(ModelAndView model, @PathVariable(value = "orderid") int orderid,
 			@ModelAttribute("orders") Orders order, BindingResult resultorder) {
@@ -175,7 +180,7 @@ public class OrderController {
 
 	 //repeat Order
 	@RequestMapping(value = "/repeatOrder{orderid}", method = RequestMethod.GET)
-	public String repeatOrder(ModelAndView model, @PathVariable(value = "orderid") int orderid) {
+	public String repeatOrder(ModelAndView model,@PathVariable(value ="orderid") int orderid) {
 		Orders orders = orderservice.getOrder(orderid);
 		List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 		CartPage cartpage = this.getCartPage();
@@ -193,7 +198,6 @@ public class OrderController {
 			cartservice.updateCartPage(cartpage);
 			System.out.println("cartpage updated");
 		}
-
 		return "redirect:/cart/listCustomerCartItem";
 	}
 
@@ -312,9 +316,9 @@ public class OrderController {
 			        PaytmConstants.details.forEach((k, v) -> parameters.put(k, v));
 			        parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
 			        parameters.put("EMAIL", env.getProperty("paytm.email"));
-			        parameters.put("ORDER_ID", "4278");
-			        parameters.put("TXN_AMOUNT", "26");
-			        parameters.put("CUST_ID", "5279");
+			        parameters.put("ORDER_ID", "8724");
+			        parameters.put("TXN_AMOUNT", "62");
+			        parameters.put("CUST_ID", "9725");
 			        parameters.put("INDUSTRY_TYPE_ID","Retail");
 			        parameters.put("CHANNEL_ID", "WEB");
 			        System.out.println(parameters);
@@ -465,14 +469,62 @@ public class OrderController {
 					return "CurrentOrder";
 				}
 				
-			
 			@RequestMapping(value = "/showDeliveredOrders{customerid}", method = RequestMethod.GET)
 			public String showDeliveredOrders(HttpServletRequest req, Model model) {
 					List<Orders> deliveredOrders = orderservice.getDeliveredOrders(this.getCartPage().getCustomer().getCustomerid());
 					model.addAttribute("deliveredOrders",deliveredOrders);
 					return "myorder";
 				}
-				
 			
-
+			
+			 //repeat Order
+			@RequestMapping(value = "/canOrder{orderid}", method = RequestMethod.GET)
+			public String canlOrder(ModelAndView model,@PathVariable(value ="orderid") int orderid) {
+			    System.out.println("Get Order Id"+orderid);
+			    
+			   
+			    
+					
+				
+				return "redirect:/order/showPendingOrders{customerid}";
+			}
+		
+			
+			 //delivered order item
+			@RequestMapping(value = "/cancelOrder/{orderid}", method = RequestMethod.GET)
+			public ModelAndView cancelOrder(ModelAndView model,@PathVariable(value = "orderid") int orderid,
+					@ModelAttribute("orders") Orders order, BindingResult resultorder) {
+				order = orderservice.getOrder(orderid);
+				order.setPickupStatus("cancelled");
+				orderservice.updateOrders(order);
+				System.out.println("Your Order is cancelled");
+				model.setViewName("cancelOrder");
+				return model;
+			}
+			
+			
+			//delivered order item
+			@RequestMapping(value = "/addMoneyInWallet/{customerid}", method = RequestMethod.GET)
+			public ModelAndView addMoneyInWallet(ModelAndView model,@PathVariable(value = "customerid") int customerid,
+					@ModelAttribute("Wallet") Wallet wallet, BindingResult resultwallet) {
+				
+				 if (wallet.getWalletID() == 0) { // if employee id is 0 then creating the
+					// employee other updating the employee
+		         wallet=new Wallet();	
+		        wallet.setCustomerid(this.getCartPage().getCustomer().getCustomerid());
+				wallet.setTotalAmountBalance(30);
+				walletservice.addRefundMoney(wallet);
+				
+				} else {
+					wallet.setTotalAmountBalance(30);
+					walletservice.updateWallet(wallet);
+				}
+				model.setViewName("wallet");
+				return model;
+			}
+			
+			
+			
+                
 }
+                 

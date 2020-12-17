@@ -44,7 +44,6 @@ private static final long serialVersionUID = -3465813074486302847L;
 		this.orderId = orderId;
 	}
 
-
 	@JoinColumn(name=" paymentMode")
 	private String paymentMode;
 	

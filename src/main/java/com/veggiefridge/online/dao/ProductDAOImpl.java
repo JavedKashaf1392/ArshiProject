@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.model.Product;
 
@@ -44,7 +43,7 @@ public class ProductDAOImpl implements ProductDAO {
 		sessionFactory.getCurrentSession().update(product); 
 		return product;
 	}
-
+    
 	@Override
 	public Product getProduct(int productid) {
 		

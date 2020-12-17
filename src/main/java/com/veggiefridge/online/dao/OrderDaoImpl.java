@@ -48,7 +48,6 @@ public class OrderDaoImpl implements OrderDao{
 	
 	}
 	
-	 
 	@Override
 	public List<OrderItem> listOrderItem(int Orderid){
 		String query = "FROM OrderItem WHERE Orderid= :Orderid";
@@ -69,6 +68,7 @@ public class OrderDaoImpl implements OrderDao{
 		}
 	    
 	}
+	
 	@Override
 	public Orders getOrder(int Orderid) {
 		return (Orders) sessionFactory.getCurrentSession().get(Orders.class, Orderid);
@@ -137,20 +137,11 @@ public class OrderDaoImpl implements OrderDao{
 					.setParameter("customerid", customerid)
 						.list();
 	}
-	
+
+	@Override
+	public Orders updateOrders(Orders orders) {
+		sessionFactory.getCurrentSession().update(orders);
+		return orders;
 	}
 	
-	
-	
-
-
-	
-	
-
-   
-
-	
-	
-	
-	
-
+	}
