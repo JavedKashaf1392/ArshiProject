@@ -9,5 +9,7 @@ public interface WalletService {
 	 public Wallet updateWallet(Wallet wallet);
 
     public Wallet getWallet(int walletID); 
+    
+    public Wallet fetchWallet(int customerid);
 
 }

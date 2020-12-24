@@ -38,6 +38,9 @@ public class PaytmConstants {
 	public static String cback="CALLBACK_URL";
 	public static String callbackUrl="http://localhost:8080/pgresponse";
 	
+	public static String callback="CALLBACK_URL";
+	public static String callbackUrl2="http://localhost:8080/wallet/pgres";
+	
 	//@Value("#{${details}}")
 	//public static HashMap<String, String> details= new HashMap<String, String>();
      
@@ -62,5 +65,17 @@ public class PaytmConstants {
 	    map.put(cback,"http:localhost:8080/vf-online/pgresponse");
 	    // ...
 	    details = Collections.unmodifiableMap(map);
+	}
+	
+	public static final Map<String, String> detail;
+	static {
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put(mid,"dtHXBX68721093259122");
+	    map.put(cid, "WEB");
+	    map.put(industryid,"Retail");
+	    map.put(wsite, "WEBSTAGING");
+	    map.put(callback,"http:localhost:8080/vf-online/wallet/pgres");
+	    // ...
+	    detail = Collections.unmodifiableMap(map);
 	}
 }

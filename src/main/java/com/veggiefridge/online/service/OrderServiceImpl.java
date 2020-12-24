@@ -84,4 +84,9 @@ public class OrderServiceImpl implements OrderService {
 		return orderdao.updateOrders(orders);
 	}
 
+	@Override
+	public List<Orders> getCancelledOrders(int customerid) {
+		return orderdao.getCancelledOrders(customerid);
+	}
+
 }

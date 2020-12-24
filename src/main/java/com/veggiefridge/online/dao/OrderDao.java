@@ -33,4 +33,5 @@ public interface OrderDao {
 		
 		public Orders updateOrders(Orders orders);
 		
+		public List<Orders> getCancelledOrders(int customerid);
 }

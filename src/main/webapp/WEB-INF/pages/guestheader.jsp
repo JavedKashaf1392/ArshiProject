@@ -49,13 +49,13 @@ body
 /* call */
 .call{
 /* border:1px solid black;   */
-font-size:16px;
+font-size:17px;
 float: right;
-margin-right:6%;
+margin-right:2%;
 }
 
   .notification {
-  margin-left:4%;
+  margin-left:8%;
   background-color:#4CAF50;
   color: white;
   text-decoration: none;
@@ -413,16 +413,16 @@ input[type=submit]:hover {
  
   <security:authorize access="permitAll">
   <span class="fas fa-map-marker-alt" style="color:green;"></span>
-  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
+  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:4px;">${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>   |   
   </security:authorize>
   
   <security:authorize access="permitAll"> 
- <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
+ <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span>  |  
  </security:authorize>
  
   <security:authorize access="permitAll">
  <span class="fa fa-edit" style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> |  
+ <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a>  |    
  </security:authorize>
  
  <security:authorize access="permitAll">
@@ -610,8 +610,7 @@ window.onclick = function(event) {
       </security:authorize>
       </div> 
       </div> 
-      </div>
-      </div>
+    
      
      
      <script>

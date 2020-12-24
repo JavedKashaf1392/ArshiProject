@@ -1,4 +1,3 @@
-    
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -498,10 +497,10 @@ input[type=submit]:hover {
       <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
       </center>
-      <a href="${pageContext.request.contextPath }/order/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
+      <a href="#"><i class="fa fa-user-circle"></i><span>My Account</span></a>
       <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
-      <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
+      <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
       <a href="<c:url value="/logout" />"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>

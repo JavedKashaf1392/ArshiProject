@@ -146,6 +146,7 @@ public class AppController {
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
+		/* model.setViewName("registerdhome"); */
 		model.setViewName("registerdhome");
 		return model; 
 	} 
@@ -242,7 +243,6 @@ public class AppController {
 		
 	}
 	
-	
 	 //myCart
 	@RequestMapping(value = "/paymentoption")
 	public ModelAndView myCart(ModelAndView model) {
@@ -250,7 +250,6 @@ public class AppController {
 		return model;
 	}
 	
-
 	 //myCart
 	@RequestMapping(value = "/payopt")
 	public ModelAndView payopt(ModelAndView model) {

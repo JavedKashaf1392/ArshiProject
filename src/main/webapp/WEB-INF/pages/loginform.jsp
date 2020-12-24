@@ -19,9 +19,10 @@ font-family: Arial, Helvetica, sans-serif;
 
 }
 .errormsg{
-text-align:center;
+    text-align:center;
 	padding: 15px;
 	margin-bottom: 20px;
+	margin-top: 20px;
 	border: 1px solid transparent;
 	border-radius: 4px;
 	color: white;/* #31708f */
@@ -181,7 +182,7 @@ span.psw {
 		
 		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
         <font color="red" class="errormsg">
-        Your login attempt was not successful due to <br/><br/><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+        Your login attempt was not successful due to Bad Credential <%-- <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> --%>
         </font>
         </c:if>
      

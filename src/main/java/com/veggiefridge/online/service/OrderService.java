@@ -23,11 +23,12 @@ public interface OrderService {
 	
 	public List<Orders> listdeliveredOrders();
 	
-	
 	public List<Orders>  getPendingOrders(int customerid);
 	
 	public List<Orders> getDeliveredOrders(int customerid);
 	
 	public Orders updateOrders(Orders orders);
+	
+	public List<Orders> getCancelledOrders(int customerid);
 
 }

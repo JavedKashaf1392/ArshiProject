@@ -139,6 +139,17 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
+	public List<Orders> getCancelledOrders(int customerid) {
+		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid";
+		return sessionFactory.getCurrentSession()
+				.createQuery(query)
+					.setParameter("pickupStatus", VFOnlineConstants.PSTATUS)
+					.setParameter("customerid", customerid)
+						.list();
+	}
+
+	
+	@Override
 	public Orders updateOrders(Orders orders) {
 		sessionFactory.getCurrentSession().update(orders);
 		return orders;

@@ -673,9 +673,10 @@ input[type=submit]:hover {
         background-color:orange;
         border-radius:6px;
         outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:35px;color:white"></span></a>
-Membership Id:3
+Membership Id:0
        </th>
-
+       
+<form  modelAttribute="wallet">
 <th style="background-color:white;padding:15px 35px;border-radius:8px; border: 1px solid #ddd;">     
 <a href="#" style="display: inline-block;
         padding: 10px 15px;
@@ -685,10 +686,11 @@ Membership Id:3
         background-color:#00cccc;
         border-radius: 6px;
         outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:35px;"></span></a>
-        Balance:5000.00
+        Balance:${totalAmountBalance}
 
 
-       </th>       
+       </th>  
+       </form>     
        <th style="background-color:white;padding:15px 65px; width:%;border-radius:8px;border: 1px solid #ddd;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
@@ -700,7 +702,7 @@ Membership Id:3
         background-color:red;
         border-radius: 6px;
         outline: none;margin-top:6px"><span class="fa fa-thumbs-up" style="font-size:35px;color:white"></span></a>
-        Card:11
+   Cart:${customerModel.cartpage.cartpageid}
        </th>
        
 <th style="background-color:white;padding:15px 45px; width:5%;border-radius:8px;border: 1px solid #ddd;">     
@@ -763,29 +765,10 @@ Membership Id:3
     <td style=" text-align: center;
   padding: 16px;">500</td>
   </tr>
-  <tr style=" border-bottom: 1px solid #ddd;">
-    <td style=" text-align: center;
-  padding: 16px;"><a href="${pageContext.request.contextPath }/order/listOrderItem/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">1001</a></td>
-    <td style=" text-align: center;
-  padding: 16px;">20-10-2001</td>
-    <td style=" text-align: center;
-  padding: 16px;">Delivered</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
-    <td style=" text-align: center;
-  padding: 16px;">500</td>
-  </tr>
-  <tr style=" border-bottom: 1px solid #ddd;">
-    <td style=" text-align: center;
-  padding: 16px;"><a href="${pageContext.request.contextPath }/order/listOrderItem/${orders.orderid}" style=";font-size:100%;color:dodgerblue;">1001</a></td>
-    <td style=" text-align: center;
-  padding: 16px;">20-10-2001</td>
-    <td style=" text-align: center;
-  padding: 16px;">Delivered</td><!-- <i class="fa fa-check-circle" style="color:green"></i> -->
-    <td style=" text-align: center;
-  padding: 16px;">500</td>
-  </tr>
+  
   
   </table>
-  <a href="${pageContext.request.contextPath}/home/chooseanamount" style="display: inline-block;
+  <a href="${pageContext.request.contextPath}/wallet/chooseanamount" style="display: inline-block;
         padding: 10px 50px;
         text-align: center;
         text-decoration: none;

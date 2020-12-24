@@ -947,7 +947,7 @@ div#sc-edprofile input[type="submit"]:hover {
   
   <h3>Edit Profile Details </h3>
   <hr>
-  <form action="/action_page.php">
+  <form action="#" method="post">
     <div>
       <div>
         <label for="fname">First Name *</label>
@@ -976,10 +976,10 @@ div#sc-edprofile input[type="submit"]:hover {
     
       <div>
       <div>
-        <label for="lname">Date of Birth *</label>
+        <label for="city">City *</label>
       </div>
       <div >
-        <input type="text" id="lname" name="lastname" style=" width: 80%;
+        <input type="text" id="city" name="cities" style=" width: 80%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -991,7 +991,7 @@ div#sc-edprofile input[type="submit"]:hover {
         <label for="fname">Mobile Number *</label>
       </div>
       <div>
-        <input type="text" id="fname" name="firstname" style=" width:80%;
+        <input type="text" id="location" name="location" style=" width:80%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -1004,7 +1004,7 @@ div#sc-edprofile input[type="submit"]:hover {
         <label for="fname">Email *</label>
       </div>
       <div>
-        <input type="text" id="fname" name="firstname" style=" width:80%;
+        <input type="text" id="email" name="email" style=" width:80%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -1014,10 +1014,10 @@ div#sc-edprofile input[type="submit"]:hover {
     
       <div>
       <div>
-        <label for="fname">Password *</label>
+        <label for="MobileNumber">Password *</label>
       </div>
       <div>
-        <input type="text" id="fname" name="firstname" style=" width:80%;
+        <input type="text" id="mobile" name="mobile" style=" width:80%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;

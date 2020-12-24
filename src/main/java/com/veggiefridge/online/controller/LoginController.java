@@ -3,6 +3,7 @@ package com.veggiefridge.online.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,6 +13,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.DefaultEditorKit.CutAction;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamSource;
@@ -23,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +37,7 @@ import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.KioskLocation;
+import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
@@ -64,6 +68,9 @@ public class LoginController {
 	private CartService cartservice;
 
 	@Autowired
+	private CustomerService customerService;
+
+	@Autowired
 	HttpSession session;
 
 	// get cartPage
@@ -88,7 +95,7 @@ public class LoginController {
 	}
 
 	// save and update customer
-	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveCust", method = RequestMethod.POST)
 	public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer, BindingResult resultcustomer,
 			HttpSession session, ModelAndView model, @ModelAttribute("kiosklocation") KioskLocation kiosklocation,
 			BindingResult resultlocation) {
@@ -141,7 +148,7 @@ public class LoginController {
 	@RequestMapping(value = "/doLogin")
 	public ModelAndView loginCustomer(@ModelAttribute("customer") Customer customer, BindingResult resultcustomer,
 			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, BindingResult resultkiosklocation,
-			HttpSession session, ModelAndView model, HttpServletRequest req,Principal principal) {
+			HttpSession session, ModelAndView model, HttpServletRequest req, Principal principal) {
 
 		if (customer.getEmail() != null && customer.getPassword() != null && session.getAttribute("customer") == null) {
 			customer = custservice.loginCustomer(customer);
@@ -149,7 +156,7 @@ public class LoginController {
 
 			if (customer != null) {
 				session.setAttribute("customer", customer);
-				String un=principal.getName();
+				String un = principal.getName();
 				model.addObject("customerid", customer.getCustomerid());
 				model.addObject("firstname", customer.getFirstName());
 				model.addObject("kioskLocation", customer.getLocation());
@@ -169,11 +176,34 @@ public class LoginController {
 		}
 		return model;
 	}
-   
-	 //logout
+
+	// logout
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("customer");
 		return "redirect:/home/viewhome";
 	}
+
+	 //edit customer
+	//@RequestMapping(value = "/editProfile{customerid}", method = RequestMethod.GET)
+	//public ModelAndView editProfile() {
+		//CartPage cartpage = this.getCartPage();
+		/* int customerid = Integer.parseInt(request.getParameter("customerid")); */
+		//System.out.println("editProfile");
+		//Customer customer = customerService.getCustomer(cartpage.getCustomer().getCustomerid());
+		//System.out.println("customer" + customer.toString());
+		//System.out.println("customName" + customer.getFirstName());
+		//ModelAndView model = new ModelAndView("productform");
+		//model.addObject("customer", customer);
+		//return model;
+	//}
+
+	// save and update customer
+	/*
+	 * @RequestMapping(value = "/saveEditProfile", method = RequestMethod.POST)
+	 * public String saveCustomer(@Valid @ModelAttribute("customer") Customer
+	 * customer, BindingResult result, HttpSession session) throws
+	 * NoSuchAlgorithmException { customerService.updateCustomer(customer); return
+	 * "redirect:/login/editProfile/{customerid}"; }
+	 */
 }

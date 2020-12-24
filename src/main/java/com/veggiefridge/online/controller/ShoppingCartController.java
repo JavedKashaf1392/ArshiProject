@@ -163,49 +163,9 @@ public class ShoppingCartController {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-   
-	 //add cartitem
-	//@RequestMapping(value = "/addToCartPageItem/{productid}")
-	//public String addCartItems(@PathVariable int productid) {
-	   // CartPage cartpage = this.getCartPage();
-		//CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
-	    //if (cartpage.getCartpageid() == 0) { // if employee id is 0 then creating the
-			// employee other updating the employee
-	    	//cartpage.setCartitem(1);
-	    	//cartpage.setCustomer(cartpage.getCustomer());
-			//cartservice.add(cartpage);
-		 //if cart id is 0 then creating the
-			// cart other updating the cart
-		//if (cartitem == null) {
-
-			// add a new cartItem if a new product is getting added
-			//cartitem = new CartItem();
-			//Product product = productservice.getProduct(productid);
-			// transfer the product details to cartLine
-			//cartitem.setCartpageid(cartpage.getCartpageid());
-			//cartitem.setProduct(product);
-			//cartitem.setProductCount(1);
-			//cartitem.setBuyingPrice(product.getFinalPrice());
-			//cartitem.setTotal(product.getFinalPrice());
-			//cartitem.setCartItemNo(cartitem.getCartItemNo() + 1);
-
-			// insert a new cartLine
-			//cartservice.add(cartitem);
-			//System.out.println("cartitem is added");
-		
-			// update the cart
-			//cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
-			//cartpage.setCartitem(cartpage.getCartitem() + 1);
-			//cartservice.updateCartPage(cartpage);
-			//System.out.println("cartpage updated");
-	       //}
-		//return "redirect:/cart/listCustomerCartItem";
-	       //}
-	
-	
 	    //add cartitem
 		@RequestMapping(value = "/addToCartPageItem/{productid}")
-		public String addCartItems(@PathVariable int productid) {
+		public String addCartItems(@PathVariable int productid,@ModelAttribute("cartpage")CartPage cart,BindingResult resultcart) {
 
 			CartPage cartpage = this.getCartPage();
 			CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
@@ -218,8 +178,8 @@ public class ShoppingCartController {
 				cartitem.setCartpageid(cartpage.getCartpageid());
 				cartitem.setProduct(product);
 				cartitem.setProductCount(1);
-				cartitem.setBuyingPrice(product.getFinalPrice());
-				cartitem.setTotal(product.getFinalPrice());
+				cartitem.setBuyingPrice(product.getPrice()-product.getDiscount()*product.getPrice()/100);
+				cartitem.setTotal(product.getPrice()-product.getDiscount()*product.getPrice()/100);
 				cartitem.setCartItemNo(cartitem.getCartItemNo() + 1);
 
 				// insert a new cartLine
@@ -227,7 +187,7 @@ public class ShoppingCartController {
 				System.out.println("cartitem is added");
 
 				// update the cart
-				cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
+				cartpage.setGrandTotal(cart.getGrandTotal() + cartitem.getBuyingPrice());
 				cartpage.setCartitem(cartpage.getCartitem() + 1);
 				cartservice.updateCartPage(cartpage);
 				System.out.println("cartpage updated");
@@ -243,7 +203,7 @@ public class ShoppingCartController {
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		model.addObject("listcustomercartitem", listcustomercartitem);
 		//model.setViewName("cartitemlist");
-		model.setViewName("newcart");
+		model.setViewName("cart");
 		return model;
 	}
 

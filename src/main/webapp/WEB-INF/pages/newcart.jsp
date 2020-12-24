@@ -420,7 +420,7 @@ aside{
    <div style="background-color:white;margin-left:13%;margin-right:21%;margin-left:21%;padding:1px;margin-top:8px;"><h2 style="color: green;text-align: center;font-size:20px;">Your Cart Items</h2></div><br>
             <c:choose>
 		    <c:when test="${not empty listcustomercartitem}">
-   <main style="background-color:#f1f1f1;">
+    <main style="background-color:#f1f1f1;">
     <div class="basket">
         <!-- <div class="basket-module" style="background-color:white;">
         <label for="promo-code"><h2 style="color:green;">Enter a promotional code</h2></label>

@@ -454,7 +454,14 @@ hr {
 				- Pending Orders</a> <a
 				href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}"
 				style="display: block; color: black; padding: 16px; text-decoration: none;">
-				- Deliverd Orders</a> <a href="#news"
+				- Deliverd Orders</a>
+				
+				<a
+				href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}"
+				style="display: block; color: black; padding: 16px; text-decoration: none;">
+				- Cancel Orders</a>
+				
+				 <a href="#news"
 				style="display: block; color: black; padding: 16px; text-decoration: none;">
 				- Customer Service</a> <input type="button"
 				style="width: 140px; cursor: pointer; margin: 4px 4px; font-size: 14px; text-decoration: none; border-radius: 8px; text-align: center; color: white; background-color: #4CAF50; padding: 10px; border: none; margin-left: 8%;"

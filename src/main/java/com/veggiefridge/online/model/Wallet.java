@@ -1,5 +1,7 @@
 package com.veggiefridge.online.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,25 +19,31 @@ public class Wallet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int walletID;
 	
-	@Column(name="customerid")
-	private int customerid;
-	
-	public int getCustomerid() {
-		return customerid;
+	@OneToOne
+	private Customer customer;
+
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerid(int customerid) {
-		this.customerid = customerid;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Column(name="totalamountbalance")
-	private int totalAmountBalance;
+	private double totalAmountBalance;
+	
+	private Date joiningDate;
+	
+	private Date lastUpdateDate;
 
-	public int getTotalAmountBalance() {
+	
+
+	public double getTotalAmountBalance() {
 		return totalAmountBalance;
 	}
 
-	public void setTotalAmountBalance(int totalAmountBalance) {
+	public void setTotalAmountBalance(double totalAmountBalance) {
 		this.totalAmountBalance = totalAmountBalance;
 	}
 

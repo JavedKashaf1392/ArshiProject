@@ -37,18 +37,19 @@ body
     padding: 0;
     font-family: "Roboto", sans-serif;
 }
-      
-      /* Slider Css */
-      
-    .galleryContainer{
+/* Slider Css */
+    .galleryContainer {
     width: 100%;
     height: 500px;
-    max-width: 2000px;
+    max-width: 1270px;
     margin: auto;
     user-select: none;
     box-shadow: 0px 0px 3px 1px #00000078;
     padding: 10px;
     box-sizing: border-box;
+    margin-left:11%;
+    margin-right:13%;
+    margin-top: 5px;
 }
 .galleryContainer .slideShowContainer{
     width: 100%;
@@ -241,17 +242,14 @@ body
 /* footercoder  */
 
 .footer{
-    /* margin-left:13%;
-    margin-right:13%;  */
     position:relative;
-    /* width:75%;  */
     width:100%; 
     height:500px;
     background: #4CAF50; 
     position:relative;
-   /*  padding: 20px;
-    padding: 20px; */
-    /* border:1px solid black;  */
+     margin-left:11%;
+    margin-right:14%;
+     width:78%;
 }
 .carousel{
     padding: 20px;
@@ -1171,11 +1169,11 @@ function playPauseSlides() {
                             <a  href="#" style="color:white">Privacy Policy</a><br><br>
                             <a href="#"  style="color:white">Help</a><br><br>
                             <a href="#"  style="color:white">Terms And Condition</a><br><br>
-                            <a href="#"  style="color:white">Carriers</a><br><br>
-                            <a href="#"  style="color:white">Affiliate</a><br><br>
+                           <!--  <a href="#"  style="color:white">Carriers</a><br><br> -->
+                           <!--  <a href="#"  style="color:white">Affiliate</a><br><br> -->
                             <a href="#"  style="color:white">In News</a><br><br>
-                            <a href="#"  style="color:white">vf instant</a><br><br>
-                            <a href="#"  style="color:white">vf daily</a><br><br>
+                           <!--  <a href="#"  style="color:white">vf instant</a><br><br> -->
+                           <!--  <a href="#"  style="color:white">vf daily</a><br><br> -->
 </div>
 </div>
 <div class="center box">

@@ -214,7 +214,6 @@ public class OrderController {
 	//listCartItem
 	@RequestMapping(value = "/deliveredorder")
 	public ModelAndView fetchDelOrderByStatus(ModelAndView model) {
-
 		List<Orders> fetchalldeliveredorders = orderservice.listdeliveredOrders();
 		System.out.println("fetch All orderItemdetails");
 		model.addObject("fetchalldeliveredorders", fetchalldeliveredorders);
@@ -257,12 +256,14 @@ public class OrderController {
 				 //checkoutAndSaveOrder Pay Online
 				@RequestMapping(value = "/checkoutAndSaveOrderPayOnline")
 				public ModelAndView checkoutAndSaveOrderPayOnline(ModelAndView model) throws Exception {
+				
 					List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
 					Orders orders = new Orders();
 					orders.setCustomer(this.getCartPage().getCustomer());
 					orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS);
 					System.out.println("pickup status" + VFOnlineConstants.PICKUP_STATUS);
 					orders.setOrderDate(new Date());
+					orders.setTotalBillAmount(this.getCartPage().getGrandTotal());
 					orderservice.saveOrder(orders);
 					System.out.println("Order added in order tabel");
 
@@ -316,9 +317,9 @@ public class OrderController {
 			        PaytmConstants.details.forEach((k, v) -> parameters.put(k, v));
 			        parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
 			        parameters.put("EMAIL", env.getProperty("paytm.email"));
-			        parameters.put("ORDER_ID", "8724");
-			        parameters.put("TXN_AMOUNT", "62");
-			        parameters.put("CUST_ID", "9725");
+			        parameters.put("ORDER_ID", "9375");
+			        parameters.put("TXN_AMOUNT", "67");
+			        parameters.put("CUST_ID", "6157");
 			        parameters.put("INDUSTRY_TYPE_ID","Retail");
 			        parameters.put("CHANNEL_ID", "WEB");
 			        System.out.println(parameters);
@@ -330,14 +331,14 @@ public class OrderController {
 				
 	             //checkoutAndSaveOrder PayByWallet
 				@RequestMapping(value = "/checkoutAndSaveOrderPayByWallet")
-				public ModelAndView checkoutAndSaveOrderPayByWallet(ModelAndView model) {
+				public ModelAndView checkoutAndSaveOrderPayByWallet(ModelAndView model,@ModelAttribute("wallet") Wallet walletpayment, BindingResult resultorder) {
 					List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
-
 					Orders orders = new Orders();
 					orders.setCustomer(this.getCartPage().getCustomer());
 					orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS);
 					System.out.println("pickup status" + VFOnlineConstants.PICKUP_STATUS);
 					orders.setOrderDate(new Date());
+					orders.setTotalBillAmount(this.getCartPage().getGrandTotal());
 					orderservice.saveOrder(orders);
 					System.out.println("Order added in order tabel");
 
@@ -350,7 +351,6 @@ public class OrderController {
 						orderitem.setTotalAmount(cartitem.get(i).getTotal());
 						orderservice.saveOrderItem(orderitem);
 						System.out.println("List of cartitem added in orderitem table");
-
 						System.out.println("cartpage updated");
 					}
 
@@ -385,7 +385,12 @@ public class OrderController {
 					payment.setPlatformSource("WEB");
 					payment.setTotalBillAmount(orders.getTotalBillAmount());
 				    paymentservice.savePayment(payment);
-					model.setViewName("wallet");
+					
+					//update Wallet
+			        Wallet wallet=walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+					wallet.setTotalAmountBalance(walletpayment.getTotalAmountBalance()-orders.getTotalBillAmount());
+					walletservice.updateWallet(wallet);
+					model.setViewName("thankyou");
 					return model;
 				}
 				
@@ -477,54 +482,36 @@ public class OrderController {
 				}
 			
 			
-			 //repeat Order
-			@RequestMapping(value = "/canOrder{orderid}", method = RequestMethod.GET)
-			public String canlOrder(ModelAndView model,@PathVariable(value ="orderid") int orderid) {
-			    System.out.println("Get Order Id"+orderid);
-			    
-			   
-			    
-					
-				
-				return "redirect:/order/showPendingOrders{customerid}";
-			}
-		
+				/*
+				 * //repeat Order
+				 * 
+				 * @RequestMapping(value = "/canOrder{orderid}", method = RequestMethod.GET)
+				 * public String canlOrder(ModelAndView model,@PathVariable(value ="orderid")
+				 * int orderid) { System.out.println("Get Order Id"+orderid); return
+				 * "redirect:/order/showPendingOrders{customerid}"; }
+				 */
 			
 			 //delivered order item
 			@RequestMapping(value = "/cancelOrder/{orderid}", method = RequestMethod.GET)
 			public ModelAndView cancelOrder(ModelAndView model,@PathVariable(value = "orderid") int orderid,
 					@ModelAttribute("orders") Orders order, BindingResult resultorder) {
 				order = orderservice.getOrder(orderid);
-				order.setPickupStatus("cancelled");
+				order.setPickupStatus("Cancelled");
+				order.setUpdatedDate(new Date());
 				orderservice.updateOrders(order);
 				System.out.println("Your Order is cancelled");
-				model.setViewName("cancelOrder");
+				model.setViewName("cancel");
 				return model;
 			}
 			
 			
-			//delivered order item
-			@RequestMapping(value = "/addMoneyInWallet/{customerid}", method = RequestMethod.GET)
-			public ModelAndView addMoneyInWallet(ModelAndView model,@PathVariable(value = "customerid") int customerid,
-					@ModelAttribute("Wallet") Wallet wallet, BindingResult resultwallet) {
-				
-				 if (wallet.getWalletID() == 0) { // if employee id is 0 then creating the
-					// employee other updating the employee
-		         wallet=new Wallet();	
-		        wallet.setCustomerid(this.getCartPage().getCustomer().getCustomerid());
-				wallet.setTotalAmountBalance(30);
-				walletservice.addRefundMoney(wallet);
-				
-				} else {
-					wallet.setTotalAmountBalance(30);
-					walletservice.updateWallet(wallet);
+		
+			@RequestMapping(value = "/showCancelOrders{customerid}", method = RequestMethod.GET)
+			public String showCancelOrders(HttpServletRequest req, Model model) {
+					List<Orders> CancelOrders = orderservice.getCancelledOrders(this.getCartPage().getCustomer().getCustomerid());
+					model.addAttribute("CancelOrders",CancelOrders);
+					return "cancelOrder";
 				}
-				model.setViewName("wallet");
-				return model;
-			}
-			
-			
-			
-                
+          
 }
                  

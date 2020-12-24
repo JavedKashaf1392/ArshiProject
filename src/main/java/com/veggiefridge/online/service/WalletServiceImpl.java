@@ -31,4 +31,9 @@ public class WalletServiceImpl implements WalletService {
 		return walletdao.getWallet(walletID);
 	}
 
+	@Override
+	public Wallet fetchWallet(int customerid) {
+		return walletdao.fetchWallet(customerid);
+	}
+
 }

@@ -8,6 +8,8 @@ public interface WalletDAO {
 	 
 	 public Wallet updateWallet(Wallet wallet);
 
-     public Wallet getWallet(int walletID); 
-
+     public Wallet getWallet(int walletID);
+     
+     public Wallet fetchWallet(int customerid);
+   
 }

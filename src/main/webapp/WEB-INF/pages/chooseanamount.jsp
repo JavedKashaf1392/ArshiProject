@@ -77,11 +77,11 @@ input[type=submit]:hover {
   <div class="row">
   <div class="col-75"> 
     
- <form method="post" action="${pageContext.request.contextPath}/login/generateLink" modelAttribute="kioskLocation">
+ <form method="post" action="${pageContext.request.contextPath}/wallet/pgRedirect" modelAttribute="kioskLocation">
  <h2 style="color:#4CAF50;"><i class='fas fa-wallet' style="font-size:50px;color:#4CAF50;"></i>Enter Amount</h2>    
  <h6 style="color:#4CAF50;font-size:85%; margin-top:2%; text-align:center;">Amount will be added in your VeggieFridge Wallet</h6>
  
- <input type="text" name="${status.expression}" value="${status.value}" placeholder="Enter Amount"  required style="width: 77%;
+ <input type="text"  name="TXN_AMOUNT" placeholder="Enter Amount"  required style="width: 77%;
   padding: 12px;
   margin: 3px 0 12px 0; 
   display: inline-block;

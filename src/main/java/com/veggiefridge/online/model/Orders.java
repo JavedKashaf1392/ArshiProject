@@ -37,7 +37,15 @@ public class Orders{
 	private String pickupStatus;
 	
 	@Column(name="totalBillAmount")
-	private int totalBillAmount;  
+	private double totalBillAmount;  
+
+	public double getTotalBillAmount() {
+		return totalBillAmount;
+	}
+
+	public void setTotalBillAmount(double totalBillAmount) {
+		this.totalBillAmount = totalBillAmount;
+	}
 
 	@Column(name="platformSource")
 	private String platformSource="web";
@@ -50,6 +58,17 @@ public class Orders{
 	
 	@Column(name="remainingProductsCount")
 	private int remainingProductsCount;
+	
+	@Column(name="updatedDate")
+	private Date updatedDate;
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
 
 	public int getOrderid() {
 		return orderid;
@@ -91,13 +110,6 @@ public class Orders{
 		this.pickupStatus = pickupStatus;
 	}
 
-	public int getTotalBillAmount() {
-		return totalBillAmount;
-	}
-
-	public void setTotalBillAmount(int totalBillAmount) {
-		this.totalBillAmount = totalBillAmount;
-	}
 
 	public String getPlatformSource() {
 		return platformSource;

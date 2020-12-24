@@ -48,5 +48,9 @@ public class VFOnlineConstants {
 	public static final String organic="organic";
 	
 	public static final String qrCodeIsValid="true";
+	
+	public static final String PSTATUS="Cancelled";
+	
+	
 
 }
