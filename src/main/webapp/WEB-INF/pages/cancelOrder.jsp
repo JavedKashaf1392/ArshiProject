@@ -10,6 +10,7 @@
 <html lang="en" dir="ltr">
 
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
 <meta charset="utf-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>

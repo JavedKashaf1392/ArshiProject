@@ -302,18 +302,15 @@ public class ForgotPasswordController {
 	   //mapping set New Password
 	@RequestMapping(value = "/passwordChanged", method = RequestMethod.POST)
 	public String setNewPassword(@ModelAttribute("customer") Customer cust, ModelMap map, BindingResult resultcust) {
-
 		Customer customer = customerservice.getCustomerByEmail(cust.getEmail());
-		if (customer != null) {
-
+		System.out.println("emailId"+customer.getEmail());
+		if (customer!= null) {
 			// update password and Acct Status $ Displyay Successe Message
-
 			/* customer.setPassword(cust.getNewPassword()); */
 			customer.setPassword(EncryptPassword.sha256(cust.getNewPassword()));
 			customerservice.updateCustomer(customer);
 			System.out.println("update customer successfully");
 		}
-
 		return "redirect:/home/loginform";
 	}
 }

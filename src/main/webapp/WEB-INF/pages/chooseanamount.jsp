@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
  <meta charset="utf-8">
 	 <script src= 
 "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 

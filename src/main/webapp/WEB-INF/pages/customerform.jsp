@@ -8,7 +8,7 @@
       
    <html>
    <head>
-   
+   <link rel="icon" type="image/jpg" href="images/logo.jpg">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -88,7 +88,7 @@ h2 {
     <div align="center">
     <div><h2><p style="color:green;">New/Edit Customer</p></h2></div>
        <!--  <h2>New/Edit Product</h2> -->
-        <form:form action="${pageContext.request.contextPath}/customer/saveEditProfile" method="post" modelAttribute="customer">
+        <form:form action="${pageContext.request.contextPath}/customer/saveCustomer" method="post" modelAttribute="customer">
         <font color='red'><span id="errId"></span></font>
        
         <table>

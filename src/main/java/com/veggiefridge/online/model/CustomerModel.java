@@ -20,7 +20,17 @@ public class CustomerModel implements Serializable {
 	
 	private int customerid;
 	
+	private Wallet wallet;
 	
+	
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
+
 	public int getCustomerid() {
 		return customerid;
 	}

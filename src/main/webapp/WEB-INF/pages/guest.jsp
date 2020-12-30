@@ -11,6 +11,7 @@
 <html lang="en" dir="ltr">
 <head>
 
+ <link rel="icon" type="image/jpg" href="images/logo.jpg">
 <title>VeggieFridge</title>
 
 <meta charset="utf-8">
@@ -834,8 +835,7 @@ body
     }
   </style>  
   </head>
-  
-    <body>
+  <body>
 
     <!--  HEADERCODE -->
    <jsp:include page = "guestheader.jsp"/>

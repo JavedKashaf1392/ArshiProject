@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"> 
     <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
     <head>
+    <link rel="icon" type="image/jpg" href="images/logo.jpg">
     <style>
     body{
 background-color:#f1f1f1;

@@ -12,15 +12,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name ="walletpayment")
-
 public class WalletPayment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int walletPaymentId;
-	
-	//@OneToOne
-	//private Membership membership;
 	
 	@Column(name="paymentDate")
 	private Date paymentDate;
@@ -53,14 +49,6 @@ public class WalletPayment {
 	public void setWalletPaymentId(int walletPaymentId) {
 		this.walletPaymentId = walletPaymentId;
 	}
-
-	//public Membership getMembership() {
-		//return membership;
-	//}
-
-	//public void setMembership(Membership membership) {
-		//this.membership = membership;
-	//}
 
 	public Date getPaymentDate() {
 		return paymentDate;

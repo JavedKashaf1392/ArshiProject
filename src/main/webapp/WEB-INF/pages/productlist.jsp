@@ -9,8 +9,8 @@
 
 <html>
 <head>
-
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function(){
             $('#prodId').on('change', function() {

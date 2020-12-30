@@ -11,6 +11,8 @@
 <html lang="en" dir="ltr">
 <head>
 
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
+
 <title>VeggieFridge</title>
 
 <meta charset="utf-8">

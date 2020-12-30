@@ -1,5 +1,6 @@
 <htm>
 <head>
+   <link rel="icon" type="image/jpg" href="images/logo.jpg">
    <!-- @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Sedgwick+Ave+Display');-->
 <style>
   :root {

@@ -19,6 +19,7 @@
 <html>
 
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
 <style type="text/css">
 
 /* The Modal (background) */

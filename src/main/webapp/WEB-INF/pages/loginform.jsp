@@ -9,13 +9,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
 body{
 
 font-family: Arial, Helvetica, sans-serif;
- background-color:#f1f1f1;
+background-color:#f1f1f1;
 
 }
 .errormsg{

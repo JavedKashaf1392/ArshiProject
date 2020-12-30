@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg"> 
 <meta charset="ISO-8859-1">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
@@ -19,6 +20,7 @@
         <script>document.getElementsByTagName("html")[0].className += " js";</script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         </head>
         <style>
 
@@ -26,19 +28,19 @@ body {font-family: Arial, Helvetica, sans-serif;
 }
  
 body
-{
+{    
     font-family: Arial;
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
 }
+
 .header{
     background-color:white;
     position:relative;
     padding: 20px;
     padding: 20px;
     width: 100%;
-    /* height:30px; */
 }
 
 .logo{
@@ -49,15 +51,15 @@ body
 
 /* call */
 .call{
-background-color:w
+/* background-color:w */
 /* border:1px solid black;   */
 font-size:16px;
 float: right;
-margin-right:6%;
+margin-right:1%;
 }
 
   .notification {
-  margin-left:4%;
+  margin-left:6%;
   background-color:#4CAF50;
   color: white;
   text-decoration: none;
@@ -94,11 +96,11 @@ margin-right:6%;
 }
 
 input[type=text], select, textarea {
-  width: 90%;
+  /* width: 90%;
   padding: 8px;
   border: 1px solid #008000;
   border-radius: 4px;
-  resize: vertical;
+  resize: vertical; */
 }
 
 label {
@@ -229,7 +231,7 @@ form.example button:hover {
   border: none;
   outline: none;
   color: white;
-  padding: 10px 15px;
+  padding: 12px 17px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -393,15 +395,67 @@ input[type=submit]:hover {
 
   background-color: #45a049;
 } 
-    </style>
-    <body>
-   
-   <!--   
-   <div style="position:absolute;margin-left:11%;
-    margin-right:20%;
-    width:80%;border:1px solid #f1f1f1;">
-    -->
-    
+.topnav {
+  overflow: hidden;
+  background-color:#4CAF50;
+  margin-top: 14px;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active:hover {
+   background-color: #ddd;
+  color: black;
+ 
+}
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+  
+ 
+}
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+</style>
+<body>
+
    <div style="margin-left:15%;
     margin-right:20%;
     width:72%;border:1px solid #f1f1f1;">
@@ -425,16 +479,6 @@ input[type=submit]:hover {
   
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
  
- <%--  <security:authorize access="permitAll">
- <span class="fa fa-edit" style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a> |  
- </security:authorize>
- 
- <security:authorize access="permitAll">
- <span class='fas fa-unlock-alt' style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/login" style="text-decoration: none;color: black;">Hello,Sign In</a>
-  </security:authorize> --%>
-  
  <security:authorize access="hasAnyRole('ADMIN', 'USER')">   
  | <span class='fas fa-sign-out-alt' style="color:green;"></span>
    <a href="<c:url value="/logout" />" style="text-decoration: none;color: black;"> Logout</a>
@@ -567,11 +611,10 @@ window.onclick = function(event) {
   }
 }
 </script>
-   <div class="navbar">
+   <%-- <div class="navbar">
    <div class="dropdown">
-   <button class="dropbtn">Home  
-   </button>
-  </div> 
+   <a href="#books">Books</a>
+   </div> 
   <div class="dropdown">
     <button class="dropbtn">Search By Catogary  
       <i class="fa fa-caret-down"></i>
@@ -634,12 +677,29 @@ window.onclick = function(event) {
     </button>
     </div>
     </security:authorize>
+      </div> --%>
+  <div class="topnav" id="myTopnav">
+  <a href="${pageContext.request.contextPath}/cart/registerdhome" class="active"><i class="fa fa-home"></i></a>
+  <a href="#news">Search By CateGory</a>
+  <a href="#contact">Discount</a>
+  <a href="#about">More</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+</div> 
      
-      </div>
-     
-      </div> 
-      </div>
-      </div>
      
      
      <script>

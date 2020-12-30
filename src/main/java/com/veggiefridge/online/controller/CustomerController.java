@@ -131,7 +131,7 @@ public class CustomerController {
 	public ModelAndView editCustomer(HttpServletRequest request) {
 		int customerid = Integer.parseInt(request.getParameter("customerid"));
 		Customer customer = customerService.getCustomer(customerid);
-		ModelAndView model = new ModelAndView("customerform");
+		ModelAndView model = new ModelAndView("editprofile");
 		model.addObject("customer", customer);
 		return model;
 	}

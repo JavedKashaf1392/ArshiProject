@@ -28,6 +28,7 @@ import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
+import com.veggiefridge.online.model.Wallet;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
@@ -227,6 +228,9 @@ public class AppController {
 		    CartPage cartpage= new CartPage();
 		    cartpage.setCustomer(customer);
 		    customer.setCartpage(cartpage);
+		    Wallet wallet= new Wallet();
+		    wallet.setCustomer(customer);
+		    customer.setWallet(wallet);
 		    customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
 			customerservice.addCustomer(customer);
 			logger.info("customer add succesfully");

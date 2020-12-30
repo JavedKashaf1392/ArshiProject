@@ -88,6 +88,19 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "cartpageid")
 	private CartPage cartpage;
 	
+	
+	@OneToOne(mappedBy="customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "walletID")
+	private Wallet wallet;
+	
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
+
 	public CartPage getCartpage() {
 		return cartpage;
 	}

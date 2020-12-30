@@ -10,7 +10,7 @@
  
 <html>
 <head>
-
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
 <style type="text/css">
 div {
   border: 1px solid #ffffff;

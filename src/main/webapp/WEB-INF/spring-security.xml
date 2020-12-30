@@ -54,6 +54,8 @@
 		
 	    <intercept-url pattern="/member/**" access="hasRole('ROLE_USER')" />
 	    
+	    <intercept-url pattern="/wallet/**" access="hasRole('ROLE_USER')" />
+	    
 	   <!--  <intercept-url pattern="/login/**" access="hasRole('ROLE_USER')" /> -->
 	    
 	      <!-- <intercept-url pattern="/customer/**" access="hasRole('ROLE_USER')" /> -->

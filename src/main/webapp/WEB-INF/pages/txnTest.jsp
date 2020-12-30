@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg"> 
     <meta charset="UTF-8"/>
     <title>Title</title>
   <!--   <link rel="stylesheet" th:href="@{/style.css}"/> -->

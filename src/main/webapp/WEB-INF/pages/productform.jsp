@@ -8,6 +8,7 @@
       
 <html>
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>

@@ -47,7 +47,10 @@ public class GlobalController {
 					customerModel.setCities(customer.getCities());
 					customerModel.setLocation(customer.getLocation());
 					if(customer.getRole().equals("ROLE_USER")) {
-						customerModel.setCartpage(customer.getCartpage());					
+						customerModel.setCartpage(customer.getCartpage());	
+					}
+						if(customer.getRole().equals("ROLE_USER")) {
+							customerModel.setWallet(customer.getWallet());	
 					}				
 					session.setAttribute("customerModel", customerModel);
 					return customerModel;
@@ -57,8 +60,9 @@ public class GlobalController {
 		
 		return (CustomerModel)session.getAttribute("customerModel");		
 	}
+	}
 	
 	
 	
 
-}
+

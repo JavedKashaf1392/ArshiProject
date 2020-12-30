@@ -9,6 +9,7 @@
 
 <html>
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
 <meta charset="ISO-8859-1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 <title>Insert title here</title>

@@ -3,7 +3,7 @@
 <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head><link rel="icon" type="image/jpg" href="images/logo.jpg">
  <title>Generate Link</title>
 <style>
   body{

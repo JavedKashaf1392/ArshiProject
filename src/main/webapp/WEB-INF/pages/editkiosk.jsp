@@ -7,6 +7,9 @@
   
    
      <html>
+     <head>
+     <link rel="icon" type="image/jpg" href="images/logo.jpg">s
+     </head>
      <style>
      
      .center {

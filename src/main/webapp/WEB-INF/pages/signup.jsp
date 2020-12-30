@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/jpg" href="images/logo.jpg"> 
 <script type="text/javascript">
     function Validate() {
         var password = document.getElementById("txtPassword").value;

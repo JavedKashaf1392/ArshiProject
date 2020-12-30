@@ -1,7 +1,6 @@
 package com.veggiefridge.online.model;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,11 +32,11 @@ public class Wallet {
 	@Column(name="totalamountbalance")
 	private double totalAmountBalance;
 	
+	@Column(name="joiningDate")
 	private Date joiningDate;
 	
+	@Column(name="lastUpdateDate")
 	private Date lastUpdateDate;
-
-	
 
 	public double getTotalAmountBalance() {
 		return totalAmountBalance;
@@ -54,6 +53,5 @@ public class Wallet {
 	public void setWalletID(int walletID) {
 		this.walletID = walletID;
 	}
-
 	
 }

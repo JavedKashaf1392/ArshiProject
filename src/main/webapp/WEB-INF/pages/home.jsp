@@ -9,11 +9,12 @@
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
         <head> 
+        <link rel="icon" type="image/jpg" href="images/logo.jpg">
         <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Home screen of VeggieFridge</title>
+        <title>Online Vegetable And Milk Shopping in India- VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
         <style>
@@ -1093,7 +1094,7 @@ window.onclick = function(event) {
             <h6 style="color: black;">${product.description}</h6>
             <h6 style="color: black;"> Size:${product.size} g<h6>
              </div>
-         <!--    <div class="divider"></div> -->
+            <!--    <div class="divider"></div> -->
             <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
                    <div class="left">
                    <span class="price">

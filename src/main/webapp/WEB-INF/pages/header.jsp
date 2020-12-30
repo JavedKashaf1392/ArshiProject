@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="icon" type="image/jpg" href="images/logo.jpg">
 <meta charset="ISO-8859-1">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
@@ -26,6 +28,7 @@ body {font-family: Arial, Helvetica, sans-serif;
  
 body
 {
+
     font-family: Arial;
     margin: 0;
     padding: 0;
@@ -50,15 +53,15 @@ body
 /* border:1px solid black;   */
 font-size:16px;
 float: right;
-margin-right:6%;
+margin-right:2%;
 }
 
   .notification {
-  margin-left:4%;
+  margin-left:7%;
   background-color:#4CAF50;
   color: white;
   text-decoration: none;
-  padding: 12px 24px;
+  padding: 12px 30px;
   position: relative;
   display: inline-block;
   border-radius:4px;
@@ -489,15 +492,15 @@ input[type=submit]:hover {
   </div>
   
       <div class="right" style="float: right;">
-     <%--  <span  class='fas fa-user-circle' style="color:green;"></span> 
+      <%--  <span  class='fas fa-user-circle' style="color:green;"></span> 
       Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> |  --%>
       <div id="id05" class="menu">
       <div class="sidebar">
       <center>
       <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
-      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
+      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customerModel.firstName}</span>
       </center>
-      <a href="#"><i class="fa fa-user-circle"></i><span>My Account</span></a>
+      <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"><i class="fa fa-user-circle"></i><span>My Account</span></a>
       <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
