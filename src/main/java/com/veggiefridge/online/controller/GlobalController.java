@@ -49,7 +49,7 @@ public class GlobalController {
 					if(customer.getRole().equals("ROLE_USER")) {
 						customerModel.setCartpage(customer.getCartpage());	
 					}
-						if(customer.getRole().equals("ROLE_USER")) {
+					else if(customer.getRole().equals("ROLE_USER")) {
 							customerModel.setWallet(customer.getWallet());	
 					}				
 					session.setAttribute("customerModel", customerModel);

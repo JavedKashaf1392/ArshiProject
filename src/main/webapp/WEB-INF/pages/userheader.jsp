@@ -24,7 +24,8 @@
         </head>
         <style>
 
-body {font-family: Arial, Helvetica, sans-serif;
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
  
 body
@@ -33,10 +34,11 @@ body
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
+    /*  background-color:white; */
 }
 
 .header{
-    background-color:white;
+    /* background-color:white; */
     position:relative;
     padding: 20px;
     padding: 20px;
@@ -51,9 +53,7 @@ body
 
 /* call */
 .call{
-/* background-color:w */
-/* border:1px solid black;   */
-font-size:16px;
+font-size:18px;
 float: right;
 margin-right:1%;
 }
@@ -397,8 +397,8 @@ input[type=submit]:hover {
 } 
 .topnav {
   overflow: hidden;
-  background-color:#4CAF50;
-  margin-top: 14px;
+  background-color: #4CAF50;
+  margin-top:30px;
 }
 
 .topnav a {
@@ -406,33 +406,72 @@ input[type=submit]:hover {
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 9px 13px;
   text-decoration: none;
   font-size: 17px;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active:hover {
-   background-color: #ddd;
-  color: black;
- 
-}
-.topnav a.active {
+.active {
   background-color: #4CAF50;
   color: white;
-  
- 
 }
+
 .topnav .icon {
   display: none;
 }
 
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 9px 13px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #ddd;
+  color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;             
+}
+
 @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -451,22 +490,98 @@ input[type=submit]:hover {
     display: block;
     text-align: left;
   }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  33% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.button {
+  margin-left:4%;
+  display: inline-flex;
+  align-items: center;
+  background: #C06C84;
+  box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
+  border-radius: 5px;
+  height: 45px;
+  padding: 0 30px;
+  color: #fff;
+  font-family: Lato, Arial, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .3s, transform .3s, box-shadow .3s;
+   will-change: transform;
+  
+  &:hover {
+    background: darken(#C06C84,10%);
+    box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+    transform: translate3d(0, -2px, 0);
+  }
+  &:active {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+    transform: translate3d(0, 1px, 0);
+  }
+}
+
+.pulse {
+  position: relative;
+  
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,.4);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    margin: auto;
+  }
+  &:before {
+    animation: pulse 1.5s infinite linear;
+  }
+  &:after {
+    animation: pulse 2s .4s infinite linear;
+  }
+  &:hover:before, &:hover:after {
+    display: none;
+  }
 }
 
 </style>
 <body>
 
-   <div style="margin-left:15%;
-    margin-right:20%;
-    width:72%;border:1px solid #f1f1f1;">
+   <div style="
+    width:88%;border:1px solid transparent;margin-left:6%;margin-right:10%;">
     
-   <div class="logo" style="margin-top:5px;">
+     <div class="logo">
    <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg" width="150" height="90"/>
+  <%--  <img src="${images}/logo.jpg" width="170" height="125"/> --%>
+   <img src="${images}/logo.jpg"  width="165" height="120"/>
+  
    </div> 
    
  <div class="call" style="margin-top:5px;"> 
- 
  <security:authorize access="hasAnyRole('ADMIN', 'USER')">  
  <span class='fas fa-user-circle' style="color:green;"></span>
  <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Hello,${customerModel.firstName}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
@@ -518,37 +633,38 @@ input[type=submit]:hover {
  </div>
  </div>
   
-  <div class="search" style="margin-left:18%;width:100%;margin-top:34px;">                                                 
+  <div class="search" style="margin-left:15%;width:100%;margin-top:40px;">                                                 
   <form class="example">
-  <input type="text" placeholder="Search For Vegetabels,Milk And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:55%;padding:10px 10px;">
-  <button type="submit" style="border-radius:4px;margin-right:2%;"><i class="fa fa-search"></i></button>
+  <input type="text" placeholder="Search For Vegetabels,Milk And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:50%; padding:10px 10px;">
+  <button type="submit" style="border-radius:px;margin-right:%;"><i class="fa fa-search"></i></button>
+  <a href="#" class="button pulse">
+  Membership
+ </a>
   <a href="#" class="notification" id="group">
   <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
   <div class="badge" id="output">${customerModel.cartpage.cartitem}</div>
   </a>
- </form>
-  
+  </form>
   <div id="id06" class="cartpopup">
   <div class="cart-content">
   Yout cart is Empty
   </div>
   </div>
   </div>
- 
   
       <div class="right" style="float: right;">
-     <%--  <span  class='fas fa-user-circle' style="color:green;"></span> 
+      <%--  <span  class='fas fa-user-circle' style="color:green;"></span> 
       Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> |  --%>
       <div id="id05" class="menu">
       <div class="sidebar">
       <center>
       <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
-      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customer.firstName}</span>
+      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customerModel.firstName}</span>
       </center>
-      <a href="${pageContext.request.contextPath }/order/editProfile"><i class="fa fa-user-circle"></i><span>My Account</span></a>
+      <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"><i class="fa fa-user-circle"></i><span>My Account</span></a>
       <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
-      <a href="${pageContext.request.contextPath }/home/wallet"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
+      <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
       <a href="<c:url value="/logout" />"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
@@ -610,85 +726,94 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-</script>
-   <%-- <div class="navbar">
-   <div class="dropdown">
-   <a href="#books">Books</a>
-   </div> 
+</script> 
+     <div class="topnav" id="myTopnav">
+  <a href="#home" class="active">Home</a>
   <div class="dropdown">
-    <button class="dropbtn">Search By Catogary  
+    <button class="dropbtn">Search By Catogary
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
+      <a href="#">Lefy Vegetable</a>
       <a href="#">Fruit Vegetable</a>
-      <a href="#">leafy vegetable</a>
-      <a href="#">Milk</a>
+      <a href="#">Green Vegetable</a>
+       <a href="#">Milk</a>
     </div>
   </div> 
-  <security:authorize access="hasRole('USER')">
-<div class="dropdown">
-    <button class="dropbtn">Discounts
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
-  </security:authorize>
-  
-  <security:authorize access="hasRole('USER')">
-  <div class="dropdown">
-    <button class="dropbtn">More
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div>
-  </security:authorize> 
- 
- <security:authorize access="hasRole('ADMIN')">  
-  <div class="dropdown">
-    <button class="dropbtn">Manage
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="${pageContext.request.contextPath }/product/viewAll">Manage Product</a>
-      <a href="${pageContext.request.contextPath }/kiosk/listKiosk">Manage kiosk</a>
-      <a href="${pageContext.request.contextPath }/location/listLocation">Manage Location</a>
-      </div>
-      </div>
-     </security:authorize> 
-     
- 
-    <security:authorize access="hasRole('USER')">    
-    <div class="dropdown">
-    <button class="dropbtn">Join Membership
-    </button>
-    </div>
-    </security:authorize>
-      </div> --%>
-  <div class="topnav" id="myTopnav">
-  <a href="${pageContext.request.contextPath}/cart/registerdhome" class="active"><i class="fa fa-home"></i></a>
-  <a href="#news">Search By CateGory</a>
+   <a href="#news">Offer</a>
   <a href="#contact">Discount</a>
-  <a href="#about">More</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>   
+</div> 
+    
+     
+     <script>
+     function myFunction() {
+         var input, filter, ul, li, a, i, txtValue;
+         input = document.getElementById("myInput");
+         filter = input.value.toUpperCase();
+         ul = document.getElementById("myUL");
+         li = ul.getElementsByTagName("li");
+         for (i = 0; i < li.length; i++) {
+             a = li[i].getElementsByTagName("a")[0];
+             txtValue = a.textContent || a.innerText;
+             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                 li[i].style.display = "";
+             } else {
+                 li[i].style.display = "none";
+             }
+         }
+     }
+     </script>
 
-<script>
+     <script>
+     // Get the modal
+     var cartpopup = document.getElementById('id06');
+
+     // When the user clicks anywhere outside of the modal, close it
+     window.onclick = function(event) {
+         if (event.target == cartpopup) {
+         	cartpopup.style.display = "none";
+         }
+     }
+     </script>
+
+     <script>
+     // Get the modal
+     var menu = document.getElementById('id05');
+
+     // When the user clicks anywhere outside of the modal, close it
+     window.onclick = function(event) {
+         if (event.target == menu) {
+         	menu.style.display = "none";
+         }
+     }
+     </script>
+
+         <script> 
+     	// Use find() function to extract the badge 
+     	// count from '#group' container. 
+     	$(document).ready(function() { 
+     		$(".btn").click(function() { 
+     			var val = parseInt($('#group').find('.badge').text()); 
+
+     			// Check for the button clicked 
+     			if ($(this).hasClass('btn-danger')) { 
+     				$('#group').find('.badge').text(val - 1); 
+     			} else if ($(this).hasClass('btn-success')) { 
+     				$('#group').find('.badge').text(val + 1); 
+     			} 
+     		}); 
+     	}); 
+     </script> 
+
+     <script>
+     $('#b').click(function() {
+         $('#c').html(function(i, val) { return val*1+1 });
+     });
+     </script>
+     
+     <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {

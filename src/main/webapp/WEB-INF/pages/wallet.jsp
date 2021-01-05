@@ -10,151 +10,56 @@
  <html lang="en" dir="ltr">
         
         <head> 
-        <link rel="icon" type="image/jpg" href="images/logo.jpg"> 
+        
         <meta charset="utf-8">
+        <link rel="icon" type="image/jpg" href="images/logo.jpg">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Home screen of VeggieFridge</title>
+        <title>Edit Profile-VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+       <link rel="icon" type="image/x-icon" href="favicon.png">
         <style>
         
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+font-family: Arial, Helvetica, sans-serif;
+/* background-color: white; */
+background-color:#f9f9f9;
+}
 
 hr{
+
 border:1px solid #f1f1f1;
 }
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.col-75 {
-  width: 100%;
-  margin-top: 11px;
-  color: black;
-}
 input[type=text], select, textarea {
-  width: 90%;
+  /* border: 1px solid black; */
+  margin-left: 10px;
+  margin-top:10px;
+  width: 110%;
   padding: 8px;
   border: 1px solid #008000;
-  border-radius: 4px;
+ /*  border-radius: 4px; */
   resize: vertical;
-}
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: center;
-  margin-top:10px;
 }
 input[type=submit]:hover {
   background-color: #45a049;
 }
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 135px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 130%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-}
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 22%;
-  margin-left: 68%;
-  border-radius: 4px; 
-}
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
- .popUpMain{ 
-  outline: #4CAF50 solid 10px;
-  display: none;   /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1001; /* Sit on top */
-  padding-top: 75px;  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
- /*  overflow: auto; /* Enable scroll if needed */ */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-  box-shadow: 1px 2px 5px 3px white;
-  } 
-.popup {/* 
-   /* background-color:#f1f1f1; */
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-  margin-left: 34%;
-  
-}
-</style>
-        </head>
-        <style>
-    
-    body{
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-   .mySlides {display: none}
-/* img {vertical-align: middle;} */
-   
-    {
-    box-sizing: border-box;
-}
-}
-
 .footer{
     margin-left:15%;
-    margin-right:13%; */
+    margin-right:20%;
     position:relative;
-    width:75%;
+    width:72%;
     height:500px;
     background: #4CAF50; 
     position:relative;
    /*  padding: 20px;
     padding: 20px; */
-    margin-top:auto;
     /* border:1px solid black;  */
+    margin-top:auto;
     
 }
-
 .carousel{
     padding: 20px;
     padding: 20px;
@@ -165,7 +70,7 @@ input[type=submit]:hover {
     margin-top:5px;
    /*  background: #4CAF50; */
     /*  border: 1px solid grey;  */
-     height:1000px;
+     height:550px;
      transition:1s;
      display: -webkit-box;
      display: -ms-flexbox;
@@ -187,7 +92,7 @@ input[type=submit]:hover {
 }
 .main-content .box{
     flex-basis: 50%;
-    padding: 10px 80px;
+    padding: 10px 20px;
 }
 .box h2{
     font-size: 1.125rem;
@@ -275,7 +180,7 @@ input[type=submit]:hover {
     width: 100%;
     font-size: 1.0625rem;
    /*  background: #151515; */
-    padding-left: 10px;
+    /* padding-left: 10px; */
     border: 1px solid #222222;
 }
 .right form input:focus,
@@ -336,267 +241,21 @@ input[type=submit]:hover {
         margin: 5px 0;
     }
 }
-
-/* .................... */
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-
-}
-
-/* Next & previous buttons */
- .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 18px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
- /* Caption t
-.text {
- /*  color: #f2f2f2; */
-  font-size: 15px;
-  padding: 8px 12px;
-  position:relative;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-} 
- */
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
 .active, .dot:hover {
   background-color: #717171;
 }
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-.container{
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-  /*   background: skyblue; */
-    margin-top: 20px;
-    margin-right: 23%;
-}
-
-.container ul{
-    padding:0px;
-    margin:0px;
-}
-
-
-.container ul li{
-    float:left;
-    list-style: none;
-    width:20%;
-    height:400px;
-  /*   background: pink; */
-    margin :24px 0px 24px 59px; 
-   /*  border:2px solid blue; */
-   border:1px solid #d9d9d9; 
-   box-sizing: border-box;
-   transition: 1s;
-  
-}
-.container ul li:hover{
-   /*  opacity: 0.7; */
-   
-     	transform: scale(1.1);
-		/* background:#FFEFD5;  */
-		z-index: 2;
-	  /*  box-shadow: 2px 2px 2px #000; */
-}
-
-.container ul li .product-meta{
-    width: 105%;
-    height:100px;
-    line-height: 50px;
-    
-   /*  background: blue;  */   
-  /*  background: pink; */
-    text-align: left;
-    color:white;
-    font-size: 18px;
-   
-}
-.container ul li .product-meta{
-
-
-}
-.container ul li  .product-price-wrap {
-  width: 100%;
-  height:21%;
-  display: -ms-grid;
-  display: grid; */
- -ms-grid-columns: auto auto;
-  margin-top: 90%;
-}
-.container ul li  .product-price-wrap .left {
-  -ms-grid-column-align: start;
-      justify-self: start;
-}
-
-.container ul li .product-price-wrap .left .price {
- /*  color: #111; */
-  color:black;
-  font-weight: 700;
-}
-
-.container ul li  .product-price-wrap .left .old-price {
-  font-size: 14px;
-  text-decoration: line-through; 
- /*  color: #999; */
-  color:black;
-  font-weight: 300;
-  position: relative;
-/*   display: block; */
-   color:black;
-}
-.container ul li  .product-price-wrap .left .old-price {
-  font-size: 14px;
-  text-decoration: line-through; 
- /*  color: #999; */
-  color:black;
-  font-weight: 300;
-  position: relative;
-/*   display: block; */
-   color:black;
-}
-.container ul li  .product-price-wrap .right {
- /*  -ms-grid-column-align: end;
-      justify-self: end; */
-}
-
-.container ul li  .product-price-wrap .right .btn {
-  float:right;
-  left:50%;
-  /* background-color: #1864ff; */
-  background-color:#4CAF50;
-  border: 0;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight:600;
-  padding: 10px 20px;
-  border-radius: 3px;
-   -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out; 
- 
-}
-.container ul li .product-price-wrap .right .btn:hover, .card .product-meta .product-price-wrap .right .btn:focus, .card .product-meta .product-price-wrap .right .btn:active {
-  outline: none;
-  cursor: pointer;
- background-color: green;
-}
-
- .label-clip {
-  background-color: #1864ff; 
-  background-color: #4CAF50;
-  border-radius: 0 3px 3px 3px;
-  font-size: 14px;
-  color: #ffffff;
-  font-weight: 600;
-  text-align: center;
-  padding: 5px 10px;
-  z-index: 1;
-  top: -10px;
-  left: 128px;
-  position: relative;
-  width:38%;
-} 
-
-.label-clip::before {
-  content: '';
-  /* border-right-color: #123bb4 !important; */
-  border-right-color:#4CAF50 !important;
-  position:absolute;
-  top: 0;
-  left: -10px;
-  height: 0;
-  width: 0;
-  border-right: 10px solid transparent;
-  border-top: 10px solid transparent;
-  background: none !important;
-} 
-@media screen and (max-width:1250px){
-    .container ul li{
-        width:40%;
-        margin-left: 40px;   
-    }
-    /* ........................................... */
-
-  </style>  
-  <body >
+ </style>  
+  <body>
  
    <!--  header -->
-  <jsp:include page = "userheader.jsp"/>
-  
-  <div class="centercontent" style="background-color:;margin-top:10px;background-color: ">
+ <jsp:include page ="userheader.jsp"/> 
+ 
+  <div class="centercontent" style="background-color:;margin-top:15px;margin-bottom:20px;">
    
   <div class="sidemenu" style="margin: 0;
   padding: 0;
   width: 250px;
-  background-color:#f1f1f1;
+  background-color:white;
   position: absolute;
   height:700px;
   /*overflow: auto;*/
@@ -605,12 +264,17 @@ input[type=submit]:hover {
   <a class="active" href="#home" style=" display: block;
   color: white;
   padding: 16px;
-  text-decoration: none;background-color:#4CAF50; ">My Account</a>
+  text-decoration: none;background-color:; ">My Account</a>
   
   <a href="${pageContext.request.contextPath }/order/editProfile"  style=" display: block;
   color: black;
   padding: 16px;
   text-decoration: none; "> - Edit Profile</a> 
+  
+  <a href="${pageContext.request.contextPath }/cart/editPassword/${customerModel.email}"  style=" display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none; "> - Change Password</a> 
   
   <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"  style=" display: block;
   color: black;
@@ -649,35 +313,16 @@ input[type=submit]:hover {
   
   <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
   </div>
-
- <div class="center" style=" margin-left: 200px;
+  
+  <div class="center" style=" margin-left: 200px;
   padding: 1px 16px;
   height: 700px;
-  margin-left:32%; background-color: ;margin-right:13%;">
+  margin-left:32%; background-color: white;margin-right:13%;">
   
-  <h3>My Wallet</h3>
+  <h3>Edit Profile Details </h3>
   <hr>
-  
-  
   <table style="cellspacing:2%; border-spacing:10px;">
-  
-  <th style="background-color:white;padding:15px 55px;border-radius:8px; 
-  text-align: center;
-  border: 1px solid #ddd;
-  font-size:15px;">
-     
-  <a href="#" style="display: inline-block;
-        padding:10px 15px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:orange;
-        border-radius:6px;
-        outline: none;margin-top:6px"><span  class='fas fa-user-alt' style="font-size:35px;color:white"></span></a>
-Membership Id:0
-       </th>
-       
-<form  modelAttribute="wallet">
+
 <th style="background-color:white;padding:15px 35px;border-radius:8px; border: 1px solid #ddd;">     
 <a href="#" style="display: inline-block;
         padding: 10px 15px;
@@ -687,26 +332,10 @@ Membership Id:0
         background-color:#00cccc;
         border-radius: 6px;
         outline: none;margin-top:6px"><span class='fas fa-wallet'style="font-size:35px;"></span></a>
-        Balance:${totalAmountBalance}
-
-
+        Balance:100 ${customerModel.wallet.totalAmountBalance}
        </th>  
-       </form>     
-       <th style="background-color:white;padding:15px 65px; width:%;border-radius:8px;border: 1px solid #ddd;">     
-<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
-
-<a href="#" style="display: inline-block;
-        padding: 10px 15px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:red;
-        border-radius: 6px;
-        outline: none;margin-top:6px"><span class="fa fa-thumbs-up" style="font-size:35px;color:white"></span></a>
-   Cart:${customerModel.cartpage.cartpageid}
-       </th>
-       
-<th style="background-color:white;padding:15px 45px; width:5%;border-radius:8px;border: 1px solid #ddd;">     
+    
+<th style="background-color:white;padding:15px 35px; width:5%;border-radius:8px;border: 1px solid #ddd;">     
 <!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
 <a href="#" style="display: inline-block;
@@ -799,14 +428,14 @@ function myFunction() {
   }
 }
 </script>
-  
+   
   </div>
-
+ 
  <!--  ............................  -->
-      <div class="footer" style="margin-top: auto;">
+<div class="footer">
       <div class="main-content">
       <div class="left box">
- 
+
 <h2>VeggieFridge</h2>
 <div class="content"> 
                             <a href="#" style="color:white">About Us</a><br><br>
@@ -859,9 +488,11 @@ Contact us</h2>
 Email *</div>
 <input type="email" required>
                             </div>
-<div class="msg">
+<div class="email" style="padding:10px 3px;margin-right:8%;">
                                 <div class="text">
 Message *</div>
+<input type="text" required placeholder="Enter Text Here">
+</div>
 <!-- NOTE: Due to more textarea tag I got an error. So I changed the textarea name to changeit. Please change that changeit name to textarea -->
 <changeit id=".msgForm" rows="2" cols="25" required></changeit> <!-- replace this changeit name to textarea -->
 
@@ -888,13 +519,13 @@ Message *</div>
     </table>                         
     </div>
 
-                    <div class="bottom">
+                   <%--  <div class="bottom">
                     <center>
                     <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
                     <span class="far fa-copyright"></span> 2020 All rights reserved.
                     </center>
                     </div>
-
+ --%>
 </div>
 </div>
 </div>
@@ -911,6 +542,7 @@ Message *</div>
     });
    </script>
  
+  
   </body>
   </html>
   

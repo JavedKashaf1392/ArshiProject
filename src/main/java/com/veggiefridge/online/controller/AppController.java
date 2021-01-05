@@ -65,13 +65,13 @@ public class AppController {
 			model.addObject("listkiosklocation",listkiosklocation);
 			model.addObject("listProduct",listProduct);
 			model.addObject("listCustomer ",listCustomer);
-			model.setViewName("home");
+			model.setViewName("guest");
 			return model;
 		    }
 		
 	
 	@RequestMapping("/continueLocation")  
-	public ModelAndView continueLoc(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
+	public ModelAndView continueLoc(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer,BindingResult resultcustomer) 
 	
 	{ 
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
@@ -148,7 +148,7 @@ public class AppController {
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		/* model.setViewName("registerdhome"); */
-		model.setViewName("registerdhome");
+		model.setViewName("VeggieFridge");
 		return model; 
 	} 
 	
@@ -260,6 +260,35 @@ public class AppController {
 		model.setViewName("/payopt");
 		return model;
 	}
+	
+	    //footer
+		@RequestMapping(value = "/footer1")
+		public ModelAndView footer(ModelAndView model) {
+			model.setViewName("footer1");
+			return model;
+		}
+		///C:/Users/Hp/AppData/Local/slack/app-4.12.0/resources/app.asar/dist/notifications.html#
+		        //footertwo
+				@RequestMapping(value = "/footer")
+				public ModelAndView footertwo(ModelAndView model) {
+					model.setViewName("footer");
+					return model;
+				}
+				
+
+			    //footer
+				@RequestMapping(value = "/veggiefridge")
+				public ModelAndView veggiefridge(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+					List<Product> listProduct = productService.getAllProducts();
+					List<Customer> listCustomer = customerservice.getAllCustomers();
+					model.addObject("listCustomer", listCustomer);
+					model.addObject("listkiosklocation",listkiosklocation);
+					model.addObject("listProduct", listProduct);
+					/* model.setViewName("registerdhome"); */
+					model.setViewName("VeggieFridge");
+					return model;
+				}
 	
 }
 

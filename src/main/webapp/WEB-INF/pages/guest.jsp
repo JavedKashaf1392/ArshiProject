@@ -1,56 +1,251 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="security"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   pageEncoding="ISO-8859-1" isELIgnored="false"%>
+   
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<!DOCTYPE HTML>
-<html lang="en" dir="ltr">
-<head>
-
- <link rel="icon" type="image/jpg" href="images/logo.jpg">
-<title>VeggieFridge</title>
-
-<meta charset="utf-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home screen of VeggieFridge</title>
-<script>
-	document.getElementsByTagName("html")[0].className += " js";
-</script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-	<!-- <link rel="icon" type="image/x-icon" href="favicon.png"> -->
-    <style>
- 
-body
+ <!DOCTYPE HTML>
+ <html lang="en" dir="ltr">
+ <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="scripts/jquery.cookies.2.2.0.min.js"></script> --> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <link rel="icon" href="./image/icon.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> 
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Online Vegetable And Milk Shopping in India- VeggieFridge</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+     
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');   
+body {font-family: Arial, Helvetica, sans-serif;}
 {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
+box-sizing: border-box;
+}
+.mainsplash{
+  /* background: #f6f5f7; */
+  outline: #4CAF50 solid 10px;
+  display: none;  /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Sit on top */
+  padding-top: 10px;  /* Location of the box */
+  left: 0;
+  top:  0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+ /*  overflow: auto; /* Enable scroll if needed */ */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+  box-shadow: 1px 2px 5px 3px white;
+}
+.splash{
+   text-align: center;
+   margin-left:32%;
+   margin-top:5%;
+   font-family: 'Montserrat', sans-serif;
+   background-color: #fff;
+  /*  border-radius: 10px; */
+  /*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22); */
+	position: relative;
+	overflow: hidden;
+	width: 450px;
+    max-width: 100%;
+	min-height: 100px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.col-75 {
+   width: 100%;
+  margin-top: 11px;
+  color: black;
+}
+ select{
+  width:80%;
+  padding: 8px;
+  /* background-color:#f1f1f1; */
+  border-radius: 4px;
+  resize: vertical;
+  align-content: center;
+} 
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+  margin-top: 10px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+.login {
+  padding: 16px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+  box-shadow: 1px 2px 5px 3px white;
+}
+/* Modal Content/Box */
+.modal-content {
+  
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 25%;
+  height: 60%; /* Could be more or less, depending on screen size */
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+  overflow: hidden;
+ border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+} 
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+/* ............................signup...................... */
+.register{
+  display: none;/* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
+  padding-top: 60px;
+  box-shadow: 1px 2px 5px 3px white;
+}
+
+/* Modal Content/Box */
+.register-content {
+ justify-content:center;
+  background-color: #fefefe;
+ /*  margin: 3% auto 15% auto; */ /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 25%;
+  height: 84%; /* Could be more or less, depending on screen size */
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+  overflow: hidden;
+  position: fixed;
+  margin-left: 37%;
+ /*  margin-top: 1%; */
+  border-radius: 4px;
+  font-size: 83%; 
+}
+hr {
+  border: 1px solid #f1f1f1;
+   margin-bottom: 10px;
+   margin-top: 10px;
+}
+.account {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 /* Slider Css */
     .galleryContainer {
     width: 100%;
     height: 500px;
-    max-width: 1270px;
+    max-width: 1265px;
     margin: auto;
     user-select: none;
-    box-shadow: 0px 0px 3px 1px #00000078;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-left:11%;
-    margin-right:13%;
-    margin-top: 5px;
+    /* box-shadow: 0px 0px 3px 1px #00000078; */
+   /*  padding: 10px; */
+    /*  box-sizing: border-box; */
+    margin-left:160px;
+    margin-right:145px;
+    
 }
 .galleryContainer .slideShowContainer{
     width: 100%;
@@ -101,7 +296,7 @@ body
     border-bottom-right-radius: 10px;
 }
 
-.galleryContainer .slideShowContainer .rightArrow{
+.galleryContainer .slideShowContainer .rightArrow {
     left: auto;
     right: 0;
     border-top-right-radius: 0px;
@@ -240,304 +435,14 @@ body
 
 /* CLOSE SLIDER CSS */
 
-/* footercoder  */
-
-.footer{
-    position:relative;
-    width:100%; 
-    height:500px;
-    background: #4CAF50; 
-    position:relative;
-     margin-left:11%;
-    margin-right:14%;
-     width:78%;
-}
-.carousel{
-    padding: 20px;
-    padding: 20px;
-    margin-left:150px;
-    /* margin-right:100px; */
-    position:relative;
-    width: 100%;
-    margin-top:5px;
-   /*  background: #4CAF50; */
-    /*  border: 1px solid grey;  */
-     height:3480px;
-     transition:1s;
-     display: -webkit-box;
-     display: -ms-flexbox;
-     display: flex; 
-}
-
- @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
- *{
-    margin: 0;
-    padding: 0;
-   /*  color: #d9d9d9; */
-   /*  color:black; */
-    /* box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; */ 
-} 
-.main-content{
-    display: flex;
-}
-.main-content .box{
-    flex-basis: 50%;
-    padding: 20px 80px;
-}
-.box h2{
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-.box .content{
-    margin: 20px 0 0 0;
-    position: relative;
-}
-.box .content:before{
-    position: absolute;
-    content: '';
-    top: -10px;
-    height: 2px;
-    width: 100%;
-    background: #1a1a1a; 
-      /*   background: #d9d9d9; */
-}
-.box .content:after{
-    position: absolute;
-    content: '';
-    height: 2px;
-    width: 15%;
-  /*   background: #f12020; */
-  background: #d9d9d9;
-    top: -10px;
-}
-.left .content p{
-    text-align: justify;
-}
-.center .content .social{
-    margin: 20px 0 0 0;
-}
-.center .content .social a{
-    padding: 0 2px;
-}
-.center .content .social a span{
-    height: 40px;
-    width: 40px;
-    /*  background: #1a1a1a;  */
-    background: white;
-    line-height: 40px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 50px;
-    transition: 0.3s;
-}
-/* ...Left Content.... */
-.center .content .social a span:hover{
-    background: #f12020;
-}
-.center .content .fas{
-    font-size: 1.4375rem;
-   /*  background: #1a1a1a; */
-    background: white;
-    height: 45px;
-    width: 45px;
-    line-height: 45px;
-    text-align: center;
-    border-radius: 50%;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.center .content .fas:hover{
-    background: #4CAF50;
-}
-.center .content .text{
-    font-size: 1.0625rem;
-    font-weight: 500;
-    padding-left: 10px;
-}
-.center .content .phone{
-    margin: 15px 0;
-}
-.right form .text{
-    font-size: 1.0625rem;
-    margin-bottom: 2px; 
-    color: #656565;
-}
-.right form .msg{
-    margin-top: 10px;
-}
-.right form input, .right form .msgForm{
-    width: 100%;
-    font-size: 1.0625rem;
-   /*  background: #151515; */
-    padding-left: 10px;
-    border: 1px solid #222222;
-}
-.right form input:focus,
-.right form .msgForm:focus{
-    outline-color: #3498db;
-}
-.right form input{
-    height: 35px;
-}
-.right form .btn{
-    margin-top: 10px;
-}
-.right form .btn button{
-    height: 40px;
-    width: 100%;
-    border: none;
-    outline: none;
-    background: #125688;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: .3s;
-}
-.right form .btn button:hover{
-    background:  #4CAF50;
-}
-.bottom center{
-     align-content:
- /*  background: #444; */
-   /* color: #fff;  */
-    padding: 20px;
-    margin-top:130px;
-    padding: 5px;
-    font-size: 0.9375rem;
-   background: white; 
-    width: 80%;
-}
-.bottom center span{
-    color: #656565;
-}
-.bottom center a{
-    color: black;
-    text-decoration: none;
-}
-.bottom center a:hover{
-    text-decoration: underline;
-}
-@media screen and (max-width: 900px) {
-    footer{
-        position: relative;
-        bottom: 0px;
-    }
-    .main-content{
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-    .main-content .box{
-        margin: 5px 0;
-    }
-}
-
-/* .................... */
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-
-}
-
-/* Next & previous buttons */
- .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 18px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
- /* Caption t
-.text {
- /*  color: #f2f2f2; */
-  font-size: 15px;
-  padding: 8px 12px;
-  position:relative;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-} 
- */
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-
 /* PRODUCT CSS */
-
 .container{
-    width: 80%;
+    width: 85%;
     margin: auto;
     overflow: hidden;
   /*   background: skyblue; */
     margin-top: 20px;
-    margin-right:11%;
+    margin-right:8%;
 }
 
 .container ul{
@@ -721,10 +626,6 @@ body
 .container ul li .product-meta{
     width: 105%;
     height:100px;
-    line-height: 50px;
-    
-   /*  background: blue;  */   
-  /*  background: pink; */
     text-align: left;
     color:white;
     font-size: 18px;
@@ -833,15 +734,51 @@ body
         width:40%;
         margin-left: 40px;   
     }
-  </style>  
-  </head>
-  <body>
 
-    <!--  HEADERCODE -->
-   <jsp:include page = "guestheader.jsp"/>
-      
-    <!--  SLIDERCODE -->
-    <div class="galleryContainer" style="margin-top:%;">
+</style>   
+  <body>
+  
+	<!--  HEADERCODE --> 
+ <jsp:include page="header.jsp" />
+ 
+ <div class="mainsplash">
+ <div class="splash">
+ <div class="row">
+ <div class="col-75">  
+    
+    <form method="post" action="${pageContext.request.contextPath}/continueLocation" modelAttribute="kioskLocation">
+    <spring:url value="/images" var="images" />
+    <img src="${images}/logo.jpg" width="160" height="115" style= margin-top:2%;"/>
+    
+       <h6 style="color:#4CAF50; font-size:85%; margin-top:2%; text-align:center;"> Select your city and location to start shopping</h6>
+ 
+       <select id="cities" name="cities" style="padding:12px; border: 1px solid #008000; margin-top:3%;" required>
+       <option value=""style="color: black;">Select city</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
+       </c:forEach>
+       </select>
+        
+       <select id="location" name="location" style="padding:12px; border: 1px solid #008000;margin-top:2%;" required>
+       <option value="" style="color: black;">Select location</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
+       </c:forEach>
+      </select>
+      </div>
+      </div>
+
+                <div style="text-align:center;">
+				<input type="submit" value="Continue"  style="width: 79%;  padding:12px; margin-left: 1%; margin-right: 1%;margin-top: 3%;"/>
+			    </div></form><br>
+
+<h5 style="text-align: center;margin-bottom:4%;">Already have an account? <a href="#"  onclick="document.getElementById('id01').style.display='block'" style="color:#4CAF50;text-decoration:none;hover:green;margin-bottom:4%;" class="submitId">Log In</a></h5>
+</div>
+</div>
+
+
+ <!--  SLIDERCODE -->
+    <div class="galleryContainer">
     <div class="slideShowContainer">
         <div id="playPause" onclick="playPauseSlides()"></div>
         <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
@@ -850,37 +787,37 @@ body
         <div class="imageHolder">
      <spring:url value="/images" var="images" />
 	<img src="${images}/organic.jpg"/>1366X768
-            <p class="captionText">Organic Vegetables</p>
+            <p class="captionText">ORGANIC VEGETABLES</p>
         </div>
          <div class="imageHolder">
            <spring:url value="/images" var="images" />
 	<img src="${images}/indian cheery.jpg" />
-            <p class="captionText">indian cheery</p>
+            <p class="captionText">INDIAN CHERRY</p>
         </div>
         <div class="imageHolder">
             <spring:url value="/images" var="images" />
 	<img src="${images}/fresh mango.jpg" />
-            <p class="captionText">fresh mango</p>
+            <p class="captionText">FRESH MANGO</p>
         </div>
         <div class="imageHolder">
             <spring:url value="/images" var="images" />
 	<img src="${images}/c5.jpg" />
-            <p class="captionText">Pineapple</p>
+            <p class="captionText">FRESH PINAPPLE</p>
         </div>
         <div class="imageHolder">
             <spring:url value="/images" var="images" />
 	<img src="${images}/bigimage2.jpg" />
-            <p class="captionText">Cleaning</p>
+            <p class="captionText">CLEANING</p>
         </div>
         <div class="imageHolder">
            <spring:url value="/images" var="images" />
 	<img src="${images}/lastimg.jpg" />
-            <p class="captionText">Grocerry</p>
+            <p class="captionText">GROCERYY</p>
         </div>
          <div class="imageHolder">
            <spring:url value="/images" var="images" />
 	<img src="${images}/f4.jpg" />
-            <p class="captionText">fruits</p>
+            <p class="captionText">FRUITS</p>
         </div>
         </div>
     <div id="dotsContainer"></div>
@@ -1074,12 +1011,11 @@ function playPauseSlides() {
     }
 }
      </script>
-  
-  <!--  ALL PRODUCT -->
-      
-  <!-- <div class="carousel"> -->
-  <div class="container">    
-  <ul>
+
+<!--  ALL PRODUCT -->
+<!-- <div class="carousel"> -->
+<div class="container">
+		  <ul>
   <c:forEach var="product" items="${listProduct}">
  <!--  1 -->
   <li>
@@ -1090,26 +1026,24 @@ function playPauseSlides() {
   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;">
   </div>
-             <div class="product-meta" style="margin-left:10px;">
+            <div class="product-meta" style="margin-left:10px;">
             <a href="#0" style="color: red;text-decoration: none;">${product.productName}</a>
-            <h6 style="color: black;">${product.description}</h6>
-            <h6 style="color: black;"> Size:${product.size} g<h6>
+            <p style="color: black;">${product.description}</p>
+            <p style="color: black;"> Size:${product.size}gm</p>
             <c:choose>
 		    <c:when test="${product.quantity < 1}">
 		    <span style="color:red">OUT OF STOCK !</span>
 				</c:when>
 				<c:otherwise>				
-					
-					<%-- <h6>Qty. Available:${product.quantity}</h6> --%>
-						
+				<%-- <h6>Qty. Available:${product.quantity}</h6> --%>
 				</c:otherwise>
 			
 			</c:choose>
             </div>
        
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:78%">
+            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top:72%;">
                    <div class="left">
-                   <span class="price">
+                   <span class="price" style="margin-left:10px;margin-top:30px;">
                    <span class="mrp" style=" font-size: 14px;
   color:black;
   font-weight: 300;
@@ -1129,7 +1063,7 @@ function playPauseSlides() {
   font-weight: 600;
   padding: 9px 30px;
   border-radius: 3px;
- margin-left:19%;margin-top:14%;"> 
+ margin-left:19%;margin-top:10%;"> 
 			
 			<i class="fa fa-shopping-cart"></i> 
 			Add to cart
@@ -1154,105 +1088,407 @@ function playPauseSlides() {
         </li>
        </c:forEach>
        </ul>
-       </div>
-      <!--  CLOSE PRODUCT -->
+
+	
+
+	<!--  CLOSE MANAGE PRODUCT -->
+</div>
+
+
+<!--  Footer Code -->
+<jsp:include page="footer.jsp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ..................................login popup................. -->
+
+  <div id="id01" class="modal">
+          
+          <c:if test="${not empty error}">
+		  <div class="error">${error}</div>
+		  </c:if>
+		
+		<c:if test="${not empty msg}">
+		<div class="msg">${msg}</div>
+		</c:if>
+		
+  <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post"  modelAttribute="customer">
+  <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;">Log In VeggieFridge</h2>
+      <div class="login">
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required  style="width: 100%;
+  padding: 14px 22px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+   border-radius: 5px;
+  /*   background-color:#f1f1f1; */">
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required style="width: 100%;
+  padding: 14px 22px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+   border-radius: 5px;
+   /*  background-color:#f1f1f1; */">
+        
+  <button type="submit" style=" background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%; border-radius: 5px;">Login</button>
+  
+     <label>
+     <input type="checkbox" checked="checked" name="remember"> Remember me
+     </label>
+     </div>
+
+   <div class="login" style="background-color:#f1f1f1;height:60px;">
+   <a href="${pageContext.request.contextPath }/login/logout" style="
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #4CAF50;
+        border-radius: 6px;
+        outline: none;">Cancel</a>
+        
+    <span class="psw" style="float: right;"><a href="${pageContext.request.contextPath }/login/forgotPassword" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
+   </div>
+  <a href="##" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge?Create an account</a><button type="button" onclick="document.getElementById('id02').style.display='block'" class="submitId"  style="
+  width: auto;
+  padding: 10px 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none; margin-top: 2%;margin-left: 2%;border-radius:5px;">SignUp</button> 
+  </form>
+</div>
+
+<!-- .....................sign up............ -->
+
+<div class="right" style="float: right;">
+               
+<!-- Trigger/Open The Modal -->
+
+<a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location}${kiosklocation.cities}</a> 
+ 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+  <!-- <span class="close">&times;</span> -->
+  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
+  <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
+  <div class="row">
+  <div class="col-75">
       
-      <!--  Footer Code -->
-      
-      <div class="footer">
-      <div class="main-content">
-      <div class="left box">
+       <select id="cities" name="cities" id="sort-item">
+       <option value=""style="color: black;">Select city</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
+       </c:forEach>
+       </select><br><br>
+        
+      <select id="location" name="location" id="sort-item">
+      <option value="" style="color: black;">Select location</option> 
+      <c:forEach items="${listkiosklocation}" var="kiosklocation">
+      <%--  <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option> --%>
+      <option value="${kiosklocation.cities eq kiosklocation.location}">${kiosklocation.cities eq kiosklocation.location}</option>
+      </c:forEach>
+      </select>
+      </div>
+      </div>
 
-<h2>VeggieFridge</h2>
-<div class="content"> 
-                            <a href="#" style="color:white">About Us</a><br><br>
-                            <a  href="#" style="color:white">Privacy Policy</a><br><br>
-                            <a href="#"  style="color:white">Help</a><br><br>
-                            <a href="#"  style="color:white">Terms And Condition</a><br><br>
-                           <!--  <a href="#"  style="color:white">Carriers</a><br><br> -->
-                           <!--  <a href="#"  style="color:white">Affiliate</a><br><br> -->
-                            <a href="#"  style="color:white">In News</a><br><br>
-                           <!--  <a href="#"  style="color:white">vf instant</a><br><br> -->
-                           <!--  <a href="#"  style="color:white">vf daily</a><br><br> -->
+ <div style="text-align:center;">
+ <input type="submit" value="Continue" formaction="${pageContext.request.contextPath}/home/viewhome"/>
+ </div></p></form>
+ </div>
 </div>
-</div>
-<div class="center box">
-                    <h2>
-Address</h2>
-<div class="content">
-                        <div class="place">
-                            <span class="fas fa-map-marker-alt"></span>
-                            <span class="text">Birendranagar, Surkhet</span>
-                        </div>
-<div class="phone">
-                            <span class="fas fa-phone-alt"></span>
-                            <span class="text">+089-765432100</span>
-                        </div>
-<div class="email">
-                            <span class="fas fa-envelope"></span>
-                            <span class="text">abc@example.com</span>
-                        </div>
+ </div>
+ <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+  
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-                            <div class="social"> 
-                            <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;color:white;"></span></a>
-                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;color:white;"></span></a>
-                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;color:white;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;color:white;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;color:white;"></span></a>
-                            </div>
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
 
-</div>
-</div>
-<div class="right box" >
-                    <h2>
-Contact us</h2>
-<div class="content">
-                        <form action="#">
-                            <div class="email">
-                                <div class="text">
-Email *</div>
-<input type="email" required>
-                            </div>
-<div class="msg">
-                                <div class="text">
-Message *</div>
-<!-- NOTE: Due to more textarea tag I got an error. So I changed the textarea name to changeit. Please change that changeit name to textarea -->
-<changeit id=".msgForm" rows="2" cols="25" required></changeit> <!-- replace this changeit name to textarea -->
+/* // When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}  */
 
-                            <br />
-<div class="btn">
-<button type="submit">Send</button>
-                            </div>
-                            </form> <br>
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<!-- .......................................signup.......................-->
+<div class="register" id="id02">
+<div class="register-content">
+<form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/addguestcustomer" modelAttribute="customer" >
+
+     <font color='red'style="font-size:16px;text-align: center;"><span id="errId"></span></font>
+
+      <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>
+      <p style="margin-top: 1%; margin-left: 2%;">Please fill in this form to create an account.</p>
+      <hr>
+  
+  
+  <label for=" firstname" style="margin-left: 2%;">First Name:</label>
+  <spring:bind path="customer.firstName">
+  <input type="text" name="${status.expression}" value="${status.value}"  placeholder="First Name" required style="width: 67%;
+  padding: 8px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
+  
+  <label for="lastname" style="margin-left:2%;">Last Name :</label>
+  <spring:bind path="customer.lastName">
+  <input type="text" name="${status.expression}" value="${status.value}" placeholder="last Name" required style=" width:67%;
+  padding: 8px;	
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
+  
+
+ <label for="mobile" style="margin-left: 2%;">Mobile Num:</label>
+ <spring:bind path="customer.mobile">
+ <input type="text" name="${status.expression}" value="${status.value}" size="10" style="width: 67%;
+  padding: 8px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"/></spring:bind>
+  
+  
+  <label for="city" style="margin-left: 2%;">Select City :</label>
+  <select id="locationid" name="cities"  required  style="width: 70%;
+  padding: 8px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:4%;"> 
+       <option value="" style="margin-left: 2%;">Select city</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
+       </c:forEach>
+       </select>
+        
        
-    <h4 >Download Apps</h4><br>
-     <table>
-     <th> 
-    <a href="abc.htm">                      
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Apple-App-store-icon.png" width="100" height="40" style="float: right; margin-right:7%"/>
-    </a> 
-    </th>
-    <th>
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Google-App-store-icon.png" width="100" height="40" style="float: right;"/>
-    </a>      
-    </th>
-    </table>                         
-    </div>
+       <label for="location" style="margin-left:2%;">Select Location:</label>
+       <select id="locationid" name="location" required   style="width: 67%;
+  padding: 8px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:1%;">
+       <option value="" style="color: black;">Select location</option> 
+       <c:forEach items="${listkiosklocation}" var="kiosklocation">
+       <option value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
+       </c:forEach>
+       </select>
+       
+       
+      <label for="email" style="margin-left:2%;">Email :</label>
+      <spring:bind path="customer.email">
+  
+  <input type="email" name="${status.expression}" value="${status.value}" placeholder="Enter Email"  required style="width: 65%;
+  padding: 8px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:12%;"></spring:bind>
 
-                    <div class="bottom">
-                    <center>
-                    <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">veggiefridge</a> | </span>
-                    <span class="far fa-copyright"></span> 2020 All rights reserved.
-                    </center>
-                    </div>
+      
+      <label for="psw" style="margin-left:2%;">Password:</label>
+  <spring:bind path="customer.password">
+  <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 65%;
+  padding: 8px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:7%;"  id="txtPassword" 
+  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" id="psw"></spring:bind>
 
-</div>
-</div>
-</div>
-</body>
-</html>
+      
+      <label for="confirm-repeat" style="margin-left:2%;">Confirm Psw:</label>
+      <spring:bind path="customer.confirmPassword">
+      <input type="password"  name="${status.expression}" value="${status.value}" placeholder="confirm Password" required style="width: 65%;
+  padding: 8px;
+  margin: 3px 0 12px 0; 
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius:4px;margin-left:3%;"  id="txtConfirmPassword" ></spring:bind> 
+  <hr>
+      
+        <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px;margin-left:2%;"> Remember me
+        </label>
+
+     <p style="margin-left: 2%;">By creating an account you agree to our <a href="#" style="color:dodgerblue;">Terms & Privacy</a>.</p><br>
+     <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up" onclick="return Validate()"  id="btnSubmit">
+    
+  </form>
+  </div>
+  
+ <script>
+$(document).ready(function() {
+
+  setTimeout(function(){
+	  $('.mainsplash').css('display','block');
+	  },3000); 
+
+});
+$('.submitId').click(function(){
+	  $('.mainsplash').css('display','none');
+	  });
+
+</script>
+ 
+   <script>
+	// Get the modal
+	var login = document.getElementById('id01');
+	
+$('.submitId').click(function(){
+	  $('.model').css('display','none');
+	  });
+	</script>
+	
+	 <script>
+	// Get the modal
+	var register-content = document.getElementById('id02');
+	
+	$('.submitId').click(function(){
+		  $('.register').css('display','none');
+		  });
+    
+	</script>
+  
+  <script type="text/javascript">
+  window.onload = function() {
+    var selItem = sessionStorage.getItem("SelItem");  
+    $('#sort-item').val(selItem);
+    }
+    $('#sort-item').change(function() { 
+        var selVal = $(this).val();
+        sessionStorage.setItem("SelItem", selVal);
+    });
+   </script>
+   
+    <script type="text/javascript">
+
+      function validatePwds(){
+    	    var newPwd = $('#customer.password').val();
+    	    var confirmPwd = $('#customer.confirmPassword').val();
+    	    if(newPwd!=confirmPwd){
+    	    $('#errId').text('New Password And Confirm Password Is Not Match');
+    	    return false;
+    	    }
+    	    return true;
+    	}
+      </script>
+      
+      <script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("txtPassword").value;
+        var confirmPassword = document.getElementById("txtConfirmPassword").value;
+        if (password != confirmPassword) {
+        	 $('#errId').text('New Password And Confirm Password Is Not Match');
+            /* alert("Password And Confirm Password Is Not Match."); */
+            return false;
+        }
+        return true;
+    }
+</script>
+<!-- ........popup code...... -->
+
+<script>
+$(document).ready(function() {
+      if (document.cookie.indexOf("modal=true") == -1) {
+        document.cookie = "modal=true; max-age=null"; // seconds in a day
+       /*  $('#popup').modal('show'); */
+        setTimeout(function() {
+            $('#popup').modal('show');
+        }, 4000);
+      }
+    });
+</script>
+
+  </body>
+  </html>
+  

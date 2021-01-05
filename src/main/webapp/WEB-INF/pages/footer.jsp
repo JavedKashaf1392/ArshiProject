@@ -1,451 +1,311 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	
 <!DOCTYPE html>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
-
-
-
 <html>
 <head>
-<link rel="icon" type="image/jpg" href="images/logo.jpg">
-<meta charset="ISO-8859-1">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-<title>Insert title here</title>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
- 
-body{
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    .mySlides {display: none}
-    {
-    box-sizing: border-box;
-}
-}
-.footer{
-   /*  margin-left:13%;
-    margin-right:13%; */
-    position:fixed;
-   /*  width:74%; */
-    width:100%;
-    height: 500px;
-    background: #4CAF50; 
-    margin-top:50%;
-  
-}
-.head{
-    margin-left:10%;
-    position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-    height: 20px;
-    /* background: #4CAF50; */
-}
-.carousel{
-    padding: 20px;
-    padding: 20px;
-    margin-left:150px;
-    /* margin-right:100px; */
-    position:relative;
-    width: 100%;
-    margin-top:5px;
-   /*  background: #4CAF50; */
-    /*  border: 1px solid grey;  */
-     height:3480px;
-     transition:1s;
-     display: -webkit-box;
-     display: -ms-flexbox;
-     display: flex; 
-}
-/* <-- serach operation--> */
-/* Style the search field */
-form.example input[type=text] {
-  padding:8px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width:40%;
- /*  background: #f1f1f1; */
-  margin-left:10%; 
-}
-/* Style the submit button */
-  form.example button {
-  float: left;
-  width: 4%;
-  padding: 8px;
-  background: #4CAF50;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-}
-
-form.example button:hover {
-  background: green;
-}
-/* Clear floats */
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-  /*  end search */
-
-  /* right  */
-.right{
-float: right;
-margin-top:30px;
-margin-right:14%;
-font:bold;
-font-size:18px;
-
-}
-
-.right a {
-color: black;
-}
-
- .right a:hover {
-        color: #4CAF50;
-    }
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
     
-/* end right */
-.navbar {
-  overflow: hidden;
-  background-color: #4CAF50 ;
-  margin-right:51%;
-  margin-left: 337px;
-  /* border:1px solid black;  */
-}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="footer, address, phone, icons" />
 
-.navbar a {
- /*  margin-right:45%;
-  margin-left: 26%; */
-  float: left;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  padding: 10px 12px;
-  text-decoration: none;
-}
+	<title>Responsive Footer</title>
 
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
+	<link rel="stylesheet" href="style.css">
+	
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
-.dropdown .dropbtn {
-  font-size: 18px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
+	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+     
+    <style>
+    @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: ;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  /* background-color: #ddd; */
-  background-color:#4CAF50 ;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* ................... */
-
-  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
- 
- *{
-    margin: 0;
-    padding: 0;
-   /*  color: #d9d9d9; */
-   /*  color:black; */
-    /* box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; */ 
+*{
+	padding:0;
+	margin:0;
 } 
-.main-content{
-    display: flex;
-}
-.main-content .box{
-    flex-basis: 50%;
-    padding: 10px 20px;
-}
-.box h2{
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-.box .content{
-    margin: 20px 0 0 0;
-    position: relative;
-}
-.box .content:before{
-    position: absolute;
-    content: '';
-    top: -10px;
-    height: 2px;
-    width: 100%;
-    background: #1a1a1a; 
-      /*   background: #d9d9d9; */
-}
-.box .content:after{
-    position: absolute;
-    content: '';
-    height: 2px;
-    width: 15%;
-  /*   background: #f12020; */
-  background: #d9d9d9;
-    top: -10px;
-}
-.left .content p{
-    text-align: justify;
-}
-.center .content .social{
-    margin: 20px 0 0 0;
-}
-.center .content .social a{
-    padding: 0 2px;
-}
-.center .content .social a span{
-    height: 40px;
-    width: 40px;
-    color:white;
-    line-height: 40px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 50px;
-    transition: 0.3s;
-}
-/* ...Left Content.... */
-.center .content .social a span:hover{
-    background: #f12020;
-}
-.center .content .fas{
-    font-size: 1.4375rem;
-    /* background: #1a1a1a; */
-    background-color:white;
-    height: 45px;
-    width: 45px;
-    line-height: 45px;
-    text-align: center;
-    border-radius: 50%;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.center .content .fas:hover{
-    background: #4CAF50;
-}
-.center .content .text{
-    font-size: 1.0625rem;
-    font-weight: 500;
-    padding-left: 10px;
-}
-.center .content .phone{
-    margin: 15px 0;
-}
-.right form .text{
-    font-size: 1.0625rem;
-    margin-bottom: 2px; 
-    color: #656565;
-}
-.right form .msg{
-    margin-top: 10px;
-}
-.right form input, .right form .msgForm{
-    width: 100%;
-    font-size: 1.0625rem;
-   /*  background: #151515; */
-    padding-left: 10px;
-    border: 1px solid #222222;
-}
-.right form input:focus,
-.right form .msgForm:focus{
-    outline-color: #3498db;
-}
-.right form input{
-    height: 35px;
-}
-.right form .btn{
-    margin-top: 10px;
-}
-.right form .btn button{
-    height: 40px;
-    width: 100%;
-    border: none;
-    outline: none;
-    background: #125688;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: .3s;
-}
-.right form .btn button:hover{
-    background:  #4CAF50;
-}
-.bottom center{
-     align-content:
- /*  background: #444; */
-   /* color: #fff;  */
-    padding: 20px;
-    margin-top:130px;
-    padding: 5px;
-    font-size: 0.9375rem;
-   background: white; 
-    width: 80%;
-}
-.bottom center span{
-    color: #656565;
-}
-.bottom center a{
-    color: black;
-    text-decoration: none;
-}
-.bottom center a:hover{
-    text-decoration: underline;
-}
-@media screen and (max-width: 900px) {
-    footer{
-        position: relative;
-        bottom: 0px;
-    }
-    .main-content{
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-    .main-content .box{
-        margin: 5px 0;
-    }
-}
-</style>
-</head>
-<body>
-<div class="footer">
-      <div class="main-content">
-      <div class="left box">
 
-<h2>VeggieFridge</h2>
-<div class="content" style="color: white;"> 
-                            <a href="#" style="color: white;">About Us</a><br><br>
-                            <a href="#"style="color: white;">Privacy Policy</a><br><br>
-                            <a href="#"style="color: white;">Help</a><br><br>
-                            <a href="#"style="color: white;">Terms And Condition</a><br><br>
-                            <a href="#"style="color: white;">Carriers</a><br><br>
-                            <a href="#" style="color: white;">Affiliate</a><br><br>
-                            <a href="#"style="color: white;">In News</a><br><br>
-                            <a href="#"style="color: white;">vf instant</a><br><br>
-                            <a href="#"style="color: white;">vf daily</a><br><br>
-</div>
-</div>
-<div class="center box">
-                    <h2>
-Address</h2>
-<div class="content">
-                        <div class="place">
-                            <span class="fas fa-map-marker-alt" style=" background-color:white;padding: 4px 4px"></span>
-                            <span class="text">Birendranagar, Surkhet</span>
-                        </div>
-<div class="phone">
-                            <span class="fas fa-phone-alt"></span>
-                            <span class="text">+089-765432100</span>
-                        </div>
-<div class="email">
-                            <span class="fas fa-envelope"></span>
-                            <span class="text">abc@example.com</span>
-                        </div>
+html{
+	 /* background-color: #eaf0f2;  */
+}
+
+body{
+	font:16px/1.6 Arial,  sans-serif;
+}
+/* The footer is fixed to the bottom of the page */
+
+footer{
+	position: fixed;
+	bottom: 0;
+}
+
+@media (max-height:800px){
+	footer { position: static; }
+	header { padding-top:px; }
+}
+
+.footer-distributed{
+	/* background-color: #2c292f; */
+	background-color: #4CAF50;
+	box-sizing: border-box;
+	/* width:80%; */
+	/* max-width:1280px; */
+	/* margin-left:11%; */
+	/* margin-right:20px; */
+	/* text-align: left;
+	font: bold 16px sans-serif;
+	padding: 50px 50px 60px 50px; */
+/* 	margin-top:50px; */
+	/* margin-left:160px;
+    margin-right:145px; */
+    /* background-color: #2c292f; */
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 50px 50px 60px 50px;
+	/* margin-top: 80px; */
+	 max-width: 1388px;
+	 margin-left:97px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 30%;
+}
+
+.footer-distributed h3{
+	color:  #ffffff;
+	/* font: normal 36px 'Cookie', cursive; */
+	margin: 0;
+}
+.footer-distributed h3 span{
+	color:  #e0ac1c;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	/* color:  #8f9296; */
+	color:white;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+	
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
 
 
-                            <div class="social"> 
-                            <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;"></span></a>
-                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;"></span></a>
-                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;"></span></a>
-                            </div>
+.footer-distributed .footer-center i{
+	/* background-color:  #33383b; */
+	background-color:white;
+	/* color: #ffffff; */
+	color:green;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
 
-</div>
-</div>
-<div class="right box" >
-                    <h2>
-Contact us</h2>
-<div class="content">
-                        <form action="#">
-                            <div class="email">
-                                <div class="text">
-Email *</div>
-<input type="email" required>
-                            </div>
-<div class="msg">
-                                <div class="text">
-Message *</div>
-<!-- NOTE: Due to more textarea tag I got an error. So I changed the textarea name to changeit. Please change that changeit name to textarea -->
-<changeit id=".msgForm" rows="2" cols="25" required></changeit> <!-- replace this changeit name to textarea -->
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
 
-                            <br />
-<div class="btn">
-<button type="submit">Send</button>
-                            </div>
-                            </form> <br>
-       
-    <h4 >Download Apps</h4><br>
-     <table>
-     <th> 
-    <a href="abc.htm">                      
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Apple-App-store-icon.png" width="100" height="40" style="float: right; margin-right:7%"/>
-    </a> 
-    </th>
-    <th>
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Google-App-store-icon.png" width="100" height="40" style="float: right;"/>
-    </a>      
-    </th>
-    </table>                         
-    </div>
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
 
-                    <div class="bottom">
-                    <center>
-                    <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
-                    <span class="far fa-copyright"></span>
-                    <span> 2020 All rights reserved.</span>
-                    </center>
-                    </div>
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
 
-</div>
-</div>
-</div>
+.footer-distributed .footer-center p a{
+	color:  #e0ac1c;
+	text-decoration: none;;
+}
 
-</body>
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 30%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	/* color:  #92999f; */
+	color:white;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+color:#e0ac1c;
+	/* color:  #ffffff; */
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	/* background-color:  #33383b; */
+	border-radius: 2px;
+	font-size: 20px;
+	/* color: #ffffff; */
+	text-align: center;
+	line-height: 35px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+
+/* Here is the code for Responsive Footer */
+/* You can remove below code if you don't want Footer to be responsive */
+
+
+@media (max-width: 880px) {
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
+   </style>
+
+    </head>
+	<body>
+		<header>
+			<!-- <h1> Responsive Footer </h1>
+			<h2>Have a look</h2>
+			<h2><span>On Below Footer</span></h2> -->
+		</header>
+
+		<!-- The content of your page would go here. -->
+
+		<footer class="footer-distributed">
+
+			<div class="footer-left">
+         <!--  <img src="img/logo.png"> -->
+				<h3><span>VeggieFridge</span></h3>
+
+				<p class="footer-links">
+					<a href="#">Contact Us</a>
+					|
+					<a href="#">Privacy Policy</a>
+					|
+					<a href="#">In News</a>
+					|
+					<a href="#">Help</a>
+				</p>
+
+				<!-- <p class="footer-company-name">© 2019 Eduonix Learning Solutions Pvt. Ltd.</p> -->
+			    <h4 style="color: #e0ac1c;">Download App</h4>
+				
+				<table style="margin-top:4%;">
+					<th><a href="abc.htm"> <spring:url value="/images"
+								var="images" /> <img src="${images}/Apple-App-store-icon.png"
+							width="100" height="40" style="float: right; margin-right: 7%" />
+					</a></th>
+					<th><a href="abc.htm"> <spring:url value="/images"
+								var="images" /> <img src="${images}/Google-App-store-icon.png"
+							width="100" height="40" style="float: right;" />
+					</a></th>
+				</table>
+			</div>
+
+			<div class="footer-center">
+			<span style="color:#e0ac1c;font-size:18px;margin-left:6%;">Address</span>
+				<div>
+					<i class="fa fa-map-marker"></i>
+					  <p><span>309 - Rupa Solitaire,
+						 Bldg. No. A - 1, Sector - 1</span>
+						Mahape, Navi Mumbai - 400710</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+91 22-27782183</p>
+				</div>
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:aq570975@gmail.com">support@eduonix.com</a></p>
+				</div>
+				<p class="footer-company-name" style="margin-top:10%;margin-left:4%;">Copyright © 2021 VeggieFridge Solutions Pvt. Ltd.</p>
+			</div>
+			<div class="footer-right">
+				<p class="footer-company-about">
+					<span>About</span>
+					We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
+				<div class="footer-icons">
+					<a href="#"style="background-color: #3B5998; color: white;"><i class="fa fa-facebook"></i></a>
+					<a href="#" style="background-color: #55ACEE; color: white;"><i class="fa fa-twitter"></i></a>
+					<a href="#" style="background-color: #125688; color: white;"><i class="fa fa-instagram"></i></a>
+					<a href="#" style="background-color: #007bb5; color: white;"><i class="fa fa-linkedin"></i></a>
+					<a href="#" style=" background: #dd4b39;
+                    color: white;"><i class="fa fa-google"></i></a>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>

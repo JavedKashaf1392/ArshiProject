@@ -8,7 +8,20 @@
 
  <!DOCTYPE HTML>
  <html lang="en" dir="ltr">
-        <head> 
+ <head>
+   <!-- <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" /> -->
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="scripts/jquery.cookies.2.2.0.min.js"></script> --> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <link rel="icon" href="./image/icon.png" />
+<!-- fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> 
         <link rel="icon" type="image/jpg" href="images/logo.jpg">
         <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,6 +30,11 @@
         <title>Online Vegetable And Milk Shopping in India- VeggieFridge</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+        
+        
+        
+        
+        
         <style>
      
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');   
@@ -46,9 +64,9 @@ box-sizing: border-box;
    margin-top:5%;
    font-family: 'Montserrat', sans-serif;
    background-color: #fff;
-   border-radius: 10px;
-   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
+  /*  border-radius: 10px; */
+  /*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22); */
 	position: relative;
 	overflow: hidden;
 	width: 450px;
@@ -900,7 +918,6 @@ color: black;
     /* ..................MainPopup......................... */
   </style>  
   <body>
- 
  <div class="mainsplash">
  <div class="splash">
  <div class="row">
@@ -1230,14 +1247,14 @@ window.onclick = function(event) {
      <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up" onclick="return Validate()"  id="btnSubmit">
     
   </form>
-   </div>
+  </div>
   
-<script>
+ <script>
 $(document).ready(function() {
 
   setTimeout(function(){
 	  $('.mainsplash').css('display','block');
-	  },50); 
+	  },3000); 
 
 });
 $('.submitId').click(function(){
@@ -1301,6 +1318,19 @@ $('.submitId').click(function(){
         }
         return true;
     }
+</script>
+<!-- ........popup code...... -->
+
+<script>
+$(document).ready(function() {
+      if (document.cookie.indexOf("modal=true") == -1) {
+        document.cookie = "modal=true; max-age=null"; // seconds in a day
+       /*  $('#popup').modal('show'); */
+        setTimeout(function() {
+            $('#popup').modal('show');
+        }, 4000);
+      }
+    });
 </script>
 
   </body>
