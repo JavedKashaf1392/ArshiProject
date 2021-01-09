@@ -65,7 +65,7 @@ public class Product implements Serializable {
 	
 	//@NotNull(message="Please Enter size")
 	@Column(name="size")
-	private float size;
+	private int size;
 	
 	//@NotNull(message="Please Enter  tax")
 	@Column(name="tax")
@@ -83,11 +83,11 @@ public class Product implements Serializable {
 		this.finalPrice = finalPrice;
 	}
 
-	public float getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	public void setSize(float size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 

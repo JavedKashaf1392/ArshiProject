@@ -39,7 +39,7 @@ body{
 /* The footer is fixed to the bottom of the page */
 
 footer{
-	position: fixed;
+	position: relative;
 	bottom: 0;
 }
 
@@ -49,8 +49,9 @@ footer{
 }
 
 .footer-distributed{
-	/* background-color: #2c292f; */
-	background-color: #4CAF50;
+	background-color:#F8F8F8; 
+/* background-color:#F0F0F0; */
+	/* background-color: #4CAF50; */
 	box-sizing: border-box;
 	/* width:80%; */
 	/* max-width:1280px; */
@@ -70,7 +71,9 @@ footer{
 	padding: 50px 50px 60px 50px;
 	/* margin-top: 80px; */
 	 max-width: 1388px;
-	 margin-left:97px;
+	 /* margin-left:97px; */
+	 align-content: center;
+	 margin: 0 auto;
 }
 
 .footer-distributed .footer-left,
@@ -87,18 +90,21 @@ footer{
 }
 
 .footer-distributed h3{
-	color:  #ffffff;
+	/* color:  #ffffff; */
+	color:black;
 	/* font: normal 36px 'Cookie', cursive; */
 	margin: 0;
 }
 .footer-distributed h3 span{
-	color:  #e0ac1c;
+	/* color:  #e0ac1c; */
+	color:  black;
 }
 
 /* Footer links */
 
 .footer-distributed .footer-links{
-	color:  #ffffff;
+	/* color:  #ffffff; */
+color:#767070;
 	margin: 20px 0 12px;
 }
 
@@ -107,6 +113,7 @@ footer{
 	line-height: 1.8;
 	text-decoration: none;
 	color:  inherit;
+	
 }
 
 .footer-distributed .footer-company-name{
@@ -115,6 +122,11 @@ footer{
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
+	width:100%;
+	 display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* letter-spacing: 1px; */
 	
 }
 
@@ -129,7 +141,8 @@ footer{
 	/* background-color:  #33383b; */
 	background-color:white;
 	/* color: #ffffff; */
-	color:green;
+	/* color:green; */
+	color:black;
 	font-size: 25px;
 	width: 38px;
 	height: 38px;
@@ -147,7 +160,8 @@ footer{
 
 .footer-distributed .footer-center p{
 	display: inline-block;
-	color: #ffffff;
+	color:#767070;
+	/* color: #ffffff; */
 	vertical-align: middle;
 	margin:0;
 }
@@ -160,7 +174,8 @@ footer{
 }
 
 .footer-distributed .footer-center p a{
-	color:  #e0ac1c;
+	/* color:  #e0ac1c; */
+	color:black;
 	text-decoration: none;;
 }
 
@@ -174,7 +189,7 @@ footer{
 .footer-distributed .footer-company-about{
 	line-height: 20px;
 	/* color:  #92999f; */
-	color:white;
+	color:#767070;
 	font-size: 13px;
 	font-weight: normal;
 	margin: 0;
@@ -182,7 +197,8 @@ footer{
 
 .footer-distributed .footer-company-about span{
 	display: block;
-color:#e0ac1c;
+/* color:#e0ac1c; */
+color:black;
 	/* color:  #ffffff; */
 	font-size: 18px;
 	font-weight: bold;
@@ -235,12 +251,6 @@ color:#e0ac1c;
 
     </head>
 	<body>
-		<header>
-			<!-- <h1> Responsive Footer </h1>
-			<h2>Have a look</h2>
-			<h2><span>On Below Footer</span></h2> -->
-		</header>
-
 		<!-- The content of your page would go here. -->
 
 		<footer class="footer-distributed">
@@ -260,7 +270,7 @@ color:#e0ac1c;
 				</p>
 
 				<!-- <p class="footer-company-name">© 2019 Eduonix Learning Solutions Pvt. Ltd.</p> -->
-			    <h4 style="color: #e0ac1c;">Download App</h4>
+			    <h4 style="color:black;">Download App</h4>
 				
 				<table style="margin-top:4%;">
 					<th><a href="abc.htm"> <spring:url value="/images"
@@ -275,7 +285,7 @@ color:#e0ac1c;
 			</div>
 
 			<div class="footer-center">
-			<span style="color:#e0ac1c;font-size:18px;margin-left:6%;">Address</span>
+			<span style="color:black;font-size:18px;margin-left:6%;">Address</span>
 				<div>
 					<i class="fa fa-map-marker"></i>
 					  <p><span>309 - Rupa Solitaire,
@@ -291,7 +301,8 @@ color:#e0ac1c;
 					<i class="fa fa-envelope"></i>
 					<p><a href="mailto:aq570975@gmail.com">support@eduonix.com</a></p>
 				</div>
-				<p class="footer-company-name" style="margin-top:10%;margin-left:4%;">Copyright © 2021 VeggieFridge Solutions Pvt. Ltd.</p>
+				<p class="footer-company-name" style="margin-top:10%;">Created By VeggieFridge Copyright © 2021 All Rights
+								Reserved.</p>
 			</div>
 			<div class="footer-right">
 				<p class="footer-company-about">

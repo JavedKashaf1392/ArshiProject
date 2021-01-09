@@ -51,6 +51,4 @@ public class VFOnlineConstants {
 	
 	public static final String PSTATUS="Cancelled";
 	
-	
-
 }

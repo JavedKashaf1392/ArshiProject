@@ -26,7 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
+import com.veggiefridge.online.model.Images;
 import com.veggiefridge.online.model.KioskLocation;
+import com.veggiefridge.online.model.Menu;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.model.Wallet;
 import com.veggiefridge.online.service.CartService;
@@ -141,9 +143,14 @@ public class AppController {
 	public ModelAndView defaultTarget(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
 	
 	{ 
+		String imageSection = "Header";
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();
 		List<Customer> listCustomer = customerservice.getAllCustomers();
+		List<Menu> listmenu = productService.getAllMenues();
+		List<Images> headerImages = productService.getImagesBySection(imageSection);
+	    model.addObject("headerImages",headerImages);
+		model.addObject("listmenu", listmenu);
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
@@ -255,9 +262,9 @@ public class AppController {
 	}
 	
 	 //myCart
-	@RequestMapping(value = "/payopt")
+	@RequestMapping(value = "/comingsoon")
 	public ModelAndView payopt(ModelAndView model) {
-		model.setViewName("/payopt");
+		model.setViewName("/comingsoon");
 		return model;
 	}
 	

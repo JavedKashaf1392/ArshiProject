@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.veggiefridge.online.model.Images;
+import com.veggiefridge.online.model.Menu;
 import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.ProductService;
@@ -122,5 +125,21 @@ public class ProductController {
 		return "productlist";
 
 	}
-
+	
+	@RequestMapping(value = "/listMenu")
+	public List<Menu> listMenu(ModelAndView model){
+		List<Menu> listmenu = productService.getAllMenues();
+		model.addObject("listmenu", listmenu);
+		return listmenu;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/headerImage", method = RequestMethod.GET)
+	public List<Images> getheaderImage(HttpServletRequest req, Model model) {
+		String imageSection = "Header";
+		List<Images> headerImage = productService.getImagesBySection(imageSection);
+	    model.addAttribute("headerImage",headerImage);
+		return headerImage;
+	
+}
 }

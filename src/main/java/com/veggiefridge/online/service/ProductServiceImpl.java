@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.veggiefridge.online.dao.ProductDAO;
+import com.veggiefridge.online.model.Images;
+import com.veggiefridge.online.model.Menu;
 import com.veggiefridge.online.model.Product;
 
 @Service
@@ -50,6 +52,17 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getProductsBycatogary(String category) {
 		return productDAO.getProductsBycatogary(category);
+	}
+
+	@Override
+	public List<Menu> getAllMenues() {
+	
+		return productDAO.getAllMenues();
+	}
+
+	@Override
+	public List<Images> getImagesBySection(String imageSection) {
+		return productDAO.getImagesBySection(imageSection);
 	}
 	  
 	  

@@ -317,9 +317,9 @@ public class OrderController {
 			        PaytmConstants.details.forEach((k, v) -> parameters.put(k, v));
 			        parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
 			        parameters.put("EMAIL", env.getProperty("paytm.email"));
-			        parameters.put("ORDER_ID", "5736");
-			        parameters.put("TXN_AMOUNT", "29");
-			        parameters.put("CUST_ID", "7521");
+			        parameters.put("ORDER_ID", "6356");
+			        parameters.put("TXN_AMOUNT", "49");
+			        parameters.put("CUST_ID", "1275");
 			        parameters.put("INDUSTRY_TYPE_ID","Retail");
 			        parameters.put("CHANNEL_ID", "WEB");
 			        System.out.println(parameters);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
-    <!DOCTYPE html>
+	
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="icon" type="image/jpg" href="images/logo.jpg">
@@ -18,17 +19,17 @@
         <style>
         
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
-
-<style>
+<style> 
 :root{
     --white-light: rgba(255, 255, 255, 0.5);
     --alice-blue: #f8f9fa;
     --carribean-green: #40c9a2;
     --gray: #ededed;
 }
+
 *{
-    padding: 0;
-    margin: 0;
+   /*  padding: 0;
+    margin: 0; */
     box-sizing: border-box;
 }
 body{
@@ -42,17 +43,26 @@ img{
     display: block;
 }
 .container{
-    width: 88vw;
+   max-width: 1388px;
+   /*  width: 88vw; */
     margin: 0 auto;
 }
 .lg-title,
 .md-title,
-.sm-title{
+.sm-title
+.show-ad-title{
     font-family: 'Roboto', sans-serif;
     padding: 0.6rem 0;
     text-transform: capitalize;
 }
 .lg-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.show-ad-title{
     font-size: 2.5rem;
     font-weight: 500;
     text-align: center;
@@ -66,8 +76,14 @@ img{
 .sm-title{
     font-weight: 300;
     font-size: 1rem;
-    text-transform: uppercase;
+    text-transform:
+     uppercase;
 }
+ .size{
+    font-weight:100;
+    font-size: 1rem;
+    margin-top:0.4rem;
+} 
 .text-light{
     font-size: 1rem;
     font-weight: 600;
@@ -90,9 +106,7 @@ img{
     margin: 2rem;
     position: relative;
      background-color: #f9f9f9;
-   /*   display: grid; */
-     
-     
+   /*   display: grid; */   
 }
 .product-content{
     background: var(--gray);
@@ -101,7 +115,8 @@ img{
 }
 .product-img{
     background: var(--white-light);
-    box-shadow: 0 0 20px 10px var(--white-light);
+    box-shadow: 0 0 20px 10px var(--white-light); 
+   /*  box-shadow: 0 0 80px 40px var(--white-light); */
     width: 200px;
     height: 200px;
     margin: 0 auto;
@@ -142,7 +157,6 @@ img{
     color: #fff;
 }
 .product-info{
-    
     background: white;
     padding: 2rem;
 }
@@ -152,7 +166,9 @@ img{
     align-items: center;
 }
 .rating span{
-    color: var(--carribean-green);
+   /*  color: var(--carribean-green); */
+    /* color:green; */
+    color:orange;
 }
 .product-name{
     color: black;
@@ -166,11 +182,18 @@ img{
     padding-top: 0.6rem;
     padding-right: 0.6rem;
     display: inline-block;
+   
 }
 .product-price:first-of-type{
     text-decoration: line-through;
    /*  color: var(--carribean-green); */
     color: #4CAF50;
+}
+.product-size{
+    padding-top: 0.6rem;
+    padding-right: 0.6rem;
+    display: inline-block;
+
 }
 .product-img img{
     transition: transform 0.6s ease;
@@ -179,7 +202,7 @@ img{
     transform: scale(1.1);
 }
 .product:hover .product-img{
-    background: var(--carribean-green);
+    /* background: var(--carribean-green); */
 }
 .product:hover .product-btns{
     opacity: 1;
@@ -196,24 +219,27 @@ img{
     top: 0;
     left: 0;
     writing-mode: vertical-tb;
-    transform: rotate(180deg);
-    z-index: 1;
+    transform: rotate(360deg); 
+   /*  z-index: 1; */
     letter-spacing: 3px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 /* product collection */
 .product-collection{
-    padding: 3.2rem 0;
+ /*   padding: 3.2rem 0;  */
+    padding: 0.1rem 0; 
 }
 .product-collection-wrapper{
-    padding: 3.2rem 0;
+  /*  padding: 3.2rem 0;  */
+   padding: 0.1rem 0;
 }
 .product-col-left{
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/fashion-img-1.jpg") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/milk image.jpg") center/cover no-repeat;
 }
 .product-col-r-top{
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/fashion-img-2.png") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/vegetables.jpg") center/cover no-repeat;
 }
 .flex{
     display: flex;
@@ -224,11 +250,16 @@ img{
     margin: 5px;
 }
 .product-col-r-bottom > div:first-child{
-    background: #eaa001;
+  /*   background: #eaa001; */
+    background: #ABD5BAFF;
+    
 }
 .product-col-r-bottom > div:last-child{
     /* background: #0090ff; */
-  background:#55ACEE;
+    background:#ff726f; 
+   /* background:#FAE6FA; */
+  
+  
 }
 .product-col-content{
     text-align: center;
@@ -304,13 +335,14 @@ img{
     width: 100%;
     height: 500px;
     max-width: 1388px;
-    margin: auto;
+   /*  margin: auto; */
     user-select: none;
     /* box-shadow: 0px 0px 3px 1px #00000078; */
    /*  padding: 10px; */
     /*  box-sizing: border-box; */
-    margin-left:97px;
+   /*  margin-left:97px; */
     /* margin-right:50px; */
+    margin:0 auto; 
     
 }
 .galleryContainer .slideShowContainer{
@@ -502,7 +534,6 @@ img{
  </head>
 	<body>
 	<jsp:include page="userheader.jsp" />
-	
 	<!-- slidercode -->
 	<!--  SLIDERCODE -->
     <div class="galleryContainer">
@@ -511,43 +542,18 @@ img{
         <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
         <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
         <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
-        <div class="imageHolder">
-     <spring:url value="/images" var="images" />
-	<img src="${images}/organic.jpg"/>1366X768
-            <p class="captionText">ORGANIC VEGETABLES</p>
-        </div>
-         <div class="imageHolder">
-           <spring:url value="/images" var="images" />
-	<img src="${images}/indian cheery.jpg" />
-            <p class="captionText">INDIAN CHERRY</p>
-        </div>
-        <div class="imageHolder">
-            <spring:url value="/images" var="images" />
-	<img src="${images}/fresh mango.jpg" />
-            <p class="captionText">FRESH MANGO</p>
-        </div>
-        <div class="imageHolder">
-            <spring:url value="/images" var="images" />
-	<img src="${images}/c5.jpg" />
-            <p class="captionText">FRESH PINAPPLE</p>
-        </div>
-        <div class="imageHolder">
-            <spring:url value="/images" var="images" />
-	<img src="${images}/bigimage2.jpg" />
-            <p class="captionText">CLEANING</p>
-        </div>
-        <div class="imageHolder">
-           <spring:url value="/images" var="images" />
-	<img src="${images}/lastimg.jpg" />
-            <p class="captionText">GROCERYY</p>
-        </div>
-         <div class="imageHolder">
-           <spring:url value="/images" var="images" />
-	<img src="${images}/f4.jpg" />
-            <p class="captionText">FRUITS</p>
-        </div>
-        </div>
-    <div id="dotsContainer"></div>
+    
+  <c:forEach var="image" items="${headerImages}">
+  <div class="imageHolder">
+  <spring:url value="/images" var="images" />
+  <img src="${images}/${image.imageUrl}"/>1366X768
+  <%--  <spring:url value="/images" var="images" />
+  <img src="${images}/organic.jpg"/> --%>
+  <p class="captionText">${image.captionText}</p>
+  </div>
+  </c:forEach>
+  </div>
+ <div id="dotsContainer"></div>
 </div>
 <script src="myScript.js">
     var slideIndex,slides,dots,captionText;
@@ -737,36 +743,40 @@ function playPauseSlides() {
         playPauseBtn.style.backgroundPositionY="-33px"
     }
 }
-     </script>
+</script>
+
+<!-- Products   -->
+
 	 <div class = "products">
             <div class = "container">
                 <h1 class = "lg-title">Fresh Vegetables And Milk</h1>
                 <p class = "text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
 
                 <div class = "product-items">
-                    <!-- single product -->
-                   
+                    <!--1. single product -->
+                   <c:forEach var="product" items="${listProduct}">
                     <div class = "product">
                         <div class = "product-content">
                             <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	<img src="${images}/bringal.jpg" width="100%"; />
+                             <spring:url value="/images" var="images" />
+  <img src="${images}/${product.imageName}"/ width="100%">
+    <%-- <spring:url value="/images" var="images" />
+	<img src="${images}/bringal.jpg" width="100%"; /> --%>
                               <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
                             </div>
                             <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
+                                <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'"> add to cart
+                                <span><i class = "fas fa-shopping-cart"></i></span>
                                 </button>
                                <!--  <button type = "button" class = "btn-buy"> buy now
                                     <span><i class = "fas fa-shopping-cart"></i></span>
                                 </button> -->
                             </div>
                         </div>
-
                         <div class = "product-info">
                             <div class = "product-info-top">
-                                <h2 class = "sm-title" style="color: black;">Bringal</h2>
-                                <div class = "rating" style="color:green;">
+                                <h2 class = "sm-title" style="color: black;">${product.productName}</h2>
+                                <div class = "rating" style="color:orange;">
                                     <span><i class = "fas fa-star"></i></span>
                                     <span><i class = "fas fa-star"></i></span>
                                     <span><i class = "fas fa-star"></i></span>
@@ -774,296 +784,28 @@ function playPauseSlides() {
                                     <span><i class = "far fa-star"></i></span>
                                 </div>
                             </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
+                            <a href = "#" class = "product-name">${product.description}</a>
+                          <h4 class = "size" style="color: black;">Size ${product.size} gm</h4> 
+                            <p class = "product-price">Rs ${product.price}</p>
+                            <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p>
+                            
                         </div>
 
                         <div class = "off-info" style="background-color:#4CAF50;">
-                            <h2 class = "sm-title">2% off</h2>
+                            <h2 class = "sm-title">${product.discount}% off</h2>
                         </div>
                     </div>
-                     <!-- single product -->
-                    <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	                        <img src="${images}/potato.jpg" width="100%"; />
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
-                            </div>
-                        </div>
-
-                        <div class = "product-info">
-                            <div class = "product-info-top">
-                                <h2 class = "sm-title">Potato</h2>
-                                <div class = "rating" style="color:green;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
-                        </div>
-
-                        <div class = "off-info">
-                            <h2 class = "sm-title">2% off</h2>
-                        </div>
-                    </div>
-                    <!-- end of single product -->
-                    <!-- single product -->
-                    <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	<img src="${images}/onion.jpg" width="100%"; />
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
-                            </div>
-                        </div>
-
-                        <div class = "product-info">
-                            <div class = "product-info-top">
-                                <h2 class = "sm-title">Onion</h2>
-                                <div class = "rating" style="color: green;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
-                        </div>
-
-                        <div class = "off-info">
-                            <h2 class = "sm-title">2% off</h2>
-                        </div>
-                    </div>
-                    <!-- end of single product -->
-                    <!-- single product -->
-                     <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	<img src="${images}/garlic.jpg" width="100%"; />
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
-                            </div>
-                        </div>
-
-                        <div class = "product-info">
-                            <div class = "product-info-top">
-                                <h2 class = "sm-title">Garlic</h2>
-                                <div class = "rating" style="color:green;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
-                        </div>
-
-                        <div class = "off-info">
-                            <h2 class = "sm-title">2% off</h2>
-                        </div>
-                    </div>
-                    <!-- end of single product -->
-                    <!-- single product -->
-                   <!-- single product -->
-                   
-                    <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	<img src="${images}/bringal.jpg" width="100%"; />
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
-                            </div>
-                        </div>
-
-                        <div class = "product-info">
-                            <div class = "product-info-top">
-                                <h2 class = "sm-title">Bringal</h2>
-                                <div class = "rating" style="color:green;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
-                        </div>
-
-                        <div class = "off-info">
-                            <h2 class = "sm-title">2% off</h2>
-                        </div>
-                    </div>
-                     <!-- single product -->
-                    <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	<img src="${images}/potato.jpg" width="100%"; />
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
-                            </div>
-                        </div>
-
-                        <div class = "product-info">
-                            <div class = "product-info-top">
-                                <h2 class = "sm-title">Potato</h2>
-                                <div class = "rating" style="color:green;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
-                        </div>
-
-                        <div class = "off-info">
-                            <h2 class = "sm-title">2% off</h2>
-                        </div>
-                    </div>
-                    <!-- end of single product -->
-                    <!-- single product -->
-                    <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	<img src="${images}/onion.jpg" width="100%"; />
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
-                            </div>
-                        </div>
-
-                        <div class = "product-info">
-                            <div class = "product-info-top">
-                                <h2 class = "sm-title">Onion</h2>
-                                <div class = "rating" style="color: green;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
-                        </div>
-
-                        <div class = "off-info">
-                            <h2 class = "sm-title">2% off</h2>
-                        </div>
-                    </div>
-                    <!-- end of single product -->
-                    <!-- single product -->
-                     <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                            <spring:url value="/images" var="images" />
-	<img src="${images}/garlic.jpg" width="100%"; />
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
-                            </div>
-                        </div>
-
-                        <div class = "product-info">
-                            <div class = "product-info-top">
-                                <h2 class = "sm-title">Garlic</h2>
-                                <div class = "rating" style="color: green;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
-                            <p class = "product-price">Rs 70.00</p>
-                            <p class = "product-price">Rs 60.00</p>
-                        </div>
-
-                        <div class = "off-info">
-                            <h2 class = "sm-title">2% off</h2>
-                        </div>
-                    </div>
-                  
-                    <!-- end of single product -->
+                    </c:forEach>
+                   <!--  end of single product -->
+                    
                 </div>
             </div>
         </div>
 
         <div class = "product-collection">
             <div class = "container">
+            <h1 class = "show-ad-title">Catogaries of Vegetables And Milk</h1>
+            
                 <div class = "product-collection-wrapper">
                     <!-- product col left -->
                     <div class = "product-col-left flex">
@@ -1079,8 +821,8 @@ function playPauseSlides() {
                     <div class = "product-col-right">
                         <div class = "product-col-r-top flex">
                             <div class = "product-col-content">
-                                <h2 class = "sm-title">Leafy Vegetables </h2>
-                                <h2 class = "md-title">Leafy Vegetables </h2>
+                                <h2 class = "sm-title">Fruit Vegetables </h2>
+                                <h2 class = "md-title">Fruit Vegetables </h2>
                                 <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
                                 <button type = "button" class = "btn-dark">Shop now</button>
                             </div>
@@ -1091,7 +833,7 @@ function playPauseSlides() {
                             <div class = "flex">
                                 <div class = "product-col-content">
                                     <h2 class = "sm-title">OFFERS </h2>
-                                    <h2 class = "md-title">Fruits Vegetables </h2>
+                                    <h2 class = "md-title">Leafy Vegetables </h2>
                                     <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
                                     <button type = "button" class = "btn-dark">Shop now</button>
                                 </div>
@@ -1111,5 +853,16 @@ function playPauseSlides() {
             </div>
         </div>
      <jsp:include page="footer.jsp" />
+    
+     <script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
 	</body>
 </html>

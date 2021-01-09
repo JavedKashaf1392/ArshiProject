@@ -27,6 +27,7 @@ import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.CustomerModel;
+import com.veggiefridge.online.model.Images;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CartService;
@@ -66,7 +67,7 @@ public class ShoppingCartController {
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
-		model.setViewName("registerdhome");
+		model.setViewName("VeggieFridge");
 		return model;
 	}
 
@@ -166,9 +167,11 @@ public class ShoppingCartController {
 
 	// add cartitem
 	@RequestMapping(value = "/addToCartPageItem/{productid}")
-	public String addCartItems(@PathVariable int productid, @ModelAttribute("cartpage") CartPage cart,
+	public ModelAndView addCartItems(ModelAndView model,@PathVariable int productid, @ModelAttribute("cartpage") CartPage cart,
 			BindingResult resultcart) {
-
+		String imageSection = "Header";
+		List<Images> headerImages = productservice.getImagesBySection(imageSection);
+	    model.addObject("headerImages",headerImages);
 		CartPage cartpage = this.getCartPage();
 		CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
 		if (cartitem == null) {
@@ -193,8 +196,12 @@ public class ShoppingCartController {
 			cartpage.setCartitem(cartpage.getCartitem() + 1);
 			cartservice.updateCartPage(cartpage);
 			System.out.println("cartpage updated");
+			List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+			model.addObject("listcustomercartitem", listcustomercartitem);
+			model.setViewName("cart");
 		}
-		return "redirect:/cart/listCustomerCartItem";
+		/* return "redirect:/cart/listCustomerCartItem"; */
+		return model;
 
 	}
 
@@ -204,6 +211,9 @@ public class ShoppingCartController {
 			BindingResult result) {
 		// List<CartItem> listcustomercartitem =
 		// cartservice.list(this.getCartPage().getCartpageid());
+		String imageSection = "Header";
+		List<Images> headerImages = productservice.getImagesBySection(imageSection);
+	    model.addObject("headerImages",headerImages);
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		model.addObject("listcustomercartitem", listcustomercartitem);
 		// model.setViewName("cartitemlist");

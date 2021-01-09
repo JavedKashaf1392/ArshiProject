@@ -1,6 +1,9 @@
 package com.veggiefridge.online.service;
 
 import java.util.List;
+
+import com.veggiefridge.online.model.Images;
+import com.veggiefridge.online.model.Menu;
 import com.veggiefridge.online.model.Product;
 
 public interface ProductService {
@@ -16,4 +19,8 @@ public interface ProductService {
 	public Product updateProduct(Product product);
 	
 	public List<Product> getProductsBycatogary(String category);
+	
+	public List<Menu> getAllMenues();
+	
+	public List<Images> getImagesBySection(String imageSection);
 }
