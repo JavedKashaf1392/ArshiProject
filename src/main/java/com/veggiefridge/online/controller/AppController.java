@@ -85,15 +85,6 @@ public class AppController {
 		model.setViewName("guest");
 		return model; 
 	} 
-	
-	
-	/*
-	 * @RequestMapping(value = "/admin", method = RequestMethod.GET) public String
-	 * adminPage(ModelMap model) { List<Product> listProduct =
-	 * productService.getAllProducts(); model.addAttribute("listProduct",
-	 * listProduct); model.addAttribute("user", getPrincipal()); return "adminpage";
-	 * }
-	 */
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String dbaPage(ModelMap model) {
@@ -147,10 +138,14 @@ public class AppController {
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();
 		List<Customer> listCustomer = customerservice.getAllCustomers();
-		List<Menu> listmenu = productService.getAllMenues();
 		List<Images> headerImages = productService.getImagesBySection(imageSection);
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+	     model.addObject("listprofileMenu",listprofileMenu);
+		String section = "Navbar";
+		List<Menu> listMenu = productService.getMenuByNavbar(section);
+	    model.addObject("listMenu",listMenu);
 	    model.addObject("headerImages",headerImages);
-		model.addObject("listmenu", listmenu);
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);

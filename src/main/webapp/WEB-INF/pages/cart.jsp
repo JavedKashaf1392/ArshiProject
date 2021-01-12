@@ -1,19 +1,16 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/jpg" href="images/logo.jpg">
+<meta charset="utf-8">
+<link rel="icon" type="image/jpg" href="images/logo.jpg" sizes="16x16">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Online Vegetable And Milk Shopping in India-VeggieFridge</title>
-<meta charset="utf-8">
-<link rel="icon"
-	href="https://webdevtrick.com/wp-content/uploads/2019/02/webdevtrick-favicon-1.png"
-	type="image/png" sizes="16x16">
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -44,7 +41,7 @@
 		enable_page_level_ads : true
 	});
 </script>
-<title>Responsive Shopping Cart | Webdevtrick.com</title>
+<title>Online Vegetable And Milk Shopping in India-VeggieFridge</title> 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="canonical"
@@ -57,6 +54,7 @@
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/dbed6b6114.js"
 	crossorigin="anonymous"></script>
+	
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap')
@@ -78,6 +76,7 @@
 body {
 	font-family: 'Quicksand', sans-serif;
 }
+
 /* Code By Webdevtrick ( https://webdevtrick.com ) */
 .product-image {
 	float: left;
@@ -100,14 +99,20 @@ body {
 }
 
 .product-removal {
-	float: left;
-	width: 2%;
+	/* float: left;
+	width: 2%; */
+	float:right;
+	width: 16%;
+	text-align: right;
 }
 
 .product-line-price {
+
+	/* float: left;
+	width: 18%;
+	text-align: right; */
 	float: left;
-	width: 12%;
-	text-align: right;
+	width: 4%;
 }
 
 /* This is used as the traditional .clearfix class */
@@ -131,7 +136,7 @@ body {
 /* Apply dollar signs */
 .product .product-price:before, .product .product-line-price:before,
 	.totals-value:before {
-	content: 'Rs';
+	content: '';
 }
 
 h1 {
@@ -144,12 +149,15 @@ label {
 
 .shopping-cart {
 	margin-top: 10px;
+	max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;
 }
 
 /* Column headers */
 .column-labels label {
-	padding-bottom: 15px;
-	margin-bottom: 15px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
 	border-bottom: 1px solid #eee;
 }
 
@@ -160,7 +168,7 @@ label {
 
 /* Product entries */
 .product {
-	margin-bottom: 20px;
+	margin-bottom:10px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #eee;
 }
@@ -175,7 +183,7 @@ label {
 
 .product .product-details .product-title {
 	margin-right: 20px;
-	font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+	font-family: 'Quicksand', sans-serif;
 }
 
 .product .product-details .product-description {
@@ -192,8 +200,8 @@ label {
 	padding: 4px 8px;
 	background-color: #ff4242;
 	color: #fff;
-	font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
-	font-size: 12px;
+	/* font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium"; */
+	font-size: 14px;
 	border-radius: 3px;
 }
 
@@ -212,37 +220,37 @@ label {
 .totals .totals-item label {
 	float: left;
 	clear: both;
-	width: 79%;
+    width: 77%; 
 	text-align: right;
 }
 
 .totals .totals-item .totals-value {
-	float: right;
-	width: 21%;
-	text-align: right;
+	float: left;
+  /*   width:%; */
+	text-align:right;
 }
 
 .totals .totals-item-total {
-	font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+	font-family: 'Quicksand', sans-serif;
 }
 
 .checkout {
 	float: right;
 	border: 0;
-	margin-top: 20px;
-	padding: 6px 25px;
-	background-color: #5cb85c;
+	/* margin-top: 20px; */
+	/* padding: 6px 25px; */
+	background-color:#4CAF50;
 	color: #fff;
-	font-size: 25px;
+	font-size:15px;
 	border-radius: 3px;
+	 padding:10px 35px;
 }
-
 .checkout:hover {
 	background-color: #019701;
 }
 
 /* Make adjustments for tablet */
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
 	.shopping-cart {
 		margin: 0;
 		padding-top: 20px;
@@ -284,8 +292,9 @@ label {
 		width: 70px;
 	}
 }
+
 /* Make more adjustments for phone */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 300px) {
 	.product-removal {
 		float: right;
 	}
@@ -293,16 +302,16 @@ label {
 		float: right;
 		clear: left;
 		width: auto;
-		margin-top: 10px;
+		/* margin-top: 10px; */
 	}
 	.product .product-line-price:before {
 		content: 'Item Total: $';
 	}
 	.totals .totals-item label {
-		width: 60%;
+		width: 50%;
 	}
 	.totals .totals-item .totals-value {
-		width: 40%;
+		width: 50%;
 	}
 }
 
@@ -324,25 +333,81 @@ label {
 	color: white;
 	font-weight: 800;
 }
-</style>
-</head>
-<body>
-	<jsp:include page="userheader.jsp" />
+.alert {
+  padding:15px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+.lg-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.jumbotron{
+max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;
+
+}
+ </style>
+ </head>
+ <body>
+ 
+	<jsp:include page="userheader.jsp"/>
 	<c:choose>
+	
 	<c:when test="${not empty listcustomercartitem}">
+
 		<div class="shopping-cart">
+		<span class="lg-title"> My Cart </span>
+		
+	<c:if test="${not empty message}">
+	<div class="alert">
+  <span class="closebtn">&times;</span>  
+  <strong>Deleted!</strong> ${message}.
+</div>
+			
+	
+	</c:if>
 			<div class="column-labels">
-				<label class="product-image">Image</label> <label
-					class="product-details">Product</label> <label
-					class="product-price">Price</label> <label class="product-quantity">Quantity</label>
-				<label class="product-removal">Remove</label> <label
-					class="product-line-price">SubTotal</label>
+				<label class="product-image">Image</label> 
+			    <label class="product-details">Product</label> 
+				<label class="product-price">Price</label> 	
+				<label class="product-quantity">Quantity</label>	
+				<label class="product-line-price">SubTotal</label>  
+			    <label class="product-removal">Remove</label> 
+				
+					
 			</div>
 			
 				<c:set var="s" value="0"></c:set>
 				<c:forEach var="cartitem" items="${listcustomercartitem}">
-					<c:set var="s"
+					<%-- <c:set var="s"
 						value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
+ --%>
+<c:set var="s"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}" /></c:set>
+
+
 
 					<div class="product">
 						<div class="product-image">
@@ -351,42 +416,59 @@ label {
 						</div>
 						<div class="product-details">
 							<div class="product-title">${cartitem.product.productName}</div>
-							<p class="product-description">${cartitem.product.description}.</p>
+							<p class="product-description">Size: ${cartitem.product.size} gm</p>
 						</div>
-						<div class="product-price">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</div>
+					<div class="product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
+						
+					
 						<div class="product-quantity">
 							<input type="number" value="2" min="1">
 						</div>
-						<div class="product-removal">
+						<%--  <div class="product-removal">
 							<button class="remove-product" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'"><i class="fa fa-trash"></i></button>
-						</div>
-						<div class="product-line-price">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</div>
+						</div> --%>
+						<%-- <div class="product-line-price">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</div> --%>
+	             <%--  <div class="product-line-price"><fmt:formatNumber type="number" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div> --%>
+					
+				<div class="product-line-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
+				
+				<div class="product-removal" style="margin-right:35px;">
+							<button class="remove-product" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'"><i class="fa fa-trash"></i></button>
+						</div>	
 					</div>
 				</c:forEach>
 
-				<div class="totals">
-					<div class="totals-item totals-item-total">
-						<label>Total</label>
-						<div class="totals-value" id="cart-total">${s}</div>
-					</div>
-				</div>
-				
-				<a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
-        padding: 10px 50px;
+		<div style="margin-bottom:10px;">
+			
+	    <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+        padding: 8px 30px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color:#4CAF50;
+        background-color:orange;
         border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">Continue Shopping</a>
-
-				<button class="checkout">Checkout</button>
+        outline: none;font-size:15px;">Continue Shopping</a>
+        
+        <span style="margin-left:63%;" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'">Total: &#8377;${s}</span>
+        
+        <button class="checkout" onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddress'">Checkout</button>
+        </div>	
 		</div>
 		</c:when>
+		
 		<c:otherwise>
 
 		<div class="jumbotron">
 			<h3 class="text-center">Your Cart is Empty!</h3>
+			<hr>
+			<a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+        padding:8px 30px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color:orange;
+        border-radius: 6px;
+        outline: none;font-size:15px;margin-top:10px;margin-bottom:10px;">Continue Shopping</a>
 		</div>
 
 	</c:otherwise>
@@ -485,6 +567,21 @@ label {
 			}
 		}
 	</script>
+	
+	
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+	
 
 </body>
 </html>

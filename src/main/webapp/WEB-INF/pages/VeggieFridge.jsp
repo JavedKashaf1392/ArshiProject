@@ -8,6 +8,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <title>Online Vegetable And Milk Shopping in India-VeggieFridge</title> 
  <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -228,11 +230,11 @@ img{
 
 /* product collection */
 .product-collection{
- /*   padding: 3.2rem 0;  */
+  /* padding: 3.2rem 0;   */
     padding: 0.1rem 0; 
 }
 .product-collection-wrapper{
-  /*  padding: 3.2rem 0;  */
+  /* padding: 3.2rem 0;  */
    padding: 0.1rem 0;
 }
 .product-col-left{
@@ -530,9 +532,47 @@ img{
     from {opacity: 0;margin-top: -100px}
     to {opacity: 1;margin-top: 0px;}
 }
+
+.alert{
+ background-color:orange;
+ padding:12px;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+   max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;
+    text-align: center;
+     letter-spacing:2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
  </style>
  </head>
 	<body>
+	                   
+ <c:if test="${not empty message}">
+<div class="alert">
+  <span class="closebtn">&times;</span>  
+  <strong></strong>${message}
+</div>
+	    <%-- <h3 class="text-center">${message}</h3> --%>
+</c:if>
 	<jsp:include page="userheader.jsp" />
 	<!-- slidercode -->
 	<!--  SLIDERCODE -->
@@ -785,9 +825,11 @@ function playPauseSlides() {
                                 </div>
                             </div>
                             <a href = "#" class = "product-name">${product.description}</a>
-                          <h4 class = "size" style="color: black;">Size ${product.size} gm</h4> 
-                            <p class = "product-price">Rs ${product.price}</p>
-                            <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p>
+                          <h4 class = "size" style="color: black;">Size: ${product.size} ${product.unit}</h4> 
+                          <%--   <p class = "product-price">Rs ${product.price}</p> --%>
+                      MRP: <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
+                       <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>
+                      <%--  <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p> --%>
                             
                         </div>
 
@@ -796,17 +838,17 @@ function playPauseSlides() {
                         </div>
                     </div>
                     </c:forEach>
-                   <!--  end of single product -->
+ 
+               <!--  end of single product -->
                     
                 </div>
             </div>
         </div>
 
-        <div class = "product-collection">
+            <div class = "product-collection">
             <div class = "container">
-            <h1 class = "show-ad-title">Catogaries of Vegetables And Milk</h1>
-            
-                <div class = "product-collection-wrapper">
+            <h1 class = "show-ad-title">Shop By Catogary</h1>
+            <div class = "product-collection-wrapper">
                     <!-- product col left -->
                     <div class = "product-col-left flex">
                         <div class = "product-col-content">
@@ -864,5 +906,18 @@ function myFunction() {
   }
 }
 </script>
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+
 	</body>
 </html>

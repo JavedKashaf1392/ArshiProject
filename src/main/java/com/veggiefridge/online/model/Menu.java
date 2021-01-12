@@ -19,6 +19,28 @@ public class Menu {
 	
 	@Column(name="menues")
 	private String menues;
+	
+	@Column(name="section")
+	private String section;
+	
+	@Column(name="url")
+	private String url;
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getSection() {
+		return section;
+	}
+
+	public void setSection(String section) {
+		this.section = section;
+	}
 
 	public int getMenuID() {
 		return menuID;
@@ -38,6 +60,9 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return "Menu [menuID=" + menuID + ", menues=" + menues + "]";
+		return "Menu [menuID=" + menuID + ", menues=" + menues + ", section=" + section + ", url=" + url + "]";
 	}
+
+  
+	
 }

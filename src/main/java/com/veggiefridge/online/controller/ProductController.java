@@ -126,11 +126,22 @@ public class ProductController {
 
 	}
 	
-	@RequestMapping(value = "/listMenu")
-	public List<Menu> listMenu(ModelAndView model){
-		List<Menu> listmenu = productService.getAllMenues();
-		model.addObject("listmenu", listmenu);
-		return listmenu;
+	@ResponseBody
+	@RequestMapping(value = "/listMenu",method = RequestMethod.GET)
+	public List<Menu> listMenu(HttpServletRequest req, Model model){
+			String section = "Navbar";
+			List<Menu> listMenu = productService.getMenuByNavbar(section);
+		     model.addAttribute("listMenu",listMenu);
+		return listMenu;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/listProfileMenu",method = RequestMethod.GET)
+	public List<Menu> listProfileMenu(HttpServletRequest req, Model model){
+			String profilemenuSection = "Profile";
+			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+		     model.addAttribute("listprofileMenu",listprofileMenu);
+		return listprofileMenu;
 	}
 	
 	@ResponseBody

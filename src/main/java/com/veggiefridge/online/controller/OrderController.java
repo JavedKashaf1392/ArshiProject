@@ -221,7 +221,7 @@ public class OrderController {
 		return model;
 	}
 		
-	//PickupAddress
+	 //PickupAddress
 	@RequestMapping(value ="/PickupAddress")
 	public ModelAndView PickupAddress(ModelAndView model) {
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());

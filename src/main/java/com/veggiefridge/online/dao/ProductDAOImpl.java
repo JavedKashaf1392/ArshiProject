@@ -62,10 +62,6 @@ public class ProductDAOImpl implements ProductDAO {
 										.list();	
 	}
 
-	@Override
-	public List<Menu> getAllMenues() {
-		return sessionFactory.getCurrentSession().createQuery("from Menu") .list();
-	}
 
 	@Override
 	public List<Images> getImagesBySection(String imageSection) {
@@ -75,5 +71,16 @@ public class ProductDAOImpl implements ProductDAO {
 										.setParameter("imageSection",imageSection)
 										.list();	
 	}
+
+	@Override
+	public List<Menu> getMenuByNavbar(String section) {
+		String query = "FROM Menu WHERE section =:section";
+		return sessionFactory.getCurrentSession()
+									.createQuery(query)
+										.setParameter("section",section)
+										.list();
+	}
+
+
 	}
 	

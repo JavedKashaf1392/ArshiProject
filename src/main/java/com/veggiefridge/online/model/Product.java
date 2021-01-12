@@ -74,7 +74,17 @@ public class Product implements Serializable {
 	@Column(name="imageName")
 	private String imageName;
 	
+		@Column(name="unit")
+		private String unit;
 	
+	public String getUnit() {
+			return unit;
+		}
+
+		public void setUnit(String unit) {
+			this.unit = unit;
+		}
+
 	public double getFinalPrice() {
 		return finalPrice;
 	}

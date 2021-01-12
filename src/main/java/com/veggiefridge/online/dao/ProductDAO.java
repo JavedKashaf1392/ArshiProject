@@ -20,7 +20,9 @@ public interface ProductDAO {
 	
 	public List<Product> getProductsBycatogary(String category);
 	
-	public List<Menu> getAllMenues();
+	public List<Menu> getMenuByNavbar(String section);
+	
+	/* public List<Menu> getMenuByProfile(String section); */
 	
 	public List<Images> getImagesBySection(String imageSection);
 }

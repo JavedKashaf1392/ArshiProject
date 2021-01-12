@@ -12,15 +12,14 @@
 <head>
 <link rel="icon" type="image/jpg" href="images/logo.jpg"> 
 <meta charset="ISO-8859-1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home screen of VeggieFridge</title>
         <script>document.getElementsByTagName("html")[0].className += " js";</script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         </head>
         <style>
 
@@ -59,7 +58,7 @@ margin-right:1%;
 }
 
   .notification {
-  margin-left:6%;
+  margin-left:5%;
   background-color:#4CAF50;
   color: white;
   text-decoration: none;
@@ -184,8 +183,6 @@ label {
     height: 20px;
     /* background: #4CAF50; */
 }
-   
-}
 form.example input[type=text] {
   padding:12px;
   font-size:17px;
@@ -227,7 +224,7 @@ form.example button:hover {
 }
 
 .dropdown .dropbtn {
-  font-size: 16px;  
+  font-size: 17px;  
   border: none;
   outline: none;
   color: white;
@@ -395,124 +392,6 @@ input[type=submit]:hover {
 
   background-color: #45a049;
 } 
-.topnav {
-  overflow: hidden;
-  background-color: #4CAF50;
-  margin-top:30px;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 9px 13px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.topnav .icon {
-  display: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 17px;    
-  border: none;
-  outline: none;
-  color: white;
-  padding: 9px 13px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #ddd;
-  color: white;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;             
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child), .dropdown .dropbtn {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .topnav.responsive .dropdown {float: none;}
-  .topnav.responsive .dropdown-content {position: relative;}
-  .topnav.responsive .dropdown .dropbtn {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-}
-@keyframes pulse {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  33% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(3);
-    opacity: 0;
-  }
-}
-
 .button {
   margin-left:4%;
   display: inline-flex;
@@ -568,34 +447,140 @@ input[type=submit]:hover {
   }
 }
 
+/* ............navbar.......... */
+
+.topnav {
+  overflow: hidden;
+  background-color:#4CAF50;
+  margin-top:30px;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 15px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 12px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color:#ddd;
+  color: white;
+}
+
+.dropdown-content a:hover {
+  /* background-color: #ddd; */
+  background-color:#ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
 </style>
 <body>
 
-   <div style="
-    width:88%;border:1px solid transparent;margin-left:6%;margin-right:10%;">
+   <div style="max-width: 1388px;
+   border:1px solid transparent;margin:0 auto;margin-bottom:7px;">
     
-     <div class="logo">
+    <div class="logo">
+    <a href="#">
    <spring:url value="/images" var="images" />
-  <%--  <img src="${images}/logo.jpg" width="170" height="125"/> --%>
    <img src="${images}/logo.jpg"  width="165" height="120"/>
-  
+   </a>
    </div> 
    
  <div class="call" style="margin-top:5px;"> 
  <security:authorize access="hasAnyRole('ADMIN', 'USER')">  
  <span class='fas fa-user-circle' style="color:green;"></span>
- <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Hello,${customerModel.firstName}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
+ <a href="#" style="text-decoration: none;color: black;" onclick="document.getElementById('id05').style.display='block'">Hello, ${customerModel.firstName}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i> |
  </security:authorize> 
   
   <security:authorize access="hasRole('USER')">
   <span class="fas fa-map-marker-alt" style="color:green;"></span><%-- ${kiosklocation.location},${kiosklocation.cities} --%>
-  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${customerModel.cities},${customerModel.location}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
+  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:2px;">${customerModel.cities}, ${customerModel.location}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>  | 
   </security:authorize>
   
  <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span> |
  
  <security:authorize access="hasAnyRole('ADMIN', 'USER')">   
- | <span class='fas fa-sign-out-alt' style="color:green;"></span>
+ <span class='fas fa-sign-out-alt' style="color:green;"></span>
    <a href="<c:url value="/logout" />" style="text-decoration: none;color: black;"> Logout</a>
  </security:authorize>  
  
@@ -640,8 +625,8 @@ input[type=submit]:hover {
   <a href="#" class="button pulse">
   Membership
  </a>
-  <a href="#" class="notification" id="group">
-  <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
+  <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" class="notification" id="group">
+  <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"></i></span>
   <div class="badge" id="output">${customerModel.cartpage.cartitem}</div>
   </a>
   </form>
@@ -661,13 +646,17 @@ input[type=submit]:hover {
       <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customerModel.firstName}</span>
       </center>
-      <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>
+      <c:forEach var="menu" items="${listprofileMenu}">
+      <a href="${menu.url}"><i class="fa fa-user-circle"></i><span>${menu.menues}</span></a>
+    
+     <%--  <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"><i class="fa fa-user-circle"></i><span>My Account</span></a> --%>
+     <%--  <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>
       <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
       <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
       <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
       <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
-      <a href="<c:url value="/logout" />"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
+      <a href="<c:url value="/logout" />"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a> --%>
+     </c:forEach>
       </div>
       </div> 
        
@@ -727,23 +716,33 @@ window.onclick = function(event) {
   }
 }
 </script> 
-     <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <div class="dropdown">
-    <button class="dropbtn">Search By Catogary
+  <div class="topnav" id="myTopnav">
+  <c:forEach var="menu" items="${listMenu}">
+  <a href="#" class="active">${menu.menues}</a>
+   <!-- <a href="#news">Leafy Vegetables</a>
+    <a href="#news">Fruits Vegetables</a>
+     <a href="#news">Milk</a>
+      <a href="#news">Discounts</a>
+  <a href="#contact">Contact</a> -->
+  </c:forEach>
+  <!-- <div class="dropdown">
+    <button class="dropbtn">Dropdown 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Lefy Vegetable</a>
-      <a href="#">Fruit Vegetable</a>
-      <a href="#">Green Vegetable</a>
-       <a href="#">Milk</a>
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
     </div>
-  </div> 
-   <a href="#news">Offer</a>
-  <a href="#contact">Discount</a>
-  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-</div>   
+  </div>  -->
+  <a href="javascript:void(0);" style="font-size:20px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+  
+  
+  
+  
+  
+  
 </div> 
     
      
@@ -813,7 +812,8 @@ window.onclick = function(event) {
      });
      </script>
      
-     <script>
+
+<script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -823,7 +823,6 @@ function myFunction() {
   }
 }
 </script>
-</div> 
      
      
      

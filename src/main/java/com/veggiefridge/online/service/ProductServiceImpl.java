@@ -55,17 +55,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Menu> getAllMenues() {
-	
-		return productDAO.getAllMenues();
-	}
-
-	@Override
 	public List<Images> getImagesBySection(String imageSection) {
 		return productDAO.getImagesBySection(imageSection);
 	}
-	  
-	  
-	 
 
+	@Override
+	public List<Menu> getMenuByNavbar(String section) {
+		return productDAO.getMenuByNavbar(section);
+	}
 }
+	

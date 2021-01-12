@@ -120,7 +120,7 @@ color:#767070;
 	/* color:  #8f9296; */
 	color:white;
 	font-size: 14px;
-	font-weight: normal;
+	font-weight:bold;
 	margin: 0;
 	width:100%;
 	 display: flex;
@@ -135,8 +135,6 @@ color:#767070;
 .footer-distributed .footer-center{
 	width: 35%;
 }
-
-
 .footer-distributed .footer-center i{
 	/* background-color:  #33383b; */
 	background-color:white;
@@ -168,14 +166,14 @@ color:#767070;
 
 .footer-distributed .footer-center p span{
 	display:block;
-	font-weight: normal;
-	font-size:14px;
-	line-height:2;
+	/* font-weight: normal; */
+	font-size:15px;
+	line-height:1.5;
 }
 
 .footer-distributed .footer-center p a{
 	/* color:  #e0ac1c; */
-	color:black;
+	color:#767070;
 	text-decoration: none;;
 }
 
@@ -190,8 +188,8 @@ color:#767070;
 	line-height: 20px;
 	/* color:  #92999f; */
 	color:#767070;
-	font-size: 13px;
-	font-weight: normal;
+	font-size: 15px;
+	font-weight:bold;
 	margin: 0;
 }
 
@@ -272,25 +270,29 @@ color:black;
 				<!-- <p class="footer-company-name">© 2019 Eduonix Learning Solutions Pvt. Ltd.</p> -->
 			    <h4 style="color:black;">Download App</h4>
 				
-				<table style="margin-top:4%;">
+				<table style="margin-top:2%;">
 					<th><a href="abc.htm"> <spring:url value="/images"
 								var="images" /> <img src="${images}/Apple-App-store-icon.png"
-							width="100" height="40" style="float: right; margin-right: 7%" />
+							width="120" height="45" style="float: right; margin-right: 7%" />
 					</a></th>
 					<th><a href="abc.htm"> <spring:url value="/images"
 								var="images" /> <img src="${images}/Google-App-store-icon.png"
-							width="100" height="40" style="float: right;" />
+							width="120" height="45" style="float: right;" />
 					</a></th>
 				</table>
 			</div>
 
 			<div class="footer-center">
 			<span style="color:black;font-size:18px;margin-left:6%;">Address</span>
-				<div>
+				<div style="margin-top:3%;">
 					<i class="fa fa-map-marker"></i>
-					  <p><span>309 - Rupa Solitaire,
+					  <p><span style="font-weight: bold;">309 - Rupa Solitaire,
 						 Bldg. No. A - 1, Sector - 1</span>
-						Mahape, Navi Mumbai - 400710</p>
+						<span style="font-weight: bold;">Mahape, Navi Mumbai - 400710</span></p>
+						
+						<!--  <p>309 - Rupa Solitaire,
+						 Bldg. No. A - 1, Sector - 1</p>
+						<p>Mahape, Navi Mumbai - 400710</p> -->
 				</div>
 
 				<div>
@@ -299,16 +301,19 @@ color:black;
 				</div>
 				<div>
 					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:aq570975@gmail.com">support@eduonix.com</a></p>
+					<p style="color:#767070;"><a href="mailto:aq570975@gmail.com">support@eduonix.com</a></p>
 				</div>
-				<p class="footer-company-name" style="margin-top:10%;">Created By VeggieFridge Copyright © 2021 All Rights
+				<p class="footer-company-name" style="margin-top:12%;">Created By VeggieFridge Copyright © 2021 All Rights
 								Reserved.</p>
 			</div>
 			<div class="footer-right">
 				<p class="footer-company-about">
 					<span>About</span>
 					We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
+				
+				
 				<div class="footer-icons">
+				<h4 style="color:black;margin-bottom:2%;">Get Social With Us</h4>
 					<a href="#"style="background-color: #3B5998; color: white;"><i class="fa fa-facebook"></i></a>
 					<a href="#" style="background-color: #55ACEE; color: white;"><i class="fa fa-twitter"></i></a>
 					<a href="#" style="background-color: #125688; color: white;"><i class="fa fa-instagram"></i></a>
