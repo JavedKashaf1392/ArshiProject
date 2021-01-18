@@ -4,147 +4,150 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-
-        <link rel="icon" type="image/jpg" href="images/logo.jpg">
+<link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+<!-- <link rel="icon" type="image/jpg" href="images/logo.jpg"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta charset="utf-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Home screen of VeggieFridge</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {
-	font-family: Arial;
-	font-size: 17px;
-	padding: 8px;
+  font-family: 'Quicksand', sans-serif;
+ /*  font-size: 17px;
+  padding: 8px; */
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .row {
-	display: -ms-flexbox; /* IE10 */
-	display: flex;
-	-ms-flex-wrap: wrap; /* IE10 */
-	flex-wrap: wrap;
-	margin: 0 -16px;
-	margin-left: 8%;
-	margin-right: 10%;
+ font-size: 17px;
+  padding: 8px;
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  /* margin: 0 -16px; */
+  max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;
+   
+    
 }
 
 .col-25 {
-	-ms-flex: 25%; /* IE10 */
-	flex: 25%;
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
 }
 
 .col-50 {
-	-ms-flex: 50%; /* IE10 */
-	flex: 50%;
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
 }
 
 .col-75 {
-	-ms-flex: 75%; /* IE10 */
-	flex: 75%;
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
 }
 
-.col-25, .col-50, .col-75 {
-	padding: 0 16px;
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
 }
 
 .container {
-	background-color: #f2f2f2;
-	padding: 5px 20px 15px 20px;
-	border: 1px solid lightgrey;
-	border-radius: 3px;
+  /* background-color: #f2f2f2; */
+  padding: 5px 20px 15px 20px;
+ /*  border: 1px solid lightgrey; */
+  /* border-radius: 3px; */
+   background-color: #F7F7F7;
 }
 
 input[type=text] {
-	width: 100%;
-	margin-bottom: 20px;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc; 
+  border-radius: 3px;
 }
 
 label {
-	margin-bottom: 10px;
-	display: block;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .icon-container {
-	margin-bottom: 20px;
-	padding: 7px 0;
-	font-size: 24px;
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
 }
 
 .btn {
-	background-color: #4CAF50;
-	color: white;
-	padding: 6px;
-	margin: 10px 0;
-	border: none;
-	width: 18%;
-	border-radius: 3px;
-	cursor: pointer;
-	font-size: 17px;
-}
-
-.cancel {
-	background-color: #4CAF50;
-	color: white;
-	padding: 6px;
-	margin: 10px 0;
-	border: none;
-	width: 13%;
-	border-radius: 3px;
-	cursor: pointer;
-	font-size: 17px;
+  background-color: #4CAF50;
+  color: white;
+  /* padding: 12px; */
+  /* margin: 20px 0; */
+  border: none;
+ /*  width: 100%; */
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+       padding: 10px 14px;
+        text-align: center;
+        text-decoration: none;
+        /* color: #ffffff;
+        background-color:orange; */
+       /*  border-radius: 6px; */
+        outline: none;font-size:15px;
+        margin: 0 auto;
+        margin-left:30px;
+  
 }
 
 .btn:hover {
-	background-color: #45a049;
-}
-
-.cancel:hover {
-	background-color: #45a049;
+  background-color: #45a049;
 }
 
 a {
-	color: #2196F3;
+  color: #2196F3;
 }
 
 hr {
-	border: 1px solid lightgrey;
+  border: 1px solid lightgrey;
 }
 
 span.price {
-	float: right;
-	color: grey;
+  float: right;
+  color: grey;
+}
+span.lg-title{
+    font-size: 2.0rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media ( max-width : 800px) {
-	.row {
-		flex-direction: column-reverse;
-	}
-	.col-25 {
-		margin-bottom: 20px;
-	}
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+  #msform{
+  flex-direction: column-reverse;
+  
+  }
 }
 /* .................Progrees bar................ */
 #msform {
@@ -253,39 +256,39 @@ span.price {
 </style>
 </head>
 <body>
-	<div class="logo" style="margin-left: 10%;">
+	    <div style="max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;margin-bottom:20px;">
+	    
 		<spring:url value="/images" var="images" />
-
 		<img src="${images}/logo.jpg" width="160" height="110"
-			style="position: absolute;" />
-	</div>
-	<form id="msform">
+		 style="position: absolute;margin-left:2%;" />
+	    
+	    
+	    <form id="msform">
 		<!-- progressbar -->
 		<ul id="progressbar">
-			<li class="active" id="account"><strong>Confirm Address</strong></li>
-			<li class="active" id="account"><strong>Payment</strong></li>
-			<li id="confirm"><strong>Confirm</strong></li>
+		<li class="active" id="account"><strong>Confirm Address</strong></li>
+	    <li class="active" id="account"><strong>Payment</strong></li>
+		<li id="confirm"><strong>Confirm</strong></li>
 		</ul>
-	</form>
-
-	<hr style="border-bottom: 0px">
-
-	<div class="row">
-		<div class="col-75">
-			<div class="container">
-				<h3
-					style="color: green; text-align: center; margin-top: 2%; font-size: 24px;">Select
-					Payment Method</h3>
-
-				<div
-					style="border: 1px solid #ddd; margin-right: 10%; margin-left: 10%; padding: 50px 50px; background-color: white;">
-
-					<table
-						style="cellspacing: 2%; border-spacing: 10px; margin-top: 1%;">
+	   </form>
+	   </div>
+	
+	 <div class="row">
+  <div class="col-75">
+    <div class="container">
+     
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Paymnet Option</h3> 
+            <table
+						style="cellspacing: 2%; border-spacing: 10px; margin-top: 1%;margin-left:8%;">
 						<!-- #DCDCDC -->
 						
 						<th
-							style="background-color: #DCDCDC; padding: px px; border-radius: px; border: 1px solid #ddd; height: 20px; width: 180px;">
+							style="background-color:white; padding: px px; border-radius: px; border: 1px solid #ddd; height: 20px; width: 180px;">
 							<a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayByWallet"
 							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
 								class='fas fa-wallet' style="font-size: 50px; color: black;"></span></a>
@@ -293,7 +296,7 @@ span.price {
 						</th>
 
 						<th
-							style="background-color: #DCDCDC; padding: px px; width: %; border-radius: px; border: 1px solid #ddd; height: 20px; width: 180px;">
+							style="background-color:white; padding: px px; width: %; border-radius: px; border: 1px solid #ddd; height: 20px; width: 180px;">
 							<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
 							<a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayOnline"
@@ -303,7 +306,7 @@ span.price {
 						</th>
 					
 						<th
-							style="background-color: #DCDCDC; padding: px px; width: %; border-radipx; border: 1px solid #ddd; height: 100px; width: 180px;">
+							style="background-color:white; padding: px px; width: %; border-radipx; border: 1px solid #ddd; height: 100px; width: 180px;">
 							<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
 							<a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderUPI"
@@ -312,7 +315,7 @@ span.price {
 								style="font-size: 50px; color: black"></span></a> <!--  Transaction:0 -->
 						</th>
 						<th
-							style="background-color: #DCDCDC; padding: px px; border-radius: px; text-align: center; border: 1px solid #ddd; font-size: 15px; height: 20px; width: 180px;">
+							style="background-color:white; padding: px px; border-radius: px; text-align: center; border: 1px solid #ddd; font-size: 15px; height: 20px; width: 180px;">
 
 							<a
 							href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayATKiosk"
@@ -327,69 +330,44 @@ span.price {
 							<td style="text-align:center;">Pay AT Kiosk</td>
 						</tr>
 					</table>
-				</div>
-	<input
-						type="button"
-						style="background-color: #4CAF50;
-	color: white;
-	padding: 6px;
-	margin: 10px 0;
-	border: none;
-	width: 18%;
-	border-radius: 3px;
-	cursor: pointer;
-	font-size: 17px;
-	margin-left:10%;"
-    value="BACK" onclick="history.back()" class="back">
+            	
+            
+          </div>
+<!-- 
+          <div class="col-50" style="margin-top:65px;">
+          </div>
+           -->
+        </div>
+        
+     <!--    <input type="button" value="Go back" style=" background-color: white;
+  color: black;
+  padding: 10px 14px;
+   border: 1px solid green;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+  " onclick="history.back()"> -->
+      </form>
+    </div>
+  </div>
+  
+    <div class="col-25">
+    <div class="container">
+    	
+       <h4>(${customerModel.cartpage.cartitem} Items)</h4>
+      <hr>
+   <p>Total <span class="price" style="color:black"><b>&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></b></span></p>
+      
+       <p style="background-color:white;">Total Saving <span class="price" style="color:black"><b>&#8377;30.00</b></span></p>
+    </div>
+  </div>
+ 
+  
+</div>
+    
 
+	
 
-			</div>
-			
-		</div>
-
-	 <div class="col-25">
-			<div class="container">
-			<h4>
-					Cart <span class="price" style="color: black"><i
-						class="fa fa-shopping-cart"></i> <b>${customerModel.cartpage.cartitem}</b></span>
-				</h4>
-			
-			<c:choose>
-		    <c:when test="${not empty listcustomercartitem}">
-		    
-<c:set var="s" value="0"></c:set>
-<c:forEach var="cartitem" items="${listcustomercartitem}">
-<c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
-				
-				<p>
-					<a href="#">${cartitem.product.productName}</a> <span class="price">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</span>
-				</p>
-				<!-- <p>
-					<a href="#">Product 2</a> <span class="price">Rs5</span>
-				</p>
-				<p>
-					<a href="#">Product 3</a> <span class="price">Rs8</span>
-				</p>
-				<p>
-					<a href="#">Product 4</a> <span class="price">Rs2</span>
-				</p> -->
-				</c:forEach>
-				<hr>
-				<p>
-					Total <span class="price" style="color: black"><b>${s}</b></span>
-				</p>
-				</c:when>
-				 <c:otherwise>
-			
-			<div class="jumbotron">
-			<h3 class="text-center">Your Cart is Empty!</h3>
-			</div>
-		
-		</c:otherwise>
-				</c:choose>
-			</div>
-		</div>
-	</div>
 
 </body>
 </html>

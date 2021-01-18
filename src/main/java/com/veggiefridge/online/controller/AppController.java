@@ -291,6 +291,22 @@ public class AppController {
 					model.setViewName("VeggieFridge");
 					return model;
 				}
+				
+				
+
+				//PickUpaddress
+				@RequestMapping(value ="/pickupaddress")
+				public ModelAndView pickupaddress(ModelAndView model) {
+					model.setViewName("pickupaddress");
+					return model;
+				}
+				
+				@RequestMapping(value = "/head")
+				public ModelAndView head(ModelAndView model) {
+					model.setViewName("head");
+					return model;
+				}
+		
 	
 }
 

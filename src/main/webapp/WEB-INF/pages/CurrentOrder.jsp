@@ -78,7 +78,8 @@ hr {
 input[type=text], select, textarea {
 	width: 90%;
 	padding: 8px;
-	border: 1px solid #008000;
+	/* border: 1px solid #008000; */
+	border:none;
 	border-radius: 4px;
 	resize: vertical;
 }

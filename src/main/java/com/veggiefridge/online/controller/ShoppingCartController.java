@@ -54,10 +54,9 @@ public class ShoppingCartController {
 
 	@Autowired
 	private HttpSession session;
-	
+
 	@Autowired
 	private Environment env;
-	
 
 	private static final Logger logger = LoggerFactory.logger(ShoppingCartController.class);
 
@@ -65,23 +64,23 @@ public class ShoppingCartController {
 	public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
 		String imageSection = "Header";
-		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productservice.getAllProducts();
 		List<Customer> listCustomer = customerService.getAllCustomers();
 		List<Images> headerImages = productservice.getImagesBySection(imageSection);
 		String profilemenuSection = "Profile";
 		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-	     model.addObject("listprofileMenu",listprofileMenu);
+		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-	    model.addObject("listMenu",listMenu);
-	    model.addObject("headerImages",headerImages);
+		model.addObject("listMenu", listMenu);
+		model.addObject("headerImages", headerImages);
 		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation",listkiosklocation);
+		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		/* model.setViewName("registerdhome"); */
 		model.setViewName("VeggieFridge");
-		return model; 
+		return model;
 	}
 
 	// checkout
@@ -98,7 +97,7 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	 //saveOrder
+	// saveOrder
 	@RequestMapping(value = "/addToCart/{productid}")
 	public String addToCart(@PathVariable int productid) {
 		CartItem cartitem = cartservice.getByCartPageAndProduct(productid);
@@ -123,7 +122,7 @@ public class ShoppingCartController {
 
 	}
 
-	//listCartItem
+	// listCartItem
 	@RequestMapping(value = "/listCartItem")
 	public ModelAndView listCartItem(ModelAndView model) {
 		List<CartItem> listcartitem = cartservice.getAllCartItem();
@@ -132,9 +131,9 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	 //deleteCartItem
+	// deleteCartItem
 	@RequestMapping(value = "/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
-	public ModelAndView deleteProduct(@PathVariable("cartitemid") int cartitemid,ModelAndView model) {
+	public ModelAndView deleteProduct(@PathVariable("cartitemid") int cartitemid, ModelAndView model) {
 		CartItem cartitem = cartservice.get(cartitemid);
 		// deduct the cart
 		// update the cart
@@ -144,20 +143,20 @@ public class ShoppingCartController {
 		cartservice.updateCartPage(cartpage);
 		// remove the cartLine
 		cartservice.remove(cartitem);
-		model.addObject("message", env.getProperty("cart.removeproduct"));	
-	    List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+		model.addObject("message", env.getProperty("cart.removeproduct"));
+		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		String profilemenuSection = "Profile";
 		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-	     model.addObject("listprofileMenu",listprofileMenu);
+		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-	    model.addObject("listMenu",listMenu);
-	    model.addObject("listcustomercartitem", listcustomercartitem);
-	    model.setViewName("cart");
+		model.addObject("listMenu", listMenu);
+		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.setViewName("cart");
 		return model;
 	}
 
-	 //deleteCartItem
+	// deleteCartItem
 	@RequestMapping(value = "/deleteCartItems/{cartitemid}", method = RequestMethod.GET)
 	public String deleteProducts(@PathVariable("cartitemid") int cartitemid) {
 		CartItem cartitem = cartservice.get(cartitemid);
@@ -187,17 +186,17 @@ public class ShoppingCartController {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-	 //add cartitem
+	// add cartitem
 	@RequestMapping(value = "/addToCartPageItem/{productid}")
-	public ModelAndView addCartItems(ModelAndView model,@PathVariable int productid, @ModelAttribute("cartpage") CartPage cart,
-			BindingResult resultcart) {
+	public ModelAndView addCartItems(ModelAndView model, @PathVariable int productid,
+			@ModelAttribute("cartpage") CartPage cart, BindingResult resultcart) {
 		String profilemenuSection = "Profile";
 		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-	     model.addObject("listprofileMenu",listprofileMenu);
+		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-	    model.addObject("listMenu",listMenu);
-	    List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		model.addObject("listMenu", listMenu);
+		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productservice.getAllProducts();
 		List<Customer> listCustomer = customerService.getAllCustomers();
 		CartPage cartpage = this.getCartPage();
@@ -208,8 +207,10 @@ public class ShoppingCartController {
 			cartitem = new CartItem();
 			Product product = productservice.getProduct(productid);
 			// transfer the product details to cartLine
+
 			cartitem.setCartpageid(cartpage.getCartpageid());
 			cartitem.setProduct(product);
+			cartitem.setAvailable(true);
 			cartitem.setProductCount(1);
 			cartitem.setBuyingPrice(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
 			cartitem.setTotal(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
@@ -217,29 +218,34 @@ public class ShoppingCartController {
 
 			// insert a new cartLine
 			cartservice.add(cartitem);
-			model.addObject("message", env.getProperty("cart.addproduct"));		
+			model.addObject("message", env.getProperty("cart.addproduct"));
 			System.out.println("cartitem is added");
 			// update the cart
 			cartpage.setGrandTotal(cart.getGrandTotal() + cartitem.getBuyingPrice());
 			cartpage.setCartitem(cartpage.getCartitem() + 1);
 			cartservice.updateCartPage(cartpage);
 			System.out.println("cartpage updated");
-			String imageSection="Header";
-			List<Images> headerImages = productservice.getImagesBySection(imageSection);
-		    model.addObject("headerImages",headerImages);
-			List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
-			model.addObject("listCustomer", listCustomer);
-			model.addObject("listkiosklocation",listkiosklocation);
-			model.addObject("listProduct", listProduct);
-			model.addObject("listcustomercartitem", listcustomercartitem);
-			model.setViewName("VeggieFridge");
+		} else {
+			model.addObject("message", env.getProperty("Product Already Added Insid a Cart"));
+
 		}
+		String imageSection = "Header";
+		List<Images> headerImages = productservice.getImagesBySection(imageSection);
+		model.addObject("headerImages", headerImages);
+		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+		model.addObject("listCustomer", listCustomer);
+		model.addObject("listkiosklocation", listkiosklocation);
+		model.addObject("listProduct", listProduct);
+		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.setViewName("VeggieFridge");
+
 		/* return "redirect:/cart/listCustomerCartItem"; */
 		return model;
 
 	}
 
-	 //listCartItem
+	// listCartItem
+
 	@RequestMapping(value = "/listCustomerCartItem")
 	public ModelAndView listCustomerCartItem(ModelAndView model, @ModelAttribute CartPage cartpage,
 			BindingResult result) {
@@ -247,12 +253,12 @@ public class ShoppingCartController {
 		// cartservice.list(this.getCartPage().getCartpageid());
 		String profilemenuSection = "Profile";
 		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-	     model.addObject("listprofileMenu",listprofileMenu);
+		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-	    model.addObject("listMenu",listMenu);
-	    Object headerImages="Header";
-		model.addObject("headerImages",headerImages);
+		model.addObject("listMenu", listMenu);
+		Object headerImages = "Header";
+		model.addObject("headerImages", headerImages);
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		model.addObject("listcustomercartitem", listcustomercartitem);
 		// model.setViewName("cartitemlist");
@@ -266,19 +272,19 @@ public class ShoppingCartController {
 
 	{
 		String imageSection = "Header";
-		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productservice.getAllProducts();
 		List<Customer> listCustomer = customerService.getAllCustomers();
 		List<Images> headerImages = productservice.getImagesBySection(imageSection);
 		String profilemenuSection = "Profile";
 		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-	     model.addObject("listprofileMenu",listprofileMenu);
+		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-	    model.addObject("listMenu",listMenu);
-	    model.addObject("headerImages",headerImages);
+		model.addObject("listMenu", listMenu);
+		model.addObject("headerImages", headerImages);
 		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation",listkiosklocation);
+		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		/* model.setViewName("registerdhome"); */
 		model.setViewName("VeggieFridge");
@@ -297,7 +303,7 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	//save and update customer
+	// save and update customer
 	@RequestMapping(value = "/saveEditProfile", method = RequestMethod.POST)
 	public ModelAndView saveEditCustomer(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
 			BindingResult result, HttpSession session) {
@@ -306,30 +312,112 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	//changePassword
+	// changePassword
 	@RequestMapping(value = "/editPassword/{email}")
 	public String resetPassword(@PathVariable String email, Model model) {
 		// check if the email id is valid and registered with us.
-        Customer customer = new Customer(); 
+		Customer customer = new Customer();
 		customer.setEmail(email);
 		model.addAttribute("customer", customer);
 		return "EditPassword";
 	}
-     
-	 //mapping set New Password
+
+	// mapping set New Password
 	@RequestMapping(value = "/changeNewPassword", method = RequestMethod.POST)
 	public String setNewPassword(@ModelAttribute("customer") Customer cust, ModelMap map, BindingResult resultcust) {
-	Customer customer = customerService.getCustomerByEmail(this.getCartPage().getCustomer().getEmail());
-	System.out.println("mailid"+customer.getEmail());
-	if (customer!=null){
+		Customer customer = customerService.getCustomerByEmail(this.getCartPage().getCustomer().getEmail());
+		System.out.println("mailid" + customer.getEmail());
+		if (customer != null) {
 			// update password and Acct Status $ Displyay Successe Message
 			/* customer.setPassword(cust.getNewPassword()); */
-		    String encodedPassword = EncryptPassword.sha256(cust.getNewPassword());
+			String encodedPassword = EncryptPassword.sha256(cust.getNewPassword());
 			customer.setPassword(encodedPassword);
 			customerService.updateCustomer(customer);
 			System.out.println("update customer successfully");
 		}
-	return "redirect:/home/loginform";
+		return "redirect:/home/loginform";
+	}
+
+	@SuppressWarnings("unchecked")
+	private int isExisting(int productid) {
+		/* List<Items> cart = (List<Items>) session.getAttribute("cart"); */
+		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+		for (int i = 0; i < listcustomercartitem.size(); i++)
+
+			if (listcustomercartitem.get(i).getProduct().getProductid() == productid)
+				return i;
+
+		return -1;
+
+	}
+
+	@RequestMapping("/increase/{cartitemid}")
+	public ModelAndView udpateCartItem(@PathVariable int cartitemid,ModelAndView model) {
+		CartItem cartitem = cartservice.get(cartitemid);
+		double oldTotal = cartitem.getTotal();
+		Product product = cartitem.getProduct();
+
+		/*
+		 * // check if that much quantity is available or not if(product.getQuantity() <
+		 * productCount) { model.addObject("message",
+		 * env.getProperty("cart.addproduct")); return "result=unavailable"; }
+		 */
+
+		// update the cart line
+		cartitem.setProductCount(cartitem.getProductCount()+1);
+		cartitem.setBuyingPrice(product.getFinalPrice());
+		cartitem.setTotal(product.getFinalPrice() * cartitem.getProductCount());
+		cartservice.update(cartitem);
+
+		// update the cart
+		CartPage cartpage = this.getCartPage();
+		cartpage.setGrandTotal(cartpage.getGrandTotal() - oldTotal + cartitem.getTotal());
+		cartservice.updateCartPage(cartpage);
+		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		model.addObject("listprofileMenu", listprofileMenu);
+		String section = "Navbar";
+		List<Menu> listMenu = productservice.getMenuByNavbar(section);
+		model.addObject("listMenu", listMenu);
+		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.setViewName("cart");
+		return model;
+	}
+	
+	
+	@RequestMapping("/decrease/{cartitemid}")
+	public ModelAndView decreaseCartItem(@PathVariable int cartitemid,ModelAndView model) {
+		CartItem cartitem = cartservice.get(cartitemid);
+		double oldTotal = cartitem.getTotal();
+		Product product = cartitem.getProduct();
+
+		/*
+		 * // check if that much quantity is available or not if(product.getQuantity() <
+		 * productCount) { model.addObject("message",
+		 * env.getProperty("cart.addproduct")); return "result=unavailable"; }
+		 */
+
+		// update the cart line
+		cartitem.setProductCount(cartitem.getProductCount()-1);
+		cartitem.setBuyingPrice(product.getFinalPrice());
+		cartitem.setTotal(product.getFinalPrice() * cartitem.getProductCount());
+		cartservice.update(cartitem);
+
+		// update the cart
+		CartPage cartpage = this.getCartPage();
+		cartpage.setGrandTotal(cartpage.getGrandTotal() - oldTotal + cartitem.getTotal());
+		cartservice.updateCartPage(cartpage);
+		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		model.addObject("listprofileMenu", listprofileMenu);
+		String section = "Navbar";
+		List<Menu> listMenu = productservice.getMenuByNavbar(section);
+		model.addObject("listMenu", listMenu);
+		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.setViewName("cart");
+		return model;
 	}
 
 }

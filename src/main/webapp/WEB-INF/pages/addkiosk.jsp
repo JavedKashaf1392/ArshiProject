@@ -7,7 +7,8 @@
      
      <html>
      <head>
-     <link rel="icon" type="image/jpg" href="images/logo.jpg">
+     <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
+     <!-- <link rel="icon" type="image/jpg" href="images/logo.jpg"> -->
      </head>
      <style>
      

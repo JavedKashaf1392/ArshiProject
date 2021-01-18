@@ -68,7 +68,7 @@ public class CartItemDAOImp implements CartItemDAO{
 	}
 
 
-	//  5 getByCartPageAndProduct
+	//5 getByCartPageAndProduct
 	@Override
 	public CartItem getByCartPageAndProduct(int productid){
 	String query ="FROM CartItem WHERE product.productid =:productid";

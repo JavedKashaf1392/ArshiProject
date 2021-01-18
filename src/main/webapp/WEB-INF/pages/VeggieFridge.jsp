@@ -4,16 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/jpg" href="images/logo.jpg">
+<link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<title>Online Vegetable And Milk Shopping in India-VeggieFridge</title> 
- <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+<title>VeggieFridge</title> 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="main.css">
         <!-- font awesome -->
@@ -21,11 +25,13 @@
         <style>
         
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
-<style> 
-:root{
+/* <style>  */
+
+:root{  
     --white-light: rgba(255, 255, 255, 0.5);
     --alice-blue: #f8f9fa;
-    --carribean-green: #40c9a2;
+  /*   --carribean-green: #40c9a2; */
+    --carribean-green:green;
     --gray: #ededed;
 }
 
@@ -86,14 +92,13 @@ img{
     font-size: 1rem;
     margin-top:0.4rem;
 } 
-.text-light{
+.text-light {
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.5;
     opacity: 0.5;
     margin: 0.4rem 0;
 }
-
 /* product section */
 .products{
     background: var(--alice-blue);
@@ -110,6 +115,12 @@ img{
      background-color: #f9f9f9;
    /*   display: grid; */   
 }
+.product-title{
+    font-weight: 300;
+    font-size: 1rem;
+   /*  text-transform:
+     uppercase; */
+}
 .product-content{
     background: var(--gray);
     padding: 3rem 0.5rem 2rem 0.5rem;
@@ -118,7 +129,7 @@ img{
 .product-img{
     background: var(--white-light);
     box-shadow: 0 0 20px 10px var(--white-light); 
-   /*  box-shadow: 0 0 80px 40px var(--white-light); */
+    /* box-shadow: 0 0 80px 40px var(--white-light); */ 
     width: 200px;
     height: 200px;
     margin: 0 auto;
@@ -177,7 +188,7 @@ img{
     display: block;
     text-decoration: none;
     font-size: 1rem;
-    text-transform: uppercase;
+   /*  text-transform: uppercase; */
     font-weight: bold;
 }
 .product-price{
@@ -204,7 +215,9 @@ img{
     transform: scale(1.1);
 }
 .product:hover .product-img{
-    /* background: var(--carribean-green); */
+    /* background: var(--carribean-green);  */
+    background: white; 
+    
 }
 .product:hover .product-btns{
     opacity: 1;
@@ -289,6 +302,7 @@ img{
 }
 .btn-dark:hover{
     background: var(--carribean-green);
+    /* background:white; */
 }
 /* Media Queries */
 @media screen and (min-width: 992px){
@@ -335,7 +349,8 @@ img{
 /* Slider Css */
     .galleryContainer {
     width: 100%;
-    height: 500px;
+   /*  height: 500px; */
+    height:500px;
     max-width: 1388px;
    /*  margin: auto; */
     user-select: none;
@@ -562,6 +577,16 @@ img{
 .closebtn:hover {
   color: black;
 }
+.qty{
+width:35px;
+}
+.map{
+    flex:1;
+    filter:grayscale(100%);
+    -webkit-filter:grayscale(100%);
+    max-width: 1388px;
+    margin: 0 auto;
+}
  </style>
  </head>
 	<body>
@@ -573,6 +598,8 @@ img{
 </div>
 	    <%-- <h3 class="text-center">${message}</h3> --%>
 </c:if>
+	    <%-- <h3 class="text-center">${message}</h3> --%>
+
 	<jsp:include page="userheader.jsp" />
 	<!-- slidercode -->
 	<!--  SLIDERCODE -->
@@ -786,36 +813,40 @@ function playPauseSlides() {
 </script>
 
 <!-- Products   -->
-
 	 <div class = "products">
             <div class = "container">
                 <h1 class = "lg-title">Fresh Vegetables And Milk</h1>
-                <p class = "text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
-
+                <p class ="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
                 <div class = "product-items">
                     <!--1. single product -->
                    <c:forEach var="product" items="${listProduct}">
-                    <div class = "product">
+                   <div class = "product">
                         <div class = "product-content">
                             <div class = "product-img">
                              <spring:url value="/images" var="images" />
-  <img src="${images}/${product.imageName}"/ width="100%">
+    <img src="${images}/${product.imageName}"/ width="100%"> 
     <%-- <spring:url value="/images" var="images" />
 	<img src="${images}/bringal.jpg" width="100%"; /> --%>
                               <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
                             </div>
                             <div class = "product-btns">
-                                <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'"> add to cart
-                                <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button>
-                               <!--  <button type = "button" class = "btn-buy"> buy now
+                            <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'"> add to cart
+                            <span><i class = "fas fa-shopping-cart"></i></span>
+                            </button>
+                         
+<button onclick="increment()" class ="qty">+</button>
+<input id=demoInput type=text min=1 max=9 class = "number" value="1" style="text-align: center;width:35px;">
+<button onclick="decrement()" class = "qty">-</button>
+                            <!-- <input type="number" max="9" min="1" value="1" placeholder="Qty" style="text-align:center;
+                            "> -->
+                                <!-- <button type = "button" class = "btn-buy"> buy now
                                     <span><i class = "fas fa-shopping-cart"></i></span>
                                 </button> -->
                             </div>
                         </div>
                         <div class = "product-info">
                             <div class = "product-info-top">
-                                <h2 class = "sm-title" style="color: black;">${product.productName}</h2>
+                                <h2 class = "product-title" style="color: black;">${product.productName}</h2>
                                 <div class = "rating" style="color:orange;">
                                     <span><i class = "fas fa-star"></i></span>
                                     <span><i class = "fas fa-star"></i></span>
@@ -894,6 +925,32 @@ function playPauseSlides() {
                 </div>
             </div>
         </div>
+        
+       <%--  <div style="width:1388px;margin: 0 auto;margin-bottom:10px;">
+  <table>
+					<th><a href="abc.htm"> <spring:url value="/images"
+								var="images" /> <img src="${images}/prod1.jpg"
+							width="350" height="300" />
+					</a></th>
+					<th><a href="abc.htm"> <spring:url value="/images"
+								var="images" /> <img src="${images}/prod2.jpg"
+							width="340" height="300" />
+					</a></th>
+					<th><a href="abc.htm"> <spring:url value="/images"
+								var="images" /> <img src="${images}/prod3.webp"
+							width="340" height="300" />
+					</a></th>
+					<th><a href="abc.htm"> <spring:url value="/images"
+								var="images" /> <img src="${images}/prod4.webp"
+							width="350" height="300" />
+					</a></th>
+				</table>
+  </div> --%>
+       <!--  <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/place/MIHAN,+Nagpur,+Nagpur,+Maharashtra/@21.0782376,78.9862947,13z/data=!3m1!4b1!4m5!3m4!1s0x3bd4be284cdf7abd:0x60d4ced04aace457!8m2!3d21.0590381!4d79.0195161https://www.google.com/maps/place/MIHAN,+Nagpur,+Nagpur,+Maharashtra/@21.0782376,78.9862947,13z/data=!3m1!4b1!4m5!3m4!1s0x3bd4be284cdf7abd:0x60d4ced04aace457!8m2!3d21.0590381!4d79.0195161"
+                            width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>  -->
      <jsp:include page="footer.jsp" />
     
      <script>
@@ -918,6 +975,36 @@ for (i = 0; i < close.length; i++) {
   }
 }
 </script>
+
+     <script>
+     function myFunction() {
+         var input, filter, ul, li, a, i, txtValue;
+         input = document.getElementById("myInput");
+         filter = input.value.toUpperCase();
+         ul = document.getElementById("myUL");
+         li = ul.getElementsByTagName("li");
+         for (i = 0; i < li.length; i++) {
+             a = li[i].getElementsByTagName("a")[0];
+             txtValue = a.textContent || a.innerText;
+             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                 li[i].style.display = "";
+             } else {
+                 li[i].style.display = "none";
+             }
+         }
+     }
+     </script>
+     
+     <script>
+   function increment() {
+      document.getElementById('demoInput').stepUp();
+   }
+   function decrement() {
+      document.getElementById('demoInput').stepDown();
+   }
+</script>
+     
+    
 
 	</body>
 </html>

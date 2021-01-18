@@ -28,5 +28,9 @@ public interface CartService {
       public CartItem getCustomerCart(int cartpageid);
       
       public boolean add(CartPage cartpage);
+      
+      public boolean update(CartItem cartitem);
+      
+      public String manageCartItem(int cartitemid, int productCount);
     
 }

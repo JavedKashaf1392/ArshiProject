@@ -292,33 +292,34 @@ form.example button:hover {
 }
 .sidebar{
   background:#4CAF50;
-  margin-top:69px;
+  margin-top:60px;
   padding-top:20px;
   position:absolute;
-  left: 0;
+  left:0;
   width: 320px;
-  height: 59%;
+  height:56%;
   transition: 0.5s;
   transition-property: right;
-  margin-left:71%;
+  margin-left:74%;
 }
-
 .sidebar h4{
   color:white;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom:10px;
 }
 
 .sidebar a{
-  color: #fff;
+  color:#fff;
   display: block;
   width: 100%;
-  line-height: 60px;
+  line-height:45px; 
+ /*  line-height:4; */
   text-decoration: none;
   padding-left: 40px;
   box-sizing: border-box;
   transition: 0.5s;
   transition-property: background;
+  font-size:17px;
 }
 .sidebar a:hover{
   background: green;
@@ -326,6 +327,7 @@ form.example button:hover {
 
 .sidebar i{
   padding-right: 10px;
+  
 }
 
 label #sidebar_btn{
@@ -560,7 +562,7 @@ input[type=submit]:hover {
    border:1px solid transparent;margin:0 auto;margin-bottom:7px;">
     
     <div class="logo">
-    <a href="#">
+    <a href="${pageContext.request.contextPath}/cart/registerdhome">
    <spring:url value="/images" var="images" />
    <img src="${images}/logo.jpg"  width="165" height="120"/>
    </a>
@@ -647,7 +649,7 @@ input[type=submit]:hover {
       <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customerModel.firstName}</span>
       </center>
       <c:forEach var="menu" items="${listprofileMenu}">
-      <a href="${menu.url}"><i class="fa fa-user-circle"></i><span>${menu.menues}</span></a>
+      <a href="${menu.url}"><!-- <i class="fa fa-user-circle"></i> --><span>${menu.menues}</span></a>
     
      <%--  <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"><i class="fa fa-user-circle"></i><span>My Account</span></a> --%>
      <%--  <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>

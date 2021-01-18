@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
+<link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
 <meta charset="utf-8">
-<link rel="icon" type="image/jpg" href="images/logo.jpg" sizes="16x16">
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Online Vegetable And Milk Shopping in India-VeggieFridge</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -56,17 +56,6 @@
 	crossorigin="anonymous"></script>
 	
 <style>
-@import
-	url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap')
-	;
-
-:root { -
-	-white-light: rgba(255, 255, 255, 0.5); -
-	-alice-blue: #f8f9fa; -
-	-carribean-green: #40c9a2; -
-	-gray: #ededed;
-}
-
 * {
 	padding: 0;
 	margin: 0;
@@ -168,8 +157,8 @@ label {
 
 /* Product entries */
 .product {
-	margin-bottom:10px;
-	padding-bottom: 10px;
+	/* margin-bottom:10px;
+	padding-bottom: 10px; */
 	border-bottom: 1px solid #eee;
 }
 
@@ -179,20 +168,23 @@ label {
 
 .product .product-image img {
 	width: 100px;
+	height:100px;
 }
 
 .product .product-details .product-title {
 	margin-right: 20px;
 	font-family: 'Quicksand', sans-serif;
+	margin-top:20px;
 }
 
 .product .product-details .product-description {
-	margin: 5px 20px 5px 0;
+    margin: 5px 20px 5px 0; 
 	line-height: 1.4em;
 }
 
 .product .product-quantity input {
 	width: 40px;
+	margin-top:20px;
 }
 
 .product .remove-product {
@@ -268,18 +260,19 @@ label {
 	}
 	.product-details {
 		float: none;
-		margin-bottom: 10px;
+		/* margin-bottom: 10px; */
 		width: auto;
 	}
 	.product-price {
 		clear: both;
 		width: 70px;
+		
 	}
 	.product-quantity {
 		width: 100px;
 	}
 	.product-quantity input {
-		margin-left: 20px;
+		/* margin-left: 10px; */
 	}
 	.product-quantity:before {
 		content: 'x';
@@ -340,6 +333,10 @@ label {
   opacity: 1;
   transition: opacity 0.6s;
   margin-bottom: 15px;
+   text-align: center;
+     letter-spacing:2px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .closebtn {
@@ -369,13 +366,17 @@ max-width: 1388px;
     margin: 0 auto;
 
 }
+.qty{
+width:35px;
+height:30px
+}
  </style>
  </head>
- <body>
+  
+  <body>
  
 	<jsp:include page="userheader.jsp"/>
 	<c:choose>
-	
 	<c:when test="${not empty listcustomercartitem}">
 
 		<div class="shopping-cart">
@@ -384,21 +385,19 @@ max-width: 1388px;
 	<c:if test="${not empty message}">
 	<div class="alert">
   <span class="closebtn">&times;</span>  
-  <strong>Deleted!</strong> ${message}.
+  <strong></strong> ${message}.
 </div>
 			
 	
 	</c:if>
-			<div class="column-labels">
+			     <div class="column-labels">
 				<label class="product-image">Image</label> 
 			    <label class="product-details">Product</label> 
 				<label class="product-price">Price</label> 	
 				<label class="product-quantity">Quantity</label>	
 				<label class="product-line-price">SubTotal</label>  
 			    <label class="product-removal">Remove</label> 
-				
-					
-			</div>
+			    </div>
 			
 				<c:set var="s" value="0"></c:set>
 				<c:forEach var="cartitem" items="${listcustomercartitem}">
@@ -412,17 +411,23 @@ max-width: 1388px;
 					<div class="product">
 						<div class="product-image">
 							<spring:url value="/images" var="images"/> <img
-								src="${images}/${cartitem.product.imageName}" width="100%" ;/>
+								src="${images}/${cartitem.product.imageName}" width="100" height="100"/>
 						</div>
 						<div class="product-details">
 							<div class="product-title">${cartitem.product.productName}</div>
-							<p class="product-description">Size: ${cartitem.product.size} gm</p>
+							<p class="product-description">Size: ${cartitem.product.size} ${cartitem.product.unit}</p>
 						</div>
-					<div class="product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
-						
-					
-						<div class="product-quantity">
-							<input type="number" value="2" min="1">
+				   <div class="product-price" style="margin-top:20px;">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
+				   
+				   
+				   <div class="product-quantity">
+<a href="${pageContext.request.contextPath}/cart/increase/${cartitem.cartitemid}">			   
+<button class ="qty">+</button></a>
+<input id=demoInput type=text min=1 max=9 class = "number" value="${cartitem.productCount}" style="text-align: center;width:35px;height:30px;">
+<a href="${pageContext.request.contextPath}/cart/decrease/${cartitem.cartitemid}">
+<button onclick="decrement()" class = "qty">-</button>
+</a>
+							<%-- <input type="number" value="${cartitem.productCount}" min="1"> --%>
 						</div>
 						<%--  <div class="product-removal">
 							<button class="remove-product" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'"><i class="fa fa-trash"></i></button>
@@ -430,15 +435,15 @@ max-width: 1388px;
 						<%-- <div class="product-line-price">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</div> --%>
 	             <%--  <div class="product-line-price"><fmt:formatNumber type="number" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div> --%>
 					
-				<div class="product-line-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
+				<div class="product-line-price" style="margin-top:20px;">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.productCount*cartitem.total}"/></div>
 				
-				<div class="product-removal" style="margin-right:35px;">
+				<div class="product-removal" style="margin-right:35px;margin-bottom:40px;">
 							<button class="remove-product" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'"><i class="fa fa-trash"></i></button>
 						</div>	
 					</div>
 				</c:forEach>
 
-		<div style="margin-bottom:10px;">
+		<div style="margin-bottom:20px;margin-top:20px;">
 			
 	    <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
         padding: 8px 30px;
@@ -449,11 +454,12 @@ max-width: 1388px;
         border-radius: 6px;
         outline: none;font-size:15px;">Continue Shopping</a>
         
-        <span style="margin-left:63%;" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'">Total: &#8377;${s}</span>
+        <span style="margin-left:63%;">Total: &#8377;${s}</span>
         
         <button class="checkout" onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddress'">Checkout</button>
         </div>	
 		</div>
+		
 		</c:when>
 		
 		<c:otherwise>
@@ -468,7 +474,7 @@ max-width: 1388px;
         color: #ffffff;
         background-color:orange;
         border-radius: 6px;
-        outline: none;font-size:15px;margin-top:10px;margin-bottom:10px;">Continue Shopping</a>
+        outline: none;font-size:15px;margin-top:20px;margin-bottom:20px;">Continue Shopping</a>
 		</div>
 
 	</c:otherwise>
@@ -580,6 +586,15 @@ for (i = 0; i < close.length; i++) {
     setTimeout(function(){ div.style.display = "none"; }, 600);
   }
 }
+</script>
+
+<script>
+   function increment() {
+      document.getElementById('demoInput').stepUp();
+   }
+   function decrement() {
+      document.getElementById('demoInput').stepDown();
+   }
 </script>
 	
 

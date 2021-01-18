@@ -12,6 +12,7 @@ import com.veggiefridge.online.dao.ProductDAO;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
+import com.veggiefridge.online.model.Product;
 
 @Service
 @Transactional
@@ -114,8 +115,39 @@ public class CartServiceImpl implements CartService{
 	public boolean add(CartPage cartpage) {
 		return cartitemdao.add(cartpage);
 	}
+
+	@Override
+	public boolean update(CartItem cartitem) {
+		return cartitemdao.update(cartitem);
+	}
+
+	@Override
+	public String manageCartItem(int cartitemid, int productCount) {
+		CartItem cartitem = cartitemdao.get(cartitemid)	;	
+		double oldTotal = cartitem.getTotal();
+		Product product = cartitem.getProduct();
+		
+		  //check if that much quantity is available or not
+		if(product.getQuantity() < productCount) {
+			return "result=unavailable";
+		}	
+		
+		//update the cart line
+		cartitem.setProductCount(productCount);
+		cartitem.setBuyingPrice(product.getPrice());
+		cartitem.setTotal(product.getPrice() * productCount);
+		cartitemdao.update(cartitem);
+
+		// update the cart
+		CartPage cartpage = this.getCartPage();
+		cartpage.setGrandTotal(cartpage.getGrandTotal() - oldTotal + cartitem.getTotal());
+		cartitemdao.updateCartPage(cartpage);
+		return "result=updated";
+	}
 	
-}
+	}
+	
+
 	
 	
 	

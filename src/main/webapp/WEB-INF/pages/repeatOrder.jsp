@@ -762,7 +762,7 @@ input[type=submit]:hover {
         background-color: #4CAF50;
         border-radius: 6px;
         outline: none;
-       ">RepeatOrder</a>
+       ">Re-Order</a>
             </table>
             </form> 
 

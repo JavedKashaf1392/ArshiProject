@@ -1,6 +1,7 @@
 <htm>
 <head>
-   <link rel="icon" type="image/jpg" href="images/logo.jpg">
+   <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
+  <!--  <link rel="icon" type="image/jpg" href="images/logo.jpg"> -->
    <!-- @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Sedgwick+Ave+Display');-->
 <style>
   :root {
@@ -539,3 +540,5 @@ body{
 </body>    
 
 </htm>
+
+<!-- http://preview.themeforest.net/item/chashi-agriculture-organic-food-html-template/full_screen_preview/25936492?clickid=VWU1z51H8xyLTX4wUx0Mo3QnUkEUuwRADz7t3Q0&iradid=275988&iradtype=ONLINE_TRACKING_LINK&irgwc=1&irmptype=mediapartner&irpid=1223214&mp_value1=&utm_campaign=af_impact_radius_1223214&utm_medium=affiliate&utm_source=impact_radius -->

@@ -4,141 +4,151 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/jpg" href="images/logo.jpg">
+<link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
+<!-- <link rel="icon" type="image/jpg" href="images/logo.jpg"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style>
 body {
-	font-family: Arial;
-	font-size: 17px;
-	padding: 8px;
+  font-family: 'Quicksand', sans-serif;
+ /*  font-size: 17px;
+  padding: 8px; */
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .row {
-	display: -ms-flexbox; /* IE10 */
-	display: flex;
-	-ms-flex-wrap: wrap; /* IE10 */
-	flex-wrap: wrap;
-	margin: 0 -16px;
-	margin-left: 8%;
-	margin-right: 10%;
-	padding: 
+ font-size: 17px;
+  padding: 8px;
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  /* margin: 0 -16px; */
+  max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;
+   
+    
 }
 
 .col-25 {
-	-ms-flex: 25%; /* IE10 */
-	flex: 25%;
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
 }
 
 .col-50 {
-	-ms-flex: 50%; /* IE10 */
-	flex: 50%;
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
 }
 
 .col-75 {
-	-ms-flex: 75%; /* IE10 */
-	flex: 75%;
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
 }
 
-.col-25, .col-50, .col-75 {
-	padding: 0 16px;
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
 }
 
 .container {
-	background-color: #f2f2f2;
-	padding: 5px 20px 15px 20px;
-	border: 1px solid lightgrey;
-	border-radius: 3px;
+  /* background-color: #f2f2f2; */
+  padding: 5px 20px 15px 20px;
+ /*  border: 1px solid lightgrey; */
+  /* border-radius: 3px; */
+   background-color: #F7F7F7;
 }
 
 input[type=text] {
-	width: 100%;
-	margin-bottom: 20px;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc; 
+  border-radius: 3px;
 }
 
 label {
-	margin-bottom: 10px;
-	display: block;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .icon-container {
-	margin-bottom: 20px;
-	padding: 7px 0;
-	font-size: 24px;
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
 }
 
 .btn {
-	background-color: #4CAF50;
-	color: white;
-	padding: 6px;
-	margin: 10px 0;
-	border: none;
-	width: 18%;
-	border-radius: 3px;
-	cursor: pointer;
-	font-size: 17px;
-	margin-left:10%;
-}
-
-.cancel {
-	background-color: #4CAF50;
-	color: white;
-	padding: 6px;
-	margin: 10px 0;
-	border: none;
-	width: 18%;
-	border-radius: 3px;
-	cursor: pointer;
-	font-size: 17px;
+  background-color: #4CAF50;
+  color: white;
+  /* padding: 12px; */
+  /* margin: 20px 0; */
+  border: none;
+ /*  width: 100%; */
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+       padding: 10px 14px;
+        text-align: center;
+        text-decoration: none;
+        /* color: #ffffff;
+        background-color:orange; */
+       /*  border-radius: 6px; */
+        outline: none;font-size:15px;
+        margin: 0 auto;
+        margin-left:30px;
+  
 }
 
 .btn:hover {
-	background-color: #45a049;
-}
-
-.cancel:hover {
-	background-color: #45a049;
-}
-.back:hover{
-background-color: #45a049;
+  background-color: #45a049;
 }
 
 a {
-	color: #2196F3;
+  color: #2196F3;
 }
 
 hr {
-	border: 1px solid lightgrey;
+  border: 1px solid lightgrey;
 }
 
 span.price {
-	float: right;
-	color: grey;
+  float: right;
+  color: grey;
+}
+span.lg-title{
+    font-size: 2.0rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media ( max-width : 800px) {
-	.row {
-		flex-direction: column-reverse;
-	}
-	.col-25 {
-		margin-bottom: 20px;
-	}
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+  #msform{
+  flex-direction: column-reverse;
+  
+  }
 }
-
 /* .................Progrees bar................ */
 #msform {
 	text-align: center;
@@ -244,54 +254,16 @@ span.price {
 	background-color: green;
 }
 
- /* The Modal (background) */
-/* .paymentoption {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-/* .payment-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 40%;
-  height: 40%;
-  margin-top:8%;
-} */
-
-/* The Close Button */
-/* .close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
- */
-/* .close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}   */
 </style>
 </head>
 <body>
-	    <div class="logo" style="margin-left: 10%;">
+        <div style="max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;margin-bottom:20px;">
+	    
 		<spring:url value="/images" var="images" />
 		<img src="${images}/logo.jpg" width="160" height="110"
-		 style="position: absolute;" />
-	    </div>
+		 style="position: absolute;margin-left:2%;" />
 	    
 	    <form id="msform">
 		<!-- progressbar -->
@@ -301,212 +273,80 @@ span.price {
 		<li id="confirm"><strong>Confirm</strong></li>
 		</ul>
 	   </form>
+	   </div>
+   <!-- <hr style="border-bottom:5px;max-width: 1388px;
+   /*  width: 88vw; */
+    margin: 0 auto;"> -->
+    
+  <div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="${pageContext.request.contextPath}/order/paymentMethod" method="post">
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3> 
+            <input type="checkbox" checked="checked" name="sameadr">Countinue with my default address.<br>
+            <!-- <span class="lg-title">Confirm Address</span> -->
+            <label for="fname">First Name</label>
+            <input type="text" id="fname"  value="${customerModel.firstName}">
+            <label for="email">Email</label>
+            <input type="text" id="email"  value="${customerModel.email}">
+            <label for="adr">City</label>
+            <input type="text" id="adr" value="${customerModel.cities}">
+            <label for="city">State</label>
+            <input type="text" id="city" name="city" placeholder="New York">
 
-	<hr style="border-bottom: 0px">
+            <!-- <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div> -->
+          </div>
 
-	<div class="row">
-	<div style="border: 1px solid #ddd;padding: 45px 45px; background-color: white; width:70%;">
-			
-		    <div class="col-75">
-			<div class="container">
-			
-				<form
-					action="${pageContext.request.contextPath}/order/paymentMethod">
-
-					<div class="row">
-						<div class="col-50">
-							<h3>Pickup Address</h3>
-							<label for="fname"><i class="fa fa-user"></i> First Name</label> <input
-								type="text" id="fname" name="firstname"
-							value="${customerModel.firstName}"> <label for="email"><i
-								class="fa fa-envelope"></i> Email</label> <input type="text" id="email"
-								name="email" value="${customerModel.email}"> <label
-								for="adr"><i class="fa fa-address-card-o"></i> Location</label>
-							<input type="text" id="adr" name="address"
-						value="${customerModel.location}"> <!-- <label for="city"><i
-								class="fa fa-institution"></i> City</label> <input type="text" id="city"
-								name="city" placeholder="New York"> -->
-								<label for="city"><i
-								class="fa fa-institution"></i> State</label> <input type="text" id="city"
-								name="city" value="${customerModel.cities}">
-
-							<!-- <div class="row">
-								<div class="col-50">
-									<label for="state">State</label> <input type="text" id="state"
-										name="state" placeholder="NY">
-								</div>
-								<div class="col-50">
-									<label for="zip">Zip</label> <input type="text" id="zip"
-										name="zip" placeholder="10001">
-								</div>
-							</div>   -->
-						</div>
-
-						  <div class="col-50" style="margin-top:62px;">
-							<!-- <h3>Payment Cards</h3> -->
-							<!-- <label for="fname">Accepted Cards</label> -->
-							<!-- <div class="icon-container">
-								<i class="fa fa-cc-visa" style="color: navy;"></i> <i
-									class="fa fa-cc-amex" style="color: blue;"></i> <i
-									class="fa fa-cc-mastercard" style="color: red;"></i> <i
-									class="fa fa-cc-discover" style="color: orange;"></i>
-							</div> -->
-							<label for="cname"><i class="fa fa-user"></i> Last Name</label> <input
-								type="text" id="cname" name="cardname" value="${customerModel.lastName}">
-							<label for="ccnum"><i class="fa fa-phone"></i> Contact Number</label> <input type="text" id="ccnum"
-								name="cardnumber" value="${customerModel.mobile}">
-								<label for="city"><i
-								class="fa fa-institution"></i> City</label> <input type="text" id="city"
-								name="city" value="${customerModel.cities}">
-								<label for="city"><i
-								class="fa fa-institution"></i> Zip</label> <input type="text" id="city"
-								name="city" value="${customerModel.cities}">
-								
-								<!--  <label
-								for="expmonth"><i
-						class="fa fa-shopping-cart"></i> Cart Id</label> <input type="text" id="expmonth"
-								name="expmonth" placeholder="1111"> -->
-								 
-								<!-- <label
-								for="expmonth">Transaction Id</label> <input type="text"
-								id="expmonth" name="expmonth" placeholder="0000"> -->
-									</div>
-
-					</div>
-					 <!-- id="myBtn" -->
-					 <input type="submit" value="COUNTINUE" class="btn" > <!-- <input
-						type="submit" value="CANCEL" class="cancel"> --> <input
-						type="button"
-						style="background-color: #4CAF50;
-	color: white;
-	padding: 6px;
-	margin: 10px 0;
-	border: none;
-	width: 18%;
-	border-radius: 3px;
-	cursor: pointer;
-	font-size: 17px;"
-						value="BACK" onclick="history.back()" class="back">
-				</form>
-			</div>
-		</div>
-		</div>
-		
-		    <div class="col-25">
-			<div class="container">
-			<h4>
-					Cart <span class="price" style="color: black"><i
-						class="fa fa-shopping-cart"></i> <b>${customerModel.cartpage.cartitem}</b></span>
-				</h4>
-			
-			<c:choose>
-		    <c:when test="${not empty listcustomercartitem}">
-		    
-<c:set var="s" value="0"></c:set>
-<c:forEach var="cartitem" items="${listcustomercartitem}">
-<c:set var="s" value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}"></c:set>
-				
-				<p>
-					<a href="#">${cartitem.product.productName}</a> <span class="price">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</span>
-				</p>
-				<!-- <p>
-					<a href="#">Product 2</a> <span class="price">Rs5</span>
-				</p>
-				<p>
-					<a href="#">Product 3</a> <span class="price">Rs8</span>
-				</p>
-				<p>
-					<a href="#">Product 4</a> <span class="price">Rs2</span>
-				</p> -->
-				</c:forEach>
-				<hr>
-				<p>
-					Total <span class="price" style="color: black"><b>${s}</b></span>
-				</p>
-				</c:when>
-				 <c:otherwise>
-			
-			<div class="jumbotron">
-			<h3 class="text-center">Your Cart is Empty!</h3>
-			</div>
-		
-		</c:otherwise>
-				</c:choose>
-			</div>
-		</div>
-	</div>
-	
-	<%-- <!-- The Modal -->
-<div id="myModal" class="paymentoption">
-
-  <!-- Modal content -->
-  <div class="payment-content">
-    <span class="close">&times;</span>
-      <h3 style="text-align: center;color: green;">Payment Option</h3>
-      <div style="margin-left:4%;">
-       <a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrder" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">PAY AT KIOSK</a>
+          <div class="col-50" style="margin-top:85px;">
+          <label for="fname">Last Name</label>
+            <input type="text" id="fname"  value="${customerModel.lastName}">
+            <label for="email">Mobile</label>
+            <input type="text" id="email"  value="${customerModel.mobile}">
+            <label for="adr">Location</label>
+            <input type="text" id="adr" value="${customerModel.location}">
+            <label for="expmonth">Zip</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+          </div>
           
-      
-      <a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderpayonline" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">PAY ONLINE</a>
-          
-      
-      <a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderpayonline" style="display: inline-block;
-        padding: 10px 50px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">WALLET</a>
-      
-      </div>
-      
+        </div>
+        <input type="submit" value="Countinue To Paymnet" class="btn">
+        <input type="reset" value="CANCEL" style=" background-color: white;
+  color: black;
+  padding: 10px 14px;
+   border: 1px solid green;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+  ">
+      </form>
+    </div>
   </div>
-
+  
+    <div class="col-25">
+    <div class="container">
+    	
+      <h4>(${customerModel.cartpage.cartitem} Items)</h4>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></b></span></p>
+      
+       <p style="background-color:white;">Total Saving <span class="price" style="color:black"><b>&#8377;30.00</b></span></p>
+    </div>
+  </div>
+ 
+  
 </div>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script> --%>
-	
+    
 
 </body>
 </html>
