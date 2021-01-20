@@ -1,18 +1,19 @@
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
-
+    pageEncoding="ISO-8859-1"%>
+  
+ <%--  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  --%> 
+ <%--  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
+  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+  <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
-  <%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
-  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VeggieFridge</title>
+  <title>VeggieFridge</title>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -20,10 +21,11 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="main.css">
         <!-- font awesome -->
         <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script> 
+ 
+ 
  <style>
  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
 /* fonts  */
@@ -1503,35 +1505,27 @@ footer.copyright a{
                 <p class ="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
                 <div class = "product-items">
                     <!--1. single product -->
-                   <c:forEach var="product" items="${listProduct}">
-                   <div class = "product">
+                 <%--   <c:forEach var="product" items="${listProduct}"> --%>
+                    <!-- single product -->
+                    <div class = "product">
                         <div class = "product-content">
                             <div class = "product-img">
-                             <spring:url value="/images" var="images" />
-    <img src="${images}/${product.imageName}"/ width="100%"> 
-    <spring:url value="/images" var="images" />
-	<img src="${images}/bringal.jpg" width="100%";/>
-                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
+                                <img src = "images/shoe-1.png" alt = "product image">
                             </div>
                             <div class = "product-btns">
-                            <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'"> add to cart
-                            <span><i class = "fas fa-shopping-cart"></i></span>
-                            </button>
-                         
-<button onclick="increment()" class ="qty">+</button>
-<input id=demoInput type=text min=1 max=9 class = "number" value="1" style="text-align: center;width:35px;">
-<button onclick="decrement()" class = "qty">-</button>
-                            <!-- <input type="number" max="9" min="1" value="1" placeholder="Qty" style="text-align:center;
-                            "> -->
-                                <!-- <button type = "button" class = "btn-buy"> buy now
+                                <button type = "button" class = "btn-cart"> add to cart
+                                    <span><i class = "fas fa-plus"></i></span>
+                                </button>
+                                <button type = "button" class = "btn-buy"> buy now
                                     <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
+                                </button>
                             </div>
                         </div>
+
                         <div class = "product-info">
                             <div class = "product-info-top">
-                                <h2 class = "product-title" style="color: black;">${product.productName}</h2>
-                                <div class = "rating" style="color:orange;">
+                                <h2 class = "sm-title">lifestyle</h2>
+                                <div class = "rating">
                                     <span><i class = "fas fa-star"></i></span>
                                     <span><i class = "fas fa-star"></i></span>
                                     <span><i class = "fas fa-star"></i></span>
@@ -1539,20 +1533,15 @@ footer.copyright a{
                                     <span><i class = "far fa-star"></i></span>
                                 </div>
                             </div>
-                            <a href = "#" class = "product-name">${product.description}</a>
-                          <h4 class = "size" style="color: black;">Size: ${product.size} ${product.unit}</h4> 
-                            <p class = "product-price">Rs ${product.price}</p>
-                      MRP: <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
-                       <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>
-                       <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p>
-                            
+                            <a href = "#" class = "product-name">mens shoes DN 23XX, new product</a>
+                            <p class = "product-price">$ 150.00</p>
+                            <p class = "product-price">$ 133.00</p>
                         </div>
 
-                        <div class = "off-info" style="background-color:#4CAF50;">
-                            <h2 class = "sm-title">${product.discount}% off</h2>
+                        <div class = "off-info">
+                            <h2 class = "sm-title">25% off</h2>
                         </div>
                     </div>
-                    </c:forEach>
  
                <!--  end of single product -->
                     

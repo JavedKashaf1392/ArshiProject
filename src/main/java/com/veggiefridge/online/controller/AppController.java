@@ -150,7 +150,7 @@ public class AppController {
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		/* model.setViewName("registerdhome"); */
-		model.setViewName("head");
+		model.setViewName("VeggieFridge");
 		return model; 
 	} 
 	
