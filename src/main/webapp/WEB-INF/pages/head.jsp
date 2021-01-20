@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
   <%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -11,13 +12,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My awesome food store</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="./css/style.css">
-    <style>
-    
+    <title>VeggieFridge</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <!-- font awesome -->
+        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script> 
+ <style>
+ @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
 /* fonts  */
-
 @font-face {
     font-family:"Raleway-regular";
     src:url(../fonts/Raleway-Regular.ttf)
@@ -57,6 +66,14 @@
     --footer:#2D333F;
 }
 
+:root{  
+    --white-light: rgba(255, 255, 255, 0.5);
+    --alice-blue: #f8f9fa;
+  /*   --carribean-green: #40c9a2; */
+    --carribean-green:green;
+    --gray: #ededed;
+}
+
 /* Reset  */
 *{
     padding:0;
@@ -66,7 +83,8 @@
 
 body{
     -webkit-font-smoothing:antialiased;
-    font-family: "Raleway-regular";
+  /*   font-family: "Raleway-regular"; */
+     font-family: 'Quicksand', sans-serif;
 }
 .container {
     width:100%;
@@ -166,7 +184,8 @@ body{
     overflow-x:auto;
 }
   header.topbar{
-      background:var(--secondary);
+      background:#4CAF50;
+     /*  background:var(--secondary); */
       color:var(--pure);
       font-family:"Raleway-semibold";
       padding:0.75rem 0;
@@ -275,7 +294,7 @@ nav .navbar a:hover{
 }
 header.hero{
     height:600px;
-    background-image:url("/images/hero.png");
+    background-image:url("/images/Blur.png");
    /*  background-image:url("/images/hero.png"); */
     background-position: 0% 0%;
     background-repeat: no-repeat;
@@ -960,10 +979,331 @@ footer.copyright a{
         padding:0.50rem;
     }
    
-}    
+} 
+
+/* ..............SearchBar...........   */ 
+
+.search-input {
+  position: absolute;
+  top: 10px;
+  left: 38px;
+  font-size: 14px;
+  background: none;
+  color: #5a6674;
+  width: 195px;
+  height: 20px;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+}
+
+.search-button {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none!important;
+  cursor: pointer;
+}
+/* ..............Product............. */
+.lg-title,
+.md-title,
+.sm-title
+.show-ad-title{
+    font-family: 'Roboto', sans-serif;
+    padding: 0.6rem 0;
+    text-transform: capitalize;
+}
+.lg-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.show-ad-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.md-title{
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+}
+.sm-title{
+    font-weight: 300;
+    font-size: 1rem;
+    text-transform:
+     uppercase;
+}
+ .size{
+    font-weight:100;
+    font-size: 1rem;
+    margin-top:0.4rem;
+} 
+.text-light {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.5;
+    margin: 0.4rem 0;
+}
+/* product section */
+.products{
+    background: var(--alice-blue);
+    padding: 3.2rem 0;
+}
+.products .text-light{
+    text-align: center;
+    width: 70%;
+    margin: 0.9rem auto;
+}
+.product{
+    margin: 2rem;
+    position: relative;
+     background-color: #f9f9f9;
+   /*   display: grid; */   
+}
+.product-title{
+    font-weight: 300;
+    font-size: 1rem;
+   /*  text-transform:
+     uppercase; */
+}
+.product-content{
+    background: var(--gray);
+    padding: 3rem 0.5rem 2rem 0.5rem;
+    cursor: pointer;
+}
+.product-img{
+    background: var(--white-light);
+    box-shadow: 0 0 20px 10px var(--white-light); 
+    /* box-shadow: 0 0 80px 40px var(--white-light); */ 
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    transition: background 0.5s ease;
+}
+.product-btns{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.4rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.btn-cart, .btn-buy{
+    background: transparent;
+    border: 1px solid black;
+    padding: 0.8rem 0;
+    width: 125px;
+    font-family: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.6s ease;
+}
+.btn-cart{
+    /* background: black; */
+    color: white;
+    background:#4CAF50;
+}
+.btn-cart:hover{
+    background: var(--carribean-green);
+}
+.btn-buy{
+    background: white;
+}
+.btn-buy:hover{
+    background: var(--carribean-green);
+    color: #fff;
+}
+.product-info{
+    background: white;
+    padding: 2rem;
+}
+.product-info-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rating span{
+   /*  color: var(--carribean-green); */
+    /* color:green; */
+    color:orange;
+}
+.product-name{
+    color: black;
+    display: block;
+    text-decoration: none;
+    font-size: 1rem;
+   /*  text-transform: uppercase; */
+    font-weight: bold;
+}
+.product-price{
+    padding-top: 0.6rem;
+    padding-right: 0.6rem;
+    display: inline-block;
+   
+}
+.product-price:first-of-type{
+    text-decoration: line-through;
+   /*  color: var(--carribean-green); */
+    color: #4CAF50;
+}
+.product-size{
+    padding-top: 0.6rem;
+    padding-right: 0.6rem;
+    display: inline-block;
+
+}
+.product-img img{
+    transition: transform 0.6s ease;
+}
+.product:hover .product-img img{
+    transform: scale(1.1);
+}
+.product:hover .product-img{
+    /* background: var(--carribean-green);  */
+    background: white; 
+    
+}
+.product:hover .product-btns{
+    opacity: 1;
+}
+.off-info .sm-title{
+    /* background: var(--carribean-green); */
+     /* background:#4CAF50; */
+   /*  color: white; */
+    background-color:#4CAF50;
+    color:white;
+    display: inline-block;
+    padding: 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    writing-mode: vertical-tb;
+    transform: rotate(360deg); 
+   /*  z-index: 1; */
+    letter-spacing: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* product collection */
+.product-collection{
+  /* padding: 3.2rem 0;   */
+    padding: 0.1rem 0; 
+}
+.product-collection-wrapper{
+  /* padding: 3.2rem 0;  */
+   padding: 0.1rem 0;
+}
+.product-col-left{
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/milk image.jpg") center/cover no-repeat;
+}
+.product-col-r-top{
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/vegetables.jpg") center/cover no-repeat;
+}
+ .flexx{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 50vh;
+    padding: 2rem 1.5rem 3.2rem;
+    margin: 5px;  
+} 
+.product-col-r-bottom > div:first-child{
+  /*   background: #eaa001; */
+    background: #ABD5BAFF;
+    
+}
+.product-col-r-bottom > div:last-child{
+    /* background: #0090ff; */
+    background:#ff726f; 
+   /* background:#FAE6FA; */
+  
+  
+}
+.product-col-content{
+    text-align: center;
+    color: white;
+}
+.product-collection .text-light{
+    opacity: 1;
+    font-size: 0.8;
+    font-weight: 400;
+    line-height: 1.7;
+}
+.btn-dark{
+    background: white;
+    color:green;
+    border:1px solid #ddd;
+    outline: 0;
+    border-radius: 25px;
+    padding: 0.7rem 1rem;
+    border: 0;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    font-size: 1rem;
+    font-family: inherit;
+}
+.btn-dark:hover{
+    background: var(--carribean-green);
+    /* background:white; */
+}
+/* Media Queries */
+@media screen and (min-width: 992px){
+    .product-items{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .product-col-r-bottom{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (min-width: 1200px){
+    .product-items{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .product{
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    .products .text-light{
+        width: 50%;
+    }
+}
+ @media screen and (min-width: 1336px){
+    .product-items{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .product-collection-wrapper{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+   .flexx{
+        height: 60vh;
+    } 
+    .product-col-left{
+        height: 121.5vh;
+    } 
+}
 </style>
 </head>
-
 <body>
     <div class="main-wrapper">
         <div class="nav-background">
@@ -1072,24 +1412,44 @@ footer.copyright a{
                     <div class="top">
                         <div class="container flex justify-between">
                             <div class="contact flex items-center">
-                            <spring:url value="/images" var="images" />
+                            <%-- <spring:url value="/images" var="images" />
    <img src="${images}/phone.svg"  width="25" height="25" alt=""/>
                                <!--  <img src="/images/phone.svg" alt=""> -->
                                 <div>
                                     <h5>Call US: (+84) 123 456 789</h5>
                                     <h6>E-mail : support@freshmeal.com</h6>
-                                </div>
+                                </div> --%>
                             </div>
                             <div class="branding">
-                                <img src="./icons/logo.svg" alt="">
+                            <form class="search-form" style="position:relative;
+  width: 350px;
+  height: 40px;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.10);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  transition: all 0.3s ease; top:40%;
+  left:90%;">
+  <input type="search" value="" placeholder="Search" class="search-input">
+  <button type="submit" class="search-button">
+  </button>
+  </form>
+                                <!-- <img src="./icons/logo.svg" alt=""> -->
                                  <%--  <spring:url value="/images" var="images" />
    <img src="${images}/logo.jpg"  width="165" height="120"/> --%>
                             </div>
                             <div class="time flex items-center">
-                                <img src="./icons/clock.svg" alt="">
+                                <!-- <img src="./icons/clock.svg" alt="">
                                 <div>
                                     <h5>Working Hours:</h5>
                                     <h6>Mon - Sat (8.00am - 12.00am)</h6>
+                                </div> -->
+                                <spring:url value="/images" var="images" />
+   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                               <!--  <img src="/images/phone.svg" alt=""> -->
+                                <div>
+                                    <h5>Call US: (+84) 123 456 789</h5>
+                                    <h6>E-mail : support@freshmeal.com</h6>
                                 </div>
                             </div>
                         </div>
@@ -1109,7 +1469,7 @@ footer.copyright a{
                 </nav>
 
                 <header class="hero flex items-center">
-                    <div class="container">
+                    <div class="container" style="background-image: url('images/Blur.png');">
                         <div class="welcome flex items-center">
                             <span>Welcome to</span>
                               <spring:url value="/images" var="images" />
@@ -1126,13 +1486,138 @@ footer.copyright a{
                         </div>
                         <div class="hero-image">
                          <spring:url value="/images" var="images" />
-   <img src="${images}/vegies.png"  width="400" height="400" alt=""/>
-                            <img src="./images/straw.png" alt="">
+                         <img src="${images}/vegies.png"  width="300" height="300" alt=""/>
+                            <!-- <img src="./images/straw.png" alt=""> -->
                         </div>
                     </div>
                 </header>
+              <!--   </div>
+                </div>
+                </div> -->
+              
+    <!-- Products   -->
+	
+	<div class = "products">
+            <div class = "container" style="max-width:1388px;margin: 0 auto;">
+                <h1 class = "lg-title">Fresh Vegetables And Milk</h1>
+                <p class ="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
+                <div class = "product-items">
+                    <!--1. single product -->
+                   <c:forEach var="product" items="${listProduct}">
+                   <div class = "product">
+                        <div class = "product-content">
+                            <div class = "product-img">
+                             <spring:url value="/images" var="images" />
+    <img src="${images}/${product.imageName}"/ width="100%"> 
+    <spring:url value="/images" var="images" />
+	<img src="${images}/bringal.jpg" width="100%";/>
+                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
+                            </div>
+                            <div class = "product-btns">
+                            <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'"> add to cart
+                            <span><i class = "fas fa-shopping-cart"></i></span>
+                            </button>
+                         
+<button onclick="increment()" class ="qty">+</button>
+<input id=demoInput type=text min=1 max=9 class = "number" value="1" style="text-align: center;width:35px;">
+<button onclick="decrement()" class = "qty">-</button>
+                            <!-- <input type="number" max="9" min="1" value="1" placeholder="Qty" style="text-align:center;
+                            "> -->
+                                <!-- <button type = "button" class = "btn-buy"> buy now
+                                    <span><i class = "fas fa-shopping-cart"></i></span>
+                                </button> -->
+                            </div>
+                        </div>
+                        <div class = "product-info">
+                            <div class = "product-info-top">
+                                <h2 class = "product-title" style="color: black;">${product.productName}</h2>
+                                <div class = "rating" style="color:orange;">
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "far fa-star"></i></span>
+                                </div>
+                            </div>
+                            <a href = "#" class = "product-name">${product.description}</a>
+                          <h4 class = "size" style="color: black;">Size: ${product.size} ${product.unit}</h4> 
+                            <p class = "product-price">Rs ${product.price}</p>
+                      MRP: <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
+                       <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>
+                       <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p>
+                            
+                        </div>
 
-                <section class="top-products">
+                        <div class = "off-info" style="background-color:#4CAF50;">
+                            <h2 class = "sm-title">${product.discount}% off</h2>
+                        </div>
+                    </div>
+                    </c:forEach>
+ 
+               <!--  end of single product -->
+                    
+            </div>
+            </div>
+            </div>
+
+       <div class = "product-collection">
+            <div class = "container" style="max-width:1388px;margin: 0 auto;">
+            <h1 class = "show-ad-title">Shop By Catogary</h1>
+            <div class = "product-collection-wrapper">
+                    <!-- product col left -->
+                    <div class = "product-col-left flexx">
+                        <div class = "product-col-content">
+                            <h2 class = "sm-title">Fresh Milk </h2>
+                            <h2 class = "md-title">Fresh Milk </h2>
+                            <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                            <button type = "button" class = "btn-dark">Shop now</button>
+                        </div>
+                    </div>
+
+                    <!-- product col right -->
+                    <div class = "product-col-right">
+                        <div class = "product-col-r-top flexx">
+                            <div class = "product-col-content">
+                                <h2 class = "sm-title">Fruit Vegetables </h2>
+                                <h2 class = "md-title">Fruit Vegetables </h2>
+                                <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                                <button type = "button" class = "btn-dark">Shop now</button>
+                            </div>
+                        </div>
+
+                        <div class = "product-col-r-bottom">
+                            <!-- left -->
+                            <div class = "flexx">
+                                <div class = "product-col-content">
+                                    <h2 class = "sm-title">OFFERS </h2>
+                                    <h2 class = "md-title">Leafy Vegetables </h2>
+                                    <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                                    <button type = "button" class = "btn-dark">Shop now</button>
+                                </div>
+                            </div>
+                            <!-- right -->
+                            <div class = "flexx">
+                                <div class = "product-col-content">
+                                    <h2 class = "sm-title">Milk </h2>
+                                    <h2 class = "md-title">Milk </h2>
+                                    <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                                    <button type = "button" class = "btn-dark">Shop now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      </div>
+                 <!--    ..........end.......... -->
+            </div>
+            </div>
+        
+        <jsp:include page="footer.jsp" /> 
+              </div>
+              </div>
+              </div>
+                
+      
+             <!--    <section class="top-products">
                     <div class="container">
                         <h1 class="section-heading">Top products</h1>
                         <div class="slider">
@@ -1518,15 +2003,11 @@ footer.copyright a{
                     <div>
                         Copyright © 2020 .All rights reserved by <a href="https://www.instagram.com/codersgyan/">Coder's Gyan</a>.
                     </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
+                </footer> -->
+           <!--  </div>
+        </div> 
+    </div> -->
+    
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

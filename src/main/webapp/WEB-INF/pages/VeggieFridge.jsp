@@ -13,6 +13,7 @@
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -23,7 +24,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.
         <!-- font awesome -->
         <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
         <style>
-        
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
 /* <style>  */
 
@@ -600,6 +600,8 @@ width:35px;
 </c:if>
 	    <%-- <h3 class="text-center">${message}</h3> --%>
 
+	<%-- <jsp:include page="userheader.jsp" /> --%>
+	<%-- <jsp:include page="userheader.jsp" /> --%>
 	<jsp:include page="userheader.jsp" />
 	<!-- slidercode -->
 	<!--  SLIDERCODE -->

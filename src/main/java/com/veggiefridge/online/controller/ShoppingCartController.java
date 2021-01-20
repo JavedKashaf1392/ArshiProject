@@ -237,7 +237,7 @@ public class ShoppingCartController {
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		model.addObject("listcustomercartitem", listcustomercartitem);
-		model.setViewName("VeggieFridge");
+		model.setViewName("head");
 
 		/* return "redirect:/cart/listCustomerCartItem"; */
 		return model;
