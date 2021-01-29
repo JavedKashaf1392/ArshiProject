@@ -59,8 +59,8 @@ public class ShoppingCartController {
 	private Environment env;
 
 	private static final Logger logger = LoggerFactory.logger(ShoppingCartController.class);
-
-	@RequestMapping(value = "/registerdhome", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
 		String imageSection = "Header";
@@ -82,6 +82,8 @@ public class ShoppingCartController {
 		model.setViewName("VeggieFridge");
 		return model;
 	}
+	
+	
 
 	// checkout
 	@RequestMapping(value = "/paymnet")
@@ -237,7 +239,7 @@ public class ShoppingCartController {
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		model.addObject("listcustomercartitem", listcustomercartitem);
-		model.setViewName("head");
+		model.setViewName("VeggieFridge");
 
 		/* return "redirect:/cart/listCustomerCartItem"; */
 		return model;
@@ -291,7 +293,7 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	// edit customer
+	//edit customer
 	@RequestMapping(value = "/editProfile{customerid}", method = RequestMethod.GET)
 	public ModelAndView editProfile() {
 		System.out.println("editProfile");
@@ -299,6 +301,12 @@ public class ShoppingCartController {
 		System.out.println("customer" + customer.toString());
 		System.out.println("customName" + customer.getFirstName());
 		ModelAndView model = new ModelAndView("editprofile");
+		String section = "Navbar";
+		List<Menu> listMenu = productservice.getMenuByNavbar(section);
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		model.addObject("listprofileMenu", listprofileMenu);
+		model.addObject("listMenu", listMenu);
 		model.addObject("customer", customer);
 		return model;
 	}
@@ -352,7 +360,7 @@ public class ShoppingCartController {
 	}
 
 	@RequestMapping("/increase/{cartitemid}")
-	public ModelAndView udpateCartItem(@PathVariable int cartitemid,ModelAndView model) {
+	public ModelAndView udpateCartItem(@PathVariable int cartitemid, ModelAndView model) {
 		CartItem cartitem = cartservice.get(cartitemid);
 		double oldTotal = cartitem.getTotal();
 		Product product = cartitem.getProduct();
@@ -364,7 +372,7 @@ public class ShoppingCartController {
 		 */
 
 		// update the cart line
-		cartitem.setProductCount(cartitem.getProductCount()+1);
+		cartitem.setProductCount(cartitem.getProductCount() + 1);
 		cartitem.setBuyingPrice(product.getFinalPrice());
 		cartitem.setTotal(product.getFinalPrice() * cartitem.getProductCount());
 		cartservice.update(cartitem);
@@ -384,10 +392,9 @@ public class ShoppingCartController {
 		model.setViewName("cart");
 		return model;
 	}
-	
-	
+
 	@RequestMapping("/decrease/{cartitemid}")
-	public ModelAndView decreaseCartItem(@PathVariable int cartitemid,ModelAndView model) {
+	public ModelAndView decreaseCartItem(@PathVariable int cartitemid, ModelAndView model) {
 		CartItem cartitem = cartservice.get(cartitemid);
 		double oldTotal = cartitem.getTotal();
 		Product product = cartitem.getProduct();
@@ -399,7 +406,7 @@ public class ShoppingCartController {
 		 */
 
 		// update the cart line
-		cartitem.setProductCount(cartitem.getProductCount()-1);
+		cartitem.setProductCount(cartitem.getProductCount() - 1);
 		cartitem.setBuyingPrice(product.getFinalPrice());
 		cartitem.setTotal(product.getFinalPrice() * cartitem.getProductCount());
 		cartservice.update(cartitem);

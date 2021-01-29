@@ -24,6 +24,7 @@ public class Images {
 	@Column(name="captionText")
 	private String captionText;
 
+
 	public String getCaptionText() {
 		return captionText;
 	}

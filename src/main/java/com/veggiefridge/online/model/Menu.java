@@ -26,6 +26,17 @@ public class Menu {
 	@Column(name="url")
 	private String url;
 	
+	@Column(name="imageName")
+	private String imageName;
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	
 	public String getUrl() {
 		return url;
 	}

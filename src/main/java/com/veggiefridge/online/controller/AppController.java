@@ -58,20 +58,106 @@ public class AppController {
 	private static final Logger logger = LoggerFactory.logger(MembershipController.class);
 
 	
-	      //list Product
-		@RequestMapping(value="/")
-		public ModelAndView listProduct(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer, BindingResult  resultcustomer) throws IOException{
-			List<Customer> listCustomer = customerservice.getAllCustomers();
-			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
-			List<Product> listProduct = productService.getAllProducts();
-			model.addObject("listkiosklocation",listkiosklocation);
-			model.addObject("listProduct",listProduct);
-			model.addObject("listCustomer ",listCustomer);
-			model.setViewName("guest");
-			return model;
-		    }
-		
+	//permitAll acsess url
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView permitAll(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
+		String imageSection = "Header";
+		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+		List<Product> listProduct = productService.getAllProducts();
+		List<Customer> listCustomer = customerservice.getAllCustomers();
+		List<Images> headerImages = productService.getImagesBySection(imageSection);
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+		model.addObject("listprofileMenu", listprofileMenu);
+		String section = "Navbar";
+		List<Menu> listMenu = productService.getMenuByNavbar(section);
+		model.addObject("listMenu", listMenu);
+		model.addObject("headerImages", headerImages);
+		model.addObject("listCustomer", listCustomer);
+		model.addObject("listkiosklocation", listkiosklocation);
+		model.addObject("listProduct", listProduct);
+		/* model.setViewName("registerdhome"); */
+		model.setViewName("VeggieFridge");
+		return model;
+	}
+		
+		//Home Menu Url
+		
+		@RequestMapping(value = "/home", method = RequestMethod.GET)
+		public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
+				@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
+			String imageSection = "Header";
+			List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+			List<Product> listProduct = productService.getAllProducts();
+			List<Customer> listCustomer = customerservice.getAllCustomers();
+			List<Images> headerImages = productService.getImagesBySection(imageSection);
+			String profilemenuSection = "Profile";
+			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+			model.addObject("listprofileMenu", listprofileMenu);
+			String section = "Navbar";
+			List<Menu> listMenu = productService.getMenuByNavbar(section);
+			model.addObject("listMenu", listMenu);
+			model.addObject("headerImages", headerImages);
+			model.addObject("listCustomer", listCustomer);
+			model.addObject("listkiosklocation", listkiosklocation);
+			model.addObject("listProduct", listProduct);
+			/* model.setViewName("registerdhome"); */
+			model.setViewName("VeggieFridge");
+			return model;
+		}
+		 
+		//Sign in
+		
+	    @RequestMapping(value = "/login", method = RequestMethod.GET)
+		public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+				@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
+
+			ModelAndView model = new ModelAndView();
+			
+			if (error != null) {
+				model.addObject("error","Invalid username and password!");
+				getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION");
+			}
+
+			if (logout != null) {
+				model.addObject("msg", "You've been logged out successfully.");
+			}
+			model.setViewName("loginform");
+
+			return model;
+
+		}
+	    
+	    //Sign up
+	    
+		@RequestMapping(value = "/signup")
+		public ModelAndView signUp(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+			model.addObject("listkiosklocation",listkiosklocation);
+			model.setViewName("/signup");
+			return model;
+		}
+	    
+		//Log Out
+		@RequestMapping(value="/logout", method = RequestMethod.GET)
+		   public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+		      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		      if (auth != null){    
+		         new SecurityContextLogoutHandler().logout(request, response, auth);
+		      }
+		      return "redirect:/home";
+		   }
+
+		//Acess Denied
+		@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
+		public String accessDeniedPage(ModelMap model) {
+			model.addAttribute("user", getPrincipal());
+			return "accessDenied";
+		}
+		
+		
 	@RequestMapping("/continueLocation")  
 	public ModelAndView continueLoc(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer,BindingResult resultcustomer) 
 	
@@ -86,31 +172,6 @@ public class AppController {
 		return model; 
 	} 
 
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String dbaPage(ModelMap model) {
-		return "admin";
-	}
-	
-	
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String dba(ModelMap model) {
-		return "dba";
-	}
-	
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	   public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	      if (auth != null){    
-	         new SecurityContextLogoutHandler().logout(request, response, auth);
-	      }
-	      return "redirect:/login";
-	   }
-
-	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
-	public String accessDeniedPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-		return "accessDenied";
-	}
 	
 	private String getPrincipal(){
 		String userName = null;
@@ -168,34 +229,6 @@ public class AppController {
 		return model; 
 	} 
 	
-	//currentorder
-	@RequestMapping(value = "/signup")
-	public ModelAndView signUp(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
-		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-		model.addObject("listkiosklocation",listkiosklocation);
-		model.setViewName("/signup");
-		return model;
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
-
-		ModelAndView model = new ModelAndView();
-		
-		if (error != null) {
-			model.addObject("error","Invalid username and password!");
-			getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION");
-		}
-
-		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
-		}
-		model.setViewName("loginform");
-
-		return model;
-
-	}
 
 	// customize the error message
 	private String getErrorMessage(HttpServletRequest request, String key) {
@@ -303,7 +336,28 @@ public class AppController {
 				
 				@RequestMapping(value = "/head")
 				public ModelAndView head(ModelAndView model) {
-					model.setViewName("head");
+					String section = "Navbar";
+					List<Menu> listMenu = productService.getMenuByNavbar(section);
+					model.addObject("listMenu", listMenu);
+					model.setViewName("mainheader");
+					return model;
+				}
+				
+
+				@RequestMapping(value = "/myprofile")
+				public ModelAndView myprofile(ModelAndView model) {
+					String section = "Navbar";
+					List<Menu> listMenu = productService.getMenuByNavbar(section);
+					model.addObject("listMenu", listMenu);
+					model.setViewName("myprofile");
+					return model;
+				}
+				
+				
+				 //footer
+				@RequestMapping(value = "/myaccount")
+				public ModelAndView profile(ModelAndView model) {
+					model.setViewName("myaccount");
 					return model;
 				}
 		

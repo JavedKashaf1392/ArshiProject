@@ -12,43 +12,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async
-	src="https://www.googletagmanager.com/gtag/js?id=UA-77741880-4"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag() {
-		dataLayer.push(arguments);
-	}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-77741880-4');
-</script>
-<script async
-	src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
-<script>
-	(adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client : "ca-pub-1438670738267328",
-		enable_page_level_ads : true
-	});
-</script>
-<script async
-	src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
-<script>
-	(adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client : "ca-pub-1438670738267328",
-		enable_page_level_ads : true
-	});
-</script>
-<title>Online Vegetable And Milk Shopping in India-VeggieFridge</title> 
+ 
+<title>VeggieFridge</title> 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="canonical"
 	href="https://webdevtrick.com/responsive-shopping-cart-page/" />
 <link rel="stylesheet" href="style.css">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="main.css">
 <!-- font awesome -->
@@ -56,6 +27,7 @@
 	crossorigin="anonymous"></script>
 	
 <style>
+
 * {
 	padding: 0;
 	margin: 0;
@@ -79,20 +51,21 @@ body {
 
 .product-price {
 	float: left;
-	width: 16%;
+	width: 10%;
 }
 
 .product-quantity {
 	float: left;
-	width: 19%;
+	width: 25%;
 }
 
 .product-removal {
 	/* float: left;
 	width: 2%; */
-	float:right;
+	float:left;
 	width: 16%;
 	text-align: right;
+	margin-top:40px;
 }
 
 .product-line-price {
@@ -137,7 +110,7 @@ label {
 }
 
 .shopping-cart {
-	margin-top: 10px;
+	margin-top:500px;
 	max-width: 1388px;
    /*  width: 88vw; */
     margin: 0 auto;
@@ -148,6 +121,8 @@ label {
 	padding-bottom: 20px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid #eee;
+	max-width:1388px;
+	margin: 0 auto;
 }
 
 .column-labels .product-image, .column-labels .product-details,
@@ -353,12 +328,13 @@ label {
 .closebtn:hover {
   color: black;
 }
-.lg-title{
-    font-size: 2.5rem;
-    font-weight: 500;
-    text-align: center;
+.mycart {
+
+    font-size: 1.0rem; 
+    font-weight: 100;
+    text-align: center; 
     padding: 1.3rem 0;
-    opacity: 0.9;
+    opacity: 0.9; 
 }
 .jumbotron{
 max-width: 1388px;
@@ -372,25 +348,31 @@ height:30px
 }
  </style>
  </head>
-  
-  <body>
  
-	<jsp:include page="userheader.jsp"/>
+ <body>
+ 
+	 <%-- <jsp:include page="userheader.jsp"/> --%>
+	 
+	<jsp:include page="mainheader.jsp" /> 
+	
 	<c:choose>
 	<c:when test="${not empty listcustomercartitem}">
 
-		<div class="shopping-cart">
-		<span class="lg-title"> My Cart </span>
+    <div class="shopping-cart" style="margin-top:25px;">
+    
+    <span style="font-size:1.5rem; 
+    font-weight: 200;
+    text-align: center; 
+    padding: 1.3rem 0;
+    opacity: 0.9;"> My Cart </span>
 		
-	<c:if test="${not empty message}">
+	<%-- <c:if test="${not empty message}">
 	<div class="alert">
   <span class="closebtn">&times;</span>  
   <strong></strong> ${message}.
-</div>
-			
-	
-	</c:if>
-			     <div class="column-labels">
+  </div>
+	</c:if> --%>
+			    <div class="column-labels">
 				<label class="product-image">Image</label> 
 			    <label class="product-details">Product</label> 
 				<label class="product-price">Price</label> 	
@@ -417,10 +399,10 @@ height:30px
 							<div class="product-title">${cartitem.product.productName}</div>
 							<p class="product-description">Size: ${cartitem.product.size} ${cartitem.product.unit}</p>
 						</div>
-				   <div class="product-price" style="margin-top:20px;">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
+				   <div class="product-price" style="margin-top:40px;">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
 				   
 				   
-				   <div class="product-quantity">
+				   <div class="product-quantity" style="margin-top:20px;">
 <a href="${pageContext.request.contextPath}/cart/increase/${cartitem.cartitemid}">			   
 <button class ="qty">+</button></a>
 <input id=demoInput type=text min=1 max=9 class = "number" value="${cartitem.productCount}" style="text-align: center;width:35px;height:30px;">
@@ -435,9 +417,9 @@ height:30px
 						<%-- <div class="product-line-price">${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}</div> --%>
 	             <%--  <div class="product-line-price"><fmt:formatNumber type="number" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div> --%>
 					
-				<div class="product-line-price" style="margin-top:20px;">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.productCount*cartitem.total}"/></div>
+				<div class="product-line-price" style="margin-top:40px;">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.productCount*cartitem.total}"/></div>
 				
-				<div class="product-removal" style="margin-right:35px;margin-bottom:40px;">
+				<div class="product-removal">
 							<button class="remove-product" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'"><i class="fa fa-trash"></i></button>
 						</div>	
 					</div>
@@ -445,7 +427,7 @@ height:30px
 
 		<div style="margin-bottom:20px;margin-top:20px;">
 			
-	    <a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+	    <a href="${pageContext.request.contextPath}/cart/home" style="display: inline-block;
         padding: 8px 30px;
         text-align: center;
         text-decoration: none;
@@ -465,16 +447,16 @@ height:30px
 		<c:otherwise>
 
 		<div class="jumbotron">
-			<h3 class="text-center">Your Cart is Empty!</h3>
+			<h3 class="text-center" style="margin-top:35px;">Your Cart is Empty!</h3>
 			<hr>
-			<a href="${pageContext.request.contextPath}/cart/registerdhome" style="display: inline-block;
+			<a href="${pageContext.request.contextPath}/home" style="display: inline-block;
         padding:8px 30px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
         background-color:orange;
         border-radius: 6px;
-        outline: none;font-size:15px;margin-top:20px;margin-bottom:20px;">Continue Shopping</a>
+        outline: none;font-size:15px;margin-top:30px;margin-bottom:20px;">Continue Shopping</a>
 		</div>
 
 	</c:otherwise>
@@ -575,6 +557,8 @@ height:30px
 	</script>
 	
 	
+	
+	
 <script>
 var close = document.getElementsByClassName("closebtn");
 var i;
@@ -596,6 +580,88 @@ for (i = 0; i < close.length; i++) {
       document.getElementById('demoInput').stepDown();
    }
 </script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="js/app.js"></script>
+   <script>
+    $(document).ready(function(){
+   $('.food-slider').slick({
+      autoplay:true,
+     slidesToShow:3,
+     slidesToScroll:1,
+     prevArrow:".prev-btn",
+     nextArrow:".next-btn",
+     responsive:[
+        {
+           breakpoint:992,
+           settings:{
+            slidesToShow:2,
+           }
+        },
+        {
+         breakpoint:768,
+         settings:{
+          slidesToShow:1,
+         }
+      }
+     ]
+
+   });
+
+   $('.nav-trigger').click(function(){
+      $('.site-content-wrapper').toggleClass('scaled');
+   })
+});
+       </script>
+       
+      <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable ").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script> 
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="js/app.js"></script>
+   <script>
+    $(document).ready(function(){
+   $('.food-slider').slick({
+      autoplay:true,
+     slidesToShow:3,
+     slidesToScroll:1,
+     prevArrow:".prev-btn",
+     nextArrow:".next-btn",
+     responsive:[
+        {
+           breakpoint:992,
+           settings:{
+            slidesToShow:2,
+           }
+        },
+        {
+         breakpoint:768,
+         settings:{
+          slidesToShow:1,
+         }
+      }
+     ]
+
+   });
+
+   $('.nav-trigger').click(function(){
+      $('.site-content-wrapper').toggleClass('scaled');
+   })
+});
+       </script>
 	
 
 </body>

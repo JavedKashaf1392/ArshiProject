@@ -563,7 +563,7 @@ input[type=submit]:hover {
     
     <div class="logo">
     <a href="${pageContext.request.contextPath}/cart/registerdhome">
-   <spring:url value="/images" var="images" />
+    <spring:url value="/images" var="images" />
    <img src="${images}/logo.jpg"  width="165" height="120"/>
    </a>
    </div> 
@@ -590,6 +590,7 @@ input[type=submit]:hover {
  <div id="myModal" class="modal">
 
   <!-- Modal content -->
+  
   <div class="modal-content">
   <!-- <span class="close">&times;</span> -->
   <form method="post" action="${pageContext.request.contextPath}/cart/changeLocation" modelAttribute="kioskLocation">
@@ -739,15 +740,7 @@ window.onclick = function(event) {
   </div>  -->
   <a href="javascript:void(0);" style="font-size:20px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
-  
-  
-  
-  
-  
-  
 </div> 
-    
-     
      <script>
      function myFunction() {
          var input, filter, ul, li, a, i, txtValue;

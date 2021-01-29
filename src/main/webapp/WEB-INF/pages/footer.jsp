@@ -66,11 +66,11 @@ footer{
     /* background-color: #2c292f; */
 	box-sizing: border-box;
 	width: 100%;
-	text-align: left;
+	text-align: center;
 	font: bold 16px sans-serif;
 	padding: 50px 50px 60px 50px;
 	/* margin-top: 80px; */
-	 max-width: 1388px;
+	/*  max-width: 1388px; */
 	 /* margin-left:97px; */
 	 align-content: center;
 	 margin: 0 auto;
@@ -154,6 +154,7 @@ color:#767070;
 .footer-distributed .footer-center i.fa-envelope{
 	font-size: 17px;
 	line-height: 38px;
+	
 }
 
 .footer-distributed .footer-center p{
@@ -201,6 +202,7 @@ color:black;
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 20px;
+	
 }
 
 .footer-distributed .footer-icons{
@@ -246,14 +248,13 @@ color:black;
 
 }
    </style>
-
-    </head>
+   </head>
 	<body>
 		<!-- The content of your page would go here. -->
 
 		<footer class="footer-distributed">
 
-			<div class="footer-left">
+			<div class="footer-left" style="text-align:left;">
          <!--  <img src="img/logo.png"> -->
 				<h3><span>VeggieFridge</span></h3>
 
@@ -273,16 +274,16 @@ color:black;
 				<table style="margin-top:2%;">
 					<th><a href="abc.htm"> <spring:url value="/images"
 								var="images" /> <img src="${images}/Apple-App-store-icon.png"
-							width="120" height="45" style="float: right; margin-right: 7%" />
+							width="120" height="45" />
 					</a></th>
 					<th><a href="abc.htm"> <spring:url value="/images"
 								var="images" /> <img src="${images}/Google-App-store-icon.png"
-							width="120" height="45" style="float: right;" />
+							width="120" height="45" style="margin-left:6px;"/>
 					</a></th>
 				</table>
 			</div>
 
-			<div class="footer-center">
+			<div class="footer-center" style="text-align:left;">
 			<span style="color:black;font-size:18px;margin-left:6%;">Address</span>
 				<div style="margin-top:3%;">
 					<i class="fa fa-map-marker"></i>
@@ -306,9 +307,10 @@ color:black;
 				<p class="footer-company-name" style="margin-top:12%;">Created By VeggieFridge Copyright © 2021 All Rights
 								Reserved.</p>
 			</div>
-			<div class="footer-right">
+			<div class="footer-right" style="text-align:left;">
 				<p class="footer-company-about">
 					<span>About</span>
+					We offer training and skill building courses across Technology, Design, Management, Science and Humanities
 					We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
 				
 				

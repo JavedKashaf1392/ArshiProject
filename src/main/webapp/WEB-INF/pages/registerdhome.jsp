@@ -55,7 +55,7 @@ body {
     max-width: 1265px;
     margin: auto;
     user-select: none;
-    /* box-shadow: 0px 0px 3px 1px #00000078; */
+     /* box-shadow: 0px 0px 3px 1px #00000078; */ 
    /*  padding: 10px; */
     /*  box-sizing: border-box; */
     margin-left:160px;

@@ -302,72 +302,7 @@ body{
   .wrapper .form .inputfield.terms{
     flex-direction: row;
   }
-}  
-
-.cancelorder {
-	display: inline-block;
-	padding: 8px 10px;
-	font-size: 12px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #fff;
-	background-color: #DC143C;
-	border: none;
-	border-radius: 15px;
-	box-shadow: 0 5px #999;
-}
-
-.cancelorder:hover {
-	background-color: #B22222
-}
-
-.cancelorder:active {
-	background-color: #3e8e41;
-	box-shadow: 0 5px #666;
-	transform: translateY(4px);
-}
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.col-75 {
-	width: 100%;
-	margin-top: 11px;
-	color: black;
-}
-
-input[type=text], select, textarea {
-	width: 90%;
-	padding: 8px;
-	/* border: 1px solid #008000; */
-	border:none;
-	border-radius: 4px;
-	resize: vertical;
-}
-
-label {
-	padding: 12px 12px 12px 0;
-	display: inline-block;
-}
-
-input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 14px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	float: center;
-	margin-top: 10px;
-}
-
-input[type=submit]:hover {
-	background-color: #45a049;
-}        
+}          
           
 </style>
    </head>
@@ -405,52 +340,65 @@ input[type=submit]:hover {
       
     <section class="main" style="margin-left:80px;">
     <!--  <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
-    <div class="center"
-			style="margin-left:180px; padding: 1px 16px; height: 700px; background-color:white;">
-
-			<h3>Pendings</h3>
-			<hr>
-			<input type="text" id="myInput" onkeyup="myFunction()"
-				placeholder="Search for order.." title="Type in a name"
-				style="background-image: url('/css/searchicon.png'); background-position: 10px 10px; background-repeat: no-repeat; width: 45%; font-size: 16px; padding: 10px 20px 12px 40px; border: 1px solid #ddd; margin-bottom: 5px; margin-left: 47%; margin-right: auto; margin-top: 5px;">
-
-			<table id="myTable"
-				style="margin-left: auto; margin-right: auto; text-align: center; border-collapse: collapse; width: 100%; border: 1px solid #ddd; font-size: 18px; align-content: center; background-color: white; margin-bottom: 50px; margin-top: %;">
-
-				<tr class="header"
-					style="border-bottom: 1px solid #ddd; text-align: center; border-bottom: 1px solid #ddd; text-align: center; background-color: #4CAF50">
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Order
-						Id</th>
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Order
-						Date</th>
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Order
-						Status</th>
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Total
-						Amount</th>
-					<th></th>
-				</tr>
-
-				<c:forEach var="orders" items="${pendingOrders}">
-					<tr style="border-bottom: 1px solid #ddd;">
-						<td style="text-align: center; padding: 16px;"><a
-							href="${pageContext.request.contextPath }/order/listOrderItems/${orders.orderid}"
-							style="font-size: 100%; color: dodgerblue;">${orders.orderid}</a></td>
-						<td style="text-align: center; padding: 16px;">${orders.orderDate}</td>
-						<td style="text-align: center; padding: 16px;">${orders.pickupStatus}</td>
-						<!-- <i class="fa fa-check-circle" style="color:green"></i> -->
-						<td style="text-align: center; padding: 16px;">${orders.orderTotal}</td>
-						<td><a href="${pageContext.request.contextPath }/order/cancelOrder/${orders.orderid}"
-							style="display: inline-block; padding: 8px 16px; text-align: center; text-decoration: none; color: #ffffff; background-color: #4CAF50; border-radius: 6px; outline: none; margin-top: 6px; font-size: 15px;"
-						onclick="return confirm('Are you sure to cancel order?')">cancel</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
+      <div class="wrapper">
+    <div class="title">
+      Edit Profile
+    </div>
+    <div class="form">
+       <div class="inputfield">
+          <label>First Name</label>
+          <input type="text" class="input">
+       </div>  
+        <div class="inputfield">
+          <label>Last Name</label>
+          <input type="text" class="input">
+       </div>  
+       <div class="inputfield">
+          <label>City</label>
+          <input type="password" class="input">
+       </div>  
+      <div class="inputfield">
+          <label>Location</label>
+          <input type="password" class="input">
+       </div> 
+        <div class="inputfield">
+          <label>Gender</label>
+          <div class="custom_select">
+            <select>
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+       </div> 
+        <div class="inputfield">
+          <label>Email Address</label>
+          <input type="text" class="input">
+       </div> 
+      <div class="inputfield">
+          <label>Phone Number</label>
+          <input type="text" class="input">
+       </div> 
+      <div class="inputfield">
+          <label>state</label>
+          <textarea class="textarea"></textarea>
+       </div> 
+      <div class="inputfield">
+          <label>zip</label>
+          <input type="text" class="input">
+       </div> 
+     <!--  <div class="inputfield terms">
+          <label class="check">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <p>Agreed to terms and conditions</p>
+       </div>  -->
+      <div class="inputfield">
+        <input type="submit" value="Save Changes" class="btn">
+      </div>
+    </div>
+</div>	
     </section>
    
   <div style="margin-top:300px">

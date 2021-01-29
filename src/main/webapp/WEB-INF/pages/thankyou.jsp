@@ -351,7 +351,7 @@ z-index
 							style="color: green; font-size: 25px;"></span> <span
 							style="color: black;">${customerModel.cities},${customerModel.location}</span><br>
 						<br> <a
-							href="${pageContext.request.contextPath}/cart/registerdhome"
+							href="${pageContext.request.contextPath}/home"
 							style="display: inline-block; padding: 10px 70px; text-align: center; text-decoration: none; color: #ffffff; background-color: green; border-radius: 6px; outline: none; margin-top: 6px; font-size: 15px;">Continue
 							Shopping</a>
 				</div>

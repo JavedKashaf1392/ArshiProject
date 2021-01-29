@@ -71,7 +71,7 @@ public class ProductDAOImpl implements ProductDAO {
 										.setParameter("imageSection",imageSection)
 										.list();	
 	}
-
+     
 	@Override
 	public List<Menu> getMenuByNavbar(String section) {
 		String query = "FROM Menu WHERE section =:section";

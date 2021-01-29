@@ -30,6 +30,7 @@ import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.CustomerModel;
 import com.veggiefridge.online.model.Kiosk;
+import com.veggiefridge.online.model.Menu;
 import com.veggiefridge.online.model.OrderItem;
 import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Payment;
@@ -40,6 +41,7 @@ import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.OrderService;
 import com.veggiefridge.online.service.PaymentService;
+import com.veggiefridge.online.service.ProductService;
 import com.veggiefridge.online.service.QRCodeService;
 import com.veggiefridge.online.service.WalletService;
 
@@ -72,6 +74,9 @@ public class OrderController {
 	
    @Autowired
 	private WalletService walletservice;
+   
+   @Autowired
+   private ProductService productservice;
 
 	// get cartPage
 	private CartPage getCartPage() {
@@ -153,6 +158,9 @@ public class OrderController {
 		List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 		System.out.println("listOrderItem by OrderId" + listorderitem);
 		order = new Orders();
+		String section = "Navbar";
+		List<Menu> listMenu = productservice.getMenuByNavbar(section);
+		model.addObject("listMenu", listMenu);
 		model.addObject("order", order);
 		model.addObject("listorderitem", listorderitem);
 		model.setViewName("repeatOrder");
@@ -165,7 +173,13 @@ public class OrderController {
 		Orders orders = orderservice.getOrder(orderid);
 		List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 		System.out.println("listOrderItem by OrderId" + listorderitem);
+		String section = "Navbar";
+		List<Menu> listMenu = productservice.getMenuByNavbar(section);
+		model.addObject("listMenu", listMenu);
 		model.addObject("listorderitem", listorderitem);
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		model.addObject(listprofileMenu);
 		model.setViewName("orderinfo");
 		return model;
 	}
@@ -197,7 +211,13 @@ public class OrderController {
 			cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
 			cartpage.setCartitem(cartpage.getCartitem() + 1);
 			cartservice.updateCartPage(cartpage);
+			String profilemenuSection = "Profile";
+			List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+			model.addObject(listprofileMenu);
 			System.out.println("cartpage updated");
+			
+			
+			
 		}
 		return "redirect:/cart/listCustomerCartItem";
 	}
@@ -472,6 +492,13 @@ public class OrderController {
 			public String showPendingOrders(HttpServletRequest req, Model model) {
 					List<Orders> pendingOrders = orderservice.getPendingOrders(this.getCartPage().getCustomer().getCustomerid());
 					model.addAttribute("pendingOrders", pendingOrders);
+					  String section = "Navbar"; List<Menu> listMenu =
+					  productservice.getMenuByNavbar(section); model.addAttribute("listMenu",
+					  listMenu);
+					  String profilemenuSection = "Profile";
+						List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+						model.addAttribute("listprofileMenu", listprofileMenu);
+					 
 					return "CurrentOrder";
 				}
 				
@@ -479,6 +506,12 @@ public class OrderController {
 			public String showDeliveredOrders(HttpServletRequest req, Model model) {
 					List<Orders> deliveredOrders = orderservice.getDeliveredOrders(this.getCartPage().getCustomer().getCustomerid());
 					model.addAttribute("deliveredOrders",deliveredOrders);
+					String section = "Navbar";
+					List<Menu> listMenu = productservice.getMenuByNavbar(section);
+					model.addAttribute("listMenu", listMenu);
+					String profilemenuSection = "Profile";
+					List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+					model.addAttribute("listprofileMenu", listprofileMenu);
 					return "myorder";
 				}
 			
