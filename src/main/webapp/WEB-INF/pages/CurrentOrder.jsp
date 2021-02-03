@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar menu With Sub-menus | Using HTML, CSS & JQuery</title>
+    <title>VeggieFridge</title>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
-     
-      <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *{
   margin: 0;
@@ -34,22 +37,28 @@ body{
   position:absolute;
   top: 0;
   left: -100%;
-  overflow-y: auto;
+ /*  overflow-y: auto; */
   transition: 0.6s ease;
   transition-property: left;
   background-color: white;
   left: 0;
-  margin-top:243px; 
-  margin-left:17%;  
+  margin-top:248.3px; 
+  margin-left:15%;  
 }
 
 /*.side-bar.active{
   left: 0;
 }*/
+.side-bar .menuprofile{
+  width: 100%;
+  background-color:white;
+  padding: 10px 10px;
+
+}
 
 .side-bar .menu{
   width: 100%;
-  margin-top: 80px;
+  margin-top:20px;
 }
 
 .side-bar .menu .item{
@@ -75,6 +84,9 @@ body{
 
 .side-bar .menu .item i{
   margin-right: 15px;
+}
+.side-bar .menu .item i{
+color: #4CAF50;
 }
 
 .side-bar .menu .item a .dropdown{
@@ -138,7 +150,7 @@ body{
   }
 }
 .wrapper{
-  max-width: 500px;
+  max-width: 850px;
   width: 100%;
   /* background: #fff; */
   margin: 20px auto;
@@ -302,86 +314,27 @@ body{
   .wrapper .form .inputfield.terms{
     flex-direction: row;
   }
-}  
-
-.cancelorder {
-	display: inline-block;
-	padding: 8px 10px;
-	font-size: 12px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #fff;
-	background-color: #DC143C;
-	border: none;
-	border-radius: 15px;
-	box-shadow: 0 5px #999;
-}
-
-.cancelorder:hover {
-	background-color: #B22222
-}
-
-.cancelorder:active {
-	background-color: #3e8e41;
-	box-shadow: 0 5px #666;
-	transform: translateY(4px);
-}
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.col-75 {
-	width: 100%;
-	margin-top: 11px;
-	color: black;
-}
-
-input[type=text], select, textarea {
-	width: 90%;
-	padding: 8px;
-	/* border: 1px solid #008000; */
-	border:none;
-	border-radius: 4px;
-	resize: vertical;
-}
-
-label {
-	padding: 12px 12px 12px 0;
-	display: inline-block;
-}
-
-input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 14px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	float: center;
-	margin-top: 10px;
-}
-
-input[type=submit]:hover {
-	background-color: #45a049;
-}        
+}          
           
 </style>
    </head>
   <body>
-  <jsp:include page="mainheader.jsp"></jsp:include>
+  <jsp:include page="mainheader.jsp"></jsp:include> 
    <!-- <div class="menu-btn">
     <i class="fas fa-bars"></i>
     </div>-->
     <div style="background-color:#f5f5f5;margin-top:10px;">
+    
     <div class="side-bar">
-     <!-- <div class="close-btn">
-        <i class="fas fa-times"></i>
-      </div>-->
-      <div class="menu">
+     
+    <div class="menuprofile">
+    <spring:url value="/images" var="images" />
+    <img src="${images}/profile.jpg"  width="60" height="60" alt=""/>
+    <a href="#" class="dropbtn" style="color:black;text-decoration:none;">Hello, <span style="font-size:20px;">${customerModel.firstName} ${customerModel.lastName}</span></a>
+    </div>
+    
+       <div class="menu">
+      
         <div class="item"><a href="#"><i class="fas fa-desktop"></i>My Cart</a></div>
         <div class="item">
           <a class="sub-btn"><i class="fas fa-table"></i>Orders<i class="fas fa-angle-right dropdown" style="background-color: gainsboro;border-radius:50%;;padding:10px 10px;"></i></a>
@@ -403,60 +356,14 @@ input[type=submit]:hover {
       </div>
     </div>
       
-    <section class="main" style="margin-left:80px;">
-    <!--  <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
-    <div class="center"
-			style="margin-left:180px; padding: 1px 16px; height: 700px; background-color:white;">
-
-			<h3>Pendings</h3>
-			<hr>
-			<input type="text" id="myInput" onkeyup="myFunction()"
-				placeholder="Search for order.." title="Type in a name"
-				style="background-image: url('/css/searchicon.png'); background-position: 10px 10px; background-repeat: no-repeat; width: 45%; font-size: 16px; padding: 10px 20px 12px 40px; border: 1px solid #ddd; margin-bottom: 5px; margin-left: 47%; margin-right: auto; margin-top: 5px;">
-
-			<table id="myTable"
-				style="margin-left: auto; margin-right: auto; text-align: center; border-collapse: collapse; width: 100%; border: 1px solid #ddd; font-size: 18px; align-content: center; background-color: white; margin-bottom: 50px; margin-top: %;">
-
-				<tr class="header"
-					style="border-bottom: 1px solid #ddd; text-align: center; border-bottom: 1px solid #ddd; text-align: center; background-color: #4CAF50">
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Order
-						Id</th>
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Order
-						Date</th>
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Order
-						Status</th>
-					<th
-						style="width: %; color: white; text-align: center; padding: 12px;">Total
-						Amount</th>
-					<th></th>
-				</tr>
-
-				<c:forEach var="orders" items="${pendingOrders}">
-					<tr style="border-bottom: 1px solid #ddd;">
-						<td style="text-align: center; padding: 16px;"><a
-							href="${pageContext.request.contextPath }/order/listOrderItems/${orders.orderid}"
-							style="font-size: 100%; color: dodgerblue;">${orders.orderid}</a></td>
-						<td style="text-align: center; padding: 16px;">${orders.orderDate}</td>
-						<td style="text-align: center; padding: 16px;">${orders.pickupStatus}</td>
-						<!-- <i class="fa fa-check-circle" style="color:green"></i> -->
-						<td style="text-align: center; padding: 16px;">${orders.orderTotal}</td>
-						<td><a href="${pageContext.request.contextPath }/order/cancelOrder/${orders.orderid}"
-							style="display: inline-block; padding: 8px 16px; text-align: center; text-decoration: none; color: #ffffff; background-color: #4CAF50; border-radius: 6px; outline: none; margin-top: 6px; font-size: 15px;"
-						onclick="return confirm('Are you sure to cancel order?')">cancel</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
+    <section class="main" style="margin-left:360px;">
+    <!-- <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
     </section>
    
   <div style="margin-top:300px">
- <jsp:include page="footer.jsp"></jsp:include>
-   </div>
-    </div>
+  <jsp:include page="footer.jsp"></jsp:include>
+  </div>
+  </div>
     
       
 

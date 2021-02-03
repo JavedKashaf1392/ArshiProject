@@ -589,11 +589,11 @@ input[type=submit]:hover {
   <body >
  
    <!--  header -->
-  <jsp:include page = "userheader.jsp"/>
+  <jsp:include page = "mainheader.jsp"/>
   
   <div class="centercontent" style="background-color:;margin-top:10px;">
    
-   <div class="sidemenu" style="margin: 0;
+ <%--   <div class="sidemenu" style="margin: 0;
   padding: 0;
   width: 250px;
   background-color:#f1f1f1;
@@ -648,7 +648,7 @@ input[type=submit]:hover {
   text-decoration: none; "> - Customer Service</a>
   
   <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
-  </div>
+  </div> --%>
 
  <div class="center" style=" margin-left: 200px;
   padding: 1px 16px;
@@ -759,101 +759,7 @@ function myFunction() {
   </div>
 
  <!--  ............................  -->
-      <div class="footer" style="margin-top: auto;">
-      <div class="main-content">
-      <div class="left box">
- 
-<h2>VeggieFridge</h2>
-<div class="content"> 
-                            <a href="#" style="color:white">About Us</a><br><br>
-                            <a  href="#" style="color:white">Privacy Policy</a><br><br>
-                            <a href="#"  style="color:white">Help</a><br><br>
-                            <a href="#"  style="color:white">Terms And Condition</a><br><br>
-                            <a href="#"  style="color:white">Carriers</a><br><br>
-                            <a href="#"  style="color:white">Affiliate</a><br><br>
-                            <a href="#"  style="color:white">In News</a><br><br>
-                            <a href="#"  style="color:white">vf instant</a><br><br>
-                            <a href="#"  style="color:white">vf daily</a><br><br>
-</div>
-</div>
-<div class="center box">
-                    <h2>
-Address</h2>
-<div class="content">
-                        <div class="place">
-                            <span class="fas fa-map-marker-alt"></span>
-                            <span class="text">Birendranagar, Surkhet</span>
-                        </div>
-<div class="phone">
-                            <span class="fas fa-phone-alt"></span>
-                            <span class="text">+089-765432100</span>
-                        </div>
-<div class="email">
-                            <span class="fas fa-envelope"></span>
-                            <span class="text">abc@example.com</span>
-                        </div>
-
-
-                            <div class="social"> 
-                            <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;color:white;"></span></a>
-                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;color:white;"></span></a>
-                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;color:white;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;color:white;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;color:white;"></span></a>
-                            </div>
-
-</div>
-</div>
-<div class="right box" >
-                    <h2>
-Contact us</h2>
-<div class="content">
-                        <form action="#">
-                            <div class="email">
-                                <div class="text">
-Email *</div>
-<input type="email" required>
-                            </div>
-<div class="msg">
-                                <div class="text">
-Message *</div>
-<!-- NOTE: Due to more textarea tag I got an error. So I changed the textarea name to changeit. Please change that changeit name to textarea -->
-<changeit id=".msgForm" rows="2" cols="25" required></changeit> <!-- replace this changeit name to textarea -->
-
-                            <br />
-<div class="btn">
-<button type="submit">Send</button>
-                            </div>
-                            </form> <br>
-       
-    <h4 >Download Apps</h4><br>
-     <table>
-     <th> 
-    <a href="abc.htm">                      
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Apple-App-store-icon.png" width="100" height="40" style="float: right; margin-right:7%"/>
-    </a> 
-    </th>
-    <th>
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Google-App-store-icon.png" width="100" height="40" style="float: right;"/>
-    </a>      
-    </th>
-    </table>                         
-    </div>
-
-                    <div class="bottom">
-                    <center>
-                    <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
-                    <span class="far fa-copyright"></span> 2020 All rights reserved.
-                    </center>
-                    </div>
-
-</div>
-</div>
-</div>
+     
 
 
  <script type="text/javascript">
@@ -866,6 +772,8 @@ Message *</div>
         sessionStorage.setItem("SelItem", selVal);
     });
    </script>
+   
+    <jsp:include page = "footer.jsp"/>
  
   </body>
   </html>

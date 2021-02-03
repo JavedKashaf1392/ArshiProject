@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -13,46 +15,11 @@
 
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
-        <!-- font awesome -->
-        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 
 <style>
-        /* fonts  */
-@font-face {
-    font-family:"Raleway-regular";
-    src:url(../fonts/Raleway-Regular.ttf)
-}
-@font-face {
-    font-family:"Raleway-medium";
-    src:url(../fonts/Raleway-Medium.ttf)
-}
-@font-face {
-    font-family:"Raleway-bold";
-    src:url(../fonts/Raleway-Bold.ttf)
-}
-@font-face {
-    font-family:"Raleway-extrabold";
-    src:url(../fonts/Raleway-ExtraBold.ttf)
-}
-@font-face {
-    font-family:"Raleway-semibold";
-    src:url(../fonts/Raleway-SemiBold.ttf)
-}
-@font-face {
-    font-family:"Raleway-black";
-    src:url(../fonts/Raleway-Black.ttf)
-}
 
-/* colors  */
+ 
+/* colors */
 
 :root {
     --primary:#4CAF50;
@@ -65,28 +32,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.
     --heaven:#FFFFFF;
     --footer:#2D333F;
 }
-
-:root{  
-    --white-light: rgba(255, 255, 255, 0.5);
-    --alice-blue: #f8f9fa;
-  /*   --carribean-green: #40c9a2; */
-    --carribean-green:green;
-    --gray: #ededed;
-}
-
 /* Reset  */
+
 *{
     padding:0;
     margin:0;
     box-sizing: border-box;
 }
 
-
-body{
-    -webkit-font-smoothing:antialiased;
-  /*   font-family: "Raleway-regular"; */
-     font-family: 'Quicksand', sans-serif;     
-}
 .container {
     width:100%;
     padding:o 15px;
@@ -116,12 +69,12 @@ body{
     }
   }
 
-  .main-wrapper{
+   .main-wrapper{
       position:relative;
       width:100%;
       height:100vh;
       overflow:hidden;
-  }
+  } 
 
   .nav-background{
       width:100%;
@@ -267,13 +220,13 @@ nav .navbar a:hover{
     width:100%;
     height:69px;
     /* background-image:url(../images/shadow.svg); */
-    background-image:url("images/shadow.svg");
+   /*  background-image:url("images/shadow.svg"); */
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
     bottom:-22px;
     z-index:-1;
-   /* box-shadow: 0px 0px 3px 1px #00000078; */
+    box-shadow: 0px 0px 3px 1px #00000078; 
     
 }
 .magic-shadow-sm{
@@ -285,7 +238,7 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-    background-image:url("/images/shadow-sm.svg");
+   /*  background-image:url("/images/shadow-sm.svg"); */
    /*  background-repeat: no-repeat; */
     background-position: center;
     position: absolute;
@@ -297,7 +250,7 @@ nav .navbar a:hover{
     -moz-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
     -o-transform:translateX(-50%);
-   /*  box-shadow: 0px 0px 3px 1px #00000078; */
+    box-shadow: 0px 0px 3px 1px #00000078;
 }
 header.hero{
     height:600px;
@@ -1024,15 +977,7 @@ footer.copyright a{
 }
     
  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
-/* <style>  */
 
-:root{  
-    --white-light: rgba(255, 255, 255, 0.5);
-    --alice-blue: #f8f9fa;
-  /*   --carribean-green: #40c9a2; */
-    --carribean-green:green;
-    --gray: #ededed;
-}
 .lg-title,
 .md-title,
 .sm-title
@@ -1150,11 +1095,11 @@ width:35px;
 .dropdown:hover .dropbtn {background-color: ;
     border-bottom: 3px solid white;}
     
-    /* ........Profile Menu css Close........... */
- </style>
+/* ........Profile Menu css Close........... */
+
+</style>
+
 </head>
-
-
 <!-- ***************Body Code***************** -->
 
 <body>
@@ -1168,15 +1113,14 @@ width:35px;
  --%>
  
 <!-- ......... HeadSection........ -->
+ <div class="main-wrapper">
 
-<div class="main-wrapper"> 
-
-<div class="nav-background">
+            <div class="nav-background">
             <div class="mobile-logo">
    <spring:url value="/images" var="images" />
    <img src="${images}/VeggieFridge.ico"  width="150" height="100" alt=""/>
-             <!--    <img src="./icons/logo.svg" alt=""> -->
             </div>
+            
             <div class="mobile-nav">
    <div class="cart">
    <div class="flex items-center">
@@ -1236,8 +1180,8 @@ width:35px;
    <img src="${images}/phone2.png"  width="25" height="25" alt=""/>
                     <!-- <img src="./icons/phone.svg" alt=""> -->
                     <div>
-                        <h5>Call us: (+84) 123 456 789</h5>
-                        <h6>E-mail : support@freshmeal.com</h6>
+                      <h5>Call Us: (+91) 982 357 6042  </h5>
+                      <h6>E-mail : support@veggiefridge.com</h6>
                     </div>
                 </div>
                 <%-- <div class="time flex items-center">
@@ -1252,7 +1196,7 @@ width:35px;
             </div>
         </div>
         
-           <div class="site-content-wrapper">
+       <div class="site-content-wrapper">
        <div class="nav-trigger">
                 <svg xmlns="" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -1419,9 +1363,8 @@ width:35px;
    <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
                                <!--  <img src="/images/phone.svg" alt=""> -->
                                 <div>
-                                    <h5>Call US: (+84) 123 456 789</h5>
-                                    <h6>E-mail : support@freshmeal.com</h6>
-                                </div>
+                                      <h5>Call Us: (+91) 982 357 6042  </h5>
+                                    <h6>E-mail : support@veggiefridge.com</h6>
                             </div>
                         </div>
                     </div>
@@ -1453,38 +1396,11 @@ width:35px;
                     </div>
                      </security:authorize>
                  </nav>
-                   <%-- <header class="hero flex items-center" style="background-image:url('images/Blur.png');">
-                    <div class="container">
-                        <div class="welcome flex items-center">
-                            <span>Welcome to</span>
-                            <spring:url value="/images" var="images" />
-   <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/> 
-                          <!--   <img src="./icons/logo-2.svg" alt=""> -->
-                        </div>
-                        <h1>The World Best <span>Shoping</span> Website</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the
-                            industry's standard dummy.</p>
-                        <div>
-                            <button class="btn btn-primary">Read More</button>
-                            <button class="btn btn-secondary">Shop Now</button>
-                        </div>
-                        <div class="hero-image">
-                         <spring:url value="/images" var="images" />
-                         <img src="${images}/vegies.png" alt=""/>
-                            <!-- <img src="./images/straw.png" alt=""> -->
-                        </div>
-                    </div>
-                </header>      
-                 --%>
-           
-           
-              
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="js/app.js"></script>
+   
    <script>
     $(document).ready(function(){
    $('.food-slider').slick({
@@ -1514,18 +1430,8 @@ width:35px;
       $('.site-content-wrapper').toggleClass('scaled');
    })
 });
-       </script>
-       
-      <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable ").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script> 
-   
+    
+</script>
+ 
 </body>
 </html>

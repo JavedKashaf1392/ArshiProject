@@ -246,8 +246,7 @@ public class ShoppingCartController {
 
 	}
 
-	// listCartItem
-
+	 //listCartItem
 	@RequestMapping(value = "/listCustomerCartItem")
 	public ModelAndView listCustomerCartItem(ModelAndView model, @ModelAttribute CartPage cartpage,
 			BindingResult result) {
@@ -294,13 +293,14 @@ public class ShoppingCartController {
 	}
 
 	//edit customer
-	@RequestMapping(value = "/editProfile{customerid}", method = RequestMethod.GET)
-	public ModelAndView editProfile() {
+	@RequestMapping(value = "/editProfile{customerid}",method = RequestMethod.GET)
+	public ModelAndView editProfile(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
+			BindingResult result, HttpSession session) {
 		System.out.println("editProfile");
-		Customer customer = customerService.getCustomer(this.getCartPage().getCustomer().getCustomerid());
+		customer = customerService.getCustomer(this.getCartPage().getCustomer().getCustomerid());
 		System.out.println("customer" + customer.toString());
 		System.out.println("customName" + customer.getFirstName());
-		ModelAndView model = new ModelAndView("editprofile");
+		model = new ModelAndView("myaccount");
 		String section = "Navbar";
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
 		String profilemenuSection = "Profile";
@@ -311,12 +311,19 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	// save and update customer
+	 //save and update customer
 	@RequestMapping(value = "/saveEditProfile", method = RequestMethod.POST)
 	public ModelAndView saveEditCustomer(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
 			BindingResult result, HttpSession session) {
-		customerService.updateCustomer(customer);
-		model.setViewName("");
+	    customerService.updateCustomer(customer);
+	    model.addObject("message", env.getProperty("account.profileupupdated"));
+	    String section = "Navbar";
+		List<Menu> listMenu = productservice.getMenuByNavbar(section);
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		model.addObject("listprofileMenu", listprofileMenu);
+		model.addObject("listMenu", listMenu);
+		model.setViewName("myaccount");
 		return model;
 	}
 
@@ -326,13 +333,19 @@ public class ShoppingCartController {
 		// check if the email id is valid and registered with us.
 		Customer customer = new Customer();
 		customer.setEmail(email);
+		String section = "Navbar";
+		List<Menu> listMenu = productservice.getMenuByNavbar(section);
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		model.addAttribute("listprofileMenu", listprofileMenu);
+		model.addAttribute("listMenu", listMenu);
 		model.addAttribute("customer", customer);
 		return "EditPassword";
 	}
 
-	// mapping set New Password
+	//set New Password
 	@RequestMapping(value = "/changeNewPassword", method = RequestMethod.POST)
-	public String setNewPassword(@ModelAttribute("customer") Customer cust, ModelMap map, BindingResult resultcust) {
+	public String setNewPassword(@ModelAttribute("customer") Customer cust, ModelMap map, BindingResult resultcust,ModelAndView model) {
 		Customer customer = customerService.getCustomerByEmail(this.getCartPage().getCustomer().getEmail());
 		System.out.println("mailid" + customer.getEmail());
 		if (customer != null) {
@@ -342,8 +355,14 @@ public class ShoppingCartController {
 			customer.setPassword(encodedPassword);
 			customerService.updateCustomer(customer);
 			System.out.println("update customer successfully");
+			String section = "Navbar";
+			List<Menu> listMenu = productservice.getMenuByNavbar(section);
+			String profilemenuSection = "Profile";
+			List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+			model.addObject("listprofileMenu", listprofileMenu);
+			model.addObject("listMenu", listMenu);
 		}
-		return "redirect:/home/loginform";
+		return "EditPassword";
 	}
 
 	@SuppressWarnings("unchecked")

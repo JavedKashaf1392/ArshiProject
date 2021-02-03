@@ -178,7 +178,10 @@ public class Customer implements Serializable {
 		return "Customer [customerid=" + customerid + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", mobile=" + mobile + ", cities=" + cities + ", location=" + location + ", email=" + email
 				+ ", password=" + password + ", confirmPassword=" + confirmPassword + ", newPassword=" + newPassword
-				+ ", role=" + role + ", cartpage=" + cartpage + "]";
+				+ ", role=" + role + ", cartpage=" + cartpage + ", wallet=" + wallet + "]";
 	}
+
+    
+	
 	
 }

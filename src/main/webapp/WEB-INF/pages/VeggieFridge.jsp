@@ -1944,7 +1944,7 @@ height:40px
             
               
 <!-- Products   -->
-       <security:authorize access="isAnonymous() or hasRole('USER')">
+     <security:authorize access="isAnonymous() or hasRole('USER')">
 	 <div class = "products">
             <div class = "container" style="margin: 0 auto;max-width:1388px;">
                 <h1 class = "lg-title">Fresh Vegetables And Milk</h1>

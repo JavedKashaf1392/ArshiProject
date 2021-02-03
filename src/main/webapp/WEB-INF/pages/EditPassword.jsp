@@ -1,504 +1,463 @@
+<!DOCTYPE html>
 
-  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-   pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<html lang="en" dir="ltr">
+<head>
 
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeggieFridge</title>
 
- <!DOCTYPE HTML>
- <html lang="en" dir="ltr">
-        
-        <head> 
-        <link rel="icon" type="image/jpg" href="images/logo.jpg">
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Edit Profile-VeggieFridge</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
-       <link rel="icon" type="image/x-icon" href="favicon.png">
-        <style>
-        
-body {
-font-family: Arial, Helvetica, sans-serif;
-background-color: white;
-}
-hr{
-border:1px solid #f1f1f1;
-}
-input[type=text], select, textarea {
-  /* border: 1px solid black; */
-  margin-left: 10px;
-  margin-top:10px;
-  width: 110%;
-  padding: 8px;
-  border: 1px solid #008000;
- /*  border-radius: 4px; */
-  resize: vertical;
-}
-input[type=password], select, textarea,password {
-  /* border: 1px solid black; */
-  margin-left: 10px;
-  margin-top:10px;
-  width: 110%;
-  padding: 8px;
-  border: 1px solid #008000;
- /*  border-radius: 4px; */
-  resize: vertical;
-}
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-.footer{
-    margin-left:15%;
-    margin-right:20%;
-    position:relative;
-    width:72%;
-    height:500px;
-    background: #4CAF50; 
-    position:relative;
-   /*  padding: 20px;
-    padding: 20px; */
-    /* border:1px solid black;  */
-    margin-top:auto;
-    
-}
-.carousel{
-    padding: 20px;
-    padding: 20px;
-    margin-left:150px;
-    /* margin-right:100px; */
-    position:relative;
-    width: 100%;
-    margin-top:5px;
-   /*  background: #4CAF50; */
-    /*  border: 1px solid grey;  */
-     height:550px;
-     transition:1s;
-     display: -webkit-box;
-     display: -ms-flexbox;
-     display: flex; 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	charset="utf-8"></script>
 
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
 }
- @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
- 
- *{
-    margin: 0;
-    padding: 0;
-   /*  color: #d9d9d9; */
-   /*  color:black; */
-    /* box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; */ 
-} 
-.main-content{
-    display: flex;
+
+.side-bar {
+	/* background: rgba(255, 255, 255, 0.1);*/
+	/* backdrop-filter: blur(15px); */
+	width: 290px;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: -100%;
+	/*  overflow-y: auto; */
+	transition: 0.6s ease;
+	transition-property: left;
+	background-color: white;
+	left: 0;
+	margin-top: 295px;
+	margin-left: 15%;
+	
+	
 }
-.main-content .box{
-    flex-basis: 50%;
-    padding: 10px 20px;
+
+/*.side-bar.active{
+  left: 0;
+}*/
+.side-bar .menuprofile {
+	width: 100%;
+	background-color: white;
+	padding: 10px 10px;
 }
-.box h2{
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-transform: uppercase;
+
+.side-bar .menu {
+	width: 100%;
+	margin-top: 20px;
 }
-.box .content{
-    margin: 20px 0 0 0;
-    position: relative;
+
+.side-bar .menu .item {
+	position: relative;
+	cursor: pointer;
 }
-.box .content:before{
-    position: absolute;
-    content: '';
-    top: -10px;
-    height: 2px;
-    width: 100%;
-    background: #1a1a1a; 
-      /*   background: #d9d9d9; */
+
+.side-bar .menu .item a {
+	/* color: #fff;*/
+	font-size: 16px;
+	text-decoration: none;
+	display: block;
+	padding: 5px 30px;
+	line-height: 60px;
+	color: black;
 }
-.box .content:after{
-    position: absolute;
-    content: '';
-    height: 2px;
-    width: 15%;
-  /*   background: #f12020; */
-  background: #d9d9d9;
-    top: -10px;
+
+.side-bar .menu .item a:hover {
+	/*background: #8621F8;*/
+	transition: 0.3s ease;
+	background: gray;
 }
-.left .content p{
-    text-align: justify;
+
+.side-bar .menu .item i {
+	margin-right: 15px;
 }
-.center .content .social{
-    margin: 20px 0 0 0;
+
+.side-bar .menu .item i {
+	color: #4CAF50;
 }
-.center .content .social a{
-    padding: 0 2px;
+
+.side-bar .menu .item a .dropdown {
+	position: absolute;
+	right: 0;
+	margin: 20px;
+	transition: 0.3s ease;
 }
-.center .content .social a span{
-    height: 40px;
-    width: 40px;
-    /*  background: #1a1a1a;  */
-    background: white;
-    line-height: 40px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 50px;
-    transition: 0.3s;
+
+.side-bar .menu .item .sub-menu {
+	/* background: rgba(255, 255, 255, 0.1);*/
+	display: none;
+	background-color: gainsboro;
 }
-/* ...Left Content.... */
-.center .content .social a span:hover{
-    background: #f12020;
+
+.side-bar .menu .item .sub-menu a {
+	padding-left: 80px;
 }
-.center .content .fas{
-    font-size: 1.4375rem;
-   /*  background: #1a1a1a; */
-    background: white;
-    height: 45px;
-    width: 45px;
-    line-height: 45px;
-    text-align: center;
-    border-radius: 50%;
-    transition: 0.3s;
-    cursor: pointer;
+
+.rotate {
+	transform: rotate(90deg);
 }
-.center .content .fas:hover{
-    background: #4CAF50;
+
+.close-btn {
+	position: absolute;
+	font-size: 20px;
+	right: 0;
+	margin: 25px;
+	cursor: pointer;
+	color: black;
 }
-.center .content .text{
-    font-size: 1.0625rem;
-    font-weight: 500;
-    padding-left: 10px;
+
+.menu-btn {
+	position: absolute;
+	font-size: 20px;
+	margin: 25px;
+	cursor: pointer;
+	color: black;
 }
-.center .content .phone{
-    margin: 15px 0;
+
+.main {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
 }
-.right form .text{
-    font-size: 1.0625rem;
-    margin-bottom: 2px; 
-    color: #656565;
+
+.main h1 {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 60px;
+	text-align: center;
+	line-height: 80px;
 }
-.right form .msg{
-    margin-top: 10px;
+
+@media ( max-width : 900px) {
+	.main h1 {
+		font-size: 40px;
+		line-height: 60px;
+	}
 }
-.right form input, .right form .msgForm{
-    width: 100%;
-    font-size: 1.0625rem;
-   /*  background: #151515; */
-    /* padding-left: 10px; */
-    border: 1px solid #222222;
+
+.wrapper {
+	max-width: 850px;
+	width: 100%;
+	/* background: #fff; */
+	margin: 20px auto;
+	/*  box-shadow: 1px 1px 2px rgba(0,0,0,0.125); */
+	padding: 30px;
+	background-color: white;
+	height: 768px;
+	
 }
-.right form input:focus,
-.right form .msgForm:focus{
-    outline-color: #3498db;
+
+.wrapper .title {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 25px;
+	color: green;
+	text-transform: uppercase;
+	text-align: center;
 }
-.right form input{
-    height: 35px;
-}
-.right form .btn{
-    margin-top: 10px;
-}
-.right form .btn button{
-    height: 40px;
-    width: 100%;
-    border: none;
-    outline: none;
-    background: #125688;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: .3s;
-}
-.right form .btn button:hover{
-    background:  #4CAF50;
-}
-.bottom center{
-     align-content:
- /*  background: #444; */
-   /* color: #fff;  */
-    padding: 20px;
-    margin-top:130px;
-    padding: 5px;
-    font-size: 0.9375rem;
-   background: white; 
-    width: 80%;
-}
-.bottom center span{
-    color: #656565;
-}
-.bottom center a{
-    color: black;
-    text-decoration: none;
-}
-.bottom center a:hover{
-    text-decoration: underline;
-}
-@media screen and (max-width: 900px) {
-    footer{
-        position: relative;
-        bottom: 0px;
-    }
-    .main-content{
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-    .main-content .box{
-        margin: 5px 0;
-    }
-}
-.active, .dot:hover {
-  background-color: #717171;
-}
- </style>  
-  <body>
- 
-   <!--  header -->
- <jsp:include page ="userheader.jsp"/> 
- 
-  <div class="centercontent" style="background-color:;margin-top:15px;margin-bottom:20px;">
+
+.wrapper .form {
+	width: 60%;
    
-  <div class="sidemenu" style="margin: 0;
-  padding: 0;
-  width: 250px;
-  background-color:;
-  position: absolute;
-  height:700px;
-  /*overflow: auto;*/
-  margin-left:15%;border:1px solid #ddd;">
-  
-  <a class="active" href="#home" style=" display: block;
-  color: white;
-  padding: 16px;
-  text-decoration: none;background-color:; ">My Account</a>
-  
-  <a href="${pageContext.request.contextPath }/order/editProfile"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;"> - Edit Profile</a> 
-  
-  <a href="${pageContext.request.contextPath }/cart/editPassword/${customerModel.email}"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Change Password</a> 
-  
-  <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - MY Cart</a>
-  
-  <a href="${pageContext.request.contextPath }/order/pendingorders"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - MY Order</a>
-  
-  <a href="${pageContext.request.contextPath }/home/wallet" style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "-> - My Wallet</a>
-  
-  <a href="#home"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;"> - Membership</a>
-  
-  <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Pending Orders</a>
-  
-  <a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Deliverd Orders</a>
-  
-  <a href="#news"  style=" display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none; "> - Customer Service</a>
-  
-  <input type="button" style="width:140px;cursor:pointer;margin: 4px 4px;font-size:14px;text-decoration:none;border-radius:8px;text-align: center;color:white;background-color:#4CAF50;padding:10px;border:none;margin-left:8%;" value="Back" onclick="history.back()">
-  </div>
-  
-  <div class="center" style=" margin-left: 200px;
-  padding: 1px 16px;
-  height: 700px;
-  margin-left:32%; background-color: white;margin-right:13%;">
-  
-  <h3>Edit Profile Details </h3>
-  <hr>
-   <div style="border:1px solid #ddd;margin-top:10px;padding: 50px 50px;">
-   <form:form action="${pageContext.request.contextPath}/cart/changeNewPassword"  modelAttribute="customer" method="POST">    
- 
-<!--  <font color='red'><span id="errId"></span></font> -->
- <!-- <h2 style="color:#4CAF50;">Create new password</h2> -->
- <h5 style="color:#4CAF50;">CHANGE YOUR PASSWORD</h5>
-  
-   <font color='red'><span id="errId"></span></font>
-   <table>
+}
+
+.wrapper .form .inputfield {
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+}
+
+.wrapper .form .inputfield label {
+	width: 200px;
+	color: #757575;
+	margin-right: 10px;
+	font-size: 14px;
+}
+
+.wrapper .form .inputfield .input, .wrapper .form .inputfield .textarea
+	{
+	width: 100%;
+	outline: none;
+	border: 1px solid #d5dbd9;
+	font-size: 15px;
+	padding: 8px 10px;
+	border-radius: 3px;
+	transition: all 0.3s ease;
+	/* background-color: #f5f5f5; */
+}
+
+.wrapper .form .inputfield .textarea {
+	width: 100%;
+	height: 125px;
+	resize: none;
+}
+
+.wrapper .form .inputfield .custom_select {
+	position: relative;
+	width: 100%;
+	height: 37px;
+	background-color: #f5f5f5;
+}
+
+.wrapper .form .inputfield .custom_select:before {
+	content: "";
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	border: 8px solid;
+	border-color: #d5dbd9 transparent transparent transparent;
+	pointer-events: none;
+}
+
+.wrapper .form .inputfield .custom_select select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	width: 100%;
+	height: 100%;
+	border: 0px;
+	padding: 8px 10px;
+	font-size: 15px;
+	border: 1px solid #d5dbd9;
+	border-radius: 3px;
+}
+
+.wrapper .form .inputfield .input:focus, .wrapper .form .inputfield .textarea:focus,
+	.wrapper .form .inputfield .custom_select select:focus {
+	border: 1px solid #fec107;
+}
+
+.wrapper .form .inputfield p {
+	font-size: 14px;
+	color: #757575;
+}
+
+.wrapper .form .inputfield .check {
+	width: 15px;
+	height: 15px;
+	position: relative;
+	display: block;
+	cursor: pointer;
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.wrapper .form .inputfield .check .checkmark {
+	width: 15px;
+	height: 15px;
+	border: 1px solid #fec107;
+	display: block;
+	position: relative;
+}
+
+.wrapper .form .inputfield .check .checkmark:before {
+	content: "";
+	position: absolute;
+	top: 1px;
+	left: 2px;
+	width: 5px;
+	height: 2px;
+	border: 2px solid;
+	border-color: transparent transparent #fff #fff;
+	transform: rotate(-45deg);
+	display: none;
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~
+	.checkmark {
+	background: #fec107;
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~
+	.checkmark:before {
+	display: block;
+}
+
+.wrapper .form .inputfield .btn {
+	width: 40%;
+	padding: 8px 10px;
+	font-size: 15px;
+	border: 0px;
+	background: green;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+	outline: none;
+	margin-left: 68%;
+}
+
+.wrapper .form .inputfield .btn:hover {
+	background: green;
+}
+
+.wrapper .form .inputfield:last-child {
+	margin-bottom: 0;
+}
+
+@media ( max-width :420px) {
+	.wrapper .form .inputfield {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.wrapper .form .inputfield label {
+		margin-bottom: 5px;
+	}
+	.wrapper .form .inputfield.terms {
+		flex-direction: row;
+	}
+}
+</style>
+</head>
+<body>
+
+	<jsp:include page="mainheader.jsp"></jsp:include>
+    <div style="border:1 px green;background-color:white;margin-top:10px;font-weight: bold;color: green;font-size:25px;width: 1200px;margin: 0 auto;">My profile</div>
     
+   <div
+		style="background: #f5f5f5;padding: 30px 30px;margin-top:45px;width: 1200px;margin: 0 auto;">
+	<div class="side-bar">
+		<div class="menuprofile">
+			<spring:url value="/images" var="images" />
+			<img src="${images}/profile.jpg" width="60" height="60" alt="" /> <a
+				href="#" class="dropbtn"
+				style="color: black; text-decoration: none;">Hello, <span
+				style="font-size: 20px;">${customerModel.firstName}
+					${customerModel.lastName}</span></a>
+		</div>
+
+		<div class="menu">
+
+			<div class="item">
+				<a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fas fa-desktop"></i>My Cart</a>
+			</div>
+			<div class="item">
+				<a class="sub-btn"><i class="fas fa-table"></i>Orders<i
+					class="fas fa-angle-right dropdown"
+					style="background-color: gainsboro; border-radius: 50%;; padding: 10px 10px;"></i></a>
+				<div class="sub-menu">
+					<a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" class="sub-item">Current</a> <a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}"
+						class="sub-item">Delivered</a> <a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}" class="sub-item">Cancel</a>
+				</div>
+			</div>
+			<div class="item">
+				<a href="#"><i class="fas fa-th"></i>Wallet</a>
+			</div>
+			<div class="item">
+				<a class="sub-btn"><i class="fas fa-cogs"></i>My Profile<i
+					class="fas fa-angle-right dropdown"
+					style="background-color: gainsboro; border-radius: 50%;; padding: 10px 10px;"></i></a>
+				<div class="sub-menu">
+					<a href="${pageContext.request.contextPath }/cart/editPassword/${customerModel.email}" class="sub-item">Change Password</a> <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"
+						class="sub-item">Edit Profile</a>
+				</div>
+			</div>
+			<div class="item">
+				<a href="${pageContext.request.contextPath}/logout"><i class="fas fa-info-circle"></i>LogOut</a>
+			</div>
+		</div>
+	</div>
+
+   <section class="main" style="margin-left:280px;margin-top:5px;">
+    <!--  <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
+      <div class="wrapper">
+    <div class="title">
+     Change Password
+    </div>
+    <div class="form">
+    <form:form action="${pageContext.request.contextPath}/cart/changeNewPassword" method="post" modelAttribute="customer">  
+    <font color='red'><span id="errId"></span></font>     
+          
+    <form:hidden path="email" readonly="true"></form:hidden> 
     
-    <td ><form:hidden path="email" readonly="true"></form:hidden></td>
-    
-   <tr>
-    <td>Current Password</td>
-    <td><form:password path="password" ></form:password></td>
-    </tr>
-       
-    <tr>
-    <td>Enter New Password</td>
-    <td><form:password path="newPassword" id="txtPassword"></form:password></td>
-    </tr>
-    
-    <tr>
-    <td>Confirm Password</td>
-    <td><form:password path="confirmPassword" id="txtConfirmPassword"/></td>
-    </tr>
-    </table>
-    <font color='red'><span id="errId"></span></font>
    
-    <input type="submit" value="CHANGE PASSWORD" onclick="return Validate()"  id="btnSubmit"></td>
-    <input type="reset" value="CANCEL" style=" background-color: #4CAF50;
-  color: white;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: center;
-  margin-top:10px;">
+       <div class="inputfield">
+          <label>Email Id</label>
+         <!--  <input type="text" class="input"> -->
+          <form:input path="email" class="input" readonly="true" style="background-color: #f5f5f5;"></form:input>
+       </div>  
+        <div class="inputfield">
+          <label>Enter New Password</label>
+        <!--   <input type="text" class="input"> -->
+         <form:password path="newPassword" id="txtPassword" class="input"/>
+       </div>  
+       <div class="inputfield">
+         <label>Confirm Password</label>
+        <form:password path="confirmPassword" id="txtConfirmPassword" class="input"/>
+         <!--  <input type="password" class="input"> -->
+       </div>  
     
-    </form:form>
-    
-        </div>
+      <div class="inputfield">
+      <input type="submit" value="Save Changes" class="btn" style="
+	width: 40%;
+	padding: 15px 10px;
+	font-size: 15px;
+	border: 0px;
+	background: green;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+	outline: none;
+	margin-left:65%;" onclick="return Validate()">
+	 
+      </div>
+      </form:form>
     </div>
+    </div>	
+    </section>
   </div>
-  </div>
- 
- <!--  ............................  -->
-<div class="footer">
-      <div class="main-content">
-      <div class="left box">
-
-<h2>VeggieFridge</h2>
-<div class="content"> 
-                            <a href="#" style="color:white">About Us</a><br><br>
-                            <a  href="#" style="color:white">Privacy Policy</a><br><br>
-                            <a href="#"  style="color:white">Help</a><br><br>
-                            <a href="#"  style="color:white">Terms And Condition</a><br><br>
-                            <a href="#"  style="color:white">Carriers</a><br><br>
-                            <a href="#"  style="color:white">Affiliate</a><br><br>
-                            <a href="#"  style="color:white">In News</a><br><br>
-                            <a href="#"  style="color:white">vf instant</a><br><br>
-                            <a href="#"  style="color:white">vf daily</a><br><br>
-</div>
-</div>
-<div class="center box">
-                    <h2>
-Address</h2>
-<div class="content">
-                        <div class="place">
-                            <span class="fas fa-map-marker-alt"></span>
-                            <span class="text">Birendranagar, Surkhet</span>
-                        </div>
-<div class="phone">
-                            <span class="fas fa-phone-alt"></span>
-                            <span class="text">+089-765432100</span>
-                        </div>
-<div class="email">
-                            <span class="fas fa-envelope"></span>
-                            <span class="text">abc@example.com</span>
-                        </div>
 
 
-                            <div class="social"> 
-                            <h4>Social</h4><br>
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f" style="background-color:#3B5998;color:white;"></span></a>
-                            <a href="#"><span class="fab fa-twitter" style="background-color: #55ACEE;color:white;"></span></a>
-                            <a href="https://instagram.com/coding.np" ><span class="fab fa-instagram" style="background-color: #125688;color:white;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-linkedin"  style="background-color:  #007bb5;color:white;"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-pinterest"  style="background-color: #bb0000;color:white;"></span></a>
-                            </div>
 
-</div>
-</div>
-<div class="right box" >
-                    <h2>
-Contact us</h2>
-<div class="content">
-                        <form action="#">
-                            <div class="email">
-                                <div class="text">
-Email *</div>
-<input type="email" required>
-                            </div>
-<div class="email" style="padding:10px 3px;margin-right:8%;">
-                                <div class="text">
-Message *</div>
-<input type="text" required placeholder="Enter Text Here">
-</div>
-<!-- NOTE: Due to more textarea tag I got an error. So I changed the textarea name to changeit. Please change that changeit name to textarea -->
-<changeit id=".msgForm" rows="2" cols="25" required></changeit> <!-- replace this changeit name to textarea -->
+	<div style="margin-top:50px;">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 
-                            <br />
-<div class="btn">
-<button type="submit">Send</button>
-                            </div>
-                            </form> <br>
-       
-    <h4 >Download Apps</h4><br>
-     <table>
-     <th> 
-    <a href="abc.htm">                      
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Apple-App-store-icon.png" width="100" height="40" style="float: right; margin-right:7%"/>
-    </a> 
-    </th>
-    <th>
-    <a href="abc.htm">                        
-    <spring:url value="/images" var="images" />
-    <img src="${images}/Google-App-store-icon.png" width="100" height="40" style="float: right;"/>
-    </a>      
-    </th>
-    </table>                         
-    </div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//jquery for toggle sub menus
+			$('.sub-btn').click(function() {
+				$(this).next('.sub-menu').slideToggle();
+				$(this).find('.dropdown').toggleClass('rotate');
+			});
 
-                   <%--  <div class="bottom">
-                    <center>
-                    <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">vf</a> | </span>
-                    <span class="far fa-copyright"></span> 2020 All rights reserved.
-                    </center>
-                    </div>
- --%>
-</div>
-</div>
-</div>
+			/* //jquery for expand and collapse the sidebar
+			 $('.menu-btn').click(function(){
+			   $('.side-bar').addClass('active');
+			   $('.menu-btn').css("visibility", "hidden");
+			 });
 
-
- <script type="text/javascript">
-  window.onload = function() {
-    var selItem = sessionStorage.getItem("SelItem");  
-    $('#sort-item').val(selItem);
-    }
-    $('#sort-item').change(function() { 
-        var selVal = $(this).val();
-        sessionStorage.setItem("SelItem", selVal);
-    });
-   </script>
-  <script type="text/javascript">
-
-      function validatePwds(){
-    	    var newPwd = $('#newPassword').val();
-    	    var confirmPwd = $('#confirmPassword').val();
-    	    if(newPwd!=confirmPwd){
-    	   /*  $('#errId').text('New Password And Confirm Password Is Not Match'); */
-    	    return false;
-    	    }
-    	    return true;
-    	}
-
-      </script>
-      
-        <script type="text/javascript">
+			 $('.close-btn').click(function(){
+			   $('.side-bar').removeClass('active');
+			   $('.menu-btn').css("visibility", "visible");
+			 });*/
+		});
+	</script>
+	
+	
+	  <script type="text/javascript">
     function Validate() {
         var password = document.getElementById("txtPassword").value;
         var confirmPassword = document.getElementById("txtConfirmPassword").value;
@@ -510,7 +469,6 @@ Message *</div>
         return true;
     }
 </script>
-  
-  </body>
-  </html>
-  
+
+</body>
+</html>

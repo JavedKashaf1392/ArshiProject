@@ -84,7 +84,6 @@ public class AppController {
 	}
 		
 		//Home Menu Url
-		
 		@RequestMapping(value = "/home", method = RequestMethod.GET)
 		public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
 				@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
@@ -357,10 +356,54 @@ public class AppController {
 				 //footer
 				@RequestMapping(value = "/myaccount")
 				public ModelAndView profile(ModelAndView model) {
-					model.setViewName("myaccount");
+					model.setViewName("PendingOrder");
 					return model;
 				}
-		
+				
+				
+				
+				 //pendingorder
+				@RequestMapping(value = "/pendingorder")
+				public ModelAndView Order(ModelAndView model) {
+					String profilemenuSection = "Profile";
+					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+				     model.addObject("listprofileMenu",listprofileMenu);
+					String section = "Navbar";
+					List<Menu> listMenu = productService.getMenuByNavbar(section);
+				    model.addObject("listMenu",listMenu);
+					model.setViewName("pendingorder");
+					return model;
+				}
+				
+				
+
+				 //pendingorder
+				@RequestMapping(value = "/deliveredorder")
+				public ModelAndView deliveredorder(ModelAndView model) {
+					String profilemenuSection = "Profile";
+					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+				     model.addObject("listprofileMenu",listprofileMenu);
+					String section = "Navbar";
+					List<Menu> listMenu = productService.getMenuByNavbar(section);
+				    model.addObject("listMenu",listMenu);
+					model.setViewName("deliveredorder");
+					return model;
+				}
+				
+				 //pendingorder
+				@RequestMapping(value = "/cancelorder")
+				public ModelAndView cancelorder(ModelAndView model) {
+					String profilemenuSection = "Profile";
+					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+				     model.addObject("listprofileMenu",listprofileMenu);
+					String section = "Navbar";
+					List<Menu> listMenu = productService.getMenuByNavbar(section);
+				    model.addObject("listMenu",listMenu);
+					model.setViewName("cancelorder");
+					return model;
+				}
+				
+
 	
 }
 

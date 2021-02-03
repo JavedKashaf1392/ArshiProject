@@ -78,7 +78,7 @@ public class OrderController {
    @Autowired
    private ProductService productservice;
 
-	// get cartPage
+	//get cartPage
 	private CartPage getCartPage() {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
@@ -92,7 +92,7 @@ public class OrderController {
 		return model;
 	}
 
-	 //checkoutAndSaveOrder PayAtKiosk
+	//checkoutAndSaveOrder PayAtKiosk
 	@RequestMapping(value = "/checkoutAndSaveOrderPayATKiosk")
 	public ModelAndView checkoutAndSaveOrder(ModelAndView model) {
 		List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -215,9 +215,6 @@ public class OrderController {
 			List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
 			model.addObject(listprofileMenu);
 			System.out.println("cartpage updated");
-			
-			
-			
 		}
 		return "redirect:/cart/listCustomerCartItem";
 	}

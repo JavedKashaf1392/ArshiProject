@@ -67,7 +67,7 @@ margin-top:30px;
                 <td><form:input path="lastName"  /><form:errors path="lastName" cssClass="error"/></td>
             </tr>
             <tr>
-                <td>Mobile: <span style="color: red;">*</span>  </td>
+                <td>Mobile: <span style="color: red;">*</span></td>
                 <td><form:input path="mobile" /></td>
                 <td><form:errors path="mobile" cssClass="error" /></td> 
             </tr>
