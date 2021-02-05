@@ -139,62 +139,30 @@
 <jsp:include page="mainheader.jsp"></jsp:include>
 <div style="border:1 px green;background-color:white;margin-top:20px;font-weight: bold;color: green;font-size:25px;width: 1200px;margin: 0 auto;font-weight:500px;">My Order</div>
 
-
+<c:forEach var="orders" items="${requestScope.deliveredOrders}">
 <div class="wrapper">
-	
 	  <div class="view_main">
-	   <h4>Delivered</h4>January 30,2021
+	   <h4>${orders.pickupStatus}</h4>${orders.orderDate}
+	<h4>Total: &#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></h4>
 		<div class="view_wrap list-view" style="display: block;">
+			
+			
+			<c:forEach var="orderitem" items="${requestScope.orderitems[orders.orderid]}">
 			<div class="view_item">
 				<div class="vi_left">
 				  <spring:url value="/images" var="images" />
-   <img src="${images}/tomato.jpg"  alt="tomato"/>
+   <img src="${images}/${orderitem.product.imageName}"  alt="tomato"/>
 					<!-- <img src="tomato.png" alt="tomato"> -->
 				</div>
 				<div class="vi_right">
-					<p class="title">Tomato</p>
+					<p class="title">${orderitem.product.productName}</p>
 					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
+					<p class="content">${orderitem.product.price}</p>
 					<a href="#" style="color: green;">Review</a>
 					<!-- <div class="btn">Review</div> -->
 				</div>
 			</div>
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/Greenchilli.jpg"  alt="tomato"/>
-					<!-- <img src="chilli.png" alt="chilli"> -->
-				</div>
-				<div class="vi_right">
-					<p class="title">Chilli</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color: green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/carrot.jpg"  alt="tomato"/>
-				</div>
-				<div class="vi_right">
-					<p class="title">Carrot</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color:green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-					  <spring:url value="/images" var="images" />
-   <img src="${images}/onion.jpg"  alt="tomato"/>
-				</div>
-				<div class="vi_right">
-					<p class="title">Onion</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color:green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
+			</c:forEach>
 			
 			<div class="btn" style="width: 125px;
 	background: #4abd3e;
@@ -209,149 +177,7 @@
 	</div>
 	
 </div>
-
-<div class="wrapper">
-	
-	  <div class="view_main">
-	   <h4>Delivered</h4>January 30,2021
-		<div class="view_wrap list-view" style="display: block;">
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/tomato.jpg"  alt="tomato"/>
-					<!-- <img src="tomato.png" alt="tomato"> -->
-				</div>
-				<div class="vi_right">
-					<p class="title">Tomato</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color: green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/Greenchilli.jpg"  alt="tomato"/>
-					<!-- <img src="chilli.png" alt="chilli"> -->
-				</div>
-				<div class="vi_right">
-					<p class="title">Chilli</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color: green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/carrot.jpg"  alt="tomato"/>
-				</div>
-				<div class="vi_right">
-					<p class="title">Carrot</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color:green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-					  <spring:url value="/images" var="images" />
-   <img src="${images}/onion.jpg"  alt="tomato"/>
-				</div>
-				<div class="vi_right">
-					<p class="title">Onion</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color:green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			
-			<div class="btn" style="width: 125px;
-	background: #4abd3e;
-	padding: 8px 5px;
-	border-radius: 3px;
-	color: #fff;
-	text-align: center;
-	font-weight: 200;
-	cursor: pointer;margin-left:20px;">ShowAll</div>
-		</div>
-		
-	</div>
-	
-</div>
-
-<div class="wrapper">
-	
-	  <div class="view_main">
-	   <h4>Delivered</h4>January 30,2021
-		<div class="view_wrap list-view" style="display: block;">
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/tomato.jpg"  alt="tomato"/>
-					<!-- <img src="tomato.png" alt="tomato"> -->
-				</div>
-				<div class="vi_right">
-					<p class="title">Tomato</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color: green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/Greenchilli.jpg"  alt="tomato"/>
-					<!-- <img src="chilli.png" alt="chilli"> -->
-				</div>
-				<div class="vi_right">
-					<p class="title">Chilli</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color: green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-				  <spring:url value="/images" var="images" />
-   <img src="${images}/carrot.jpg"  alt="tomato"/>
-				</div>
-				<div class="vi_right">
-					<p class="title">Carrot</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color:green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			<div class="view_item">
-				<div class="vi_left">
-					  <spring:url value="/images" var="images" />
-   <img src="${images}/onion.jpg"  alt="tomato"/>
-				</div>
-				<div class="vi_right">
-					<p class="title">Onion</p>
-					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<a href="#" style="color:green;">Review</a>
-					<!-- <div class="btn">Review</div> -->
-				</div>
-			</div>
-			
-			<div class="btn" style="width: 125px;
-	background: #4abd3e;
-	padding: 8px 5px;
-	border-radius: 3px;
-	color: #fff;
-	text-align: center;
-	font-weight: 200;
-	cursor: pointer;margin-left:20px;">ShowAll</div>
-		</div>
-		
-	</div>
-	
-</div>
-
-
-
+</c:forEach>
 
 <jsp:include page="footer.jsp"></jsp:include>
 	

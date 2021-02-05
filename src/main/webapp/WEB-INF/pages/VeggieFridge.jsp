@@ -1080,7 +1080,7 @@ footer.copyright a{
 }
 /* product section */
 .products{
-    background: var(--alice-blue);
+    /* background: var(--alice-blue); */
     padding: 3.2rem 0;
 }
 .products .text-light{
@@ -1101,9 +1101,10 @@ footer.copyright a{
      uppercase; */
 }
 .product-content{
-    background: var(--gray);
+   /*  background: var(--gray); */
     padding: 3rem 0.5rem 2rem 0.5rem;
     cursor: pointer;
+    
 }
 .product-img{
     background: var(--white-light);
@@ -1943,7 +1944,8 @@ height:40px
                 </div> -->
             
               
-<!-- Products   -->
+     <!-- Products   -->
+     
      <security:authorize access="isAnonymous() or hasRole('USER')">
 	 <div class = "products">
             <div class = "container" style="margin: 0 auto;max-width:1388px;">
@@ -1966,9 +1968,9 @@ height:40px
                             <span><i class = "fas fa-shopping-cart"></i></span>
                             </button>
                          
- <button onclick="increment()" class ="qty">+</button>
+ <!-- <button onclick="increment()" class ="qty">+</button>
 <input id=demoInput type=text min=1 max=9 class = "number" value="1" style="text-align: center;width:35px;">
-<button onclick="decrement()" class = "qty">-</button>
+<button onclick="decrement()" class = "qty">-</button> -->
                             <!-- <input type="number" max="9" min="1" value="1" placeholder="Qty" style="text-align:center;
                             "> -->
                                 <!-- <button type = "button" class = "btn-buy"> buy now

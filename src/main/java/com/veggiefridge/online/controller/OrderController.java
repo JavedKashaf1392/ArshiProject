@@ -3,6 +3,8 @@ package com.veggiefridge.online.controller;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -122,7 +124,7 @@ public class OrderController {
 			cartservice.remove(cartitems);
 			System.out.println("remove item from cart");
 			CartPage cartpage = this.getCartPage();
-			cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.get(i).getTotal());
+			cartpage.setGrandTotal(cartitem.get(i).getTotal());
 			cartpage.setCartitem(cartpage.getCartitem() - 1);
 			cartservice.updateCartPage(cartpage);
 			System.out.println("remove item from cart");
@@ -485,7 +487,7 @@ public class OrderController {
 			}	
 			
 			
-			@RequestMapping(value = "/showPendingOrders{customerid}", method = RequestMethod.GET)
+			@RequestMapping(value = "/showPendingOrder{customerid}", method = RequestMethod.GET)
 			public String showPendingOrders(HttpServletRequest req, Model model) {
 					List<Orders> pendingOrders = orderservice.getPendingOrders(this.getCartPage().getCustomer().getCustomerid());
 					model.addAttribute("pendingOrders", pendingOrders);
@@ -496,11 +498,11 @@ public class OrderController {
 						List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
 						model.addAttribute("listprofileMenu", listprofileMenu);
 					 
-					return "CurrentOrder";
+					return "pendingorder";
 				}
 				
-			@RequestMapping(value = "/showDeliveredOrders{customerid}", method = RequestMethod.GET)
-			public String showDeliveredOrders(HttpServletRequest req, Model model) {
+			@RequestMapping(value = "/showDeliveredOrder{customerid}", method = RequestMethod.GET)
+			public String showDeliveredOrder(HttpServletRequest req, Model model) {
 					List<Orders> deliveredOrders = orderservice.getDeliveredOrders(this.getCartPage().getCustomer().getCustomerid());
 					model.addAttribute("deliveredOrders",deliveredOrders);
 					String section = "Navbar";
@@ -537,12 +539,91 @@ public class OrderController {
 			
 			
 		
-			@RequestMapping(value = "/showCancelOrders{customerid}", method = RequestMethod.GET)
+			@RequestMapping(value = "/showCancelOrder{customerid}", method = RequestMethod.GET)
 			public String showCancelOrders(HttpServletRequest req, Model model) {
 					List<Orders> CancelOrders = orderservice.getCancelledOrders(this.getCartPage().getCustomer().getCustomerid());
 					model.addAttribute("CancelOrders",CancelOrders);
 					return "cancelOrder";
 				}
+			
+			
+			
+			//Pending Orders
+			@RequestMapping(value = "/showPendingOrders{customerid}", method = RequestMethod.GET)
+			public String showPendingOrder(HttpServletRequest req, Model model,HttpServletRequest request) {
+					List<Orders> pendingOrders = orderservice.getPendingOrders(this.getCartPage().getCustomer().getCustomerid());
+					Map orderitems = new HashMap();
+					for(Iterator it = pendingOrders.iterator(); it.hasNext(); ){
+						Orders orders = (Orders)it.next();
+						List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
+						orderitems.put(orders.getOrderid(), listorderitem);
+						}
+					  String section = "Navbar"; List<Menu> listMenu =
+					  productservice.getMenuByNavbar(section); model.addAttribute("listMenu",
+					  listMenu);
+					  String profilemenuSection = "Profile";
+						List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+						/* model.addAttribute("pendingOrders", pendingOrders); */
+						model.addAttribute("listprofileMenu", listprofileMenu);
+						/* model.addAttribute("orderitems", orderitems); */
+						request.setAttribute("pendingOrders", pendingOrders);
+						request.setAttribute("orderitems", orderitems);
+						return "pendingorder";
+					   
+				}
+			
+			
+            //Delivered Orders
+			@RequestMapping(value = "/showDeliveredOrders{customerid}", method = RequestMethod.GET)
+			public String showDeliveredOrders(HttpServletRequest req, Model model,HttpServletRequest request) {
+				List<Orders> deliveredOrders = orderservice.getDeliveredOrders(this.getCartPage().getCustomer().getCustomerid());
+					Map orderitems = new HashMap();
+					for(Iterator it = deliveredOrders.iterator(); it.hasNext();){
+						Orders orders = (Orders)it.next();
+						List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
+						orderitems.put(orders.getOrderid(), listorderitem);
+						}
+					  String section = "Navbar"; List<Menu> listMenu =
+					  productservice.getMenuByNavbar(section); model.addAttribute("listMenu",
+					  listMenu);
+					  String profilemenuSection = "Profile";
+						List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+						/* model.addAttribute("pendingOrders", pendingOrders); */
+						model.addAttribute("listprofileMenu", listprofileMenu);
+						/* model.addAttribute("orderitems", orderitems); */
+						request.setAttribute("deliveredOrders",deliveredOrders);
+						request.setAttribute("orderitems", orderitems);
+						return "deliveredorder";
+					   
+				}
+			
+			
+			 //CancelOrder
+			@RequestMapping(value = "/showCancelOrders{customerid}", method = RequestMethod.GET)
+			public String showCancelOrders(HttpServletRequest req, Model model,HttpServletRequest request) {
+				List<Orders> CancelOrders = orderservice.getCancelledOrders(this.getCartPage().getCustomer().getCustomerid());
+					Map orderitems = new HashMap();
+					for(Iterator it = CancelOrders.iterator(); it.hasNext();){
+						Orders orders = (Orders)it.next();
+						List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
+						orderitems.put(orders.getOrderid(), listorderitem);
+						}
+					  String section = "Navbar"; List<Menu> listMenu =
+					  productservice.getMenuByNavbar(section); model.addAttribute("listMenu",
+					  listMenu);
+					  String profilemenuSection = "Profile";
+						List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+						/* model.addAttribute("pendingOrders", pendingOrders); */
+						model.addAttribute("listprofileMenu", listprofileMenu);
+						/* model.addAttribute("orderitems", orderitems); */
+						request.setAttribute("CancelOrders",CancelOrders);
+						request.setAttribute("orderitems", orderitems);
+						return "cancelorder";
+					   
+				}
+			
+			
+			
           
 }
                  

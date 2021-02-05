@@ -21,9 +21,11 @@ import com.paytm.pg.merchant.PaytmChecksum;
 import com.veggiefridge.online.constants.PaytmConstants;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.CustomerModel;
+import com.veggiefridge.online.model.Menu;
 import com.veggiefridge.online.model.OrderItem;
 import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Wallet;
+import com.veggiefridge.online.service.ProductService;
 import com.veggiefridge.online.service.WalletService;
 
 @Controller
@@ -40,6 +42,9 @@ public class WalletController {
 	
 	@Autowired
 	private HttpSession session;
+	
+	@Autowired
+	private ProductService productService;
 	
 	
 	     // get cartPage
@@ -81,6 +86,13 @@ public class WalletController {
 	//currentorder
 	@RequestMapping(value = "/chooseanamount")
 	public ModelAndView chooseAnAmount(ModelAndView model) {
+		String section = "Navbar";
+		List<Menu> listMenu = productService.getMenuByNavbar(section);
+		String profilemenuSection = "Profile";
+		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+		model.addObject("listprofileMenu", listprofileMenu);
+		model.addObject("listMenu", listMenu);
+		model.setViewName("wallet");
 		model.setViewName("/chooseanamount");
 		return model;
 	}
@@ -100,8 +112,8 @@ public class WalletController {
         parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
         parameters.put("EMAIL", env.getProperty("paytm.email"));
         parameters.put("TXN_AMOUNT", transactionAmount);
-        parameters.put("ORDER_ID", "4321");
-        parameters.put("CUST_ID","1234");
+        parameters.put("ORDER_ID", "5237");
+        parameters.put("CUST_ID","9153");
         parameters.put("INDUSTRY_TYPE_ID","Retail");
         parameters.put("CHANNEL_ID", "WEB");
         String checkSum = getCheckSum(parameters);

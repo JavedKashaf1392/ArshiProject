@@ -59,6 +59,18 @@ public class Customer implements Serializable {
 	@Column(name="role")
 	private String role;
 	
+	@OneToOne(mappedBy="customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "walletID")
+	private Wallet wallet;
+	
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
+	
 	public String getRole() {
 		return role;
 	}
@@ -89,17 +101,7 @@ public class Customer implements Serializable {
 	private CartPage cartpage;
 	
 	
-	@OneToOne(mappedBy="customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "walletID")
-	private Wallet wallet;
 	
-	public Wallet getWallet() {
-		return wallet;
-	}
-
-	public void setWallet(Wallet wallet) {
-		this.wallet = wallet;
-	}
 
 	public CartPage getCartpage() {
 		return cartpage;

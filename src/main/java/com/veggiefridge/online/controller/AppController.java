@@ -403,6 +403,21 @@ public class AppController {
 					return model;
 				}
 				
+				
+				
+				 //wallet
+				@RequestMapping(value = "/wallet")
+				public ModelAndView wallet(ModelAndView model) {
+					String section = "Navbar";
+					List<Menu> listMenu = productService.getMenuByNavbar(section);
+					String profilemenuSection = "Profile";
+					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+					model.addObject("listprofileMenu", listprofileMenu);
+					model.addObject("listMenu", listMenu);
+					model.setViewName("wallet");
+					return model;
+				}
+				
 
 	
 }
