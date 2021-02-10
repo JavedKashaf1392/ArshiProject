@@ -1528,32 +1528,6 @@ footer.copyright a{
     to {opacity: 1;margin-top: 0px;}
 }
 
-.alert{
- background-color:orange;
- padding:12px;
-  color: white;
-  opacity: 1;
-  transition: opacity 0.6s;
-  margin-bottom: 15px;
-   max-width: 1388px;
-   /*  width: 88vw; */
-    margin: 0 auto;
-    text-align: center;
-     letter-spacing:2px;
-    cursor: pointer;
-    font-weight: bold;
-}
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
 .closebtn:hover {
   color: black;
 }

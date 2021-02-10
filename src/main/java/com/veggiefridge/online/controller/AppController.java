@@ -354,9 +354,9 @@ public class AppController {
 				
 				
 				 //footer
-				@RequestMapping(value = "/myaccount")
-				public ModelAndView profile(ModelAndView model) {
-					model.setViewName("PendingOrder");
+				@RequestMapping(value = "/error")
+				public ModelAndView error(ModelAndView model) {
+					model.setViewName("error");
 					return model;
 				}
 				

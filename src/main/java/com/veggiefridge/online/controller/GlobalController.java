@@ -28,8 +28,6 @@ public class GlobalController {
 		if(session.getAttribute("customerModel")==null) {
 			// get the authentication object
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			
-			
 			if(!authentication.getPrincipal().equals("anonymousUser")){
 				// get the user from the database
 				customer = customerdao.getCustomerByEmail(authentication.getName());

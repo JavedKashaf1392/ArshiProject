@@ -145,7 +145,7 @@ public class OrderDaoImpl implements OrderDao{
 				.createQuery(query)
 					.setParameter("pickupStatus", VFOnlineConstants.PSTATUS)
 					.setParameter("customerid", customerid)
-						.list();
+.list();
 	}
 
 	
@@ -153,6 +153,14 @@ public class OrderDaoImpl implements OrderDao{
 	public Orders updateOrders(Orders orders) {
 		sessionFactory.getCurrentSession().update(orders);
 		return orders;
+	}
+
+
+	@Override
+	public List<Orders> getOrdersBetweenDates(int customerid, Date fromDate, Date toDate) {
+    String query = "FROM Orders WHERE customer.customerid =:customerid and orderDate between :startDate and :endDate ORDER BY orderId DESC";
+    return sessionFactory.getCurrentSession().createQuery(query).setParameter("customerid", customerid)
+    .setParameter("startDate", fromDate).setParameter("endDate", toDate).list();
 	}
 	
 	}

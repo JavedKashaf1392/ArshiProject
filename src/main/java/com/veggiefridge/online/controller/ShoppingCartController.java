@@ -133,7 +133,7 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	// deleteCartItem
+	 //deleteCartItem
 	@RequestMapping(value = "/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
 	public ModelAndView deleteProduct(@PathVariable("cartitemid") int cartitemid, ModelAndView model) {
 		CartItem cartitem = cartservice.get(cartitemid);
@@ -188,7 +188,7 @@ public class ShoppingCartController {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-	// add cartitem
+	//add cartitem
 	@RequestMapping(value = "/addToCartPageItem/{productid}")
 	public ModelAndView addCartItems(ModelAndView model, @PathVariable int productid,
 			@ModelAttribute("cartpage") CartPage cart, BindingResult resultcart) {
@@ -291,7 +291,7 @@ public class ShoppingCartController {
 		model.setViewName("head");
 		return model;
 	}
-
+    
 	//edit customer
 	@RequestMapping(value = "/editProfile{customerid}",method = RequestMethod.GET)
 	public ModelAndView editProfile(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,

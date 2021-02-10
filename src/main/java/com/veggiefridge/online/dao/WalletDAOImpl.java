@@ -1,5 +1,7 @@
 package com.veggiefridge.online.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.model.Wallet;
+import com.veggiefridge.online.model.WalletPayment;
 
 @Repository
 @Transactional
@@ -37,7 +40,7 @@ public class WalletDAOImpl implements WalletDAO {
 
 	@Override
 	public Wallet getWallet(int walletID) {
-		 return (Wallet) sessionFactory.getCurrentSession().get(Product.class, walletID);
+		 return (Wallet) sessionFactory.getCurrentSession().get(Wallet.class, walletID);
 	}
 
 	
@@ -50,4 +53,35 @@ public class WalletDAOImpl implements WalletDAO {
 					.setParameter("customerid", customerid).uniqueResult();
 	}
 
-}
+		@Override
+		public List<WalletPayment> listWalletPayment() {
+		return sessionFactory.getCurrentSession().createQuery("from WalletPayment").list();
+		}
+
+		
+		
+		@Override
+		public boolean addWalletPayment(WalletPayment walletpayment) {
+			try {			
+				sessionFactory.getCurrentSession().persist(walletpayment);			
+				return true;
+			}
+			catch(Exception ex) {
+				return false;
+			}
+			
+		}
+
+		
+		@Override
+		public List<WalletPayment> listWalletPayment(int walletID) {
+			String query = "FROM WalletPayment WHERE wallet.walletID=:walletID";
+			return sessionFactory.getCurrentSession()
+									.createQuery(query)
+										.setParameter("walletID",walletID)
+											.list();
+		}
+		
+		}
+
+

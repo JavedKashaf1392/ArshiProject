@@ -1,4 +1,5 @@
 package com.veggiefridge.online.service;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -87,6 +88,11 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<Orders> getCancelledOrders(int customerid) {
 		return orderdao.getCancelledOrders(customerid);
+	}
+
+	@Override
+	public List<Orders> getOrdersBetweenDates(int customerid, Date fromDate, Date toDate) {
+		return orderdao.getOrdersBetweenDates(customerid, fromDate, toDate);
 	}
 
 }

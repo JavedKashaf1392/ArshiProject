@@ -2,6 +2,9 @@
 package com.veggiefridge.online.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.jboss.logging.Logger;
@@ -621,6 +626,38 @@ public class OrderController {
 						return "cancelorder";
 					   
 				}
+		
+			 //Pending Orders
+			@RequestMapping(value = "/showPendingOrdersByDate{customerid}", method = RequestMethod.GET)
+			public String showPendingOrderByDate(HttpServletRequest req, Model model,HttpServletRequest request,@RequestParam(value = "fromDate") String strDate, @RequestParam(value = "toDate") String endDate) throws ParseException {
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+				Date fromDate = sdf.parse(strDate);
+			    Date toDate = sdf.parse(endDate);
+				System.out.println( "From Date" + fromDate + "TO Date" + toDate);
+				List<Orders> pendingOrders = orderservice.getOrdersBetweenDates(this.getCartPage().getCustomer().getCustomerid(), fromDate,toDate);
+					Map orderitems = new HashMap();
+					for(Iterator it = pendingOrders.iterator(); it.hasNext(); ){
+						Orders orders = (Orders)it.next();
+						List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
+						orderitems.put(orders.getOrderid(), listorderitem);
+						}
+					  String section = "Navbar"; List<Menu> listMenu =
+					  productservice.getMenuByNavbar(section); model.addAttribute("listMenu",
+					  listMenu);
+					  String profilemenuSection = "Profile";
+						List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+						/* model.addAttribute("pendingOrders", pendingOrders); */
+						model.addAttribute("listprofileMenu", listprofileMenu);
+						/* model.addAttribute("orderitems", orderitems); */
+						request.setAttribute("pendingOrders", pendingOrders);
+						request.setAttribute("orderitems", orderitems);
+						return "pendingorder";
+					   
+				}
+			
+			
+			
 			
 			
 			

@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -10,9 +11,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
+
 <meta charset="UTF-8">
-<title>List and Gird view using Javascript</title>
+<title>VeggieFridge</title>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
@@ -32,8 +35,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 0px auto;
-	margin-bottom:40px;
+	margin: 20px auto;
 }
 
 .links {
@@ -132,107 +134,129 @@
 .grid-view .view_item .btn {
 	margin: 0 auto;
 }
- .splash{
-  /*  text-align: center;
+
+.splash {
+	/*  text-align: center;
    margin-left:32%;
    margin-top:5%;
    font-family: 'Montserrat', sans-serif; */
-   border-radius: 10px;
-  /*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+	border-radius: 10px;
+	/*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 			0 10px 10px rgba(0,0,0,0.22); */
 	position: relative;
 	overflow: hidden;
 	width: 450px;
-    max-width: 100%;
+	max-width: 100%;
 	min-height: 100px;
 }
 
 input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: center;
-  margin-top: 10px;
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 14px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	float: center;
+	margin-top: 10px;
 }
 
 input[type=submit]:hover {
-  background-color:green;
+	background-color: green;
 }
 
-@keyframes show {
-	0%, 49.99% {
-		opacity: 0;
-		z-index: 1;
-	}
-	
-	50%, 100% {
-		opacity: 1;
-		z-index: 5;
-	}a
-
+@
+keyframes show { 0%, 49.99% {
+	opacity: 0;
+	z-index: 1;
+}
+50
+%
+,
+100
+%
+{
+opacity
+:
+1;
+z-index
+:
+5;
+}
+a
 </style>
 </head>
 <body>
 	<jsp:include page="mainheader.jsp"></jsp:include>
-	<div
-		style="border: 1 px green; background-color: white; margin-top: 20px; font-weight: bold; color: green; font-size: 25px; width: 1200px; margin: 0 auto; font-weight: 500px;">My
-		Wallet</div>
+
+	<div style="max-width: 1200px; margin: 17px auto;">
+
+		<span
+			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
+			Wallet</span>
+	</div>
+
 	<div class="wrapper">
-	
+
 
 		<div class="view_main">
-			
+
 			<div class="view_wrap list-view" style="display: block;">
-			<div class="view_item">
+				<div class="view_item">
 					<div class="vi_left">
-					   <a href="${pageContext.request.contextPath }/wallet/chooseanamount">
+
 						<spring:url value="/images" var="images" />
-						<img src="${images}/wallet1.png" alt="tomato" /> 
-						</a>
+						<img src="${images}/wallet1.png" alt="tomato" />
+
 						<!-- <img src="tomato.png" alt="tomato"> -->
 					</div>
 					<div class="vi_right">
-						<p class="title" style="color:green;">Current Balance</p>
-						<p class="content">RS:<span style="font-size:25px;">30.00</span></p>
+						<p class="title" style="color: green;">Current Balance</p>
+						<form modelAttribute="wallet">
+							<p class="content">
+								&#8377;<span style="font-size: 25px;"><fmt:formatNumber
+										type="number" minFractionDigits="2" maxFractionDigits="2"
+										value="${wallet.totalAmountBalance}" /></span>
+							</p>
+						</form>
 						<!-- <div class="btn">Review</div> -->
 					</div>
-				
-					
-				<div class="view_item">
-					 
-    
- <form method="post" action="${pageContext.request.contextPath}/wallet/pgRedirect" modelAttribute="kioskLocation">
- <h2 style="color:#4CAF50;">Enter Amount</h2>    
- <h6 style="color:#4CAF50;font-size:85%; margin-top:2%; text-align:center;">Amount will be added in your VeggieFridge Wallet</h6>
- 
- <input type="text"  name="TXN_AMOUNT" placeholder="Enter Amount"  required style="width: 77%;
-  padding: 12px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:5px;margin-top:10px;">
- 
- <input type="submit" value="Continue"  style="width: 79%;  padding:12px; margin-left: 1%; margin-right: 1%;background-color:green;"/>
-     
-     </form>
-   
-			        </div>
-			        
-			       
-			        
+
+
+					<div class="view_item" style="margin-left: 130px;">
+
+
+						<form method="post"
+							action="${pageContext.request.contextPath}/wallet/addMoneyInWallet/${customerModel.customerid}"
+							modelAttribute="kioskLocation">
+							<h2 style="color: #4CAF50; text-align: center;">Enter Amount</h2>
+							<h6 style="color: #4CAF50; margin-top: 2%; text-align: center;">Amount
+								will be added in your VeggieFridge Wallet</h6>
+
+							<input type="text" name="TXN_AMOUNT"
+								placeholder="Enter Amount Max Limit &#8377;5000" required
+								style="width: 100%; padding: 12px; margin: 3px 0 12px 0; display: inline-block; border: none; background: #f1f1f1; border-radius: 4px; margin: 5px auto;">
+
+							<input type="submit" value="Continue"
+								style="width: 100%; padding: 12px; background-color: green; margin: 5px auto;"onclick="return confirm('Are you sure to Add Money in Wallet?')" />
+
+						</form>
+
+					</div>
+
+
+
 				</div>
 
 
 
-				
+
+
+			</div>
 
 		</div>
 
 	</div>
-
 
 
 

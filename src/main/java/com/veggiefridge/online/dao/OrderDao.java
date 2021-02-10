@@ -1,5 +1,6 @@
 package com.veggiefridge.online.dao;
 
+import java.util.Date;
 import java.util.List;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.Customer;
@@ -35,4 +36,7 @@ public interface OrderDao {
 	public Orders updateOrders(Orders orders);
 
 	public List<Orders> getCancelledOrders(int customerid);
+	
+	public List<Orders> getOrdersBetweenDates(int customerid, Date fromDate, Date toDate);
+
 }

@@ -29,13 +29,6 @@
 	margin:0;
 } 
 
-html{
-	 /* background-color: #eaf0f2;  */
-}
-
-body{
-	font:16px/1.6 Arial,  sans-serif;
-}
 /* The footer is fixed to the bottom of the page */
 
 footer{

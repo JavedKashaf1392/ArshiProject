@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -41,6 +42,17 @@ public class WalletPayment {
 	
 	@Column(name="source")
 	private String source;
+	
+	@ManyToOne
+	private Wallet wallet;
+
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
 
 	public int getWalletPaymentId() {
 		return walletPaymentId;

@@ -330,8 +330,8 @@
 <body>
 
 	<jsp:include page="mainheader.jsp"></jsp:include>
+	
 	<div style="border:1 px green;background-color:white;margin-top:10px;font-weight: bold;color: green;font-size:25px;width: 1200px;margin: 0 auto;">My profile</div>
-
 	<div
 		style="background: #f5f5f5;padding: 30px 30px;margin-top:45px;width: 1200px;margin: 0 auto;">
 		<div class="side-bar">
@@ -387,7 +387,7 @@
 			</div>
 		</div>
 
-		<section class="main" style="margin-left:280px; margin-top:71px;">
+		<section class="main" style="margin-left:280px; margin-top:78px;">
 			<!--  <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
 			<div class="wrapper">
 				<div class="title">Edit Profile</div>

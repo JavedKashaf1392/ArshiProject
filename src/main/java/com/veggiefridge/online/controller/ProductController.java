@@ -84,7 +84,6 @@ public class ProductController {
 		Product product = productService.getProduct(productId);
 		ModelAndView model = new ModelAndView("productform");
 		model.addObject("product", product);
-
 		return model;
 	}
 
