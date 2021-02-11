@@ -231,11 +231,16 @@ label {
 }
 .product .product-details .product-title {
   margin-right: 20px;
+  font-weight:600;
  /*  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium"; */
 }
 .product .product-details .product-description {
-  margin: 5px 20px 5px 0;
-  line-height: 1.4em;
+ margin: 5px 20px 5px 0;
+  line-height: 1.4em; 
+ /*  margin: 5px 0; */
+	font-size: 14px;
+	/* line-height: 22px; */
+	font-weight: 200;
 }
 .product .product-quantity input {
   width: 40px;
@@ -458,14 +463,6 @@ label {
     <div class="totals-item">
       <label>Subtotal</label>
       <div class="totals-value" id="cart-subtotal"> &#8377;${s}</div>
-    </div>
-    <div class="totals-item">
-      <label>Tax (5%)</label>
-      <div class="totals-value" id="cart-tax">&#8377;3.60</div>
-    </div>
-    <div class="totals-item">
-      <label>Shipping</label>
-      <div class="totals-value" id="cart-shipping">&#8377;15.00</div>
     </div>
     <div class="totals-item totals-item-total">
       <label>Grand Total</label>

@@ -13,11 +13,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
+
+
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
 
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
  
 /* colors */
 
@@ -94,6 +96,7 @@
       z-index:1;
       padding:15px;
       display:none;
+     
   }
 
   .nav-trigger svg{
@@ -213,6 +216,7 @@ nav .navbar a:hover{
 .magic-shadow{
     position: relative;
     background:var(--heaven);
+    font-family: 'Montserrat', sans-serif;
 }
 .magic-shadow:after{
     content:'';
@@ -226,7 +230,8 @@ nav .navbar a:hover{
     position: absolute;
     bottom:-22px;
     z-index:-1;
-    box-shadow: 0px 0px 3px 1px #00000078; 
+    box-shadow: 0px 0px 3px 1px #00000078;
+    font-family: Montserrat;font-weight:300px;" 
     
 }
 .magic-shadow-sm{
@@ -976,7 +981,6 @@ footer.copyright a{
   cursor: pointer;
 }
     
- @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 .lg-title,
 .md-title,
@@ -1211,13 +1215,13 @@ width:35px;
                             </security:authorize>
                             
                             <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-                           <div class="dropdown">
+                           <div class="dropdown" style="font-family: Montserrat;font-weight:300px;">
                             <spring:url value="/images" var="images" />
     <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
                               <!--   <img src="./icons/user-icon.svg" alt=""> -->
     <a href="#" class="dropbtn">Hello, ${customerModel.firstName}</a>
     
-    <div class="dropdown-content" style="color: black;">
+    <div class="dropdown-content" style="color: black;font-family:Montserrat;font-weight:300px;">
     <c:forEach var="menu" items="${listprofileMenu}">
    
    <a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
@@ -1340,7 +1344,8 @@ width:35px;
                         </div>
                     </div>
                     <security:authorize access="isAnonymous() or hasRole('USER')">
-                    <div class="navbar magic-shadow">
+                    
+                    <div class="navbar magic-shadow" style="font-family: Montserrat;font-weight:300px;">
                            <div class="container flex justify-center">
                             <a href="${pageContext.request.contextPath}/home" class="active">Home</a>
                           <c:forEach var="menu" items="${listMenu}">
@@ -1354,6 +1359,7 @@ width:35px;
                             </c:forEach>
                         </div>
                     </div>
+                    
                      </security:authorize>
                      
                       <security:authorize access="hasRole('ADMIN')">

@@ -161,7 +161,7 @@ input {
 <body>
 
 <jsp:include page="mainheader.jsp"></jsp:include>
-<form method="post" action="${pageContext.request.contextPath }/showPendingOrdersByDate${customerModel.customerid}" modelAttribute="orders">
+<form method="post" action="${pageContext.request.contextPath }/showDeliveredOrdersByDate${customerModel.customerid}" modelAttribute="orders">
 <div style="max-width:1200px;margin:17px auto;">
 <span style="border:1 px green;background-color:white;font-weight: bold;color: green;font-size:25px;font-weight:500px;">My Orders</span>
 <table style="float:right;cellSpacing:20px);"> 

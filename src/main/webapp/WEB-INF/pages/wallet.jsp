@@ -11,6 +11,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
+	
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -195,7 +196,7 @@ input {
 .alert {
 	padding: 10px;
 	background-color:white;
-	color:black;
+	color:green;
 	opacity: 1;
 	transition: opacity 0.6s;
 	margin-bottom: 15px;
@@ -301,7 +302,7 @@ input {
 								<c:forEach var="walletpaymnet" items="${listwallettransaction}">
 									<tr>
 										<td style="width: 25%;">${walletpaymnet.walletPaymentId}</td>
-										<td style="width: 25%;">${walletpaymnet.paymentDate}</td>
+										<td style="width: 25%;"><fmt:formatDate value="${walletpaymnet.paymentDate}" pattern="dd-MM-yyyy"/></td>
 										<td style="width: 25%;">&#8377;${walletpaymnet.paymentAmount}</td>
 										<td style="width: 25%;">${walletpaymnet.paymentStatus}</td>
 									</tr>

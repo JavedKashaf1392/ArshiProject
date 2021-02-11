@@ -30,6 +30,7 @@ import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Payment;
 import com.veggiefridge.online.model.Wallet;
 import com.veggiefridge.online.model.WalletPayment;
+import com.veggiefridge.online.service.OrderService;
 import com.veggiefridge.online.service.ProductService;
 import com.veggiefridge.online.service.WalletService;
 
@@ -49,6 +50,9 @@ public class WalletController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private OrderService orderservice;
 
 	// get Wallet
 	private Wallet getWallet() {
@@ -61,7 +65,7 @@ public class WalletController {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-	// myWallet
+	 //myWallet
 	@RequestMapping(value = "/myWallet/{customerid}", method = RequestMethod.GET)
 	public ModelAndView listOrderItem(ModelAndView model, @Valid @ModelAttribute("wallet") Wallet wallet,
 			BindingResult result, HttpSession session) {
@@ -128,19 +132,46 @@ public class WalletController {
 		String checkSum = getCheckSum(parameters);
 		parameters.put("CHECKSUMHASH", checkSum);
 		modelAndView.addAllObjects(parameters);
-		WalletPayment walletpayment = new WalletPayment();
+		//WalletPayment walletpayment = new WalletPayment();
+		//double txnAmount = Double.parseDouble(transactionAmount);
+		//walletpayment.setPaymentAmount(txnAmount);
+		//walletpayment.setPaymentDate(new Date());
+		//walletpayment.setPaymentStatus("Debit");
+		//walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
+		//walletservice.addWalletPayment(walletpayment);
+		//wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+		//wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + txnAmount);
+		//walletservice.updateWallet(wallet);
 		double txnAmount = Double.parseDouble(transactionAmount);
+		wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+		if(wallet.getTotalAmountBalance()+txnAmount<=5000) {
+		WalletPayment walletpayment = new WalletPayment();
 		walletpayment.setPaymentAmount(txnAmount);
 		walletpayment.setPaymentDate(new Date());
 		walletpayment.setPaymentStatus("Debit");
 		walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
 		walletservice.addWalletPayment(walletpayment);
-		wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
 		wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + txnAmount);
 		walletservice.updateWallet(wallet);
 		return modelAndView;
 	}
-
+		else {
+			model.addObject("message", env.getProperty("wallet.maxlimit"));
+			String section = "Navbar";
+			List<Menu> listMenu = productService.getMenuByNavbar(section);
+			String profilemenuSection = "Profile";
+			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+			model.addObject("listprofileMenu", listprofileMenu);
+			model.addObject("listMenu", listMenu);
+			wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+			System.out.println("wallet id" + wallet);
+			System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
+			model.addObject("wallet", wallet);
+			model.setViewName("chooseanamount");
+			return model;
+		}
+		
+	}
 	@RequestMapping(value = "/pgres")
 	public ModelAndView getResponseRedirect(HttpServletRequest request, ModelAndView model,@ModelAttribute("Wallet") Wallet wallet,
 			BindingResult resultwallet) {
@@ -213,18 +244,142 @@ public class WalletController {
 		return model;
 	}
 
-	// add Refund Money InWallet
+	 //add Refund Money InWallet
 	@RequestMapping(value = "/addRefundMoneyInWallet/{customerid}", method = RequestMethod.GET)
 	public ModelAndView addRefundMoneyInWallet(ModelAndView model, @PathVariable(value = "customerid") int customerid,
-			@ModelAttribute("Wallet") Wallet wallet, BindingResult resultwallet, @ModelAttribute("order") Orders order,
-			BindingResult resultorder) {
-		System.out.println("order" + order.toString());
-		wallet = this.getWallet();
-		wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + 50);
-		wallet.setCustomer(this.getCartPage().getCustomer());
+			@ModelAttribute("Wallet") Wallet wallet, BindingResult resultwallet,
+			BindingResult resultorder) throws Exception {
+		System.out.println("........................................");
+	
+		/* paytmDetailPojo.getPaytmUrl() */
+		Random random = new Random();
+		String Orderid = random.toString();
+		System.out.println(Orderid);
+		String id = random.toString();
+		System.out.println(customerid);
+		ModelAndView modelAndView = new ModelAndView("redirect:" + "https://securegw-stage.paytm.in/order/process");
+		TreeMap<String, String> parameters = new TreeMap<>();
+		System.out.println(parameters);
+		PaytmConstants.detail.forEach((k, v) -> parameters.put(k, v));
+		parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
+		parameters.put("EMAIL", env.getProperty("paytm.email"));
+		parameters.put("TXN_AMOUNT","50");
+		parameters.put("ORDER_ID", Orderid);
+		parameters.put("CUST_ID", id);
+		parameters.put("INDUSTRY_TYPE_ID", "Retail");
+		parameters.put("CHANNEL_ID", "WEB");
+		String checkSum = getCheckSum(parameters);
+		parameters.put("CHECKSUMHASH", checkSum);
+		modelAndView.addAllObjects(parameters);
+		//WalletPayment walletpayment = new WalletPayment();
+		//double txnAmount = Double.parseDouble(transactionAmount);
+		//walletpayment.setPaymentAmount(txnAmount);
+		//walletpayment.setPaymentDate(new Date());
+		//walletpayment.setPaymentStatus("Debit");
+		//walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
+		//walletservice.addWalletPayment(walletpayment);
+		//wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+		//wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + txnAmount);
+		//walletservice.updateWallet(wallet);
+		double txnAmount = Double.parseDouble("50");
+		wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+		if(wallet.getTotalAmountBalance()+txnAmount<=5000) {
+		WalletPayment walletpayment = new WalletPayment();
+		walletpayment.setPaymentAmount(txnAmount);
+		walletpayment.setPaymentDate(new Date());
+		walletpayment.setPaymentStatus("Debit");
+		walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
+		walletservice.addWalletPayment(walletpayment);
+		wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + txnAmount);
 		walletservice.updateWallet(wallet);
-		model.setViewName("wallet");
-		return model;
+		return modelAndView;
 	}
+		else {
+			model.addObject("message", env.getProperty("wallet.maxlimit"));
+			String section = "Navbar";
+			List<Menu> listMenu = productService.getMenuByNavbar(section);
+			String profilemenuSection = "Profile";
+			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+			model.addObject("listprofileMenu", listprofileMenu);
+			model.addObject("listMenu", listMenu);
+			wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+			System.out.println("wallet id" + wallet);
+			System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
+			model.addObject("wallet", wallet);
+			model.setViewName("chooseanamount");
+			return model;
+		}
+	}
+		
+	
+		 //add Refnd Money InWallet
+		@RequestMapping(value = "/addRefudMoneyInWallet/{orderid}", method = RequestMethod.GET)
+		public ModelAndView addRefudMoneyInWallet(ModelAndView model, @PathVariable(value = "orderid") int orderid,
+				@ModelAttribute("Wallet") Wallet wallet, BindingResult resultwallet,
+				BindingResult resultorder,@ModelAttribute("orders") Orders order) throws Exception {
+			System.out.println("........................................");
+			order = orderservice.getOrder(orderid);
+			model.addObject("order",order);
+			/* paytmDetailPojo.getPaytmUrl() */
+			Random random = new Random();
+			String Orderid = random.toString();
+			System.out.println(Orderid);
+			String id = random.toString();
+			double refundmoney = order.getTotalBillAmount();
+			String txnAmount = Double.toString(refundmoney);
+			ModelAndView modelAndView = new ModelAndView("redirect:" + "https://securegw-stage.paytm.in/order/process");
+			TreeMap<String, String> parameters = new TreeMap<>();
+			System.out.println(parameters);
+			PaytmConstants.detail.forEach((k, v) -> parameters.put(k, v));
+			parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
+			parameters.put("EMAIL", env.getProperty("paytm.email"));
+			parameters.put("TXN_AMOUNT",txnAmount);
+			parameters.put("ORDER_ID", Orderid);
+			parameters.put("CUST_ID", id);
+			parameters.put("INDUSTRY_TYPE_ID", "Retail");
+			parameters.put("CHANNEL_ID", "WEB");
+			String checkSum = getCheckSum(parameters);
+			parameters.put("CHECKSUMHASH", checkSum);
+			modelAndView.addAllObjects(parameters);
+			//WalletPayment walletpayment = new WalletPayment();
+			//double txnAmount = Double.parseDouble(transactionAmount);
+			//walletpayment.setPaymentAmount(txnAmount);
+			//walletpayment.setPaymentDate(new Date());
+			//walletpayment.setPaymentStatus("Debit");
+			//walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
+			//walletservice.addWalletPayment(walletpayment);
+			//wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+			//wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + txnAmount);
+			//walletservice.updateWallet(wallet);
+			
+			wallet = walletservice.fetchWallet(order.getCustomer().getCustomerid());
+			if(wallet.getTotalAmountBalance()+ refundmoney<=5000) {
+			WalletPayment walletpayment = new WalletPayment();
+			walletpayment.setPaymentAmount(refundmoney);
+			walletpayment.setPaymentDate(new Date());
+			walletpayment.setPaymentStatus("Debit");
+			walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
+			walletservice.addWalletPayment(walletpayment);
+			wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + refundmoney);
+			walletservice.updateWallet(wallet);
+			return modelAndView;
+		}
+			else {
+				model.addObject("message", env.getProperty("wallet.maxlimit"));
+				String section = "Navbar";
+				List<Menu> listMenu = productService.getMenuByNavbar(section);
+				String profilemenuSection = "Profile";
+				List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+				model.addObject("listprofileMenu", listprofileMenu);
+				model.addObject("listMenu", listMenu);
+				wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+				System.out.println("wallet id" + wallet);
+				System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
+				model.addObject("wallet", wallet);
+				model.setViewName("chooseanamount");
+				return model;
+			}
+			
 
+}
 }

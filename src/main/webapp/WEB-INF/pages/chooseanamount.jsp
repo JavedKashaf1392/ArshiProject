@@ -164,26 +164,38 @@ input[type=submit] {
 input[type=submit]:hover {
 	background-color: green;
 }
+.alert {
+	padding: 10px;
+	background-color:white;
+	color:green;
+	opacity: 1;
+	transition: opacity 0.6s;
+	margin-bottom: 15px;
+	text-align: center;
+	letter-spacing: 2px;
+	cursor: pointer;
+	font-weight: bold;
+	max-width:1200px;
+	margin: 10px auto;
 
-@
-keyframes show { 0%, 49.99% {
-	opacity: 0;
-	z-index: 1;
 }
-50
-%
-,
-100
-%
-{
-opacity
-:
-1;
-z-index
-:
-5;
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
 }
-a
+
+.closebtn:hover {
+	color: black;
+}
+}
+
 </style>
 </head>
 <body>
@@ -200,6 +212,11 @@ a
 
 
 		<div class="view_main">
+		<c:if test="${not empty message}">
+				<div class="alert">
+					<span class="closebtn">&times;</span> <strong></strong> ${message}.
+				</div>
+			</c:if>
 
 			<div class="view_wrap list-view" style="display: block;">
 				<div class="view_item">
@@ -262,6 +279,21 @@ a
 
 
 	<jsp:include page="footer.jsp"></jsp:include>
+	
+	<script>
+		var close = document.getElementsByClassName("closebtn");
+		var i;
+
+		for (i = 0; i < close.length; i++) {
+			close[i].onclick = function() {
+				var div = this.parentElement;
+				div.style.opacity = "0";
+				setTimeout(function() {
+					div.style.display = "none";
+				}, 600);
+			}
+		}
+	</script>
 
 
 </body>

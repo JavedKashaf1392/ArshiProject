@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -528,21 +529,13 @@ public class OrderController {
 				 * int orderid) { System.out.println("Get Order Id"+orderid); return
 				 * "redirect:/order/showPendingOrders{customerid}"; }
 				 */
-			
 			 //delivered order item
-			@RequestMapping(value = "/cancelOrder/{orderid}", method = RequestMethod.GET)
-			public ModelAndView cancelOrder(ModelAndView model,@PathVariable(value = "orderid") int orderid,
-					@ModelAttribute("orders") Orders order, BindingResult resultorder) {
-				order = orderservice.getOrder(orderid);
-				order.setPickupStatus("Cancelled");
-				order.setUpdatedDate(new Date());
-				orderservice.updateOrders(order);
-				System.out.println("Your Order is cancelled");
+			@RequestMapping(value = "/confirmcancelOrder", method = RequestMethod.GET)
+			public ModelAndView confirmcancelOrder(ModelAndView model) {
+				
 				model.setViewName("cancel");
 				return model;
 			}
-			
-			
 		
 			@RequestMapping(value = "/showCancelOrder{customerid}", method = RequestMethod.GET)
 			public String showCancelOrders(HttpServletRequest req, Model model) {
@@ -551,8 +544,7 @@ public class OrderController {
 					return "cancelOrder";
 				}
 			
-			
-			
+		
 			//Pending Orders
 			@RequestMapping(value = "/showPendingOrders{customerid}", method = RequestMethod.GET)
 			public String showPendingOrder(HttpServletRequest req, Model model,HttpServletRequest request) {
@@ -628,16 +620,14 @@ public class OrderController {
 				}
 		
 			 //Pending Orders
-			@RequestMapping(value = "/showPendingOrdersByDate{customerid}", method = RequestMethod.GET)
-			public String showPendingOrderByDate(HttpServletRequest req, Model model,HttpServletRequest request,@RequestParam(value = "fromDate") String strDate, @RequestParam(value = "toDate") String endDate) throws ParseException {
+			@RequestMapping(value = "/showDeliveredOrdersByDate{customerid}", method = RequestMethod.GET)
+			public String showDeliveredOrdersByDateByDate(HttpServletRequest req, Model model,HttpServletRequest request,@RequestParam(value = "fromDate")@DateTimeFormat(pattern="MM/dd/yyyy") Date strDate,@RequestParam(value = "fromDate")@DateTimeFormat(pattern="MM/dd/yyyy") Date endDate) throws ParseException {
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-				Date fromDate = sdf.parse(strDate);
-			    Date toDate = sdf.parse(endDate);
-				System.out.println( "From Date" + fromDate + "TO Date" + toDate);
-				List<Orders> pendingOrders = orderservice.getOrdersBetweenDates(this.getCartPage().getCustomer().getCustomerid(), fromDate,toDate);
+				
+				System.out.println( "From Date" + strDate + "TO Date" + endDate);
+				List<Orders> deliveredOrders = orderservice.getOrdersBetweenDates(this.getCartPage().getCustomer().getCustomerid(), strDate,endDate);
 					Map orderitems = new HashMap();
-					for(Iterator it = pendingOrders.iterator(); it.hasNext(); ){
+					for(Iterator it = deliveredOrders.iterator(); it.hasNext(); ){
 						Orders orders = (Orders)it.next();
 						List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 						orderitems.put(orders.getOrderid(), listorderitem);
@@ -650,13 +640,34 @@ public class OrderController {
 						/* model.addAttribute("pendingOrders", pendingOrders); */
 						model.addAttribute("listprofileMenu", listprofileMenu);
 						/* model.addAttribute("orderitems", orderitems); */
-						request.setAttribute("pendingOrders", pendingOrders);
+						request.setAttribute("deliveredOrders", deliveredOrders);
 						request.setAttribute("orderitems", orderitems);
-						return "pendingorder";
-					   
+						return "deliveredorder";
 				}
 			
 			
+			 //cancel Order
+			@RequestMapping(value = "/cancelOrder/{orderid}", method = RequestMethod.GET)
+			public ModelAndView cancelOrder(ModelAndView model,@PathVariable(value = "orderid") int orderid,
+					@ModelAttribute("orders") Orders order, BindingResult resultorder) {
+				order = orderservice.getOrder(orderid);
+				order.setPickupStatus("Cancelled");
+				order.setUpdatedDate(new Date());
+				orderservice.updateOrders(order);
+				List<OrderItem> listorderitem = orderservice.listOrderItem(order.getOrderid());
+				model.addObject("listorderitem",listorderitem);
+				model.addObject("order",order);
+				 String section = "Navbar"; List<Menu> listMenu =
+						  productservice.getMenuByNavbar(section); model.addObject("listMenu",
+						  listMenu);
+						  String profilemenuSection = "Profile";
+							List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+							/* model.addAttribute("pendingOrders", pendingOrders); */
+							model.addObject("listprofileMenu", listprofileMenu);
+							model.addObject("message", env.getProperty("order.cancelorder"));			
+				model.setViewName("cancel");
+				return model;
+			}
 			
 			
 			

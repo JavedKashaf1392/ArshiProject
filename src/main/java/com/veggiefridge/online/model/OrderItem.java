@@ -1,3 +1,4 @@
+
 package com.veggiefridge.online.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;

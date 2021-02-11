@@ -119,7 +119,7 @@ public class OrderDaoImpl implements OrderDao{
 	
 	@Override
 	public List<Orders>  getPendingOrders(int customerid) {
-		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid";
+		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid ORDER BY orderId DESC";
 		return sessionFactory.getCurrentSession()
 				.createQuery(query)
 					.setParameter("pickupStatus", VFOnlineConstants.PICKUP_STATUS)
@@ -130,7 +130,7 @@ public class OrderDaoImpl implements OrderDao{
 
 	@Override
 	public List<Orders> getDeliveredOrders(int customerid) {
-		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid";
+		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid ORDER BY orderId DESC";
 		return sessionFactory.getCurrentSession()
 				.createQuery(query)
 					.setParameter("pickupStatus", VFOnlineConstants.PICKUPSTATUS)
@@ -140,7 +140,7 @@ public class OrderDaoImpl implements OrderDao{
 
 	@Override
 	public List<Orders> getCancelledOrders(int customerid) {
-		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid";
+		String query = "FROM Orders WHERE pickupStatus =:pickupStatus AND customer.customerid = :customerid ORDER BY orderId DESC";
 		return sessionFactory.getCurrentSession()
 				.createQuery(query)
 					.setParameter("pickupStatus", VFOnlineConstants.PSTATUS)
