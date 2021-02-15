@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.paytm.pg.merchant.PaytmChecksum;
 import com.veggiefridge.online.constants.PaytmConstants;
+import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.CustomerModel;
@@ -81,6 +82,8 @@ public class WalletController {
 		model.addObject("listwallettransaction", listwallettransaction);
 		model.addObject("listprofileMenu", listprofileMenu);
 		model.addObject("listMenu", listMenu);
+		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("wallet");
 		return model;
 	}
@@ -102,6 +105,8 @@ public class WalletController {
 		model.addObject("listMenu", listMenu);
 		model.setViewName("wallet");
 		model.setViewName("/chooseanamount");
+		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		return model;
 	}
 
@@ -152,6 +157,8 @@ public class WalletController {
 		walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
 		walletservice.addWalletPayment(walletpayment);
 		wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + txnAmount);
+		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		walletservice.updateWallet(wallet);
 		return modelAndView;
 	}
@@ -166,6 +173,8 @@ public class WalletController {
 			wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
 			System.out.println("wallet id" + wallet);
 			System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
+			model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			model.addObject("wallet", wallet);
 			model.setViewName("chooseanamount");
 			return model;
@@ -217,6 +226,8 @@ public class WalletController {
 		List<WalletPayment> listwallettransaction=walletservice.listWalletPayment(this.getCartPage().getCustomer().getWallet().getWalletID());
 		model.addObject("listwallettransaction", listwallettransaction);
 		model.addObject("message", env.getProperty("wallet.walletupdated"));
+		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("wallet");
 		return model;
 	}
@@ -240,6 +251,8 @@ public class WalletController {
 		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
 		model.addObject("listprofileMenu", listprofileMenu);
 		model.addObject("listMenu", listMenu);
+		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("wallet");
 		return model;
 	}
@@ -291,6 +304,8 @@ public class WalletController {
 		walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
 		walletservice.addWalletPayment(walletpayment);
 		wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + txnAmount);
+		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		walletservice.updateWallet(wallet);
 		return modelAndView;
 	}
@@ -306,6 +321,8 @@ public class WalletController {
 			System.out.println("wallet id" + wallet);
 			System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
 			model.addObject("wallet", wallet);
+			model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			model.setViewName("chooseanamount");
 			return model;
 		}
@@ -361,6 +378,8 @@ public class WalletController {
 			walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
 			walletservice.addWalletPayment(walletpayment);
 			wallet.setTotalAmountBalance(wallet.getTotalAmountBalance() + refundmoney);
+			model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			walletservice.updateWallet(wallet);
 			return modelAndView;
 		}
@@ -376,6 +395,8 @@ public class WalletController {
 				System.out.println("wallet id" + wallet);
 				System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
 				model.addObject("wallet", wallet);
+				model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+				model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 				model.setViewName("chooseanamount");
 				return model;
 			}

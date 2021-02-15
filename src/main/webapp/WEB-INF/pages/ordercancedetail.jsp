@@ -526,6 +526,7 @@ label {
 								<p style="font-weight: 200;">${order.pickupStatus}</p>
 								</td>
 								</tr>
+								
 							
 									
 </table>
@@ -551,8 +552,6 @@ label {
 									class="product-removal">Remove</label>
 							</div>
 
-
-
 							<c:forEach var="orderitem" items="${listorderitem}">
 								<div class="product">
 									<div class="product-image">
@@ -567,7 +566,7 @@ label {
 											got curious once and ate one myself. I'm a fan.</p>
 									</div>
 									<div class="product-price">
-										${repee_sign}
+									${repee_sign}
 										<fmt:formatNumber type="number" minFractionDigits="2"
 											maxFractionDigits="2" value="${orderitem.product.price}" />
 									</div>
@@ -614,20 +613,7 @@ label {
 
 				<a href="#"
 							style="display: inline-block; padding: 8px 5px; text-align: center; text-decoration: none; color: #fff; background: #4abd3e; border-radius: 3px; font-weight: 400; width: 125px; margin-left:10px;" id="myBtn">Re-Order</a>
-							
-<a href="${pageContext.request.contextPath}/order/orderReview" style=" background-color:#4abd3e;
-  border: none;
-  color: white;
-  padding: 8px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;border-radius: 3px;">Write A Review<%-- <spring:url value="/images" var="images" />
-   <img src="${images}/orderreview.png"  width="15" height="20"/> --%></a>
-							
-
+													
 				</div>
 		</div>
 	</div>

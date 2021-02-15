@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.dao.CartItemDAO;
 import com.veggiefridge.online.dao.OrderDao;
 import com.veggiefridge.online.model.CartItem;
@@ -78,6 +80,7 @@ public class ShoppingCartController {
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		/* model.setViewName("registerdhome"); */
 		model.setViewName("VeggieFridge");
 		return model;
@@ -88,6 +91,7 @@ public class ShoppingCartController {
 	// checkout
 	@RequestMapping(value = "/paymnet")
 	public ModelAndView myOrder(ModelAndView model) {
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("checkout");
 		return model;
 	}
@@ -95,6 +99,7 @@ public class ShoppingCartController {
 	// saveOrder
 	@RequestMapping(value = "/saveOrder")
 	public ModelAndView saveOrder(ModelAndView model) {
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("thanks");
 		return model;
 	}
@@ -154,6 +159,7 @@ public class ShoppingCartController {
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
 		model.addObject("listMenu", listMenu);
 		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("cart");
 		return model;
 	}
@@ -187,8 +193,10 @@ public class ShoppingCartController {
 	private CartPage getCartPage() {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
+	
+	
 
-	//add cartitem
+	 //add cartitem
 	@RequestMapping(value = "/addToCartPageItem/{productid}")
 	public ModelAndView addCartItems(ModelAndView model, @PathVariable int productid,
 			@ModelAttribute("cartpage") CartPage cart, BindingResult resultcart) {
@@ -221,6 +229,7 @@ public class ShoppingCartController {
 			// insert a new cartLine
 			cartservice.add(cartitem);
 			model.addObject("message", env.getProperty("cart.addproduct"));
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			System.out.println("cartitem is added");
 			// update the cart
 			cartpage.setGrandTotal(cart.getGrandTotal() + cartitem.getBuyingPrice());
@@ -229,7 +238,7 @@ public class ShoppingCartController {
 			System.out.println("cartpage updated");
 		} else {
 			model.addObject("message", env.getProperty("Product Already Added Insid a Cart"));
-
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		}
 		String imageSection = "Header";
 		List<Images> headerImages = productservice.getImagesBySection(imageSection);
@@ -239,6 +248,7 @@ public class ShoppingCartController {
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("VeggieFridge");
 
 		/* return "redirect:/cart/listCustomerCartItem"; */
@@ -262,6 +272,7 @@ public class ShoppingCartController {
 		model.addObject("headerImages", headerImages);
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		// model.setViewName("cartitemlist");
 		model.setViewName("cart");
 		return model;
@@ -305,6 +316,7 @@ public class ShoppingCartController {
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
 		String profilemenuSection = "Profile";
 		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		
 		model.addObject("listprofileMenu", listprofileMenu);
 		model.addObject("listMenu", listMenu);
 		model.addObject("customer", customer);
@@ -408,6 +420,7 @@ public class ShoppingCartController {
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
 		model.addObject("listMenu", listMenu);
 		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("cart");
 		return model;
 	}
@@ -442,6 +455,7 @@ public class ShoppingCartController {
 		List<Menu> listMenu = productservice.getMenuByNavbar(section);
 		model.addObject("listMenu", listMenu);
 		model.addObject("listcustomercartitem", listcustomercartitem);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("cart");
 		return model;
 	}

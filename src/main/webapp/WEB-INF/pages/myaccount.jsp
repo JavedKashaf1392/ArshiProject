@@ -19,15 +19,16 @@
 	charset="utf-8"></script>
 
 <style>
-@import
-	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap')
-	;
 
-* {
+@import
+url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
 }
 
 .side-bar {
@@ -43,7 +44,7 @@
 	transition-property: left;
 	background-color: white;
 	left: 0;
-	margin-top: 295px;
+	margin-top: 282px;
 	margin-left: 15%;
 }
 
@@ -330,10 +331,9 @@
 <body>
 
 	<jsp:include page="mainheader.jsp"></jsp:include>
-	
 	<div style="border:1 px green;background-color:white;margin-top:10px;font-weight: bold;color: green;font-size:25px;width: 1200px;margin: 0 auto;">My profile</div>
 	<div
-		style="background: #f5f5f5;padding: 30px 30px;margin-top:45px;width: 1200px;margin: 0 auto;">
+		style="background: #f5f5f5;padding: 30px 30px;margin-top:20px;width: 1200px;margin: 0 auto;">
 		<div class="side-bar">
 			<div class="menuprofile">
 				<spring:url value="/images" var="images" />

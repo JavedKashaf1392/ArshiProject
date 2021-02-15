@@ -35,15 +35,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-   background-color: #f1f1f1;; 
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
-* {
-  box-sizing: border-box;
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-
 /* Add padding to containers */
 .container {
   padding: 16px;
@@ -104,7 +104,7 @@ hr {
 .registerbtn {
   background-color: #4CAF50;
   color: white;
-  padding: 16px 20px;
+  padding: 10px 8px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
@@ -131,6 +131,7 @@ a {
 .placeholder{
 color: black;
 }
+
 </style>
 </head>
 <body>

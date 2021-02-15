@@ -10,16 +10,20 @@
 <html>
 <head>
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
-<!-- <link rel="icon" type="image/jpg" href="images/logo.jpg"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 
-body{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
-font-family: Arial, Helvetica, sans-serif;
-background-color:#f1f1f1;
-
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
+
 .errormsg{
     text-align:center;
 	padding: 15px;
@@ -187,14 +191,14 @@ span.psw {
         Your login attempt was not successful due to Bad Credential <%-- <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> --%>
         </font>
         </c:if>
-     
-    <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
-   
-   <div class="imgcontainer">
+      <div class="imgcontainer">
    <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
    <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg" width="150" height="100"/>
+		<img src="${images}/logo.jpg" width="160" height="110"/>
       </div>
+    <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
+   
+  
       
       <div class="container">
       <label for="uname"><b>Email</b></label>
@@ -215,16 +219,20 @@ span.psw {
       <button type="button"  class="cancelbtn" onclick="history.back()">Cancel</button>
       <span class="psw"><a href="${pageContext.request.contextPath }/login/forgotPassword">Forgot Password?</a></span>
     </div>
-  <a href="${pageContext.request.contextPath }/signup" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;text-decoration: none;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge? Create an account</a><button type="button" onclick="${pageContext.request.contextPath }/signup" class="submitId"  
+  
+  <a href="${pageContext.request.contextPath }/signup" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;text-decoration: none;margin-left:2%" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge? Create an account</a>
+  <button type="button" onclick="${pageContext.request.contextPath }/signup" class="submitId"  
   style="
   width: auto;
   padding: 10px 18px;
   background-color: #4CAF50;
   color: white;
   border: none; margin-top: 2%;margin-left: 2%;border-radius:5px;">SignUp</button> 
-    
  </form>
+ 
 </div>
+<p style="font-size:12px; text-align: center;
+  position: relative;margin-right:100px;">© 2020-2021, VeggeiFridge.com, Inc. or its affiliates</p>
 
 <script>
 // Get the modal

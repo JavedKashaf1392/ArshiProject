@@ -77,7 +77,6 @@
       height:100vh;
       overflow:hidden;
   } 
-
   .nav-background{
       width:100%;
       height:100%;
@@ -1079,14 +1078,6 @@ width:35px;
 
 <body>
 
-<%-- <c:if test="${not empty message}">
-<div class="alert">
-  <span class="closebtn">&times;</span>  
-  <strong></strong>${message}
-</div>
-</c:if>
- --%>
- 
 <!-- ......... HeadSection........ -->
  <div class="main-wrapper">
 
@@ -1274,7 +1265,7 @@ width:35px;
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
                            <!--  <img src="./icons/cart.svg" alt=""> -->
-                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
                            </div>
                            </security:authorize>
                            
@@ -1283,7 +1274,7 @@ width:35px;
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
                            <!--  <img src="./icons/cart.svg" alt=""> -->
-                           <a href="#">0 Items - (&#8377;0.00)</a>
+                           <a href="#">0 Items - (${repee_sign}0.00)</a>
                            </div>
                            </security:authorize>
                         </div>
@@ -1292,20 +1283,19 @@ width:35px;
                 <nav>                    
                 <div class="top">
                         <div class="container flex justify-between">
-                        
-                       <%--  <div>
-                        <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg"  width="50" height="50" alt=""/>
-   </div> --%>
-                            <div class="contact flex items-center">
-                         <%--   <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg"  width="50" height="50" alt=""/>
-                           <spring:url value="/images" var="images" />
-   <img src="${images}/phone.svg"  width="25" height="25" alt=""/>  --%>
-                               <!--  <img src="/images/phone.svg" alt=""> --> 
-                               <div style="margin-left:80px;">
-   <spring:url value="/images" var="images" />
+                           <div class="contact flex items-center">
+                       
+                               <div>
+                                <table>
+					<%-- <th><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <img src="${images}/vf-leaf.png"  width="90" height="75" alt=""/>
+					</a></th> --%>
+					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
+					</a></th>
+				</table>
+
+   
                                     <!--  <h5>Call US: (+84) 123 456 789</h5>
                                     <h6>E-mail : support@freshmeal.com</h6> -->
                               </div>   
@@ -1409,6 +1399,7 @@ width:35px;
 });
     
 </script>
+
  
 </body>
 </html>

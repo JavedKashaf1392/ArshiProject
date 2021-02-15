@@ -252,13 +252,13 @@ color:black;
 				<h3><span>VeggieFridge</span></h3>
 
 				<p class="footer-links">
-					<a href="#">Contact Us</a>
+					<a href="#">In News</a>
 					|
 					<a href="#">Privacy Policy</a>
 					|
-					<a href="#">In News</a>
-					|
 					<a href="#">Help</a>
+					|
+					<a href="#">FeedBack</a>
 				</p>
 
 				<!-- <p class="footer-company-name">© 2019 Eduonix Learning Solutions Pvt. Ltd.</p> -->

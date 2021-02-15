@@ -20,7 +20,6 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
 	;
-
 * {
 	list-style: none;
 	font-family: 'Montserrat', sans-serif;
@@ -231,7 +230,7 @@ input[type=submit]:hover {
 						<p class="title" style="color: green;">Current Balance</p>
 						<form modelAttribute="wallet">
 							<p class="content">
-								&#8377;<span style="font-size: 25px;"><fmt:formatNumber
+								${repee_sign}<span style="font-size: 25px;"><fmt:formatNumber
 										type="number" minFractionDigits="2" maxFractionDigits="2"
 										value="${wallet.totalAmountBalance}" /></span>
 							</p>

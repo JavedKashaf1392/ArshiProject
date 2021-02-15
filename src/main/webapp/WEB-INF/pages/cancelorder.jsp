@@ -4,12 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	
 	<meta charset="UTF-8">
 	<title>VeggieFridge</title>
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -31,6 +32,7 @@
 .wrapper{
 	width: 1200px;
 	margin: 20px auto;
+	
 }
 
 .links{
@@ -132,7 +134,6 @@
 	margin: 0 auto;
 }
 
-
 /* calendar */
 
 [type="date"] {
@@ -152,31 +153,32 @@ input {
   border-radius: 5px;
   background-color: #fff;
   padding: 3px 5px;
-  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+ /*box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); */
   width: 190px;
 }
+   
 </style> 
 </head>
 
 <body>
+
+
 <jsp:include page="mainheader.jsp"></jsp:include>
 
 <div style="max-width:1200px;margin:17px auto;">
-
 <span style="border:1 px green;background-color:white;font-weight: bold;color: green;font-size:25px;font-weight:500px;">My Orders</span>
-
 <table style="float:right;cellSpacing:20px);"> 
 <th>   
 <label for="dateofbirth">From</label>
 </th>
 <th>
-<input type="date" name="dateofbirth" id="dateofbirth">
+<input type="date" name="dateofbirth" id="dateofbirth" style="box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);">
 </th> 
 <th>   
 <label for="dateofbirth">To</label></th>
 <th>
 
-<input type="date" name="dateofbirth" id="dateofbirth">
+<input type="date" name="dateofbirth" id="dateofbirth" style="box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);">
     </th> 
   <th>   
 <label for="dateofbirth"></label></th>
@@ -196,8 +198,12 @@ input {
 <div class="wrapper">
 	
 	   <div class="view_main">
-	   <h4>${orders.pickupStatus}</h4>${orders.orderDate}
-	   <h4>Total: &#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></h4>
+	   <div style="margin-left:10px;line-height:28px;">
+	   <a href="${pageContext.request.contextPath}/order/ordercancedetail/${orders.orderid}"><span style="color: green;float:right;margin-right:10px;text-decoration:underline;">Order Detail</span></a><a href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}"><span href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}" style="color: green;float:right;margin-right:10px;text-decoration:underline;">Re-Order</span></a>
+	   <p style="font-weight:600">${orders.pickupStatus}</p>
+	   <p><fmt:formatDate value="${orders.orderDate}" pattern="${dateformatter}"/></p>
+	   <p style="font-weight:600">Total:${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></p>
+       </div>
 	   <div class="view_wrap list-view" style="display: block;">
 			
 			<c:forEach var="orderitem" items="${requestScope.orderitems[orders.orderid]}">
@@ -210,21 +216,29 @@ input {
 				<div class="vi_right">
 					<p class="title">${orderitem.product.productName}</p>
 					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<p class="content">${orderitem.product.price}</p>
+					<p class="content">${repee_sign}${orderitem.product.price}</p>
 					<!-- <div class="btn">Review</div> -->
-				</div>
+		    </div>
 			</div>
 			</c:forEach>
-			
-			
-			<div class="btn" style="width: 125px;
+	<table>
+	<th>
+	<div class="btn" style="width: 125px;
 	background: #4abd3e;
 	padding: 8px 5px;
 	border-radius: 3px;
 	color: #fff;
 	text-align: center;
-	font-weight: 200;
-	cursor: pointer;margin-left:20px;">ShowAll</div>
+	font-weight:400;
+	cursor: pointer;margin-left:10px;">ShowAll</div>
+	</th>
+	
+	
+	</table>
+	
+	
+	
+	
 		</div>
 		
 	</div>

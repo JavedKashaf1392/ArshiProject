@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,7 +152,7 @@ input {
   border-radius: 5px;
   background-color: #fff;
   padding: 3px 5px;
-  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+ /*  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); */
   width: 190px;
 }
   
@@ -169,13 +170,13 @@ input {
 <label for="dateofbirth">From</label>
 </th>
 <th>
-<input type="date" name="fromDate" id="dateofbirth">
+<input type="date" name="fromDate" id="dateofbirth" style="box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);">
 </th> 
 <th>   
 <label for="dateofbirth">To</label></th>
 <th>
 
-<input type="date" name="toDate" id="dateofbirth">
+<input type="date" name="toDate" id="dateofbirth" style="box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);">
     </th> 
   <th>   
 <label for="dateofbirth"></label></th>
@@ -194,11 +195,15 @@ input {
 <c:forEach var="orders" items="${requestScope.deliveredOrders}">
 <div class="wrapper">
 	  <div class="view_main">
-	   <h4>${orders.pickupStatus}</h4>${orders.orderDate}
-	<h4>Total: &#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></h4>
+	 
+	   <div style="margin-left:10px;line-height:28px;">
+	<a href="${pageContext.request.contextPath}/order/orderinfo/${orders.orderid}"><span style="color: green;float:right;margin-right:10px;text-decoration:underline;">Order Detail</span></a><a href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}"><span href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}" style="color: green;float:right;margin-right:10px;text-decoration:underline;">Re-Order</span></a>
+	   <p style="font-weight:600">${orders.pickupStatus}</p>
+	   <p><fmt:formatDate value="${orders.orderDate}" pattern="${dateformatter}"/></p>
+	   <p style="font-weight:600">Total: ${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></p>
+       </div>
+       
 		<div class="view_wrap list-view" style="display: block;">
-			
-			
 			<c:forEach var="orderitem" items="${requestScope.orderitems[orders.orderid]}">
 			<div class="view_item">
 				<div class="vi_left">
@@ -209,7 +214,7 @@ input {
 				<div class="vi_right">
 					<p class="title">${orderitem.product.productName}</p>
 					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<p class="content">${orderitem.product.price}</p>
+					<p class="content">${repee_sign}${orderitem.product.price}</p>
 					<a href="#" style="color: green;">Review</a>
 					<!-- <div class="btn">Review</div> -->
 				</div>
@@ -227,7 +232,7 @@ input {
 	cursor: pointer;margin-left:10px;">ShowAll</div>
 	</th>
 	
-	<th>
+	<%-- <th>
 	 <a href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}" style="display: inline-block;
         padding: 8px 5px;
         text-align: center;
@@ -238,7 +243,7 @@ input {
         font-weight:400;
         width: 125px;
         margin-left:2px;">Re-Order</a>
-	</th>
+	</th> --%>
 	
 	
 	</table>

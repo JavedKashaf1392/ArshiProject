@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
@@ -78,6 +80,7 @@ public class AppController {
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		/* model.setViewName("registerdhome"); */
 		model.setViewName("VeggieFridge");
 		return model;
@@ -102,6 +105,7 @@ public class AppController {
 			model.addObject("listCustomer", listCustomer);
 			model.addObject("listkiosklocation", listkiosklocation);
 			model.addObject("listProduct", listProduct);
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			/* model.setViewName("registerdhome"); */
 			model.setViewName("VeggieFridge");
 			return model;
@@ -209,6 +213,7 @@ public class AppController {
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
+		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		/* model.setViewName("registerdhome"); */
 		model.setViewName("VeggieFridge");
 		return model; 
@@ -362,63 +367,6 @@ public class AppController {
 				
 				
 				
-				 //pendingorder
-				@RequestMapping(value = "/pendingorder")
-				public ModelAndView Order(ModelAndView model) {
-					String profilemenuSection = "Profile";
-					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-				     model.addObject("listprofileMenu",listprofileMenu);
-					String section = "Navbar";
-					List<Menu> listMenu = productService.getMenuByNavbar(section);
-				    model.addObject("listMenu",listMenu);
-					model.setViewName("pendingorder");
-					return model;
-				}
-				
-				
-
-				 //pendingorder
-				@RequestMapping(value = "/deliveredorder")
-				public ModelAndView deliveredorder(ModelAndView model) {
-					String profilemenuSection = "Profile";
-					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-				     model.addObject("listprofileMenu",listprofileMenu);
-					String section = "Navbar";
-					List<Menu> listMenu = productService.getMenuByNavbar(section);
-				    model.addObject("listMenu",listMenu);
-					model.setViewName("deliveredorder");
-					return model;
-				}
-				
-				 //pendingorder
-				@RequestMapping(value = "/cancelorder")
-				public ModelAndView cancelorder(ModelAndView model) {
-					String profilemenuSection = "Profile";
-					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-				     model.addObject("listprofileMenu",listprofileMenu);
-					String section = "Navbar";
-					List<Menu> listMenu = productService.getMenuByNavbar(section);
-				    model.addObject("listMenu",listMenu);
-					model.setViewName("cancelorder");
-					return model;
-				}
-				
-				
-				
-				 //wallet
-				@RequestMapping(value = "/wallet")
-				public ModelAndView wallet(ModelAndView model) {
-					String section = "Navbar";
-					List<Menu> listMenu = productService.getMenuByNavbar(section);
-					String profilemenuSection = "Profile";
-					List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-					model.addObject("listprofileMenu", listprofileMenu);
-					model.addObject("listMenu", listMenu);
-					model.setViewName("wallet");
-					return model;
-				}
-				
-
 	
 }
 

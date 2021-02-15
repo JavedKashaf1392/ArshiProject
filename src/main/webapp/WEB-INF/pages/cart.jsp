@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false" import="com.veggiefridge.online.constants.VFOnlineConstants"%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -273,8 +273,7 @@ label {
 }
 .totals .totals-item .totals-value {
   float: right;
-  width: 21%;
-  text-align: right;
+  margin-right:90px;
 }
 .totals .totals-item-total {
   /* font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium"; */
@@ -300,7 +299,7 @@ label {
   padding: 8px 30px;
   background-color:green;
   color: #fff;
-  font-size:20px;
+  font-size:20px;d
   border-radius: 3px;
 }
 
@@ -309,7 +308,7 @@ label {
 }
 
 /* Make adjustments for tablet */
-@media screen and (max-width: 650px) {
+@media screen an (max-width: 650px) {
  .wrapper.shopping-cart {
     margin: 0;
     padding-top: 20px;
@@ -444,11 +443,14 @@ label {
       <div class="product-title">${cartitem.product.productName}</div>
       <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
     </div>
-    <div class="product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
+    
+    
+    <div class="product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}"/></div>
     <div class="product-quantity">
       <input type="number" value="2" min="1">
     </div>
-    <div class="product-line-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.productCount*cartitem.total}"/></div>
+   
+    <div class="product-line-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cartitem.productCount*cartitem.total}"/></div>
     
     <div class="product-removal">
       <button class="remove-product" onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'">
@@ -461,12 +463,12 @@ label {
 
   <div class="totals">
     <div class="totals-item">
-      <label>Subtotal</label>
-      <div class="totals-value" id="cart-subtotal"> &#8377;${s}</div>
+      <label>Subtotal : </label>
+      <div class="totals-value" id="cart-subtotal">${repee_sign}${s}</div>
     </div>
     <div class="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div class="totals-value" id="cart-total"> &#8377;${s}</div>
+      <label>Grand Total : </label>
+      <div class="totals-value" id="cart-total">${repee_sign}${s}</div>
     </div>
     </div>
       

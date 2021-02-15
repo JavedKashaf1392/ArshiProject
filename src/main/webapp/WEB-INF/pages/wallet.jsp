@@ -135,13 +135,13 @@
 }
 
 #myInput {
-	background-image: url('/css/searchicon.png');
+    background-image:url("/images/searchicon.png");
 	background-position: 10px 10px;
 	background-repeat: no-repeat;
 	width: 50%;
 	font-size: 16px;
 	padding: 12px 20px 12px 40px;
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	margin-bottom: 12px;
 	margin-left: 15px;
 }
@@ -165,6 +165,7 @@
 #myTable tr.header, #myTable tr:hover {
 	background-color: #f1f1f1;
 }
+
 /* calendar */
 [type="date"] {
 	background: #fff
@@ -184,12 +185,12 @@ label {
 	display: block;
 }
 
-input {
-	border: 1px solid #c4c4c4;
+input{
+   /*  border: 1px solid #c4c4c4;*/
 	border-radius: 5px;
 	background-color: #fff;
 	padding: 3px 5px;
-	box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+	/* box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1); */
 	width: 190px;
 }
 
@@ -259,7 +260,7 @@ input {
 						<p class="title" style="color: green;">Current Balance</p>
 						<form modelAttribute="wallet">
 							<p class="content">
-								&#8377;<span style="font-size: 25px;"><fmt:formatNumber
+								${repee_sign}<span style="font-size: 25px;"><fmt:formatNumber
 										type="number" minFractionDigits="2" maxFractionDigits="2"
 										value="${wallet.totalAmountBalance}" /></span>
 							</p>
@@ -274,12 +275,13 @@ input {
 
 				<span style="margin-left: 8px; font-weight: bold;">WALLET
 					ACTIVITY</span>
+				
 				<table style="margin-left: 8px; margin-top: 10px;">
 					<th><label for="dateofbirth">From</label></th>
-					<th><input type="date" name="dateofbirth" id="dateofbirth">
+					<th><input type="date" name="dateofbirth" id="dateofbirth" style="box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);border: 1px solid #c4c4c4;" class="">
 					</th>
 					<th><label for="dateofbirth">To</label></th>
-					<th><input type="date" name="dateofbirth" id="dateofbirth">
+					<th><input type="date" name="dateofbirth" id="dateofbirth" style="box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);border: 1px solid #c4c4c4;">
 					</th>
 					<th><label for="dateofbirth"></label></th>
 					<th>
@@ -288,6 +290,7 @@ input {
 							style="border: 1px solid #c4c4c4; border-radius: 5px; background-color: #fff; padding: 5px 5px; box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1); width: 70px;">Filter</button>
 					</th>
 				</table>
+				
 				<div class="view_item">
 					<c:choose>
 						<c:when test="${not empty listwallettransaction}">
@@ -302,8 +305,8 @@ input {
 								<c:forEach var="walletpaymnet" items="${listwallettransaction}">
 									<tr>
 										<td style="width: 25%;">${walletpaymnet.walletPaymentId}</td>
-										<td style="width: 25%;"><fmt:formatDate value="${walletpaymnet.paymentDate}" pattern="dd-MM-yyyy"/></td>
-										<td style="width: 25%;">&#8377;${walletpaymnet.paymentAmount}</td>
+										<td style="width: 25%;"><fmt:formatDate value="${walletpaymnet.paymentDate}" pattern="${dateformatter}"/></td>
+										<td style="width: 25%;">${repee_sign}${walletpaymnet.paymentAmount}</td>
 										<td style="width: 25%;">${walletpaymnet.paymentStatus}</td>
 									</tr>
 								</c:forEach>

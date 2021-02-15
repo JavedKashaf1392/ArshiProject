@@ -17,6 +17,16 @@ import com.veggiefridge.online.config.SMSConfiguration;
 @PropertySource(value = { "classpath:application.properties"})
 public class VFOnlineConstants {
 	
+    public static final String PICKUP_STATUS="Pending";
+	
+	public static final String PICKUPSTATUS="Delivered";
+	
+	public static final String organic="organic";
+	
+	public static final String qrCodeIsValid="true";
+	
+	public static final String PSTATUS="Cancelled";
+	  
 	//SMS
 	@Value("${sms.textlocal.apiKey}")
 	public static String SMS_APIKEY ;  //= "sms.textlocal.apiKey"
@@ -41,14 +51,13 @@ public class VFOnlineConstants {
 	public static String MAIL_EMAILMESSAGE;
 	
 	//@Value("${order.pickup.status}")
-	public static final String PICKUP_STATUS="Pending";
 	
-	public static final String PICKUPSTATUS="Delivered";
+	public static final String DateFormatter="MMMM d, yyyy";
 	
-	public static final String organic="organic";
+	public static final String RUPEE_SIGN="&#8377; ";
 	
-	public static final String qrCodeIsValid="true";
 	
-	public static final String PSTATUS="Cancelled";
+	
+	
 	
 }

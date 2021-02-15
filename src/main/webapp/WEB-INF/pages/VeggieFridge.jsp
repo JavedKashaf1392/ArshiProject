@@ -6,6 +6,7 @@
 <head>
 
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -15,46 +16,29 @@
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+      
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
-        <!-- font awesome -->
-        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 
 <style>
-        /* fonts  */
-@font-face {
-    font-family:"Raleway-regular";
-    src:url(../fonts/Raleway-Regular.ttf)
-}
-@font-face {
-    font-family:"Raleway-medium";
-    src:url(../fonts/Raleway-Medium.ttf)
-}
-@font-face {
-    font-family:"Raleway-bold";
-    src:url(../fonts/Raleway-Bold.ttf)
-}
-@font-face {
-    font-family:"Raleway-extrabold";
-    src:url(../fonts/Raleway-ExtraBold.ttf)
-}
-@font-face {
-    font-family:"Raleway-semibold";
-    src:url(../fonts/Raleway-SemiBold.ttf)
-}
-@font-face {
-    font-family:"Raleway-black";
-    src:url(../fonts/Raleway-Black.ttf)
+@import
+url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 /* colors  */
-
 :root {
     --primary:#4CAF50;
     /* --primary:#EEBF00; */
@@ -73,20 +57,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.
   /*   --carribean-green: #40c9a2; */
     --carribean-green:green;
     --gray: #ededed;
-}
-
-/* Reset  */
-*{
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
-}
-
-
-body{
-    -webkit-font-smoothing:antialiased;
-  /*   font-family: "Raleway-regular"; */
-     font-family: 'Quicksand', sans-serif;
 }
 .container {
     width:100%;
@@ -187,8 +157,8 @@ body{
 }
   header.topbar{
      width: 100%;
-        position: fixed;   
-      background:#4CAF50;
+     position: fixed;   
+     background:#4CAF50;
      /*  background:var(--secondary); */
       color:var(--pure);
       font-family:"Raleway-semibold";
@@ -1004,6 +974,7 @@ footer.copyright a{
   border: none;
   appearance: none;
   outline: none;
+ 
 
   &::-webkit-search-cancel-button {
     appearance: none;
@@ -1331,7 +1302,7 @@ footer.copyright a{
     width: 100%;
    /*  height: 500px; */
     height:500px;
-    max-width: 1388px;
+    max-width: 1380px;
    /*  margin: auto; */
     user-select: none;
     /* box-shadow: 0px 0px 3px 1px #00000078; */
@@ -1789,16 +1760,16 @@ height:40px
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
                            <!--  <img src="./icons/cart.svg" alt=""> -->
-                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
                            </div>
                            </security:authorize>
                            
-                            <security:authorize access="isAnonymous()">
+                           <security:authorize access="isAnonymous()">
                            <div>
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
                            <!--  <img src="./icons/cart.svg" alt=""> -->
-                           <a href="#">0 Items - (&#8377;0.00)</a>
+                           <a href="#">0 Items - (${repee_sign}0.00)</a>
                            </div>
                            </security:authorize>
                         </div>
@@ -1820,14 +1791,19 @@ height:40px
    <img src="${images}/phone.svg"  width="25" height="25" alt=""/>  --%>
                                <!--  <img src="/images/phone.svg" alt=""> --> 
                                <div style="margin-left:80px;">
-   <spring:url value="/images" var="images" />
+  <table>
+					
+					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
+					</a></th>
+				</table>
                                     <!--  <h5>Call US: (+84) 123 456 789</h5>
                                     <h6>E-mail : support@freshmeal.com</h6> -->
                               </div>   
                             </div>
                             <div class="branding">
-                            <form class="search-form" style="position:relative;
+                            <form class="search-form" 
+  style="position:relative;
   width: 350px;
   height: 40px;
   border-radius: 40px;
@@ -1836,7 +1812,10 @@ height:40px
   background: #fff;
   transition: all 0.3s ease; top:40%;
   left:45%;">
+   
   <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
+  <%--  <spring:url value="/images" var="images" />
+   <img src="${images}/searchicon.png"  width="25" height="25" alt=""/> --%>
   <button type="submit" class="search-button">
   </button>
   </form>
@@ -1893,8 +1872,8 @@ height:40px
                     <div class="container">
                         <div class="welcome flex items-center">
                             <span>Welcome to</span>
-                            <%-- <spring:url value="/images" var="images" />
-   <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>  --%>
+                           <spring:url value="/images" var="images" />
+   <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>  
                           <!--   <img src="./icons/logo-2.svg" alt=""> -->
                         </div>
                         <h1>The World Best <span>Shoping</span> Website</h1>
@@ -1952,7 +1931,7 @@ height:40px
                                 </button> -->
                             </div>
                         </div>
-                        <div class = "product-info" id="myTable">
+                        <div class = "product-info" id="myTable" style="line-height:28px;">
                             <div class = "product-info-top">
                                 <h2 class = "product-title" style="color: black;">${product.productName}</h2>
                                 <div class = "rating" style="color:orange;">
@@ -1966,8 +1945,8 @@ height:40px
                             <a href = "#" class = "product-name">${product.description}</a>
                           <h4 class = "size" style="color: black;">Size: ${product.size} ${product.unit}</h4> 
                           <%--   <p class = "product-price">Rs ${product.price}</p> --%>
-                      MRP: <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
-                       <p class = "product-price">&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>
+                      MRP: <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
+                       <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>
                       <%--  <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p> --%>
                             
                         </div>
@@ -2037,6 +2016,7 @@ height:40px
         </div>
         </security:authorize>
         
+       
           <security:authorize access="isAnonymous() or hasRole('USER')">
         <!-- slidercode -->
 	<!--  SLIDERCODE -->
@@ -2341,19 +2321,133 @@ function playPauseSlides() {
 			</div>
 		</form>
 	</security:authorize>
+	
+	 <security:authorize access="isAnonymous() or hasRole('USER')">
+           <section class="our-services">
+                    <div class="container">
+                        <h1 class="section-heading">Our services</h1>
+                        <div class="card-wrapper flex">
+                            <div class="service-card magic-shadow-sm">
+                                <img class="icon" src="./icons/transport.svg" alt="">
+                                <h2>Free Home delivery</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <button class="btn btn-secondary">Read More</button>
+                            </div>
+                            <div class="service-card magic-shadow-sm">
+                                <img class="icon" src="./icons/bag.svg" alt="">
+                                <h2 class="text-primary">30 Days ReturnServices</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <button class="btn btn-primary">Read More</button>
+                            </div>
+                            <div class="service-card magic-shadow-sm">
+                                <img class="icon" src="./icons/usd.svg" alt="">
+                                <h2>Money Back Guaranted</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <button class="btn btn-secondary">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="big-deal">
+                    <div class="container">
+                        <h1 class="section-heading text-pure">Big Deals of the Week</h1>
+                        <div class="timer">
+                            <div>
+                                <span>02</span>
+                                <span>Days</span>
+                            </div>
+                            <div>
+                                <span>24</span>
+                                <span>Hours</span>
+                            </div>
+                            <div>
+                                <span>55</span>
+                                <span>Minutes</span>
+                            </div>
+                            <div>
+                                <span>58</span>
+                                <span>Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                 <section class="latest-news">
+                    <div class="container">
+                        <h1 class="section-heading">Lastest News from Blog</h1>
+                        <div class="article-wrapper">
+                            <article class="card magic-shadow-sm">
+                                <div>
+                                    <img src="./images/coffee.jpg" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <div class="post-meta flex items-center justify-between">
+                                        <span>July 03, 2017</span>
+                                        <div>
+                                            <span>Posted by <strong>FreshMeal</strong></span>
+                                            <span class="comment-count">12 Comments</span>
+                                        </div>
+                                    </div>
 
-   <jsp:include page="footer.jsp" />
+                                    <h2>Lorem Ipsum is simply dummy text of the printing</h2>
+                                    <p>It is a long established fact that a reader will be distracted by the readable
+                                        content of a
+                                        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                        more
+                                        letters.</p>
+                                </div>
+                            </article>
+                            <article class="card magic-shadow-sm">
+                                <div>
+                                    <img src="./images/donut.jpg" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <div class="post-meta flex items-center justify-between">
+                                        <span>July 03, 2017</span>
+                                        <div>
+                                            <span>Posted by <strong>FreshMeal</strong></span>
+                                            <span class="comment-count">12 Comments</span>
+                                        </div>
+                                    </div>
+
+                                    <h2>Lorem Ipsum is simply dummy text of the printing</h2>
+                                    <p>It is a long established fact that a reader will be distracted by the readable
+                                        content of a
+                                        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                        more
+                                        letters.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="text-center btn-wrapper">
+                            <button class="btn btn-secondary">View All</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="subscribe">
+                    <div class="container flex items-center">
+                        <div>
+                            <img src="./images/rasberry.png" alt="">
+                        </div>
+                        <div>
+                            <h1>Subscribe to your newsletter</h1>
+                            <p>Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
+                                web sites
+                                still in their infancy.</p>
+                            <div class="input-wrap">
+                                <input type="email" placeholder="support@veggiefridge.com">
+                                <button>Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+             
+        </security:authorize>
+        
+       <jsp:include page="footer.jsp"/>
    
-     <script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
+     
 <script>
 var close = document.getElementsByClassName("closebtn");
 var i;
@@ -2375,10 +2469,10 @@ for (i = 0; i < close.length; i++) {
       document.getElementById('demoInput').stepDown();
    }
 </script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="js/app.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+    
    <script>
     $(document).ready(function(){
    $('.food-slider').slick({
