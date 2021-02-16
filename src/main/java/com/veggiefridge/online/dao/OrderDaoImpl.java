@@ -157,10 +157,11 @@ public class OrderDaoImpl implements OrderDao{
 
 
 	@Override
-	public List<Orders> getOrdersBetweenDates(int customerid, Date fromDate, Date toDate) {
-    String query = "FROM Orders WHERE customer.customerid =:customerid and orderDate between :startDate and :endDate ORDER BY orderId DESC";
-    return sessionFactory.getCurrentSession().createQuery(query).setParameter("customerid", customerid)
-    .setParameter("startDate", fromDate).setParameter("endDate", toDate).list();
+	public List<Orders> getCancelOrdersBetweenDates(int customerid, Date fromDate, Date toDate) {
+	String query = "FROM Orders WHERE customer_customerid =:customerid and pickupStatus=:pickupStatus and orderDate between :startDate and :endDate ORDER BY orderId DESC";
+    return sessionFactory.getCurrentSession().createQuery(query).setParameter("pickupStatus", VFOnlineConstants.PSTATUS).setParameter("customerid", customerid)
+    		.setParameter("startDate", fromDate).setParameter("endDate", toDate).list();
+    		
 	}
 	
 	}

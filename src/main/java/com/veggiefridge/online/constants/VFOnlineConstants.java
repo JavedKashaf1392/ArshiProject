@@ -52,7 +52,7 @@ public class VFOnlineConstants {
 	
 	//@Value("${order.pickup.status}")
 	
-	public static final String DateFormatter="MMMM d, yyyy";
+	public static final String DateFormatter="MMMM d, yyyy  hh:mm a ";
 	
 	public static final String RUPEE_SIGN="&#8377; ";
 	

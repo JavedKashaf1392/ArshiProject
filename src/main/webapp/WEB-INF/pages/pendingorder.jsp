@@ -196,23 +196,67 @@ input {
 
 	<c:forEach var="orders" items="${requestScope.pendingOrders}">
 
-		<div class="wrapper">
+	<div class="wrapper">
 			<div class="view_main">
-				<div style="margin-left: 10px; line-height: 28px;">
+			<a href="${pageContext.request.contextPath}/order/orderdetail/${orders.orderid}">
+			<span  style="color: green;float:right;margin-right:10px;text-decoration:underline;">Order Detail</span>
+				</a>
+				<table
+						style="max-width:500px;border-spacing:10px 2px;line-height: 30px;">
+								
+								<th></th>
+								<th></th>
+								<th></th>
+								
+								<tr>
+								<td>
+								<p style="font-weight:800;"> Status</p>
+								</td>
+								<td style="font-weight: 600;"> : </td>
+								<td>
+								<p style="font-weight: 300;">${orders.pickupStatus}</p>
+								</td>
+								</tr>
+								
+								<tr>
+								<td>
+								<p style="font-weight:800;">Date</p>
+								</td>
+								<td style="font-weight: 600;"> : </td>
+								<td>
+								<p style="font-weight: 300;"><fmt:formatDate value="${orders.orderDate}" pattern="${dateformatter}" /></p>
+								</td>
+								</tr>
+								<tr>
+								<td>
+								<p style="font-weight:800;">Total</p>
+								</td>
+								<td style="font-weight:600;"> : </td>
+								<td>
+								<p style="font-weight: 300;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></p>
+								</td>
+								</tr>
+						
+									
+</table>
 				
+				
+				<%-- <div style="margin-left: 10px; line-height: 28px;">
 				<a href="${pageContext.request.contextPath}/order/orderdetail/${orders.orderid}">
 				<span  style="color: green;float:right;margin-right:10px;text-decoration:underline;">Order Detail</span>
 			    </a>
-					<p style="font-weight: 600">${orders.pickupStatus}</p>
+					<p style="font-weight: 600">Status : ${orders.pickupStatus}</p>
 					<p>
 					<fmt:formatDate value="${orders.orderDate}" pattern= "${dateformatter}"/>
 					</p>
 					<p style="font-weight: 600">
-						Total:${repee_sign}
+						Total      : ${repee_sign}
 						<fmt:formatNumber type="number" minFractionDigits="2"
 							maxFractionDigits="2" value="${orders.orderTotal}" />
 					</p>
 				</div>
+				</table> --%>
+				
 				<div class="view_wrap list-view" style="display: block;">
 
 					<c:forEach var="orderitem"

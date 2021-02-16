@@ -498,7 +498,7 @@ label {
 								<th></th>
 								<tr>
 								<td>
-								<p style="font-weight:500;">OrderId</p>
+								<p style="font-weight:500;">Order Id</p>
 								</td>
 								<td style="font-weight: 500;"> : </td>
 								<td>
@@ -508,7 +508,7 @@ label {
 								
 								<tr>
 								<td>
-								<p style="font-weight:500;">OrderDate</p>
+								<p style="font-weight:500;">Order Date</p>
 								</td>
 								<td style="font-weight: 500;"> : </td>
 								<td>
@@ -517,7 +517,7 @@ label {
 								</tr>
 								<tr>
 								<td>
-								<p style="font-weight:500;">OrderStatus</p>
+								<p style="font-weight:500;">Order Status</p>
 								</td>
 								<td style="font-weight:500;"> : </td>
 								<td>

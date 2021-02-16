@@ -91,8 +91,12 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Orders> getOrdersBetweenDates(int customerid, Date fromDate, Date toDate) {
-		return orderdao.getOrdersBetweenDates(customerid, fromDate, toDate);
+	public List<Orders> getCancelOrdersBetweenDates(int customerid, Date fromDate, Date toDate) {
+		return orderdao.getCancelOrdersBetweenDates(customerid, fromDate, toDate);
 	}
+
+
+	
+	
 
 }

@@ -979,8 +979,6 @@ footer.copyright a{
   outline: none!important;
   cursor: pointer;
 }
-    
-
 .lg-title,
 .md-title,
 .sm-title
@@ -1070,8 +1068,8 @@ width:35px;
     border-bottom: 3px solid white;}
     
 /* ........Profile Menu css Close........... */
-
 </style>
+
 
 </head>
 <!-- ***************Body Code***************** -->
@@ -1213,10 +1211,29 @@ width:35px;
     <a href="#" class="dropbtn">Hello, ${customerModel.firstName}</a>
     
     <div class="dropdown-content" style="color: black;font-family:Montserrat;font-weight:300px;">
-    <c:forEach var="menu" items="${listprofileMenu}">
+   <%--  <c:forEach var="menu" items="${listprofileMenu}"> --%>
    
-   <a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
-   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/> ${menu.menues}</a>
+   <%-- <a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
+   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/> ${menu.menues}</a> --%>
+   
+<ul class="menu" style="color: black;">
+<li><a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;">My Profile</a></li>
+<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;">My Cart</a></li>
+<li>
+          <label for="btn-3" class="second" style="color: black;">My Orders
+           <!--  <span class="fas fa-caret-down" style="color: black;"></span> -->
+          </label>
+          <input type="checkbox" id="btn-3" style="color: black;">
+          <ul>
+<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;">Pending</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}" style="color: black;">Delivered</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}" style="color: black;">Cancelled</a></li>
+</ul>
+</li>
+<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;">My Wallet</a></li>
+<li><a href="<c:url value="/logout" />" style="color: black;">LogOut</a></li>
+</ul>
+   
    
   <%--  <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/myprofile1.png"  width="15" height="15" alt=""/> My Profile</a> --%>
@@ -1232,7 +1249,7 @@ width:35px;
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> Help</a>
     <a href="<c:url value="/logout" />" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/logout1.png"  width="15" height="15" alt=""/> Log Out</a> --%>
-  </c:forEach>
+  <%-- </c:forEach> --%>
    </div>
                             </div>
                             <span class="divider">|</span>

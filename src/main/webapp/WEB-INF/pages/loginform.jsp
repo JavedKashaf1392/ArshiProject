@@ -194,12 +194,10 @@ span.psw {
       <div class="imgcontainer">
    <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
    <spring:url value="/images" var="images" />
-		<img src="${images}/logo.jpg" width="160" height="110"/>
+		<img src="${images}/logo.jpg" width="170" height="120"/>
       </div>
-    <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
+     <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post" modelAttribute="customer">
    
-  
-      
       <div class="container">
       <label for="uname"><b>Email</b></label>
       <input type="email" placeholder="Enter Email" name="email" required>

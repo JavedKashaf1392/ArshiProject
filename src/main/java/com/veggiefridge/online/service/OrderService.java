@@ -32,6 +32,6 @@ public interface OrderService {
 	
 	public List<Orders> getCancelledOrders(int customerid);
 	
-	public List<Orders> getOrdersBetweenDates(int customerid, Date fromDate, Date toDate);
+	public List<Orders> getCancelOrdersBetweenDates(int customerid, Date fromDate, Date toDate);
 
 }
