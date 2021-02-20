@@ -2,7 +2,11 @@ package com.veggiefridge.online.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,11 +35,15 @@ import com.veggiefridge.online.model.Customer;
 import com.veggiefridge.online.model.Images;
 import com.veggiefridge.online.model.KioskLocation;
 import com.veggiefridge.online.model.Menu;
+import com.veggiefridge.online.model.OrderItem;
+import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Product;
+import com.veggiefridge.online.model.SubMenu;
 import com.veggiefridge.online.model.Wallet;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
+import com.veggiefridge.online.service.MenuService;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
@@ -56,6 +64,9 @@ public class AppController {
 	@Autowired
 	private HttpSession session;
 	
+	@Autowired
+	private MenuService menuservice;
+	
 	
 	private static final Logger logger = LoggerFactory.logger(MembershipController.class);
 
@@ -64,7 +75,7 @@ public class AppController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView permitAll(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
+			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model,@ModelAttribute("menu") Menu menu) {
 		String imageSection = "Header";
 		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();
@@ -81,6 +92,7 @@ public class AppController {
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+		model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
 		/* model.setViewName("registerdhome"); */
 		model.setViewName("VeggieFridge");
 		return model;
@@ -106,13 +118,13 @@ public class AppController {
 			model.addObject("listkiosklocation", listkiosklocation);
 			model.addObject("listProduct", listProduct);
 			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
-			/* model.setViewName("registerdhome"); */
-			model.setViewName("VeggieFridge");
+			model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+			/* model.setViewName("registerdhome"); */ 
+			 model.setViewName("VeggieFridge");
 			return model;
 		}
 		 
-		//Sign in
-		
+		 //Sign in
 	    @RequestMapping(value = "/login", method = RequestMethod.GET)
 		public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 				@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
@@ -134,7 +146,6 @@ public class AppController {
 		}
 	    
 	    //Sign up
-	    
 		@RequestMapping(value = "/signup")
 		public ModelAndView signUp(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
 			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
@@ -160,22 +171,7 @@ public class AppController {
 			return "accessDenied";
 		}
 		
-		
-	@RequestMapping("/continueLocation")  
-	public ModelAndView continueLoc(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("customer") Customer customer,BindingResult resultcustomer) 
-	
-	{ 
-		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-		List<Product> listProduct = productService.getAllProducts();
-		List<Customer> listCustomer = customerservice.getAllCustomers();
-		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation",listkiosklocation);
-		model.addObject("listProduct", listProduct);
-		model.setViewName("guest");
-		return model; 
-	} 
 
-	
 	private String getPrincipal(){
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -195,7 +191,7 @@ public class AppController {
 	
 	
 	@RequestMapping(value="/defaultTarget")
-	public ModelAndView defaultTarget(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
+	public ModelAndView defaultTarget(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("menu")Menu menu) 
 	
 	{ 
 		String imageSection = "Header";
@@ -209,29 +205,22 @@ public class AppController {
 		String section = "Navbar";
 		List<Menu> listMenu = productService.getMenuByNavbar(section);
 	    model.addObject("listMenu",listMenu);
+	     
+	 
+			
+			//request.setAttribute("ListCancelOrderByDate", ListCancelOrderByDate);
+			//request.setAttribute("orderitems", orderitems);
 	    model.addObject("headerImages",headerImages);
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
 		model.addObject("listProduct", listProduct);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+		model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
 		/* model.setViewName("registerdhome"); */
 		model.setViewName("VeggieFridge");
-		return model; 
-	} 
-	
+		return model;
+		}
 		
-	@RequestMapping("/regcontinueLocation")  
-	public ModelAndView regcontinueLocation(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) 
-	{ 
-		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-		List<Product> listProduct = productService.getAllProducts();
-		List<Customer> listCustomer = customerservice.getAllCustomers();
-		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation",listkiosklocation);
-		model.addObject("listProduct", listProduct);
-		model.setViewName("registerdhome");
-		return model; 
-	} 
 	
 
 	// customize the error message
@@ -286,84 +275,32 @@ public class AppController {
 		
 	}
 	
-	 //myCart
-	@RequestMapping(value = "/paymentoption")
-	public ModelAndView myCart(ModelAndView model) {
-		model.setViewName("payment");
-		return model;
-	}
 	
-	 //myCart
-	@RequestMapping(value = "/comingsoon")
-	public ModelAndView payopt(ModelAndView model) {
-		model.setViewName("/comingsoon");
-		return model;
-	}
 	
-	    //footer
-		@RequestMapping(value = "/footer1")
-		public ModelAndView footer(ModelAndView model) {
-			model.setViewName("footer1");
-			return model;
-		}
-		///C:/Users/Hp/AppData/Local/slack/app-4.12.0/resources/app.asar/dist/notifications.html#
-		        //footertwo
-				@RequestMapping(value = "/footer")
-				public ModelAndView footertwo(ModelAndView model) {
-					model.setViewName("footer");
-					return model;
-				}
-				
+	            @RequestMapping(value = "/head")
+				public ModelAndView head(ModelAndView model,@ModelAttribute("menu")Menu menu) {
+	            	String section = "Profile";
+					List<Menu> listprofileMenu = menuservice.getMenuProfile(section);
+					
+					//SubMenu
+				    Map submenues = new HashMap();
+					for (Iterator it = listprofileMenu.iterator(); it.hasNext();) {
+						menu = (Menu) it.next();
+						System.out.println(menu.toString());
 
-			    //footer
-				@RequestMapping(value = "/veggiefridge")
-				public ModelAndView veggiefridge(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
-					List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
-					List<Product> listProduct = productService.getAllProducts();
-					List<Customer> listCustomer = customerservice.getAllCustomers();
-					model.addObject("listCustomer", listCustomer);
-					model.addObject("listkiosklocation",listkiosklocation);
-					model.addObject("listProduct", listProduct);
-					/* model.setViewName("registerdhome"); */
-					model.setViewName("VeggieFridge");
-					return model;
+						List<SubMenu> listsubmenu = menuservice.getSubMenuByMenues(menu.getMenues());
+						System.out.println(listsubmenu.toString());
+						submenues.put(menu.getMenues(), listsubmenu);
+						model.addObject("submenues",
+								submenues);
+					model.addObject("listprofileMenu",listprofileMenu);
+					model.setViewName("header");
+						
 				}
-				
-				
-
-				//PickUpaddress
-				@RequestMapping(value ="/pickupaddress")
-				public ModelAndView pickupaddress(ModelAndView model) {
-					model.setViewName("pickupaddress");
 					return model;
-				}
-				
-				@RequestMapping(value = "/head")
-				public ModelAndView head(ModelAndView model) {
-					String section = "Navbar";
-					List<Menu> listMenu = productService.getMenuByNavbar(section);
-					model.addObject("listMenu", listMenu);
-					model.setViewName("mainheader");
-					return model;
-				}
-				
-
-				@RequestMapping(value = "/myprofile")
-				public ModelAndView myprofile(ModelAndView model) {
-					String section = "Navbar";
-					List<Menu> listMenu = productService.getMenuByNavbar(section);
-					model.addObject("listMenu", listMenu);
-					model.setViewName("myprofile");
-					return model;
-				}
+	            }
 				
 				
-				 //footer
-				@RequestMapping(value = "/error")
-				public ModelAndView error(ModelAndView model) {
-					model.setViewName("error");
-					return model;
-				}
 				
 				
 				

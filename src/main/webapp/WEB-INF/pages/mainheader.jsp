@@ -13,14 +13,28 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#prodId').on('change', function() {
+                this.form.submit();
+            });
+        });
+        </script>
 
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
- 
+
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} 
 /* colors */
 
 :root {
@@ -145,7 +159,7 @@
       background:#4CAF50;
      /*  background:var(--secondary); */
       color:var(--pure);
-      font-family:"Raleway-semibold";
+      /* font-family:"Raleway-semibold"; */
       padding:0.75rem 0;
       top: 0; 
   }
@@ -176,11 +190,11 @@
      /*  margin-top:40px;  */
   }
   nav .top .contact h5,  nav .top .time h5{
-      font-family:"Raleway-black";
+      /* font-family:"Raleway-black"; */
       margin-bottom:0.25rem;
   }
   nav .top .contact h6, nav .top .time h6{
-    font-family:"Raleway-medium";
+    /* font-family:"Raleway-medium"; */
     letter-spacing: 0.055rem;
     font-size:0.75rem;
     color:var(--ternary);
@@ -195,7 +209,7 @@ nav .top .contact img, nav .top .time img{
 nav .navbar a{
     text-decoration:none;
     color:var(--secondary);
-    font-family:"Raleway-semibold";
+    /* font-family:"Raleway-semibold"; */
     font-size:1rem;
     padding:1rem 1.5rem;
     transition:all .3s ease;
@@ -272,13 +286,13 @@ header.hero .welcome{
     margin-bottom:0.25rem;
 }
 header.hero .welcome span{
-    font-family:"Raleway-bold";
+    /* font-family:"Raleway-bold"; */
     color:var(--secondary);
     margin-right:0.75rem;
 
 }
 header.hero h1{
-    font-family:"Raleway-extrabold";
+   /*  font-family:"Raleway-extrabold"; */
     color:var(--secondary);
     font-size: 2.5rem;
     margin-bottom:0.75rem;
@@ -287,7 +301,7 @@ header.hero h1 span{
     color:var(--primary);
 }
 header.hero p{
-    font-family: "Raleway-medium";
+    /* font-family: "Raleway-medium"; */
     width:50%;
     line-height:1.5;
     margin-bottom:1rem;
@@ -1035,6 +1049,7 @@ width:35px;
     margin: 0 auto;
 }
 /* ........Profile Menu css........... */
+
 .dropdown {
   position: relative;
   display: inline-block; 
@@ -1066,7 +1081,8 @@ width:35px;
 
 .dropdown:hover .dropbtn {background-color: ;
     border-bottom: 3px solid white;}
-    
+ 
+
 /* ........Profile Menu css Close........... */
 </style>
 
@@ -1203,53 +1219,74 @@ width:35px;
                             <span class="divider">|</span> 
                             </security:authorize>
                             
-                            <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-                           <div class="dropdown" style="font-family: Montserrat;font-weight:300px;">
-                            <spring:url value="/images" var="images" />
+                          <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+                          
+                          <div class="dropdown">
+                          <spring:url value="/images" var="images" />
     <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
-                              <!--   <img src="./icons/user-icon.svg" alt=""> -->
     <a href="#" class="dropbtn">Hello, ${customerModel.firstName}</a>
     
-    <div class="dropdown-content" style="color: black;font-family:Montserrat;font-weight:300px;">
-   <%--  <c:forEach var="menu" items="${listprofileMenu}"> --%>
+   <div class="dropdown-content" style="color: black;">
+   <%--<c:forEach var="menu" items="${listprofileMenu}">  --%>
    
-   <%-- <a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
-   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/> ${menu.menues}</a> --%>
+   <%--<a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
+   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/> ${menu.menues}</a>  --%>
    
-<ul class="menu" style="color: black;">
-<li><a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;">My Profile</a></li>
-<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;">My Cart</a></li>
-<li>
-          <label for="btn-3" class="second" style="color: black;">My Orders
-           <!--  <span class="fas fa-caret-down" style="color: black;"></span> -->
-          </label>
-          <input type="checkbox" id="btn-3" style="color: black;">
-          <ul>
-<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;">Pending</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}" style="color: black;">Delivered</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}" style="color: black;">Cancelled</a></li>
-</ul>
-</li>
-<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;">My Wallet</a></li>
-<li><a href="<c:url value="/logout" />" style="color: black;">LogOut</a></li>
-</ul>
+   <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
+   <img src="${images}/myprofile1.png"  width="15" height="15" alt=""/> My Profile</a> 
    
-   
-  <%--  <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/myprofile1.png"  width="15" height="15" alt=""/> My Profile</a> --%>
-    <%-- <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;"> <spring:url value="/images" var="images" />
+   <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> My cart</a>
-    <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/order4.png"  width="15" height="15" alt=""/> My Orders</a>
-     <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
+   
+   <form action="${pageContext.request.contextPath }/order/showAllOrderByPickupStatus${customerModel.customerid}" method="POST" >
+   <%--<a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
+   <img src="${images}/order4.png"  width="15" height="15" alt=""/> My Orders</a> --%>
+   
+  <select name="pickupStatus" id="prodId" style="color: black;
+  padding: 12px 16px;
+  text-decoration:none;
+  display: block;  background-color: #f1f1f1;
+  min-width: 200px;border:0;font-size:16px;">
+  
+   <option value=""><spring:url value="/images" var="images" />
+   <img src="${images}/order4.png"  width="15" height="15" alt=""/>My Orders</option>
+  
+	<option value="Pending">Current</option>
+	
+    <option value="Delivered">Delivered</option>
+	
+	<option value="Cancelled">Cancelled</option>
+	</select>
+    </form>
+   
+   <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/wallet.png"  width="15" height="15" alt=""/> Wallet</a>
+   
     <a href="#" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> Membership</a>
+   
     <a href="#" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> Help</a>
-    <a href="<c:url value="/logout" />" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/logout1.png"  width="15" height="15" alt=""/> Log Out</a> --%>
-  <%-- </c:forEach> --%>
+   
+   <a href="<c:url value="/logout" />" style="color: black;"> <spring:url value="/images" var="images" />
+   <img src="${images}/logout1.png"  width="15" height="15" alt=""/> Log Out</a>
+  <%--   </c:forEach> --%>
+    
+    <%-- <form action="${pageContext.request.contextPath }/order/showAllOrderByPickupStatus${customerModel.customerid}" method="POST" >
+	<table align="center">
+	<tr>
+	<td>
+	<select name="pickupStatus" id="prodId">
+	<option value="">--Select--</option>
+	<option value="Pending">Pending</option>
+	<option value="Delivered">Delivered</option>
+	<option value="Cancelled">Cancelled</option>
+	</select>
+	</td>
+	</tr>
+	</table>
+	</form> --%>
+	
    </div>
                             </div>
                             <span class="divider">|</span>
@@ -1282,7 +1319,7 @@ width:35px;
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
                            <!--  <img src="./icons/cart.svg" alt=""> -->
-                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
                            </div>
                            </security:authorize>
                            
@@ -1303,10 +1340,12 @@ width:35px;
                            <div class="contact flex items-center">
                        
                                <div>
-                                <table>
-					<%-- <th><a href="abc.htm"> <spring:url value="/images" var="images" />
-   <img src="${images}/vf-leaf.png"  width="90" height="75" alt=""/>
-					</a></th> --%>
+                      <table style="margin-left:40px;">
+                      
+					 <th><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
+					</a></th>
+					
 					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
 					</a></th>
@@ -1326,7 +1365,7 @@ width:35px;
   transform: translate(-50%, -50%);
   background: #fff;
   transition: all 0.3s ease; top:40%;
-  left:45%;">
+  left:48%;">
   <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
   <button type="submit" class="search-button">
   </button>

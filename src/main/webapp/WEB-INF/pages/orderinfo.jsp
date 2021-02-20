@@ -480,7 +480,7 @@ label {
 
 	<div style="max-width: 1200px; margin: 17px auto;">
 	<span
-    style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">OrderDetails
+    style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">${orderdetails}
 	</span>
 	</div>
 

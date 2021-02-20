@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <!-- <link rel="icon" type="image/jpg" href="images/logo.jpg">  -->
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,7 +68,7 @@ body {
 }
 
 .container {
-	background-color: #f2f2f2;
+	/* background-color: #f2f2f2; */
 	padding: 5px 20px 15px 20px;
 	border: 1px solid lightgrey;
 	border-radius: 3px;
@@ -331,7 +332,7 @@ z-index
 	<hr style="border-bottom: 0px">
 
 	<div
-		style="background-color: #f1f1f1; padding: 10px 20px; margin-top:;">
+		style="padding: 10px 20px; margin-top:;">
 		<div class="splash"
 			style="background-color: white; padding: 70px 70px; border: 1px solid #ddd;">
 			<div class="row">

@@ -12,17 +12,18 @@ public interface OrderService {
     
     public Orders getOrder(int orderid);
        
-    public List<OrderItem> getAllOrders();
+	/* public List<OrderItem> getAllOrders(); */
     
     public boolean saveOrderItem(OrderItem orderitem);
     
     public List<Orders>  list(int customerid);
     
-	public List<OrderItem> getAllOrderItem();
+	/*
+	 * public List<OrderItem> getAllOrderItem();
+	 */
+	/* public List<Orders> listpendingOrders(); */
 	
-	public List<Orders> listpendingOrders();
-	
-	public List<Orders> listdeliveredOrders();
+	/* public List<Orders> listdeliveredOrders(); */
 	
 	public List<Orders>  getPendingOrders(int customerid);
 	
@@ -34,4 +35,8 @@ public interface OrderService {
 	
 	public List<Orders> getCancelOrdersBetweenDates(int customerid, Date fromDate, Date toDate);
 
+	public List<Orders> getAllOrders(int customerid, String pickupStatus);
+	
+	public List<Orders> getOrdersBetweenDatespickupStatus(int customerid, String pickupStatus, Date fromDate,
+			Date toDate);
 }

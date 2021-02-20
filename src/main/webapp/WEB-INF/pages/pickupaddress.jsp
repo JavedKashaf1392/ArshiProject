@@ -286,13 +286,24 @@ span.lg-title{
           <div class="col-50">
             <h3>Billing Address</h3> 
             <input type="checkbox" checked="checked" name="sameadr">Countinue with my default address.<br>
+           
             <!-- <span class="lg-title">Confirm Address</span> -->
             <label for="fname">First Name</label>
             <input type="text" id="fname"  value="${customerModel.firstName}">
             <label for="email">Email</label>
             <input type="text" id="email"  value="${customerModel.email}">
-            <label for="adr">City</label>
-            <input type="text" id="adr" value="${customerModel.cities}">
+          
+          <label for="adr">City</label>
+          <select id="country" name="country" style="width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc; 
+  border-radius: 3px;">
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+          </select>
+            <%-- <input type="text" id="adr" value="${customerModel.cities}"> --%>
             <label for="city">State</label>
             <input type="text" id="city" name="city" placeholder="New York">
 
@@ -314,7 +325,15 @@ span.lg-title{
             <label for="email">Mobile</label>
             <input type="text" id="email"  value="${customerModel.mobile}">
             <label for="adr">Location</label>
-            <input type="text" id="adr" value="${customerModel.location}">
+           <select id="country" name="country" style="width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc; 
+  border-radius: 3px;">
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+          </select>
             <label for="expmonth">Zip</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="September">
           </div>

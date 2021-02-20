@@ -306,7 +306,7 @@ input{
 									<tr>
 										<td style="width: 25%;">${walletpaymnet.walletPaymentId}</td>
 										<td style="width: 25%;"><fmt:formatDate value="${walletpaymnet.paymentDate}" pattern="${dateformatter}"/></td>
-										<td style="width: 25%;">${repee_sign}${walletpaymnet.paymentAmount}</td>
+										<td style="width: 25%;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${walletpaymnet.paymentAmount}"/></td>
 										<td style="width: 25%;">${walletpaymnet.paymentStatus}</td>
 									</tr>
 								</c:forEach>

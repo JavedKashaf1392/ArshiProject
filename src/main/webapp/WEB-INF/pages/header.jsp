@@ -1,901 +1,1406 @@
-    
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
-  <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>  
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/jpg" href="images/logo.jpg"> 
-<meta charset="ISO-8859-1">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home screen of VeggieFridge</title>
-        <script>document.getElementsByTagName("html")[0].className += " js";</script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        </head>
-        <style>
+<link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#prodId').on('change', function() {
+                this.form.submit();
+            });
+        });
+        </script>
+
+<title>VeggieFridge</title> 
+<meta charset="utf-8">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} 
+/* colors */
+
+:root {
+    --primary:#4CAF50;
+    /* --primary:#EEBF00; */
+    --secondary:#232B38;
+    --ternary:#6C6C6C;
+    --danger:#FE4545;
+    --pure:#FEFEFE;
+    --light:#F0F0F0;
+    --heaven:#FFFFFF;
+    --footer:#2D333F;
 }
- 
-body
-{    
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    /*  background-color:white; */
-}
+/* Reset  */
 
-.header{
-    /* background-color:white; */
-    position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-}
-
-.logo{
- position:absolute;
- float:left;
- margin-right:60%;
-}
-
-/* call */
-.call{
-font-size:18px;
-float: right;
-margin-right:1%;
-}
-
-  .notification {
-  margin-left:3%;
-  background-color:#4CAF50;
-  color: white;
-  text-decoration: none;
-  padding: 12px 24px;
-  position: relative;
-  display: inline-block;
-  border-radius:4px;
-  margin-right:14%; 
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
 }
 
-.notification:hover {
-  background: green;
+.container {
+    width:100%;
+    padding:o 15px;
+    margin:0 auto;
 }
 
-.notification .badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  padding: 4px 10px;
-  border-radius: 50%;
-  background-color: red;
-  color: white;
-}  
- 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+@media (min-width:576px){
+    .container{
+        max-width:540px;
+    }
 }
-.col-75 {
-  width: 100%;
-  margin-top: 11px;
-  color: black;
-}
+@media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1152px;
+    }
+  }
 
-input[type=text], select, textarea {
-  /* width: 90%;
-  padding: 8px;
-  border: 1px solid #008000;
-  border-radius: 4px;
-  resize: vertical; */
-}
-
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 135px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 130%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 22%;
-  margin-left: 68%;
-  border-radius: 4px;
- 
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
- .popUpMain{ 
-  outline: #4CAF50 solid 10px;
-  display: none;   /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1001; /* Sit on top */
-  padding-top: 75px;  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
- /*  overflow: auto; /* Enable scroll if needed */ */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-  box-shadow: 1px 2px 5px 3px white;
+   .main-wrapper{
+      position:relative;
+      width:100%;
+      height:100vh;
+      overflow:hidden;
   } 
-  
-.popup {/* 
-  /* background-color:#f1f1f1; */
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-  margin-left: 34%;
+  .nav-background{
+      width:100%;
+      height:100%;
+      background:var(--light);
+      position: absolute;
+      top:0;
+      left:0;
+      padding:0;
+      z-index:1;
+  }
+
+  .nav-trigger{
+      position: absolute;
+      top:0;
+      left:0;
+      z-index:1;
+      padding:15px;
+      display:none;
+     
+  }
+
+  .nav-trigger svg{
+      transform:rotate(90deg) scaleX(-1);
+      -webkit-transform:rotate(90deg) scaleX(-1);
+      -moz-transform:rotate(90deg) scaleX(-1);
+      -ms-transform:rotate(90deg) scaleX(-1);
+      -o-transform:rotate(90deg) scaleX(-1);
+      width:40px;
+      height:40px;
 }
-  
-.head{
-    margin-left:10%;
+.site-content-wrapper{
+    width:100%;
+    height:100%;
+    position:absolute;
+    background:var(--heaven);
+    z-index:2;
+    transition:all .3s ease;
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -ms-transition:all .3s ease;
+    -o-transition:all .3s ease;
+}
+
+.site-content-wrapper.scaled{
+    transform:scale(0.9) translateX(90%);
+    -webkit-transform:scale(0.9) translateX(90%);
+    -moz-transform:scale(0.9) translateX(90%);
+    -ms-transform:scale(0.9) translateX(90%);
+    -o-transform:scale(0.9) translateX(90%);
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    -ms-border-radius:3px;
+    -o-border-radius:3px;
+    box-shadow:0 3px 10px 0 var(--secondary);
+}
+
+.site-content{
+    width:100%;
+    height:100%;
+    overflow-x:auto;
+}
+  header.topbar{
+     width: 100%;
+       /*  position: fixed; */   
+      background:#4CAF50;
+     /*  background:var(--secondary); */
+      color:var(--pure);
+      /* font-family:"Raleway-semibold"; */
+      padding:0.75rem 0;
+      top: 0; 
+  }
+  header.topbar .auth > div a{
+      color:var(--pure);
+      text-decoration: none;
+  }
+  header.topbar .icons a{
+    margin-right:0.6rem;
+  }
+  header.topbar .auth .divider{
+      padding:0 1rem;
+  }
+  header.topbar .auth > div img{
+      margin-right:0.35rem;
+  }
+  .flex{
+    display:flex;
+  }
+  .justify-between{
+    justify-content: space-between;
+  }
+  .items-center{
+      align-items: center;
+  }
+  nav .top{
+      padding:1.5rem 0;
+     /*  margin-top:40px;  */
+  }
+  nav .top .contact h5,  nav .top .time h5{
+      /* font-family:"Raleway-black"; */
+      margin-bottom:0.25rem;
+  }
+  nav .top .contact h6, nav .top .time h6{
+    /* font-family:"Raleway-medium"; */
+    letter-spacing: 0.055rem;
+    font-size:0.75rem;
+    color:var(--ternary);
+}
+nav .top .contact img, nav .top .time img{
+    margin-right:1rem;
+}
+
+.justify-center{
+    justify-content:center;
+}
+nav .navbar a{
+    text-decoration:none;
+    color:var(--secondary);
+    /* font-family:"Raleway-semibold"; */
+    font-size:1rem;
+    padding:1rem 1.5rem;
+    transition:all .3s ease;
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -ms-transition:all .3s ease;
+    -o-transition:all .3s ease;
+}
+nav .navbar a.active{
+    background:var(--primary);
+    color:var(--pure);
+}
+nav .navbar a:hover{
+    background:var(--primary);
+    color:var(--pure); 
+}
+.magic-shadow{
+    position: relative;
+    background:var(--heaven);
+    font-family: 'Montserrat', sans-serif;
+}
+.magic-shadow:after{
+    content:'';
+    display:block;
+    width:100%;
+    height:69px;
+    /* background-image:url(../images/shadow.svg); */
+   /*  background-image:url("images/shadow.svg"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom:-22px;
+    z-index:-1;
+    box-shadow: 0px 0px 3px 1px #00000078;
+    font-family: Montserrat;font-weight:300px;" 
+    
+}
+.magic-shadow-sm{
+    position: relative;
+    background:var(--heaven);
+}
+.magic-shadow-sm:after{
+    content:'';
+    display:block;
+    width:100%;
+    height:69px;
+   /*  background-image:url("/images/shadow-sm.svg"); */
+   /*  background-repeat: no-repeat; */
+    background-position: center;
+    position: absolute;
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
+    -webkit-transform:translateX(-50%);
+    -moz-transform:translateX(-50%);
+    -ms-transform:translateX(-50%);
+    -o-transform:translateX(-50%);
+    box-shadow: 0px 0px 3px 1px #00000078;
+}
+header.hero{
+    height:600px;
+    background-image:url("/images/Blur.png");
+   /*  background-image:url("/images/hero.png"); */
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    overflow:hidden;
+}
+header.hero .container{
+    position: relative;
+    
+}
+header.hero .welcome{
+    margin-bottom:0.25rem;
+}
+header.hero .welcome span{
+    /* font-family:"Raleway-bold"; */
+    color:var(--secondary);
+    margin-right:0.75rem;
+
+}
+header.hero h1{
+   /*  font-family:"Raleway-extrabold"; */
+    color:var(--secondary);
+    font-size: 2.5rem;
+    margin-bottom:0.75rem;
+}
+header.hero h1 span{
+    color:var(--primary);
+}
+header.hero p{
+    /* font-family: "Raleway-medium"; */
+    width:50%;
+    line-height:1.5;
+    margin-bottom:1rem;
+}
+.btn{
+    padding:0.75rem 0.75rem;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+    line-height:0.8;
+    font-size:1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    border:1px solid transparent;
+}
+
+.btn-primary {
+    background:var(--primary);
+    color:var(--heaven);
+}
+.btn-primary:hover{
+    background:var(--heaven);
+    color:var(--primary); 
+    border:1px solid var(--primary);
+}
+.btn-secondary{
+    background:var(--secondary);
+    color:var(--heaven); 
+}
+.btn-secondary:hover{
+    background:var(--heaven);
+    color:var(--secondary); 
+    border:1px solid var(--secondary);
+}
+
+header.hero button:first-child{
+    margin-right:0.50rem;
+}
+
+header.hero .hero-image{
+    position:absolute;
+    top:-40px;
+    right:40px;
+}
+
+section{
+    padding:4rem 0;
+}
+section.top-products{
+    background:var(--light);
+}
+
+.section-heading{
+    font-family:"Raleway-bold";
+    text-align:center;
+    Position:relative;
+    margin-bottom:6rem;
+}
+.section-heading:after{
+    content:'';
+    display:block;
+    width: 100%;
+    height:30px;
+    background-image:url(../icons/hr.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position:absolute;
+    bottom:-40px;
+}
+section.top-products .food-slider .food-card{
+    background:var(--heaven);
+    padding:1.5rem 0;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+section.top-products .food-slider .food-card .product-image img{
+    width:80%;
+    height:200px;
+    object-fit:contain;
+    padding-bottom:1rem;
+}
+hr{
+    border:1px solid var(--light);
+    opacity: 0.8;
+    margin:1rem 0;
+}
+section.top-products .food-slider .food-card h2{
+    font-family:"Raleway-bold";
+    font-size:1.3rem;
+    margin-bottom:0.25rem;
+}
+.text-center{
+    text-align: center;
+}
+section.top-products .food-slider .food-card .stars{
+    margin-bottom:0.5rem;
+}
+section.top-products .food-slider .food-card .stars img{
+    margin-right:0.25rem;
+}
+section.top-products .food-slider .food-card .price{
+    font-family:"Raleway-medium";
+    color:var(--danger);
+    margin-bottom: 1rem;
+}
+section.top-products .food-slider .food-card button{
+    font-family:"Raleway-medium";
+    color:var(--secondary);
+    background:var(--heaven);
+    border:2px solid var(--primary);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    display:flex;
+    align-items: center;
+    width:50%;
+    font-size:1rem;
+    cursor: pointer;
+    transition:all .3s ease;
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -ms-transition:all .3s ease;
+    -o-transition:all .3s ease;
+}
+section.top-products .food-slider .food-card button:hover{
+    background:var(--primary);
+    color:var(--heaven);
+}
+.food-slider .food-card button img{
+    background:var(--primary);
+    padding:0.50rem;
+    height:32px;
+    margin-right:1.2rem;
+}
+
+.slick-slide{
+    margin:0 27px;
+}
+.slick-list{
+    margin:0 -27px;
+}
+.top-products .slider-btn{
+    width: 30px;
+    height:30px;
+    border: none;
+    background:var(--primary);
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+    cursor:pointer;
+    outline:none;
+}
+
+.prev-btn{
+    position:absolute;
+    top:46%;
+    left:-3rem;
+    z-index: 1;
+}
+.next-btn{
+    position:absolute;
+    top:46%;
+    right:-3rem;
+    z-index: 1;
+}
+.top-products .slider{
+    position: relative;
+}
+.top-products .btn-wrapper{
+    margin-top:2rem;
+}
+.slick-track{
+    padding:1rem 0;
+}
+section.about-meal img{
+    width:85%;
+}
+.flex-1{
+    flex:1;
+}
+section.about-meal h2{
+    font-family: "Raleway-bold";
+    font-size:1.4rem;
+    color:var(--secondary);
+    margin-bottom:2rem;
+    line-height:1.3;
+}
+section.about-meal p{
+    line-height: 1.7;
+    margin-bottom:4rem;
+}
+
+section.our-services{
+    background:var(--light);
     position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-    height: 20px;
-    /* background: #4CAF50; */
+    z-index:0;
 }
+section.our-services .card-wrapper{
+    margin-right:-2rem;
+    margin-top:8rem;
+}
+section.our-services .service-card{
+    background:var(--heaven);
+    text-align: center;
+    padding:2rem;
+    padding-top:4rem;
+    margin-right:2rem;
+    position: relative;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+section.our-services .service-card .icon{
+    position: absolute;
+    top:-45px;
+    left:50%;
+    transform:translateX(-50%);
+    -webkit-transform:translateX(-50%);
+    -moz-transform:translateX(-50%);
+    -ms-transform:translateX(-50%);
+    -o-transform:translateX(-50%);
+} 
+section.our-services .service-card h2{
+    font-family: "Raleway-bold";
+    font-size: 1.3rem;
+    margin-bottom:1rem;
+}
+section.our-services .service-card p{
+    line-height: 1.6;
+    margin-bottom:1rem;
+}
+.text-primary{
+    color:var(--primary);
+}
+
+section.big-deal {
+    background: linear-gradient(
+        rgba(35,43,56,0.9),
+        rgba(35,43,56,0.9)
+    ), url(../images/food-table.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+section.big-deal .timer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-right:-2rem;
+    margin-bottom:2rem;
+}
+section.big-deal .timer div{
+    margin-right:2rem;
+    background: var(--primary);
+    width:150px;
+    height:150px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+section.big-deal .timer div span:first-child{
+    font-family: "Raleway-semibold";
+    font-size:2.5rem;
+    color:var(--heaven);
+    margin-bottom:0.05rem;
+}
+section.big-deal .timer div span:last-child{
+    font-family: "Raleway-medium";
+    color:var(--heaven);
+}
+.text-pure{
+    color:var(--pure);
+}
+
+section.latest-news{
+    background:var(--light);
+    position:relative;
+    z-index:0;
+}
+section.latest-news .article-wrapper{
+    display:flex;
+    margin-right:-2rem;
+
+}
+.latest-news .article-wrapper .card {
+    margin-right:2rem;
+    background:var(--heaven);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.latest-news .article-wrapper .card img{
+    width:100%;
+}
+.latest-news .article-wrapper .card .card-content{
+    padding:2rem;
+}
+.latest-news .article-wrapper .card .card-content .post-meta{
+    margin-bottom: 1rem;
+}
+.latest-news .article-wrapper .card .card-content .post-meta .comment-count{
+    margin-left:1rem;
+}
+.latest-news .article-wrapper .card .card-content h2{
+    font-family: "Raleway-bold";
+    font-size: 1.3rem;
+    margin-bottom:1rem;
+}
+.latest-news .article-wrapper .card .card-content p{
+    line-height: 1.6;
+}
+.latest-news .btn-wrapper{
+    margin-top:2rem;
+}
+section.subscribe{
+    background:var(--primary);
+}
+section.subscribe .container > div:first-child img{
+    width:90%;
+}
+section.subscribe .container div:first-child{
+    flex:1;
+}
+section.subscribe .container div:last-child{
+    flex:1;
+}
+
+section.subscribe h1{
+    font-family:"Raleway-bold";
+    font-size: 1.5rem;
+    margin-bottom:1.5rem;
+}
+section.subscribe p{
+    font-family:"Raleway-medium"; 
+    font-size: 1rem;
+    margin-bottom:1.5rem;
+    line-height: 1.5;
+}
+section.subscribe .input-wrap{
+    background:var(--heaven);
+    display:flex;
+    padding:0.3rem;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+}
+section.subscribe .input-wrap input{
+    width:100%;
+    border:none;
+    padding: 0 1rem;
+    font-size:1rem;
+}
+section.subscribe .input-wrap input:focus{
+    outline:none;
+}
+section.subscribe .input-wrap button{
+    padding:0.8rem 2rem;
+    border:none;
+    background:var(--primary);
+    color:var(--pure);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    font-size:1rem;
+    cursor:pointer;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    outline:none;
+}
+section.subscribe .input-wrap button:hover{
+    background:var(--secondary);
+}
+section.contact-us{
+    padding-top:0;
+    padding-bottom: 0;
+}
+section.contact-us .contact-info-wrapper {
+    padding:4rem 0;
+    flex:1;
+}
+section.contact-us .map{
+    flex:1;
+    filter:grayscale(100%);
+    -webkit-filter:grayscale(100%);
+}
+section.contact-us .contact-info{
+    display:flex;
+    justify-content: center;
+}
+section.contact-us .contact-info > div > div {
+    display:flex;
+    align-items:center;
+    margin-bottom:2rem;
+}
+section.contact-us .contact-info > div > div img{
+    margin-right: 1rem;
+}
+section.contact-us .contact-info > div > div > div{
+    display:flex;
+    flex-direction: column;
+}
+section.contact-us .contact-info > div > div > div span:first-child{
+    font-family: "Raleway-bold";
+    margin-bottom:0.25rem;
+}
+footer{
+    background:var(--footer);
+    padding:4rem 0;
+}
+footer .container{
+    display:flex;
+    color:var(--pure);
+}
+
+footer .box{
+    flex:1;
+    margin-right:2rem;
+    text-align:center;
+}
+
+footer .instagram-api img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+footer .instagram-api .post-wrap{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+footer .instagram-api .post-wrap > div{
+    width: calc(1/3*100% - (1 - 1/3)*10px);
+    margin-bottom:10px;
+}
+footer .box ul{
+    list-style-type: none;
+}
+footer .box ul li a{
+    color:var(--pure);
+    text-decoration: none;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+footer .box ul li a:hover{
+    color:var(--primary);
+}
+footer .box h3{
+    border-bottom:1px solid var(--primary);
+    padding-bottom:1rem;
+    margin-bottom:1rem;
+}
+
+footer .box p{
+    line-height: 1.6;
+    margin-bottom:1rem;
+}
+footer .box ul li{
+    margin-bottom:1rem;
+}
+footer .box:nth-child(3) > div {
+    display:flex;
+    justify-content: center;
+}
+footer .box:nth-child(3){
+    text-align: left;
+}
+footer .box:nth-child(3) h3{
+    text-align: center;
+}
+footer .box:nth-child(3) > div img{
+    margin-right:1rem;
+}
+footer .box:nth-child(3) ul li{
+    margin-bottom:1.5rem;
+}
+
+footer.copyright{
+    padding:1rem 0;
+    background: var(--secondary);
+    color:var(--pure);
+    text-align: center;
+    font-size: 0.75rem;
+}
+footer.copyright a{
+    color:var(--primary);
+    text-decoration: none;
+}
+
+.nav-background .mobile-logo{
+    padding:1rem;
+}
+.nav-background .mobile-nav{
+    padding:1rem;
+}
+.nav-background .mobile-nav ul{
+    list-style-type: none;
+}
+.nav-background .mobile-nav ul li{
+    margin-bottom:1rem;
+}
+.nav-background .mobile-nav ul li a{
+    text-decoration: none;
+    color:var(--secondary);
+    font-family: "Raleway-medium";
+}
+.nav-background .mobile-nav ul li a:hover{
+    color:var(--primary);
+}
+.nav-background .contact, .nav-background .time{
+    padding:1rem;
+    padding-left:0;
+}
+.nav-background .contact img, .nav-background .time img{
+    margin-right:1rem;
+}
+.nav-background .contact h5,.nav-background .time h5{
+    font-family:"Raleway-bold";
+    margin-bottom:0.25rem;
+    font-size:1rem;
+}
+.nav-background .contact h6, .nav-background .contact h6{
+    font-size: 0.75rem;
+}
+.nav-background .cart{
+    margin-bottom:2rem;
+}
+.nav-background .cart a{
+    color:var(--secondary);
+    text-decoration: none;
+    font-family: "Raleway-bold";
+}
+.nav-background .cart img{
+    margin-right:0.75rem;
+    width:20px;
+    height:20px;
+}
+
+@media (max-width:992px){
+    .nav-trigger{
+        display:block;
+    }
+    header.topbar, nav{
+        display:none;
+    }
+
+    header.hero {
+        margin-top:-4rem;
+    }
+    header.hero .hero-image{
+        right:-160px;
+        top:100px;
+    }
+    .top-products .slider-btn{
+        display:none!important;
+    }
+    .latest-news .article-wrapper{
+        flex-direction:column;
+    }
+    .latest-news .article-wrapper .card{
+        margin-right:0;
+        margin-bottom:4rem;
+    }
+
+    footer .instagram-api .post-wrap > div{
+        width:calc(1/2*100% - (1 - 1/3)*10px);
+    }
+}
+
+@media (max-width:768px){
+    .about-meal .about-meal-wrap{
+        flex-direction: column;
+    }
+    .about-meal .about-meal-wrap img{
+        width:100%;
+        margin-bottom: 2rem;
+    }
+
+    section.our-services .card-wrapper{
+        flex-direction:column;
+    }
+    section.our-services .card-wrapper .service-card{
+        margin-bottom:6rem;
+    }
+    footer .container{
+        flex-direction: column;
+    }
+    footer .box{
+        text-align: left;
+        margin-right:0;
+        margin-bottom:3rem;
+    }
+    footer .box:nth-child(3) h3{
+        text-align:left;
+    }
+    footer .box:nth-child(3) > div{
+        display:block;
+    }
+}
+
+@media( max-width:576px){
+    header.hero .hero-image{
+        right:-235px;
+        top:150px;
+    }
+    header.hero .container{
+        padding-left:1rem;
+    }
+    header.hero{
+        margin-top:-3rem;
+    }
+    section.big-deal .timer > div{
+        margin-right:0.50rem;
+    }
+    section.big-deal .timer{
+        margin-right:-0.5rem;
+    }
+
+    section.subscribe .container{
+        flex-direction: column;
+        padding:0.50rem;
+    }
    
-}
-form.example input[type=text] {
-  padding:12px;
-  font-size:17px;
-  border: 1px solid grey;
+} 
+
+/* ..............SearchBar...........   */ 
+
+.search-input {
+  position: absolute;
+  top: 10px;
+  left: 38px;
+  font-size: 14px;
+  background: none;
+  color: #5a6674;
+  width: 195px;
+  height: 20px;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
 }
 
-  form.example button {
-  width:5%;
-  padding:8px 7px;
-  background: #4CAF50;
-  color:white;
-  font-size:17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
+.search-button {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none!important;
   cursor: pointer;
-  border-radius:4%;
+}
+.lg-title,
+.md-title,
+.sm-title
+.show-ad-title{
+    font-family: 'Roboto', sans-serif;
+    padding: 0.6rem 0;
+    text-transform: capitalize;
+}
+.lg-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.show-ad-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.md-title{
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+}
+.sm-title{
+    font-weight: 300;
+    font-size: 1rem;
+    text-transform:
+     uppercase;
+}
+ .size{
+    font-weight:100;
+    font-size: 1rem;
+    margin-top:0.4rem;
+} 
+.text-light {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.5;
+    margin: 0.4rem 0;
 }
 
-form.example button:hover {
-  background: green;
+.qty{
+width:35px;
 }
-
-.navbar {
-  overflow: hidden;
-  background-color:#4CAF50 ;
-  margin-top:16px;
+.map{
+    flex:1;
+    filter:grayscale(100%);
+    -webkit-filter:grayscale(100%);
+    max-width: 1388px;
+    margin: 0 auto;
 }
-.navbar a {
-  float:left;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-}
+/* ........Profile Menu css........... */
 
 .dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 12px 17px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: ;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color:#4CAF50;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* ................... */
-  </style>
-  <style>
-  .menu {
-  display: none; /* Hidden by default */
-  position:absolute; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  /*background-color: rgb(0,0,0);*/ /* Fallback color */
- /* background-color: rgba(0,0,0,0.4);  Black w/ opacity */
-  padding-top: 60px;
-}
-  
- .left_area h3{
-  color: #fff;
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 22px;
-  font-weight: 900;
-}
-
-.left_area span{
-  color: white;
-}
-.sidebar{
-  background:#4CAF50;
-  margin-top:69px;
-  padding-top:20px;
-  position:absolute;
-  left: 0;
-  width: 320px;
-  height: 59%;
-  transition: 0.5s;
-  transition-property: right;
-  margin-left:71%;
-}
-
-.sidebar h4{
-  color:white;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-.sidebar a{
-  color: #fff;
-  display: block;
-  width: 100%;
-  line-height: 60px;
-  text-decoration: none;
-  padding-left: 40px;
-  box-sizing: border-box;
-  transition: 0.5s;
-  transition-property: background;
-}
-.sidebar a:hover{
-  background: green;
-}
-
-.sidebar i{
-  padding-right: 10px;
-}
-
-label #sidebar_btn{
-  z-index: 1;
-  transition: 0.5s;
-  transition-property: color;
-}
-
-label #sidebar_btn:hover{
-  color: #19B3D3;
-}
-
-#check:checked ~ .sidebar{
-  left: -190px;
-}
-
-#check:checked ~ .right.sidebar a span{
-  display:none;
-}
-
-#check:checked ~ .sidebar a{
-  font-size: 20px;
-  margin-left: 170px;
-  width: 80px;
-}
-#check{
-  display: none;
-} 
-.cartpopup{
-  display: none; /* Hidden by default */
-  position:absolute; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 135px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 130%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
- /*  background-color: rgb(0,0,0); /* Fallback color */
-  /* background-color: rgba(0,0,0,0.8); */
-}
-
-/* Modal Content */
-.cart-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 22%;
-  margin-left: 60%;
-  border-radius: 4px;
-}
- input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: center;
-  margin-top:2px;
-}
-input[type=submit]:hover {
-
-  background-color: #45a049;
-} 
-.topnav {
-  overflow: hidden;
-  background-color: #4CAF50;
-  margin-top:30px;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 9px 13px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.topnav .icon {
-  display: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 17px;    
-  border: none;
-  outline: none;
-  color: white;
-  padding: 9px 13px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #ddd;
-  color: white;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child), .dropdown .dropbtn {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .topnav.responsive .dropdown {float: none;}
-  .topnav.responsive .dropdown-content {position: relative;}
-  .topnav.responsive .dropdown .dropbtn {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-}
-@keyframes pulse {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  33% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(3);
-    opacity: 0;
-  }
-}
-
-.button {
-  margin-left:2%;
-  display: inline-flex;
-  align-items: center;
-  background: #C06C84;
-  box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
-  border-radius: 5px;
-  height: 45px;
-  padding: 0 30px;
-  color: #fff;
-  font-family: Lato, Arial, sans-serif;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background .3s, transform .3s, box-shadow .3s;
-   will-change: transform;
-  
-  &:hover {
-    background: darken(#C06C84,10%);
-    box-shadow: 0 4px 17px rgba(0,0,0,0.2);
-    transform: translate3d(0, -2px, 0);
-  }
-  &:active {
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
-    transform: translate3d(0, 1px, 0);
-  }
-}
-
-.pulse {
   position: relative;
-  
-  &:before, &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255,255,255,.4);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    opacity: 0;
-    margin: auto;
-  }
-  &:before {
-    animation: pulse 1.5s infinite linear;
-  }
-  &:after {
-    animation: pulse 2s .4s infinite linear;
-  }
-  &:hover:before, &:hover:after {
-    display: none;
-  }
+  display: inline-block; 
+}
+.dropdown-content {
+  display: none;
+  position:absolute;
+  background-color: #f1f1f1;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ /*  z-index: 1; */
+        z-index: 999;
+        left: 0;
+       /* margin-top:11px;  */
 }
 
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;
+    border-bottom: 3px solid black;}
+
+.dropdown:hover .dropdown-content {display: block;
+   border-bottom: 3px solid black; }
+
+.dropdown:hover .dropbtn {background-color: ;
+    border-bottom: 3px solid white;}
+ 
+
+/* ........Profile Menu css Close........... */
 </style>
+
+
+</head>
+<!-- ***************Body Code***************** -->
+
 <body>
 
-   <div style="
-    width:80%;border:1px solid transparent;margin-left:10%;">
-    
-     <div class="logo">
+<!-- ......... HeadSection........ -->
+ <div class="main-wrapper">
+
+            <div class="nav-background">
+            <div class="mobile-logo">
    <spring:url value="/images" var="images" />
-  <%--  <img src="${images}/logo.jpg" width="170" height="125"/> --%>
-   <img src="${images}/logo.jpg"  width="165" height="120"/>
-  
-   </div> 
+   <img src="${images}/VeggieFridge.ico"  width="150" height="100" alt=""/>
+            </div>
+            
+            <div class="mobile-nav">
+   <div class="cart">
+   <div class="flex items-center">
+     <security:authorize access="isAnonymous()">
+     <a href="#">Nagpur,Mihan</a><%-- ${customerModel.cities}, ${customerModel.location} --%>
+     </security:authorize>
+   <security:authorize access="isAnonymous() or hasRole('USER')">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/>
+   <!--   <img src="./icons/cart-dark.svg" alt=""> -->
+   <a href="#">${customerModel.cartpage.cartitem} Items - (&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+   </security:authorize>
+   </div>
+                </div>
+                <div class="nav-top">
+                    <ul>
+                    
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About us</a>
+                        </li>
+                        <li>
+                            <a href="#">Products</a>
+                        </li>
+                        <li>
+                            <a href="#">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#">Shop</a>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                        <security:authorize access="isAnonymous()">
+                        <li>
+                            <a href="#">Log in</a>
+                        </li>
+                        <li>
+                            <a href="#">Register</a>
+                        </li>
+                        </security:authorize>
+                          <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+                        <li>
+                            <a href="<c:url value="/logout"/>">Log Out</a>
+                        </li>
+                        </security:authorize>
+                        
+                    </ul>
+                </div>
+                <div class="contact flex items-center">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/phone2.png"  width="25" height="25" alt=""/>
+                    <!-- <img src="./icons/phone.svg" alt=""> -->
+                    <div>
+                      <h5>Call Us: (+91) 982 357 6042  </h5>
+                      <h6>E-mail : support@veggiefridge.com</h6>
+                    </div>
+                </div>
+                <%-- <div class="time flex items-center">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                   <!--  <img src="./icons/clock.svg" alt=""> -->
+                    <div>
+                        <h5>Working Hours:</h5>
+                        <h6>Mon - Sat (8.00am - 12.00am)</h6>
+                    </div>
+                </div> --%>
+            </div>
+        </div>
+        
+       <div class="site-content-wrapper">
+       <div class="nav-trigger">
+                <svg xmlns="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-bar-chart">
+                    <line x1="12" y1="20" x2="12" y2="10" />
+                    <line x1="18" y1="20" x2="18" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="16" /></svg>
+            </div>
+                
+                <div class="site-content">
+               
+                <header class="topbar">
+                    <div class="container flex justify-between items-center">
+                        <div class="icons">
+                            <a href="#"><img src="./icons/facebook.svg" alt=""></a>
+                            <a href="#"><img src="./icons/twitter.svg" alt=""></a>
+                            <a href="#"><img src="./icons/google.svg" alt=""></a>
+                            <a href="#"><img src="./icons/instagram.svg" alt=""></a>
+                            <a href="#"><img src="./icons/search.svg" alt=""></a>
+                        </div>
+                        <div class="auth flex items-center">
+                         
+                            <security:authorize access="isAnonymous()">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
+                              <!--   <img src="./icons/user-icon.svg" alt=""> -->
+                            <a href="${pageContext.request.contextPath}/login">Log in</a>
+                            </div> 
+                            <span class="divider">|</span>
+                            </security:authorize>
+                             
+                            <security:authorize access="isAnonymous()">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/edit.svg"  width="15" height="15" alt=""/>
+                            <!--   <img src="./icons/edit.svg" alt=""> -->
+                            <a href="${pageContext.request.contextPath}/signup">Register Now</a>
+                            </div>
+                            <span class="divider">|</span> 
+                            </security:authorize>
+                            
+                          <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+                          
+                          <div class="dropdown">
+                          <spring:url value="/images" var="images" />
+    <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
+    <a href="#" class="dropbtn">Hello, ${customerModel.firstName}</a>
+    
+   <div class="dropdown-content" style="color: black;">
    
- <div class="call" style="margin-top:5px;"> 
-   <security:authorize access="permitAll">
-  <span class="fas fa-map-marker-alt" style="color:green;"></span>
-  <a href="#" id="myBtn" style="text-decoration: none;color: black;margin-right:4px;">${kiosklocation.location},${kiosklocation.cities}</a><i class="fa fa-caret-down" style="font-size:20px;color:green;"></i>   |   
-  </security:authorize>
+   <c:forEach var="menu" items="${requestScope.listprofileMenu}">
+   <a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
+   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/>${menu.menues}</a> 
   
-  <security:authorize access="permitAll"> 
- <span class="fas fa-phone-alt" style="color:green;"></span><span>+089-765432100</span>  |  
- </security:authorize>
- 
-  <security:authorize access="permitAll">
- <span class="fa fa-edit" style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/signup" style="text-decoration: none;color: black;">Sign Up</a>  |    
- </security:authorize>
- 
- <security:authorize access="permitAll">
- <span class='fas fa-unlock-alt' style="color:green;"></span>
- <a href="${pageContext.request.contextPath}/login" style="text-decoration: none;color: black;">Hello,Sign In</a>
-  </security:authorize>
-  
- <!-- The Modal -->
- <div id="myModal" class="modal">
+   </c:forEach>
+	
+   </div>
+                            </div>
+                            <span class="divider">|</span>
+                            </security:authorize>
+                            
+                            <security:authorize access="isAnonymous()">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/location.png"  width="15" height="15" alt=""/>
+                            <!--   <img src="./icons/user-icon.svg" alt=""> -->
+                            <a href="#">Nagpur,Mihan</a>
+                            </div>
+                             <span class="divider">|</span>
+                            </security:authorize>
+                            
+                            
+                             <security:authorize access="hasRole('USER')">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/location.png"  width="15" height="15" alt=""/>
+                            <!--   <img src="./icons/user-icon.svg" alt=""> -->
+                            <a href="#">${customerModel.cities}, ${customerModel.location}</a>
+                            </div>
+                             <span class="divider">|</span>
+                            </security:authorize>
+                             
+                          
+                           <security:authorize access="hasRole('USER')">
+                           <div>
+                           <spring:url value="/images" var="images" />
+                           <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
+                           <!--  <img src="./icons/cart.svg" alt=""> -->
+                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+                           </div>
+                           </security:authorize>
+                           
+                            <security:authorize access="isAnonymous()">
+                           <div>
+                           <spring:url value="/images" var="images" />
+                           <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
+                           <!--  <img src="./icons/cart.svg" alt=""> -->
+                           <a href="#">0 Items - (${repee_sign}0.00)</a>
+                           </div>
+                           </security:authorize>
+                        </div>
+                    </div>
+                </header>
+                <nav>                    
+                <div class="top">
+                        <div class="container flex justify-between">
+                           <div class="contact flex items-center">
+                       
+                               <div>
+                                <table>
+					<%-- <th><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <img src="${images}/vf-leaf.png"  width="90" height="75" alt=""/>
+					</a></th> --%>
+					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
+   <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
+					</a></th>
+				</table>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-  <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/continueLocation" modelAttribute="kioskLocation">
-  <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
-  <div class="row">
-  <div class="col-75">
-      
-       <select id="cities" name="cities" required  style="background-color:#f1f1f1;">
-       <option value=""style="color: black;" >Select city</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
-       </c:forEach>
-       </select><br><br>
-        
-       <select id="location" name="location" required  style="background-color:#f1f1f1;">
-       <option value="" style="color: black;">Select location</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
-       </c:forEach>
-      </select>
-    </div>
-    </div>
-
- <div style="text-align:center;">
- <input type="submit" value="Continue" style="width: 30%;"/>
- </div></p></form>
- </div>
- </div>
- </div>
-  
-  <div class="search" style="margin-left:15%;width:100%;margin-top:40px;">                                                 
-  <form class="example">
-  <input type="text" placeholder="Search For Vegetabels,Milk And More........" name="search" id="myInput" onkeyup="myFunction()" style="width:50%; padding:10px 10px;">
-  <button type="submit" style="border-radius:px;margin-right:%;"><i class="fa fa-search"></i></button>
-  <a href="#" class="button pulse">
-  Membership
- </a>
-  <a href="#" class="notification" id="group">
-  <span>Cart<i class='fas fa-cart-plus' style="font-size:22px;"  onclick="document.getElementById('id06').style.display='block'"></i></span>
-  <div class="badge" id="output"><%-- ${customerModel.cartpage.cartitem} --%>0</div>
-  </a>
+   
+                                    <!--  <h5>Call US: (+84) 123 456 789</h5>
+                                    <h6>E-mail : support@freshmeal.com</h6> -->
+                              </div>   
+                            </div>
+                            <div class="branding">
+                            <form class="search-form" style="position:relative;
+  width: 350px;
+  height: 40px;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.10);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  transition: all 0.3s ease; top:40%;
+  left:45%;">
+  <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
+  <button type="submit" class="search-button">
+  </button>
   </form>
-  <div id="id06" class="cartpopup">
-  <div class="cart-content">
-  Yout cart is Empty
-  </div>
-  </div>
-  </div>
-  
-      <div class="right" style="float: right;">
-      <%--  <span  class='fas fa-user-circle' style="color:green;"></span> 
-      Hello<span onclick="document.getElementById('id05').style.display='block'">,${customer.firstName}</span> |  --%>
-      <div id="id05" class="menu">
-      <div class="sidebar">
-      <center>
-      <i class='fas fa-user-circle' style='font-size:85px;color:white;margin-right:3%;'></i>
-      <span style="color:white;font-size:25px;font-family:'Montserrat',sans-serif">Hello, ${customerModel.firstName}</span>
-      </center>
-      <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"><i class="fa fa-user-circle"></i><span>My Account</span></a>
-      <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}"><i class="fa fa-bars"></i> <span>My Orders</span></a>
-      <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem"><i class="fa fa-shopping-cart"></i> <span>My Cart</span></a>
-      <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}"><i class='fas fa-wallet'></i> <span>My Wallet</span></a>
-      <a href="#"><i class='fas fa-user-friends'></i> <span>Membership</span></a>
-      <a href="#"><i class="fas fa-info-circle"></i> <span>Ask us</span></a>
-      <a href="<c:url value="/logout" />"><i class='fas fa-sign-out-alt'></i> <span>Log Out</span></a>
-      </div>
-      </div> 
-       
-<!-- The Modal -->
-<div id="myModal" class="modal">
+                                <!-- <img src="./icons/logo.svg" alt=""> -->
+                                 <%--  <spring:url value="/images" var="images" />
+   <img src="${images}/logo.jpg"  width="165" height="120"/> --%>
+                            </div>
+                            <div class="time flex items-center">
+                                <!-- <img src="./icons/clock.svg" alt="">
+                                <div>
+                                    <h5>Working Hours:</h5>
+                                    <h6>Mon - Sat (8.00am - 12.00am)</h6>
+                                </div> -->
+                                <spring:url value="/images" var="images" />
+   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                               <!--  <img src="/images/phone.svg" alt=""> -->
+                                <div>
+                                      <h5>Call Us: (+91) 982 357 6042  </h5>
+                                    <h6>E-mail : support@veggiefridge.com</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <security:authorize access="isAnonymous() or hasRole('USER')">
+                    
+                    <div class="navbar magic-shadow" style="font-family: Montserrat;font-weight:300px;">
+                           <div class="container flex justify-center">
+                            <a href="${pageContext.request.contextPath}/home" class="active">Home</a>
+                          <c:forEach var="menu" items="${listMenu}">
+                            <a href="#">${menu.menues}</a>
+                           <!--  <a href="#">Products</a>
+                            <a href="#">Blog</a>
+                            <a href="#">Shop</a>
+                            <a href="#">Services</a>
+                            <a href="#">Gallery</a>
+                            <a href="#">Contact us</a> -->
+                            </c:forEach>
+                        </div>
+                    </div>
+                    
+                     </security:authorize>
+                     
+                      <security:authorize access="hasRole('ADMIN')">
+                    <div class="navbar magic-shadow">
+                            <div class="container flex justify-center">
+                            <a href="#" class="active">Home</a>
+                            <a href="#">Manage Product</a>
+                            <a href="#">Manage Location</a>
+                             <a href="#">Manage Kiosk</a>
+                        </div>
+                    </div>
+                     </security:authorize>
+                 </nav>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-  <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/regcontinueLocation" modelAttribute="kioskLocation" >
-  <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
-  <div class="row">
-  <div class="col-75">
-      
-       <select id="cities" name="cities" required  style="background-color:#f1f1f1;">
-       <option value=""style="color: black;" >Select city</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
-       </c:forEach>
-       </select><br><br>
-        
-       <select id="location" name="location" required  style="background-color:#f1f1f1;">
-       <option value="" style="color: black;">Select location</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
-       </c:forEach>
-      </select>
-    </div>
-    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   
+   <script>
+    $(document).ready(function(){
+   $('.food-slider').slick({
+      autoplay:true,
+     slidesToShow:3,
+     slidesToScroll:1,
+     prevArrow:".prev-btn",
+     nextArrow:".next-btn",
+     responsive:[
+        {
+           breakpoint:992,
+           settings:{
+            slidesToShow:2,
+           }
+        },
+        {
+         breakpoint:768,
+         settings:{
+          slidesToShow:1,
+         }
+      }
+     ]
 
- <div style="text-align:center;">
- <input type="submit" value="Continue" style="width: 30%;"/>
- </div></p></form>
- </div>
-</div> 
- </div>
- 
- <script>
-// Get the modal
-var modal = document.getElementById("myModal");
-  
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+   });
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script> 
-     <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <a href="#news">Offer</a>
-  <a href="#contact">Discount</a>
-  <div class="dropdown">
-    <button class="dropbtn">Search By Catogary
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
-  <a href="#about">About Products</a>
-  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-</div>   
-</div> 
+   $('.nav-trigger').click(function(){
+      $('.site-content-wrapper').toggleClass('scaled');
+   })
+});
     
-     
-     <script>
-     function myFunction() {
-         var input, filter, ul, li, a, i, txtValue;
-         input = document.getElementById("myInput");
-         filter = input.value.toUpperCase();
-         ul = document.getElementById("myUL");
-         li = ul.getElementsByTagName("li");
-         for (i = 0; i < li.length; i++) {
-             a = li[i].getElementsByTagName("a")[0];
-             txtValue = a.textContent || a.innerText;
-             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                 li[i].style.display = "";
-             } else {
-                 li[i].style.display = "none";
-             }
-         }
-     }
-     </script>
-
-     <script>
-     // Get the modal
-     var cartpopup = document.getElementById('id06');
-
-     // When the user clicks anywhere outside of the modal, close it
-     window.onclick = function(event) {
-         if (event.target == cartpopup) {
-         	cartpopup.style.display = "none";
-         }
-     }
-     </script>
-
-     <script>
-     // Get the modal
-     var menu = document.getElementById('id05');
-
-     // When the user clicks anywhere outside of the modal, close it
-     window.onclick = function(event) {
-         if (event.target == menu) {
-         	menu.style.display = "none";
-         }
-     }
-     </script>
-
-         <script> 
-     	// Use find() function to extract the badge 
-     	// count from '#group' container. 
-     	$(document).ready(function() { 
-     		$(".btn").click(function() { 
-     			var val = parseInt($('#group').find('.badge').text()); 
-
-     			// Check for the button clicked 
-     			if ($(this).hasClass('btn-danger')) { 
-     				$('#group').find('.badge').text(val - 1); 
-     			} else if ($(this).hasClass('btn-success')) { 
-     				$('#group').find('.badge').text(val + 1); 
-     			} 
-     		}); 
-     	}); 
-     </script> 
-
-     <script>
-     $('#b').click(function() {
-         $('#c').html(function(i, val) { return val*1+1 });
-     });
-     </script>
-     
-     <script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
 </script>
-</div> 
-     
-     
-     
-     <script>
-     function myFunction() {
-         var input, filter, ul, li, a, i, txtValue;
-         input = document.getElementById("myInput");
-         filter = input.value.toUpperCase();
-         ul = document.getElementById("myUL");
-         li = ul.getElementsByTagName("li");
-         for (i = 0; i < li.length; i++) {
-             a = li[i].getElementsByTagName("a")[0];
-             txtValue = a.textContent || a.innerText;
-             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                 li[i].style.display = "";
-             } else {
-                 li[i].style.display = "none";
-             }
-         }
-     }
-     </script>
 
-     <script>
-     // Get the modal
-     var cartpopup = document.getElementById('id06');
-
-     // When the user clicks anywhere outside of the modal, close it
-     window.onclick = function(event) {
-         if (event.target == cartpopup) {
-         	cartpopup.style.display = "none";
-         }
-     }
-     </script>
-
-     <script>
-     // Get the modal
-     var menu = document.getElementById('id05');
-
-     // When the user clicks anywhere outside of the modal, close it
-     window.onclick = function(event) {
-         if (event.target == menu) {
-         	menu.style.display = "none";
-         }
-     }
-     </script>
-
-         <script> 
-     	// Use find() function to extract the badge 
-     	// count from '#group' container. 
-     	$(document).ready(function() { 
-     		$(".btn").click(function() { 
-     			var val = parseInt($('#group').find('.badge').text()); 
-
-     			// Check for the button clicked 
-     			if ($(this).hasClass('btn-danger')) { 
-     				$('#group').find('.badge').text(val - 1); 
-     			} else if ($(this).hasClass('btn-success')) { 
-     				$('#group').find('.badge').text(val + 1); 
-     			} 
-     		}); 
-     	}); 
-     </script> 
-
-     <script>
-     $('#b').click(function() {
-         $('#c').html(function(i, val) { return val*1+1 });
-     });
-     </script>
-
-
-    
+ 
 </body>
 </html>

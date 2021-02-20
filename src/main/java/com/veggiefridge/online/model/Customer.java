@@ -63,6 +63,15 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "walletID")
 	private Wallet wallet;
 	
+	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	
+	
 	public Wallet getWallet() {
 		return wallet;
 	}

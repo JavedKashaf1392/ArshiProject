@@ -481,7 +481,7 @@ label {
 
             <div class="jumbotron">
 			<h3 class="text-center" style="margin-top:35px;">Your Cart is Empty!!!</h3>
-			<a href="${pageContext.request.contextPath}/home" style="display: inline-block;
+		<a href="${pageContext.request.contextPath}/home" style="display: inline-block;
         padding:10px 30px;
         text-align: center;
         text-decoration: none;

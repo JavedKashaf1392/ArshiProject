@@ -478,7 +478,7 @@ label {
 
 	<div style="max-width: 1200px; margin: 17px auto;">
 	<span
-    style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">OrderDetails
+    style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">${OrderDetails}
 	</span>
 	</div>
 
@@ -654,6 +654,7 @@ label {
 			</h2>
 			
 			<table style="max-width:80px; margin:20px auto; border-spacing:20px 2px;">
+			
 			<th>
 				<a
 					href="${pageContext.request.contextPath}/order/cancelOrder/${orders.orderid}"

@@ -12,6 +12,17 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#prodId').on('change', function() {
+                this.form.submit();
+            });
+        });
+        </script>
+        
+
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
@@ -27,6 +38,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.
 <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 
 <style>
+
 @import
 url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
@@ -192,11 +204,11 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
      /*  margin-top:45px; */
   }
   nav .top .contact h5,  nav .top .time h5{
-      font-family:"Raleway-black";
+     /*  font-family:"Raleway-black"; */
       margin-bottom:0.25rem;
   }
   nav .top .contact h6, nav .top .time h6{
-    font-family:"Raleway-medium";
+    /* font-family:"Raleway-medium"; */
     letter-spacing: 0.055rem;
     font-size:0.75rem;
     color:var(--ternary);
@@ -211,7 +223,7 @@ nav .top .contact img, nav .top .time img{
 nav .navbar a{
     text-decoration:none;
     color:var(--secondary);
-    font-family:"Raleway-semibold";
+   /*  font-family:"Raleway-semibold"; */
     font-size:1rem;
     padding:1rem 1.5rem;
     transition:all .3s ease;
@@ -286,13 +298,13 @@ header.hero .welcome{
     margin-bottom:0.25rem;
 }
 header.hero .welcome span{
-    font-family:"Raleway-bold";
+    /* font-family:"Raleway-bold"; */
     color:var(--secondary);
     margin-right:0.75rem;
 
 }
 header.hero h1{
-    font-family:"Raleway-extrabold";
+    /* font-family:"Raleway-extrabold"; */
     color:var(--secondary);
     font-size: 2.5rem;
     margin-bottom:0.75rem;
@@ -301,7 +313,7 @@ header.hero h1 span{
     color:var(--primary);
 }
 header.hero p{
-    font-family: "Raleway-medium";
+    /* font-family: "Raleway-medium"; */
     width:50%;
     line-height:1.5;
     margin-bottom:1rem;
@@ -361,7 +373,7 @@ section.top-products{
 }
 
 .section-heading{
-    font-family:"Raleway-bold";
+    /* font-family:"Raleway-bold"; */
     text-align:center;
     Position:relative;
     margin-bottom:6rem;
@@ -398,7 +410,7 @@ hr{
     margin:1rem 0;
 }
 section.top-products .food-slider .food-card h2{
-    font-family:"Raleway-bold";
+    /* font-family:"Raleway-bold"; */
     font-size:1.3rem;
     margin-bottom:0.25rem;
 }
@@ -412,12 +424,12 @@ section.top-products .food-slider .food-card .stars img{
     margin-right:0.25rem;
 }
 section.top-products .food-slider .food-card .price{
-    font-family:"Raleway-medium";
+    /* font-family:"Raleway-medium"; */
     color:var(--danger);
     margin-bottom: 1rem;
 }
 section.top-products .food-slider .food-card button{
-    font-family:"Raleway-medium";
+    /* font-family:"Raleway-medium"; */
     color:var(--secondary);
     background:var(--heaven);
     border:2px solid var(--primary);
@@ -496,7 +508,7 @@ section.about-meal img{
     flex:1;
 }
 section.about-meal h2{
-    font-family: "Raleway-bold";
+    /* font-family: "Raleway-bold"; */
     font-size:1.4rem;
     color:var(--secondary);
     margin-bottom:2rem;
@@ -540,7 +552,7 @@ section.our-services .service-card .icon{
     -o-transform:translateX(-50%);
 } 
 section.our-services .service-card h2{
-    font-family: "Raleway-bold";
+    /* font-family: "Raleway-bold"; */
     font-size: 1.3rem;
     margin-bottom:1rem;
 }
@@ -630,7 +642,7 @@ section.latest-news .article-wrapper{
     margin-left:1rem;
 }
 .latest-news .article-wrapper .card .card-content h2{
-    font-family: "Raleway-bold";
+    /* font-family: "Raleway-bold"; */
     font-size: 1.3rem;
     margin-bottom:1rem;
 }
@@ -654,12 +666,12 @@ section.subscribe .container div:last-child{
 }
 
 section.subscribe h1{
-    font-family:"Raleway-bold";
+    /* font-family:"Raleway-bold"; */
     font-size: 1.5rem;
     margin-bottom:1.5rem;
 }
 section.subscribe p{
-    font-family:"Raleway-medium"; 
+    /* font-family:"Raleway-medium"; */ 
     font-size: 1rem;
     margin-bottom:1.5rem;
     line-height: 1.5;
@@ -735,7 +747,7 @@ section.contact-us .contact-info > div > div > div{
     flex-direction: column;
 }
 section.contact-us .contact-info > div > div > div span:first-child{
-    font-family: "Raleway-bold";
+    /* font-family: "Raleway-bold"; */
     margin-bottom:0.25rem;
 }
 footer{
@@ -839,7 +851,7 @@ footer.copyright a{
 .nav-background .mobile-nav ul li a{
     text-decoration: none;
     color:var(--secondary);
-    font-family: "Raleway-medium";
+    /* font-family: "Raleway-medium"; */
 }
 .nav-background .mobile-nav ul li a:hover{
     color:var(--primary);
@@ -852,7 +864,7 @@ footer.copyright a{
     margin-right:1rem;
 }
 .nav-background .contact h5,.nav-background .time h5{
-    font-family:"Raleway-bold";
+   /*  font-family:"Raleway-bold"; */
     margin-bottom:0.25rem;
     font-size:1rem;
 }
@@ -980,7 +992,6 @@ footer.copyright a{
     appearance: none;
   }
 }
-
 .search-button {
   position: absolute;
   top: 10px;
@@ -1554,6 +1565,103 @@ height:40px
     
 /* ........Profile Menu css Close........... */
 
+
+/* ...............Loction Css.......... */
+/* The Modal (background) */
+.Location {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top:50px; /* Location of the box */
+  left:0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.Location-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding:40px;
+  border: 1px solid #888;
+  width:30%;
+      
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*  Responsive Form*/
+select{
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 106px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}      
+
 </style>
 </head>
 
@@ -1698,63 +1806,81 @@ height:40px
                             <span class="divider">|</span> 
                             </security:authorize>
                             
-                            <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-                            
-                            <div class="dropdown">
-                            <spring:url value="/images" var="images" />
+                           <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+                          
+                          <div class="dropdown">
+                          <spring:url value="/images" var="images" />
     <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
-                              <!--   <img src="./icons/user-icon.svg" alt=""> -->
     <a href="#" class="dropbtn">Hello, ${customerModel.firstName}</a>
     
-    <div class="dropdown-content" style="color: black;">
-    <%-- <c:forEach var="menu" items="${listprofileMenu}"> --%>
+   <div class="dropdown-content" style="color: black;">
+  <%--  <c:forEach var="menu" items="${listprofileMenu}">  --%>
    
-  <%--  <a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
-   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/> ${menu.menues}</a> --%>
+   <%--<a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
+   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/> ${menu.menues}</a>  --%>
    
-  <%--  <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/myprofile1.png"  width="15" height="15" alt=""/> My Profile</a> --%>
-    <%-- <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;"> <spring:url value="/images" var="images" />
+   <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
+   <img src="${images}/myprofile1.png"  width="15" height="15" alt=""/> My Profile</a> 
+   
+   <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> My cart</a>
-    <a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/order4.png"  width="15" height="15" alt=""/> My Orders</a>
-     <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
+   
+   <form action="${pageContext.request.contextPath }/order/showAllOrderByPickupStatus${customerModel.customerid}" method="POST" >
+   <%--<a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
+   <img src="${images}/order4.png"  width="15" height="15" alt=""/> My Orders</a> --%>
+   
+  <select name="pickupStatus" id="prodId" style="color: black;
+  padding: 12px 16px;
+  text-decoration:none;
+  display: block;  background-color: #f1f1f1;
+  min-width: 200px;border:0;font-size:16px;line-height:30px;">
+  
+	<option value=""><spring:url value="/images" var="images" />
+   <img src="${images}/order4.png"  width="15" height="15" alt=""/>My Orders</option>
+  
+	<option value="Pending">Current</option>
+	
+    <option value="Delivered">Delivered</option>
+	
+	<option value="Cancelled">Cancelled</option>
+	</select>
+    </form>
+   
+   <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/wallet.png"  width="15" height="15" alt=""/> Wallet</a>
+   
     <a href="#" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> Membership</a>
+   
     <a href="#" style="color: black;"> <spring:url value="/images" var="images" />
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> Help</a>
-    <a href="<c:url value="/logout" />" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/logout1.png"  width="15" height="15" alt=""/> Log Out</a> --%>
-  <ul class="menu" style="color: black;">
-<li><a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;">My Profile</a></li>
-<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;">My Cart</a></li>
-<li>
-          <label for="btn-3" class="second" style="color: black;">My Orders
-           <!--  <span class="fas fa-caret-down" style="color: black;"></span> -->
-          </label>
-          <input type="checkbox" id="btn-3" style="color: black;">
-          <ul>
-<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;">Pending</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}" style="color: black;">Delivered</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}" style="color: black;">Cancelled</a></li>
-</ul>
-</li>
-<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;">My Wallet</a></li>
-<li><a href="<c:url value="/logout" />" style="color: black;">LogOut</a></li>
-</ul>
-  
-  
-  
-  
-  
-  <%-- </c:forEach> --%>
+   
+   <a href="<c:url value="/logout" />" style="color: black;"> <spring:url value="/images" var="images" />
+   <img src="${images}/logout1.png"  width="15" height="15" alt=""/> Log Out</a>
+  <%--   </c:forEach> --%>
+    
+    <%-- <form action="${pageContext.request.contextPath }/order/showAllOrderByPickupStatus${customerModel.customerid}" method="POST" >
+	<table align="center">
+	<tr>
+	<td>
+	<select name="pickupStatus" id="prodId">
+	<option value="">--Select--</option>
+	<option value="Pending">Pending</option>
+	<option value="Delivered">Delivered</option>
+	<option value="Cancelled">Cancelled</option>
+	</select>
+	</td>
+	</tr>
+	</table>
+	</form> --%>
+   
    </div>
                             </div>
                             <span class="divider">|</span>
                             </security:authorize>
                             
-                            <security:authorize access="isAnonymous()">
+                            
+                           <%--  <security:authorize access="isAnonymous()">
                             <div>
                             <spring:url value="/images" var="images" />
                             <img src="${images}/location.png"  width="15" height="15" alt=""/>
@@ -1762,7 +1888,7 @@ height:40px
                             <a href="#">Nagpur,Mihan</a>
                             </div>
                              <span class="divider">|</span>
-                            </security:authorize>
+                            </security:authorize> --%>
                             
                             
                              <security:authorize access="hasRole('USER')">
@@ -1770,7 +1896,7 @@ height:40px
                             <spring:url value="/images" var="images" />
                             <img src="${images}/location.png"  width="15" height="15" alt=""/>
                             <!--   <img src="./icons/user-icon.svg" alt=""> -->
-                            <a href="#">${customerModel.cities}, ${customerModel.location}</a>
+                            <a href="#" id="myBtn">${customerModel.cities}, ${customerModel.location}</a>
                             </div>
                              <span class="divider">|</span>
                             </security:authorize>
@@ -1781,7 +1907,7 @@ height:40px
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
                            <!--  <img src="./icons/cart.svg" alt=""> -->
-                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
                            </div>
                            </security:authorize>
                            
@@ -1811,9 +1937,11 @@ height:40px
                            <spring:url value="/images" var="images" />
    <img src="${images}/phone.svg"  width="25" height="25" alt=""/>  --%>
                                <!--  <img src="/images/phone.svg" alt=""> --> 
-                               <div style="margin-left:80px;">
-  <table>
-					
+   <div style="margin-left:40px;">
+   <table CELLSPACING=0 CELLPADDING=5>
+					 <th align=Right><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
+					</a></th>
 					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
 					</a></th>
@@ -1832,7 +1960,7 @@ height:40px
   transform: translate(-50%, -50%);
   background: #fff;
   transition: all 0.3s ease; top:40%;
-  left:45%;">
+  left:48%;">
    
   <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
   <%--  <spring:url value="/images" var="images" />
@@ -2467,8 +2595,56 @@ function playPauseSlides() {
         </security:authorize>
         
        <jsp:include page="footer.jsp"/>
+       
+ <!--Location Modal content -->
+ <!-- The Modal -->
+<div id="myLocation" class="Location">
+
+  <!-- Modal content -->
+  <div class="Location-content">
+ <span class="close">&times;</span>
+ <p style="text-align: center;margin-bottom:15px;">Select Your city to start shopping</p>     
+ 
+  <div class="container" style="border-radius: 5px;
+  background-color: #f2f2f2;
+  padding:24px;">
+  <form action="/action_page.php">
    
-     
+    <div class="row">
+      <div class="col-25">
+        <label for="country">City</label>
+      </div>
+      <div class="col-75">
+        <select id="country" name="country">
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+      </div>
+    </div>
+      
+      <div class="row">
+      <div class="col-25">
+        <label for="country">Location</label>
+      </div>
+      <div class="col-75">
+        <select id="country" name="country">
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+  </div>
+
+</div>
+ 
 <script>
 var close = document.getElementsByClassName("closebtn");
 var i;
@@ -2535,6 +2711,36 @@ $(document).ready(function(){
   });
 });
 </script> 
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myLocation");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
 
    
 </body>

@@ -38,10 +38,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderdao.getOrder(orderid);
 	}
 
-	@Override
-	public List<OrderItem> getAllOrders() {
-		return orderdao.getAllOrders();
-	}
+	/*
+	 * @Override public List<OrderItem> getAllOrders() { return
+	 * orderdao.getAllOrders(); }
+	 */
 
 	@Override
 	public boolean saveOrderItem(OrderItem orderitem) {
@@ -53,21 +53,21 @@ public class OrderServiceImpl implements OrderService {
 		return orderdao.list(customerid);
 	}
 
-	@Override
-	public List<OrderItem> getAllOrderItem() {
-		return orderdao.getAllOrderItem();
-	}
+	/*
+	 * @Override public List<OrderItem> getAllOrderItem() { return
+	 * orderdao.getAllOrderItem(); }
+	 */
+	
+	/*
+	 * @Override public List<Orders> listpendingOrders() { return
+	 * orderdao.listpendingOrders(); }
+	 */
 
-	@Override
-	public List<Orders> listpendingOrders() {
-		return orderdao.listpendingOrders();
-	}
-
-	@Override
-	public List<Orders> listdeliveredOrders() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	/*
+	 * @Override public List<Orders> listdeliveredOrders() { // TODO Auto-generated
+	 * method stub return null; }
+	 */
 
 	@Override
 	public List<Orders> getPendingOrders(int customerid) {
@@ -95,8 +95,14 @@ public class OrderServiceImpl implements OrderService {
 		return orderdao.getCancelOrdersBetweenDates(customerid, fromDate, toDate);
 	}
 
+	@Override
+	public List<Orders> getAllOrders(int customerid, String pickupStatus) {
+		return orderdao.getAllOrders(customerid, pickupStatus);
+	}
 
-	
-	
-
+	@Override
+	public List<Orders> getOrdersBetweenDatespickupStatus(int customerid, String pickupStatus, Date fromDate,
+			Date toDate){
+		return orderdao.getOrdersBetweenDatespickupStatus(customerid, pickupStatus, fromDate, toDate);
+	}
 }

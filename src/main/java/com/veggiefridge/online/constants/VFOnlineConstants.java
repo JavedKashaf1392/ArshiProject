@@ -56,8 +56,12 @@ public class VFOnlineConstants {
 	
 	public static final String RUPEE_SIGN="&#8377; ";
 	
+	public static final String ORDER_HEADING="My Orders";
 	
+	public static final String ORDERDETIAL_HEADING="Order Detail";
 	
+	public static final String REVIEW="Review";
 	
+	public static final String RE_ORDER="Re-Order";
 	
 }

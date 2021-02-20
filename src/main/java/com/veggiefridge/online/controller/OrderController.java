@@ -1,4 +1,3 @@
-
 package com.veggiefridge.online.controller;
 
 import java.io.IOException;
@@ -91,13 +90,13 @@ public class OrderController {
 	}
 
 	// getAll Order
-	@RequestMapping(value = "/listdeliveredorder")
-	public ModelAndView listOrder(ModelAndView model) throws IOException {
-		List<Orders> listdeliveredorders = orderservice.listdeliveredOrders();
-		model.addObject("listdeliveredorders", listdeliveredorders);
-		model.setViewName("myorder");
-		return model;
-	}
+	/*
+	 * @RequestMapping(value = "/listdeliveredorder") public ModelAndView
+	 * listOrder(ModelAndView model) throws IOException { List<Orders>
+	 * listdeliveredorders = orderservice.listdeliveredOrders();
+	 * model.addObject("listdeliveredorders", listdeliveredorders);
+	 * model.setViewName("myorder"); return model; }
+	 */
 
 	// checkoutAndSaveOrder PayAtKiosk
 	@RequestMapping(value = "/checkoutAndSaveOrderPayATKiosk")
@@ -198,15 +197,14 @@ public class OrderController {
 	}
 
 	// get All Information
-	@RequestMapping(value = "/allOrderItem")
-	public ModelAndView allOrderItem(ModelAndView model) {
-		List<OrderItem> listAllOrderitem = orderservice.getAllOrderItem();
-		model.addObject("listAllOrderitem", listAllOrderitem);
-		model.setViewName("repeatOrder");
-		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
-		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
-		return model;
-	}
+	/*
+	 * @RequestMapping(value = "/allOrderItem") public ModelAndView
+	 * allOrderItem(ModelAndView model) { List<OrderItem> listAllOrderitem =
+	 * orderservice.getAllOrderItem(); model.addObject("listAllOrderitem",
+	 * listAllOrderitem); model.setViewName("repeatOrder");
+	 * model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+	 * model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN); return model; }
+	 */
 
 	// repeat Order
 	@RequestMapping(value = "/repeatOrder{orderid}", method = RequestMethod.GET)
@@ -237,28 +235,28 @@ public class OrderController {
 	}
 
 	// listCartItem
-	@RequestMapping(value = "/pendingorders")
-	public ModelAndView fetchAllPendingOrders(ModelAndView model) {
-		List<Orders> fetchallpendingorders = orderservice.listpendingOrders();
-		System.out.println("fetch AllPending orderItemdetails");
-		model.addObject("fetchallpendingorders", fetchallpendingorders);
-		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
-		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
-		model.setViewName("CurrentOrder");
-		return model;
-	}
+	/*
+	 * @RequestMapping(value = "/pendingorders") public ModelAndView
+	 * fetchAllPendingOrders(ModelAndView model) { List<Orders>
+	 * fetchallpendingorders = orderservice.listpendingOrders();
+	 * System.out.println("fetch AllPending orderItemdetails");
+	 * model.addObject("fetchallpendingorders", fetchallpendingorders);
+	 * model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+	 * model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+	 * model.setViewName("CurrentOrder"); return model; }
+	 */
 
 	// listCartItem
-	@RequestMapping(value = "/deliveredorder")
-	public ModelAndView fetchDelOrderByStatus(ModelAndView model) {
-		List<Orders> fetchalldeliveredorders = orderservice.listdeliveredOrders();
-		System.out.println("fetch All orderItemdetails");
-		model.addObject("fetchalldeliveredorders", fetchalldeliveredorders);
-		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
-		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
-		model.setViewName("myorder");
-		return model;
-	}
+	/*
+	 * @RequestMapping(value = "/deliveredorder") public ModelAndView
+	 * fetchDelOrderByStatus(ModelAndView model) { List<Orders>
+	 * fetchalldeliveredorders = orderservice.listdeliveredOrders();
+	 * System.out.println("fetch All orderItemdetails");
+	 * model.addObject("fetchalldeliveredorders", fetchalldeliveredorders);
+	 * model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+	 * model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+	 * model.setViewName("myorder"); return model; }
+	 */
 
 	// PickupAddress
 	@RequestMapping(value = "/PickupAddress")
@@ -814,4 +812,135 @@ public class OrderController {
 		return "cancelorder";
 
 	}
+	
+	
+	     //Show All Order By PickupStatus
+		@RequestMapping(value = "/showAllOrderByPickupStatus{customerid}", method = RequestMethod.POST)
+		public String showAllOrderByPickupStatus(HttpServletRequest req, Model model, HttpServletRequest request,
+				@RequestParam("pickupStatus") String pickupStatus,
+				@ModelAttribute("orders") Orders orders) throws ParseException {
+			
+			//String pickupStatus  = "";
+			//String ps = req.getParameter("pickupStatus");
+
+			//if (ps != null && !ps.equals("")) {
+				//pickupStatus = ps;
+				
+				System.out.println("Log 1");
+				System.out.println(" From PickupStatus" + pickupStatus);
+				System.out.println("Log 2");
+				
+			
+			    List<Orders> ListOrders = orderservice.getAllOrders(this.getCartPage().getCustomer().getCustomerid(), pickupStatus);
+				System.out.println("All data" + ListOrders.toString());
+
+				Map orderitems = new HashMap();
+				for (Iterator it = ListOrders.iterator(); it.hasNext();) {
+					orders = (Orders) it.next();
+					System.out.println(orders.toString());
+
+					List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
+					System.out.println(listorderitem.toString());
+
+					orderitems.put(orders.getOrderid(), listorderitem);
+					request.setAttribute("ListOrders",ListOrders);
+					request.setAttribute("orderitems", orderitems);
+					//request.setAttribute("ListCancelOrderByDate", ListCancelOrderByDate);
+					//request.setAttribute("orderitems", orderitems);
+				}
+			        String section = "Navbar";
+					List<Menu> listMenu = productservice.getMenuByNavbar(section);
+					model.addAttribute("listMenu", listMenu);
+					String profilemenuSection = "Profile";
+					List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+					/* model.addAttribute("pendingOrders", pendingOrders); */
+					model.addAttribute("listprofileMenu", listprofileMenu);
+					/* model.addAttribute("orderitems", orderitems); */
+					request.setAttribute("ListOrders",ListOrders);
+					request.setAttribute("orderitems", orderitems);
+					model.addAttribute("dateformatter", VFOnlineConstants.DateFormatter);
+					model.addAttribute("orderheading", VFOnlineConstants.ORDER_HEADING);
+					model.addAttribute("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+					/* return "cancelorder"; */
+				    return "orders";
+		}
+	
+		
+	     //Order Details
+		@RequestMapping(value = "/orderdetails/{orderid}")
+		public ModelAndView orderDetails(ModelAndView model, @PathVariable(value = "orderid") int orderid,
+				@ModelAttribute("orders") Orders order, BindingResult resultorder) {
+			order = orderservice.getOrder(orderid);
+			model.addObject("order", order);
+			List<OrderItem> listorderitem = orderservice.listOrderItem(order.getOrderid());
+			String section = "Navbar";
+			List<Menu> listMenu = productservice.getMenuByNavbar(section);
+			String profilemenuSection = "Profile";
+			List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+			model.addObject("listprofileMenu", listprofileMenu);
+			model.addObject("listMenu", listMenu);
+			model.addObject("listorderitem", listorderitem);
+			model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+			model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+			model.addObject("OrderDetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+			model.setViewName("orderdetails");
+			return model;
+		}
+		
+		
+		
+		 //FetchCancelOrder By date
+		@RequestMapping(value = "/showOrdersByDatePickupStatus{customerid}{pickupStatus}", method = RequestMethod.POST)
+		public String showOrdersByDatePickupStatus(HttpServletRequest req, Model model, HttpServletRequest request,
+				@RequestParam(value = "fromDate") String strDate, @RequestParam(value = "toDate") String endDate,
+				@ModelAttribute("orders") Orders orders,@PathVariable String pickupStatus) throws ParseException {
+           
+			try {
+				System.out.println("Log 1");
+				System.out.println("STR From Date" + strDate + "TO Date" + endDate);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Date fromDate = sdf.parse(strDate);
+				Date toDate = sdf.parse(endDate);
+				System.out.println("From Date" + fromDate + "TO Date" + toDate);
+				System.out.println("Log 2");
+				System.out.println("pickupStatus="+ pickupStatus);
+				List<Orders> ListOrders = orderservice.getOrdersBetweenDatespickupStatus(this.getCartPage().getCustomer().getCustomerid(), pickupStatus, fromDate, toDate);
+						
+				System.out.println("All data" + ListOrders.toString());
+
+				Map orderitems = new HashMap();
+				for (Iterator it = ListOrders.iterator(); it.hasNext();) {
+					orders = (Orders) it.next();
+					System.out.println(orders.toString());
+
+					List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
+					System.out.println(listorderitem.toString());
+
+					orderitems.put(orders.getOrderid(), listorderitem);
+					request.setAttribute("ListOrders", ListOrders);
+					request.setAttribute("orderitems", orderitems);
+					String section = "Navbar";
+					List<Menu> listMenu = productservice.getMenuByNavbar(section);
+					model.addAttribute("listMenu", listMenu);
+					String profilemenuSection = "Profile";
+					List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+					/* model.addAttribute("pendingOrders", pendingOrders); */
+					model.addAttribute("listprofileMenu", listprofileMenu);
+					/* model.addAttribute("orderitems", orderitems); */
+					request.setAttribute("ListOrders",ListOrders);
+					request.setAttribute("orderitems", orderitems);
+					model.addAttribute("dateformatter", VFOnlineConstants.DateFormatter);
+					model.addAttribute("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+					/* return "cancelorder"; */
+
+				}
+
+			} catch (Exception e) {
+				System.out.println("Date not passing ");
+				e.printStackTrace();
+
+			}
+			return "order";
+
+		}
 }
