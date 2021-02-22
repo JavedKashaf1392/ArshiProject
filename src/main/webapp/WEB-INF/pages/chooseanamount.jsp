@@ -198,19 +198,18 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-	<jsp:include page="mainheader.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div style="max-width: 1200px; margin: 17px auto;">
 
-		<span
+	<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
 			Wallet</span>
 	</div>
 
 	<div class="wrapper">
 
-
-		<div class="view_main">
+	<div class="view_main">
 		<c:if test="${not empty message}">
 				<div class="alert">
 					<span class="closebtn">&times;</span> <strong></strong> ${message}.
@@ -218,33 +217,16 @@ input[type=submit]:hover {
 			</c:if>
 
 			<div class="view_wrap list-view" style="display: block;">
+			
+
+
+					
 				<div class="view_item">
-					<div class="vi_left">
-
-						<spring:url value="/images" var="images" />
-						<img src="${images}/wallet1.png" alt="tomato" />
-
-						<!-- <img src="tomato.png" alt="tomato"> -->
-					</div>
-					<div class="vi_right">
-						<p class="title" style="color: green;">Current Balance</p>
-						<form modelAttribute="wallet">
-							<p class="content">
-								${repee_sign}<span style="font-size: 25px;"><fmt:formatNumber
-										type="number" minFractionDigits="2" maxFractionDigits="2"
-										value="${wallet.totalAmountBalance}" /></span>
-							</p>
-						</form>
-						<!-- <div class="btn">Review</div> -->
-					</div>
-
-
-					<div class="view_item" style="margin-left: 130px;">
-
-
+					<div class="vi_left" style="margin-left: 200px;">
+					
 						<form method="post"
 							action="${pageContext.request.contextPath}/wallet/addMoneyInWallet/${customerModel.customerid}"
-							modelAttribute="kioskLocation">
+							modelAttribute="kioskLocation" style="border 1 px solid black;">
 							<h2 style="color: #4CAF50; text-align: center;">Enter Amount</h2>
 							<h6 style="color: #4CAF50; margin-top: 2%; text-align: center;">Amount
 								will be added in your VeggieFridge Wallet</h6>
@@ -257,18 +239,32 @@ input[type=submit]:hover {
 								style="width: 100%; padding: 12px; background-color: green; margin: 5px auto;"onclick="return confirm('Are you sure to Add Money in Wallet?')" />
 
 						</form>
+					
 
+						
+						<!-- <img src="tomato.png" alt="tomato"> -->
 					</div>
-
-
-
-				</div>
-
-
-
-
-
-			</div>
+					<div class="vi_right" style="margin-left: 100px;">
+					<table style="border-spacing:10px 2px">
+					<th>
+					<spring:url value="/images" var="images" />
+					<img src="${images}/wallet1.png" alt="tomato" />
+					</th>
+					<th>
+					<p class="title" style="color: green;">Current Balance</p>
+					</th>
+					</table>	
+					<form modelAttribute="wallet" style="margin-left: 20px;">
+							<p class="content">
+								${repee_sign}<span style="font-size: 25px;"><fmt:formatNumber
+										type="number" minFractionDigits="2" maxFractionDigits="2"
+										value="${wallet.totalAmountBalance}" /></span>
+							</p>
+						</form>
+						<!-- <div class="btn">Review</div> -->
+					</div>
+</div>
+</div>
 
 		</div>
 

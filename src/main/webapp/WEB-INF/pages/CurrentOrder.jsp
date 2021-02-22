@@ -319,7 +319,7 @@ color: #4CAF50;
 </style>
    </head>
   <body>
-  <jsp:include page="mainheader.jsp"></jsp:include> 
+  <jsp:include page="header.jsp"></jsp:include> 
    <!-- <div class="menu-btn">
     <i class="fas fa-bars"></i>
     </div>-->

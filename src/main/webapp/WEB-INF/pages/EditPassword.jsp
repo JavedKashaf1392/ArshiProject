@@ -333,7 +333,7 @@
 </head>
 <body>
 
-	<jsp:include page="mainheader.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
     <div style="border:1 px green;background-color:white;margin-top:10px;font-weight: bold;color: green;font-size:25px;width: 1200px;margin: 0 auto;">My profile</div>
     
    <div

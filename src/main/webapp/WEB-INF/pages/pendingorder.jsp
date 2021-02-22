@@ -18,6 +18,11 @@
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	charset="utf-8"></script>
 
 <style>
 @import
@@ -170,13 +175,13 @@ input {
 <body>
 
 
-	<jsp:include page="mainheader.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div style="max-width: 1200px; margin: 17px auto;">
 		<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
 			Orders</span>
-		<table style="float: right; cellSpacing: 20px);">
+		<table style="float: right; cellSpacing: 20px);border-spacing:6px 2px">
 			<th><label for="dateofbirth">From</label></th>
 			<th><input type="date" name="dateofbirth" id="dateofbirth"
 				style="box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);"

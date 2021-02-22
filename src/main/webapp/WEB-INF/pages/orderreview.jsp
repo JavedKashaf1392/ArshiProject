@@ -163,7 +163,7 @@ border-radius: 4px;
 </head>
 <body>
     
-<jsp:include page="mainheader.jsp"></jsp:include>  
+<jsp:include page="header.jsp"></jsp:include>  
 <div style="border: 1px solid #e2efe1;max-width:800px;margin: 0 auto; ">
 <header class='header text-center'>
     <h2>Order Review</h2>

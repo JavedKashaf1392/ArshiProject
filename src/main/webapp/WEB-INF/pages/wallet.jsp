@@ -230,7 +230,7 @@ input{
 </head>
 <body>
 
-	<jsp:include page="mainheader.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<div style="max-width: 1200px; margin: 17px auto;">
 
 		<span
@@ -276,7 +276,7 @@ input{
 				<span style="margin-left: 8px; font-weight: bold;">WALLET
 					ACTIVITY</span>
 				
-				<table style="margin-left: 8px; margin-top: 10px;">
+				<table style="margin-left: 8px; margin-top: 10px;border-spacing:6px 2px">
 					<th><label for="dateofbirth">From</label></th>
 					<th><input type="date" name="dateofbirth" id="dateofbirth" style="box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);border: 1px solid #c4c4c4;" class="">
 					</th>
@@ -297,17 +297,17 @@ input{
 
 							<table id="myTable">
 								<tr class="header">
-									<th style="width: 25%;">Transaction Id</th>
-									<th style="width: 25%;">Date</th>
-									<th style="width: 25%;">Money</th>
-									<th style="width: 25%;">status</th>
+									<th style="width: %;text-align: center;">Transaction Id</th>
+									<th style="width: %;text-align: center;">Date</th>
+									<th style="width: %;text-align: center;">Money</th>
+									<th style="width: %;text-align: center;">status</th>
 								</tr>
 								<c:forEach var="walletpaymnet" items="${listwallettransaction}">
 									<tr>
-										<td style="width: 25%;">${walletpaymnet.walletPaymentId}</td>
-										<td style="width: 25%;"><fmt:formatDate value="${walletpaymnet.paymentDate}" pattern="${dateformatter}"/></td>
-										<td style="width: 25%;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${walletpaymnet.paymentAmount}"/></td>
-										<td style="width: 25%;">${walletpaymnet.paymentStatus}</td>
+										<td style="width: %;text-align: center;">${walletpaymnet.walletPaymentId}</td>
+										<td style="width: %;text-align: center;"><fmt:formatDate value="${walletpaymnet.paymentDate}" pattern="${dateformatter}"/></td>
+										<td style="width: %;text-align: center;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${walletpaymnet.paymentAmount}"/></td>
+										<td style="width: %;text-align: center;">${walletpaymnet.paymentStatus}</td>
 									</tr>
 								</c:forEach>
 							</table>

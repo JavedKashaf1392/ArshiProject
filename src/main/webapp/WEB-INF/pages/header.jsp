@@ -236,14 +236,14 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-    /* background-image:url(../images/shadow.svg); */
-   /*  background-image:url("images/shadow.svg"); */
-    background-repeat: no-repeat;
+    /*  background-image:url(../images/shadow.svg); */
+    /* background-image:url("images/shadow.svg");  */
+    background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
     bottom:-22px;
     z-index:-1;
-    box-shadow: 0px 0px 3px 1px #00000078;
+    box-shadow: 0px 0px 3px 1px #00000078; 
     font-family: Montserrat;font-weight:300px;" 
     
 }
@@ -256,8 +256,8 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-   /*  background-image:url("/images/shadow-sm.svg"); */
-   /*  background-repeat: no-repeat; */
+   /*    background-image:url("/images/shadow-sm.svg"); 
+    background-repeat: no-repeat; */ 
     background-position: center;
     position: absolute;
     bottom:-20px;
@@ -268,561 +268,10 @@ nav .navbar a:hover{
     -moz-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
     -o-transform:translateX(-50%);
-    box-shadow: 0px 0px 3px 1px #00000078;
-}
-header.hero{
-    height:600px;
-    background-image:url("/images/Blur.png");
-   /*  background-image:url("/images/hero.png"); */
-    background-position: 0% 0%;
-    background-repeat: no-repeat;
-    overflow:hidden;
-}
-header.hero .container{
-    position: relative;
-    
-}
-header.hero .welcome{
-    margin-bottom:0.25rem;
-}
-header.hero .welcome span{
-    /* font-family:"Raleway-bold"; */
-    color:var(--secondary);
-    margin-right:0.75rem;
-
-}
-header.hero h1{
-   /*  font-family:"Raleway-extrabold"; */
-    color:var(--secondary);
-    font-size: 2.5rem;
-    margin-bottom:0.75rem;
-}
-header.hero h1 span{
-    color:var(--primary);
-}
-header.hero p{
-    /* font-family: "Raleway-medium"; */
-    width:50%;
-    line-height:1.5;
-    margin-bottom:1rem;
-}
-.btn{
-    padding:0.75rem 0.75rem;
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    -ms-border-radius:4px;
-    -o-border-radius:4px;
-    line-height:0.8;
-    font-size:1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    border:1px solid transparent;
+     box-shadow: 0px 0px 3px 1px #00000078; 
 }
 
-.btn-primary {
-    background:var(--primary);
-    color:var(--heaven);
-}
-.btn-primary:hover{
-    background:var(--heaven);
-    color:var(--primary); 
-    border:1px solid var(--primary);
-}
-.btn-secondary{
-    background:var(--secondary);
-    color:var(--heaven); 
-}
-.btn-secondary:hover{
-    background:var(--heaven);
-    color:var(--secondary); 
-    border:1px solid var(--secondary);
-}
 
-header.hero button:first-child{
-    margin-right:0.50rem;
-}
-
-header.hero .hero-image{
-    position:absolute;
-    top:-40px;
-    right:40px;
-}
-
-section{
-    padding:4rem 0;
-}
-section.top-products{
-    background:var(--light);
-}
-
-.section-heading{
-    font-family:"Raleway-bold";
-    text-align:center;
-    Position:relative;
-    margin-bottom:6rem;
-}
-.section-heading:after{
-    content:'';
-    display:block;
-    width: 100%;
-    height:30px;
-    background-image:url(../icons/hr.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    position:absolute;
-    bottom:-40px;
-}
-section.top-products .food-slider .food-card{
-    background:var(--heaven);
-    padding:1.5rem 0;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-}
-section.top-products .food-slider .food-card .product-image img{
-    width:80%;
-    height:200px;
-    object-fit:contain;
-    padding-bottom:1rem;
-}
-hr{
-    border:1px solid var(--light);
-    opacity: 0.8;
-    margin:1rem 0;
-}
-section.top-products .food-slider .food-card h2{
-    font-family:"Raleway-bold";
-    font-size:1.3rem;
-    margin-bottom:0.25rem;
-}
-.text-center{
-    text-align: center;
-}
-section.top-products .food-slider .food-card .stars{
-    margin-bottom:0.5rem;
-}
-section.top-products .food-slider .food-card .stars img{
-    margin-right:0.25rem;
-}
-section.top-products .food-slider .food-card .price{
-    font-family:"Raleway-medium";
-    color:var(--danger);
-    margin-bottom: 1rem;
-}
-section.top-products .food-slider .food-card button{
-    font-family:"Raleway-medium";
-    color:var(--secondary);
-    background:var(--heaven);
-    border:2px solid var(--primary);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    display:flex;
-    align-items: center;
-    width:50%;
-    font-size:1rem;
-    cursor: pointer;
-    transition:all .3s ease;
-    -webkit-transition:all .3s ease;
-    -moz-transition:all .3s ease;
-    -ms-transition:all .3s ease;
-    -o-transition:all .3s ease;
-}
-section.top-products .food-slider .food-card button:hover{
-    background:var(--primary);
-    color:var(--heaven);
-}
-.food-slider .food-card button img{
-    background:var(--primary);
-    padding:0.50rem;
-    height:32px;
-    margin-right:1.2rem;
-}
-
-.slick-slide{
-    margin:0 27px;
-}
-.slick-list{
-    margin:0 -27px;
-}
-.top-products .slider-btn{
-    width: 30px;
-    height:30px;
-    border: none;
-    background:var(--primary);
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    -ms-border-radius:4px;
-    -o-border-radius:4px;
-    cursor:pointer;
-    outline:none;
-}
-
-.prev-btn{
-    position:absolute;
-    top:46%;
-    left:-3rem;
-    z-index: 1;
-}
-.next-btn{
-    position:absolute;
-    top:46%;
-    right:-3rem;
-    z-index: 1;
-}
-.top-products .slider{
-    position: relative;
-}
-.top-products .btn-wrapper{
-    margin-top:2rem;
-}
-.slick-track{
-    padding:1rem 0;
-}
-section.about-meal img{
-    width:85%;
-}
-.flex-1{
-    flex:1;
-}
-section.about-meal h2{
-    font-family: "Raleway-bold";
-    font-size:1.4rem;
-    color:var(--secondary);
-    margin-bottom:2rem;
-    line-height:1.3;
-}
-section.about-meal p{
-    line-height: 1.7;
-    margin-bottom:4rem;
-}
-
-section.our-services{
-    background:var(--light);
-    position:relative;
-    z-index:0;
-}
-section.our-services .card-wrapper{
-    margin-right:-2rem;
-    margin-top:8rem;
-}
-section.our-services .service-card{
-    background:var(--heaven);
-    text-align: center;
-    padding:2rem;
-    padding-top:4rem;
-    margin-right:2rem;
-    position: relative;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-}
-section.our-services .service-card .icon{
-    position: absolute;
-    top:-45px;
-    left:50%;
-    transform:translateX(-50%);
-    -webkit-transform:translateX(-50%);
-    -moz-transform:translateX(-50%);
-    -ms-transform:translateX(-50%);
-    -o-transform:translateX(-50%);
-} 
-section.our-services .service-card h2{
-    font-family: "Raleway-bold";
-    font-size: 1.3rem;
-    margin-bottom:1rem;
-}
-section.our-services .service-card p{
-    line-height: 1.6;
-    margin-bottom:1rem;
-}
-.text-primary{
-    color:var(--primary);
-}
-
-section.big-deal {
-    background: linear-gradient(
-        rgba(35,43,56,0.9),
-        rgba(35,43,56,0.9)
-    ), url(../images/food-table.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-section.big-deal .timer{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    margin-right:-2rem;
-    margin-bottom:2rem;
-}
-section.big-deal .timer div{
-    margin-right:2rem;
-    background: var(--primary);
-    width:150px;
-    height:150px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.big-deal .timer div span:first-child{
-    font-family: "Raleway-semibold";
-    font-size:2.5rem;
-    color:var(--heaven);
-    margin-bottom:0.05rem;
-}
-section.big-deal .timer div span:last-child{
-    font-family: "Raleway-medium";
-    color:var(--heaven);
-}
-.text-pure{
-    color:var(--pure);
-}
-
-section.latest-news{
-    background:var(--light);
-    position:relative;
-    z-index:0;
-}
-section.latest-news .article-wrapper{
-    display:flex;
-    margin-right:-2rem;
-
-}
-.latest-news .article-wrapper .card {
-    margin-right:2rem;
-    background:var(--heaven);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-}
-.latest-news .article-wrapper .card img{
-    width:100%;
-}
-.latest-news .article-wrapper .card .card-content{
-    padding:2rem;
-}
-.latest-news .article-wrapper .card .card-content .post-meta{
-    margin-bottom: 1rem;
-}
-.latest-news .article-wrapper .card .card-content .post-meta .comment-count{
-    margin-left:1rem;
-}
-.latest-news .article-wrapper .card .card-content h2{
-    font-family: "Raleway-bold";
-    font-size: 1.3rem;
-    margin-bottom:1rem;
-}
-.latest-news .article-wrapper .card .card-content p{
-    line-height: 1.6;
-}
-.latest-news .btn-wrapper{
-    margin-top:2rem;
-}
-section.subscribe{
-    background:var(--primary);
-}
-section.subscribe .container > div:first-child img{
-    width:90%;
-}
-section.subscribe .container div:first-child{
-    flex:1;
-}
-section.subscribe .container div:last-child{
-    flex:1;
-}
-
-section.subscribe h1{
-    font-family:"Raleway-bold";
-    font-size: 1.5rem;
-    margin-bottom:1.5rem;
-}
-section.subscribe p{
-    font-family:"Raleway-medium"; 
-    font-size: 1rem;
-    margin-bottom:1.5rem;
-    line-height: 1.5;
-}
-section.subscribe .input-wrap{
-    background:var(--heaven);
-    display:flex;
-    padding:0.3rem;
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    -ms-border-radius:4px;
-    -o-border-radius:4px;
-}
-section.subscribe .input-wrap input{
-    width:100%;
-    border:none;
-    padding: 0 1rem;
-    font-size:1rem;
-}
-section.subscribe .input-wrap input:focus{
-    outline:none;
-}
-section.subscribe .input-wrap button{
-    padding:0.8rem 2rem;
-    border:none;
-    background:var(--primary);
-    color:var(--pure);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    font-size:1rem;
-    cursor:pointer;
-    transition: all .3s ease;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    outline:none;
-}
-section.subscribe .input-wrap button:hover{
-    background:var(--secondary);
-}
-section.contact-us{
-    padding-top:0;
-    padding-bottom: 0;
-}
-section.contact-us .contact-info-wrapper {
-    padding:4rem 0;
-    flex:1;
-}
-section.contact-us .map{
-    flex:1;
-    filter:grayscale(100%);
-    -webkit-filter:grayscale(100%);
-}
-section.contact-us .contact-info{
-    display:flex;
-    justify-content: center;
-}
-section.contact-us .contact-info > div > div {
-    display:flex;
-    align-items:center;
-    margin-bottom:2rem;
-}
-section.contact-us .contact-info > div > div img{
-    margin-right: 1rem;
-}
-section.contact-us .contact-info > div > div > div{
-    display:flex;
-    flex-direction: column;
-}
-section.contact-us .contact-info > div > div > div span:first-child{
-    font-family: "Raleway-bold";
-    margin-bottom:0.25rem;
-}
-footer{
-    background:var(--footer);
-    padding:4rem 0;
-}
-footer .container{
-    display:flex;
-    color:var(--pure);
-}
-
-footer .box{
-    flex:1;
-    margin-right:2rem;
-    text-align:center;
-}
-
-footer .instagram-api img{
-    width:100%;
-    height:100%;
-    object-fit: cover;
-}
-footer .instagram-api .post-wrap{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-}
-footer .instagram-api .post-wrap > div{
-    width: calc(1/3*100% - (1 - 1/3)*10px);
-    margin-bottom:10px;
-}
-footer .box ul{
-    list-style-type: none;
-}
-footer .box ul li a{
-    color:var(--pure);
-    text-decoration: none;
-    transition: all .3s ease;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-}
-footer .box ul li a:hover{
-    color:var(--primary);
-}
-footer .box h3{
-    border-bottom:1px solid var(--primary);
-    padding-bottom:1rem;
-    margin-bottom:1rem;
-}
-
-footer .box p{
-    line-height: 1.6;
-    margin-bottom:1rem;
-}
-footer .box ul li{
-    margin-bottom:1rem;
-}
-footer .box:nth-child(3) > div {
-    display:flex;
-    justify-content: center;
-}
-footer .box:nth-child(3){
-    text-align: left;
-}
-footer .box:nth-child(3) h3{
-    text-align: center;
-}
-footer .box:nth-child(3) > div img{
-    margin-right:1rem;
-}
-footer .box:nth-child(3) ul li{
-    margin-bottom:1.5rem;
-}
-
-footer.copyright{
-    padding:1rem 0;
-    background: var(--secondary);
-    color:var(--pure);
-    text-align: center;
-    font-size: 0.75rem;
-}
-footer.copyright a{
-    color:var(--primary);
-    text-decoration: none;
-}
 
 .nav-background .mobile-logo{
     padding:1rem;
@@ -852,7 +301,6 @@ footer.copyright a{
     margin-right:1rem;
 }
 .nav-background .contact h5,.nav-background .time h5{
-    font-family:"Raleway-bold";
     margin-bottom:0.25rem;
     font-size:1rem;
 }
@@ -1048,8 +496,8 @@ width:35px;
     max-width: 1388px;
     margin: 0 auto;
 }
-/* ........Profile Menu css........... */
 
+/* ........Profile Menu css........... */
 .dropdown {
   position: relative;
   display: inline-block; 
@@ -1057,44 +505,112 @@ width:35px;
 .dropdown-content {
   display: none;
   position:absolute;
-  background-color: #f1f1f1;
-  min-width: 200px;
+  background-color:#4CAF50;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- /*  z-index: 1; */
-        z-index: 999;
-        left: 0;
-       /* margin-top:11px;  */
+   z-index: 999;
+  left: 0;
+  width:300px;
+  line-height:30px;
+  padding: 8px 25px;
+  border-radius: 5px;      
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;
-    border-bottom: 3px solid black;}
+.dropdown-content a:hover {background-color:;
+    border-bottom:;}
 
 .dropdown:hover .dropdown-content {display: block;
-   border-bottom: 3px solid black; }
+    }
 
-.dropdown:hover .dropbtn {background-color: ;
+.dropdown:hover .dropbtn {background-color:;
     border-bottom: 3px solid white;}
- 
-
+    
+ label{
+ /*color: white; */
+  font-size:18px;
+  font-weight:500;
+  display: block;
+  cursor: pointer;
+}
+.button span{
+  float: right;
+  line-height:30px;
+  transition: 0.5s;
+}
+.button span.rotate{
+  transform: rotate(-180deg);
+}
+ul{
+  position:absolute;
+  background:#4CAF50;
+  list-style:none;
+  left: 70;
+  width:20%;
+  border-radius: 5px;
+  display: none;
+}
+[id^=btn]:checked + ul{
+  display: block;
+}
+ .menu:before{
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  background:white;
+  right: 20px;
+  top: -10px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+ ul li{
+  line-height:40px;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+ ul li label{
+  font-size: 18px;
+}
+ ul li a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+ ul li a:hover,
+ ul li label:hover{
+  color: cyan;
+}
+ ul ul{
+  position: static;
+}
+ ul ul li{
+  line-height: 30px;
+  padding-left: 30px;
+  border-bottom: none;
+}
+ ul ul li a{
+  color:white;
+  font-size: 17px;
+}
+ ul li span{
+  font-size: 20px;
+  float: right;
+ /*  margin-top: 10px; */
+  padding: 0 10px;
+  transition: 0.5s;
+}
+ ul li span.rotate{
+  transform: rotate(-180deg);
+}
 /* ........Profile Menu css Close........... */
 </style>
 
-
 </head>
 <!-- ***************Body Code***************** -->
-
 <body>
-
 <!-- ......... HeadSection........ -->
- <div class="main-wrapper">
-
+            <div class="main-wrapper">
             <div class="nav-background">
             <div class="mobile-logo">
    <spring:url value="/images" var="images" />
@@ -1176,7 +692,10 @@ width:35px;
             </div>
         </div>
         
-       <div class="site-content-wrapper">
+<!-- .......laptop Screen......... -->
+
+<div class="site-content-wrapper">
+      
        <div class="nav-trigger">
                 <svg xmlns="" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -1186,9 +705,10 @@ width:35px;
                     <line x1="6" y1="20" x2="6" y2="16" /></svg>
             </div>
                 
-                <div class="site-content">
+            <div class="site-content">
                
-                <header class="topbar">
+                <header class="topbar"> 
+                
                     <div class="container flex justify-between items-center">
                         <div class="icons">
                             <a href="#"><img src="./icons/facebook.svg" alt=""></a>
@@ -1219,25 +739,36 @@ width:35px;
                             <span class="divider">|</span> 
                             </security:authorize>
                             
-                          <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+<security:authorize access="hasAnyRole('ADMIN', 'USER')">
+
+<div class="dropdown">
+<spring:url value="/images" var="images" />
+<img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
+<span class="fas fa-caret-down" style="color: white;"></span>
                           
-                          <div class="dropdown">
-                          <spring:url value="/images" var="images" />
-    <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
-    <a href="#" class="dropbtn">Hello, ${customerModel.firstName}</a>
-    
-   <div class="dropdown-content" style="color: black;">
-   
-   <c:forEach var="menu" items="${requestScope.listprofileMenu}">
-   <a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
-   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/>${menu.menues}</a> 
-  
-   </c:forEach>
-	
-   </div>
-                            </div>
-                            <span class="divider">|</span>
-                            </security:authorize>
+                          <ul class="dropdown-content">
+<li><a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}">My Profile</a></li>
+<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem">My Cart</a></li>
+<li>
+          <label for="btn-3" class="second" style="color: white;">My Orders
+            <span class="fas fa-caret-down"></span>
+          </label>
+          <input type="checkbox" id="btn-3" style="display: none;">
+<ul>
+<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">Current</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}">Delivered</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}">Cancelled</a></li>
+</ul>
+</li>
+<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}">My Wallet</a></li>
+
+<li><a href="<c:url value="/logout"/>">Log Out</a></li>
+</ul>
+                          
+                        
+                          </div>
+                          <span class="divider">|</span>  
+</security:authorize>
                             
                             <security:authorize access="isAnonymous()">
                             <div>
@@ -1266,7 +797,7 @@ width:35px;
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
                            <!--  <img src="./icons/cart.svg" alt=""> -->
-                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
                            </div>
                            </security:authorize>
                            
@@ -1281,16 +812,20 @@ width:35px;
                         </div>
                     </div>
                 </header>
-                <nav>                    
+                
+                
+                  <nav>                    
                 <div class="top">
                         <div class="container flex justify-between">
                            <div class="contact flex items-center">
                        
                                <div>
-                                <table>
-					<%-- <th><a href="abc.htm"> <spring:url value="/images" var="images" />
-   <img src="${images}/vf-leaf.png"  width="90" height="75" alt=""/>
-					</a></th> --%>
+                      <table style="margin-left:40px;">
+                      
+					 <th><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
+					</a></th>
+					
 					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
 					</a></th>
@@ -1310,7 +845,7 @@ width:35px;
   transform: translate(-50%, -50%);
   background: #fff;
   transition: all 0.3s ease; top:40%;
-  left:45%;">
+  left:48%;">
   <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
   <button type="submit" class="search-button">
   </button>
@@ -1364,6 +899,8 @@ width:35px;
                     </div>
                      </security:authorize>
                  </nav>
+               
+               
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -1400,6 +937,31 @@ width:35px;
 });
     
 </script>
+
+ <script>
+    $('nav .button').click(function(){
+      $('nav .button span').toggleClass("rotate");
+    });
+      $('nav ul li .first').click(function(){
+        $('nav ul li .first span').toggleClass("rotate");
+      });
+      $('nav ul li .second').click(function(){
+        $('nav ul li .second span').toggleClass("rotate");
+      });
+    </script>
+
+  <!-- This code used to rotate drop icon(-180deg).. -->
+    <script>
+    $('nav .button').click(function(){
+      $('nav .button span').toggleClass("rotate");
+    });
+      $('nav ul li .first').click(function(){
+        $('nav ul li .first span').toggleClass("rotate");
+      });
+      $('nav ul li .second').click(function(){
+        $('nav ul li .second span').toggleClass("rotate");
+      });
+    </script>
 
  
 </body>

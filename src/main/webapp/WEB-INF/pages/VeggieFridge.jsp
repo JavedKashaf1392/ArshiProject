@@ -750,91 +750,6 @@ section.contact-us .contact-info > div > div > div span:first-child{
     /* font-family: "Raleway-bold"; */
     margin-bottom:0.25rem;
 }
-footer{
-    background:var(--footer);
-    padding:4rem 0;
-}
-footer .container{
-    display:flex;
-    color:var(--pure);
-}
-
-footer .box{
-    flex:1;
-    margin-right:2rem;
-    text-align:center;
-}
-
-footer .instagram-api img{
-    width:100%;
-    height:100%;
-    object-fit: cover;
-}
-footer .instagram-api .post-wrap{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-}
-footer .instagram-api .post-wrap > div{
-    width: calc(1/3*100% - (1 - 1/3)*10px);
-    margin-bottom:10px;
-}
-footer .box ul{
-    list-style-type: none;
-}
-footer .box ul li a{
-    color:var(--pure);
-    text-decoration: none;
-    transition: all .3s ease;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-}
-footer .box ul li a:hover{
-    color:var(--primary);
-}
-footer .box h3{
-    border-bottom:1px solid var(--primary);
-    padding-bottom:1rem;
-    margin-bottom:1rem;
-}
-
-footer .box p{
-    line-height: 1.6;
-    margin-bottom:1rem;
-}
-footer .box ul li{
-    margin-bottom:1rem;
-}
-footer .box:nth-child(3) > div {
-    display:flex;
-    justify-content: center;
-}
-footer .box:nth-child(3){
-    text-align: left;
-}
-footer .box:nth-child(3) h3{
-    text-align: center;
-}
-footer .box:nth-child(3) > div img{
-    margin-right:1rem;
-}
-footer .box:nth-child(3) ul li{
-    margin-bottom:1.5rem;
-}
-
-footer.copyright{
-    padding:1rem 0;
-    background: var(--secondary);
-    color:var(--pure);
-    text-align: center;
-    font-size: 0.75rem;
-}
-footer.copyright a{
-    color:var(--primary);
-    text-decoration: none;
-}
 
 .nav-background .mobile-logo{
     padding:1rem;
@@ -1115,6 +1030,7 @@ footer.copyright a{
     cursor: pointer;
     border: none;
     transition: all 0.6s ease;
+    border-radius:50px;
 }
 .btn-cart{
     /* background: black; */
@@ -1523,50 +1439,9 @@ width:35px;
     max-width: 1388px;
     margin: 0 auto;
 }
-.qty{
-width:35px;
-height:40px
-}
-
-
-/* ........Profile Menu css........... */
-.dropdown {
-  position: relative;
-  display: inline-block; 
-}
-.dropdown-content {
-  display: none;
-  position:absolute;
-  background-color: #f1f1f1;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- /*  z-index: 1; */
-        z-index: 999;
-        left: 0;
-       /*  margin-top:11px; */
-       
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;
-    border-bottom: 3px solid black;}
-
-.dropdown:hover .dropdown-content {display: block;
-   border-bottom: 3px solid black; }
-
-.dropdown:hover .dropbtn {background-color:;
-    border-bottom: 3px solid white;}
-    
-/* ........Profile Menu css Close........... */
-
 
 /* ...............Loction Css.......... */
+
 /* The Modal (background) */
 .Location {
   display: none; /* Hidden by default */
@@ -1660,31 +1535,127 @@ input[type=submit]:hover {
     width: 100%;
     margin-top: 0;
   }
-}      
+}  
+
+/* .............profile Menu.............. */
+
+.dropdown {
+  position: relative;
+  display: inline-block; 
+}
+.dropdown-content {
+  display: none;
+  position:absolute;
+  background-color:#4CAF50;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 999;
+  left: 0;
+  width:300px;
+  line-height:30px;
+  padding: 8px 25px;
+  border-radius: 5px;      
+}
+
+.dropdown-content a:hover {background-color:;
+    border-bottom:;}
+
+.dropdown:hover .dropdown-content {display: block;
+    }
+
+.dropdown:hover .dropbtn {background-color:;
+    border-bottom: 3px solid white;}
+    
+ label{
+ /*color: white; */
+  font-size:18px;
+  font-weight:500;
+  display: block;
+  cursor: pointer;
+}
+.button span{
+  float: right;
+  line-height:30px;
+  transition: 0.5s;
+}
+.button span.rotate{
+  transform: rotate(-180deg);
+}
+ul{
+  position:absolute;
+  background:#4CAF50;
+  list-style:none;
+  left: 70;
+  width:20%;
+  border-radius: 5px;
+  display: none;
+}
+[id^=btn]:checked + ul{
+  display: block;
+}
+ .menu:before{
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  background:white;
+  right: 20px;
+  top: -10px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+ ul li{
+  line-height:40px;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+ ul li label{
+  font-size: 18px;
+}
+ ul li a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+ ul li a:hover,
+ ul li label:hover{
+  color: cyan;
+}
+ ul ul{
+  position: static;
+}
+ ul ul li{
+  line-height: 30px;
+  padding-left: 30px;
+  border-bottom: none;
+}
+ ul ul li a{
+  color:white;
+  font-size: 17px;
+}
+ ul li span{
+  font-size: 20px;
+  float: right;
+ /*  margin-top: 10px; */
+  padding: 0 10px;
+  transition: 0.5s;
+}
+ ul li span.rotate{
+  transform: rotate(-180deg);
+}
 
 </style>
 </head>
-
-
-<!-- ***************Body Code***************** -->
-
 <body>
 
-<%-- <c:if test="${not empty message}">
-<div class="alert">
-  <span class="closebtn">&times;</span>  
-  <strong></strong>${message}
-</div>
-</c:if>
- --%>
- 
 <!-- ......... HeadSection........ -->
 
 <div class="main-wrapper"> 
 
-	<div class="nav-background">
+<div class="nav-background">
    		
-   		<div class="mobile-logo">
+   <div class="mobile-logo">
    <spring:url value="/images" var="images" />
    <img src="${images}/VeggieFridge.ico"  width="150" height="100" alt=""/>
              <!--    <img src="./icons/logo.svg" alt=""> -->
@@ -1806,78 +1777,41 @@ input[type=submit]:hover {
                             <span class="divider">|</span> 
                             </security:authorize>
                             
-                           <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+                          <security:authorize access="hasAnyRole('ADMIN', 'USER')">
                           
                           <div class="dropdown">
-                          <spring:url value="/images" var="images" />
-    <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
-    <a href="#" class="dropbtn">Hello, ${customerModel.firstName}</a>
-    
-   <div class="dropdown-content" style="color: black;">
-  <%--  <c:forEach var="menu" items="${listprofileMenu}">  --%>
-   
-   <%--<a style="color: black;" href="${pageContext.request.contextPath }/${menu.url}"> <spring:url value="/images" var="images" />
-   <img src="${images}/${menu.imageName}"  width="15" height="15" alt=""/> ${menu.menues}</a>  --%>
-   
-   <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/myprofile1.png"  width="15" height="15" alt=""/> My Profile</a> 
-   
-   <a href="${pageContext.request.contextPath }/cart/listCustomerCartItem" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> My cart</a>
-   
-   <form action="${pageContext.request.contextPath }/order/showAllOrderByPickupStatus${customerModel.customerid}" method="POST" >
-   <%--<a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/order4.png"  width="15" height="15" alt=""/> My Orders</a> --%>
-   
-  <select name="pickupStatus" id="prodId" style="color: black;
-  padding: 12px 16px;
-  text-decoration:none;
-  display: block;  background-color: #f1f1f1;
-  min-width: 200px;border:0;font-size:16px;line-height:30px;">
-  
-	<option value=""><spring:url value="/images" var="images" />
-   <img src="${images}/order4.png"  width="15" height="15" alt=""/>My Orders</option>
-  
-	<option value="Pending">Current</option>
-	
-    <option value="Delivered">Delivered</option>
-	
-	<option value="Cancelled">Cancelled</option>
-	</select>
-    </form>
-   
-   <a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/wallet.png"  width="15" height="15" alt=""/> Wallet</a>
-   
-    <a href="#" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> Membership</a>
-   
-    <a href="#" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/> Help</a>
-   
-   <a href="<c:url value="/logout" />" style="color: black;"> <spring:url value="/images" var="images" />
-   <img src="${images}/logout1.png"  width="15" height="15" alt=""/> Log Out</a>
-  <%--   </c:forEach> --%>
-    
-    <%-- <form action="${pageContext.request.contextPath }/order/showAllOrderByPickupStatus${customerModel.customerid}" method="POST" >
-	<table align="center">
-	<tr>
-	<td>
-	<select name="pickupStatus" id="prodId">
-	<option value="">--Select--</option>
-	<option value="Pending">Pending</option>
-	<option value="Delivered">Delivered</option>
-	<option value="Cancelled">Cancelled</option>
-	</select>
-	</td>
-	</tr>
-	</table>
-	</form> --%>
-   
-   </div>
-                            </div>
-                            <span class="divider">|</span>
-                            </security:authorize>
+<spring:url value="/images" var="images" />
+<img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
+<span class="fas fa-caret-down" style="color: white;"></span>
+                          
+                          <ul class="dropdown-content">
+<li><a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}">My Profile</a></li>
+<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem">My Cart</a></li>
+<li>
+          <label for="btn-3" class="second" style="color: white;">My Orders
+            <span class="fas fa-caret-down"></span>
+          </label>
+          <input type="checkbox" id="btn-3" style="display: none;">
+<ul>
+<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">Current</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}">Delivered</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}">Cancelled</a></li>
+</ul>
+</li>
+<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}">My Wallet</a></li>
+
+<li><a href="<c:url value="/logout"/>">Log Out</a></li>
+</ul>
+                          
+                        
+                          </div>
+                          <span class="divider">|</span>  
+                          
+                          
+
+
+</security:authorize>
+                       
                             
                             
                            <%--  <security:authorize access="isAnonymous()">
@@ -1897,6 +1831,7 @@ input[type=submit]:hover {
                             <img src="${images}/location.png"  width="15" height="15" alt=""/>
                             <!--   <img src="./icons/user-icon.svg" alt=""> -->
                             <a href="#" id="myBtn">${customerModel.cities}, ${customerModel.location}</a>
+                            <span class="fas fa-caret-down" style="color: white;"></span>
                             </div>
                              <span class="divider">|</span>
                             </security:authorize>
@@ -2094,7 +2029,7 @@ input[type=submit]:hover {
                             <a href = "#" class = "product-name">${product.description}</a>
                           <h4 class = "size" style="color: black;">Size: ${product.size} ${product.unit}</h4> 
                           <%--   <p class = "product-price">Rs ${product.price}</p> --%>
-                      MRP: <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
+                      MRP : <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
                        <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>
                       <%--  <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p> --%>
                             

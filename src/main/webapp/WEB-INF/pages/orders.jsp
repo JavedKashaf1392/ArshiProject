@@ -3,8 +3,8 @@
     
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -12,7 +12,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>	
 	
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
@@ -174,23 +173,7 @@ input {
 </head>
 
 <body>
-
-<jsp:include page="mainheader.jsp"></jsp:include>
-  
-  <%--  <form action="${pageContext.request.contextPath }/order/showAllOrderByPickupStatus${customerModel.customerid}" method="POST" >
-	<table align="center">
-	<tr>
-	<td>
-	<select name="pickupStatus" id="prodId">
-	<option value="">--Select--</option>
-	<option value="Pending">Pending</option>
-	<option value="Delivered">Delivered</option>
-	<option value="Cancelled">Cancelled</option>
-	</select>
-	</td>
-	</tr>
-	</table>
-	</form> --%>
+<jsp:include page="header.jsp"></jsp:include>
 	
 <form method="post" action="${pageContext.request.contextPath }/order/showOrdersByDatePickupStatus${customerModel.customerid}${orders.pickupStatus}" modelAttribute="orders">
 
@@ -230,8 +213,12 @@ input {
 	
 	   <div class="view_main">
 	   <div>
-	   <a href="${pageContext.request.contextPath}/order/orderdetails/${orders.orderid}"><span style="color: green;float:right;margin-right:10px;text-decoration:underline;">Order Detail</span></a><a href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}"><span href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}" style="color: green;float:right;margin-right:10px;text-decoration:underline;">Re-Order</span></a>
-	   <table
+	  
+ <a href="${pageContext.request.contextPath}/order/orderdetails/${orders.orderid}"><span style="color: green;float:right;margin-right:10px;text-decoration:underline;">Order Detail</span></a>
+ 
+<c:if test="${orders.pickupStatus == Delivered}">hi</c:if><a href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}"><span href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}" style="color: green;float:right;margin-right:10px;text-decoration:underline;">Re-Order</span></a>
+ 
+  <table
 						style="max-width:500px;border-spacing:10px 2px;line-height: 30px;">
 								
 								<th></th>
@@ -240,7 +227,7 @@ input {
 								
 								<tr>
 								<td>
-								<p style="font-weight:550;"> Status</p>
+								<p style="font-weight:550;">Status</p>
 								</td>
 								<td style="font-weight: 550;"> : </td>
 								<td>

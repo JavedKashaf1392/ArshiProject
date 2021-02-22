@@ -475,7 +475,7 @@ label {
 
 <body>
 
-	<jsp:include page="mainheader.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div style="max-width: 1200px; margin: 17px auto;">
 		<span
@@ -727,14 +727,8 @@ label {
 		}
 	</script>
 
-
-
-
 	<jsp:include page="footer.jsp"></jsp:include>
-
-
-
-
+	
 	<!-- <div id="myModal" class="modal"> -->
 
 	<!-- Modal content -->

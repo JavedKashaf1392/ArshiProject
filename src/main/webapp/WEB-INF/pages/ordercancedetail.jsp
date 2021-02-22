@@ -475,7 +475,7 @@ label {
 
 <body>
 
-	<jsp:include page="mainheader.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div style="max-width: 1200px; margin: 17px auto;">
 	<span

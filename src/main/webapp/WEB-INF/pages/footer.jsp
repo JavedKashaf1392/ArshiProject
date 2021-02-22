@@ -99,6 +99,7 @@ footer{
 	/* color:  #ffffff; */
 color:#767070;
 	margin: 20px 0 12px;
+	font-weight:400;
 }
 
 .footer-distributed .footer-links a{
@@ -124,7 +125,6 @@ color:#767070;
 }
 
 /* Footer Center */
-
 .footer-distributed .footer-center{
 	width: 35%;
 }
@@ -156,6 +156,7 @@ color:#767070;
 	/* color: #ffffff; */
 	vertical-align: middle;
 	margin:0;
+	font-weight:400;
 }
 
 .footer-distributed .footer-center p span{
@@ -163,6 +164,7 @@ color:#767070;
 	/* font-weight: normal; */
 	font-size:15px;
 	line-height:1.5;
+	font-weight:400;
 }
 
 .footer-distributed .footer-center p a{
@@ -179,12 +181,13 @@ color:#767070;
 }
 
 .footer-distributed .footer-company-about{
-	line-height: 20px;
+	line-height: 24px;
 	/* color:  #92999f; */
 	color:#767070;
 	font-size: 15px;
 	font-weight:bold;
 	margin: 0;
+	 font-weight:400; 
 }
 
 .footer-distributed .footer-company-about span{
@@ -195,6 +198,7 @@ color:black;
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 20px;
+	/* font-weight:400; */
 	
 }
 
@@ -280,9 +284,9 @@ color:black;
 			<span style="color:black;font-size:18px;margin-left:6%;">Address</span>
 				<div style="margin-top:3%;">
 					<i class="fa fa-map-marker"></i>
-					  <p><span style="font-weight: bold;">309 - Rupa Solitaire,
+					  <p><span style="font-weight: font-weight:400;;">309 - Rupa Solitaire,
 						 Bldg. No. A - 1, Sector - 1</span>
-						<span style="font-weight: bold;">Mahape, Navi Mumbai - 400710</span></p>
+						<span style="font-weight: font-weight:400;">Mahape, Navi Mumbai - 400710</span></p>
 						
 						<!--  <p>309 - Rupa Solitaire,
 						 Bldg. No. A - 1, Sector - 1</p>

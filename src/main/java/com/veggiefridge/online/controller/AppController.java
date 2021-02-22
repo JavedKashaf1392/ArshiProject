@@ -99,6 +99,7 @@ public class AppController {
 	}
 		
 		//Home Menu Url
+	
 		@RequestMapping(value = "/home", method = RequestMethod.GET)
 		public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
 				@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
@@ -125,6 +126,7 @@ public class AppController {
 		}
 		 
 		 //Sign in
+		
 	    @RequestMapping(value = "/login", method = RequestMethod.GET)
 		public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 				@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
@@ -277,26 +279,26 @@ public class AppController {
 	
 	
 	
-	            @RequestMapping(value = "/head")
+                @RequestMapping(value ="/head")
 				public ModelAndView head(ModelAndView model,@ModelAttribute("menu")Menu menu) {
 	            	String section = "Profile";
 					List<Menu> listprofileMenu = menuservice.getMenuProfile(section);
-					
+					String section2 = "Navbar";
+					List<Menu> listMenu = productService.getMenuByNavbar(section2);
+					model.addObject("listMenu", listMenu);
 					//SubMenu
-				    Map submenues = new HashMap();
-					for (Iterator it = listprofileMenu.iterator(); it.hasNext();) {
-						menu = (Menu) it.next();
-						System.out.println(menu.toString());
+				    //Map submenues = new HashMap();
+					//for (Iterator it = listprofileMenu.iterator(); it.hasNext();) {
+						//menu = (Menu) it.next();
+						//System.out.println(menu.toString());
 
-						List<SubMenu> listsubmenu = menuservice.getSubMenuByMenues(menu.getMenues());
-						System.out.println(listsubmenu.toString());
-						submenues.put(menu.getMenues(), listsubmenu);
-						model.addObject("submenues",
-								submenues);
+						//List<SubMenu> listsubmenu = menuservice.getSubMenuByMenues(menu.getMenues());
+						//System.out.println(listsubmenu.toString());
+						///submenues.put(menu.getMenues(), listsubmenu);
+						//model.addObject("submenues",
+								///submenues);
 					model.addObject("listprofileMenu",listprofileMenu);
 					model.setViewName("header");
-						
-				}
 					return model;
 	            }
 				

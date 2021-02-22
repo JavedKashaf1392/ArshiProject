@@ -476,7 +476,7 @@ label {
 
 <body>
 
-	<jsp:include page="mainheader.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div style="max-width: 1200px; margin: 17px auto;">
 	<span
@@ -616,7 +616,7 @@ label {
 							style="display: inline-block; padding: 8px 5px; text-align: center; text-decoration: none; color: #fff; background: #4abd3e; border-radius: 3px; font-weight: 400; width: 125px; margin-left:10px;" id="myBtn">Re-Order</a>
 							<a
 							href="#"
-							style="display: inline-block; padding: 8px 5px; text-align: center; text-decoration: none; color: #fff; background: #4abd3e; border-radius: 3px; font-weight: 400; width: 125px; margin-left:10px;" id="myBtn">Cancel-Order</a>
+							style="display: inline-block; padding: 8px 5px; text-align: center; text-decoration: none; color: #fff; background: #4abd3e; border-radius: 3px; font-weight: 400; width: 125px; margin-left:10px;" id="myBtn">Cancel Order</a>
 							
 <a href="${pageContext.request.contextPath}/order/orderReview" style=" background-color:#4abd3e;
   border: none;

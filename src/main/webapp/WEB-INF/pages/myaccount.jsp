@@ -44,7 +44,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 	transition-property: left;
 	background-color: white;
 	left: 0;
-	margin-top: 282px;
+	margin-top:330px;
 	margin-left: 15%;
 }
 
@@ -330,8 +330,12 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 </head>
 <body>
 
-	<jsp:include page="mainheader.jsp"></jsp:include>
-	<div style="border:1 px green;background-color:white;margin-top:10px;font-weight: bold;color: green;font-size:25px;width: 1200px;margin: 0 auto;">My profile</div>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div style="max-width: 1200px; margin: 17px auto;">
+		<span
+			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">
+			My Account</span>
+	</div>
 	<div
 		style="background: #f5f5f5;padding: 30px 30px;margin-top:20px;width: 1200px;margin: 0 auto;">
 		<div class="side-bar">
