@@ -124,31 +124,4 @@ public class ProductController {
 
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/listMenu",method = RequestMethod.GET)
-	public List<Menu> listMenu(HttpServletRequest req, Model model){
-			String section = "Navbar";
-			List<Menu> listMenu = productService.getMenuByNavbar(section);
-		     model.addAttribute("listMenu",listMenu);
-		return listMenu;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/listProfileMenu",method = RequestMethod.GET)
-	public List<Menu> listProfileMenu(HttpServletRequest req, Model model){
-			String profilemenuSection = "Profile";
-			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-		     model.addAttribute("listprofileMenu",listprofileMenu);
-		return listprofileMenu;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/headerImage", method = RequestMethod.GET)
-	public List<Images> getheaderImage(HttpServletRequest req, Model model) {
-		String imageSection = "Header";
-		List<Images> headerImage = productService.getImagesBySection(imageSection);
-	    model.addAttribute("headerImage",headerImage);
-		return headerImage;
-	
-}
 }

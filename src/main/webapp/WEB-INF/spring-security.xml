@@ -34,6 +34,8 @@
 	    
 		<intercept-url pattern="/" access="permitAll" />
 		
+		<intercept-url pattern="/menu/**" access="permitAll" />
+		
 		<intercept-url pattern="/kiosk/**" access="hasRole('ROLE_ADMIN')" />
 		
 		<intercept-url pattern="/product/**" access="hasRole('ROLE_ADMIN')" />
@@ -41,6 +43,8 @@
 	    <intercept-url pattern="/location/**" access="hasRole('ROLE_ADMIN')" />
 	
 		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
+		
+		<intercept-url pattern="/customer" access="hasRole('ROLE_ADMIN')" />
 		
 		<!-- <intercept-url pattern="/user" access="hasAuthority('USER')" /> -->
 		<!-- <intercept-url pattern="/kiosk/listKiosk" access="hasAuthority('ADMIN')" 
@@ -55,6 +59,9 @@
 	    <intercept-url pattern="/member/**" access="hasRole('ROLE_USER')" />
 	    
 	    <intercept-url pattern="/wallet/**" access="hasRole('ROLE_USER')" />
+	    
+	     <intercept-url pattern="/myaccount/**" access="hasRole('ROLE_USER')" />
+	    
 	    
 	   <!--  <intercept-url pattern="/login/**" access="hasRole('ROLE_USER')" /> -->
 	    

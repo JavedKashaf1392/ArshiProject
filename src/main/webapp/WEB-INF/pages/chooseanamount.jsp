@@ -2,24 +2,24 @@
 	pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
-
+	
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
 	;
+
 * {
 	list-style: none;
 	font-family: 'Montserrat', sans-serif;
@@ -134,35 +134,66 @@
 	margin: 0 auto;
 }
 
-.splash {
-	/*  text-align: center;
-   margin-left:32%;
-   margin-top:5%;
-   font-family: 'Montserrat', sans-serif; */
-	border-radius: 10px;
-	/*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22); */
-	position: relative;
-	overflow: hidden;
-	width: 450px;
-	max-width: 100%;
-	min-height: 100px;
+#myInput {
+    background-image:url("/images/searchicon.png");
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	width: 50%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	/* border: 1px solid #ddd; */
+	margin-bottom: 12px;
+	margin-left: 15px;
 }
 
-input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 14px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	float: center;
-	margin-top: 10px;
+#myTable {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #ddd;
+	font-size: 18px;
 }
 
-input[type=submit]:hover {
-	background-color: green;
+#myTable th, #myTable td {
+	text-align: left;
+	padding: 12px;
 }
+
+#myTable tr {
+	border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+	background-color: #f1f1f1;
+}
+
+/* calendar */
+[type="date"] {
+	background: #fff
+		url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+		97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+	opacity: 0;
+}
+
+label {
+	display: block;
+}
+
+input{
+   /*  border: 1px solid #c4c4c4;*/
+	border-radius: 5px;
+	background-color: #fff;
+	padding: 3px 5px;
+	/* box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1); */
+	width: 190px;
+}
+
 .alert {
 	padding: 10px;
 	background-color:white;
@@ -194,37 +225,48 @@ input[type=submit]:hover {
 	color: black;
 }
 }
-
 </style>
+
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
 
+	<jsp:include page="header.jsp"></jsp:include>
 	<div style="max-width: 1200px; margin: 17px auto;">
 
-	<span
+		<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
 			Wallet</span>
 	</div>
-
 	<div class="wrapper">
 
-	<div class="view_main">
-		<c:if test="${not empty message}">
+		<div class="view_main">
+			<c:if test="${not empty message}">
 				<div class="alert">
 					<span class="closebtn">&times;</span> <strong></strong> ${message}.
 				</div>
 			</c:if>
 
 			<div class="view_wrap list-view" style="display: block;">
-			
-
-
-					
 				<div class="view_item">
-					<div class="vi_left" style="margin-left: 200px;">
-					
-						<form method="post"
+					<div class="vi_left">
+						<a
+							href="${pageContext.request.contextPath }/wallet/chooseanamount">
+							<spring:url value="/images" var="images" /> <img
+							src="${images}/wallet1.png" alt="tomato" />
+						</a>
+						<!-- <img src="tomato.png" alt="tomato"> -->
+					</div>
+					<div class="vi_right">
+						<p class="title" style="color: green;">Current Balance</p>
+						<form modelAttribute="wallet">
+							<p class="content">
+								${repee_sign}<span style="font-size: 25px;"><fmt:formatNumber
+										type="number" minFractionDigits="2" maxFractionDigits="2"
+										value="${wallet.totalAmountBalance}" /></span>
+							</p>
+						</form>
+						<!-- <div class="btn">Review</div> -->
+						<%-- <form method="post"
 							action="${pageContext.request.contextPath}/wallet/addMoneyInWallet/${customerModel.customerid}"
 							modelAttribute="kioskLocation" style="border 1 px solid black;">
 							<h2 style="color: #4CAF50; text-align: center;">Enter Amount</h2>
@@ -238,43 +280,73 @@ input[type=submit]:hover {
 							<input type="submit" value="Continue"
 								style="width: 100%; padding: 12px; background-color: green; margin: 5px auto;"onclick="return confirm('Are you sure to Add Money in Wallet?')" />
 
-						</form>
+						</form> --%>
+					</div>
 					
-
-						
-						<!-- <img src="tomato.png" alt="tomato"> -->
-					</div>
-					<div class="vi_right" style="margin-left: 100px;">
-					<table style="border-spacing:10px 2px">
-					<th>
-					<spring:url value="/images" var="images" />
-					<img src="${images}/wallet1.png" alt="tomato" />
-					</th>
-					<th>
-					<p class="title" style="color: green;">Current Balance</p>
-					</th>
-					</table>	
-					<form modelAttribute="wallet" style="margin-left: 20px;">
-							<p class="content">
-								${repee_sign}<span style="font-size: 25px;"><fmt:formatNumber
-										type="number" minFractionDigits="2" maxFractionDigits="2"
-										value="${wallet.totalAmountBalance}" /></span>
-							</p>
-						</form>
+					
+				
+			
+			
+			
+			<div class="view_item" style="margin-left:100px;">
+			
+		
 						<!-- <div class="btn">Review</div> -->
+						<form method="post"
+							action="${pageContext.request.contextPath}/wallet/addMoneyInWallet/${customerModel.customerid}"
+							modelAttribute="kioskLocation">
+							<h2 style="color: #4CAF50; text-align: center;">Enter Amount</h2>
+							<h6 style="color: #4CAF50; margin-top: 2%; text-align: center;">Amount
+								will be added in your VeggieFridge Wallet</h6>
+
+							<input type="text" name="TXN_AMOUNT"
+								placeholder="Enter Amount Max Limit &#8377;5000" required
+								style="width: 100%; padding: 12px; margin: 3px 0 12px 0; display: inline-block; border: none; background: #f1f1f1; border-radius: 4px; margin: 5px auto;">
+
+							<input type="submit" value="Continue"
+								style="width: 100%; padding: 12px; background-color: green; margin: 5px auto;"onclick="return confirm('Are you sure to Add Money in Wallet?')" />
+
+						</form>
 					</div>
-</div>
-</div>
+					</div>
+			
+					
+					
+				
+			</div>
+			
+
+
+
+
 
 		</div>
 
 	</div>
 
 
-
-
 	<jsp:include page="footer.jsp"></jsp:include>
 	
+	<script>
+		function myFunction() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
 	<script>
 		var close = document.getElementsByClassName("closebtn");
 		var i;
@@ -289,7 +361,6 @@ input[type=submit]:hover {
 			}
 		}
 	</script>
-
 
 </body>
 </html>

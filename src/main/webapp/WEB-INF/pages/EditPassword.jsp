@@ -370,7 +370,7 @@
 					class="fas fa-angle-right dropdown"
 					style="background-color: gainsboro; border-radius: 50%;; padding: 10px 10px;"></i></a>
 				<div class="sub-menu">
-					<a href="${pageContext.request.contextPath }/cart/editPassword/${customerModel.email}" class="sub-item">Change Password</a> <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"
+					<a href="${pageContext.request.contextPath }/myaccount/editPassword/${customerModel.email}" class="sub-item">Change Password</a> <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"
 						class="sub-item">Edit Profile</a>
 				</div>
 			</div>
@@ -387,7 +387,7 @@
      Change Password
     </div>
     <div class="form">
-    <form:form action="${pageContext.request.contextPath}/cart/changeNewPassword" method="post" modelAttribute="customer">  
+    <form:form action="${pageContext.request.contextPath}/myaccount	/changeNewPassword" method="post" modelAttribute="customer">  
     <font color='red'><span id="errId"></span></font>     
           
     <form:hidden path="email" readonly="true"></form:hidden> 

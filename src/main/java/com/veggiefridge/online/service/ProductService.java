@@ -20,9 +20,5 @@ public interface ProductService {
 	
 	public List<Product> getProductsBycatogary(String category);
 	
-    public List<Menu> getMenuByNavbar(String section);
-	
-	/* public List<Menu> getMenuByProfile(String Profile); */
-	
-	public List<Images> getImagesBySection(String imageSection);
+	public List<Product> GetAllProductByCatogary(String category);
 }

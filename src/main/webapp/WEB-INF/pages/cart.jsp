@@ -17,6 +17,7 @@
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -220,7 +221,7 @@ label {
 	margin-bottom: 15px;
 	border-bottom: 1px solid #eee;
 	color: black;
-	font-weight: 400;
+	font-weight: 300;
 }
 
 .column-labels .product-image, .column-labels .product-details,
@@ -252,9 +253,7 @@ label {
 .product .product-details .product-description {
 	margin: 5px 20px 5px 0;
 	line-height: 1.4em;
-	/*  margin: 5px 0; */
 	font-size: 14px;
-	/* line-height: 22px; */
 	font-weight: 200;
 }
 
@@ -264,13 +263,13 @@ label {
 
 .product .remove-product {
 	border: 0;
-	padding: 4px 8px;
+	/* padding: 4px 8px; */
 	/* background-color:#ff4242; */
 	color:black;
 	/*  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium"; */
 	font-size: 12px;
 	border-radius: 3px;
-	font-weight:400;
+	/* font-weight:400; */
 	
 	
 }
@@ -300,54 +299,59 @@ label {
 }
 
 .totals .totals-item-total {
-	/* font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium"; */
 	
 }
 
 .checkout {
+
 	float: right;
 	background: transparent;
     border: 1px solid black;
     padding: 0.8rem 0;
-    width: 150px;
+    width:200px;
     font-family: inherit;
     text-transform: uppercase;
     cursor: pointer;
     border: none;
     transition: all 0.6s ease;
-     color: white;
+    color: white;
     background:#4CAF50;
-    border-radius:50px; 
-    
-    
+    border-radius:50px;
+    margin-top:10px;
+    margin-bottom: 10px; 
+   
 }
 
 .checkout:hover {
-	background-color: #019701;
+	 opacity: 0.8;
 }
 
 .keepshop {
-	float: left;
-    /* background: transparent; */
-   /*  border: 1px solid black; */
+
+	float:left;
+	background: transparent;
+    border: 1px solid black;
     padding: 0.8rem 0;
-    width: 200px;
+    width:200px;
     font-family: inherit;
     text-transform: uppercase;
     cursor: pointer;
     border: none;
     transition: all 0.6s ease;
-    color:white;
+    color: white;
     background:#4CAF50;
-    border: 1px solid #f5f5f5;
     border-radius:50px; 
+    margin-top:10px;
+    margin-bottom: 10px; 
+   
 }
 
 .keepshop:hover  {
-	background-color:#019701;
+	 opacity: 0.8;
 }
 
 /* Make adjustments for tablet */
+
 @media screen an (max-width: 650px) {
 	.wrapper.shopping-cart {
 		margin: 0;
@@ -467,22 +471,23 @@ label {
 
 									<c:set var="s" value="0"></c:set>
 									<c:forEach var="cartitem" items="${listcustomercartitem}">
-										<c:set var="s">
+										<%-- <c:set var="s">
 											<fmt:formatNumber type="number" minFractionDigits="2"
 												maxFractionDigits="2"
 												value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}" />
-										</c:set>
+										</c:set> --%>
 										<div class="product">
 											<div class="product-image">
 												<spring:url value="/images" var="images" />
 												<img src="${images}/${cartitem.product.imageName}"
-													width="100" height="100" />
+													width="100" height="100"/>
 											</div>
 											<div class="product-details">
 												<div class="product-title">${cartitem.product.productName}</div>
 												<p class="product-description">The best dog bones of all
 													time. Holy crap. Your dog will be begging for these things!
 													I got curious once and ate one myself. I'm a fan.</p>
+													
 											</div>
 
 
@@ -492,13 +497,12 @@ label {
 											</div>
 											<div class="product-quantity">
 												<button 
-														style="height: 25px; width: 25px;" onclick="window.location.href='${pageContext.request.contextPath}/cart/increase/${cartitem.cartitemid}'">+</button>
-												 ${cartitem.productCount} 
+												 style="height: 25px; width: 25px;" onclick="window.location.href='${pageContext.request.contextPath}/cart/increase/${cartitem.cartitemid}'">+</button>
+												<span> ${cartitem.productCount} </span>
 													
 													<button 
 														style="height: 25px; width: 25px;"  onclick="window.location.href='${pageContext.request.contextPath}/cart/decrease/${cartitem.cartitemid}'">-</button>
 											
-												<!--  <input type="number" value="2" min="1"> -->
 											</div>
 
 											<div class="product-line-price">${repee_sign}<fmt:formatNumber
@@ -506,25 +510,28 @@ label {
 													value="${cartitem.productCount*cartitem.total}" />
 											</div>
 											<div class="product-removal">
-												<button class="remove-product"
+				 							<a href="${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}">
+											<i class="fa fa-trash-o " style="color: black;font-size:20px;margin-left:15px;" title="Remov Product"></i></a>
+											
+												<%--  <button class="remove-product"
 													onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'" title="remove item">
-													Remove</button>
+													Remove</button>  --%> 
 											</div>
 										</div>
 									</c:forEach>
-									<div class="totals">
+									<div class="totals" style="line-height:30px;">
 										<div class="totals-item">
 											<label>Subtotal : </label>
-											<div class="totals-value" id="cart-subtotal">${repee_sign}${s}</div>
+											<div class="totals-value" id="cart-subtotal">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></div>
 										</div>
 										<div class="totals-item totals-item-total">
 											<label>Grand Total : </label>
-											<div class="totals-value" id="cart-total">${repee_sign}${s}</div>
+											<div class="totals-value" id="cart-total">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></div>
 										</div>
 									</div>
 
 									 <button class="checkout"
-										onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddress'">Checkout</button>
+										onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddressPaymrntOption'">Checkout</button>
 									<button class="keepshop"
 										onclick="window.location.href='${pageContext.request.contextPath}/home'">Keep Shopping</button> 
 
@@ -533,9 +540,10 @@ label {
 							<c:otherwise>
 
 								<div class="jumbotron">
-									<h3 class="text-center" style="margin-top: 35px;">Your
+									<h3 class="text-center" style="font-size:30px;font-weight:300;margin-top:50px;margin-left:380px;">Your
 										Cart is Empty !!!</h3>
-									<button type = "button"  onclick="window.location.href='window.location.href='${pageContext.request.contextPath}/home'" class="keepshop">Keep shopping
+									<button class="keepshop"
+										onclick="window.location.href='${pageContext.request.contextPath}/home'" style="margin-bottom:43px;margin-left:430px;margin-top:20px;">Keep Shopping</button> 
                            
 
 								</div>

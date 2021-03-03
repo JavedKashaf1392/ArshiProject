@@ -64,4 +64,27 @@ public class VFOnlineConstants {
 	
 	public static final String RE_ORDER="Re-Order";
 	
+	public static final String CART_ITEM_PRICE="Price";
+	
+	public static final String CART_ITEM_QUANTITY="Quantity";
+	
+	public static final String CART_ITEM_TOTAL="Total";
+	
+	public static final String CART_SUBTOTAL="SubTotal";
+	
+	public static final String CART_GRANDTOTAL="GrandTotal";
+	
+	/* .......Server Side Error Msgs........ */
+	
+	public static final String WRONG_EMAIL_PASSWORD=" Your login attempt was not successful due to Bad Credential";
+	
+	public static final String LOGOUT=" You've been logged out successfully";
+	
+	/* ..... Clint Side ErrorMasg ..... */
+	
+	
+	
+	
+	
+	
 }

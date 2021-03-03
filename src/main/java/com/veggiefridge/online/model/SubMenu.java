@@ -22,16 +22,16 @@ private static final long serialVersionUID = -3465813074586302847L;
 	
 	@Column(name ="value")
 	private String  Value;
-    
-	@Column(name ="menues")
-	private String menues;
+	
+	@Column(name ="menuID")
+	private int menuID;
 
-	public String getMenues() {
-		return menues;
+	public int getMenuID() {
+		return menuID;
 	}
 
-	public void setMenues(String menues) {
-		this.menues = menues;
+	public void setMenuID(int menuID) {
+		this.menuID = menuID;
 	}
 
 	public int getSubMenuId() {
@@ -60,7 +60,7 @@ private static final long serialVersionUID = -3465813074586302847L;
 
 	@Override
 	public String toString() {
-		return "SubMenu [subMenuId=" + subMenuId + ", subMenu=" + subMenu + ", Value=" + Value + ", menues=" + menues
+		return "SubMenu [subMenuId=" + subMenuId + ", subMenu=" + subMenu + ", Value=" + Value + ", menuID=" + menuID
 				+ "]";
 	}
 

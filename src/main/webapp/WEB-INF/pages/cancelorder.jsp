@@ -12,6 +12,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 <meta charset="UTF-8">
@@ -118,27 +119,6 @@
 
 .view_item .btn:hover {
 	background: #3bd62b;
-}
-
-.grid-view {
-	width: 100%;
-}
-
-.grid-view .view_item {
-	display: inline-block;
-	border: 1px solid #e2efe1;
-	width: 230px;
-	padding: 25px;
-	text-align: center;
-	margin: 10px;
-}
-
-.grid-view .view_item .vi_left {
-	margin-bottom: 10px;
-}
-
-.grid-view .view_item .btn {
-	margin: 0 auto;
 }
 
 /* calendar */

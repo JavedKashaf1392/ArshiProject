@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+
 body {
   font-family: 'Quicksand', sans-serif;
  /*  font-size: 17px;
@@ -289,9 +290,9 @@ span.lg-title{
            
             <!-- <span class="lg-title">Confirm Address</span> -->
             <label for="fname">First Name</label>
-            <input type="text" id="fname"  value="${customerModel.firstName}">
+            <input type="text" id="fname"  value="${customerModel.firstName}" readonly="readonly">
             <label for="email">Email</label>
-            <input type="text" id="email"  value="${customerModel.email}">
+            <input type="text" id="email"  value="${customerModel.email}" readonly="readonly">
           
           <label for="adr">City</label>
           <select id="country" name="country" style="width: 100%;
@@ -299,13 +300,13 @@ span.lg-title{
   padding: 12px;
   border: 1px solid #ccc; 
   border-radius: 3px;">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+          <option value="australia">Nagpur</option>
+          <option value="canada">Hyderabad</option>
+         
           </select>
             <%-- <input type="text" id="adr" value="${customerModel.cities}"> --%>
             <label for="city">State</label>
-            <input type="text" id="city" name="city" placeholder="New York">
+            <input type="text" id="state" name="state" value="Maharastra" readonly="readonly">
 
             <!-- <div class="row">
               <div class="col-50">
@@ -321,21 +322,20 @@ span.lg-title{
 
           <div class="col-50" style="margin-top:85px;">
           <label for="fname">Last Name</label>
-            <input type="text" id="fname"  value="${customerModel.lastName}">
+            <input type="text" id="fname"  value="${customerModel.lastName}" readonly="readonly">
             <label for="email">Mobile</label>
-            <input type="text" id="email"  value="${customerModel.mobile}">
+            <input type="text" id="email"  value="${customerModel.mobile}" readonly="readonly">
             <label for="adr">Location</label>
            <select id="country" name="country" style="width: 100%;
   margin-bottom: 20px;
   padding: 12px;
   border: 1px solid #ccc; 
   border-radius: 3px;">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+          <option value="australia">Mihan</option>
+          <option value="canada">Nagpur</option>
           </select>
             <label for="expmonth">Zip</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <input type="text" id="pinCode" name="pinCode" value="651289" readonly="readonly">
           </div>
           
         </div>

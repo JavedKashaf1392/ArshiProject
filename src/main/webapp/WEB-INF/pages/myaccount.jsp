@@ -378,9 +378,9 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 						style="background-color: gainsboro; border-radius: 50%;; padding: 10px 10px;"></i></a>
 					<div class="sub-menu">
 						<a
-							href="${pageContext.request.contextPath }/cart/editPassword/${customerModel.email}"
+							href="${pageContext.request.contextPath }/myaccount/editPassword/${customerModel.email}"
 							class="sub-item">Change Password</a> <a
-							href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"
+							href="${pageContext.request.contextPath }/myaccount/editProfile${customerModel.customerid}"
 							class="sub-item">Edit Profile</a>
 					</div>
 				</div>
@@ -397,7 +397,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 				<div class="title">Edit Profile</div>
 				<div class="form">
 					<form:form
-						action="${pageContext.request.contextPath}/cart/saveEditProfile"
+						action="${pageContext.request.contextPath}/myaccount/saveEditProfile"
 						method="post" modelAttribute="customer">
 						<form:hidden path="customerid" />
 						<form:hidden path="password" />

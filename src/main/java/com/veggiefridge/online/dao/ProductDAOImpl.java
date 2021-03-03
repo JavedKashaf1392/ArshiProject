@@ -62,25 +62,15 @@ public class ProductDAOImpl implements ProductDAO {
 										.list();	
 	}
 
-
+																	
 	@Override
-	public List<Images> getImagesBySection(String imageSection) {
-		String query = "FROM Images WHERE imageSection =:imageSection";
+	public List<Product> GetAllProductByCatogary(String category) {
+		String query = "FROM Product WHERE category =:category";
 		return sessionFactory.getCurrentSession()
 									.createQuery(query)
-										.setParameter("imageSection",imageSection)
+										.setParameter("category",category)
 										.list();	
 	}
-     
-	@Override
-	public List<Menu> getMenuByNavbar(String section) {
-		String query = "FROM Menu WHERE section =:section";
-		return sessionFactory.getCurrentSession()
-									.createQuery(query)
-										.setParameter("section",section)
-										.list();
-	}
-
-
+	
 	}
 	

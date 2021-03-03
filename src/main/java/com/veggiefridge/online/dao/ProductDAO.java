@@ -1,7 +1,6 @@
 package com.veggiefridge.online.dao;
 
 import java.util.List;
-
 import com.veggiefridge.online.model.Images;
 import com.veggiefridge.online.model.Menu;
 import com.veggiefridge.online.model.Product;
@@ -20,9 +19,6 @@ public interface ProductDAO {
 	
 	public List<Product> getProductsBycatogary(String category);
 	
-	public List<Menu> getMenuByNavbar(String section);
-	
-	/* public List<Menu> getMenuByProfile(String section); */
-	
-	public List<Images> getImagesBySection(String imageSection);
+	public List<Product> GetAllProductByCatogary(String category);
+
 }

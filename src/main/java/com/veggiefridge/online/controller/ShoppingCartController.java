@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.veggiefridge.online.constants.VFOnlineConstants;
 import com.veggiefridge.online.dao.CartItemDAO;
 import com.veggiefridge.online.dao.OrderDao;
@@ -36,6 +35,7 @@ import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.KioskLocationService;
+import com.veggiefridge.online.service.MenuService;
 import com.veggiefridge.online.service.ProductService;
 
 @Controller
@@ -59,85 +59,12 @@ public class ShoppingCartController {
 
 	@Autowired
 	private Environment env;
+	
+	@Autowired
+	private MenuService menuservice;
 
 	private static final Logger logger = LoggerFactory.logger(ShoppingCartController.class);
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
-		String imageSection = "Header";
-		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
-		List<Product> listProduct = productservice.getAllProducts();
-		List<Customer> listCustomer = customerService.getAllCustomers();
-		List<Images> headerImages = productservice.getImagesBySection(imageSection);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
-		model.addObject("headerImages", headerImages);
-		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation", listkiosklocation);
-		model.addObject("listProduct", listProduct);
-		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
-		/* model.setViewName("registerdhome"); */
-		model.setViewName("VeggieFridge");
-		return model;
-	}
-	
-	
-
-	// checkout
-	@RequestMapping(value = "/paymnet")
-	public ModelAndView myOrder(ModelAndView model) {
-		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
-		model.setViewName("checkout");
-		return model;
-	}
-
-	// saveOrder
-	@RequestMapping(value = "/saveOrder")
-	public ModelAndView saveOrder(ModelAndView model) {
-		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
-		model.setViewName("thanks");
-		return model;
-	}
-
-	// saveOrder
-	@RequestMapping(value = "/addToCart/{productid}")
-	public String addToCart(@PathVariable int productid) {
-		CartItem cartitem = cartservice.getByCartPageAndProduct(productid);
-		if (cartitem == null) {
-			// add a new cartItem if a new product is getting added
-			cartitem = new CartItem();
-			System.out.println("add a new cartItem if a new product is getting added");
-			Product product = productservice.getProduct(productid);
-			System.out.println("get Product");
-
-			// transfer the product details to cartitem
-
-			cartitem.setProduct(product);
-			cartitem.setProductCount(1);
-			cartitem.setBuyingPrice(product.getFinalPrice());
-			cartitem.setTotal(product.getFinalPrice());
-			// insert a new cartLine
-			cartservice.add(cartitem);
-			System.out.println("item is adding into cart");
-		}
-		return "redirect:/cart/registerdhome";
-
-	}
-
-	// listCartItem
-	@RequestMapping(value = "/listCartItem")
-	public ModelAndView listCartItem(ModelAndView model) {
-		List<CartItem> listcartitem = cartservice.getAllCartItem();
-		model.addObject("listcartitem", listcartitem);
-		model.setViewName("cartitemlist");
-		return model;
-	}
-
 	 //deleteCartItem
 	@RequestMapping(value = "/deleteCartItem/{cartitemid}", method = RequestMethod.GET)
 	public ModelAndView deleteProduct(@PathVariable("cartitemid") int cartitemid, ModelAndView model) {
@@ -152,70 +79,37 @@ public class ShoppingCartController {
 		cartservice.remove(cartitem);
 		model.addObject("message", env.getProperty("cart.removeproduct"));
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
+		
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("listcustomercartitem", listcustomercartitem);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("cart");
 		return model;
 	}
 
-	// deleteCartItem
-	@RequestMapping(value = "/deleteCartItems/{cartitemid}", method = RequestMethod.GET)
-	public String deleteProducts(@PathVariable("cartitemid") int cartitemid) {
-		CartItem cartitem = cartservice.get(cartitemid);
-
-		// deduct the cart
-		// update the cart
-		CartPage cartpage = this.getCartPage();
-		cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.getTotal());
-		cartpage.setCartitem(cartpage.getCartitem() - 1);
-		cartservice.updateCartPage(cartpage);
-		// remove the cartLine
-		cartservice.remove(cartitem);
-		return "redirect:/cart/registerdhome";
-	}
-
-	// listCartItem
-	@RequestMapping(value = "/listcart")
-	public ModelAndView listCartItems(ModelAndView model) {
-		List<CartItem> listcartitem = cartservice.getAllCartItem();
-		model.addObject("listcartitem", listcartitem);
-		model.setViewName("cartlist");
-		return model;
-	}
 
 	// get cartPage
 	private CartPage getCartPage() {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 	
-	
+	 //add item into cart
+	 //@RequestMapping(value = "/addToCartPageItem/{productid}",method = RequestMethod.GET,@PathVariable int productid,)
+	@RequestMapping(value = "/addToCartPageItem")
+	public ModelAndView addCartItems(ModelAndView model,
+			@ModelAttribute("cartpage") CartPage cart, BindingResult resultcart,HttpServletRequest request, @RequestParam(value = "productid", required =   
+					true)int productid,@ModelAttribute("Product") Product product) {
 
-	 //add cartitem
-	@RequestMapping(value = "/addToCartPageItem/{productid}")
-	public ModelAndView addCartItems(ModelAndView model, @PathVariable int productid,
-			@ModelAttribute("cartpage") CartPage cart, BindingResult resultcart) {
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
-		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
-		List<Product> listProduct = productservice.getAllProducts();
-		List<Customer> listCustomer = customerService.getAllCustomers();
+		System.out.println(productid);
 		CartPage cartpage = this.getCartPage();
 		CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
 		if (cartitem == null) {
-
 			// add a new cartItem if a new product is getting added
 			cartitem = new CartItem();
-			Product product = productservice.getProduct(productid);
+			product = productservice.getProduct(productid);
+			
 			// transfer the product details to cartLine
 
 			cartitem.setCartpageid(cartpage.getCartpageid());
@@ -232,7 +126,7 @@ public class ShoppingCartController {
 			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			System.out.println("cartitem is added");
 			// update the cart
-			cartpage.setGrandTotal(cart.getGrandTotal() + cartitem.getBuyingPrice());
+			cartpage.setGrandTotal(cart.getGrandTotal() + cartitem.getTotal());
 			cartpage.setCartitem(cartpage.getCartitem() + 1);
 			cartservice.updateCartPage(cartpage);
 			System.out.println("cartpage updated");
@@ -240,18 +134,21 @@ public class ShoppingCartController {
 			model.addObject("message", env.getProperty("Product Already Added Insid a Cart"));
 			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		}
+		
+		String section = "Navbar";
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
+		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+		List<Product> listProduct = productservice.getAllProducts();
+		List<Customer> listCustomer = customerService.getAllCustomers();
 		String imageSection = "Header";
-		List<Images> headerImages = productservice.getImagesBySection(imageSection);
+		List<Images> headerImages =menuservice.getImagesBySection(imageSection);
 		model.addObject("headerImages", headerImages);
-		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation", listkiosklocation);
 		model.addObject("listProduct", listProduct);
-		model.addObject("listcustomercartitem", listcustomercartitem);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("VeggieFridge");
-
-		/* return "redirect:/cart/listCustomerCartItem"; */
 		return model;
 
 	}
@@ -262,12 +159,10 @@ public class ShoppingCartController {
 			BindingResult result) {
 		// List<CartItem> listcustomercartitem =
 		// cartservice.list(this.getCartPage().getCartpageid());
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
+		
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		Object headerImages = "Header";
 		model.addObject("headerImages", headerImages);
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -278,104 +173,7 @@ public class ShoppingCartController {
 		return model;
 	}
 
-	@RequestMapping("/changeLocation")
-	public ModelAndView continueLoc(ModelAndView model, @ModelAttribute("kiosklocation") KioskLocation kiosklocation,
-			BindingResult resultlocation)
-
-	{
-		String imageSection = "Header";
-		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
-		List<Product> listProduct = productservice.getAllProducts();
-		List<Customer> listCustomer = customerService.getAllCustomers();
-		List<Images> headerImages = productservice.getImagesBySection(imageSection);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
-		model.addObject("headerImages", headerImages);
-		model.addObject("listCustomer", listCustomer);
-		model.addObject("listkiosklocation", listkiosklocation);
-		model.addObject("listProduct", listProduct);
-		/* model.setViewName("registerdhome"); */
-		model.setViewName("head");
-		return model;
-	}
-    
-	//edit customer
-	@RequestMapping(value = "/editProfile{customerid}",method = RequestMethod.GET)
-	public ModelAndView editProfile(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
-			BindingResult result, HttpSession session) {
-		System.out.println("editProfile");
-		customer = customerService.getCustomer(this.getCartPage().getCustomer().getCustomerid());
-		System.out.println("customer" + customer.toString());
-		System.out.println("customName" + customer.getFirstName());
-		model = new ModelAndView("myaccount");
-		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
-		model.addObject("customer", customer);
-		return model;
-	}
-
-	 //save and update customer
-	@RequestMapping(value = "/saveEditProfile", method = RequestMethod.POST)
-	public ModelAndView saveEditCustomer(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
-			BindingResult result, HttpSession session) {
-	    customerService.updateCustomer(customer);
-	    model.addObject("message", env.getProperty("account.profileupupdated"));
-	    String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
-		model.setViewName("myaccount");
-		return model;
-	}
-
-	// changePassword
-	@RequestMapping(value = "/editPassword/{email}")
-	public String resetPassword(@PathVariable String email, Model model) {
-		// check if the email id is valid and registered with us.
-		Customer customer = new Customer();
-		customer.setEmail(email);
-		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addAttribute("listprofileMenu", listprofileMenu);
-		model.addAttribute("listMenu", listMenu);
-		model.addAttribute("customer", customer);
-		return "EditPassword";
-	}
-
-	//set New Password
-	@RequestMapping(value = "/changeNewPassword", method = RequestMethod.POST)
-	public String setNewPassword(@ModelAttribute("customer") Customer cust, ModelMap map, BindingResult resultcust,ModelAndView model) {
-		Customer customer = customerService.getCustomerByEmail(this.getCartPage().getCustomer().getEmail());
-		System.out.println("mailid" + customer.getEmail());
-		if (customer != null) {
-			// update password and Acct Status $ Displyay Successe Message
-			/* customer.setPassword(cust.getNewPassword()); */
-			String encodedPassword = EncryptPassword.sha256(cust.getNewPassword());
-			customer.setPassword(encodedPassword);
-			customerService.updateCustomer(customer);
-			System.out.println("update customer successfully");
-			String section = "Navbar";
-			List<Menu> listMenu = productservice.getMenuByNavbar(section);
-			String profilemenuSection = "Profile";
-			List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-			model.addObject("listprofileMenu", listprofileMenu);
-			model.addObject("listMenu", listMenu);
-		}
-		return "EditPassword";
-	}
+	
 
 	@SuppressWarnings("unchecked")
 	private int isExisting(int productid) {
@@ -396,29 +194,21 @@ public class ShoppingCartController {
 		double oldTotal = cartitem.getTotal();
 		Product product = cartitem.getProduct();
 
-		/*
-		 * // check if that much quantity is available or not if(product.getQuantity() <
-		 * productCount) { model.addObject("message",
-		 * env.getProperty("cart.addproduct")); return "result=unavailable"; }
-		 */
-
-		// update the cart line
+		//update the cart line
+		
 		cartitem.setProductCount(cartitem.getProductCount() + 1);
-		cartitem.setBuyingPrice(product.getFinalPrice());
-		cartitem.setTotal(product.getFinalPrice() * cartitem.getProductCount());
+		cartitem.setBuyingPrice(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
+		cartitem.setTotal(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
 		cartservice.update(cartitem);
 
-		// update the cart
+		//update the cart
 		CartPage cartpage = this.getCartPage();
-		cartpage.setGrandTotal(cartpage.getGrandTotal() - oldTotal + cartitem.getTotal());
+		cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
 		cartservice.updateCartPage(cartpage);
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("listcustomercartitem", listcustomercartitem);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("cart");
@@ -439,25 +229,81 @@ public class ShoppingCartController {
 
 		// update the cart line
 		cartitem.setProductCount(cartitem.getProductCount() - 1);
-		cartitem.setBuyingPrice(product.getFinalPrice());
-		cartitem.setTotal(product.getFinalPrice() * cartitem.getProductCount());
+		cartitem.setBuyingPrice(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
+		cartitem.setTotal(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
 		cartservice.update(cartitem);
 
 		// update the cart
 		CartPage cartpage = this.getCartPage();
-		cartpage.setGrandTotal(cartpage.getGrandTotal() - oldTotal + cartitem.getTotal());
+		cartpage.setGrandTotal(cartpage.getGrandTotal()  - cartitem.getTotal());
 		cartservice.updateCartPage(cartpage);
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("listcustomercartitem", listcustomercartitem);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("cart");
 		return model;
 	}
+	
+	     //add item into cart
+	    @RequestMapping(value = "/addToCartPageItems")
+		public String addCartItemss(ModelAndView model,
+				@ModelAttribute("cartpage") CartPage cart, BindingResult resultcart,HttpServletRequest request, @RequestParam(value = "productid", required =   
+						true)int productid,@ModelAttribute("Product") Product product) {
+
+			System.out.println(productid);
+			CartPage cartpage = this.getCartPage();
+			CartItem cartitem = cartservice.getByCartPageAndProducts(productid, cartpage.getCartpageid());
+			if (cartitem == null) {
+				// add a new cartItem if a new product is getting added
+				cartitem = new CartItem();
+				product = productservice.getProduct(productid);
+				
+				 //transfer the product details to cartLine
+
+				cartitem.setCartpageid(cartpage.getCartpageid());
+				cartitem.setProduct(product);
+				//cartitem.setAvailable(true);
+				cartitem.setProductCount(1);
+				cartitem.setBuyingPrice(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
+				cartitem.setTotal(product.getPrice() - product.getDiscount() * product.getPrice() / 100);
+				cartitem.setCartItemNo(cartitem.getCartItemNo() + 1);
+
+				// insert a new cartLine
+				cartservice.add(cartitem);
+				model.addObject("message", env.getProperty("cart.addproduct"));
+				model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+				System.out.println("cartitem is added");
+				// update the cart
+				cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getBuyingPrice());
+				cartpage.setCartitem(cartpage.getCartitem() + 1);
+				cartservice.updateCartPage(cartpage);
+				System.out.println("cartpage updated");
+				
+			} else {
+				model.addObject("message", env.getProperty("Product Already Added Insid a Cart"));
+				model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+			}
+			
+			String section = "Navbar";
+			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("listNavbarMenu",listNavbarMenu);
+			List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+			List<Product> listProduct = productservice.getAllProducts();
+			List<Customer> listCustomer = customerService.getAllCustomers();
+			String imageSection = "Header";
+			List<Images> headerImages =menuservice.getImagesBySection(imageSection);
+			model.addObject("headerImages", headerImages);
+			model.addObject("listCustomer", listCustomer);
+			model.addObject("listkiosklocation", listkiosklocation);
+			model.addObject("listProduct", listProduct);
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+			model.setViewName("VeggieFridge");
+			return "redirect:/home";
+
+		}
+
 
 }

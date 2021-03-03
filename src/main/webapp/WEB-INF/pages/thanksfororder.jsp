@@ -280,7 +280,7 @@ label {
 	clear: both;
 	width: 100%;
 	margin-bottom: 10px;
-	margin-right:85px;
+	margin-right: 85px;
 }
 
 .totals .totals-item label {
@@ -291,9 +291,9 @@ label {
 }
 
 .totals .totals-item .totals-value {
-	float:left;
+	float: left;
 	width: 21%;
-	text-align:right;
+	text-align: right;
 }
 
 .totals .totals-item-total {
@@ -470,115 +470,215 @@ label {
 	text-decoration: none;
 	cursor: pointer;
 }
-</style>
-</head>
 
+.row {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	-ms-flex-wrap: wrap; /* IE10 */
+	flex-wrap: wrap;
+	margin: 0 -16px;
+	margin-left: 8%;
+	margin-right: 10%;
+}
+
+.col-25 {
+	-ms-flex: 25%; /* IE10 */
+	flex: 25%;
+}
+
+.col-50 {
+	-ms-flex: 50%; /* IE10 */
+	flex: 50%;
+}
+
+.col-75 {
+	-ms-flex: 75%; /* IE10 */
+	flex: 75%;
+}
+
+.col-25, .col-50, .col-75 {
+	padding: 0 16px;
+}
+
+.container {
+	/* background-color: #f2f2f2; */
+	padding: 5px 20px 15px 20px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+}
+
+input[type=text] {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+label {
+	margin-bottom: 10px;
+	display: block;
+}
+
+.icon-container {
+	margin-bottom: 20px;
+	padding: 7px 0;
+	font-size: 24px;
+}
+
+.btn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 6px;
+	margin: 10px 0;
+	border: none;
+	width: 18%;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 17px;
+}
+
+.cancel {
+	background-color: #4CAF50;
+	color: white;
+	padding: 6px;
+	margin: 10px 0;
+	border: none;
+	width: 13%;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 17px;
+}
+
+.btn:hover {
+	background-color: #45a049;
+}
+
+.cancel:hover {
+	background-color: #45a049;
+}
+
+a {
+	color: #2196F3;
+}
+
+hr {
+	border: 1px solid lightgrey;
+}
+
+span.price {
+	float: right;
+	color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media ( max-width : 800px) {
+	.row {
+		flex-direction: column-reverse;
+	}
+	.col-25 {
+		margin-bottom: 20px;
+	}
+}
+
+.splash {
+	text-align: center;
+	margin-left: 32%;
+	margin-top: 5%;
+	font-family: 'Montserrat', sans-serif;
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+	width: 550px;
+	max-width: 100%;
+	min-height: 100px;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.col-75 {
+	width: 100%;
+	margin-top: 11px;
+	color: black;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 14px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	float: center;
+	margin-top: 10px;
+}
+
+input[type=submit]:hover {
+	background-color: green;
+}
+
+</style>
+
+</head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<div style="width: 1200px; margin: 20px auto;">
+		<table>
 
-	<div style="max-width: 1200px; margin: 17px auto;">
-		<span
-			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">Cancel
-			Order</span>
+			<th><a href="abc.htm"> <spring:url value="/images"
+						var="images" /> <img src="${images}/vf-leaf.png" width="60"
+					height="60" alt="" />
+			</a></th>
+
+			<th><a href="abc.htm"> <spring:url value="/images"
+						var="images" /> <img src="${images}/logo2.jpg" width="200"
+					height="50" alt="" />
+			</a></th>
+			<p style="float: right; margin-top: 20px;">(+84) 123 456 789</p>
+		</table>
+
 	</div>
 
 	<div class="wrapper">
 
 		<div class="view_main">
-			<div class="view_wrap list-view" style="display: block;">
-				<div style="margin-left: 10px; line-height: 30px;">
-					<p style="font-weight: 600">Dear ${customerModel.firstName},</p>
-					<p>Your order has been canceled. The items listed below were
-						part of the canceled</p>
-				</div>
+			<div class="view_wrap list-view">
 
 				<div class="view_item">
-					<div class="vi_left" style="line-height: 30px;">
-										<table
-						style="max-width:500px;border-spacing:10px 2px;">
-								
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
-								<tr>
-								<td>
-								<p style="font-weight:500;">Order Id</p>
-								</td>
-								<td style="font-weight: 500;"> : </td>
-								<td>
-								<p style="font-weight: 200;">${order.orderid}</p>
-								</td>
-								</tr>
-								
-								<tr>
-								<td>
-								<p style="font-weight:500;">Order Date</p>
-								</td>
-								<td style="font-weight: 500;"> : </td>
-								<td>
-								<p style="font-weight: 200;"><fmt:formatDate value="${order.orderDate}" pattern="${dateformatter}" /></p>
-								</td>
-								</tr>
-								<tr>
-								<td>
-								<p style="font-weight: 500;">Order Status</p>
-								</td>
-								<td style="font-weight: 500;"> : </td>
-								<td>
-								<p style="font-weight: 200;">${order.pickupStatus}</p>
-								</td>
-								</tr>
-						
-									
-</table>
-						
-					</div>
-					<div class="vi_right" style="line-height: 30px;">
-					<table
-						style="max-width:500px;border-spacing:10px 2px;">
-								
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
-								<tr>
-								<td>
-								<p style="font-weight:500;">City</p>
-								</td>
-								<td style="font-weight: 500;"> : </td>
-								<td>
-								<p style="font-weight: 200;">${customerModel.cities}</p>
-								</td>
-								</tr>
-								
-								<tr>
-								<td>
-								<p style="font-weight:500;">Location</p>
-								</td>
-								<td style="font-weight: 500;"> : </td>
-								<td>
-								<p style="font-weight: 200;">${customerModel.location}</p>
-								</td>
-								</tr>
-								<tr>
-								<td>
-								<p style="font-weight: 500;">State</p>
-								</td>
-								<td style="font-weight: 500;"> : </td>
-								<td>
-								<p style="font-weight: 200;">Maharstra, 342759</p>
-								</td>
-								</tr>
-						
-									
-</table>
-						
+					<div class="vi_left"></div>
+					<div class="vi_right">
 
+						
+						<div class="splash" style="line-height:30px;">
+							<div class="row">
+								<div class="col-75">
+									 
+									<h1><i class="fa fa-check-circle"
+									 style="font-size:40px; color: green"></i>  Thank You For Order !!!</h1>
+									<h4
+										style="color: #4CAF50; font-size: 85%; margin-top: 2%; text-align: center;">For
+										Shopping with Us</h4>
+									<h5 style="color: #4CAF50;">Recieve your order to your
+										pickup location</h5>
+									
+									<h3><i class="fas fa-map-marker-alt"
+									 style="font-size:40px; color: green"></i>${customerModel.cities},${customerModel.location}</h3>	
+									
+									   <a href="${pageContext.request.contextPath}/home"
+										style="display: inline-block; padding: 5px 70px; text-align: center; text-decoration: none; color: #ffffff; background-color:#4CAF50; border-radius:50px; outline: none; font-size: 15px;margin-top:15px;margin-bottom:35px;">Continue
+										Shopping</a>
+										
+								</div>
+							</div>
+
+						</div>
+						
 					</div>
 				</div>
-
 
 				<div class="view_item">
 					<div class="vi_left">
@@ -595,7 +695,7 @@ label {
 									class="product-line-price">Total</label> <label
 									class="product-removal">Remove</label>
 							</div>
-				<c:forEach var="orderitem" items="${listorderitem}">
+							<c:forEach var="orderitem" items="${listorderitem}">
 								<div class="product">
 									<div class="product-image">
 										<spring:url value="/images" var="images" />
@@ -614,10 +714,10 @@ label {
 											maxFractionDigits="2" value="${orderitem.product.price}" />
 									</div>
 									<div class="product-quantity">
-										<p class="product-description" style="margin-left:20px;">${orderitem.productQuantity}</p>
+										<p class="product-description" style="margin-left: 20px;">${orderitem.productQuantity}</p>
 										<!--  <input type="text" value="2" min="1"> -->
 									</div>
-									<div class="product-line-price" style="margin-left:10px;">
+									<div class="product-line-price" style="margin-left: 10px;">
 										${repee_sign}
 										<fmt:formatNumber type="number" minFractionDigits="2"
 											maxFractionDigits="2" value="${orderitem.totalAmount}" />
@@ -666,7 +766,14 @@ label {
 									<span style="font-weight: 500;">Mode Of Payment</span> :
 									Pay Online
 								</p>
-								
+								<!-- <p style="font-weight: 200;">
+									<span style="font-weight: 500;">Date</span> :
+									January, 13 2021
+								</p> -->
+								<%-- <p style="font-weight: 200;">
+									<span style="font-weight: 500;">OrderStatus</span> :
+									${order.pickupStatus}
+								</p> --%>
 							</div>
 						</th>
 
@@ -676,24 +783,44 @@ label {
 									<span style="font-weight: 500;">Payment Method</span> :
 									Net Banking
 								</p>
-								
 
 							</div>
 						</th>
 					</table>
 				</div>
+				
+				
+				
 
-			<span colspan="2"
-										style="width: 100%;font-style: italic; font-size: 13px; font-weight: 600; color: #666666; padding: 15px 0;margin-left:170px;">
-										<b style="font-size: 14px;"></b>If you have any questions
-										about your order, please contact us toll free at (+91) 982 357
-										6042. For Refund Money <a href="#" id="myBtn">click here</a>
+			</div>
+		</div>
+	</div>
 
-									</span>
-									
+
+
+<div class="wrapper">
+
+		<div class="view_main">
+			<div class="view_wrap list-view">
+
+				<div class="view_item">
+					
+					<div style="margin: 0 auto;">
+					<p style="font-size:12px;">Created By VeggieFridge Copyright © 2021 All Rights
+								Reserved.</p>
+
+						
+					</div>
+				</div>
+
+			
+				
+
+			</div>
+		</div>
 	</div>
-	</div>
-	</div>
+
+
 
 	<script>
 		var close = document.getElementsByClassName("closebtn");
@@ -710,33 +837,25 @@ label {
 		}
 	</script>
 
-	<jsp:include page="footer.jsp"></jsp:include>
-	
-	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<p
-				style="margin-top:10%; text-align: center;">Do
-				You Want to Refund Money</p>
-			<h2 style="margin-top:8%; text-align: center;">
-				
-				In Your Wallet
-			</h2>
-			
-			<table style="max-width:80px; margin:20px auto; border-spacing:20px 2px;">
-			<th>
-				<a
+			<p style="margin-top: 10%; text-align: center;">Do You Want to
+				Refund Money</p>
+			<h2 style="margin-top: 8%; text-align: center;">In Your Wallet</h2>
+
+			<table
+				style="max-width: 80px; margin: 20px auto; border-spacing: 20px 2px;">
+				<th><a
 					href="${pageContext.request.contextPath}/wallet/addRefudMoneyInWallet/${order.orderid}"
-					style="display: inline-block; padding: 15px 45px; text-align: center; text-decoration: none; color: black; background-color:#f4f0ec; outline: none; margin-top: 6px; font-size: 15px; border: 1px solid black;">Yes</a>
-					</th>
-					<th>
-				<a href="#"
-					style="display: inline-block; padding: 15px 45px; text-align: center; text-decoration: none; color:black; background-color:white;outline: none; margin-top: 6px; font-size: 15px; border: 1px solid black;">No</a>
-                     </th>
+					style="display: inline-block; padding: 15px 45px; text-align: center; text-decoration: none; color: black; background-color: #f4f0ec; outline: none; margin-top: 6px; font-size: 15px; border: 1px solid black;">Yes</a>
+				</th>
+				<th><a href="#"
+					style="display: inline-block; padding: 15px 45px; text-align: center; text-decoration: none; color: black; background-color: white; outline: none; margin-top: 6px; font-size: 15px; border: 1px solid black;">No</a>
+				</th>
 			</table>
 		</div>
 

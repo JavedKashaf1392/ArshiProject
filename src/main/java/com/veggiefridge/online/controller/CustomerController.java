@@ -39,6 +39,7 @@ public class CustomerController {
 	private static final Logger logger = Logger.getLogger(CustomerController.class);
 
 	public CustomerController() {
+		
 		System.out.println("CustomerController()");
 	}
 
@@ -51,13 +52,8 @@ public class CustomerController {
 	@Autowired
 	private HttpSession session;
 
-	// get cartPage
-	/*
-	 * private CartPage getCartPage() { return ((CustomerModel)
-	 * session.getAttribute("customerModel")).getCartpage(); }
-	 */
-
 	// getAll Customer
+	
 	@RequestMapping(value = "/listCustomer")
 	public ModelAndView listCustomer(ModelAndView model) throws IOException {
 		List<Customer> listCustomer = customerService.getAllCustomers();
@@ -67,6 +63,7 @@ public class CustomerController {
 	}
 
 	// add customer
+	
 	@RequestMapping(value = "/newCustomer", method = RequestMethod.GET)
 	public ModelAndView newCustomer(ModelAndView model) {
 		Customer customer = new Customer();
@@ -76,6 +73,7 @@ public class CustomerController {
 	}
 
 	// save and update customer
+	
 	@RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
 	public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,
 			HttpSession session) throws NoSuchAlgorithmException {
@@ -137,6 +135,7 @@ public class CustomerController {
 	}
 
 	// delete customer
+	
 	@RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
 	public String deleteCustomer(@RequestParam("customerid") Integer customerId) {
 		customerService.deleteCustomer(customerId);
@@ -144,6 +143,7 @@ public class CustomerController {
 	}
 
 	// getAll Customer
+	
 	@RequestMapping(value = "/androidlistCustomer")
 	@ResponseBody
 	public List<Customer> androidCustomer() {
@@ -151,11 +151,9 @@ public class CustomerController {
 		return listCustomer;
 	}
 
-//////////////////////////////////////////////////////////////
-/////////////////////////////////////////////// Customer API's
 
-// Login customer into database
-// http://localhost:8082/vfs-online/android/login?email=me@gmail.com&password=90
+    // http://localhost:8082/vfs-online/android/login?email=me@gmail.com&password=90
+	
 	@ResponseBody
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
 	public Customer loginCustomer(HttpServletRequest request) {
@@ -175,6 +173,7 @@ public class CustomerController {
 	}
 
 	// edit customer
+	
 	@RequestMapping(value = "/searchCustomer", method = RequestMethod.GET)
 	public ModelAndView searchCustomer(HttpServletRequest request) {
 		int customerid = Integer.parseInt(request.getParameter("customerid"));
@@ -183,52 +182,5 @@ public class CustomerController {
 		model.addObject("customer", customer);
 		return model;
 	}
-
-	// edit customer
-	/*
-	 * @RequestMapping(value = "/editProfile{customerid}", method =
-	 * RequestMethod.GET) public ModelAndView editProfile() {
-	 * System.out.println("editProfile"); Customer customer =
-	 * customerService.getCustomer(this.getCartPage().getCustomer().getCustomerid())
-	 * ; System.out.println("customer" + customer.toString());
-	 * System.out.println("customName" + customer.getFirstName()); ModelAndView
-	 * model = new ModelAndView("editprofile"); model.addObject("customer",
-	 * customer); return model; }
-	 */
-	// save and update customer
-	/*
-	 * @RequestMapping(value = "/saveEditProfile", method = RequestMethod.POST)
-	 * public String saveEditCustomer(@Valid @ModelAttribute("customer") Customer
-	 * customer, BindingResult result, HttpSession session) throws
-	 * NoSuchAlgorithmException { customerService.updateCustomer(customer); return
-	 * "redirect:/customer/editProfile/{customerid}"; }
-	 */
-	// changePassword
-	/*
-	 * @RequestMapping(value = "/changePassword/{email}") public String
-	 * resetPassword(@PathVariable String email, Model model) { //check if the email
-	 * id is valid and registered with us. Customer customer = new Customer();
-	 * customer.setEmail(email); model.addAttribute("customer", customer); return
-	 * "editPassword"; }
-	 */
-
-	// mapping set New Password
-	/*
-	 * @RequestMapping(value = "/newPasswordChange", method = RequestMethod.POST)
-	 * public String setNewPassword(@ModelAttribute("customer") Customer cust,
-	 * ModelMap map, BindingResult resultcust) {
-	 * 
-	 * Customer customer = customerService.getCustomerByEmail(cust.getEmail()); if
-	 * (customer != null) {
-	 * 
-	 * // update password and Acct Status $ Displyay Successe Message
-	 * 
-	 * customer.setPassword(cust.getNewPassword());
-	 * customer.setPassword(EncryptPassword.sha256(cust.getNewPassword()));
-	 * customerService.updateCustomer(customer);
-	 * System.out.println("update customer successfully"); }
-	 * 
-	 * return "redirect:/customer/changePassword/{email}"; }
-	 */
 
 }

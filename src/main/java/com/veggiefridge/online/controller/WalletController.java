@@ -31,6 +31,7 @@ import com.veggiefridge.online.model.Orders;
 import com.veggiefridge.online.model.Payment;
 import com.veggiefridge.online.model.Wallet;
 import com.veggiefridge.online.model.WalletPayment;
+import com.veggiefridge.online.service.MenuService;
 import com.veggiefridge.online.service.OrderService;
 import com.veggiefridge.online.service.ProductService;
 import com.veggiefridge.online.service.WalletService;
@@ -54,6 +55,9 @@ public class WalletController {
 	
 	@Autowired
 	private OrderService orderservice;
+	
+	@Autowired
+	private MenuService menuservice;
 
 	// get Wallet
 	private Wallet getWallet() {
@@ -75,13 +79,11 @@ public class WalletController {
 		System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
 		model.addObject("wallet", wallet);
 		String section = "Navbar";
-		List<Menu> listMenu = productService.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		List<WalletPayment> listwallettransaction=walletservice.listWalletPayment(this.getCartPage().getCustomer().getWallet().getWalletID());
 		model.addObject("listwallettransaction", listwallettransaction);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		
 		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("wallet");
@@ -98,11 +100,8 @@ public class WalletController {
 		model.addObject("wallet", wallet);
 
 		String section = "Navbar";
-		List<Menu> listMenu = productService.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.setViewName("wallet");
 		model.setViewName("/chooseanamount");
 		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
@@ -165,11 +164,8 @@ public class WalletController {
 		else {
 			model.addObject("message", env.getProperty("wallet.maxlimit"));
 			String section = "Navbar";
-			List<Menu> listMenu = productService.getMenuByNavbar(section);
-			String profilemenuSection = "Profile";
-			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-			model.addObject("listprofileMenu", listprofileMenu);
-			model.addObject("listMenu", listMenu);
+			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("listNavbarMenu",listNavbarMenu);
 			wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
 			System.out.println("wallet id" + wallet);
 			System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
@@ -214,11 +210,8 @@ public class WalletController {
 		parameters.remove("CHECKSUMHASH");
 		model.addObject("parameters", parameters);
 		String section = "Navbar";
-		List<Menu> listMenu = productService.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
 		System.out.println("wallet id" + wallet);
 		System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
@@ -246,11 +239,8 @@ public class WalletController {
 		List<WalletPayment> listWalletPaymnet = walletservice.listWalletPayment();
 		model.addObject("listWalletPaymnet", listWalletPaymnet);
 		String section = "Navbar";
-		List<Menu> listMenu = productService.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("wallet");
@@ -312,11 +302,8 @@ public class WalletController {
 		else {
 			model.addObject("message", env.getProperty("wallet.maxlimit"));
 			String section = "Navbar";
-			List<Menu> listMenu = productService.getMenuByNavbar(section);
-			String profilemenuSection = "Profile";
-			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-			model.addObject("listprofileMenu", listprofileMenu);
-			model.addObject("listMenu", listMenu);
+			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("listNavbarMenu",listNavbarMenu);
 			wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
 			System.out.println("wallet id" + wallet);
 			System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
@@ -386,11 +373,8 @@ public class WalletController {
 			else {
 				model.addObject("message", env.getProperty("wallet.maxlimit"));
 				String section = "Navbar";
-				List<Menu> listMenu = productService.getMenuByNavbar(section);
-				String profilemenuSection = "Profile";
-				List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-				model.addObject("listprofileMenu", listprofileMenu);
-				model.addObject("listMenu", listMenu);
+				List<Menu> listNavbarMenu = menuservice.getMenu(section);
+				model.addObject("listNavbarMenu",listNavbarMenu);
 				wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
 				System.out.println("wallet id" + wallet);
 				System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
@@ -400,7 +384,7 @@ public class WalletController {
 				model.setViewName("chooseanamount");
 				return model;
 			}
-			
 
 }
+		
 }

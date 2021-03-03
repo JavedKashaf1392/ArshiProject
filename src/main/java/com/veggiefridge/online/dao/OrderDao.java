@@ -42,5 +42,5 @@ public interface OrderDao {
 	public List<Orders> getAllOrders(int customerid, String pickupStatus);
 	
 	public List<Orders> getOrdersBetweenDatespickupStatus(int customerid,String pickupStatus,Date fromDate, Date toDate);
-
+  
 }

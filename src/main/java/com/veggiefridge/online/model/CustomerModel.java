@@ -22,7 +22,7 @@ public class CustomerModel implements Serializable {
 	
 	private Wallet wallet;
 	
-	
+
 	public Wallet getWallet() {
 		return wallet;
 	}

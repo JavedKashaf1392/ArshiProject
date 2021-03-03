@@ -54,14 +54,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductsBycatogary(category);
 	}
 
+	
 	@Override
-	public List<Images> getImagesBySection(String imageSection) {
-		return productDAO.getImagesBySection(imageSection);
-	}
-
-	@Override
-	public List<Menu> getMenuByNavbar(String section) {
-		return productDAO.getMenuByNavbar(section);
+	public List<Product> GetAllProductByCatogary(String category) {
+		
+		return productDAO.GetAllProductByCatogary(category);
 	}
 }
 	

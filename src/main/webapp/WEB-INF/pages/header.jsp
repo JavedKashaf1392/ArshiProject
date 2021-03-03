@@ -237,7 +237,7 @@ nav .navbar a:hover{
     width:100%;
     height:69px;
     /*  background-image:url(../images/shadow.svg); */
-    /* background-image:url("images/shadow.svg");  */
+   /*  background-image:url("images/shadow.svg"); */
     background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
@@ -256,8 +256,8 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-   /*    background-image:url("/images/shadow-sm.svg"); 
-    background-repeat: no-repeat; */ 
+    background-image:url("/images/shadow-sm.svg"); 
+    background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
     bottom:-20px;
@@ -270,8 +270,6 @@ nav .navbar a:hover{
     -o-transform:translateX(-50%);
      box-shadow: 0px 0px 3px 1px #00000078; 
 }
-
-
 
 .nav-background .mobile-logo{
     padding:1rem;
@@ -546,7 +544,7 @@ ul{
   left: 70;
   width:20%;
   border-radius: 5px;
-  display: none;
+  /* display: none; */
 }
 [id^=btn]:checked + ul{
   display: block;
@@ -607,8 +605,9 @@ ul{
 </style>
 
 </head>
-<!-- ***************Body Code***************** -->
+
 <body>
+
 <!-- ......... HeadSection........ -->
             <div class="main-wrapper">
             <div class="nav-background">
@@ -689,6 +688,7 @@ ul{
                         <h6>Mon - Sat (8.00am - 12.00am)</h6>
                     </div>
                 </div> --%>
+                
             </div>
         </div>
         
@@ -742,32 +742,34 @@ ul{
 <security:authorize access="hasAnyRole('ADMIN', 'USER')">
 
 <div class="dropdown">
+
 <spring:url value="/images" var="images" />
 <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
 <span class="fas fa-caret-down" style="color: white;"></span>
-                          
-                          <ul class="dropdown-content">
-<li><a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}">My Profile</a></li>
-<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem">My Cart</a></li>
+
+<ul class="dropdown-content">
+<c:forEach var="menu" items="${requestScope.listProfileMenu}">
 <li>
-          <label for="btn-3" class="second" style="color: white;">My Orders
-            <span class="fas fa-caret-down"></span>
+          <label for="btn-3" class="second" style="color: white;">${menu.menues}
+          <span class="fas fa-caret-down"></span><%-- ${menu.menues} --%>
           </label>
           <input type="checkbox" id="btn-3" style="display: none;">
+          
+       
 <ul>
-<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">Current</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}">Delivered</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}">Cancelled</a></li>
+<c:forEach var="submenu"
+						items="${requestScope.submenu[menu.menuID]}">
+<li><a href="#">${submenu.subMenu}</a></li>
+<!-- <li><a href="#">Delivered</a></li>
+<li><a href="#">Cancelled</a></li> -->
+</c:forEach>
 </ul>
 </li>
-<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}">My Wallet</a></li>
-
-<li><a href="<c:url value="/logout"/>">Log Out</a></li>
+</c:forEach>
 </ul>
-                          
-                        
-                          </div>
-                          <span class="divider">|</span>  
+</div>
+
+<span class="divider">|</span>  
 </security:authorize>
                             
                             <security:authorize access="isAnonymous()">
@@ -820,7 +822,7 @@ ul{
                            <div class="contact flex items-center">
                        
                                <div>
-                      <table style="margin-left:40px;">
+                      <table>
                       
 					 <th><a href="abc.htm"> <spring:url value="/images" var="images" />
    <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
@@ -830,7 +832,6 @@ ul{
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
 					</a></th>
 				</table>
-
    
                                     <!--  <h5>Call US: (+84) 123 456 789</h5>
                                     <h6>E-mail : support@freshmeal.com</h6> -->
@@ -846,8 +847,8 @@ ul{
   background: #fff;
   transition: all 0.3s ease; top:40%;
   left:48%;">
-  <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
-  <button type="submit" class="search-button">
+  <input type="search" value="" placeholder="Search..." class="search-input" id="myInput">
+ 
   </button>
   </form>
                                 <!-- <img src="./icons/logo.svg" alt=""> -->
@@ -861,31 +862,28 @@ ul{
                                     <h6>Mon - Sat (8.00am - 12.00am)</h6>
                                 </div> -->
                                 <spring:url value="/images" var="images" />
-   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                                <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
                                <!--  <img src="/images/phone.svg" alt=""> -->
                                 <div>
-                                      <h5>Call Us: (+91) 982 357 6042  </h5>
+                                    <h5>Call Us: (+91) 982 357 6042  </h5>
                                     <h6>E-mail : support@veggiefridge.com</h6>
-                            </div>
-                        </div>
                     </div>
-                    <security:authorize access="isAnonymous() or hasRole('USER')">
-                    
-                    <div class="navbar magic-shadow" style="font-family: Montserrat;font-weight:300px;">
-                           <div class="container flex justify-center">
-                            <a href="${pageContext.request.contextPath}/home" class="active">Home</a>
-                          <c:forEach var="menu" items="${listMenu}">
-                            <a href="#">${menu.menues}</a>
-                           <!--  <a href="#">Products</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Shop</a>
-                            <a href="#">Services</a>
-                            <a href="#">Gallery</a>
-                            <a href="#">Contact us</a> -->
-                            </c:forEach>
-                        </div>
                     </div>
-                    
+                    </div>
+                     <security:authorize access="isAnonymous() or hasRole('USER')">
+                    <div class="navbar magic-shadow">
+                    <div class="container flex justify-center">
+                    <a href="${pageContext.request.contextPath}/home" class="active">Home</a>      
+                    <c:forEach var="menu" items="${listNavbarMenu}"> 
+                    <a href="${menu.url}" onclick="location.href=this.href+'?param='+${menu.jsvar};return false;">${menu.menues}</a>
+   
+    <script> 
+     var ${menu.jsvar} = '${menu.paramKey}'
+    </script> 
+    
+    </c:forEach> 
+    </div>
+    </div>
                      </security:authorize>
                      
                       <security:authorize access="hasRole('ADMIN')">

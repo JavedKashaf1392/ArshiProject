@@ -10,7 +10,9 @@
  <link rel="icon" type="image/jpg" href="images/logo.jpg">
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>LOCATION DETAILS</title>
+  
   <style>
+  
    div {
   /* border: 1px solid #ffffff; */
   text-align: center;

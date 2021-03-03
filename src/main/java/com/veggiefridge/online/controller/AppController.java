@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,16 +77,13 @@ public class AppController {
 	public ModelAndView permitAll(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model,@ModelAttribute("menu") Menu menu) {
 		String imageSection = "Header";
+		List<Images> headerImages = menuservice.getImagesBySection(imageSection);
 		List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();
 		List<Customer> listCustomer = customerservice.getAllCustomers();
-		List<Images> headerImages = productService.getImagesBySection(imageSection);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
 		String section = "Navbar";
-		List<Menu> listMenu = productService.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("headerImages", headerImages);
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation", listkiosklocation);
@@ -99,7 +96,6 @@ public class AppController {
 	}
 		
 		//Home Menu Url
-	
 		@RequestMapping(value = "/home", method = RequestMethod.GET)
 		public ModelAndView registerdhome(HttpServletRequest request, HttpServletResponse response,
 				@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
@@ -107,13 +103,10 @@ public class AppController {
 			List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
 			List<Product> listProduct = productService.getAllProducts();
 			List<Customer> listCustomer = customerservice.getAllCustomers();
-			List<Images> headerImages = productService.getImagesBySection(imageSection);
-			String profilemenuSection = "Profile";
-			List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-			model.addObject("listprofileMenu", listprofileMenu);
+			List<Images> headerImages = menuservice.getImagesBySection(imageSection);
 			String section = "Navbar";
-			List<Menu> listMenu = productService.getMenuByNavbar(section);
-			model.addObject("listMenu", listMenu);
+			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("listNavbarMenu", listNavbarMenu);
 			model.addObject("headerImages", headerImages);
 			model.addObject("listCustomer", listCustomer);
 			model.addObject("listkiosklocation", listkiosklocation);
@@ -135,15 +128,18 @@ public class AppController {
 			
 			if (error != null) {
 				model.addObject("error","Invalid username and password!");
-				getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION");
+				getErrorMessage(request,"SPRING_SECURITY_LAST_EXCEPTION");
+				
 			}
 
 			if (logout != null) {
-				model.addObject("msg", "You've been logged out successfully.");
+				model.addObject("msg",VFOnlineConstants.LOGOUT);
 			}
+			model.addObject("error_msg", VFOnlineConstants.WRONG_EMAIL_PASSWORD);
 			model.setViewName("loginform");
 
 			return model;
+			
 
 		}
 	    
@@ -163,7 +159,7 @@ public class AppController {
 		      if (auth != null){    
 		         new SecurityContextLogoutHandler().logout(request, response, auth);
 		      }
-		      return "redirect:/home";
+		      return "veggiefridge";
 		   }
 
 		//Acess Denied
@@ -197,21 +193,13 @@ public class AppController {
 	
 	{ 
 		String imageSection = "Header";
+		List<Images> headerImages = menuservice.getImagesBySection(imageSection);
 		List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 		List<Product> listProduct = productService.getAllProducts();
 		List<Customer> listCustomer = customerservice.getAllCustomers();
-		List<Images> headerImages = productService.getImagesBySection(imageSection);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productService.getMenuByNavbar(profilemenuSection);
-	     model.addObject("listprofileMenu",listprofileMenu);
 		String section = "Navbar";
-		List<Menu> listMenu = productService.getMenuByNavbar(section);
-	    model.addObject("listMenu",listMenu);
-	     
-	 
-			
-			//request.setAttribute("ListCancelOrderByDate", ListCancelOrderByDate);
-			//request.setAttribute("orderitems", orderitems);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+	    model.addObject("listNavbarMenu",listNavbarMenu);
 	    model.addObject("headerImages",headerImages);
 		model.addObject("listCustomer", listCustomer);
 		model.addObject("listkiosklocation",listkiosklocation);
@@ -278,34 +266,94 @@ public class AppController {
 	}
 	
 	
-	
-                @RequestMapping(value ="/head")
-				public ModelAndView head(ModelAndView model,@ModelAttribute("menu")Menu menu) {
-	            	String section = "Profile";
-					List<Menu> listprofileMenu = menuservice.getMenuProfile(section);
-					String section2 = "Navbar";
-					List<Menu> listMenu = productService.getMenuByNavbar(section2);
-					model.addObject("listMenu", listMenu);
-					//SubMenu
-				    //Map submenues = new HashMap();
-					//for (Iterator it = listprofileMenu.iterator(); it.hasNext();) {
-						//menu = (Menu) it.next();
-						//System.out.println(menu.toString());
-
-						//List<SubMenu> listsubmenu = menuservice.getSubMenuByMenues(menu.getMenues());
-						//System.out.println(listsubmenu.toString());
-						///submenues.put(menu.getMenues(), listsubmenu);
-						//model.addObject("submenues",
-								///submenues);
-					model.addObject("listprofileMenu",listprofileMenu);
-					model.setViewName("header");
-					return model;
-	            }
-				
-				
-				
-				
-				
-	
+     //Serach Products By catogary
+    @RequestMapping(value = "/ProductsByCatogary")
+    public ModelAndView ProductByFruits(HttpServletRequest request, HttpServletResponse response,
+				@ModelAttribute("Product") Product product, ModelAndView model) {
+     	
+    String imageSection = "Header";
+    String category = request.getParameter("param");
+     	System.out.println("Catogary"+ category);
+			List<Product> listProduct= productService.GetAllProductByCatogary(category);
+			System.out.println("All data" + listProduct.toString());
+			List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+			/* List<Product> listProduct = productService.getAllProducts(); */
+			List<Customer> listCustomer = customerservice.getAllCustomers();
+			List<Images> headerImages = menuservice.getImagesBySection(imageSection);
+			String section = "Navbar";
+			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("listNavbarMenu",listNavbarMenu);
+			model.addObject("headerImages", headerImages);
+			model.addObject("listCustomer", listCustomer);
+			model.addObject("listkiosklocation", listkiosklocation);
+			model.addObject("listProduct", listProduct);
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+			model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+			/* model.setViewName("registerdhome"); */ 
+			 model.setViewName("VeggieFridge");
+			return model;
+		}
+            
+    
+        //PickupAddressPaymrntOption
+  		@RequestMapping(value = "/PickupAddressPaymrntOption", method = RequestMethod.GET)
+  		public String PickupAddressPaymrntOption(ModelMap model) {
+			 return "PickupAddressPaymentOption"; 
+  			
+  		}
+  		
+  		
+  	    //PickupAddressPaymrntOption
+  	  		@RequestMapping(value = "/thankForOrder", method = RequestMethod.GET)
+  	  		public String thankForOrder(ModelMap model) {
+  	  			return "thanksfororder";
+  	  		}
+  	    
+    
+  	  	 //PickupAddressPaymrntOption
+  	  		@RequestMapping(value = "/demo", method = RequestMethod.GET)
+  	  		public String demo(ModelMap model) {
+  	  			return "demo";
+  	  		}
+  	  		
+  	  		
+  	  	
+  	      //addGuestCustomer
+  	  	 //save and update customer
+  	  	@RequestMapping(value = "/addguestcustomers", method = RequestMethod.POST)
+  	  	public ModelAndView addGuestCustomers(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
+  	  			
+  	  		 if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
+  	  			 // customer other updating the customer 
+  	  			 String roles="ROLE_USER";
+  	  		     customer.setRole(roles);
+  	  		     //String securePassword = get_SHA_256_SecurePassword(passwordToHash, salt);
+  	  		     //customer.setPassword(securePassword);
+  	  		     // create a new cart
+  	  		    CartPage cartpage= new CartPage();
+  	  		    cartpage.setCustomer(customer);
+  	  		    customer.setCartpage(cartpage);
+  	  		    Wallet wallet= new Wallet();
+  	  		    wallet.setCustomer(customer);
+  	  		    customer.setWallet(wallet);
+  	  		    customer.setPassword(EncryptPassword.sha256(customer.getPassword())); 
+  	  			customerservice.addCustomer(customer);
+  	  			logger.info("customer add succesfully");
+  	  			List<Customer> listCustomer = customerservice.getAllCustomers();
+  	  			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation(); 
+  	  			List<Product> listProduct = productService.getAllProducts();
+  	  			model.addObject("listkiosklocation",listkiosklocation);
+  	  		    model.addObject("listCustomer", listCustomer); 
+  	  			model.addObject("listProduct", listProduct);
+  	  			session.setAttribute("customer", customer);
+  	  			model.setViewName("loginform");
+  	  		}
+  	  		return model; 
+  	  		
+  	  	}
+  	  	
+  	    
+    
+      
 }
 

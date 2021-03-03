@@ -20,6 +20,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +46,7 @@ import com.veggiefridge.online.model.QrCode;
 import com.veggiefridge.online.model.Wallet;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
+import com.veggiefridge.online.service.MenuService;
 import com.veggiefridge.online.service.OrderService;
 import com.veggiefridge.online.service.PaymentService;
 import com.veggiefridge.online.service.ProductService;
@@ -83,6 +85,10 @@ public class OrderController {
 
 	@Autowired
 	private ProductService productservice;
+	
+	@Autowired
+	private MenuService menuservice;
+	
 
 	// get cartPage
 	private CartPage getCartPage() {
@@ -152,7 +158,7 @@ public class OrderController {
 		payment.setModeOfPayment("Pay At Kisok");
 		payment.setTotalBillAmount(orders.getTotalBillAmount());
 		paymentservice.savePayment(payment);
-		model.setViewName("thankyou");
+		model.setViewName("thanksfororder");
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
 		return model;
@@ -167,8 +173,8 @@ public class OrderController {
 		System.out.println("listOrderItem by OrderId" + listorderitem);
 		order = new Orders();
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("order", order);
 		model.addObject("listorderitem", listorderitem);
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
@@ -184,12 +190,10 @@ public class OrderController {
 		List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 		System.out.println("listOrderItem by OrderId" + listorderitem);
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("listorderitem", listorderitem);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject(listprofileMenu);
+		
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("orderinfo");
@@ -224,39 +228,12 @@ public class OrderController {
 			cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getTotal());
 			cartpage.setCartitem(cartpage.getCartitem() + 1);
 			cartservice.updateCartPage(cartpage);
-			String profilemenuSection = "Profile";
-			List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-			model.addObject(listprofileMenu);
 			model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 			model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
 			System.out.println("cartpage updated");
 		}
 		return "redirect:/cart/listCustomerCartItem";
 	}
-
-	// listCartItem
-	/*
-	 * @RequestMapping(value = "/pendingorders") public ModelAndView
-	 * fetchAllPendingOrders(ModelAndView model) { List<Orders>
-	 * fetchallpendingorders = orderservice.listpendingOrders();
-	 * System.out.println("fetch AllPending orderItemdetails");
-	 * model.addObject("fetchallpendingorders", fetchallpendingorders);
-	 * model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
-	 * model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
-	 * model.setViewName("CurrentOrder"); return model; }
-	 */
-
-	// listCartItem
-	/*
-	 * @RequestMapping(value = "/deliveredorder") public ModelAndView
-	 * fetchDelOrderByStatus(ModelAndView model) { List<Orders>
-	 * fetchalldeliveredorders = orderservice.listdeliveredOrders();
-	 * System.out.println("fetch All orderItemdetails");
-	 * model.addObject("fetchalldeliveredorders", fetchalldeliveredorders);
-	 * model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
-	 * model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
-	 * model.setViewName("myorder"); return model; }
-	 */
 
 	// PickupAddress
 	@RequestMapping(value = "/PickupAddress")
@@ -521,11 +498,9 @@ public class OrderController {
 		List<Orders> pendingOrders = orderservice.getPendingOrders(this.getCartPage().getCustomer().getCustomerid());
 		model.addAttribute("pendingOrders", pendingOrders);
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addAttribute("listMenu", listMenu);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addAttribute("listprofileMenu", listprofileMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addAttribute("listNavbarMenu",listNavbarMenu);
+		
 		model.addAttribute("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addAttribute("repee_sign", VFOnlineConstants.RUPEE_SIGN);
 		return "pendingorder";
@@ -537,11 +512,9 @@ public class OrderController {
 				.getDeliveredOrders(this.getCartPage().getCustomer().getCustomerid());
 		model.addAttribute("deliveredOrders", deliveredOrders);
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addAttribute("listMenu", listMenu);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addAttribute("listprofileMenu", listprofileMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addAttribute("listNavbarMenu",listNavbarMenu);
+		
 		model.addAttribute("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addAttribute("repee_sign", VFOnlineConstants.RUPEE_SIGN);
 		return "myorder";
@@ -591,12 +564,9 @@ public class OrderController {
 			orderitems.put(orders.getOrderid(), listorderitem);
 		}
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addAttribute("listMenu", listMenu);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addAttribute("listNavbarMenu",listNavbarMenu);
 		/* model.addAttribute("pendingOrders", pendingOrders); */
-		model.addAttribute("listprofileMenu", listprofileMenu);
 		/* model.addAttribute("orderitems", orderitems); */
 		model.addAttribute("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addAttribute("repee_sign", VFOnlineConstants.RUPEE_SIGN);
@@ -618,12 +588,9 @@ public class OrderController {
 			orderitems.put(orders.getOrderid(), listorderitem);
 		}
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addAttribute("listMenu", listMenu);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addAttribute("listNavbarMenu",listNavbarMenu);
 		/* model.addAttribute("pendingOrders", pendingOrders); */
-		model.addAttribute("listprofileMenu", listprofileMenu);
 		/* model.addAttribute("orderitems", orderitems); */
 		request.setAttribute("deliveredOrders", deliveredOrders);
 		request.setAttribute("orderitems", orderitems);
@@ -644,12 +611,8 @@ public class OrderController {
 			orderitems.put(orders.getOrderid(), listorderitem);
 		}
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addAttribute("listMenu", listMenu);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		/* model.addAttribute("pendingOrders", pendingOrders); */
-		model.addAttribute("listprofileMenu", listprofileMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addAttribute("listNavbarMenu",listNavbarMenu);
 		/* model.addAttribute("orderitems", orderitems); */
 		request.setAttribute("ListCancelOrderByDate", ListCancelOrderByDate);
 		request.setAttribute("orderitems", orderitems);
@@ -671,12 +634,9 @@ public class OrderController {
 		model.addObject("listorderitem", listorderitem);
 		model.addObject("order", order);
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		model.addObject("listMenu", listMenu);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		/* model.addAttribute("pendingOrders", pendingOrders); */
-		model.addObject("listprofileMenu", listprofileMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
+		
 		model.addObject("message", env.getProperty("order.cancelorder"));
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
@@ -691,11 +651,8 @@ public class OrderController {
 		model.addObject("order", order);
 		List<OrderItem> listorderitem = orderservice.listOrderItem(order.getOrderid());
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("listorderitem", listorderitem);
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
@@ -710,11 +667,8 @@ public class OrderController {
 		model.addObject("order", order);
 		List<OrderItem> listorderitem = orderservice.listOrderItem(order.getOrderid());
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("listorderitem", listorderitem);
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
@@ -729,11 +683,8 @@ public class OrderController {
 		model.addObject("order", order);
 		List<OrderItem> listorderitem = orderservice.listOrderItem(order.getOrderid());
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("listorderitem", listorderitem);
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
@@ -744,11 +695,8 @@ public class OrderController {
 	@RequestMapping(value = "/orderReview")
 	public ModelAndView orderReview(ModelAndView model) {
 		String section = "Navbar";
-		List<Menu> listMenu = productservice.getMenuByNavbar(section);
-		String profilemenuSection = "Profile";
-		List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-		model.addObject("listprofileMenu", listprofileMenu);
-		model.addObject("listMenu", listMenu);
+		List<Menu> listNavbarMenu = menuservice.getMenu(section);
+		model.addObject("listNavbarMenu",listNavbarMenu);
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 		model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
 		model.setViewName("orderreview");
@@ -789,12 +737,8 @@ public class OrderController {
 				
 				
 				String section = "Navbar";
-				List<Menu> listMenu = productservice.getMenuByNavbar(section);
-				model.addAttribute("listMenu", listMenu);
-				String profilemenuSection = "Profile";
-				List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-				/* model.addAttribute("pendingOrders", pendingOrders); */
-				model.addAttribute("listprofileMenu", listprofileMenu);
+				List<Menu> listNavbarMenu = menuservice.getMenu(section);
+				model.addAttribute("listNavbarMenu",listNavbarMenu);
 				/* model.addAttribute("orderitems", orderitems); */
 				request.setAttribute("ListCancelOrderByDate", ListCancelOrderByDate);
 				request.setAttribute("orderitems", orderitems);
@@ -815,6 +759,7 @@ public class OrderController {
 	
 	
 	     //Show All Order By PickupStatus
+	
 		@RequestMapping(value = "/showAllOrderByPickupStatus{customerid}", method = RequestMethod.POST)
 		public String showAllOrderByPickupStatus(HttpServletRequest req, Model model, HttpServletRequest request,
 				@RequestParam("pickupStatus") String pickupStatus,
@@ -848,13 +793,10 @@ public class OrderController {
 					//request.setAttribute("ListCancelOrderByDate", ListCancelOrderByDate);
 					//request.setAttribute("orderitems", orderitems);
 				}
-			        String section = "Navbar";
-					List<Menu> listMenu = productservice.getMenuByNavbar(section);
-					model.addAttribute("listMenu", listMenu);
-					String profilemenuSection = "Profile";
-					List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-					/* model.addAttribute("pendingOrders", pendingOrders); */
-					model.addAttribute("listprofileMenu", listprofileMenu);
+				String section = "Navbar";
+				List<Menu> listNavbarMenu = menuservice.getMenu(section);
+				model.addAttribute("listNavbarMenu",listNavbarMenu);
+					
 					/* model.addAttribute("orderitems", orderitems); */
 					request.setAttribute("ListOrders",ListOrders);
 					request.setAttribute("orderitems", orderitems);
@@ -867,6 +809,7 @@ public class OrderController {
 	
 		
 	     //Order Details
+		
 		@RequestMapping(value = "/orderdetails/{orderid}")
 		public ModelAndView orderDetails(ModelAndView model, @PathVariable(value = "orderid") int orderid,
 				@ModelAttribute("orders") Orders order, BindingResult resultorder) {
@@ -874,11 +817,9 @@ public class OrderController {
 			model.addObject("order", order);
 			List<OrderItem> listorderitem = orderservice.listOrderItem(order.getOrderid());
 			String section = "Navbar";
-			List<Menu> listMenu = productservice.getMenuByNavbar(section);
-			String profilemenuSection = "Profile";
-			List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-			model.addObject("listprofileMenu", listprofileMenu);
-			model.addObject("listMenu", listMenu);
+			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("listNavbarMenu",listNavbarMenu);
+			
 			model.addObject("listorderitem", listorderitem);
 			model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
 			model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
@@ -920,12 +861,9 @@ public class OrderController {
 					request.setAttribute("ListOrders", ListOrders);
 					request.setAttribute("orderitems", orderitems);
 					String section = "Navbar";
-					List<Menu> listMenu = productservice.getMenuByNavbar(section);
-					model.addAttribute("listMenu", listMenu);
-					String profilemenuSection = "Profile";
-					List<Menu> listprofileMenu = productservice.getMenuByNavbar(profilemenuSection);
-					/* model.addAttribute("pendingOrders", pendingOrders); */
-					model.addAttribute("listprofileMenu", listprofileMenu);
+					List<Menu> listNavbarMenu = menuservice.getMenu(section);
+					model.addAttribute("listNavbarMenu",listNavbarMenu);
+					
 					/* model.addAttribute("orderitems", orderitems); */
 					request.setAttribute("ListOrders",ListOrders);
 					request.setAttribute("orderitems", orderitems);
@@ -943,4 +881,33 @@ public class OrderController {
 			return "order";
 
 		}
+		
+		
+		         //Order Details
+		
+				@RequestMapping(value = "/thanksorderdetails/{orderid}")
+				public ModelAndView thanksorderdetails(ModelAndView model, @PathVariable(value = "orderid") int orderid,
+						@ModelAttribute("orders") Orders order, BindingResult resultorder) {
+					order = orderservice.getOrder(orderid);
+					model.addObject("order", order);
+					List<OrderItem> listorderitem = orderservice.listOrderItem(order.getOrderid());
+					String section = "Navbar";
+					List<Menu> listNavbarMenu = menuservice.getMenu(section);
+					model.addObject("listNavbarMenu",listNavbarMenu);
+					model.addObject("listorderitem", listorderitem);
+					model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+					model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+					model.addObject("OrderDetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+					model.setViewName("thanksfororder");
+					return model;
+				}
+				
+				
+				 //PickupAddressPaymrntOption
+		  		@RequestMapping(value = "/PickupAddressPaymrntOption", method = RequestMethod.GET)
+		  		public String PickupAddressPaymrntOption(ModelMap model) {
+		  			model.addAttribute("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+					 return "PickupAddressPaymentOption"; 
+		  			
+		  		}
 }

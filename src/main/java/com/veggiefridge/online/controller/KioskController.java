@@ -45,7 +45,8 @@ public class KioskController {
 		return model;
 	}
 
-	// newKiosk
+	 //newKiosk
+	
 	@RequestMapping(value = "/newKiosk")
 	public ModelAndView newKiosk(ModelAndView model, @ModelAttribute("kiosklocation") KioskLocation kiosklocation,
 			BindingResult resultlocation, @ModelAttribute("kiosk") Kiosk kiosk, BindingResult resultkiosk) {

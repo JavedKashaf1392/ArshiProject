@@ -13,6 +13,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+       
+       <script>
+       $("#target").click(function() {
+    	    var value = $(this).data("custom-value");
+    	    // do other stuff.
+    	});
+</script>
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function(){
@@ -21,14 +32,12 @@
             });
         });
         </script>
-        
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-      
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -36,7 +45,6 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
-
 <style>
 
 @import
@@ -66,7 +74,6 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 :root{  
     --white-light: rgba(255, 255, 255, 0.5);
     --alice-blue: #f8f9fa;
-  /*   --carribean-green: #40c9a2; */
     --carribean-green:green;
     --gray: #ededed;
 }
@@ -173,7 +180,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
      background:#4CAF50;
      /*  background:var(--secondary); */
       color:var(--pure);
-      font-family:"Raleway-semibold";
+     /*  font-family:"Raleway-semibold"; */
       padding:0.75rem 0;
       top: 0; 
   }
@@ -204,7 +211,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
      /*  margin-top:45px; */
   }
   nav .top .contact h5,  nav .top .time h5{
-     /*  font-family:"Raleway-black"; */
+      font-family:"Raleway-black"; 
       margin-bottom:0.25rem;
   }
   nav .top .contact h6, nav .top .time h6{
@@ -250,7 +257,7 @@ nav .navbar a:hover{
     width:100%;
     height:69px;
     /* background-image:url(../images/shadow.svg); */
-   background-image:url("images/shadow.svg");
+    background-image:url("images/shadow.svg");
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
@@ -320,7 +327,7 @@ header.hero p{
 }
 .btn{
     padding:0.75rem 0.75rem;
-    border-radius:4px;
+    border-radius:50px;
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     -ms-border-radius:4px;
@@ -779,7 +786,7 @@ section.contact-us .contact-info > div > div > div span:first-child{
     margin-right:1rem;
 }
 .nav-background .contact h5,.nav-background .time h5{
-   /*  font-family:"Raleway-bold"; */
+  font-family:"Raleway-bold"; 
     margin-bottom:0.25rem;
     font-size:1rem;
 }
@@ -1227,16 +1234,9 @@ section.contact-us .contact-info > div > div > div span:first-child{
 /* Slider Css */
     .galleryContainer {
     width: 100%;
-   /*  height: 500px; */
     height:500px;
     max-width: 1380px;
-   /*  margin: auto; */
     user-select: none;
-    /* box-shadow: 0px 0px 3px 1px #00000078; */
-   /*  padding: 10px; */
-    /*  box-sizing: border-box; */
-   /*  margin-left:97px; */
-    /* margin-right:50px; */
     margin:0 auto; 
     
 }
@@ -1440,15 +1440,15 @@ width:35px;
     margin: 0 auto;
 }
 
-/* ...............Loction Css.......... */
-
 /* The Modal (background) */
+
 .Location {
+
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top:50px; /* Location of the box */
-  left:0;
+  padding-top:40px; /* Location of the box */
+  left:100;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
@@ -1458,12 +1458,15 @@ width:35px;
 }
 
 /* Modal Content */
+
 .Location-content {
+
   background-color: #fefefe;
   margin: auto;
-  padding:40px;
+  padding:20px;
   border: 1px solid #888;
-  width:30%;
+  width:25%;
+  margin-left:49%;
       
 }
 
@@ -1497,11 +1500,12 @@ label {
 }
 
 input[type=submit] {
+
   background-color: #4CAF50;
   color: white;
-  padding: 12px 106px;
+  padding: 12px 110px;
   border: none;
-  border-radius: 4px;
+  border-radius:50px;
   cursor: pointer;
   float: right;
   margin-top: 10px;
@@ -1530,6 +1534,7 @@ input[type=submit]:hover {
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {
     width: 100%;
@@ -1543,6 +1548,7 @@ input[type=submit]:hover {
   position: relative;
   display: inline-block; 
 }
+
 .dropdown-content {
   display: none;
   position:absolute;
@@ -1779,13 +1785,13 @@ ul{
                             
                           <security:authorize access="hasAnyRole('ADMIN', 'USER')">
                           
-                          <div class="dropdown">
+<div class="dropdown">
 <spring:url value="/images" var="images" />
 <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
 <span class="fas fa-caret-down" style="color: white;"></span>
                           
                           <ul class="dropdown-content">
-<li><a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}">My Profile</a></li>
+<li><a href="${pageContext.request.contextPath }/myaccount/editProfile">My Profile</a></li>
 <li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem">My Cart</a></li>
 <li>
           <label for="btn-3" class="second" style="color: white;">My Orders
@@ -1802,30 +1808,11 @@ ul{
 
 <li><a href="<c:url value="/logout"/>">Log Out</a></li>
 </ul>
-                          
-                        
-                          </div>
-                          <span class="divider">|</span>  
-                          
-                          
-
-
+ </div>
+<span class="divider">|</span>  
 </security:authorize>
-                       
                             
-                            
-                           <%--  <security:authorize access="isAnonymous()">
-                            <div>
-                            <spring:url value="/images" var="images" />
-                            <img src="${images}/location.png"  width="15" height="15" alt=""/>
-                            <!--   <img src="./icons/user-icon.svg" alt=""> -->
-                            <a href="#">Nagpur,Mihan</a>
-                            </div>
-                             <span class="divider">|</span>
-                            </security:authorize> --%>
-                            
-                            
-                             <security:authorize access="hasRole('USER')">
+                            <security:authorize access="hasRole('USER')">
                             <div>
                             <spring:url value="/images" var="images" />
                             <img src="${images}/location.png"  width="15" height="15" alt=""/>
@@ -1858,31 +1845,20 @@ ul{
                     </div>
                 </header>
                 
-          <nav>                    
+                <nav>                    
+                
                 <div class="top">
-                        <div class="container flex justify-between">
-                        
-                       <%--  <div>
-                        <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg"  width="50" height="50" alt=""/>
-   </div> --%>
+                <div class="container flex justify-between">
+              
                             <div class="contact flex items-center">
-                         <%--   <spring:url value="/images" var="images" />
-   <img src="${images}/logo.jpg"  width="50" height="50" alt=""/>
-                           <spring:url value="/images" var="images" />
-   <img src="${images}/phone.svg"  width="25" height="25" alt=""/>  --%>
-                               <!--  <img src="/images/phone.svg" alt=""> --> 
-   <div style="margin-left:40px;">
-   <table CELLSPACING=0 CELLPADDING=5>
-					 <th align=Right><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <spring:url value="/images" var="images" />
    <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
-					</a></th>
-					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
+                      
+   <div>
+   <spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
-					</a></th>
-				</table>
-                                    <!--  <h5>Call US: (+84) 123 456 789</h5>
-                                    <h6>E-mail : support@freshmeal.com</h6> -->
+           <!--  <h5>Call US: (+84) 123 456 789</h5>
+           <h6>E-mail : support@freshmeal.com</h6> -->
                               </div>   
                             </div>
                             <div class="branding">
@@ -1923,25 +1899,25 @@ ul{
                             </div>
                         </div>
                     </div>
+                    
                     <security:authorize access="isAnonymous() or hasRole('USER')">
                     <div class="navbar magic-shadow">
-                           <div class="container flex justify-center">
-                            <a href="${pageContext.request.contextPath}/home" class="active">Home</a>
-                          <c:forEach var="menu" items="${listMenu}">
-                            <a href="#">${menu.menues}</a>
-                           <!--  <a href="#">Products</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Shop</a>
-                            <a href="#">Services</a>
-                            <a href="#">Gallery</a>
-                            <a href="#">Contact us</a> -->
-                            </c:forEach>
-                        </div>
-                    </div>
+                    <div class="container flex justify-center">
+                    
+                    <a href="${pageContext.request.contextPath}/home" class="active">Home</a>      
+                    <c:forEach var="menu" items="${listNavbarMenu}"> 
+                    <a href="${menu.url}" onclick="location.href=this.href+'?param='+${menu.jsvar};return false;">${menu.menues}</a>
+                   
+   
+     <script> 
+        var ${menu.jsvar} = '${menu.paramKey}'
+    </script> 
+    </c:forEach> 
+   </div>
+   </div>
                      </security:authorize>
-                     
                       <security:authorize access="hasRole('ADMIN')">
-                    <div class="navbar magic-shadow">
+                     <div class="navbar magic-shadow">
                             <div class="container flex justify-center">
                             <a href="#" class="active">Home</a>
                             <a href="#">Manage Product</a>
@@ -1975,12 +1951,7 @@ ul{
                         </div>
                     </div>
                 </header>
-               
-               <!--  </div>
-                </div>
-                </div> -->
-            
-              
+ 
      <!-- Products   -->
      
      <security:authorize access="isAnonymous() or hasRole('USER')">
@@ -1989,6 +1960,7 @@ ul{
                 <h1 class = "lg-title">Fresh Vegetables And Milk</h1>
                 <p class ="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
                 <div class = "product-items">
+                    
                     <!--1. single product -->
                    <c:forEach var="product" items="${listProduct}">
                    <div class = "product">
@@ -2001,9 +1973,14 @@ ul{
                               <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
                             </div>
                             <div class = "product-btns">
-                            <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem/${product.productid}'"> add to cart
+                           
+                            <form action="${pageContext.request.contextPath }/cart/addToCartPageItems" modelAttribute="product">
+                           <%--  <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem'" value="${product.productid}"> add to cart --%>
+                            <input type="hidden" value="${product.productid}" name="productid">
+                            <button type ="submit" class = "btn-cart"> add to cart
                             <span><i class = "fas fa-shopping-cart"></i></span>
                             </button>
+                            </form>
                          
  <!-- <button onclick="increment()" class ="qty">+</button>
 <input id=demoInput type=text min=1 max=9 class = "number" value="1" style="text-align: center;width:35px;">
@@ -2380,20 +2357,14 @@ function playPauseSlides() {
 					</tr>
 				</c:forEach>
 			    </table>
-
-			<%--  <div><input class="button button1" type="submit" value="Add" formaction="${pageContext.request.contextPath}/product/newProduct"/>
-   <input class="button button1" type="submit" value="Delete" 
-                       formaction="${pageContext.request.contextPath}/product/deleteProduct" onclick="return confirm('Are you sure to delete?')" />
-   <input class="button button1" type="submit" value="Update" formaction="${pageContext.request.contextPath}/product/editProduct" />
-   <input class="button button1" type="submit" value="Search" formaction="${pageContext.request.contextPath}/product/searchProduct" />
-   </div>  --%>
-
-			<div style="margin-top: 5px; align-content: center; margin-left: 27%">
+			    
+			    <div style="margin-top: 5px; align-content: center; margin-left: 27%">
 				<input type="submit"
 					style="width: 200px; cursor: pointer; margin: 5px 5px; font-size: 16px; text-decoration: none; border-radius: 8px; text-align: center; color: white; background-color: #4CAF50; padding: 15px; border: none;"
 					value="Add"
 					formaction="${pageContext.request.contextPath}/product/newProduct"">
-				<input type="submit"
+				    
+				    <input type="submit"
 					style="width: 200px; cursor: pointer; margin: 5px 5px; font-size: 16px; text-decoration: none; border-radius: 8px; text-align: center; color: white; background-color: #4CAF50; padding: 15px; border: none;"
 					value="Delete"
 					formaction="${pageContext.request.contextPath}/product/deleteProduct"
@@ -2532,18 +2503,17 @@ function playPauseSlides() {
        <jsp:include page="footer.jsp"/>
        
  <!--Location Modal content -->
- <!-- The Modal -->
-<div id="myLocation" class="Location">
+ 
+  <!-- The Modal -->
+  <div id="myLocation" class="Location">
 
   <!-- Modal content -->
-  <div class="Location-content">
+ <div class="Location-content">
  <span class="close">&times;</span>
- <p style="text-align: center;margin-bottom:15px;">Select Your city to start shopping</p>     
  
-  <div class="container" style="border-radius: 5px;
-  background-color: #f2f2f2;
-  padding:24px;">
+  <div class="container">
   <form action="/action_page.php">
+  <p style="text-align: center;margin-bottom:15px;">Select Your city to start shopping</p>     
    
     <div class="row">
       <div class="col-25">
@@ -2551,9 +2521,9 @@ function playPauseSlides() {
       </div>
       <div class="col-75">
         <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+          <option value="Nagpur">Nagpur
+          <option value="Hyderabad">Hyderabad</option>
+          
         </select>
       </div>
     </div>
@@ -2564,9 +2534,8 @@ function playPauseSlides() {
       </div>
       <div class="col-75">
         <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+          <option value="Mihan">Mihan</option>
+          <option value="Ameerpet">Ameerpet</option>
         </select>
       </div>
     </div>
@@ -2576,9 +2545,11 @@ function playPauseSlides() {
     </div>
   </form>
 </div>
-  </div>
-
 </div>
+</div>
+
+
+
  
 <script>
 var close = document.getElementsByClassName("closebtn");
@@ -2636,6 +2607,7 @@ for (i = 0; i < close.length; i++) {
 });
        </script>
        
+       
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -2676,7 +2648,7 @@ window.onclick = function(event) {
 }
 </script>
 
-
-   
 </body>
 </html>
+
+

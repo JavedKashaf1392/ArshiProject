@@ -134,6 +134,7 @@ opacity: 0.8;
 }
 
 
+   }
    
 </style>    
     
@@ -318,7 +319,6 @@ function checkInputs() {
 	/* else if(mobileValue.charAt(0)!= 9 || mobileValue.charAt(0)!=2){
 		setErrorFor(mobile, 'it should start with 9 or 2');
 		}
-	
 	 */
 	 else {
 		setSuccessFor(mobile);
