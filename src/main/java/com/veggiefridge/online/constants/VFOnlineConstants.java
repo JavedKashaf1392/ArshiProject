@@ -80,6 +80,8 @@ public class VFOnlineConstants {
 	
 	public static final String LOGOUT=" You've been logged out successfully";
 	
+	public static final String CART_UPDATE=" cart updated";
+	
 	/* ..... Clint Side ErrorMasg ..... */
 	
 	

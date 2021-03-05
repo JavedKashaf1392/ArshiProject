@@ -38,14 +38,21 @@ public class MenuServiceImpl implements MenuService {
 		return menudao.listSubMenu(menuID);
 	}
 
+	
+
 	@Override
-	public List<Menu> getMenuAndSubMenu(String section, int parentId) {
-		return menudao.getMenuAndSubMenu(section, parentId);
+	public List<Menu> getMenuAndSubMenu() {
+		return menudao.getMenuAndSubMenu();
 	}
 
 	@Override
-	public List<Menu> getmenuandsubMenu(String section, int parentId) {
-		return menudao.getmenuandsubMenu(section, parentId);
+	public List<Menu> getMenuAndSubMenu(String section, int parentId) {
+		return null;
+	}
+
+	@Override
+	public List<Menu> getmenuandsubMenu(String section) {
+		return menudao.getmenuandsubMenu(section);
 	}
 
 	

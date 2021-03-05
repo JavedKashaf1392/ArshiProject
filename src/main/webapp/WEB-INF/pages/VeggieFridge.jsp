@@ -1783,14 +1783,13 @@ ul{
                             <span class="divider">|</span> 
                             </security:authorize>
                             
-                          <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-                          
+<security:authorize access="hasAnyRole('ADMIN', 'USER')">
 <div class="dropdown">
 <spring:url value="/images" var="images" />
 <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
 <span class="fas fa-caret-down" style="color: white;"></span>
                           
-                          <ul class="dropdown-content">
+<ul class="dropdown-content">
 <li><a href="${pageContext.request.contextPath }/myaccount/editProfile">My Profile</a></li>
 <li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem">My Cart</a></li>
 <li>
@@ -1810,8 +1809,7 @@ ul{
 </ul>
  </div>
 <span class="divider">|</span>  
-</security:authorize>
-                            
+</security:authorize>     
                             <security:authorize access="hasRole('USER')">
                             <div>
                             <spring:url value="/images" var="images" />
@@ -2004,7 +2002,7 @@ ul{
                                 </div>
                             </div>
                             <a href = "#" class = "product-name">${product.description}</a>
-                          <h4 class = "size" style="color: black;">Size: ${product.size} ${product.unit}</h4> 
+                          <h4 class = "size" style="color: black;">Size : ${product.size} ${product.unit}</h4> 
                           <%--   <p class = "product-price">Rs ${product.price}</p> --%>
                       MRP : <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
                        <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>

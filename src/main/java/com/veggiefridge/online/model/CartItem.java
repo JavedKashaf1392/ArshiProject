@@ -57,8 +57,6 @@ public class CartItem{
 		this.cartpageid = cartpageid;
 	}
 
-	
-	
 	public Product getProduct() {
 		return product;
 	}

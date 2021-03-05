@@ -12,6 +12,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@page session="false" %>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript">
@@ -236,8 +237,8 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-    /*  background-image:url(../images/shadow.svg); */
-   /*  background-image:url("images/shadow.svg"); */
+    /* background-image:url(../images/shadow.svg); */
+   /*  background-image:url("images/shadow.svg");  */
     background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
@@ -256,7 +257,7 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-    background-image:url("/images/shadow-sm.svg"); 
+   /*  background-image:url("/images/shadow-sm.svg");  */
     background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
@@ -268,7 +269,7 @@ nav .navbar a:hover{
     -moz-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
     -o-transform:translateX(-50%);
-     box-shadow: 0px 0px 3px 1px #00000078; 
+    box-shadow: 0px 0px 3px 1px #00000078;
 }
 
 .nav-background .mobile-logo{
@@ -500,6 +501,7 @@ width:35px;
   position: relative;
   display: inline-block; 
 }
+
 .dropdown-content {
   display: none;
   position:absolute;
@@ -544,7 +546,7 @@ ul{
   left: 70;
   width:20%;
   border-radius: 5px;
-  /* display: none; */
+  display: none;
 }
 [id^=btn]:checked + ul{
   display: block;
@@ -601,6 +603,7 @@ ul{
  ul li span.rotate{
   transform: rotate(-180deg);
 }
+
 /* ........Profile Menu css Close........... */
 </style>
 
@@ -740,30 +743,28 @@ ul{
                             </security:authorize>
                             
 <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-
 <div class="dropdown">
-
 <spring:url value="/images" var="images" />
 <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
 <span class="fas fa-caret-down" style="color: white;"></span>
-
+                          
 <ul class="dropdown-content">
-<c:forEach var="menu" items="${requestScope.listProfileMenu}">
+<c:forEach var="menu" items="${menuLevel1}">
 <li>
+<c:if test="${empty menu.parentMenu}">
           <label for="btn-3" class="second" style="color: white;">${menu.menues}
-          <span class="fas fa-caret-down"></span><%-- ${menu.menues} --%>
+          <span class="fas fa-caret-down"></span>
           </label>
           <input type="checkbox" id="btn-3" style="display: none;">
-          
+          </c:if>
        
-<ul>
-<c:forEach var="submenu"
-						items="${requestScope.submenu[menu.menuID]}">
-<li><a href="#">${submenu.subMenu}</a></li>
-<!-- <li><a href="#">Delivered</a></li>
-<li><a href="#">Cancelled</a></li> -->
+<c:if test="${menu.childMenu.size() > 0}">          
+<ul class="sub-menu">
+<c:forEach var="menu1" items="${menu.childMenu}">
+<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">${menu1.menues}</a></li>
 </c:forEach>
 </ul>
+</c:if>
 </li>
 </c:forEach>
 </ul>
@@ -959,6 +960,17 @@ ul{
       $('nav ul li .second').click(function(){
         $('nav ul li .second span').toggleClass("rotate");
       });
+    </script>
+    
+    <script type="text/javascript">
+
+    $('.sub-menu').hide();
+
+    $("li:has(ul)").click(function(){
+
+    $("ul",this).toggle('slow');
+    });
+
     </script>
 
  

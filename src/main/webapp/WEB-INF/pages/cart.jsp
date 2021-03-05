@@ -32,7 +32,6 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
 	;
-
 * {
 	list-style: none;
 	font-family: 'Montserrat', sans-serif;
@@ -263,15 +262,9 @@ label {
 
 .product .remove-product {
 	border: 0;
-	/* padding: 4px 8px; */
-	/* background-color:#ff4242; */
 	color:black;
-	/*  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium"; */
 	font-size: 12px;
 	border-radius: 3px;
-	/* font-weight:400; */
-	
-	
 }
 
 .product .remove-product:hover {
@@ -289,13 +282,13 @@ label {
 .totals .totals-item label {
 	float: left;
 	clear: both;
-	width: 79%;
-	text-align: right;
+	width:85%;
+	text-align: right; 
 }
 
 .totals .totals-item .totals-value {
 	float: right;
-	margin-right: 90px;
+	margin-right:90px;
 }
 
 .totals .totals-item-total {
@@ -308,7 +301,7 @@ label {
 	background: transparent;
     border: 1px solid black;
     padding: 0.8rem 0;
-    width:200px;
+    width:250px;
     font-family: inherit;
     text-transform: uppercase;
     cursor: pointer;
@@ -318,7 +311,8 @@ label {
     background:#4CAF50;
     border-radius:50px;
     margin-top:10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    margin-right:28px;
    
 }
 
@@ -332,7 +326,7 @@ label {
 	background: transparent;
     border: 1px solid black;
     padding: 0.8rem 0;
-    width:200px;
+    width:250px;
     font-family: inherit;
     text-transform: uppercase;
     cursor: pointer;
@@ -437,11 +431,16 @@ label {
 }
 </style>
 </head>
-
 <body>
+        <c:if test="${not empty message}">
+		<div class="alert alert-info">
+		<h3 class="text-center">${msg}</h3>
+		</div>		
+	    </c:if>
 
 	<jsp:include page="header.jsp"></jsp:include>
-
+   
+    <c:set var="availableCount" value="${customerModel.cartpage.cartitem}"/>
 	<div style="max-width: 1200px; margin: 17px auto;">
 		<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
@@ -471,29 +470,29 @@ label {
 
 									<c:set var="s" value="0"></c:set>
 									<c:forEach var="cartitem" items="${listcustomercartitem}">
-										<%-- <c:set var="s">
-											<fmt:formatNumber type="number" minFractionDigits="2"
-												maxFractionDigits="2"
-												value="${s+ cartitem.product.price-cartitem.product.discount * cartitem.product.price/100 * cartitem.product.quantity}" />
-										</c:set> --%>
+						
+						<%-- <c:if test="${cartitem.available == false}">
+						<c:set var="availableCount" value="${availableCount - 1}"/>
+					    </c:if>
+								 --%>	
 										<div class="product">
 											<div class="product-image">
 												<spring:url value="/images" var="images" />
 												<img src="${images}/${cartitem.product.imageName}"
 													width="100" height="100"/>
 											</div>
-											<div class="product-details">
+											<div class="product-details" style="line-height:20px;">
 												<div class="product-title">${cartitem.product.productName}</div>
 												<p class="product-description">The best dog bones of all
 													time. Holy crap. Your dog will be begging for these things!
 													I got curious once and ate one myself. I'm a fan.</p>
+											<h4 class = "size" style="color: black;font-weight:300"><span style="color: black;font-weight:400">Size : </span>${cartitem.product.size} ${cartitem.product.unit}</h4>	
 													
 											</div>
 
-
 											<div class="product-price">${repee_sign}<fmt:formatNumber
 													type="number" minFractionDigits="2" maxFractionDigits="2"
-													value="${cartitem.product.price-cartitem.product.discount*cartitem.product.price/100}" />
+													value="${cartitem.buyingPrice}" />
 											</div>
 											<div class="product-quantity">
 												<button 
@@ -507,7 +506,7 @@ label {
 
 											<div class="product-line-price">${repee_sign}<fmt:formatNumber
 													type="number" minFractionDigits="2" maxFractionDigits="2"
-													value="${cartitem.productCount*cartitem.total}" />
+													value="${cartitem.total}" />
 											</div>
 											<div class="product-removal">
 				 							<a href="${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}">
@@ -519,7 +518,7 @@ label {
 											</div>
 										</div>
 									</c:forEach>
-									<div class="totals" style="line-height:30px;">
+									<div class="totals" style="line-height:45px;">
 										<div class="totals-item">
 											<label>Subtotal : </label>
 											<div class="totals-value" id="cart-subtotal">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></div>
@@ -530,12 +529,15 @@ label {
 										</div>
 									</div>
 
-									 <button class="checkout"
-										onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddressPaymrntOption'">Checkout</button>
-									<button class="keepshop"
-										onclick="window.location.href='${pageContext.request.contextPath}/home'">Keep Shopping</button> 
-
-								</div>
+									<%--  <button class="checkout"
+										onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddressPaymrntOption'">Checkout</button> --%>
+							  <button class="keepshop"
+										onclick="window.location.href='${pageContext.request.contextPath}/home'">Keep Shopping</button> 							
+							 <button class="checkout"
+										onclick="window.location.href='${pageContext.request.contextPath}/cart/valiDateCartItem'">Checkout</button>
+	                       
+	                       
+							</div>
 							</c:when>
 							<c:otherwise>
 
@@ -543,7 +545,7 @@ label {
 									<h3 class="text-center" style="font-size:30px;font-weight:300;margin-top:50px;margin-left:380px;">Your
 										Cart is Empty !!!</h3>
 									<button class="keepshop"
-										onclick="window.location.href='${pageContext.request.contextPath}/home'" style="margin-bottom:43px;margin-left:430px;margin-top:20px;">Keep Shopping</button> 
+										onclick="window.location.href='${pageContext.request.contextPath}/home'" style="margin-bottom:32px;margin-left:400px;margin-top:20px;">Keep Shopping</button> 
                            
 
 								</div>

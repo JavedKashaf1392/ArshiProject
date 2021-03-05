@@ -45,27 +45,14 @@ public class Menu implements Serializable {
 	@Column(name="jsvar")
 	private String jsvar;
 	
-	//@ManyToOne/* (cascade={CascadeType.ALL}) */
-	private Menu menu;
 	
-	public Menu getMenu() {
-		return menu;
-	}
+	  @OneToMany(mappedBy = "parentMenu",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	  private Set<Menu> childMenu= new HashSet<Menu>();
 
-	public void setMenu(Menu menu) {
-		this.menu = menu;
-	}
-
-	public Set<Menu> getMenus() {
-		return menus;
-	}
-
-	public void setMenus(Set<Menu> menus) {
-		this.menus = menus;
-	}
-
-	@OneToMany(mappedBy="menu", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Set<Menu> menus = new HashSet<Menu>(0);
+	  @ManyToOne(cascade = CascadeType.ALL)
+	  @JoinColumn(name="parent_id")
+	  private Menu parentMenu;
+	
 	
 	public int getMenuID() {
 		return menuID;
@@ -127,11 +114,24 @@ public class Menu implements Serializable {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Menu [menuID=" + menuID + ", menues=" + menues + ", section=" + section + ", url=" + url
-				+ ", imageName=" + imageName + ", paramKey=" + paramKey + ", jsvar=" + jsvar + "]";
+	
+
+	  public Set<Menu> getChildMenu() {
+		return childMenu;
 	}
+
+	public void setChildMenu(Set<Menu> childMenu) {
+		this.childMenu = childMenu;
+	}
+
+	public Menu getParentMenu() {
+		return parentMenu;
+	}
+
+	public void setParentMenu(Menu parentMenu) {
+		this.parentMenu = parentMenu;
+	}
+
 
 	public Menu(String menues) {
 		
@@ -148,9 +148,15 @@ public class Menu implements Serializable {
 		this.imageName = imageName;
 		this.paramKey = paramKey;
 		this.jsvar = jsvar;
-		this.menu = menu;
-		this.menus = menus;
 	}
+
+	@Override
+	public String toString() {
+		return "Menu [menuID=" + menuID + ", menues=" + menues + ", section=" + section + ", url=" + url
+				+ ", imageName=" + imageName + ", paramKey=" + paramKey + ", jsvar=" + jsvar + ", childMenu="
+				+ childMenu + ", parentMenu="+"]";
+	}
+	
 
 	
 }

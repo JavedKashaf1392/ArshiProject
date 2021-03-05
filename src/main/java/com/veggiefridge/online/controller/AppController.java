@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.veggiefridge.online.constants.VFOnlineConstants;
+import com.veggiefridge.online.dao.MenuDao;
 import com.veggiefridge.online.model.CartItem;
 import com.veggiefridge.online.model.CartPage;
 import com.veggiefridge.online.model.Customer;
@@ -67,12 +69,14 @@ public class AppController {
 	@Autowired
 	private MenuService menuservice;
 	
+	@Autowired
+	private MenuDao menudao;
+	
 	
 	private static final Logger logger = LoggerFactory.logger(MembershipController.class);
 
 	
 	//permitAll acsess url
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView permitAll(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model,@ModelAttribute("menu") Menu menu) {
@@ -91,6 +95,13 @@ public class AppController {
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
 		/* model.setViewName("registerdhome"); */
+		  String section2= "Profile";	
+	  		List<Menu> allMenu = menuservice.getmenuandsubMenu(section2);
+	  		System.out.println("===================================");
+	  		for (Menu menu2 : allMenu) {
+	  	    System.out.println("menu"+menu2);
+		     }
+		model.addObject("menuLevel1", allMenu);
 		model.setViewName("VeggieFridge");
 		return model;
 	}
@@ -189,7 +200,7 @@ public class AppController {
 	
 	
 	@RequestMapping(value="/defaultTarget")
-	public ModelAndView defaultTarget(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("menu")Menu menu) 
+	public ModelAndView defaultTarget(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("menu")Menu menu,Model model2) 
 	
 	{ 
 		String imageSection = "Header";
@@ -207,6 +218,15 @@ public class AppController {
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
 		/* model.setViewName("registerdhome"); */
+	    
+		//Profile Menu
+		    String section2= "Profile";	
+	  		List<Menu> allMenu = menuservice.getmenuandsubMenu(section2);
+	  		System.out.println("===================================");
+	  		for (Menu menu2 : allMenu) {
+	  	    System.out.println("menu"+menu2);
+		     }
+		model.addObject("menuLevel1", allMenu);
 		model.setViewName("VeggieFridge");
 		return model;
 		}
@@ -310,10 +330,52 @@ public class AppController {
   	  		}
   	    
     
-  	  	 //PickupAddressPaymrntOption
+  	  	     //PickupAddressPaymrntOption
   	  		@RequestMapping(value = "/demo", method = RequestMethod.GET)
-  	  		public String demo(ModelMap model) {
-  	  			return "demo";
+  	  		public String demo(Model model) {
+  	  		List<Menu> allMenu = menudao.getMenuAndSubMenu();
+  	  		System.out.println("===================================");
+  	  		for (Menu menu : allMenu) {
+  	  			System.out.println("menu"+menu);
+				
+			}
+  			model.addAttribute("menuLevel1", allMenu);
+  	  			return "menu";
+  	  		}
+  	  		
+  	  		
+  	  		
+  	  	  //PickupAddressPaymrntOption
+  	  		@RequestMapping(value = "/promenu", method = RequestMethod.GET)
+  	  		public String promenu(Model model) {
+  	  		List<Menu> allMenu = menudao.getMenuAndSubMenu();
+  	  		System.out.println("===================================");
+  	  		for (Menu menu : allMenu) {
+  	  			System.out.println("menu"+menu);
+				
+			}
+  			model.addAttribute("menuLevel1", allMenu);
+  	  			return "header";
+  	  		}
+  	  		
+  	  		
+  	  		
+  	  	    //PickupAddressPaymrntOption
+  	  		
+  	  		@RequestMapping(value = "/profilemenu", method = RequestMethod.GET)
+  	  		public String profilemenu(Model model,ModelAndView mode1 ) {
+  	  		String section= "Profile";	
+  	  	List<Menu> allMenu = menuservice.getmenuandsubMenu(section);
+  	  	String section2 = "Navbar";
+		List<Menu> listNavbarMenu = menuservice.getMenu(section2);
+		mode1.addObject("listNavbarMenu",listNavbarMenu);
+  	  		System.out.println("===================================");
+  	  		for (Menu menu : allMenu) {
+  	  			System.out.println("menu"+menu);
+				
+			}
+  			model.addAttribute("menuLevel1", allMenu);
+  	  			return "header";
   	  		}
   	  		
   	  		

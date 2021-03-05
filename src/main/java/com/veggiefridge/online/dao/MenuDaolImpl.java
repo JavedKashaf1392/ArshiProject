@@ -75,23 +75,22 @@ public class MenuDaolImpl implements MenuDao{
 	}
 
 	@Override
-	public List<Menu> getMenuAndSubMenu(String section, int parentId) {
-		String query = "FROM Menu WHERE section =:section and parentId = 0";
+	public List<Menu> getMenuAndSubMenu() {
+		String query = "FROM Menu where parentMenu = NULL";
+		return sessionFactory.getCurrentSession()
+									.createQuery(query)
+										.list();
+	}
+
+	@Override
+	public List<Menu> getmenuandsubMenu(String section) {
+		String query = "FROM Menu WHERE parentMenu = NULL AND section =:section  ";
 		return sessionFactory.getCurrentSession()
 									.createQuery(query)
 										.setParameter("section",section)
 										.list();
 	}
 
-	@Override
-	public List<Menu> getmenuandsubMenu(String section, int parentId) {
-		String query = "FROM Menu WHERE section =:section and parentId > 0";
-		return sessionFactory.getCurrentSession()
-									.createQuery(query)
-										.setParameter("section",section)
-										.list();
-	}
-    
 	
 	
 	

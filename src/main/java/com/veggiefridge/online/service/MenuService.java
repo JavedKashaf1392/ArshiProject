@@ -15,8 +15,15 @@ public interface MenuService {
     
     public List<SubMenu> listSubMenu(int menuID);
     
- public List<Menu> getMenuAndSubMenu(String section,int parentId);
+   public List<Menu> getMenuAndSubMenu(String section,int parentId);
     
-    public List<Menu> getmenuandsubMenu(String section,int parentId);
+	/* public List<Menu> getmenuandsubMenu(String section,int parentId); */
+    
+    public List<Menu> getMenuAndSubMenu();
+    
+    public List<Menu> getmenuandsubMenu(String section);
+    
+    
+    
 
 }

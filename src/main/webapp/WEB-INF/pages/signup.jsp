@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+ <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -264,7 +265,7 @@ function checkInputs() {
 		setErrorFor(firstname, 'firstname cannot be blank');
 	} 
 	else if((usernameValue.length <= 2) || (usernameValue.length > 10)) {
-		setErrorFor(firstname, 'Username lenght must be between 2 and 10');	
+		setErrorFor(firstname, 'firstname lenght must be between 2 and 10');	
 	}
 	else if(!isNaN(usernameValue)){
 		setErrorFor(firstname, 'Only Character are allowed');
@@ -278,7 +279,7 @@ function checkInputs() {
 		setErrorFor(lastname, 'firstname cannot be blank');
 	} 
 	else if((lastnameValue.length <= 2) || (lastnameValue.length > 10)) {
-		setErrorFor(lastname, 'Username lenght must be between 2 and 10');	
+		setErrorFor(lastname, 'lastname lenght must be between 2 and 10');	
 	}
 	else if(!isNaN(lastnameValue)){
 		setErrorFor(lastname, 'Only Character are allowed');
@@ -315,12 +316,9 @@ function checkInputs() {
 	else if (mobileValue.length!=10) {
 		setErrorFor(mobile, ' Mobile Number must be 10 digits only');
 	}
-	/* else if(mobileValue.charAt(0)!= 9 || mobileValue.charAt(0)!=2){
-		setErrorFor(mobile, 'it should start with 9 or 2');
-		}
-	
-	 */
-	 else {
+	 /* else if((mobileValue.charAt(0)!=9) && (mobileValue.charAt(0)!=8) && (mobileValue.charAt(0)!=7)){
+		setErrorFor(mobile, 'Mobile Number should start with 9 or 8 or 7'); */
+		 else {
 		setSuccessFor(mobile);
 	}
 
