@@ -80,8 +80,14 @@ public class VFOnlineConstants {
 	
 	public static final String LOGOUT=" You've been logged out successfully";
 	
-	public static final String CART_UPDATE=" cart updated";
+	public static final String CART_UPDATE="cart updated";
 	
+	public static final String CART_PRODUCT_ADD="Product Added Inside a Cart";
+	
+	public static final String headeblurimage="url('images/Blur.png')";
+	public static final String classvalue ="hero flex items-center";
+	public static final String animateimage="vegies.png";
+
 	/* ..... Clint Side ErrorMasg ..... */
 	
 	

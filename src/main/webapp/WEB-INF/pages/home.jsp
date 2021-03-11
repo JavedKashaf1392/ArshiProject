@@ -1,1073 +1,2609 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	
+<!DOCTYPE html>
+<html>
+<head>
 
-   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-   pageEncoding="ISO-8859-1" isELIgnored="false"%>
-   
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
 
- <!DOCTYPE HTML>
- <html lang="en" dir="ltr">
- <head>
-   <!-- <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" /> -->
-    <!-- JS, Popper.js, and jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<title>VeggieFridge</title> 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+
+@import
+url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
+body {
+    overflow-x: hidden; 
+    z-index:5000;
+    overflow:auto;
+    overflow:initial;
+}
+
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* colors  */
+:root {
+    --primary:#4CAF50;
+    /* --primary:#EEBF00; */
+    --secondary:#232B38;
+    --ternary:#6C6C6C;
+    --danger:#FE4545;
+    --pure:#FEFEFE;
+    --light:#F0F0F0;
+    --heaven:#FFFFFF;
+    --footer:#2D333F;
+}
+
+:root{  
+    --white-light: rgba(255, 255, 255, 0.5);
+    --alice-blue: #f8f9fa;
+    --carribean-green:green;
+    --gray: #ededed;
+}
+.container {
+    width:100%;
+    padding:o 15px;
+    margin:0 auto;
+}
+
+@media (min-width:576px){
+    .container{
+        max-width:540px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1152px;
+    }
+  }
+
+  .main-wrapper{
+      position:relative;
+      width:100%;
+      height:100vh;
+      overflow:hidden;
+  }
+
+  .nav-background{
+      width:100%;
+      height:100%;
+      background:var(--light);
+      position: absolute;
+      top:0;
+      left:0;
+      padding:0;
+      z-index:1;
+  }
+
+  .nav-trigger{
+      position: absolute;
+      top:0;
+      left:0;
+      z-index:1;
+      padding:15px;
+      display:none;
+  }
+
+  .nav-trigger svg{
+      transform:rotate(90deg) scaleX(-1);
+      -webkit-transform:rotate(90deg) scaleX(-1);
+      -moz-transform:rotate(90deg) scaleX(-1);
+      -ms-transform:rotate(90deg) scaleX(-1);
+      -o-transform:rotate(90deg) scaleX(-1);
+      width:40px;
+      height:40px;
+}
+.site-content-wrapper{
+    width:100%;
+    height:100%;
+    position:absolute;
+    background:var(--heaven);
+    z-index:2;
+    transition:all .3s ease;
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -ms-transition:all .3s ease;
+    -o-transition:all .3s ease;
+}
+
+.site-content-wrapper.scaled{
+    transform:scale(0.9) translateX(90%);
+    -webkit-transform:scale(0.9) translateX(90%);
+    -moz-transform:scale(0.9) translateX(90%);
+    -ms-transform:scale(0.9) translateX(90%);
+    -o-transform:scale(0.9) translateX(90%);
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    -ms-border-radius:3px;
+    -o-border-radius:3px;
+    box-shadow:0 3px 10px 0 var(--secondary);
+}
+
+.site-content{
+    width:100%;
+    height:100%;
+    overflow-x:auto;
+}
+  header.topbar{
+     position: relative;   
+     background:#4CAF50;
+     color:var(--pure);
+      padding:0.75rem 0;
+      top: 0; 
+  }
+  header.topbar .auth > div a{
+      color:var(--pure);
+      text-decoration: none;
+  }
+  header.topbar .icons a{
+    margin-right:0.6rem;
+  }
+  header.topbar .auth .divider{
+      padding:0 1rem;
+  }
+  header.topbar .auth > div img{
+      margin-right:0.35rem;
+  }
+  .flex{
+    display:flex;
+  }
+  .justify-between{
+    justify-content: space-between;
+  }
+  .items-center{
+      align-items: center;
+  }
+  nav .top{
+      padding:1.5rem 0;
+      /* margin-top:40px; */
+      background-color: white;
+      width:100%;
+  }
+  nav .top .contact h5,  nav .top .time h5{
+      font-family:"Raleway-black"; 
+      margin-bottom:0.25rem;
+  }
+  nav .top .contact h6, nav .top .time h6{
+    /* font-family:"Raleway-medium"; */
+    letter-spacing: 0.055rem;
+    font-size:0.75rem;
+    color:var(--ternary);
+}
+nav .top .contact img, nav .top .time img{
+    margin-right:1rem;
+}
+
+.justify-center{
+    justify-content:center;
+}
+nav .navbar a{
+    text-decoration:none;
+    color:var(--secondary);
+   /*  font-family:"Raleway-semibold"; */
+    font-size:1rem;
+    padding:1rem 1.5rem;
+    transition:all .3s ease;
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -ms-transition:all .3s ease;
+    -o-transition:all .3s ease;
+}
+nav .navbar a.active{
+    background:var(--primary);
+    color:var(--pure);
+}
+nav .navbar a:hover{
+    background:var(--primary);
+    color:var(--pure); 
+}
+.magic-shadow{
+    position: relative;
+    background:var(--heaven);
+}
+.magic-shadow:after{
+    content:'';
+    display:block;
+    width:100%;
+    height:69px;
+    /* background-image:url(../images/shadow.svg); */
+    background-image:url("images/shadow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom:-22px;
+    z-index:-1;
+   /*  box-shadow: 0px 0px 8px 1px #00000078; */
     
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- <script type="text/javascript" src="scripts/jquery.cookies.2.2.0.min.js"></script> --> 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-        <link rel="icon" href="./image/icon.png" />
-<!-- fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> 
-        <link rel="icon" type="image/jpg" href="images/logo.jpg">
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Online Vegetable And Milk Shopping in India- VeggieFridge</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
-        
-        
-        
-        
-        
-        <style>
-     
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');   
-body {font-family: Arial, Helvetica, sans-serif;}
-{
-box-sizing: border-box;
 }
-.mainsplash{
-  /* background: #f6f5f7; */
-  outline: #4CAF50 solid 10px;
-  display: none;  /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1001; /* Sit on top */
-  padding-top: 10px;  /* Location of the box */
-  left: 0;
-  top:  0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
- /*  overflow: auto; /* Enable scroll if needed */ */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
-  box-shadow: 1px 2px 5px 3px white;
+.magic-shadow-sm{
+    position: relative;
+    background:var(--heaven);
 }
-.splash{
-   text-align: center;
-   margin-left:32%;
-   margin-top:5%;
-   font-family: 'Montserrat', sans-serif;
-   background-color: #fff;
-  /*  border-radius: 10px; */
-  /*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22); */
-	position: relative;
-	overflow: hidden;
-	width: 450px;
-    max-width: 100%;
-	min-height: 100px;
+.magic-shadow-sm:after{
+    content:'';
+    display:block;
+    width:100%;
+    height:69px;
+    background-image:url("/images/shadow-sm.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
+    -webkit-transform:translateX(-50%);
+    -moz-transform:translateX(-50%);
+    -ms-transform:translateX(-50%);
+    -o-transform:translateX(-50%);
+   /*  box-shadow: 0px 0px 8px 1px #00000078; */
 }
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+
+header.hero{
+    height:600px;
+    background-image:url("/images/Blur.png");
+   /*background-image:url("/images/hero.png"); */
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    overflow:hidden;
+    margin-top:12%;
 }
-.col-75 {
-   width: 100%;
-  margin-top: 11px;
+header.hero .container{
+    position: relative;
+    
+}
+header.hero .welcome{
+    margin-bottom:0.25rem;
+}
+header.hero .welcome span{
+    /* font-family:"Raleway-bold"; */
+    color:var(--secondary);
+    margin-right:0.75rem;
+
+}
+header.hero h1{
+    /* font-family:"Raleway-extrabold"; */
+    color:var(--secondary);
+    font-size: 2.5rem;
+    margin-bottom:0.75rem;
+}
+header.hero h1 span{
+    color:var(--primary);
+}
+header.hero p{
+    /* font-family: "Raleway-medium"; */
+    width:50%;
+    line-height:1.5;
+    margin-bottom:1rem;
+}
+.btn{
+    padding:0.75rem 0.75rem;
+    border-radius:50px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+    line-height:0.8;
+    font-size:1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    border:1px solid transparent;
+}
+
+.btn-primary {
+    background:var(--primary);
+    color:var(--heaven);
+}
+.btn-primary:hover{
+    background:var(--heaven);
+    color:var(--primary); 
+    border:1px solid var(--primary);
+}
+.btn-secondary{
+    background:var(--secondary);
+    color:var(--heaven); 
+}
+.btn-secondary:hover{
+    background:var(--heaven);
+    color:var(--secondary); 
+    border:1px solid var(--secondary);
+}
+
+header.hero button:first-child{
+    margin-right:0.50rem;
+}
+
+header.hero .hero-image{
+    position:absolute;
+    top:-40px;
+    right:40px;
+}
+
+section{
+    padding:4rem 0;
+}
+section.top-products{
+    background:var(--light);
+}
+
+.section-heading{
+    /* font-family:"Raleway-bold"; */
+    text-align:center;
+    Position:relative;
+    margin-bottom:6rem;
+}
+.section-heading:after{
+    content:'';
+    display:block;
+    width: 100%;
+    height:30px;
+    background-image:url(../icons/hr.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position:absolute;
+    bottom:-40px;
+}
+section.top-products .food-slider .food-card{
+    background:var(--heaven);
+    padding:1.5rem 0;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+section.top-products .food-slider .food-card .product-image img{
+    width:80%;
+    height:200px;
+    object-fit:contain;
+    padding-bottom:1rem;
+}
+hr{
+    border:1px solid var(--light);
+    opacity: 0.8;
+    margin:1rem 0;
+}
+section.top-products .food-slider .food-card h2{
+    /* font-family:"Raleway-bold"; */
+    font-size:1.3rem;
+    margin-bottom:0.25rem;
+}
+.text-center{
+    text-align: center;
+}
+section.top-products .food-slider .food-card .stars{
+    margin-bottom:0.5rem;
+}
+section.top-products .food-slider .food-card .stars img{
+    margin-right:0.25rem;
+}
+section.top-products .food-slider .food-card .price{
+    /* font-family:"Raleway-medium"; */
+    color:var(--danger);
+    margin-bottom: 1rem;
+}
+section.top-products .food-slider .food-card button{
+    /* font-family:"Raleway-medium"; */
+    color:var(--secondary);
+    background:var(--heaven);
+    border:2px solid var(--primary);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    display:flex;
+    align-items: center;
+    width:50%;
+    font-size:1rem;
+    cursor: pointer;
+    transition:all .3s ease;
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -ms-transition:all .3s ease;
+    -o-transition:all .3s ease;
+}
+section.top-products .food-slider .food-card button:hover{
+    background:var(--primary);
+    color:var(--heaven);
+}
+.food-slider .food-card button img{
+    background:var(--primary);
+    padding:0.50rem;
+    height:32px;
+    margin-right:1.2rem;
+}
+
+.slick-slide{
+    margin:0 27px;
+}
+.slick-list{
+    margin:0 -27px;
+}
+.top-products .slider-btn{
+    width: 30px;
+    height:30px;
+    border: none;
+    background:var(--primary);
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+    cursor:pointer;
+    outline:none;
+}
+
+.prev-btn{
+    position:absolute;
+    top:46%;
+    left:-3rem;
+    z-index: 1;
+}
+.next-btn{
+    position:absolute;
+    top:46%;
+    right:-3rem;
+    z-index: 1;
+}
+.top-products .slider{
+    position: relative;
+}
+.top-products .btn-wrapper{
+    margin-top:2rem;
+}
+.slick-track{
+    padding:1rem 0;
+}
+section.about-meal img{
+    width:85%;
+}
+.flex-1{
+    flex:1;
+}
+section.about-meal h2{
+    /* font-family: "Raleway-bold"; */
+    font-size:1.4rem;
+    color:var(--secondary);
+    margin-bottom:2rem;
+    line-height:1.3;
+}
+section.about-meal p{
+    line-height: 1.7;
+    margin-bottom:4rem;
+}
+
+section.our-services{
+    background:var(--light);
+    position:relative;
+    z-index:0;
+}
+section.our-services .card-wrapper{
+    margin-right:-2rem;
+    margin-top:8rem;
+}
+section.our-services .service-card{
+    background:var(--heaven);
+    text-align: center;
+    padding:2rem;
+    padding-top:4rem;
+    margin-right:2rem;
+    position: relative;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+section.our-services .service-card .icon{
+    position: absolute;
+    top:-45px;
+    left:50%;
+    transform:translateX(-50%);
+    -webkit-transform:translateX(-50%);
+    -moz-transform:translateX(-50%);
+    -ms-transform:translateX(-50%);
+    -o-transform:translateX(-50%);
+} 
+section.our-services .service-card h2{
+    /* font-family: "Raleway-bold"; */
+    font-size: 1.3rem;
+    margin-bottom:1rem;
+}
+section.our-services .service-card p{
+    line-height: 1.6;
+    margin-bottom:1rem;
+}
+.text-primary{
+    color:var(--primary);
+}
+
+section.big-deal {
+    background: linear-gradient(
+        rgba(35,43,56,0.9),
+        rgba(35,43,56,0.9)
+    ), url(../images/food-table.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+section.big-deal .timer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-right:-2rem;
+    margin-bottom:2rem;
+}
+section.big-deal .timer div{
+    margin-right:2rem;
+    background: var(--primary);
+    width:150px;
+    height:150px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+section.big-deal .timer div span:first-child{
+    font-family: "Raleway-semibold";
+    font-size:2.5rem;
+    color:var(--heaven);
+    margin-bottom:0.05rem;
+}
+section.big-deal .timer div span:last-child{
+    font-family: "Raleway-medium";
+    color:var(--heaven);
+}
+.text-pure{
+    color:var(--pure);
+}
+
+section.latest-news{
+    background:var(--light);
+    position:relative;
+    z-index:0;
+}
+section.latest-news .article-wrapper{
+    display:flex;
+    margin-right:-2rem;
+
+}
+.latest-news .article-wrapper .card {
+    margin-right:2rem;
+    background:var(--heaven);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.latest-news .article-wrapper .card img{
+    width:100%;
+}
+.latest-news .article-wrapper .card .card-content{
+    padding:2rem;
+}
+.latest-news .article-wrapper .card .card-content .post-meta{
+    margin-bottom: 1rem;
+}
+.latest-news .article-wrapper .card .card-content .post-meta .comment-count{
+    margin-left:1rem;
+}
+.latest-news .article-wrapper .card .card-content h2{
+    /* font-family: "Raleway-bold"; */
+    font-size: 1.3rem;
+    margin-bottom:1rem;
+}
+.latest-news .article-wrapper .card .card-content p{
+    line-height: 1.6;
+}
+.latest-news .btn-wrapper{
+    margin-top:2rem;
+}
+section.subscribe{
+    background:var(--primary);
+}
+section.subscribe .container > div:first-child img{
+    width:90%;
+}
+section.subscribe .container div:first-child{
+    flex:1;
+}
+section.subscribe .container div:last-child{
+    flex:1;
+}
+
+section.subscribe h1{
+    /* font-family:"Raleway-bold"; */
+    font-size: 1.5rem;
+    margin-bottom:1.5rem;
+}
+section.subscribe p{
+    /* font-family:"Raleway-medium"; */ 
+    font-size: 1rem;
+    margin-bottom:1.5rem;
+    line-height: 1.5;
+}
+section.subscribe .input-wrap{
+    background:var(--heaven);
+    display:flex;
+    padding:0.3rem;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+}
+section.subscribe .input-wrap input{
+    width:100%;
+    border:none;
+    padding: 0 1rem;
+    font-size:1rem;
+}
+section.subscribe .input-wrap input:focus{
+    outline:none;
+}
+section.subscribe .input-wrap button{
+    padding:0.8rem 2rem;
+    border:none;
+    background:var(--primary);
+    color:var(--pure);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    font-size:1rem;
+    cursor:pointer;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    outline:none;
+}
+section.subscribe .input-wrap button:hover{
+    background:var(--secondary);
+}
+section.contact-us{
+    padding-top:0;
+    padding-bottom: 0;
+}
+section.contact-us .contact-info-wrapper {
+    padding:4rem 0;
+    flex:1;
+}
+section.contact-us .map{
+    flex:1;
+    filter:grayscale(100%);
+    -webkit-filter:grayscale(100%);
+}
+section.contact-us .contact-info{
+    display:flex;
+    justify-content: center;
+}
+section.contact-us .contact-info > div > div {
+    display:flex;
+    align-items:center;
+    margin-bottom:2rem;
+}
+section.contact-us .contact-info > div > div img{
+    margin-right: 1rem;
+}
+section.contact-us .contact-info > div > div > div{
+    display:flex;
+    flex-direction: column;
+}
+section.contact-us .contact-info > div > div > div span:first-child{
+    /* font-family: "Raleway-bold"; */
+    margin-bottom:0.25rem;
+}
+
+.nav-background .mobile-logo{
+    padding:1rem;
+}
+.nav-background .mobile-nav{
+    padding:1rem;
+}
+.nav-background .mobile-nav ul{
+    list-style-type: none;
+}
+.nav-background .mobile-nav ul li{
+    margin-bottom:1rem;
+}
+.nav-background .mobile-nav ul li a{
+    text-decoration: none;
+    color:var(--secondary);
+    /* font-family: "Raleway-medium"; */
+}
+.nav-background .mobile-nav ul li a:hover{
+    color:var(--primary);
+}
+.nav-background .contact, .nav-background .time{
+    padding:1rem;
+    padding-left:0;
+}
+.nav-background .contact img, .nav-background .time img{
+    margin-right:1rem;
+}
+.nav-background .contact h5,.nav-background .time h5{
+  font-family:"Raleway-bold"; 
+    margin-bottom:0.25rem;
+    font-size:1rem;
+}
+.nav-background .contact h6, .nav-background .contact h6{
+    font-size: 0.75rem;
+}
+.nav-background .cart{
+    margin-bottom:2rem;
+}
+.nav-background .cart a{
+    color:var(--secondary);
+    text-decoration: none;
+    font-family: "Raleway-bold";
+}
+.nav-background .cart img{
+    margin-right:0.75rem;
+    width:20px;
+    height:20px;
+}
+
+@media (max-width:992px){
+    .nav-trigger{
+        display:block;
+    }
+    header.topbar, nav{
+        display:none;
+    }
+
+    header.hero {
+        margin-top:-4rem;
+    }
+    header.hero .hero-image{
+        right:-160px;
+        top:100px;
+    }
+    .top-products .slider-btn{
+        display:none!important;
+    }
+    .latest-news .article-wrapper{
+        flex-direction:column;
+    }
+    .latest-news .article-wrapper .card{
+        margin-right:0;
+        margin-bottom:4rem;
+    }
+
+    footer .instagram-api .post-wrap > div{
+        width:calc(1/2*100% - (1 - 1/3)*10px);
+    }
+}
+
+@media (max-width:768px){
+    .about-meal .about-meal-wrap{
+        flex-direction: column;
+    }
+    .about-meal .about-meal-wrap img{
+        width:100%;
+        margin-bottom: 2rem;
+    }
+
+    section.our-services .card-wrapper{
+        flex-direction:column;
+    }
+    section.our-services .card-wrapper .service-card{
+        margin-bottom:6rem;
+    }
+    footer .container{
+        flex-direction: column;
+    }
+    footer .box{
+        text-align: left;
+        margin-right:0;
+        margin-bottom:3rem;
+    }
+    footer .box:nth-child(3) h3{
+        text-align:left;
+    }
+    footer .box:nth-child(3) > div{
+        display:block;
+    }
+}
+
+@media( max-width:576px){
+    header.hero .hero-image{
+        right:-235px;
+        top:150px;
+    }
+    header.hero .container{
+        padding-left:1rem;
+    }
+    header.hero{
+        margin-top:-3rem;
+    }
+    section.big-deal .timer > div{
+        margin-right:0.50rem;
+    }
+    section.big-deal .timer{
+        margin-right:-0.5rem;
+    }
+
+    section.subscribe .container{
+        flex-direction: column;
+        padding:0.50rem;
+    }
+   
+} 
+
+/* ..............SearchBar...........   */ 
+
+.search-input {
+  position: absolute;
+  top: 10px;
+  left: 38px;
+  font-size: 14px;
+  background: none;
+  color: #5a6674;
+  width: 195px;
+  height: 20px;
+  border: none;
+  appearance: none;
+  outline: none;
+ 
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+}
+.search-button {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none!important;
+  cursor: pointer;
+}
+
+:root{  
+    --white-light: rgba(255, 255, 255, 0.5);
+    --alice-blue: #f8f9fa;
+  /*   --carribean-green: #40c9a2; */
+    --carribean-green:green;
+    --gray: #ededed;
+}
+.lg-title,
+.md-title,
+.sm-title
+.show-ad-title{
+    font-family: 'Roboto', sans-serif;
+    padding: 0.6rem 0;
+    text-transform: capitalize;
+}
+.lg-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.show-ad-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+    opacity: 0.9;
+}
+.md-title{
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+}
+.sm-title{
+    font-weight: 300;
+    font-size: 1rem;
+    text-transform:
+     uppercase;
+}
+ .size{
+    font-weight:100;
+    font-size: 1rem;
+    margin-top:0.4rem;
+} 
+.text-light {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.5;
+    margin: 0.4rem 0;
+}
+/* product section */
+.products{
+    /* background: var(--alice-blue); */
+    padding: 3.2rem 0;
+}
+.products .text-light{
+    text-align: center;
+    width: 70%;
+    margin: 0.9rem auto;
+}
+.product{
+    margin: 2rem;
+    position: relative;
+     background-color: #f9f9f9;
+   /*   display: grid; */   
+}
+.product-title{
+    font-weight: 300;
+    font-size: 1rem;
+   /*  text-transform:
+     uppercase; */
+}
+.product-content{
+   /*  background: var(--gray); */
+    padding: 3rem 0.5rem 2rem 0.5rem;
+    cursor: pointer;
+    
+}
+.product-img{
+    background: var(--white-light);
+    box-shadow: 0 0 20px 10px var(--white-light); 
+    /* box-shadow: 0 0 80px 40px var(--white-light); */ 
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    transition: background 0.5s ease;
+}
+.product-btns{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.4rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.btn-cart, .btn-buy{
+    background: transparent;
+    border: 1px solid black;
+    padding: 0.8rem 0;
+    width: 125px;
+    font-family: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.6s ease;
+    border-radius:50px;
+}
+.btn-cart{
+    /* background: black; */
+    color: white;
+    background:#4CAF50;
+}
+.btn-cart:hover{
+    background: var(--carribean-green);
+}
+.btn-buy{
+    background: white;
+}
+.btn-buy:hover{
+    background: var(--carribean-green);
+    color: #fff;
+}
+.product-info{
+    background: white;
+    padding: 2rem;
+}
+.product-info-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rating span{
+   /*  color: var(--carribean-green); */
+    /* color:green; */
+    color:orange;
+}
+.product-name{
+    color: black;
+    display: block;
+    text-decoration: none;
+    font-size: 1rem;
+   /*  text-transform: uppercase; */
+    font-weight: bold;
+}
+.product-price{
+    padding-top: 0.6rem;
+    padding-right: 0.6rem;
+    display: inline-block;
+   
+}
+.product-price:first-of-type{
+    text-decoration: line-through;
+   /*  color: var(--carribean-green); */
+    color: #4CAF50;
+}
+.product-size{
+    padding-top: 0.6rem;
+    padding-right: 0.6rem;
+    display: inline-block;
+
+}
+.product-img img{
+    transition: transform 0.6s ease;
+}
+.product:hover .product-img img{
+    transform: scale(1.1);
+}
+.product:hover .product-img{
+    /* background: var(--carribean-green);  */
+    background: white; 
+    
+}
+.product:hover .product-btns{
+    opacity: 1;
+}
+.off-info .sm-title{
+ 
+    background-color:#4CAF50;
+    color:white;
+    display: inline-block;
+    padding: 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    writing-mode: vertical-tb;
+    transform: rotate(360deg); 
+   /*  z-index: 1; */
+    letter-spacing: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* product collection */
+.product-collection{
+  /* padding: 3.2rem 0;   */
+    padding: 0.1rem 0; 
+}
+.product-collection-wrapper{
+  /* padding: 3.2rem 0;  */
+   padding: 0.1rem 0;
+}
+.product-col-left{
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/milk image.jpg") center/cover no-repeat;
+}
+.product-col-r-top{
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/vegetables.jpg") center/cover no-repeat;
+}
+.flexx{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 50vh;
+    padding: 2rem 1.5rem 3.2rem;
+    margin: 5px;
+}
+.product-col-r-bottom > div:first-child{
+  /*   background: #eaa001; */
+    background: #ABD5BAFF;
+    
+}
+.product-col-r-bottom > div:last-child{
+    /* background: #0090ff; */
+    background:#ff726f; 
+   /* background:#FAE6FA; */
+  
+  
+}
+.product-col-content{
+    text-align: center;
+    color: white;
+}
+.product-collection .text-light{
+    opacity: 1;
+    font-size: 0.8;
+    font-weight: 400;
+    line-height: 1.7;
+}
+.btn-dark{
+    background: white;
+    color:green;
+    border:1px solid #ddd;
+    outline: 0;
+    border-radius: 25px;
+    padding: 0.7rem 1rem;
+    border: 0;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    font-size: 1rem;
+    font-family: inherit;
+}
+.btn-dark:hover{
+    background: var(--carribean-green);
+    /* background:white; */
+}
+/* Media Queries */
+@media screen and (min-width: 992px){
+    .product-items{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .product-col-r-bottom{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (min-width: 1200px){
+    .product-items{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .product{
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    .products .text-light{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1336px){
+    .product-items{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .product-collection-wrapper{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .flexx{
+        height: 60vh;
+    }
+    .product-col-left{
+        height: 121.5vh;
+    }
+}
+
+/* ..........slider......... */
+
+/* Slider Css */
+    .galleryContainer {
+    width: 100%;
+    height:500px;
+    max-width: 1380px;
+    user-select: none;
+    margin:0 auto; 
+    
+}
+.galleryContainer .slideShowContainer{
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    background-color: gainsboro;
+    position: relative;
+}
+.galleryContainer .slideShowContainer #playPause{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background-image: url(${images}/playpouse.png);
+    background-repeat: no-repeat;
+    z-index: 5;
+    background-size: cover;
+    margin: 5px;
+    cursor: pointer;
+}
+.galleryContainer .slideShowContainer #playPause:hover{
+    opacity: .7;
+}
+.galleryContainer .slideShowContainer .imageHolder{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+   /*  opacity: 0; */
+}
+.galleryContainer .slideShowContainer .imageHolder img{
+    width: 100%;
+    height: 100%;
+}
+.galleryContainer .slideShowContainer .imageHolder .captionText{
+    display: none;
+}
+
+.galleryContainer .slideShowContainer .leftArrow,.galleryContainer .slideShowContainer .rightArrow{
+    width: 50px;
+    background: #00000036;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: background 0.5s;
+    height: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.galleryContainer .slideShowContainer .rightArrow {
+    left: auto;
+    right: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.galleryContainer .slideShowContainer .leftArrow:hover,.galleryContainer .slideShowContainer .rightArrow:hover{
+    background: #000000a8;
+    cursor: pointer;
+}
+.galleryContainer .arrow{
+    display: inline-block;
+    border: 3px solid white;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-bottom: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.galleryContainer .arrow.arrowLeft{
+    transform: rotateZ(-135deg);
+}
+.galleryContainer .arrow.arrowRight{
+    transform: rotateZ(45deg);
+}
+
+.galleryContainer .slideShowContainer>.captionTextHolder{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    background: #00000047;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+}
+.galleryContainer .slideShowContainer>.captionTextHolder>.captionText{
+    margin: 0;
+}
+
+.galleryContainer #dotsContainer{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.galleryContainer #dotsContainer .dots{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: #bbb;
+    cursor: pointer;
+    transition:background-color 0.5s;
+}
+.galleryContainer #dotsContainer .dots:first-child{
+    margin-left: 0;
+}
+.galleryContainer #dotsContainer .dots:hover,.galleryContainer #dotsContainer .dots.active{
+    background-color: #717171;;
+}
+
+.galleryContainer .moveLeftCurrentSlide{
+    animation-name: moveLeftCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+
+}
+.galleryContainer .moveLeftNextSlide{
+    animation-name: moveLeftNext;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveLeftCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: -100%;opacity: 1;}
+}
+@keyframes moveLeftNext {
+    from {margin-left: 100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+.galleryContainer .moveRightCurrentSlide{
+    animation-name: moveRightCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+.galleryContainer .moveRightPrevSlide{
+    animation-name: moveRightPrev;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveRightCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: 100%;opacity: 1;}
+}
+@keyframes moveRightPrev {
+    from {margin-left: -100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+.slideTextFromBottom {
+    animation-name: slideTextFromBottom;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromBottom {
+    from {opacity: 0;margin-top: 100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+.slideTextFromTop {
+    animation-name: slideTextFromTop;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+ @keyframes slideTextFromTop {
+    from {opacity: 0;margin-top: -100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+
+.closebtn:hover {
   color: black;
 }
- select{
-  width:80%;
-  padding: 8px;
-  /* background-color:#f1f1f1; */
+.qty{
+width:35px;
+}
+.map{
+    flex:1;
+    filter:grayscale(100%);
+    -webkit-filter:grayscale(100%);
+    max-width: 1388px;
+    margin: 0 auto;
+}
+
+/* The Modal (background) */
+
+.Location {
+
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top:40px; /* Location of the box */
+  left:100;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.Location-content {
+
+  background-color: #fefefe;
+  margin: auto;
+  padding:20px;
+  border: 1px solid #888;
+  width:25%;
+  margin-left:49%;
+      
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*  Responsive Form*/
+select{
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-  align-content: center;
-} 
+}
+
+label {
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+}
+
 input[type=submit] {
+
   background-color: #4CAF50;
   color: white;
-  padding: 10px 14px;
+  padding: 12px 110px;
   border: none;
-  border-radius: 4px;
+  border-radius:50px;
   cursor: pointer;
-  float: center;
+  float: right;
   margin-top: 10px;
 }
 
 input[type=submit]:hover {
   background-color: #45a049;
 }
-
-@keyframes show {
-	0%, 49.99% {
-		opacity: 0;
-		z-index: 1;
-	}
-	
-	50%, 100% {
-		opacity: 1;
-		z-index: 5;
-	}
-}
-/* The Modal (background) */
-/*/*  .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 135px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 130%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  
-}
- */
-/* Modal Content */
-  /* .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 22%;
-  margin-left: 68%;
-} */
-
-/* The Close Button */
-/* .close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-} */
-
-/* .close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-} */
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-.login {
-  padding: 16px;
-}
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-  box-shadow: 1px 2px 5px 3px white;
-}
-/* Modal Content/Box */
-.modal-content {
-  
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
+.col-25 {
+  float: left;
   width: 25%;
-  height: 60%; /* Could be more or less, depending on screen size */
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-  overflow: hidden;
- border-radius: 5px;
+  margin-top: 6px;
 }
 
-button:hover {
-  opacity: 0.8;
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
 }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-} 
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-/* ............................signup...................... */
-.register{
-  display: none;/* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.0); /* Black w/ opacity */
-  padding-top: 60px;
-  box-shadow: 1px 2px 5px 3px white;
-}
-
-/* Modal Content/Box */
-.register-content {
- justify-content:center;
-  background-color: #fefefe;
- /*  margin: 3% auto 15% auto; */ /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 25%;
-  height: 84%; /* Could be more or less, depending on screen size */
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-  overflow: hidden;
-  position: fixed;
-  margin-left: 37%;
- /*  margin-top: 1%; */
-  border-radius: 4px;
-  font-size: 83%; 
-}
-hr {
-  border: 1px solid #f1f1f1;
-   margin-bottom: 10px;
-   margin-top: 10px;
-}
-.account {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
+/* Clear floats after the columns */
+.row:after {
   content: "";
-  clear: both;
   display: table;
-}
-}
-</style>        
-</head>
-        
-    <style>
-    body{
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    .mySlides {display: none}
-/* img {vertical-align: middle;} */
-   
-    {
-    box-sizing: border-box;
-}
-}
-
-.header{
-    margin-left:10%;
-    position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-    height: 30px;
-    /* background: #4CAF50; */
-   /*  border:1px solid black; */
-}
-.footer{
-    margin-left:10%;
-    margin-right:13%;
-    position:relative;
-   /*  padding: 20px;
-    padding: 20px; */
-    width: 78%;
-    height: 500px;
-    margin-top:px;
-    background: #4CAF50; 
-    /* border:1px solid black;  */
-    
-}
-.head{
-    margin-left:10%;
-    position:relative;
-    padding: 20px;
-    padding: 20px;
-    width: 100%;
-    height: 20px;
-    /* background: #4CAF50; */
-}
-.carousel{
-    padding: 20px;
-    padding: 20px;
-    margin-left:150px;
-    /* margin-right:100px; */
-    position:relative;
-    width: 100%;
-    margin-top:5px;
-   /*  background: #4CAF50; */
-    /*  border: 1px solid grey;  */
-     height:3000px;
-     transition:1s;
-     display: -webkit-box;
-     display: -ms-flexbox;
-     display: flex; 
-     background-color:#f1f1f1;
-}
-
-.logo{
- position:absolute;
- width:30% 
- border:1px;
- float:left;
- margin-right:35%;
-}
-
-/* <-- serach operation--> */
-/* Style the search field */
-form.example input[type=text] {
-  padding:8px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width: 40%;
- /*  background: #f1f1f1; */
-  margin-left:10%; 
-}
-/* Style the submit button */
-  form.example button {
-  float: left;
-  width: 4%;
-  padding: 8px;
-  background: #4CAF50;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey; 
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-}
-form.example button:hover {
-  background: green;
-}
-/* call */
-.call{
-/* border:1px solid black; */
-float:right;
-margin-right:19%;
-margin-top: 10px;
-height:35px;
-width:20%;
-/* border:1px solid black; */
-}
-/* Clear floats */
-form.example::after {
-  content: "";
   clear: both;
-  display: table;
-}
-  /* right  */
-.right{
-float: right;
-margin-top:30px;
-margin-right:7%;
-font:bold;
-font-size:16px;
-
 }
 
-.right a {
-color: black;
-}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}  
 
- .right a:hover {
-        color: #4CAF50;
-    }
-
-
-/* end right */
-.navbar {
-  overflow: hidden;
-  background-color: #4CAF50 ;
-  margin-right:51%;
-  margin-left: 337px;
-  /* border:1px solid black;  */
-}
-
-.navbar a {
- /*  margin-right:45%;
-  margin-left: 26%; */
-  float: left;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+/* .............profile Menu.............. */
 
 .dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 18px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: ;
+  position: relative;
+  display: inline-block; 
 }
 
 .dropdown-content {
   display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  /* background-color: #ddd; */
-  background-color:#4CAF50 ;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* ................... */
-
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); 
- 
- *{
-    margin: 0;
-    padding: 0;
-   /*  color: #d9d9d9; */
-   /*  color:black; */
-    /* box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; */ 
-} 
-.main-content{
-    display: flex;
-}
-.main-content .box{
-    flex-basis: 50%;
-    padding: 10px 20px;
-}
-.box h2{
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-.box .content{
-    margin: 20px 0 0 0;
-    position: relative;
-}
-.box .content:before{
-    position: absolute;
-    content: '';
-    top: -10px;
-    height: 2px;
-    width: 100%;
-    background: #1a1a1a; 
-      /*   background: #d9d9d9; */
-}
-.box .content:after{
-    position: absolute;
-    content: '';
-    height: 2px;
-    width: 15%;
-  /*   background: #f12020; */
-  background: #d9d9d9;
-    top: -10px;
-}
-.left .content p{
-    text-align: justify;
-}
-.center .content .social{
-    margin: 20px 0 0 0;
-}
-.center .content .social a{
-    padding: 0 2px;
-}
-.center .content .social a span{
-    height: 40px;
-    width: 40px;
-    /*  background: #1a1a1a;  */
-    background: white;
-    line-height: 40px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 50px;
-    transition: 0.3s;
-}
-/* ...Left Content.... */
-.center .content .social a span:hover{
-    background: #f12020;
-}
-.center .content .fas{
-    font-size: 1.4375rem;
-   /*  background: #1a1a1a; */
-    background: white;
-    height: 45px;
-    width: 45px;
-    line-height: 45px;
-    text-align: center;
-    border-radius: 50%;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.center .content .fas:hover{
-    background: #4CAF50;
-}
-.center .content .text{
-    font-size: 1.0625rem;
-    font-weight: 500;
-    padding-left: 10px;
-}
-.center .content .phone{
-    margin: 15px 0;
-}
-.right form .text{
-    font-size: 1.0625rem;
-    margin-bottom: 2px; 
-    color: #656565;
-}
-.right form .msg{
-    margin-top: 10px;
-}
-.right form input, .right form .msgForm{
-    width: 100%;
-    font-size: 1.0625rem;
-   /*  background: #151515; */
-    padding-left: 10px;
-    border: 1px solid #222222;
-}
-.right form input:focus,
-.right form .msgForm:focus{
-    outline-color: #3498db;
-}
-.right form input{
-    height: 35px;
-}
-.right form .btn{
-    margin-top: 10px;
-}
-.right form .btn button{
-    height: 40px;
-    width: 100%;
-    border: none;
-    outline: none;
-    background: #125688;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: .3s;
-}
-.right form .btn button:hover{
-    background:  #4CAF50;
-}
-.bottom center{
-     align-content:
- /*  background: #444; */
-   /* color: #fff;  */
-    padding: 20px;
-    margin-top:130px;
-    padding: 5px;
-    font-size: 0.9375rem;
-   background: white; 
-    width: 80%;
-}
-.bottom center span{
-    color: #656565;
-}
-.bottom center a{
-    color: black;
-    text-decoration: none;
-}
-.bottom center a:hover{
-    text-decoration: underline;
-}
-@media screen and (max-width: 900px) {
-    footer{
-        position: relative;
-        bottom: 0px;
-    }
-    .main-content{
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-    .main-content .box{
-        margin: 5px 0;
-    }
-}
-
-/* .................... */
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-
-}
-
-/* Next & previous buttons */
- .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 18px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.4);
-}
-
- /* Caption t
-.text {
- /*  color: #f2f2f2; */
-  font-size: 15px;
-  padding: 8px 12px;
-  position:relative;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-} 
- */
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-.container{
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-  /*   background: skyblue; */
-    margin-top: 20px;
-    margin-right: 23%;
-}
-
-.container ul{
-    padding:0px;
-    margin:0px;
-}
-
-
-.container ul li{
-    float:left;
-    list-style: none;
-    width:20%;
-    height:400px;
-  /*   background: pink; */
-    margin :24px 0px 24px 59px; 
-   /*  border:2px solid blue; */
-   border:1px solid #d9d9d9; 
-   box-sizing: border-box;
-     transition: 1s;
-  
-}
-.container ul li:hover{
-   /*  opacity: 0.7; */
-   
-     	transform: scale(1.1);
-		/* background:#FFEFD5;  */
-		z-index: 2;
-	  /*  box-shadow: 2px 2px 2px #000; */
-}
-
-.container ul li .product-meta{
-    width: 105%;
-    height:100px;
-    line-height: 50px;
-    
-   /*  background: blue;  */   
-  /*  background: pink; */
-    text-align: left;
-    color:white;
-    font-size: 18px;
-   
-}
-  /*  .container ul li .product-img{
-  
-  width: 60%;
-  background-position: center;
-  background-size: cover;
-  background: no-repeat #1864ff;
-  height: 150px;
-  margin-right:10px;
-  
-}  */
-
-/* .container ul li .product-meta .divider {
-  border-top: 1px solid #e8eaea;
-  margin: 17px auto;
-  width: 90%;
-}  */
-.container ul li .product-meta{
-
-
-}
-.container ul li  .product-price-wrap {
-  width: 100%;
-  height%;
-  display: -ms-grid;
-  display: grid; */
- -ms-grid-columns: auto auto;
- margin-top: 90%;
- 
-
-.container ul li  .product-price-wrap .left {
-  -ms-grid-column-align: start;
-      justify-self: start;
-}
-
-.container ul li .product-price-wrap .left .price {
- /*  color: #111; */
-  color:black;
-  font-weight: 700;
-}
-
-.container ul li  .product-price-wrap .left .old-price {
-  font-size: 14px;
-  text-decoration: line-through; 
- /*  color: #999; */
-  color:black;
-  font-weight: 300;
-  position: relative;
-/*   display: block; */
-   color:black;
-}
-.container ul li  .product-price-wrap .left .old-price {
-  font-size: 14px;
-  text-decoration: line-through; 
- /*  color: #999; */
-  color:black;
-  font-weight: 300;
-  position: relative;
-/*   display: block; */
-   color:black;
-}
-.container ul li  .product-price-wrap .right {
-  -ms-grid-column-align: end;
-      justify-self: end;
-}
-
-.container ul li  .product-price-wrap .right .btn {
-  float:left;
-  /* background-color: #1864ff; */
+  position:absolute;
   background-color:#4CAF50;
-  border: 0;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 30px;
-  border-radius: 3px;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 999;
+  left: 0;
+  width:300px;
+  line-height:30px;
+  padding: 8px 25px;
+  border-radius: 5px;      
 }
-.container ul li .product-price-wrap .right .btn:hover, .card .product-meta .product-price-wrap .right .btn:focus, .card .product-meta .product-price-wrap .right .btn:active {
-  outline: none;
-  cursor: pointer;
- /*  background-color: blue; */
-}
-  /*  .container   ul li  .label-clip {
-   background-color: #1864ff; 
-  background-color: #4CAF50;
-  border-radius: 0 3px 3px 3px;
-  font-size: 14px;
-  color: #ffffff;
-  font-weight: 600;
-  text-align: center;
-  padding: 5px 10px;
-  z-index: 10;
-  top: -10px; 
-  left: 30px;
-  position: absolute;
-  
-} */
 
-/* .container   ul li .label-clip::before {
-  content: '';
-  /* border-right-color: #123bb4 !important; */
-  border-right-color:#4CAF50 !important;
-  position: absolute;
-  top: 0;
-  left: -10px;
-  height: 0;
-  width: 0;
-  border-right: 10px solid transparent;
-  border-top: 10px solid transparent;
-  background: none !important;
-}  */
-@media screen and (max-width:1250px){
-    .container ul li{
-        width:40%;
-        margin-left: 40px;   
+.dropdown-content a:hover {background-color:;
+    border-bottom:;}
+
+.dropdown:hover .dropdown-content {display: block;
     }
-    /* ..................MainPopup......................... */
-  </style>  
-  <body>
- <div class="mainsplash">
- <div class="splash">
- <div class="row">
- <div class="col-75">  
+
+.dropdown:hover .dropbtn {background-color:;
+    border-bottom: 3px solid white;}
     
-    <form method="post" action="${pageContext.request.contextPath}/continueLocation" modelAttribute="kioskLocation">
-    <spring:url value="/images" var="images" />
-    <img src="${images}/logo.jpg" width="160" height="115" style= margin-top:2%;"/>
-    
-       <h6 style="color:#4CAF50; font-size:85%; margin-top:2%; text-align:center;"> Select your city and location to start shopping</h6>
- 
-       <select id="cities" name="cities" style="padding:12px; border: 1px solid #008000; margin-top:3%;" required>
-       <option value=""style="color: black;">Select city</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
-       </c:forEach>
-       </select>
-        
-       <select id="location" name="location" style="padding:12px; border: 1px solid #008000;margin-top:2%;" required>
-       <option value="" style="color: black;">Select location</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
-       </c:forEach>
-      </select>
-      </div>
-      </div>
-
-                <div style="text-align:center;">
-				<input type="submit" value="Continue"  style="width: 79%;  padding:12px; margin-left: 1%; margin-right: 1%;margin-top: 3%;"/>
-			    </div></form><br>
-
-<h5 style="text-align: center;margin-bottom:4%;">Already have an account? <a href="#"  onclick="document.getElementById('id01').style.display='block'" style="color:#4CAF50;text-decoration:none;hover:green;margin-bottom:4%;" class="submitId">Log In</a></h5>
-</div>
-</div>
-
-<!-- ..................................login popup................. -->
-
-  <div id="id01" class="modal">
-          
-          <c:if test="${not empty error}">
-		  <div class="error">${error}</div>
-		  </c:if>
-		
-		<c:if test="${not empty msg}">
-		<div class="msg">${msg}</div>
-		</c:if>
-		
-  <form class="modal-content animate" action="${pageContext.request.contextPath }/appLogin" method="post"  modelAttribute="customer">
-  <h2 style="text-align: center;margin-top: 2%; color:#4CAF50;">Log In VeggieFridge</h2>
-      <div class="login">
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required  style="width: 100%;
-  padding: 14px 22px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-   border-radius: 5px;
-  /*   background-color:#f1f1f1; */">
-
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required style="width: 100%;
-  padding: 14px 22px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-   border-radius: 5px;
-   /*  background-color:#f1f1f1; */">
-        
-  <button type="submit" style=" background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
+ label{
+ /*color: white; */
+  font-size:18px;
+  font-weight:500;
+  display: block;
   cursor: pointer;
-  width: 100%; border-radius: 5px;">Login</button>
-  
-     <label>
-     <input type="checkbox" checked="checked" name="remember"> Remember me
-     </label>
-     </div>
-
-   <div class="login" style="background-color:#f1f1f1;height:60px;">
-   <a href="${pageContext.request.contextPath }/login/logout" style="
-        padding: 8px 16px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: #4CAF50;
-        border-radius: 6px;
-        outline: none;">Cancel</a>
-        
-    <span class="psw" style="float: right;"><a href="${pageContext.request.contextPath }/login/forgotPassword" style="text-decoration: none;color:dodgerblue;">Forgot Password?</a></span>
-   </div>
-  <a href="##" style="color:dodgerblue; margin-bottom: 2%; margin-top: 2%; text-align: center;" onclick="document.getElementById('id02').style.display='block'" class="submitId">New to VeggieFridge?Create an account</a><button type="button" onclick="document.getElementById('id02').style.display='block'" class="submitId"  style="
-  width: auto;
-  padding: 10px 18px;
-  background-color: #4CAF50;
+}
+.button span{
+  float: right;
+  line-height:30px;
+  transition: 0.5s;
+}
+.button span.rotate{
+  transform: rotate(-180deg);
+}
+ul{
+  position:absolute;
+  background:#4CAF50;
+  list-style:none;
+  left: 70;
+  width:20%;
+  border-radius: 5px;
+  display: none;
+}
+[id^=btn]:checked + ul{
+  display: block;
+}
+ .menu:before{
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  background:white;
+  right: 20px;
+  top: -10px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+ ul li{
+  line-height:40px;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+ ul li label{
+  font-size: 18px;
+}
+ ul li a{
   color: white;
-  border: none; margin-top: 2%;margin-left: 2%;border-radius:5px;">SignUp</button> 
-  </form>
-</div>
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+ ul li a:hover,
+ ul li label:hover{
+  color: cyan;
+}
+ ul ul{
+  position: static;
+}
+ ul ul li{
+  line-height: 30px;
+  padding-left: 30px;
+  border-bottom: none;
+}
+ ul ul li a{
+  color:white;
+  font-size: 17px;
+}
+ ul li span{
+  font-size: 20px;
+  float: right;
+ /*  margin-top: 10px; */
+  padding: 0 10px;
+  transition: 0.5s;
+}
+ ul li span.rotate{
+  transform: rotate(-180deg);
+}
 
-<!-- .....................sign up............ -->
+</style>
+</head>
+<body>
 
-<div class="right" style="float: right;">
+<!-- ......... HeadSection........ -->
+
+<div class="main-wrapper"> 
+
+<div class="nav-background">
+   		
+   <div class="mobile-logo">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/VeggieFridge.ico"  width="150" height="100" alt=""/>
+   </div>
+   
+   <div class="mobile-nav">
+   <div class="cart">
+   <div class="flex items-center">
+     <security:authorize access="isAnonymous()">
+     <a href="#">Nagpur,Mihan</a><%-- ${customerModel.cities}, ${customerModel.location} --%>
+     </security:authorize>
+   <security:authorize access="isAnonymous() or hasRole('USER')">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/>
+   <!--   <img src="./icons/cart-dark.svg" alt=""> -->
+   <a href="#">${customerModel.cartpage.cartitem} Items - (&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+   </security:authorize>
+   </div>
+                </div>
+                <div class="nav-top">
+                    <ul>
+                    
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About us</a>
+                        </li>
+                        <li>
+                            <a href="#">Products</a>
+                        </li>
+                        <li>
+                            <a href="#">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#">Shop</a>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                        <security:authorize access="isAnonymous()">
+                        <li>
+                            <a href="#">Log in</a>
+                        </li>
+                        <li>
+                            <a href="#">Register</a>
+                        </li>
+                        </security:authorize>
+                          <security:authorize access="hasAnyRole('ADMIN', 'USER')">
+                        <li>
+                            <a href="<c:url value="/logout"/>">Log Out</a>
+                        </li>
+                        </security:authorize>
+                        
+                    </ul>
+                </div>
+                <div class="contact flex items-center">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/phone2.png"  width="25" height="25" alt=""/>
+                    <!-- <img src="./icons/phone.svg" alt=""> -->
+                    <div>
+                        <h5>Call us: (+84) 123 456 789</h5>
+                        <h6>E-mail : support@freshmeal.com</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+      <div class="site-content-wrapper">
+        
+                <div class="nav-trigger">
+                <svg xmlns="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+   	                 class="feather feather-bar-chart">
+                    <line x1="12" y1="20" x2="12" y2="10" />
+                    <line x1="18" y1="20" x2="18" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="16" /></svg>
+                    </div> 
+            
+                <div class="site-content"> 
                
-<!-- Trigger/Open The Modal -->
+                <div style="position:fixed;z-index:999;width:99%;margin-right:0;">
+      
+                <header class="topbar">
+                <div class="container flex justify-between items-center">
+                        <div class="icons">
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/facebook.svg"  width="15" height="15" alt=""/>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/twitter.svg"  width="15" height="15" alt=""/>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/google.svg"  width="15" height="15" alt=""/>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/instagram.svg"  width="15" height="15" alt=""/>
+                          
+                        </div>
+                        <div class="auth flex items-center">
+                         
+                            <security:authorize access="isAnonymous()">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
+                              <!--   <img src="./icons/user-icon.svg" alt=""> -->
+                            <a href="${pageContext.request.contextPath}/login">Log in</a>
+                            </div> 
+                            <span class="divider">|</span>
+                            </security:authorize>
+                             
+                            <security:authorize access="isAnonymous()">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/edit.svg"  width="15" height="15" alt=""/>
+                            <!--   <img src="./icons/edit.svg" alt=""> -->
+                            <a href="${pageContext.request.contextPath}/signup">Register Now</a>
+                            </div>
+                            <span class="divider">|</span> 
+                            </security:authorize>
+                            
+<security:authorize access="hasAnyRole('ADMIN', 'USER')">
+<div class="dropdown">
+<spring:url value="/images" var="images" />
+<img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
+<span class="fas fa-caret-down" style="color: white;"></span>
+                          
+<ul class="dropdown-content">
+<li><a href="${pageContext.request.contextPath }/myaccount/editProfile">My Profile</a></li>
+<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem">My Cart</a></li>
+<li>
+          <label for="btn-3" class="second" style="color: white;">My Orders
+            <span class="fas fa-caret-down"></span>
+          </label>
+          <input type="checkbox" id="btn-3" style="display: none;">
+<ul>
+<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">Current</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}">Delivered</a></li>
+<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}">Cancelled</a></li>
+</ul>
+</li>
+<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}">My Wallet</a></li>
 
-<a href="#" id="myBtn" style="text-decoration: none;">${kiosklocation.location}${kiosklocation.cities}</a> 
+<li><a href="<c:url value="/logout"/>">Log Out</a></li>
+</ul>
+ </div>
+<span class="divider">|</span>  
+</security:authorize>     
+                            <security:authorize access="hasRole('USER')">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/location.png"  width="15" height="15" alt=""/>
+                            <!--   <img src="./icons/user-icon.svg" alt=""> -->
+                            <a href="#" id="myBtn">${customerModel.cities}, ${customerModel.location}</a>
+                            <span class="fas fa-caret-down" style="color: white;"></span>
+                            </div>
+                             <span class="divider">|</span>
+                            </security:authorize>
+                             
+                          
+                           <security:authorize access="hasRole('USER')">
+                           <div>
+                           <spring:url value="/images" var="images" />
+                           <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
+                           <!--  <img src="./icons/cart.svg" alt=""> -->
+                           <a href="${pageContext.request.contextPath}/cart/listCustomerCartItem">${customerModel.cartpage.cartitem} Items - (${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
+                           </div>
+                           </security:authorize>
+                           
+                           <security:authorize access="isAnonymous()">
+                           <div>
+                           <spring:url value="/images" var="images" />
+                           <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
+                           <!--  <img src="./icons/cart.svg" alt=""> -->
+                           <a href="#">0 Items - (${repee_sign}0.00)</a>
+                           </div>
+                           </security:authorize>
+                        </div>
+                    </div>
+                </header>
+            
+                <nav>
+                
+                <div class="top">
+                <div class="container flex justify-between" style="background-color:white;">
+              
+                            <div class="contact flex items-center">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
+                      
+   <div>
+   <spring:url value="/images" var="images" />
+   <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
+           <!--  <h5>Call US: (+84) 123 456 789</h5>
+           <h6>E-mail : support@freshmeal.com</h6> -->
+                              </div>   
+                            </div>
+                            <div class="branding">
+                            <form class="search-form" 
+  style="position:relative;
+  width: 350px;
+  height: 40px;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.10);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  transition: all 0.3s ease; top:40%;
+  left:48%;">
+   
+  <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
+  <%--  <spring:url value="/images" var="images" />
+   <img src="${images}/searchicon.png"  width="25" height="25" alt=""/> --%>
+  <button type="submit" class="search-button">
+  </button>
+  </form>
+                              
+                            </div>
+                            <div class="time flex items-center">
+                               
+                                <spring:url value="/images" var="images" />
+   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                               <!--  <img src="/images/phone.svg" alt=""> -->
+                                <div>
+                                    <h5>Call Us: (+91) 982 357 6042  </h5>
+                                    <h6>E-mail : support@veggiefridge.com</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <security:authorize access="isAnonymous() or hasRole('USER')">
+                    <div class="navbar magic-shadow">
+                    <div class="container flex justify-center">
+                    
+                    <a href="${pageContext.request.contextPath}/home" class="active">Home</a>      
+                    <c:forEach var="menu" items="${listNavbarMenu}"> 
+                    <a href="${menu.url}" onclick="location.href=this.href+'?param='+${menu.jsvar};return false;showOrHideDiv()" id="preview">${menu.menues}</a>
+                   
+   
+     <script> 
+        var ${menu.jsvar} = '${menu.paramKey}'
+    </script>
+    </c:forEach> 
+    ${category}
+   </div>
+   </div>
+                     </security:authorize>
+                      <security:authorize access="hasRole('ADMIN')">
+                     <div class="navbar magic-shadow">
+                            <div class="container flex justify-center">
+                            <a href="#" class="active">Home</a>
+                            <a href="#">Manage Product</a>
+                            <a href="#">Manage Location</a>
+                             <a href="#">Manage Kiosk</a>
+                        </div>
+                    </div>
+                     </security:authorize>
+                 </nav>
+                 </div>
+            
+              <header class="${classvalue}" style="background-image:${blurimage};" id="div1">
+                    <div class="container">
+                        <div class="welcome flex items-center">
+                            <span>Welcome to</span>
+                           <spring:url value="/images" var="images" />
+   <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>  
+                          <!--   <img src="./icons/logo-2.svg" alt=""> -->
+                        </div>
+                        <h1>The World Best <span>Shoping</span> Website</h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the
+                            industry's standard dummy.</p>
+                        <div>
+                            <button class="btn btn-primary">Read More</button>
+                            <button class="btn btn-secondary">Shop Now</button>
+                        </div>
+                        <div class="hero-image">
+                         <spring:url value="/images" var="images" />
+                         <img src="${images}/${animateimage}" alt=""/>
+                            <!-- <img src="./images/straw.png" alt=""> -->
+                        </div>
+                    </div>
+                </header>
  
-<!-- The Modal -->
-<div id="myModal" class="modal">
+     <!-- Products   -->
+     
+     <security:authorize access="isAnonymous() or hasRole('USER')">
+     
+	
+	 <div class = "products">
+            <div class = "container" style="margin: 0 auto;max-width:1388px;">
+                <h1 class = "lg-title">Fresh Vegetables And Milk</h1>
+                <p class ="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
+       
+	
+                <div class = "product-items">
+                    
+                    <!--1. single product -->
+                   <c:forEach var="product" items="${listProduct}">
+                   <div class = "product">
+                        <div class = "product-content">
+                            <div class = "product-img">
+                             <spring:url value="/images" var="images" />
+    <img src="${images}/${product.imageName}"/ width="100%"> 
+    <%-- <spring:url value="/images" var="images" />
+	<img src="${images}/bringal.jpg" width="100%"; /> --%>
+                              <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
+                            </div>
+                            <div class = "product-btns">
+                           
+                            <form action="${pageContext.request.contextPath }/cart/addToCartPageItems" modelAttribute="product">
+                           <%--  <button type = "button" class = "btn-cart" onclick="window.location.href='${pageContext.request.contextPath }/cart/addToCartPageItem'" value="${product.productid}"> add to cart --%>
+                            <input type="hidden" value="${product.productid}" name="productid">
+                            <button type ="submit" class = "btn-cart"> add to cart
+                            <span><i class = "fas fa-shopping-cart"></i></span>
+                            </button>
+                            </form>
+                         
+ <!-- <button onclick="increment()" class ="qty">+</button>
+<input id=demoInput type=text min=1 max=9 class = "number" value="1" style="text-align: center;width:35px;">
+<button onclick="decrement()" class = "qty">-</button> -->
+                            <!-- <input type="number" max="9" min="1" value="1" placeholder="Qty" style="text-align:center;
+                            "> -->
+                                <!-- <button type = "button" class = "btn-buy"> buy now
+                                    <span><i class = "fas fa-shopping-cart"></i></span>
+                                </button> -->
+                            </div>
+                        </div>
+                        <div class = "product-info" id="myTable" style="line-height:28px;">
+                            <div class = "product-info-top">
+                                <h2 class = "product-title" style="color: black;">${product.productName}</h2>
+                                <div class = "rating" style="color:orange;">
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "fas fa-star"></i></span>
+                                    <span><i class = "far fa-star"></i></span>
+                                </div>
+                            </div>
+                            <a href = "#" class = "product-name">${product.description}</a>
+                          <h4 class = "size" style="color: black;">Size : ${product.size} ${product.unit}</h4> 
+                          <%--   <p class = "product-price">Rs ${product.price}</p> --%>
+                      MRP : <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price}"/></p>
+                       <p class = "product-price">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${product.price-product.discount * product.price/100}"/></p>
+                      <%--  <p class = "product-price">Rs ${product.price-product.discount * product.price/100}</p> --%>
+                            
+                        </div>
+
+                        <div class = "off-info" style="background-color:#4CAF50;">
+                            <h2 class = "sm-title">${product.discount}% off</h2>
+                        </div>
+                    </div>
+                    </c:forEach>
+ 
+               <!--  end of single product -->
+                    
+                </div>
+            </div>
+        </div>
+         </security:authorize>
+
+            <security:authorize access="isAnonymous() or hasRole('USER')">
+            <div class = "product-collection">
+            <div class = "container" style="margin: 0 auto;max-width:1388px;">
+            <h1 class = "show-ad-title">Shop By Catogary</h1>
+            <div class = "product-collection-wrapper">
+                    <!-- product col left -->
+                    <div class = "product-col-left flexx">
+                        <div class = "product-col-content">
+                            <h2 class = "sm-title">Fresh Milk </h2>
+                            <h2 class = "md-title">Fresh Milk </h2>
+                            <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                            <button type = "button" class = "btn-dark">Shop now</button>
+                        </div>
+                    </div>
+
+                    <!-- product col right -->
+                    <div class = "product-col-right">
+                        <div class = "product-col-r-top flexx">
+                            <div class = "product-col-content">
+                                <h2 class = "sm-title">Fruit Vegetables </h2>
+                                <h2 class = "md-title">Fruit Vegetables </h2>
+                                <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                                <button type = "button" class = "btn-dark">Shop now</button>
+                            </div>
+                        </div>
+
+                        <div class = "product-col-r-bottom">
+                            <!-- left -->
+                            <div class = "flexx">
+                                <div class = "product-col-content">
+                                    <h2 class = "sm-title">OFFERS </h2>
+                                    <h2 class = "md-title">Leafy Vegetables </h2>
+                                    <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                                    <button type = "button" class = "btn-dark">Shop now</button>
+                                </div>
+                            </div>
+                            <!-- right -->
+                            <div class = "flexx">
+                                <div class = "product-col-content">
+                                    <h2 class = "sm-title">Milk </h2>
+                                    <h2 class = "md-title">Milk </h2>
+                                    <p class = "text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae consequatur facilis eligendi quibusdam voluptatibus exercitationem autem voluptatum, beatae architecto odit, quisquam repellat. Deleniti, architecto ab.</p>
+                                    <button type = "button" class = "btn-dark">Shop now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </security:authorize>
+        
+       
+          <security:authorize access="isAnonymous() or hasRole('USER')">
+        <!-- slidercode -->
+	<!--  SLIDERCODE -->
+    <div class="galleryContainer">
+    <div class="slideShowContainer">
+        <div id="playPause" onclick="playPauseSlides()"></div>
+        <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+        <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+        <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
+    
+  <c:forEach var="image" items="${headerImages}">
+  <div class="imageHolder">
+  <spring:url value="/images" var="images" />
+  <img src="${images}/${image.imageUrl}"/>1366X768
+  <%--  <spring:url value="/images" var="images" />
+  <img src="${images}/organic.jpg"/> --%>
+  <p class="captionText">${image.captionText}</p>
+  </div>
+  </c:forEach>
+  </div>
+ <div id="dotsContainer"></div>
+</div>
+</security:authorize>
+
+<script src="myScript.js">
+    var slideIndex,slides,dots,captionText;
+function initGallery(){
+    slideIndex = 0;
+    slides=document.getElementsByClassName("imageHolder");
+    slides[slideIndex].style.opacity=1;
+
+    captionText=document.querySelector(".captionTextHolder .captionText");
+    captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
+
+    //disable nextPrevBtn if slide count is one
+    if(slides.length<2){
+        var nextPrevBtns=document.querySelector(".leftArrow,.rightArrow");
+        nextPrevBtns.style.display="none";
+        for (i = 0; i < nextPrevBtn.length; i++) {
+            nextPrevBtn[i].style.display="none";
+        }
+    }
+
+    //add dots
+    dots=[];
+    var dotsContainer=document.getElementById("dotsContainer"),i;
+    for (i = 0; i < slides.length; i++) {
+        var dot=document.createElement("span");
+        dot.classList.add("dots");
+        dotsContainer.append(dot);
+        dot.setAttribute("onclick","moveSlide("+i+")");
+        dots.push(dot);
+    }
+    dots[slideIndex].classList.add("active");
+}
+initGallery();
+function plusSlides(n) {
+    moveSlide(slideIndex+n);
+}
+function moveSlide(n){
+    var i;
+    var current,next;
+    var moveSlideAnimClass={
+          forCurrent:"",
+          forNext:""
+    };
+    var slideTextAnimClass;
+    if(n>slideIndex) {
+        if(n >= slides.length){n=0;}
+        moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
+        moveSlideAnimClass.forNext="moveLeftNextSlide";
+        slideTextAnimClass="slideTextFromTop";
+    }else if(n<slideIndex){
+        if(n<0){n=slides.length-1;}
+        moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
+        moveSlideAnimClass.forNext="moveRightPrevSlide";
+        slideTextAnimClass="slideTextFromBottom";
+    }
+
+    if(n!=slideIndex){
+        next = slides[n];
+        current=slides[slideIndex];
+        for (i = 0; i < slides.length; i++) {
+            slides[i].className = "imageHolder";
+            slides[i].style.opacity=0;
+            dots[i].classList.remove("active");
+        }
+        current.classList.add(moveSlideAnimClass.forCurrent);
+        next.classList.add(moveSlideAnimClass.forNext);
+        dots[n].classList.add("active");
+        slideIndex=n;
+        captionText.style.display="none";
+        captionText.className="captionText "+slideTextAnimClass;
+        captionText.innerText=slides[n].querySelector(".captionText").innerText;
+        captionText.style.display="block";
+    }
+
+}
+var timer=null;
+function setTimer(){
+    timer=setInterval(function () {
+        plusSlides(1) ;
+    },3000);
+}
+setTimer();
+function playPauseSlides() {
+    var playPauseBtn=document.getElementById("playPause");
+    if(timer==null){
+        setTimer();
+        playPauseBtn.style.backgroundPositionY="0px"
+    }else{
+        clearInterval(timer);
+        timer=null;
+        playPauseBtn.style.backgroundPositionY="-33px"
+    }
+}
+    </script>
+</body>
+</html>
+<script>
+    
+var slideIndex,slides,dots,captionText;
+function initGallery(){
+    slideIndex = 0;
+    slides=document.getElementsByClassName("imageHolder");
+    slides[slideIndex].style.opacity=1;
+
+    captionText=document.querySelector(".captionTextHolder .captionText");
+    captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
+
+    //disable nextPrevBtn if slide count is one
+    if(slides.length<2){
+        var nextPrevBtns=document.querySelector(".leftArrow,.rightArrow");
+        nextPrevBtns.style.display="none";
+        for (i = 0; i < nextPrevBtn.length; i++) {
+            nextPrevBtn[i].style.display="none";
+        }
+    }
+
+    //add dots
+    dots=[];
+    var dotsContainer=document.getElementById("dotsContainer"),i;
+    for (i = 0; i < slides.length; i++) {
+        var dot=document.createElement("span");
+        dot.classList.add("dots");
+        dotsContainer.append(dot);
+        dot.setAttribute("onclick","moveSlide("+i+")");
+        dots.push(dot);
+    }
+    dots[slideIndex].classList.add("active");
+}
+initGallery();
+function plusSlides(n) {
+    moveSlide(slideIndex+n);
+}
+function moveSlide(n){
+    var i;
+    var current,next;
+    var moveSlideAnimClass={
+          forCurrent:"",
+          forNext:""
+    };
+    var slideTextAnimClass;
+    if(n>slideIndex) {
+        if(n >= slides.length){n=0;}
+        moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
+        moveSlideAnimClass.forNext="moveLeftNextSlide";
+        slideTextAnimClass="slideTextFromTop";
+    }else if(n<slideIndex){
+        if(n<0){n=slides.length-1;}
+        moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
+        moveSlideAnimClass.forNext="moveRightPrevSlide";
+        slideTextAnimClass="slideTextFromBottom";
+    }
+
+    if(n!=slideIndex){
+        next = slides[n];
+        current=slides[slideIndex];
+        for (i = 0; i < slides.length; i++) {
+            slides[i].className = "imageHolder";
+            slides[i].style.opacity=0;
+            dots[i].classList.remove("active");
+        }
+        current.classList.add(moveSlideAnimClass.forCurrent);
+        next.classList.add(moveSlideAnimClass.forNext);
+        dots[n].classList.add("active");
+        slideIndex=n;
+        captionText.style.display="none";
+        captionText.className="captionText "+slideTextAnimClass;
+        captionText.innerText=slides[n].querySelector(".captionText").innerText;
+        captionText.style.display="block";
+    }
+
+}
+var timer=null;
+function setTimer(){
+    timer=setInterval(function () {
+        plusSlides(1) ;
+    },3000);
+}
+setTimer();
+function playPauseSlides() {
+    var playPauseBtn=document.getElementById("playPause");
+    if(timer==null){
+        setTimer();
+        playPauseBtn.style.backgroundPositionY="0px"
+    }else{
+        clearInterval(timer);
+        timer=null;
+        playPauseBtn.style.backgroundPositionY="-33px"
+    }
+}
+</script>
+
+<!-- MANAGE  PRODUCT TABLE -->
+	<security:authorize access="hasRole('ADMIN')">
+		<div>
+			<h2>
+				<p style="color: green; text-align: center;">Manage Product</p>
+			</h2>
+		</div>
+
+		<form metod="get" onsubmit="return checkCheckBoxes(this);">
+
+			<table id="Table1" border="1" align="center" cellspacing="0"
+				style="border: 1px solid #008000; text-align: center; margin-left: auto; margin-right: auto; border-collapse: collapse; width: 80%;">
+				<tr>
+					<th></th>
+					<!--  <th>ProductId</th> -->
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;"></th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">ProductName</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Description</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Size</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Price</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Quantity</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Availability</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Category</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Discount</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">Tax</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">FinalPrice</th>
+					<th
+						style="border: 1px solid #008000; text-align: center; background-color: #4CAF50; color: white; padding: 15px;">ImageName</th>
+
+
+				</tr>
+				<c:forEach var="product" items="${listProduct}">
+					<tr>
+						<td align="center" style="padding: 15px;"><input
+							type="checkbox" class="checkboxId" name="productid"
+							value="${product.productid}"></td>
+						<%--<td align="center"><input type="checkbox" name="productid" value="${product.productid}"></td> --%>
+						<%--  <td>${product.productid}</td> --%>
+						<td style="padding: 10px;"><spring:url value="/images"
+								var="images" /> <img src="${images}/${product.imageName}"
+							width="60" height="60" /></td>
+						<td style="padding: 15px;">${product.productName}</td>
+						<td style="padding: 15px;">${product.description}</td>
+						<td style="padding: 15px;">${product.size}</td>
+						<td style="padding: 15px;">${product.price}</td>
+						<td style="padding: 15px;">${product.quantity}</td>
+						<td style="padding: 15px;">${product.isAvailable}</td>
+						<td style="padding: 15px;">${product.category}</td>
+						<td style="padding: 15px;">${product.discount}</td>
+						<td style="padding: 15px;">${product.tax}</td>
+						<td style="padding: 15px;">${product.price-product.discount * product.price/100}</td>
+						<td style="padding: 15px;">${product.imageName}</td>
+					</tr>
+				</c:forEach>
+			    </table>
+			    
+			    <div style="margin-top: 5px; align-content: center; margin-left: 27%">
+				<input type="submit"
+					style="width: 200px; cursor: pointer; margin: 5px 5px; font-size: 16px; text-decoration: none; border-radius: 8px; text-align: center; color: white; background-color: #4CAF50; padding: 15px; border: none;"
+					value="Add"
+					formaction="${pageContext.request.contextPath}/product/newProduct"">
+				    
+				    <input type="submit"
+					style="width: 200px; cursor: pointer; margin: 5px 5px; font-size: 16px; text-decoration: none; border-radius: 8px; text-align: center; color: white; background-color: #4CAF50; padding: 15px; border: none;"
+					value="Delete"
+					formaction="${pageContext.request.contextPath}/product/deleteProduct"
+					onclick="return confirm('Are you sure to delete?')"> <input
+					type="submit"
+					style="width: 200px; cursor: pointer; margin: 5px 5px; font-size: 16px; text-decoration: none; border-radius: 8px; text-align: center; color: white; background-color: #4CAF50; padding: 15px; border: none;"
+					value="Edit"
+					formaction="${pageContext.request.contextPath}/product/editProduct">
+			</div>
+		</form>
+	</security:authorize>
+	
+	 <security:authorize access="isAnonymous() or hasRole('USER')">
+           <section class="our-services">
+                    <div class="container">
+                        <h1 class="section-heading">Our services</h1>
+                        <div class="card-wrapper flex">
+                            <div class="service-card magic-shadow-sm">
+                                <img class="icon" src="./icons/transport.svg" alt="">
+                                <h2>Free Home delivery</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <button class="btn btn-secondary">Read More</button>
+                            </div>
+                            <div class="service-card magic-shadow-sm">
+                                <img class="icon" src="./icons/bag.svg" alt="">
+                                <h2 class="text-primary">30 Days ReturnServices</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <button class="btn btn-primary">Read More</button>
+                            </div>
+                            <div class="service-card magic-shadow-sm">
+                                <img class="icon" src="./icons/usd.svg" alt="">
+                                <h2>Money Back Guaranted</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <button class="btn btn-secondary">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="big-deal" id="div2">
+                    <div class="container">
+                        <h1 class="section-heading text-pure">Big Deals of the Week</h1>
+                        <div class="timer">
+                            <div>
+                                <span>02</span>
+                                <span>Days</span>
+                            </div>
+                            <div>
+                                <span>24</span>
+                                <span>Hours</span>
+                            </div>
+                            <div>
+                                <span>55</span>
+                                <span>Minutes</span>
+                            </div>
+                            <div>
+                                <span>58</span>
+                                <span>Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                 <section class="latest-news" id="div3">
+                    <div class="container">
+                        <h1 class="section-heading">Lastest News from Blog</h1>
+                        <div class="article-wrapper">
+                            <article class="card magic-shadow-sm">
+                                <div>
+                                    <img src="./images/coffee.jpg" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <div class="post-meta flex items-center justify-between">
+                                        <span>July 03, 2017</span>
+                                        <div>
+                                            <span>Posted by <strong>FreshMeal</strong></span>
+                                            <span class="comment-count">12 Comments</span>
+                                        </div>
+                                    </div>
+
+                                    <h2>Lorem Ipsum is simply dummy text of the printing</h2>
+                                    <p>It is a long established fact that a reader will be distracted by the readable
+                                        content of a
+                                        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                        more
+                                        letters.</p>
+                                </div>
+                            </article>
+                            <article class="card magic-shadow-sm">
+                                <div>
+                                    <img src="./images/donut.jpg" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <div class="post-meta flex items-center justify-between">
+                                        <span>July 03, 2017</span>
+                                        <div>
+                                            <span>Posted by <strong>FreshMeal</strong></span>
+                                            <span class="comment-count">12 Comments</span>
+                                        </div>
+                                    </div>
+
+                                    <h2>Lorem Ipsum is simply dummy text of the printing</h2>
+                                    <p>It is a long established fact that a reader will be distracted by the readable
+                                        content of a
+                                        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                        more
+                                        letters.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="text-center btn-wrapper">
+                            <button class="btn btn-secondary">View All</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="subscribe">
+                    <div class="container flex items-center">
+                        <div>
+                            <img src="./images/rasberry.png" alt="">
+                        </div>
+                        <div>
+                            <h1>Subscribe to your newsletter</h1>
+                            <p>Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
+                                web sites
+                                still in their infancy.</p>
+                            <div class="input-wrap">
+                                <input type="email" placeholder="support@veggiefridge.com">
+                                <button>Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+             
+        </security:authorize>
+        
+       <jsp:include page="footer.jsp"/>
+         
+       
+       
+ <!--Location Modal content -->
+ 
+  <!-- The Modal -->
+  <div id="myLocation" class="Location">
 
   <!-- Modal content -->
-  <div class="modal-content">
-  <!-- <span class="close">&times;</span> -->
-  <form method="post" action="${pageContext.request.contextPath}/home/continueLocation" modelAttribute="kioskLocation">
-  <p style="width:20%;text-align: right;"><h4 style="color: green;">Choose your city  to start shopping</h4>
-  <div class="row">
-  <div class="col-75">
+ <div class="Location-content">
+ <span class="close">&times;</span>
+ 
+  <div class="container">
+  <form action="/action_page.php">
+  <p style="text-align: center;margin-bottom:15px;">Select Your city to start shopping</p>     
+   
+    <div class="row">
+      <div class="col-25">
+        <label for="country">City</label>
+      </div>
+      <div class="col-75">
+        <select id="country" name="country">
+          <option value="Nagpur">Nagpur
+          <option value="Hyderabad">Hyderabad</option>
+          
+        </select>
+      </div>
+    </div>
       
-       <select id="cities" name="cities" id="sort-item">
-       <option value=""style="color: black;">Select city</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
-       </c:forEach>
-       </select><br><br>
-        
-      <select id="location" name="location" id="sort-item">
-      <option value="" style="color: black;">Select location</option> 
-      <c:forEach items="${listkiosklocation}" var="kiosklocation">
-      <%--  <option   value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option> --%>
-      <option value="${kiosklocation.cities eq kiosklocation.location}">${kiosklocation.cities eq kiosklocation.location}</option>
-      </c:forEach>
-      </select>
+      <div class="row">
+      <div class="col-25">
+        <label for="country">Location</label>
       </div>
+      <div class="col-75">
+        <select id="country" name="country">
+          <option value="Mihan">Mihan</option>
+          <option value="Ameerpet">Ameerpet</option>
+        </select>
       </div>
-
- <div style="text-align:center;">
- <input type="submit" value="Continue" formaction="${pageContext.request.contextPath}/home/viewhome"/>
- </div></p></form>
- </div>
+    </div>
+    
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
 </div>
- </div>
- <script>
+</div>
+</div>
+
+
+
+ 
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+     
+     <script>
+   function increment() {
+      document.getElementById('demoInput').stepUp();
+   }
+   function decrement() {
+      document.getElementById('demoInput').stepDown();
+   }
+</script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+    
+   <script>
+    $(document).ready(function(){
+   $('.food-slider').slick({
+      autoplay:true,
+     slidesToShow:3,
+     slidesToScroll:1,
+     prevArrow:".prev-btn",
+     nextArrow:".next-btn",
+     responsive:[
+        {
+           breakpoint:992,
+           settings:{
+            slidesToShow:2,
+           }
+        },
+        {
+         breakpoint:768,
+         settings:{
+          slidesToShow:1,
+         }
+      }
+     ]
+
+   });
+
+   $('.nav-trigger').click(function(){
+      $('.site-content-wrapper').toggleClass('scaled');
+   })
+});
+       </script>
+       
+       
+      <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable ").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script> 
+
+
+<script>
 // Get the modal
-var modal = document.getElementById("myModal");
-  
+var modal = document.getElementById("myLocation");
+
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 
@@ -1079,10 +2615,10 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 
-/* // When the user clicks on <span> (x), close the modal
+// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-}  */
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -1091,248 +2627,73 @@ window.onclick = function(event) {
   }
 }
 </script>
- 
-  <div class="carousel">
-  <div class="container">
-  <ul> 
-  <c:forEach var="product" items="${listProduct}">
- <!--  1 -->
-   <li>
-   <div class="product-img">
-   <h4 style="background-color: #4CAF50; float: right; color: white;">Get ${product.discount}% OFF</h4>
-   <a href="#">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/${product.imageName}"/ width="140" height="150"  style="background: no-repeat #1864ff;background-position: center;
-   background-size: cover; float: right; margin-left: 10%; margin-right: 23%;" >
-   </a>
-   </div>
-            <div class="product-meta">
-            <h4 style="color: black;">${product.productName}</h4>
-            <h6 style="color: black;">${product.description}</h6>
-            <h6 style="color: black;"> Size:${product.size} g<h6>
-             </div>
-            <!--    <div class="divider"></div> -->
-            <div class="product-price-wrap" style="background-color:#f1f1f1; margin-top: 90%">
-                   <div class="left">
-                   <span class="price">
-                   <span class="mrp" style=" font-size: 14px;
-  color:black;
-  font-weight: 300;
-  position: relative;   
-  color:black;">MRP</span>
-                   <span class="old-price"> Rs ${product.price}</span>
-                    Rs ${product.finalPrice}
-                     </span>
-            </div>
-                <div class="right">
-                 <button class="btn">Add to Cart</button>
-                </div></div> 
-           
-          <!-- <div class="label-clip">
-           Get 67% OFF
-         </div>  -->
-          </li>
-          </c:forEach>
-        
- 
-</div>
-</div>
 
-<!-- .......................................signup.......................-->
-<div class="register" id="id02">
-<div class="register-content">
-<form method="post"  class="signup-content"  action="${pageContext.request.contextPath}/addguestcustomer" modelAttribute="customer" >
-
-     <font color='red'style="font-size:16px;text-align: center;"><span id="errId"></span></font>
-
-      <h1 style="text-align: center; color: green; margin-top:4%;">Sign Up</h1>
-      <p style="margin-top: 1%; margin-left: 2%;">Please fill in this form to create an account.</p>
-      <hr>
-  
-  
-  <label for=" firstname" style="margin-left: 2%;">First Name:</label>
-  <spring:bind path="customer.firstName">
-  <input type="text" name="${status.expression}" value="${status.value}"  placeholder="First Name" required style="width: 67%;
-  padding: 8px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
-  
-  <label for="lastname" style="margin-left:2%;">Last Name :</label>
-  <spring:bind path="customer.lastName">
-  <input type="text" name="${status.expression}" value="${status.value}" placeholder="last Name" required style=" width:67%;
-  padding: 8px;	
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:3%;"></spring:bind>
-  
-
- <label for="mobile" style="margin-left: 2%;">Mobile Num:</label>
- <spring:bind path="customer.mobile">
- <input type="text" name="${status.expression}" value="${status.value}" size="10" style="width: 67%;
-  padding: 8px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:3%;"/></spring:bind>
-  
-  
-  <label for="city" style="margin-left: 2%;">Select City :</label>
-  <select id="locationid" name="cities"  required  style="width: 70%;
-  padding: 8px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:4%;"> 
-       <option value="" style="margin-left: 2%;">Select city</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.cities}" style="color: black;">${kiosklocation.cities}</option>
-       </c:forEach>
-       </select>
-        
-       
-       <label for="location" style="margin-left:2%;">Select Location:</label>
-       <select id="locationid" name="location" required   style="width: 67%;
-  padding: 8px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:1%;">
-       <option value="" style="color: black;">Select location</option> 
-       <c:forEach items="${listkiosklocation}" var="kiosklocation">
-       <option value="${kiosklocation.location}" style="color: black;">${kiosklocation.location}</option>
-       </c:forEach>
-       </select>
-       
-       
-      <label for="email" style="margin-left:2%;">Email :</label>
-      <spring:bind path="customer.email">
-  
-  <input type="email" name="${status.expression}" value="${status.value}" placeholder="Enter Email"  required style="width: 65%;
-  padding: 8px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:12%;"></spring:bind>
-
-      
-      <label for="psw" style="margin-left:2%;">Password:</label>
-  <spring:bind path="customer.password">
-  <input type="password" name="${status.expression}" value="${status.value}" placeholder="Enter Password" required style="width: 65%;
-  padding: 8px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:7%;"  id="txtPassword" 
-  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" id="psw"></spring:bind>
-
-      
-      <label for="confirm-repeat" style="margin-left:2%;">Confirm Psw:</label>
-      <spring:bind path="customer.confirmPassword">
-      <input type="password"  name="${status.expression}" value="${status.value}" placeholder="confirm Password" required style="width: 65%;
-  padding: 8px;
-  margin: 3px 0 12px 0; 
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius:4px;margin-left:3%;"  id="txtConfirmPassword" ></spring:bind> 
-  <hr>
-      
-        <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px;margin-left:2%;"> Remember me
-        </label>
-
-     <p style="margin-left: 2%;">By creating an account you agree to our <a href="#" style="color:dodgerblue;">Terms & Privacy</a>.</p><br>
-     <input type="submit" style="width:280px;cursor:pointer;margin: 5px 5px;font-size:14px;text-decoration:none;border-radius:12px;text-align: center;color:white;background-color:#4CAF50;padding:12px;border:none;margin-left:14%;"value="Sign Up" onclick="return Validate()"  id="btnSubmit">
-    
-  </form>
-  </div>
-  
- <script>
+<!-- <script>
 $(document).ready(function() {
-
-  setTimeout(function(){
-	  $('.mainsplash').css('display','block');
-	  },3000); 
-
-});
-$('.submitId').click(function(){
-	  $('.mainsplash').css('display','none');
-	  });
-
-</script>
- 
-   <script>
-	// Get the modal
-	var login = document.getElementById('id01');
 	
-$('.submitId').click(function(){
-	  $('.model').css('display','none');
-	  });
-	</script>
-	
-	 <script>
-	// Get the modal
-	var register-content = document.getElementById('id02');
-	
-	$('.submitId').click(function(){
-		  $('.register').css('display','none');
-		  });
-    
-	</script>
+    $('#preview').on('click', function() {
+    	$('#div1').hide();
+    }
   
-  <script type="text/javascript">
-  window.onload = function() {
-    var selItem = sessionStorage.getItem("SelItem");  
-    $('#sort-item').val(selItem);
-    }
-    $('#sort-item').change(function() { 
-        var selVal = $(this).val();
-        sessionStorage.setItem("SelItem", selVal);
-    });
-   </script>
+    );
    
-    <script type="text/javascript">
-
-      function validatePwds(){
-    	    var newPwd = $('#customer.password').val();
-    	    var confirmPwd = $('#customer.confirmPassword').val();
-    	    if(newPwd!=confirmPwd){
-    	    $('#errId').text('New Password And Confirm Password Is Not Match');
-    	    return false;
-    	    }
-    	    return true;
-    	}
-
-      </script>
-      
-      <script type="text/javascript">
-    function Validate() {
-        var password = document.getElementById("txtPassword").value;
-        var confirmPassword = document.getElementById("txtConfirmPassword").value;
-        if (password != confirmPassword) {
-        	 $('#errId').text('New Password And Confirm Password Is Not Match');
-            /* alert("Password And Confirm Password Is Not Match."); */
-            return false;
-        }
-        return true;
-    }
-</script>
-<!-- ........popup code...... -->
+});    
+</script> -->
 
 <script>
-$(document).ready(function() {
-      if (document.cookie.indexOf("modal=true") == -1) {
-        document.cookie = "modal=true; max-age=null"; // seconds in a day
-       /*  $('#popup').modal('show'); */
-        setTimeout(function() {
-            $('#popup').modal('show');
-        }, 4000);
-      }
-    });
+	//$('#preview').on('click', function(){
+	if(${category} == "Leafy Vegetables"){  
+    $('#div1').hide();
+	//});
+	}
 </script>
 
-  </body>
-  </html>
-  
+<!-- <script>
+  $(window).load(function() {
+	  $('#div1').hide();
+  });
+</script> -->
+
+<!-- <script>
+$(document).ready(function() {
+	
+	$('#preview').on('click', function() {
+    //alert('page loaded');  // alert to confirm the page is loaded  
+    var cat = ${category}; 
+    if(cat === 'Milk') {
+    	 $('#div1').hide();
+
+        } 
+	});
+	
+});
+</script>-->
+
+<script>
+$(document).ready(function(){
+	$('#preview').on('click', function(){
+     if (${category} == '') {
+    	  $('#div1').hide();
+         //v.style.display = "none";
+      } else {
+    	  $('#div2').hide();
+         //v.style.display = "block";
+      }
+});
+});
+   
+</script>
+         
+        <c:if test="${not empty message}">
+		
+		<div class="alert alert-info">
+			<h3 class="text-center">${message}</h3>
+		</div>		
+	
+	</c:if>
+	
+</body>
+
+</html>
+<!-- https://stackoverflow.com/questions/39307329/hide-div-onload-in-javascript/39307565 -->
+ 

@@ -12,6 +12,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@page session="false" %>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript">
@@ -35,8 +36,8 @@
 	padding: 0;
 	box-sizing: border-box;
 } 
-/* colors */
 
+/* colors */
 :root {
     --primary:#4CAF50;
     /* --primary:#EEBF00; */
@@ -48,8 +49,8 @@
     --heaven:#FFFFFF;
     --footer:#2D333F;
 }
-/* Reset  */
 
+/* Reset  */
 *{
     padding:0;
     margin:0;
@@ -155,13 +156,10 @@
 }
   header.topbar{
      width: 100%;
-       /*  position: fixed; */   
-      background:#4CAF50;
-     /*  background:var(--secondary); */
-      color:var(--pure);
-      /* font-family:"Raleway-semibold"; */
-      padding:0.75rem 0;
-      top: 0; 
+     background:#4CAF50;
+     color:var(--pure);
+     padding:0.75rem 0;
+     top: 0; 
   }
   header.topbar .auth > div a{
       color:var(--pure);
@@ -187,14 +185,11 @@
   }
   nav .top{
       padding:1.5rem 0;
-     /*  margin-top:40px;  */
   }
   nav .top .contact h5,  nav .top .time h5{
-      /* font-family:"Raleway-black"; */
       margin-bottom:0.25rem;
   }
   nav .top .contact h6, nav .top .time h6{
-    /* font-family:"Raleway-medium"; */
     letter-spacing: 0.055rem;
     font-size:0.75rem;
     color:var(--ternary);
@@ -227,6 +222,7 @@ nav .navbar a:hover{
     color:var(--pure); 
 }
 .magic-shadow{
+    
     position: relative;
     background:var(--heaven);
     font-family: 'Montserrat', sans-serif;
@@ -236,14 +232,14 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-    /*  background-image:url(../images/shadow.svg); */
-   /*  background-image:url("images/shadow.svg"); */
+    /* background-image:url(../images/shadow.svg); */
+    background-image:url("images/shadow.svg");
     background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
     bottom:-22px;
     z-index:-1;
-    box-shadow: 0px 0px 3px 1px #00000078; 
+    /* box-shadow: 0px 0px 3px 1px #00000078;  */
     font-family: Montserrat;font-weight:300px;" 
     
 }
@@ -268,7 +264,7 @@ nav .navbar a:hover{
     -moz-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
     -o-transform:translateX(-50%);
-     box-shadow: 0px 0px 3px 1px #00000078; 
+    /*  box-shadow: 0px 0px 3px 1px #00000078; */
 }
 
 .nav-background .mobile-logo{
@@ -286,7 +282,6 @@ nav .navbar a:hover{
 .nav-background .mobile-nav ul li a{
     text-decoration: none;
     color:var(--secondary);
-    font-family: "Raleway-medium";
 }
 .nav-background .mobile-nav ul li a:hover{
     color:var(--primary);
@@ -500,6 +495,7 @@ width:35px;
   position: relative;
   display: inline-block; 
 }
+
 .dropdown-content {
   display: none;
   position:absolute;
@@ -601,37 +597,41 @@ ul{
  ul li span.rotate{
   transform: rotate(-180deg);
 }
-/* ........Profile Menu css Close........... */
-</style>
 
+</style>
 </head>
 
 <body>
 
 <!-- ......... HeadSection........ -->
-            <div class="main-wrapper">
-            <div class="nav-background">
-            <div class="mobile-logo">
+
+   <div class="main-wrapper">  <!-- ("MAIN HEADER DIV") -->
+   
+   <!-- Mobile Screen -->
+          
+   <div class="nav-background">
+            
+   <div class="mobile-logo">
    <spring:url value="/images" var="images" />
    <img src="${images}/VeggieFridge.ico"  width="150" height="100" alt=""/>
-            </div>
+   </div>
             
-            <div class="mobile-nav">
+   <div class="mobile-nav">
+   
    <div class="cart">
    <div class="flex items-center">
-     <security:authorize access="isAnonymous()">
-     <a href="#">Nagpur,Mihan</a><%-- ${customerModel.cities}, ${customerModel.location} --%>
-     </security:authorize>
+   <security:authorize access="isAnonymous()">
+   <a href="#">Nagpur,Mihan</a>
+   </security:authorize>
    <security:authorize access="isAnonymous() or hasRole('USER')">
    <spring:url value="/images" var="images" />
    <img src="${images}/cart-dark.svg"  width="15" height="15" alt=""/>
-   <!--   <img src="./icons/cart-dark.svg" alt=""> -->
    <a href="#">${customerModel.cartpage.cartitem} Items - (&#8377;<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/>)</a>
    </security:authorize>
    </div>
-                </div>
-                <div class="nav-top">
-                    <ul>
+   </div>
+                 <div class="nav-top">
+                 <ul style="display: block;">
                     
                         <li>
                             <a href="#">Home</a>
@@ -668,9 +668,10 @@ ul{
                         </li>
                         </security:authorize>
                         
-                    </ul>
+                 </ul>
                 </div>
-                <div class="contact flex items-center">
+                
+   <div class="contact flex items-center">
    <spring:url value="/images" var="images" />
    <img src="${images}/phone2.png"  width="25" height="25" alt=""/>
                     <!-- <img src="./icons/phone.svg" alt=""> -->
@@ -679,39 +680,32 @@ ul{
                       <h6>E-mail : support@veggiefridge.com</h6>
                     </div>
                 </div>
-                <%-- <div class="time flex items-center">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
-                   <!--  <img src="./icons/clock.svg" alt=""> -->
-                    <div>
-                        <h5>Working Hours:</h5>
-                        <h6>Mon - Sat (8.00am - 12.00am)</h6>
-                    </div>
-                </div> --%>
                 
             </div>
         </div>
-        
+      
+ <!--      Mobile Screen End    -->     
+ 
 <!-- .......laptop Screen......... -->
 
-<div class="site-content-wrapper">
+<div class="site-content-wrapper"><!-- ("SECOND MAIN DIV") -->
       
        <div class="nav-trigger">
-                <svg xmlns="" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-bar-chart">
-                    <line x1="12" y1="20" x2="12" y2="10" />
-                    <line x1="18" y1="20" x2="18" y2="4" />
-                    <line x1="6" y1="20" x2="6" y2="16" /></svg>
-            </div>
+       <svg xmlns="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+       class="feather feather-bar-chart">
+       <line x1="12" y1="20" x2="12" y2="10" />
+       <line x1="18" y1="20" x2="18" y2="4" />
+       <line x1="6" y1="20" x2="6" y2="16" /></svg>
+       </div>
                 
-            <div class="site-content">
+                    <div class="site-content"> <!-- ("THIRD MAIN DIV") -->
                
-                <header class="topbar"> 
-                
+                    <header class="topbar"> 
                     <div class="container flex justify-between items-center">
                         <div class="icons">
-                            <a href="#"><img src="./icons/facebook.svg" alt=""></a>
+                            <%-- <spring:url value="/images" var="images" />
+                            <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/> --%>
                             <a href="#"><img src="./icons/twitter.svg" alt=""></a>
                             <a href="#"><img src="./icons/google.svg" alt=""></a>
                             <a href="#"><img src="./icons/instagram.svg" alt=""></a>
@@ -740,31 +734,33 @@ ul{
                             </security:authorize>
                             
 <security:authorize access="hasAnyRole('ADMIN', 'USER')">
-
 <div class="dropdown">
-
 <spring:url value="/images" var="images" />
 <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>Hello, ${customerModel.firstName}
 <span class="fas fa-caret-down" style="color: white;"></span>
-
+                          
 <ul class="dropdown-content">
-<c:forEach var="menu" items="${listprofileMenu}">
+<c:forEach var="menu" items="${menuLevel1}">
 <li>
+<c:if test="${empty menu.parentMenu}">
           <label for="btn-3" class="second" style="color: white;">${menu.menues}
           <span class="fas fa-caret-down"></span>
           </label>
           <input type="checkbox" id="btn-3" style="display: none;">
-<ul>
-<c:if test="${menu.menus.size()>0}">
-<c:forEach var="menu1" items="${menu.menus}">
-<li><a href="#">${menu.name}</a></li>
+          </c:if>
+       
+<c:if test="${menu.childMenu.size() > 0}">          
+<ul class="sub-menu">
+<c:forEach var="menu1" items="${menu.childMenu}">
+<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">${menu1.menues}</a></li>
 </c:forEach>
-</c:if>
 </ul>
+</c:if>
 </li>
 </c:forEach>
 </ul>
 </div>
+
 <span class="divider">|</span>  
 </security:authorize>
                             
@@ -818,7 +814,7 @@ ul{
                            <div class="contact flex items-center">
                        
                                <div>
-                      <table style="margin-left:40px;">
+                      <table>
                       
 					 <th><a href="abc.htm"> <spring:url value="/images" var="images" />
    <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
@@ -828,7 +824,6 @@ ul{
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
 					</a></th>
 				</table>
-
    
                                     <!--  <h5>Call US: (+84) 123 456 789</h5>
                                     <h6>E-mail : support@freshmeal.com</h6> -->
@@ -844,8 +839,8 @@ ul{
   background: #fff;
   transition: all 0.3s ease; top:40%;
   left:48%;">
-  <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
-  <button type="submit" class="search-button">
+  <input type="search" value="" placeholder="Search..." class="search-input" id="myInput">
+ 
   </button>
   </form>
                                 <!-- <img src="./icons/logo.svg" alt=""> -->
@@ -859,19 +854,21 @@ ul{
                                     <h6>Mon - Sat (8.00am - 12.00am)</h6>
                                 </div> -->
                                 <spring:url value="/images" var="images" />
-   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                                <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
                                <!--  <img src="/images/phone.svg" alt=""> -->
                                 <div>
-                                      <h5>Call Us: (+91) 982 357 6042  </h5>
+                                    <h5>Call Us: (+91) 982 357 6042  </h5>
                                     <h6>E-mail : support@veggiefridge.com</h6>
                     </div>
                     </div>
                     </div>
                      <security:authorize access="isAnonymous() or hasRole('USER')">
-                    <div class="navbar magic-shadow">
+                    
+                    
+                    <div class="fixed-top navbar magic-shadow"><!-- class="navbar magic-shadow"  -->
                     <div class="container flex justify-center">
                     <a href="${pageContext.request.contextPath}/home" class="active">Home</a>      
-                    <c:forEach var="menu" items="${listMenu}"> 
+                    <c:forEach var="menu" items="${listNavbarMenu}"> 
                     <a href="${menu.url}" onclick="location.href=this.href+'?param='+${menu.jsvar};return false;">${menu.menues}</a>
    
     <script> 
@@ -882,9 +879,8 @@ ul{
     </div>
     </div>
                      </security:authorize>
-                     
-                      <security:authorize access="hasRole('ADMIN')">
-                    <div class="navbar magic-shadow">
+                     <security:authorize access="hasRole('ADMIN')">
+                     <div class="navbar magic-shadow">
                             <div class="container flex justify-center">
                             <a href="#" class="active">Home</a>
                             <a href="#">Manage Product</a>
@@ -894,6 +890,11 @@ ul{
                     </div>
                      </security:authorize>
                  </nav>
+                 
+                 </div>
+                 </div>
+                 </div>
+                 
                
                
 
@@ -930,10 +931,9 @@ ul{
       $('.site-content-wrapper').toggleClass('scaled');
    })
 });
-    
 </script>
 
- <script>
+  <script>
     $('nav .button').click(function(){
       $('nav .button span').toggleClass("rotate");
     });
@@ -956,6 +956,17 @@ ul{
       $('nav ul li .second').click(function(){
         $('nav ul li .second span').toggleClass("rotate");
       });
+    </script>
+    
+    <script type="text/javascript">
+
+    $('.sub-menu').hide();
+
+    $("li:has(ul)").click(function(){
+
+    $("ul",this).toggle('slow');
+    });
+
     </script>
 
  

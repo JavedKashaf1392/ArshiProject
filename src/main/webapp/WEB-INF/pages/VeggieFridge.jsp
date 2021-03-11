@@ -1650,7 +1650,6 @@ ul{
  ul li span.rotate{
   transform: rotate(-180deg);
 }
-
 </style>
 </head>
 <body>

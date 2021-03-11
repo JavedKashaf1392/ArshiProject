@@ -94,6 +94,10 @@ public class AppController {
 		model.addObject("listProduct", listProduct);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+		model.addObject("blurimage",VFOnlineConstants.headeblurimage);
+		model.addObject("classvalue", VFOnlineConstants.classvalue);
+		model.addObject("animateimage",VFOnlineConstants.animateimage);
+		model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
 		/* model.setViewName("registerdhome"); */
 		  String section2= "Profile";	
 	  		List<Menu> allMenu = menuservice.getmenuandsubMenu(section2);
@@ -102,7 +106,8 @@ public class AppController {
 	  	    System.out.println("menu"+menu2);
 		     }
 		model.addObject("menuLevel1", allMenu);
-		model.setViewName("VeggieFridge");
+		/* model.setViewName("VeggieFridge"); */
+		model.setViewName("home");
 		return model;
 	}
 		
@@ -124,8 +129,11 @@ public class AppController {
 			model.addObject("listProduct", listProduct);
 			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+			model.addObject("blurimage",VFOnlineConstants.headeblurimage);
+			model.addObject("classvalue", VFOnlineConstants.classvalue);
+			model.addObject("animateimage",VFOnlineConstants.animateimage);
 			/* model.setViewName("registerdhome"); */ 
-			 model.setViewName("VeggieFridge");
+			 model.setViewName("home");
 			return model;
 		}
 		 
@@ -217,6 +225,9 @@ public class AppController {
 		model.addObject("listProduct", listProduct);
 		model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 		model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+		model.addObject("blurimage",VFOnlineConstants.headeblurimage);
+		model.addObject("classvalue", VFOnlineConstants.classvalue);
+		model.addObject("animateimage",VFOnlineConstants.animateimage);
 		/* model.setViewName("registerdhome"); */
 	    
 		//Profile Menu
@@ -227,7 +238,7 @@ public class AppController {
 	  	    System.out.println("menu"+menu2);
 		     }
 		model.addObject("menuLevel1", allMenu);
-		model.setViewName("VeggieFridge");
+		model.setViewName("home");
 		return model;
 		}
 		
@@ -278,6 +289,9 @@ public class AppController {
 			model.addObject("listkiosklocation",listkiosklocation);
 		    model.addObject("listCustomer", listCustomer); 
 			model.addObject("listProduct", listProduct);
+			model.addObject("blurimage",VFOnlineConstants.headeblurimage);
+			model.addObject("classvalue", VFOnlineConstants.classvalue);
+			model.addObject("animateimage",VFOnlineConstants.animateimage);
 			session.setAttribute("customer", customer);
 			model.setViewName("loginform");
 		}
@@ -302,6 +316,7 @@ public class AppController {
 			List<Images> headerImages = menuservice.getImagesBySection(imageSection);
 			String section = "Navbar";
 			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("category",category);
 			model.addObject("listNavbarMenu",listNavbarMenu);
 			model.addObject("headerImages", headerImages);
 			model.addObject("listCustomer", listCustomer);
@@ -310,7 +325,8 @@ public class AppController {
 			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
 			model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
 			/* model.setViewName("registerdhome"); */ 
-			 model.setViewName("VeggieFridge");
+			/* model.setViewName("VeggieFridge"); */
+			model.setViewName("home");
 			return model;
 		}
             
@@ -321,7 +337,7 @@ public class AppController {
 			 return "PickupAddressPaymentOption"; 
   			
   		}
-  		
+ 
   		
   	    //PickupAddressPaymrntOption
   	  		@RequestMapping(value = "/thankForOrder", method = RequestMethod.GET)
@@ -360,27 +376,25 @@ public class AppController {
   	  		
   	  		
   	  		
-  	  	    //PickupAddressPaymrntOption
-  	  		
-  	  		@RequestMapping(value = "/profilemenu", method = RequestMethod.GET)
-  	  		public String profilemenu(Model model,ModelAndView mode1 ) {
-  	  		String section= "Profile";	
+  	  	       //PickupAddressPaymrntOption
+  	    @RequestMapping(value ="/profilemenu", method = RequestMethod.GET)
+  	  	public String profilemenu(Model model,ModelAndView mode1 ) {
+  	  	String section= "Profile";	
   	  	List<Menu> allMenu = menuservice.getmenuandsubMenu(section);
-  	  	String section2 = "Navbar";
+  	    String section2 = "Navbar";
 		List<Menu> listNavbarMenu = menuservice.getMenu(section2);
-		mode1.addObject("listNavbarMenu",listNavbarMenu);
+		model.addAttribute("listNavbarMenu",listNavbarMenu);
   	  		System.out.println("===================================");
   	  		for (Menu menu : allMenu) {
   	  			System.out.println("menu"+menu);
 				
 			}
+  	  	    model.addAttribute("listNavbarMenu",listNavbarMenu);
   			model.addAttribute("menuLevel1", allMenu);
-  	  			return "header";
+  	  			return "head";
   	  		}
-  	  		
-  	  		
-  	  	
-  	      //addGuestCustomer
+  
+  	  	  //addGuestCustomer
   	  	 //save and update customer
   	  	@RequestMapping(value = "/addguestcustomers", method = RequestMethod.POST)
   	  	public ModelAndView addGuestCustomers(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
@@ -414,6 +428,20 @@ public class AppController {
   	  		
   	  	}
   	  	
+  	  	
+  	     //registeredhome
+  		@RequestMapping(value = "/registeredhome", method = RequestMethod.GET)
+  		public String registeredhome(ModelMap model) {
+			 return "registeredhome"; 
+  			
+  		}
+  		
+  		 //registered
+  		@RequestMapping(value = "/registered", method = RequestMethod.GET)
+  		public String registered(ModelMap model) {
+			 return "registered"; 
+  			
+  		}
   	    
     
       
