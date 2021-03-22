@@ -34,7 +34,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 20px auto;
+	margin: 200px auto 20px;
 }
 
 .links {
@@ -212,7 +212,7 @@ input{
 
 .closebtn {
 	margin-left: 15px;
-	color: white;
+	color:black;
 	font-weight: bold;
 	float: right;
 	font-size: 22px;
@@ -230,14 +230,19 @@ input{
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
-	<div style="max-width: 1200px; margin: 17px auto;">
+	<jsp:include page="head.jsp"></jsp:include>
+	<!-- <div style="max-width: 1200px; margin:200px auto;">
 
 		<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
 			Wallet</span>
-	</div>
+	</div> -->
 	<div class="wrapper">
+	<div style="margin-top:25px;margin-bottom:20px;">
+    <span
+	style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
+	Cart</span>
+	</div>
 
 		<div class="view_main">
 			<c:if test="${not empty message}">

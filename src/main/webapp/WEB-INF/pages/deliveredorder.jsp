@@ -160,7 +160,31 @@ input {
  /*  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); */
   width: 190px;
 }
-  
+.showmore{
+
+	float:left;
+	background: transparent;
+    border: 1px solid black;
+    padding: 0.8rem 0;
+    width:100px;
+    font-family: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.6s ease;
+    color: white;
+    background:#4CAF50;
+    border-radius:50px; 
+    margin-top:10px;
+    margin-bottom: 10px; 
+   
+}
+
+.showmore:hover  {
+	 opacity: 0.8;
+}
+
+
 </style>
 </head>
 <body>
@@ -197,6 +221,7 @@ input {
     </table>
 </div>
 </form>
+
 <c:forEach var="orders" items="${requestScope.deliveredOrders}">
 <div class="wrapper">
 	  <div class="view_main">
@@ -236,7 +261,7 @@ input {
 								</td>
 								<td style="font-weight:600;"> : </td>
 								<td>
-								<p style="font-weight: 300;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></p>
+								<p style="font-weight: 300;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.totalBillAmount}"/></p>
 								</td>
 								</tr>
 						
@@ -256,7 +281,9 @@ input {
 				<div class="vi_right">
 					<p class="title">${orderitem.product.productName}</p>
 					<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit animi!</p>
-					<p class="content">${repee_sign}${orderitem.product.price}</p>
+					<p class="content">${repee_sign}
+										<fmt:formatNumber type="number" minFractionDigits="2"
+											maxFractionDigits="2" value="${orderitem.product.price}" /></p>
 					<a href="#" style="color: green;">Review</a>
 					<!-- <div class="btn">Review</div> -->
 				</div>
@@ -264,29 +291,11 @@ input {
 			</c:forEach>
 			<table>
 	<th>
-	<div class="btn" style="width: 125px;
-	background: #4abd3e;
-	padding: 8px 5px;
-	border-radius: 3px;
-	color: #fff;
-	text-align: center;
-	font-weight:400;
-	cursor: pointer;margin-left:10px;">ShowAll</div>
+	
+	<button class="showmore"
+								onclick="window.location.href='${pageContext.request.contextPath}/order/orderinfol/${orders.orderid}'">ShowAll</button>
+	
 	</th>
-	
-	<%-- <th>
-	 <a href="${pageContext.request.contextPath}/order/repeatOrder${orders.orderid}" style="display: inline-block;
-        padding: 8px 5px;
-        text-align: center;
-        text-decoration: none;
-        color: #fff;
-        background: #4abd3e;
-        border-radius: 3px;
-        font-weight:400;
-        width: 125px;
-        margin-left:2px;">Re-Order</a>
-	</th> --%>
-	
 	
 	</table>
 		
@@ -299,6 +308,7 @@ input {
 	
 </div>
 </c:forEach>
+
 
 <jsp:include page="footer.jsp"></jsp:include>
 	

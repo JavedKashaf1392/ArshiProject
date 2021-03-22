@@ -87,6 +87,7 @@ public class VFOnlineConstants {
 	public static final String headeblurimage="url('images/Blur.png')";
 	public static final String classvalue ="hero flex items-center";
 	public static final String animateimage="vegies.png";
+	public static final String creditwalletAmount="Money Has Been Credit In Your Account";
 
 	/* ..... Clint Side ErrorMasg ..... */
 	

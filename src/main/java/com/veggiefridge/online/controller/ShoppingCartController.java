@@ -220,7 +220,7 @@ public class ShoppingCartController {
 	
 	     //add item into cart
 	    @RequestMapping(value = "/addToCartPageItems")
-		public String addCartItemss(ModelAndView model,
+		public String addCartItems(ModelAndView model,
 				@ModelAttribute("cartpage") CartPage cart, BindingResult resultcart,HttpServletRequest request, @RequestParam(value = "productid", required =   
 						true)int productid,@ModelAttribute("Product") Product product,Model modell) {
 			System.out.println(productid);
@@ -232,7 +232,6 @@ public class ShoppingCartController {
 				product = productservice.getProduct(productid);
 				
 				 //transfer the product details to cartLine
-
 				cartitem.setCartpageid(cartpage.getCartpageid());
 				cartitem.setProduct(product);
 				//cartitem.setAvailable(true);
@@ -249,8 +248,8 @@ public class ShoppingCartController {
 				cartpage.setGrandTotal(cartpage.getGrandTotal() + cartitem.getBuyingPrice());
 				cartpage.setCartitem(cartpage.getCartitem() + 1);
 				cartservice.updateCartPage(cartpage);
-				modell.addAttribute("message",VFOnlineConstants.CART_PRODUCT_ADD);
-			
+				
+		    model.addObject("message",VFOnlineConstants.CART_PRODUCT_ADD);
 			String section = "Navbar";
 			List<Menu> listNavbarMenu = menuservice.getMenu(section);
 			model.addObject("listNavbarMenu",listNavbarMenu);
@@ -270,9 +269,9 @@ public class ShoppingCartController {
 			model.addObject("animateimage",VFOnlineConstants.animateimage);
 			
 			/* CART_PRODUCT_ADD */
-			model.setViewName("VeggieFridge");
+			/* model.setViewName("VeggieFridge"); */
 			}
-			return "redirect:/home";
+			return "redirect:/returnToHome";
 	}
 	   
 	     //Validate cart
@@ -323,5 +322,8 @@ public class ShoppingCartController {
 			model.addObject("msg",VFOnlineConstants.CART_UPDATE);
 			return "cart";
 		
-		}	
-}
+		}
+			
+  		}
+	    
+

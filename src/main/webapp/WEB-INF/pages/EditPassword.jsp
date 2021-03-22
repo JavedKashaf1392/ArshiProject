@@ -6,11 +6,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VeggieFridge</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -19,34 +27,30 @@
 	charset="utf-8"></script>
 
 <style>
-@import
-	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap')
-	;
 
-* {
+@import
+url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
+*{
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
 }
 
 .side-bar {
-	/* background: rgba(255, 255, 255, 0.1);*/
-	/* backdrop-filter: blur(15px); */
 	width: 290px;
-	height: 100vh;
-	position: absolute;
+	height:100vh;
+	position:absolute;
 	top: 0;
-	left: -100%;
-	/*  overflow-y: auto; */
 	transition: 0.6s ease;
 	transition-property: left;
 	background-color: white;
 	left: 0;
-	margin-top: 295px;
-	margin-left: 15%;
-	
-	
+	margin-top:340px;
+	margin-left:17%;
+	margin-bottom:40px;
 }
 
 /*.side-bar.active{
@@ -329,22 +333,28 @@
 		flex-direction: row;
 	}
 }
-</style>
-</head>
-<body>
+ </style>
+ </head>
+ <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
-    <div style="border:1 px green;background-color:white;margin-top:10px;font-weight: bold;color: green;font-size:25px;width: 1200px;margin: 0 auto;">My profile</div>
+   <%-- <jsp:include page="newhead.jsp"></jsp:include> --%>
+    
+  <div style="max-width:1200px; margin:220px auto 0px;">
+	<span
+			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">
+			My Account</span>
+	</div>
+	
     
    <div
-		style="background: #f5f5f5;padding: 30px 30px;margin-top:45px;width: 1200px;margin: 0 auto;">
+		style="background: #f5f5f5;padding: 30px 30px;width:1200px;margin:20px auto;border: 1px solid #e2efe1;border-radius:3px;">
 	<div class="side-bar">
 		<div class="menuprofile">
 			<spring:url value="/images" var="images" />
 			<img src="${images}/profile.jpg" width="60" height="60" alt="" /> <a
 				href="#" class="dropbtn"
 				style="color: black; text-decoration: none;">Hello, <span
-				style="font-size: 20px;">${customerModel.firstName}
+				style="font-size:20px;">${customerModel.firstName}
 					${customerModel.lastName}</span></a>
 		</div>
 
@@ -370,7 +380,7 @@
 					class="fas fa-angle-right dropdown"
 					style="background-color: gainsboro; border-radius: 50%;; padding: 10px 10px;"></i></a>
 				<div class="sub-menu">
-					<a href="${pageContext.request.contextPath }/myaccount/editPassword/${customerModel.email}" class="sub-item">Change Password</a> <a href="${pageContext.request.contextPath }/cart/editProfile${customerModel.customerid}"
+					<a href="${pageContext.request.contextPath }/myaccount/editPassword/${customerModel.email}" class="sub-item">Change Password</a><a href="${pageContext.request.contextPath }/myaccount/editProfile"
 						class="sub-item">Edit Profile</a>
 				</div>
 			</div>
@@ -380,16 +390,15 @@
 		</div>
 	</div>
 
-   <section class="main" style="margin-left:280px;margin-top:5px;">
+   <section class="main" style="margin-left:320px; margin-top:60px;margin-bottom:10px">
     <!--  <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
       <div class="wrapper">
     <div class="title">
      Change Password
     </div>
     <div class="form">
-    <form:form action="${pageContext.request.contextPath}/myaccount	/changeNewPassword" method="post" modelAttribute="customer">  
-    <font color='red'><span id="errId"></span></font>     
-          
+    <form:form action="${pageContext.request.contextPath}/myaccount	/changeNewPassword" method="post" modelAttribute="customer" id="myStudentForm">  
+           
     <form:hidden path="email" readonly="true"></form:hidden> 
     
    
@@ -401,27 +410,19 @@
         <div class="inputfield">
           <label>Enter New Password</label>
         <!--   <input type="text" class="input"> -->
-         <form:password path="newPassword" id="txtPassword" class="input"/>
+         <form:password path="newPassword"  class="input" id="txtNewPassword"/>
+          <span id="passwordError"></span>
        </div>  
        <div class="inputfield">
          <label>Confirm Password</label>
-        <form:password path="confirmPassword" id="txtConfirmPassword" class="input"/>
+        <form:password path="confirmPassword"  class="input" id="txtConfirmPassword"/>
+        <span 
+					id="txtConfirmPasswordError"></span>
          <!--  <input type="password" class="input"> -->
        </div>  
     
       <div class="inputfield">
-      <input type="submit" value="Save Changes" class="btn" style="
-	width: 40%;
-	padding: 15px 10px;
-	font-size: 15px;
-	border: 0px;
-	background: green;
-	color: #fff;
-	cursor: pointer;
-	border-radius: 3px;
-	outline: none;
-	margin-left:65%;" onclick="return Validate()">
-	 
+     <button style="width:60%; padding: 10px 10px; font-size: 15px; border: 0px; background:#4CAF50; color: #fff; cursor: pointer; border-radius:50px; outline: none; margin-left:60%;">Change Password</button>
       </div>
       </form:form>
     </div>
@@ -457,7 +458,7 @@
 	</script>
 	
 	
-	  <script type="text/javascript">
+	 <!--  <script type="text/javascript">
     function Validate() {
         var password = document.getElementById("txtPassword").value;
         var confirmPassword = document.getElementById("txtConfirmPassword").value;
@@ -468,7 +469,120 @@
         }
         return true;
     }
-</script>
+</script> -->
+
+
+<!-- ............Script Code.......... -->
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							
+							$("#passwordError").hide();
+							$("#txtConfirmPasswordError").hide();
+
+							
+							var passwordError = false;
+							var txtConfirmPasswordError = false;
+
+							
+							$("#txtNewPassword").change(function() {
+								validate_txtNewPassword();
+							});
+
+							$("#txtConfirmPassword").change(function() {
+								validate_txtConfirmPassword();
+							});
+
+					
+							/* ...............Passowrd........... */
+
+							//password Validation
+							function validate_txtNewPassword() {
+								var val = $("#txtNewPassword").val();
+								//var exp = /^[A-Za-z0-9\.\-]+\@[a-z]+\.[a-z\.]{2,10}$/;
+								if (val == '') {
+									$("#passwordError").html(
+											"Enter <b>Password</b>");
+									$("#passwordError").css("color", "red");
+									$("#passwordError").show();
+									passwordError = false;
+								} else if ((val.length <= 6)
+										|| (val.length > 8)) {
+									$("#passwordError")
+											.html(
+													"Enter <b>Passwords lenght must be between 6 and 8</b>");
+									$("#passwordError").css("color", "red");
+									$("#passwordError").show();
+									passwordError = false;
+								}
+								//else if(!exp.test(val)){
+								//$("#passwordError").html("Enter <b>Valid Password</b>");
+								//$("#passwordError").css("color","red");
+								//$("#passwordError").show();
+								//passwordError = false;
+								//} 
+								else {
+									$("#passwordError").hide();
+									passwordError = true;
+								}
+								return passwordError;
+							}
+
+							/* ...............ConfirmPassowrd........... */
+
+							//password Validation
+							function validate_txtConfirmPassword() {
+								var val = $("#txtConfirmPassword").val();
+								var value = $("#txtNewPassword").val();
+								//var exp = /^[A-Za-z0-9\.\-]+\@[a-z]+\.[a-z\.]{2,10}$/;
+								if (val == '') {
+									$("#txtConfirmPasswordError").html(
+											"Enter <b>Confirm Password</b>");
+									$("#txtConfirmPasswordError").css("color",
+											"red");
+									$("#txtConfirmPasswordError").show();
+									txtConfirmPasswordError = false;
+								} else if (value !== val) {
+									$("#txtConfirmPasswordError")
+											.html(
+													"Enter <b>Passwords Does Not Match</b>");
+									$("#txtConfirmPasswordError").css("color",
+											"red");
+									$("#txtConfirmPasswordError").show();
+									txtConfirmPasswordError = false;
+								}
+								//else if(!exp.test(val)){
+								//$("#passwordError").html("Enter <b>Valid Password</b>");
+								//$("#passwordError").css("color","red");
+								//$("#passwordError").show();
+								//passwordError = false;
+								//} 
+								else {
+									$("#txtConfirmPasswordError").hide();
+									txtConfirmPasswordError = true;
+								}
+								return txtConfirmPasswordError;
+							}
+
+							//---------ON SUBMIT--------------//
+							$("#myStudentForm").submit(
+									function() {
+										
+										
+										validate_txtNewPassword();
+										validate_txtConfirmPassword();
+
+										if (passwordError
+												&& txtConfirmPasswordError)
+											return true;
+										else
+											return false;
+									});
+
+						});
+	</script>
 
 </body>
 </html>

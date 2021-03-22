@@ -37,7 +37,7 @@
 	font-family: 'Montserrat', sans-serif;
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	box-sizing:border-box;
 }
 
 .view_item img {
@@ -46,7 +46,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 20px auto;
+	margin: 200px auto 20px;
 }
 
 .links {
@@ -282,7 +282,7 @@ label {
 .totals .totals-item label {
 	float: left;
 	clear: both;
-	width:85%;
+	width:90%;
 	text-align: right; 
 }
 
@@ -438,17 +438,23 @@ label {
 		</div>		
 	    </c:if>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="newhead.jsp"></jsp:include>
    
     <c:set var="availableCount" value="${customerModel.cartpage.cartitem}"/>
-	<div style="max-width: 1200px; margin: 17px auto;">
-		<span
-			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
-			Cart</span>
-	</div>
+	
+	<!-- <div style="margin-top:30%;">
+	<span
+	style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
+	Cart</span>
+	</div> -->
 
 	<div class="wrapper">
-
+    <div style="margin-top:25px;margin-bottom:20px;">
+    <span
+	style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
+	Cart</span>
+	</div>
+	
 		<div class="view_main">
 			<div class="view_wrap list-view" style="display: block;">
 				<div class="view_item">
@@ -534,7 +540,7 @@ label {
 							  <button class="keepshop"
 										onclick="window.location.href='${pageContext.request.contextPath}/home'">Keep Shopping</button> 							
 							 <button class="checkout"
-										onclick="window.location.href='${pageContext.request.contextPath}/cart/valiDateCartItem'">Checkout</button>
+										onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddressPaymentOption'">Checkout</button>
 	                       
 	                       
 							</div>

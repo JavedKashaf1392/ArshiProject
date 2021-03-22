@@ -14,6 +14,7 @@ import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -44,6 +45,7 @@ import com.veggiefridge.online.model.Payment;
 import com.veggiefridge.online.model.Product;
 import com.veggiefridge.online.model.QrCode;
 import com.veggiefridge.online.model.Wallet;
+import com.veggiefridge.online.model.WalletPayment;
 import com.veggiefridge.online.service.CartService;
 import com.veggiefridge.online.service.CustomerService;
 import com.veggiefridge.online.service.MenuService;
@@ -90,21 +92,12 @@ public class OrderController {
 	private MenuService menuservice;
 	
 
-	// get cartPage
+	//get cartPage
 	private CartPage getCartPage() {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-	// getAll Order
-	/*
-	 * @RequestMapping(value = "/listdeliveredorder") public ModelAndView
-	 * listOrder(ModelAndView model) throws IOException { List<Orders>
-	 * listdeliveredorders = orderservice.listdeliveredOrders();
-	 * model.addObject("listdeliveredorders", listdeliveredorders);
-	 * model.setViewName("myorder"); return model; }
-	 */
-
-	// checkoutAndSaveOrder PayAtKiosk
+	//checkoutAndSaveOrder PayAtKiosk
 	@RequestMapping(value = "/checkoutAndSaveOrderPayATKiosk")
 	public ModelAndView checkoutAndSaveOrder(ModelAndView model) {
 		List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -210,7 +203,7 @@ public class OrderController {
 	 * model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN); return model; }
 	 */
 
-	// repeat Order
+	 //repeat Order
 	@RequestMapping(value = "/repeatOrder{orderid}", method = RequestMethod.GET)
 	public String repeatOrder(ModelAndView model, @PathVariable(value = "orderid") int orderid) {
 		Orders orders = orderservice.getOrder(orderid);
@@ -221,7 +214,10 @@ public class OrderController {
 		for (int i = 0; i < listorderitem.size(); i++) {
 			cartitem = new CartItem();
 			cartitem.setCartpageid(this.getCartPage().getCartpageid());
+			cartitem.setProductCount(listorderitem.get(i).getProductQuantity());
+			cartitem.setBuyingPrice(listorderitem.get(i).getProduct().getPrice()-listorderitem.get(i).getProduct().getDiscount()*listorderitem.get(i).getProduct().getPrice()/100);
 			cartitem.setProduct(listorderitem.get(i).getProduct());
+			cartitem.setTotal(listorderitem.get(i).getTotalAmount());
 			cartservice.add(cartitem);
 			System.out.println("cartitem is added");
 			// update the cart
@@ -235,7 +231,7 @@ public class OrderController {
 		return "redirect:/cart/listCustomerCartItem";
 	}
 
-	// PickupAddress
+	//PickupAddress
 	@RequestMapping(value = "/PickupAddress")
 	public ModelAndView PickupAddress(ModelAndView model) {
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -266,7 +262,7 @@ public class OrderController {
 		return model;
 	}
 
-	// myCart
+	//myCart
 	@RequestMapping(value = "/confirmorder")
 	public ModelAndView confirmOrder(ModelAndView model) {
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
@@ -275,7 +271,7 @@ public class OrderController {
 		return model;
 	}
 
-	// checkoutAndSaveOrder Pay Online
+	 //checkoutAndSaveOrder Pay Online
 	@RequestMapping(value = "/checkoutAndSaveOrderPayOnline")
 	public ModelAndView checkoutAndSaveOrderPayOnline(ModelAndView model) throws Exception {
 
@@ -520,14 +516,7 @@ public class OrderController {
 		return "myorder";
 	}
 
-	/*
-	 * //repeat Order
-	 * 
-	 * @RequestMapping(value = "/canOrder{orderid}", method = RequestMethod.GET)
-	 * public String canlOrder(ModelAndView model,@PathVariable(value ="orderid")
-	 * int orderid) { System.out.println("Get Order Id"+orderid); return
-	 * "redirect:/order/showPendingOrders{customerid}"; }
-	 */
+	
 	// delivered order item
 	@RequestMapping(value = "/confirmcancelOrder", method = RequestMethod.GET)
 	public ModelAndView confirmcancelOrder(ModelAndView model) {
@@ -543,7 +532,7 @@ public class OrderController {
 		return "cancelOrder";
 	}
 
-	// Pending Orders
+	 //Pending Orders
 	@RequestMapping(value = "/showPendingOrders{customerid}", method = RequestMethod.GET)
 	public String showPendingOrder(HttpServletRequest req, Model model, HttpServletRequest request) {
 		List<Orders> pendingOrders = orderservice.getPendingOrders(this.getCartPage().getCustomer().getCustomerid());
@@ -552,14 +541,6 @@ public class OrderController {
 		for (Iterator it = pendingOrders.iterator(); it.hasNext();) {
 			Orders orders = (Orders) it.next();
 
-			// String[] strDate = orders.getOrderDate().split(" ")[0].split("/");
-			// holder.orderDate.setText(OrderActivity.theMonth(Integer.parseInt(strDate[1]))
-			// + " " + strDate[0] + ", " + strDate[2] + " ");
-			// public static String theMonth(int month){
-			// String[] monthNames = {"January", "February", "March", "April", "May",
-			// "June", "July", "August", "September", "October", "November", "December"};
-			// return monthNames[month-1];
-			// }
 			List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
 			orderitems.put(orders.getOrderid(), listorderitem);
 		}
@@ -759,7 +740,6 @@ public class OrderController {
 	
 	
 	     //Show All Order By PickupStatus
-	
 		@RequestMapping(value = "/showAllOrderByPickupStatus{customerid}", method = RequestMethod.POST)
 		public String showAllOrderByPickupStatus(HttpServletRequest req, Model model, HttpServletRequest request,
 				@RequestParam("pickupStatus") String pickupStatus,
@@ -809,7 +789,6 @@ public class OrderController {
 	
 		
 	     //Order Details
-		
 		@RequestMapping(value = "/orderdetails/{orderid}")
 		public ModelAndView orderDetails(ModelAndView model, @PathVariable(value = "orderid") int orderid,
 				@ModelAttribute("orders") Orders order, BindingResult resultorder) {
@@ -884,7 +863,6 @@ public class OrderController {
 		
 		
 		         //Order Details
-		
 				@RequestMapping(value = "/thanksorderdetails/{orderid}")
 				public ModelAndView thanksorderdetails(ModelAndView model, @PathVariable(value = "orderid") int orderid,
 						@ModelAttribute("orders") Orders order, BindingResult resultorder) {
@@ -904,10 +882,412 @@ public class OrderController {
 				
 				
 				 //PickupAddressPaymrntOption
-		  		@RequestMapping(value = "/PickupAddressPaymrntOption", method = RequestMethod.GET)
-		  		public String PickupAddressPaymrntOption(ModelMap model) {
-		  			model.addAttribute("repee_sign", VFOnlineConstants.RUPEE_SIGN);
-					 return "PickupAddressPaymentOption"; 
-		  			
-		  		}
+		  		@RequestMapping(value = "/PickupAddressPaymentOption", method = RequestMethod.GET)
+		  		public ModelAndView PickupAddressPaymrntOption(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
+						BindingResult result, HttpSession session) {
+		  			System.out.println("editProfile");
+					customer = customerService.getCustomer(this.getCartPage().getCustomer().getCustomerid());
+					System.out.println("customer" + customer.toString());
+					System.out.println("customName" + customer.getFirstName());
+					model = new ModelAndView("PickupAddressPaymentOption");
+					model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+					model.addObject("customer", customer);
+					return model;
+				}
+		  		
+		 		
+		  		 //place Order
+				@RequestMapping(value = "/placeOrder", method = RequestMethod.POST)
+				public ModelAndView saveEditCustomer(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
+						BindingResult result, HttpSession session,HttpServletRequest request,@ModelAttribute("Wallet") Wallet wallet, BindingResult resultwallet) throws Exception {
+					
+					String paymentoption = request.getParameter("param");
+					String roles="ROLE_USER";
+				    customer.setRole(roles);
+				    customerService.updateCustomer(customer);
+				    System.out.println(paymentoption);
+				    
+				    //PayAtKiosk Paymnet Option
+				    if (paymentoption.equalsIgnoreCase("payatkiosk")) {
+				    List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
+
+				    Orders orders = new Orders();
+					orders.setCustomer(this.getCartPage().getCustomer());
+					orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS);
+					System.out.println("pickup status" + VFOnlineConstants.PICKUP_STATUS);
+					orders.setOrderDate(new Date());
+					orders.setTotalBillAmount(this.getCartPage().getGrandTotal());
+					orderservice.saveOrder(orders);
+					System.out.println("Order added in order tabel");
+						for (int i = 0; i < cartitem.size(); i++) {
+							OrderItem orderitem = new OrderItem();
+							orderitem.setOrderid(orders.getOrderid());
+							orderitem.setProduct(cartitem.get(i).getProduct());
+							//orderitem.setProductbuyingprice(cartitem.get(i).getProduct().getPrice()-cartitem.get(i).getProduct().getDiscount()*cartitem.get(i).getProduct().getPrice()/100);
+							orderitem.setProductQuantity(cartitem.get(i).getProductCount());
+							orderitem.setTotalAmount(cartitem.get(i).getTotal());
+							orderservice.saveOrderItem(orderitem);
+							System.out.println("List of cartitem added in orderitem table");
+							System.out.println("cartpage updated");
+						}
+
+						for (int i = 0; i < cartitem.size(); i++) {
+							CartItem cartitems = cartservice.get(cartitem.get(i).getCartitemid());
+							cartservice.remove(cartitems);
+							System.out.println("remove item from cart");
+							CartPage cartpage = this.getCartPage();
+							cartpage.setGrandTotal(cartpage.getGrandTotal()-cartitem.get(i).getTotal());
+							cartpage.setCartitem(cartpage.getCartitem() - 1);
+							cartservice.updateCartPage(cartpage);
+							System.out.println("remove item from cart");
+						}
+						QrCode qrcode = new QrCode();
+						qrcode.setCustomerid(this.getCartPage().getCustomer().getCustomerid());
+						qrcode.setDate(new Date());
+						qrcode.setIsValid(VFOnlineConstants.qrCodeIsValid);
+						qrcode.setMembershipId(0);
+						qrcode.setOrderId(orders.getOrderid());
+						qrcode.setSource("WEB");
+						qrcode.setType(VFOnlineConstants.PICKUP_STATUS);
+						qrcodeservice.saveOrder(qrcode);
+						System.out.println("QR Code Generated For Order");
+
+						Payment payment = new Payment();
+						payment.setCustomer(this.getCartPage().getCustomer());
+						payment.setOrder(orders);
+						payment.setOrderDate(orders.getOrderDate());
+						payment.setPaymentStatus("pending");
+						payment.setModeOfPayment("Pay At Kisok");
+						payment.setTotalBillAmount(orders.getTotalBillAmount());
+						paymentservice.savePayment(payment);
+						orders = orderservice.getOrder(orders.getOrderid());
+						model.addObject("orders", orders);
+						List<OrderItem> listorderitem = orderservice.listOrderItem(orders.getOrderid());
+						model.addObject("listorderitem", listorderitem);
+				    }
+				    
+				    //PayOnline Payment Option
+				    else if(paymentoption.equalsIgnoreCase("payonline")){
+				    	
+				    	 List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
+				    	    Orders orders = new Orders();
+							orders.setCustomer(this.getCartPage().getCustomer());
+							orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS);
+							System.out.println("pickup status" + VFOnlineConstants.PICKUP_STATUS);
+							orders.setOrderDate(new Date());
+							orders.setTotalBillAmount(this.getCartPage().getGrandTotal());
+							orderservice.saveOrder(orders);
+							System.out.println("Order added in order tabel");
+
+						for (int i = 0; i < cartitem.size(); i++) {
+							OrderItem orderitem = new OrderItem();
+							orderitem.setOrderid(orders.getOrderid());
+							orderitem.setProduct(cartitem.get(i).getProduct());
+							orderitem.setProductQuantity(cartitem.get(i).getProductCount());
+							orderitem.setSource("web");
+							orderitem.setTotalAmount(cartitem.get(i).getTotal());
+							orderservice.saveOrderItem(orderitem);
+							System.out.println("List of cartitem added in orderitem table");
+							System.out.println("cartpage updated");
+						}
+
+						for (int i = 0; i < cartitem.size(); i++) {
+							CartItem cartitems = cartservice.get(cartitem.get(i).getCartitemid());
+							cartservice.remove(cartitems);
+							System.out.println("remove item from cart");
+							CartPage cartpage = this.getCartPage();
+							cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.get(i).getTotal());
+							cartpage.setCartitem(cartpage.getCartitem() - 1);
+							cartservice.updateCartPage(cartpage);
+							System.out.println("remove item from cart");
+						}
+						QrCode qrcode = new QrCode();
+						qrcode.setCustomerid(this.getCartPage().getCustomer().getCustomerid());
+						qrcode.setDate(new Date());
+						qrcode.setIsValid(VFOnlineConstants.qrCodeIsValid);
+						qrcode.setMembershipId(0);
+						qrcode.setOrderId(orders.getOrderid());
+						qrcode.setSource("WEB");
+						qrcode.setType(VFOnlineConstants.PICKUP_STATUS);
+						qrcodeservice.saveOrder(qrcode);
+						System.out.println("QR Code Generated For Order");
+
+						Payment payment = new Payment();
+						payment.setCustomer(this.getCartPage().getCustomer());
+						payment.setOrder(orders);
+						payment.setOrderDate(orders.getOrderDate());
+						payment.setPaymentStatus("pending");
+						payment.setModeOfPayment("PayOnilne");
+						payment.setPlatformSource("WEB");
+						payment.setTotalBillAmount(orders.getTotalBillAmount());
+						paymentservice.savePayment(payment);
+
+						/* payment */
+						/* paytmDetailPojo.getPaytmUrl() */
+						String orderid=Integer.toString(orders.getOrderid());  
+						String customerid=Integer.toString(this.getCartPage().getCustomer().getCustomerid());  
+						String totalBillAmount=Double.toString(orders.getTotalBillAmount());  
+						
+						ModelAndView modelAndView = new ModelAndView("redirect:" + "https://securegw-stage.paytm.in/order/process");
+						TreeMap<String, String> parameters = new TreeMap<>();
+						PaytmConstants.orderdetails.forEach((k, v) -> parameters.put(k, v));
+						parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
+						parameters.put("EMAIL", env.getProperty("paytm.email"));
+						parameters.put("ORDER_ID", orderid);
+						parameters.put("TXN_AMOUNT",totalBillAmount);
+						parameters.put("CUST_ID",customerid);
+						parameters.put("INDUSTRY_TYPE_ID", "Retail");
+						parameters.put("CHANNEL_ID", "WEB");
+						System.out.println(parameters);
+						String checkSum = getCheckSum(parameters);
+						parameters.put("CHECKSUMHASH", checkSum);
+						modelAndView.addAllObjects(parameters);
+						model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+						model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+						return modelAndView;
+				    }
+				    //UPI Payment Option
+				    else if(paymentoption.equalsIgnoreCase("upi")){
+				    	
+				    	 List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
+				    	    Orders orders = new Orders();
+							orders.setCustomer(this.getCartPage().getCustomer());
+							orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS);
+							System.out.println("pickup status" + VFOnlineConstants.PICKUP_STATUS);
+							orders.setOrderDate(new Date());
+							orders.setTotalBillAmount(this.getCartPage().getGrandTotal());
+							orderservice.saveOrder(orders);
+							System.out.println("Order added in order tabel");
+
+						for (int i = 0; i < cartitem.size(); i++) {
+							OrderItem orderitem = new OrderItem();
+							orderitem.setOrderid(orders.getOrderid());
+							orderitem.setProduct(cartitem.get(i).getProduct());
+							orderitem.setProductQuantity(cartitem.get(i).getProductCount());
+							orderitem.setSource("web");
+							orderitem.setTotalAmount(cartitem.get(i).getTotal());
+							orderservice.saveOrderItem(orderitem);
+							System.out.println("List of cartitem added in orderitem table");
+							System.out.println("cartpage updated");
+						}
+
+						for (int i = 0; i < cartitem.size(); i++) {
+							CartItem cartitems = cartservice.get(cartitem.get(i).getCartitemid());
+							cartservice.remove(cartitems);
+							System.out.println("remove item from cart");
+							CartPage cartpage = this.getCartPage();
+							cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.get(i).getTotal());
+							cartpage.setCartitem(cartpage.getCartitem() - 1);
+							cartservice.updateCartPage(cartpage);
+							System.out.println("remove item from cart");
+						}
+						QrCode qrcode = new QrCode();
+						qrcode.setCustomerid(this.getCartPage().getCustomer().getCustomerid());
+						qrcode.setDate(new Date());
+						qrcode.setIsValid(VFOnlineConstants.qrCodeIsValid);
+						qrcode.setMembershipId(0);
+						qrcode.setOrderId(orders.getOrderid());
+						qrcode.setSource("WEB");
+						qrcode.setType(VFOnlineConstants.PICKUP_STATUS);
+						qrcodeservice.saveOrder(qrcode);
+						System.out.println("QR Code Generated For Order");
+
+						Payment payment = new Payment();
+						payment.setCustomer(this.getCartPage().getCustomer());
+						payment.setOrder(orders);
+						payment.setOrderDate(orders.getOrderDate());
+						payment.setPaymentStatus("pending");
+						payment.setModeOfPayment("PayOnilne");
+						payment.setPlatformSource("WEB");
+						payment.setTotalBillAmount(orders.getTotalBillAmount());
+						paymentservice.savePayment(payment);
+
+						/* payment */
+						/* paytmDetailPojo.getPaytmUrl() */
+						String orderid=Integer.toString(orders.getOrderid());  
+						String customerid=Integer.toString(this.getCartPage().getCustomer().getCustomerid());  
+						String totalBillAmount=Double.toString(orders.getTotalBillAmount());  
+						
+						ModelAndView modelAndView = new ModelAndView("redirect:" + "https://securegw-stage.paytm.in/order/process");
+						TreeMap<String, String> parameters = new TreeMap<>();
+						PaytmConstants.orderdetails.forEach((k, v) -> parameters.put(k, v));
+						parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
+						parameters.put("EMAIL", env.getProperty("paytm.email"));
+						parameters.put("ORDER_ID", orderid);
+						parameters.put("TXN_AMOUNT",totalBillAmount);
+						parameters.put("CUST_ID",customerid);
+						parameters.put("INDUSTRY_TYPE_ID", "Retail");
+						parameters.put("CHANNEL_ID", "WEB");
+						System.out.println(parameters);
+						String checkSum = getCheckSum(parameters);
+						parameters.put("CHECKSUMHASH", checkSum);
+						modelAndView.addAllObjects(parameters);
+						model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+						model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+						return modelAndView;
+				    }
+				    else if(paymentoption.equalsIgnoreCase("wallet")){
+				    	
+				    	 List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
+				    	    Orders orders = new Orders();
+							orders.setCustomer(this.getCartPage().getCustomer());
+							orders.setPickupStatus(VFOnlineConstants.PICKUP_STATUS);
+							System.out.println("pickup status" + VFOnlineConstants.PICKUP_STATUS);
+							orders.setOrderDate(new Date());
+							orders.setTotalBillAmount(this.getCartPage().getGrandTotal());
+							orderservice.saveOrder(orders);
+							System.out.println("Order added in order tabel");
+
+						for (int i = 0; i < cartitem.size(); i++) {
+							OrderItem orderitem = new OrderItem();
+							orderitem.setOrderid(orders.getOrderid());
+							orderitem.setProduct(cartitem.get(i).getProduct());
+							orderitem.setProductQuantity(cartitem.get(i).getProductCount());
+							orderitem.setSource("web");
+							orderitem.setTotalAmount(cartitem.get(i).getTotal());
+							orderservice.saveOrderItem(orderitem);
+							System.out.println("List of cartitem added in orderitem table");
+							System.out.println("cartpage updated");
+						}
+
+						for (int i = 0; i < cartitem.size(); i++) {
+							CartItem cartitems = cartservice.get(cartitem.get(i).getCartitemid());
+							cartservice.remove(cartitems);
+							System.out.println("remove item from cart");
+							CartPage cartpage = this.getCartPage();
+							cartpage.setGrandTotal(cartpage.getGrandTotal() - cartitem.get(i).getTotal());
+							cartpage.setCartitem(cartpage.getCartitem() - 1);
+							cartservice.updateCartPage(cartpage);
+							System.out.println("remove item from cart");
+						}
+						QrCode qrcode = new QrCode();
+						qrcode.setCustomerid(this.getCartPage().getCustomer().getCustomerid());
+						qrcode.setDate(new Date());
+						qrcode.setIsValid(VFOnlineConstants.qrCodeIsValid);
+						qrcode.setMembershipId(0);
+						qrcode.setOrderId(orders.getOrderid());
+						qrcode.setSource("WEB");
+						qrcode.setType(VFOnlineConstants.PICKUP_STATUS);
+						qrcodeservice.saveOrder(qrcode);
+						System.out.println("QR Code Generated For Order");
+
+						Payment payment = new Payment();
+						payment.setCustomer(this.getCartPage().getCustomer());
+						payment.setOrder(orders);
+						payment.setOrderDate(orders.getOrderDate());
+						payment.setPaymentStatus("pending");
+						payment.setModeOfPayment("PayOnilne");
+						payment.setPlatformSource("WEB");
+						payment.setTotalBillAmount(orders.getTotalBillAmount());
+						paymentservice.savePayment(payment);
+
+						/* payment */
+						/* paytmDetailPojo.getPaytmUrl() */
+						String orderid=Integer.toString(orders.getOrderid());  
+						String customerid=Integer.toString(this.getCartPage().getCustomer().getCustomerid());  
+						String totalBillAmount=Double.toString(orders.getTotalBillAmount());
+
+						ModelAndView modelAndView = new ModelAndView("redirect:" + "https://securegw-stage.paytm.in/order/process");
+						TreeMap<String, String> parameters = new TreeMap<>();
+						System.out.println(parameters);
+						PaytmConstants.detail.forEach((k, v) -> parameters.put(k, v));
+						parameters.put("MOBILE_NO", env.getProperty("paytm.mobile"));
+						parameters.put("EMAIL", env.getProperty("paytm.email"));
+						parameters.put("TXN_AMOUNT",totalBillAmount);
+						parameters.put("ORDER_ID",orderid);
+						parameters.put("CUST_ID",customerid);
+						parameters.put("INDUSTRY_TYPE_ID", "Retail");
+						parameters.put("CHANNEL_ID", "WEB");
+						String checkSum = getCheckSum(parameters);
+						parameters.put("CHECKSUMHASH", checkSum);
+						modelAndView.addAllObjects(parameters);
+						
+						wallet = walletservice.fetchWallet(orders.getCustomer().getCustomerid());
+						if(wallet.getTotalAmountBalance()+ orders.getTotalBillAmount()<=5000) {
+						WalletPayment walletpayment = new WalletPayment();
+						walletpayment.setPaymentAmount(orders.getTotalBillAmount());
+						walletpayment.setPaymentDate(new Date());
+						walletpayment.setPaymentStatus("Credit");
+						walletpayment.setWallet(this.getCartPage().getCustomer().getWallet());
+						walletservice.addWalletPayment(walletpayment);
+						wallet.setTotalAmountBalance(wallet.getTotalAmountBalance()-orders.getTotalBillAmount());
+						model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+						model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+						walletservice.updateWallet(wallet);
+						return modelAndView;
+					}
+						else {
+							model.addObject("message", env.getProperty("wallet.maxlimit"));
+							String section = "Navbar";
+							List<Menu> listNavbarMenu = menuservice.getMenu(section);
+							model.addObject("listNavbarMenu",listNavbarMenu);
+							wallet = walletservice.fetchWallet(this.getCartPage().getCustomer().getCustomerid());
+							System.out.println("wallet id" + wallet);
+							System.out.println("wallet totalAmountBalance" + wallet.getTotalAmountBalance());
+							model.addObject("wallet", wallet);
+							model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+							model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+							model.setViewName("PickupAddressPaymentOption");
+							return model;
+						}
+						
+						
+						
+				    }
+				    else {
+				    	
+				    	System.out.println("wrong way");
+				    }
+				   
+					
+				    model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
+					model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN);
+					model.setViewName("thanksfororder");
+					return model;
+				}
+		  		
+				
+				
+                //Payment Gateway Response PayOnline Response Page
+				@RequestMapping(value = "/pgResponse")
+				public ModelAndView getResponseRedirect(HttpServletRequest request, ModelAndView model,@ModelAttribute("Wallet") Wallet wallet,
+						BindingResult resultwallet) {
+
+					Map<String, String[]> mapData = request.getParameterMap();
+					TreeMap<String, String> parameters = new TreeMap<String, String>();
+					mapData.forEach((key, val) -> parameters.put(key, val[0]));
+					String paytmChecksum = "";
+					if (mapData.containsKey("CHECKSUMHASH")) {
+						paytmChecksum = mapData.get("CHECKSUMHASH")[0];
+					}
+					String result;
+
+					boolean isValideChecksum = false;
+					System.out.println("RESULT : " + parameters.toString());
+					try {
+						isValideChecksum = validateCheckSum(parameters, paytmChecksum);
+						if (isValideChecksum && parameters.containsKey("RESPCODE")) {
+							if (parameters.get("RESPCODE").equals("01")) {
+								result = "Payment Successful";
+							} else {
+								result = "Payment Failed";
+							}
+						} else {
+							result = "Checksum mismatched";
+						}
+					} catch (Exception e) {
+						result = e.toString();
+					}
+					model.addObject("result", result);
+					parameters.remove("CHECKSUMHASH");
+					model.addObject("parameters", parameters);
+					model.addObject("dateformatter",VFOnlineConstants.DateFormatter);
+					model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+					model.setViewName("thanksfororder");
+					return model;
+				}
+
+				
+					  
+		  		
 }

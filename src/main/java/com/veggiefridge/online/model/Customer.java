@@ -56,6 +56,18 @@ public class Customer implements Serializable {
 	@Column(name="newPassword")
 	private String newPassword;
 	
+	@Transient
+	@Column(name="param")
+	private String param;
+	
+	public String getParam() {
+		return param;
+	}
+
+	public void setParam(String param) {
+		this.param = param;
+	}
+
 	@Column(name="role")
 	private String role;
 	

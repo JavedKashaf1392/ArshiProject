@@ -7,6 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VeggieFridge</title>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -32,20 +40,18 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 }
 
 .side-bar {
-	/* background: rgba(255, 255, 255, 0.1);*/
-	/* backdrop-filter: blur(15px); */
+	
 	width: 290px;
-	height: 100vh;
-	position: absolute;
+	height:100vh;
+	position:absolute;
 	top: 0;
-	left: -100%;
-	/*  overflow-y: auto; */
 	transition: 0.6s ease;
 	transition-property: left;
 	background-color: white;
 	left: 0;
-	margin-top:330px;
-	margin-left: 15%;
+	margin-top:340px;
+	margin-left:17%;
+	margin-bottom:40px;
 }
 
 /*.side-bar.active{
@@ -55,6 +61,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 	width: 100%;
 	background-color: white;
 	padding: 10px 10px;
+	
 }
 
 .side-bar .menu {
@@ -159,7 +166,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 	/*  box-shadow: 1px 1px 2px rgba(0,0,0,0.125); */
 	padding: 30px;
 	background-color: white;
-	height: 900px;
+	height:740px;
 }
 
 .wrapper .title {
@@ -330,21 +337,24 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
-	<div style="max-width: 1200px; margin: 17px auto;">
-		<span
+	 <%-- <jsp:include page="newhead.jsp"></jsp:include> --%> 
+	
+	<div style="max-width:1200px; margin:220px auto 0px;">
+	<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">
 			My Account</span>
 	</div>
+	
 	<div
-		style="background: #f5f5f5;padding: 30px 30px;margin-top:20px;width: 1200px;margin: 0 auto;">
+		style="background: #f5f5f5;padding: 30px 30px;width:1200px;margin:20px auto;border: 1px solid #e2efe1;border-radius:3px;">
+		
 		<div class="side-bar">
 			<div class="menuprofile">
 				<spring:url value="/images" var="images" />
 				<img src="${images}/profile.jpg" width="60" height="60" alt="" /> <a
 					href="#" class="dropbtn"
 					style="color: black; text-decoration: none;">Hello, <span
-					style="font-size: 20px;">${customerModel.firstName}
+					style="font-size:20px;">${customerModel.firstName}
 						${customerModel.lastName}</span></a>
 			</div>
 
@@ -380,7 +390,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 						<a
 							href="${pageContext.request.contextPath }/myaccount/editPassword/${customerModel.email}"
 							class="sub-item">Change Password</a> <a
-							href="${pageContext.request.contextPath }/myaccount/editProfile${customerModel.customerid}"
+							href="${pageContext.request.contextPath }/myaccount/editProfile"
 							class="sub-item">Edit Profile</a>
 					</div>
 				</div>
@@ -391,38 +401,56 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 			</div>
 		</div>
 
-		<section class="main" style="margin-left:280px; margin-top:78px;">
+		<section class="main" style="margin-left:320px; margin-top:45px;margin-bottom:10px">
+		
 			<!--  <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
 			<div class="wrapper">
+				
 				<div class="title">Edit Profile</div>
+				
 				<div class="form">
 					<form:form
 						action="${pageContext.request.contextPath}/myaccount/saveEditProfile"
-						method="post" modelAttribute="customer">
+						method="post" modelAttribute="customer" id="myStudentForm">
+						
 						<form:hidden path="customerid" />
 						<form:hidden path="password" />
+						
 						<div class="inputfield">
 							<label>First Name</label>
 							<!--  <input type="text" class="input"> -->
-							<form:input path="firstName" class="input" />
-							<form:errors path="firstName" cssClass="error" />
+							<form:input path="firstName" class="input" id="firstName"/>
+							<p id="firstNameError"></p>
 						</div>
+						
 						<div class="inputfield">
 							<label>Last Name</label>
 							<!--   <input type="text" class="input"> -->
-							<form:input path="lastName" class="input" />
-							<form:errors path="lastName" cssClass="error" />
+							<form:input path="lastName" class="input" id="lastName"/>
+							<span id="lastNameError"></span>
 						</div>
-						<div class="inputfield">
-							<label>City</label>
-							<form:input path="cities" class="input" />
-							<!--  <input type="password" class="input"> -->
-						</div>
-						<div class="inputfield">
-							<label>Location</label>
-							<form:input path="location" class="input" />
-							<!--  <input type="password" class="input"> -->
-						</div>
+						
+		<div class="inputfield">
+		<label for="city">City</label>
+        <form:select path="cities"  id="city" class="input">  
+        <form:option value="Nagpur" label="Nagpur"/>  
+        <form:option value="Hyderabad" label="Hyderabad"/>  
+        <form:option value="Bhopal" label="Bhopal"/>  
+        </form:select>  
+        <span id="cityError"></span>
+		</div>
+						
+		 
+		 <div class="inputfield">
+		<label for="expmonth">Kiosk Location</label>
+        <form:select path="location" id="location" class="input">  
+        <form:option value="Mihan" label="Mihan"/>  
+        <form:option value="Ameerpet" label="Ameerpet"/>  
+        <form:option value="Koh-E-Fiza" label="Koh-E-Fiza"/>  
+        </form:select>
+        <span id="locationError"></span>  
+		</div>
+						
 						<div class="inputfield">
 							<label>Gender</label>
 							<div class="custom_select">
@@ -435,13 +463,15 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 						</div>
 						<div class="inputfield">
 							<label>Email Address</label>
-							<form:input path="email" class="input" />
+							<form:input path="email" class="input" id="email"/>
+							 <span id="emailError"></span>
 							<!--  <input type="text" class="input"> -->
 						</div>
 						<div class="inputfield">
 
 							<label>Phone Number</label>
-							<form:input path="mobile" class="input" />
+							<form:input path="mobile" class="input"  id="mobile" />
+							 <span id="mobileError"></span>
 							<!--  <input type="text" class="input"> -->
 						</div>
 						<div class="inputfield">
@@ -464,8 +494,9 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
           <p>Agreed to terms and conditions</p>
        </div>  -->
 						<div class="inputfield">
-							<input type="submit" value="Save Changes" class="btn"
-								style="width: 40%; padding: 15px 10px; font-size: 15px; border: 0px; background: green; color: #fff; cursor: pointer; border-radius: 3px; outline: none; margin-left: 65%;">
+						<button style="width:40%; padding: 10px 10px; font-size: 15px; border: 0px; background:#4CAF50; color: #fff; cursor: pointer; border-radius:50px; outline: none; margin-left: 65%;">Save Changes</button>
+							<!-- <input type="submit" value="Save Changes" class="btn"
+								> -->
 						</div>
 					</form:form>
 				</div>
@@ -498,6 +529,226 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 			   $('.menu-btn').css("visibility", "visible");
 			 });*/
 		});
+	</script>
+	
+	
+	
+	<!-- ............Script Code.......... -->
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#firstNameError").hide();
+							$("#lastNameError").hide();
+							$("#mobileError").hide();
+							$("#emailError").hide();
+							$("#cityError").hide();
+							$("#locationError").hide();
+						
+
+							var firstNameError = false;
+							var lastNameError = false;
+							var mobileError = false;
+							var emailError = false;
+							var cityError = false;
+							var locationError = false;
+							
+							$("#firstName").keyup(
+									function() {
+										//convert lower to upper case
+										$("#firstName").val(
+												$("#firstName").val()
+														.toUpperCase());
+										validate_firstName();
+									});
+
+							$("#lastName").keyup(
+									function() {
+										//convert lower to upper case
+										$("#lastName").val(
+												$("#lastName").val()
+														.toUpperCase());
+										validate_lastName();
+									});
+
+							$("#mobile").keyup(function() {
+								validate_mobile();
+							});
+
+							$("#email").keyup(function() {
+								validate_email();
+							});
+
+							$("#city").change(function() {
+								validate_city();
+							});
+
+							$("#location").change(function() {
+								validate_location();
+							});
+
+							
+
+							//FirstName validation
+							function validate_firstName() {
+								var val = $("#firstName").val();
+								//only upper/lower case chars atleast 3 char and at max 8 chars
+								var exp = /^[A-Z]{3,8}$/;
+
+								if (val == '') {
+									$("#firstNameError").html(
+											"Enter <b>First Name</b>");
+									$("#firstNameError").css("color", "red");
+									$("#firstNameError").show();
+									firstNameError = false;
+								} else if (!exp.test(val)) {
+									$("#firstNameError").html(
+											"Enter <b>Valid First Name</b>");
+									$("#firstNameError").css("color", "red");
+									$("#firstNameError").show();
+									firstNameError = false;
+								} else {
+									$("#firstNameError").hide();
+									firstNameError = true;
+								}
+								return firstNameError;
+							}
+
+							//lastName validation
+							function validate_lastName() {
+								var val = $("#lastName").val();
+								//only upper/lower case chars atleast 3 char and at max 8 chars
+								var exp = /^[A-Z]{3,8}$/;
+
+								if (val == '') {
+									$("#lastNameError").html(
+											"Enter <b>last Name</b>");
+									$("#lastNameError").css("color", "red");
+									$("#lastNameError").show();
+									lastNameError = false;
+								} else if (!exp.test(val)) {
+									$("#lastNameError").html(
+											"Enter <b>Valid Name</b>");
+									$("#lastNameError").css("color", "red");
+									$("#lastNameError").show();
+									lastNameError = false;
+								} else {
+									$("#lastNameError").hide();
+									lastNameError = true;
+								}
+								return lastNameError;
+							}
+
+							//mobile validation
+							function validate_mobile() {
+								var val = $("#mobile").val();
+								//only digits starts with 1-9 later any digit is OK
+								var exp = /^[1-9][0-9]*$/;
+								if (val == '') {
+									$("#mobileError").html(
+											"Enter <b>Mobile Number</b>");
+									$("#mobileError").css("color", "red");
+									$("#mobileError").show();
+									mobileError = false;
+								} else if (val.length != 10) {
+									$("#mobileError")
+											.html(
+													" Mobile Number must be 10 digits only");
+									$("#mobileError").css("color", "red");
+									$("#mobileError").show();
+									mobileError = false;
+								} else if (!exp.test(val)) {
+									//value not matched with expression
+									$("#mobileError").html(
+											"Enter <b>Valid Mobile Number</b>");
+									$("#mobileError").css("color", "red");
+									$("#mobileError").show();
+									mobileError = false;
+								} else {
+									$("#mobileError").hide();
+									mobileError = true;
+								}
+								return mobileError;
+							}
+
+							//Email Validation
+							function validate_email() {
+								var val = $("#email").val();
+								var exp = /^[A-Za-z0-9\.\-]+\@[a-z]+\.[a-z\.]{2,10}$/;
+								if (val == '') {
+									$("#emailError").html(
+											"Enter <b>EMail ID</b>");
+									$("#emailError").css("color", "red");
+									$("#emailError").show();
+									emailError = false;
+								} else if (!exp.test(val)) {
+									$("#emailError").html(
+											"Enter <b>Valid Mail</b>");
+									$("#emailError").css("color", "red");
+									$("#emailError").show();
+									emailError = false;
+								} else {
+									$("#emailError").hide();
+									emailError = true;
+								}
+								return emailError;
+							}
+
+							//----------city-----------//
+
+							function validate_city() {
+								var val = $("#city").val();
+								if (val == '') {
+									$("#cityError").html("Select <b>City</b>");
+									$("#cityError").css("color", "red");
+									$("#cityError").show();
+									cityError = false;
+								} else {
+									$("#cityError").hide();
+									cityError = true;
+								}
+							}
+
+							//----------location-----------//
+
+							function validate_location() {
+								var val = $("#location").val();
+								if (val == '') {
+									$("#locationError").html(
+											"Select <b>Location</b>");
+									$("#locationError").css("color", "red");
+									$("#locationError").show();
+									locationError = false;
+								} else {
+									$("#locationError").hide();
+									locationError = true;
+								}
+							}
+
+							
+
+							//---------ON SUBMIT--------------//
+							$("#myStudentForm").submit(
+									function() {
+										validate_firstName();
+										validate_lastName();
+										validate_mobile();
+										validate_email();
+										validate_city();
+										validate_location();
+										
+
+										if (firstNameError && lastNameError
+												&& mobileError && emailError
+												&& cityError && passwordError
+												&& txtConfirmPasswordError)
+											return true;
+										else
+											return false;
+									});
+
+						});
 	</script>
 
 </body>

@@ -1,186 +1,310 @@
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
-    
- <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
- <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
- 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">  
- <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
-        <html>
-        <head>
-        <link rel="icon" type="image/jpg" href="images/logo.jpg">
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Home screen of VeggieFridge</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style type="text/css">
- 
- body{
-background-color:#f1f1f1;
-}
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+</head>
+
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
+	;
+
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
-.splash{
-   text-align: center;
-   margin-left:32%;
-   margin-top:5%;
-   font-family: 'Montserrat', sans-serif;
-   background-color: #fff;
-   border-radius: 10px;
-  /*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-	0 10px 10px rgba(0,0,0,0.22); */
-	position: relative;
+.container {
+	background-color:#fff;
+	border-radius:5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 	overflow: hidden;
 	width: 450px;
-    max-width: 100%;
-	min-height: 100px;
+	max-width: 100%;
 }
 
-/* .row:after {
-  content: "";
-  display: table;
-  clear: both;
+.form {
+	padding: 30px 30px;
 }
 
-.col-75 {
-   width: 100%;
-  margin-top: 11px;
-  color: black;
+.form-control {
+	margin-bottom: 2px;
+	padding-bottom: 20px;
+	position: relative;
 }
- */
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 60px;
-  border: none;
-  border-radius:4px;
-  cursor: pointer;
-  float: center;
-  margin-top:10px;
-  margin-left:50%;
+.form-control input, select {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
+.form-control input:focus {
+	outline: 0;
+	border-color: #777;
 }
-                                                       
-@keyframes show {
-	0%, 49.99% {
-		opacity: 0;
-		z-index: 1;
-	}
+
+.form-control.success input {
+	border-color: #2ecc71;
+}
+
+.form-control.error input {
+	border-color: #e74c3c;
+}
+
+.form-control i {
+	visibility: hidden;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.form-control.success i.fa-check-circle {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+	color: #e74c3c;
+	visibility: visible;
+}
+
+.form-control small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form-control.error small {
+	visibility: visible;
+}
+
+.form button {
+	background-color: #4CAF50;
+	border: 2px solid #4CAF50;
+	border-radius: 50px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	width: 100%;
+}
+
+.form button hover {
+	opacity: 0.8;
+}
+</style>
+
+<body>
+
+<table
+		style="max-width: 550px; margin: 0 auto; margin-top: 10px; margin-bottom: 10px;">
+		<th><a href="abc.htm"> <spring:url value="/images"
+					var="images" /> <img src="${images}/vf-leaf.png" width="60"
+				height="60" alt="" />
+		</a></th>
+
+		<th><a href="abc.htm"> <spring:url value="/images"
+					var="images" /> <img src="${images}/logo2.jpg" width="200"
+				height="50" alt="" />
+		</a></th>
+</table>
+
+	<div class="container" style="max-width: 550px; margin: 0 auto;">
+	<h4 style="margin-left:8%; margin-top: 20px;">Forgot Password</h4>
+
+		<%-- <form id="myStudentForm" class="form" action="${pageContext.request.contextPath }/addguestcustomers" modelAttribute="customer" method="post"> --%>
+        <form:form action="${pageContext.request.contextPath}/forgot/passwordChanged" modelAttribute="customer" method="POST" id="myStudentForm" class="form" >    
+			<!-- ......	Email Id......... -->
+
+			<div class="form-control">
+				<!-- <label for="username">Username</label> -->
+				<form:input path="email" readonly="true" placeholder="email" id="email"></form:input> 
+				<!-- <input type="email" placeholder="email" name="email" id="email" readonly="true"/> --> <i
+					class="fas fa-check-circle"></i> <i
+					class="fas fa-exclamation-circle"></i> <span id="emailError"></span>
+				<!-- <small>Error message</small> -->
+			</div>
+
+
+
+			<!-- ......	Password......... -->
+
+			<div class="form-control">
+				<!-- <label for="username">Username</label> -->
+				<form:password path="newPassword" id="txtPassword" placeholder="Password" ></form:password>
+				<!-- <input type="text" placeholder="Password" id="txtNewPassword"
+					name="password" /> --> <i class="fas fa-check-circle"></i> <i
+					class="fas fa-exclamation-circle"></i><span id="passwordError"></span>
+				<!-- <small>Error message</small> -->
+			</div>
+
+
+
+			<!-- ......	Confirm Password......... -->
+
+			<div class="form-control">
+				<!-- <label for="username">Username</label> -->
+				<!-- <input type="text" placeholder="Confirm Password"
+					name="confirmPassword" id="txtConfirmPassword" />  -->
+					<form:password path="confirmPassword" id="txtConfirmPassword"  placeholder="Confirm Password"/>
+					<i
+					class="fas fa-check-circle"></i> <i
+					class="fas fa-exclamation-circle"></i> <span
+					id="txtConfirmPasswordError"></span>
+				<!-- <small>Error message</small> -->
+			</div>
+
+
+		<button>Change Password</button>
+		<%-- </form> --%>
+		</form:form>
+		
+
+</div>
+
+<div style="text-align: center; margin-top: 20px; font-size: 15px;">
+			<a href="#" style="text-decoration: none;"> Conditions of Use </a> |
+			<a href="#" style="text-decoration: none;"> Privacy Policy </a> | <a
+				href="#" style="text-decoration: none;"> Help </a>
+			<p style="margin-top:10px;">© 2020-2021, VeggieFridge.com, Inc.
+				or its affiliates</p>
+		</div>
 	
-	50%, 100% {
-		opacity: 1;
-		z-index: 5;
-	}
-}
+	
 
-input[type=text], select, textarea {
-  width:100%;
-  padding:5px;
-  /* margin-left:10px; */
-  border: 1px solid #008000;
-  border-radius: 4px;
-  resize: vertical;
-}
+	<!-- ............Script Code.......... -->
 
-input[type=password], select, textarea {
-  width:100%;
-  padding:5px;
- /*  margin-left:10px; */
-  border: 1px solid #008000;
-  border-radius: 4px;
-  resize: vertical;
-}
+	<script>
+		$(document)
+				.ready(
+						function() {
+							
+							$("#passwordError").hide();
+							$("#txtConfirmPasswordError").hide();
 
+							
+							var passwordError = false;
+							var txtConfirmPasswordError = false;
 
-  </style>
-  </head>
-  <body>
-  <div class="splash">
-  <div class="row">
-  <div class="col-75"> 
- 
- <font color='red'>${errMsg}</font>
- 
- <form:form action="${pageContext.request.contextPath}/forgot/passwordChanged" modelAttribute="customer" method="POST">    
- 
- <font color='red'><span id="errId"></span></font>
- 
- <spring:url value="/images" var="images" />
- <img src="${images}/logo.jpg" width="130" height="100"/>
- 
- <h2 style="color:#4CAF50;">Create new password</h2>
- <h5 style="color:#4CAF50;">We will ask for this password whenever you sign in</h5>
-  
-   <font color='red'><span id="errId"></span></font>
-   <table>
-    
-    <tr>
-    <td>Your Email:</td>
-    <td ><form:input path="email" readonly="true"></form:input> </td>
-    </tr>
-       
-    <tr>
-    <td>Enter New Password</td>
-    <td><form:password path="newPassword" id="txtPassword"></form:password></td>
-    </tr>
-    
-    <tr>
-    <td>Confirm Password</td>
-    <td><form:password path="confirmPassword" id="txtConfirmPassword"/></td>
-    </tr>
-    <tr>
-    
-    <td><input type="submit" value="Change Password" onclick="return Validate()"  id="btnSubmit"></td>
-    </tr>
-    </table>
-    
-    </form:form>
-      </div>
-      </div>
-      </div>
-     <!--   -->
-  
-     
-      <script type="text/javascript">
+							
+							$("#txtNewPassword").change(function() {
+								validate_txtNewPassword();
+							});
 
-      function validatePwds(){
-    	    var newPwd = $('#newPassword').val();
-    	    var confirmPwd = $('#confirmPassword').val();
-    	    if(newPwd!=confirmPwd){
-    	   /*  $('#errId').text('New Password And Confirm Password Is Not Match'); */
-    	    return false;
-    	    }
-    	    return true;
-    	}
+							$("#txtConfirmPassword").change(function() {
+								validate_txtConfirmPassword();
+							});
 
-      </script>
-      
-        <script type="text/javascript">
-    function Validate() {
-        var password = document.getElementById("txtPassword").value;
-        var confirmPassword = document.getElementById("txtConfirmPassword").value;
-        if (password != confirmPassword) {
-        	 $('#errId').text('New Password And Confirm Password Is Not Match');
-           /*  alert("Password And Confirm Password Is Not Match."); */
-            return false;
-        }
-        return true;
-    }
-</script>
+					
+							/* ...............Passowrd........... */
 
-   
+							//password Validation
+							function validate_txtNewPassword() {
+								var val = $("#txtNewPassword").val();
+								//var exp = /^[A-Za-z0-9\.\-]+\@[a-z]+\.[a-z\.]{2,10}$/;
+								if (val == '') {
+									$("#passwordError").html(
+											"Enter <b>Password</b>");
+									$("#passwordError").css("color", "red");
+									$("#passwordError").show();
+									passwordError = false;
+								} else if ((val.length <= 6)
+										|| (val.length > 8)) {
+									$("#passwordError")
+											.html(
+													"Enter <b>Passwords lenght must be between 6 and 8</b>");
+									$("#passwordError").css("color", "red");
+									$("#passwordError").show();
+									passwordError = false;
+								}
+								//else if(!exp.test(val)){
+								//$("#passwordError").html("Enter <b>Valid Password</b>");
+								//$("#passwordError").css("color","red");
+								//$("#passwordError").show();
+								//passwordError = false;
+								//} 
+								else {
+									$("#passwordError").hide();
+									passwordError = true;
+								}
+								return passwordError;
+							}
+
+							/* ...............ConfirmPassowrd........... */
+
+							//password Validation
+							function validate_txtConfirmPassword() {
+								var val = $("#txtConfirmPassword").val();
+								var value = $("#txtNewPassword").val();
+								//var exp = /^[A-Za-z0-9\.\-]+\@[a-z]+\.[a-z\.]{2,10}$/;
+								if (val == '') {
+									$("#txtConfirmPasswordError").html(
+											"Enter <b>Confirm Password</b>");
+									$("#txtConfirmPasswordError").css("color",
+											"red");
+									$("#txtConfirmPasswordError").show();
+									txtConfirmPasswordError = false;
+								} else if (value !== val) {
+									$("#txtConfirmPasswordError")
+											.html(
+													"Enter <b>Passwords Does Not Match</b>");
+									$("#txtConfirmPasswordError").css("color",
+											"red");
+									$("#txtConfirmPasswordError").show();
+									txtConfirmPasswordError = false;
+								}
+								//else if(!exp.test(val)){
+								//$("#passwordError").html("Enter <b>Valid Password</b>");
+								//$("#passwordError").css("color","red");
+								//$("#passwordError").show();
+								//passwordError = false;
+								//} 
+								else {
+									$("#txtConfirmPasswordError").hide();
+									txtConfirmPasswordError = true;
+								}
+								return txtConfirmPasswordError;
+							}
+
+							//---------ON SUBMIT--------------//
+							$("#myStudentForm").submit(
+									function() {
+										
+										
+										validate_txtNewPassword();
+										validate_txtConfirmPassword();
+
+										if (passwordError
+												&& txtConfirmPasswordError)
+											return true;
+										else
+											return false;
+									});
+
+						});
+	</script>
 </body>
+
 </html>

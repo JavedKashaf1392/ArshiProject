@@ -593,7 +593,7 @@ label {
 									<div class="totals-value" id="cart-subtotal">
 										${repee_sign}
 										<fmt:formatNumber type="number" minFractionDigits="2"
-											maxFractionDigits="2" value="${order.orderTotal}" />
+											maxFractionDigits="2" value="${order.totalBillAmount}" />
 									</div>
 								</div>
 

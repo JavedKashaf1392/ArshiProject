@@ -5,8 +5,6 @@
   <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
   <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +12,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
 <style>
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
 	;
@@ -133,8 +129,8 @@ opacity: 0.8;
  
 </style>    
     
-</head>    
-<body>
+ </head>    
+ <body>
 
   <table style="max-width:550px;
   margin: 0 auto;margin-top:10px;margin-bottom:10px;">

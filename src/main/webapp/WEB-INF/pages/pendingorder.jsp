@@ -12,7 +12,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="security"%>
+prefix="security"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <meta charset="UTF-8">
@@ -43,7 +43,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 20px auto;
+	margin: 0px auto 20px;
 }
 
 .links {
@@ -170,14 +170,38 @@ input {
 	/* box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); */
 	width: 190px;
 }
+.showmore{
+
+	float:left;
+	background: transparent;
+    border: 1px solid black;
+    padding: 0.8rem 0;
+    width:100px;
+    font-family: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.6s ease;
+    color: white;
+    background:#4CAF50;
+    border-radius:50px; 
+    margin-top:10px;
+    margin-bottom: 10px; 
+   
+}
+
+.showmore:hover  {
+	 opacity: 0.8;
+}
+
 </style>
 </head>
 <body>
 
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="newhead.jsp"></jsp:include>
 
-	<div style="max-width: 1200px; margin: 17px auto;">
+	<div style="max-width:1200px; margin:220px auto 20px;">
 		<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
 			Orders</span>
@@ -198,7 +222,7 @@ input {
 			</th>
 		</table>
 	</div>
-
+   
 	<c:forEach var="orders" items="${requestScope.pendingOrders}">
 
 	<div class="wrapper">
@@ -238,7 +262,7 @@ input {
 								</td>
 								<td style="font-weight:600;"> : </td>
 								<td>
-								<p style="font-weight: 300;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.orderTotal}"/></p>
+								<p style="font-weight: 300;">${repee_sign}<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${orders.totalBillAmount}"/></p>
 								</td>
 								</tr>
 						
@@ -277,15 +301,17 @@ input {
 								<p class="content">Lorem ipsum dolor sit amet, consectetur
 									adipisicing elit. Aperiam impedit, veniam! Voluptate a impedit
 									animi!</p>
-								<p class="content">${repee_sign}${orderitem.product.price}</p>
+								<p class="content">${repee_sign}
+										<fmt:formatNumber type="number" minFractionDigits="2"
+											maxFractionDigits="2" value="${orderitem.product.price}" /></p>
 								<!-- <div class="btn">Review</div> -->
 							</div>
 						</div>
 					</c:forEach>
 					<table>
 						<th>
-							<div class="btn"
-								style="width: 125px; background: #4abd3e; padding: 8px 5px; border-radius: 3px; color: #fff; text-align: center; font-weight: 400; cursor: pointer; margin-left: 10px;">ShowAll</div>
+							<button class="showmore"
+								onclick="window.location.href='${pageContext.request.contextPath}/order/orderdetail/${orders.orderid}'">ShowAll</button>
 						</th>
 
 						<%-- <th><a
@@ -294,11 +320,15 @@ input {
 							onclick="return confirm('Are you sure to Cancel Order?')">Cancel-Order</a>
 						</th> --%>
 					</table>
+					
+			     
 				</div>
 			</div>
+			
 
 		</div>
-	</c:forEach>
+		</c:forEach>
+
 
 	<jsp:include page="footer.jsp"></jsp:include>
 

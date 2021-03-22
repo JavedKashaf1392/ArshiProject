@@ -1,81 +1,213 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
 <!DOCTYPE html>
 <html>
-<head><link rel="icon" type="image/jpg" href="images/logo.jpg">
- <title>Generate Link</title>
+<head>
+<link rel="icon" href="images/VeggieFridge.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+
 <style>
-  body{
-background-color:#f1f1f1;
-}
+@import
+	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
+	;
+
 * {
-  box-sizing: border-box;
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-.button {
-  border-radius: 5px;
-  background-color: #4CAF50; /* Add */
-  border: none;
-  color: white;
-  padding: 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px 5px;
-  margin-top: 30px;
-  cursor: pointer;
-  width: 100px;
+.errormsg {
+	text-align: center;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid red;
+	border-radius: 4px;
+	color: red; /* #31708f */
+	/* background-color:#4CAF50; */ /* #d9edf7 */
+	border-color: red;
+	max-width: 450px;;
+	margin: 0 auto;
 }
-h3 {
-color: green;
+
+.msg {
+	text-align: center;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid #4CAF50;
+	border-radius: 4px;
+	color: green; /* #31708f */
+	/* background-color:#4CAF50; */ /* #d9edf7 */
+	border-color: #4CAF50;
+	max-width: 450px;;
+	margin: 0 auto;
 }
-.container {
-  text-align: center;
-   margin-left:32%;
-   margin-top:10%;
-   font-family: 'Montserrat', sans-serif;
-   background-color: #fff;
-   border-radius: 10px;
-  /*  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22); */
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 10px 0;
+	display: inline-block;
+	/*  border: 1px solid #ccc; */
+	box-sizing: border-box;
+	border: 2px solid #f0f0f0;
+}
+
+/* Full-width input fields */
+input[type=email] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	/* border: 1px solid #ccc; */
+	box-sizing: border-box;
+	border: 2px solid #f0f0f0;
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 50px;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+	width: auto;
+	padding: 10px 18px;
+	background-color: #4CAF50;
+	border-radius: 50px;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+	text-align: center;
+	margin: 24px 0 12px 0;
 	position: relative;
-	overflow: hidden;
-	width: 450px;
-    max-width: 100%;
-	min-height: 100px;
 }
-@keyframes show {
-	0%, 49.99% {
-		opacity: 0;
-		z-index: 1;
+
+.container {
+	padding: 16px;
+}
+
+span.psw {
+	float: right;
+	padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+	display: block; /* Hidden by default */
+	position: relative; /* Stay in place */
+	left: 50;
+	top: 50;
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	border: 1px solid #ddd;
+	width: 80%; /* Could be more or less, depending on screen size */
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	padding: 20px 30px;
+	max-width: 450px;;
+	margin: 0 auto;
+}
+
+/* Add Zoom Animation */
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+	span.psw {
+		display: block;
+		float: none;
 	}
-	
-	50%, 100% {
-		opacity: 1;
-		z-index: 5;
+	.cancelbtn {
+		width: 100%;
 	}
-	
-<title>Generate Link</title>
+}
 </style>
 </head>
-<body>
-<div class="container">
-  <form action="${pageContext.request.contextPath}/login/changePassword" th:action="@{/Cancel}" th:object="${user}" method="post">
-  <spring:url value="/images" var="images" />
-  <img src="${images}/logo.jpg" width="165" height="130"/>
-<h4 style="color:#4CAF50;">Authentication Required</h4>
-<h5 style="color:#4CAF50;">For your security, we need to authenticate your request. We've sent an link to the associate email. Please go to the email click it on link to complete verification.</h5>
 
-<a href="https://mail.google.com/mail/u/0/?tab=km#inbox" style="display: inline-block;
-        padding: 10px 30px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color:#4CAF50;
-        border-radius: 6px;
-        outline: none;margin-top:6px;font-size:15px;">Go To Gamil</a>
-</form>
-</div>
+<body>
+
+
+	<div class="modal">
+
+		<c:if test="${not empty msg}">
+			<div class="msg">${msg}</div>
+		</c:if>
+
+		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+			<div class="errormsg">${error_msg}</div>
+		</c:if>
+
+		<table
+			style="max-width: 450px;; margin: 0 auto; margin-top: 10px; margin-bottom: 10px;">
+			<th><a href="abc.htm"> <spring:url value="/images"
+						var="images" /> <img src="${images}/vf-leaf.png" width="60"
+					height="60" alt="" />
+			</a></th>
+			<th><a href="abc.htm"> <spring:url value="/images"
+						var="images" /> <img src="${images}/logo2.jpg" width="200"
+					height="50" alt="" />
+			</a></th>
+		</table>
+
+		<form class="modal-content animate"
+			action="${pageContext.request.contextPath }/forgot/sendMail" method="post"
+			modelAttribute="customer" id="myStudentForm">
+
+			<h4 style="margin-left: 5%;">Forgot Password</h4>
+			<div class="container" style="line-height:30px;">
+            <p>We emailed a password reset link.</p>
+            <p>Please follow the instructions in that email.</p>
+			</div>
+
+		</form>
+
+		<div style="text-align: center; margin-top: 20px; font-size: 15px;">
+			<a href="#" style="text-decoration: none;"> Conditions of Use </a> |
+			<a href="#" style="text-decoration: none;"> Privacy Policy </a> | <a
+				href="#" style="text-decoration: none;"> Help </a>
+			<p style="margin-top:10px;">© 2020-2021, VeggieFridge.com, Inc.
+				or its affiliates</p>
+		</div>
+
+
+	</div>
+
+	
+</body>
+</html>
 

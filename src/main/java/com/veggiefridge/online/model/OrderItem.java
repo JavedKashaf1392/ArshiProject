@@ -53,6 +53,15 @@ public class OrderItem {
 	
 	@Column(name="productQuantity")
 	private int productQuantity;
+	
+	/*
+	 * @Column(name="productbuyingprice") private double productbuyingprice;
+	 * 
+	 * public double getProductbuyingprice() { return productbuyingprice; }
+	 * 
+	 * public void setProductbuyingprice(double productbuyingprice) {
+	 * this.productbuyingprice = productbuyingprice; }
+	 */
 
 	public int getOrderItemId() {
 		return orderItemId;

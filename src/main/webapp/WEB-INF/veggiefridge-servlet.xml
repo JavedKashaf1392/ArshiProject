@@ -24,13 +24,31 @@
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
 	<mvc:resources mapping="/images/**" location="/WEB-INF/images/" /> 
-	
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/css"/>
+	 
 	 <!-- Spring Email Sender Bean Configuration -->
-        <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
-        <property name="username" value="aq570975@gmail.com"/>
-        <property name="password" value="Arshigmail@#@#12"/>
+        <property name="username" value="javedkashaf403@gmail.com" />
+        <property name="password" value="India123@" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+    
+     
+	
+         <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="465" />
+        <property name="username" value="javedkashaf403@gmail.com"/>
+        <property name="password" value="India123@"/>
         <property name="javaMailProperties">
         <props>
                 <prop key="mail.smtp.auth">true</prop>
@@ -41,8 +59,21 @@
                 <prop key="mail.smtp.starttls.enable">true</prop>
             </props>
         </property>
-    </bean>
+    </bean>  -->
     
+    <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="smtp.gmail.com" />
+    <property name="port" value="587" />
+    <property name="username" value="javedkashaf403@gmail.com" />
+    <property name="password" value="India123@" />
+
+    <property name="javaMailProperties">
+        <props>
+            <prop key="mail.smtp.auth">true</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>
+        </props>
+    </property>
+</bean> -->
     
     <!-- Spring Email Attachment Configuration -->
     

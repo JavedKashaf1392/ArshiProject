@@ -104,6 +104,13 @@ input[type=text] {
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+.select{
+width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
 
 label {
   margin-bottom: 10px;
@@ -150,7 +157,7 @@ span.price {
 }
 
 .checkout:hover {
-	background-color: #019701;
+	background-color:opacity: 0.8;
 }
   
   </style>
@@ -174,65 +181,61 @@ span.price {
 				</table>
   				
     </div>
-
     <div class="wrapper">
     <div class="view_main">
 				
 				<div class="view_wrap list-view">
-				
 				<div class="view_item">
 							<div class="vi_left">
 							<div class="row">
-  <div class="col-75" style="margin-top:25px;margin-bottom:25px;">
+    <div class="col-75" style="margin-top:25px;margin-bottom:25px;">
     <div class="container">
     
-    <form action="/action_page.php">
+    <form:form
+						action="${pageContext.request.contextPath}/order/placeOrder"
+						method="post" modelAttribute="customer">
       
-        <div class="row">
-        
+          <div class="row">
           <div class="col-50">
           
             <h3 style="margin-top:10px;">Pickup Address</h3><br>
+            <form:hidden path="customerid"/>
+            
+            <form:hidden path="password"/>
             
             <label for="fname"> First Name</label>
-            <input type="text" id="fname" name="firstname" value="${customerModel.firstName}">
+            <form:input path="firstName" class="input" readonly="true"/>
             
             <label for="email"> Email</label>
-            <input type="text" id="email" name="email" value="${customerModel.email}">
+           <form:input path="email" class="input" readonly="true"/>
             
-            <label for="city">City</label>
-             <select id="country" name="country" style="width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc; 
-  border-radius: 3px;">
-          <option value="australia">Nagpur</option>
-          <option value="canada">Hyderabad</option>
-         
-          </select>
+        <label for="city">City</label>
+        <form:select path="cities" class="select">  
+        <form:option value="Nagpur" label="Nagpur"/>  
+        <form:option value="Hyderabad" label="Hyderabad"/>  
+        <form:option value="Bhopal" label="Bhopal"/>  
+        </form:select>  
 
              <label for="email">State</label>
-            <input type="text" id="email" name="email" value="Maharastra">
-          </div>
+            <input type="text" id="state" name="state" value="Maharastra" readonly="true">
+            </div>
 
             <div class="col-50" style="margin-top:52px">
             <label for="cname">Last name</label>
-            <input type="text" id="cname" name="cardname" value="${customerModel.lastName}">
+            <form:input path="lastName" class="input" readonly="true" />
+            
             <label for="ccnum">Mobile</label>
-            <input type="text" id="ccnum" name="cardnumber" value="${customerModel.mobile}">
+            <form:input path="mobile" class="input" readonly="true" />
+            
             <label for="expmonth">Kiosk Location</label>
-           <select id="country" name="country" style="width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc; 
-  border-radius: 3px;">
-          <option value="australia">Mihan</option>
-          <option value="canada">Ameerpet</option>
-         
-          </select>
+         <form:select path="location" class="select">  
+        <form:option value="Mihan" label="Mihan"/>  
+        <form:option value="Ameerpet" label="Ameerpet"/>  
+        <form:option value="Koh-E-Fiza" label="Koh-E-Fiza"/>  
+        </form:select>  
           
            <label for="email">Zip</label>
-            <input type="text" id="email" name="email" value="542867">
+            <input type="text" id="zip" name="zip" value="542867" readonly="true">
           </div>
           
           </div>
@@ -251,6 +254,16 @@ span.price {
 							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
 								class='fas fa-wallet' style="font-size: 50px; color: black;"></span></a>
 							
+						</th>
+						
+						<th
+							style="background-color:white; padding: px px; border-radius: px; text-align: center; border: 1px solid #ddd; font-size: 15px; height: 20px; width: 180px;">
+
+							<a
+							href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayATKiosk"
+							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
+								class='far fa-credit-card' style="font-size: 50px; color: black"></span></a>
+							<!--  Membership Id:3 -->
 						</th>
 
 						<th
@@ -272,44 +285,40 @@ span.price {
 								class="fa fa-shopping-cart"
 								style="font-size: 50px; color: black"></span></a> <!--  Transaction:0 -->
 						</th>
-						<th
-							style="background-color:white; padding: px px; border-radius: px; text-align: center; border: 1px solid #ddd; font-size: 15px; height: 20px; width: 180px;">
-
-							<a
-							href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayATKiosk"
-							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
-								class='far fa-credit-card' style="font-size: 50px; color: black"></span></a>
-							<!--  Membership Id:3 -->
-						</th>
+						
 						<tr>
-							<td style="text-align:center;"><input type="radio" name="gender" value="wallet"> Wallet</td>
-							<td style="text-align:center;"><input type="radio" name="gender" value="payonline"> Pay Online</td>
-							<td style="text-align:center;"><input type="radio" name="gender" value="upi"> UPI</td>
-							<td style="text-align:center;"><input type="radio" name="gender" value="payAtKiosk"> 
+						    <td style="text-align:center;"><form:radiobutton path="param" value="wallet" id="wallet"/> Wallet</td>
+						    <td style="text-align:center;"><form:radiobutton path="param" value="payatkiosk" id="payatkiosk"/>  
 							Pay AT Kiosk</td>
+							<td style="text-align:center;"><form:radiobutton path="param" value="payonline" id="payonline"/> Pay Online</td>
+							<td style="text-align:center;"><form:radiobutton path="param" value="upi" id="upi"/> UPI</td>
+							
 						</tr>
 					</table>
-            </div>
+					
+					<!-- <h3 id="disp" style= "color:green"> </h3>  
+					<h4 id="error" style= "color:red"> </h4>  -->
           </div>
-      </form>
-      
+          </div>
+    
     </div>
   </div>
   
     <div class="col-25" style="margin-top:25px;">
     <div class="container">
       <h3>Order Summery</h3>
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4 Item</b></span></h4>
-      <p>Cart amount <span class="price">${repee_sign}1200</span></p>
-     <p>Sub Total <span class="price">${repee_sign}800</span></p>
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>${customerModel.cartpage.cartitem} Item</b></span></h4>
+      <p>Cart amount <span class="price">${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></span></p>
+     <p>Sub Total <span class="price">${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></span></p>
      
       <hr>
-      <p style="margin-top:5px;">Total <span class="price" style="color:black;"><b>${repee_sign}800</b></span></p>
+      <p style="margin-top:5px;">Total <span class="price" style="color:black;"><b>${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></b></span></p>
     </div>
-    
-    <button class="checkout"
-										onclick="window.location.href='${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayATKiosk'">Place Order</button>
+   
+    <input type="submit" value="Place Order" class="checkout">
+   <!--  <button type="submit" class="checkout">Place Order</button> -->
     </div>
+    </form:form>
  
 </div>
 								
@@ -351,6 +360,23 @@ span.price {
 
 		</div>
 	
+	
+	<script>  
+    function checkButton() {    
+            var getSelectedValue = document.querySelector(   
+                'input[path="param"]:checked');   
+                
+            if(getSelectedValue != null) {   
+                document.getElementById("disp").innerHTML   
+                    = getSelectedValue.value   
+                    + " PaymentOption is selected";   
+            }   
+            else {   
+                document.getElementById("error").innerHTML   
+                    = "*You have not selected any PaymentOption";   
+            }   
+        }    
+    </script>   
 	
 
 

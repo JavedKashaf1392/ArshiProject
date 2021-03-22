@@ -80,6 +80,8 @@ public class MyAccountController {
 		@RequestMapping(value = "/saveEditProfile", method = RequestMethod.POST)
 		public ModelAndView saveEditCustomer(ModelAndView model, @Valid @ModelAttribute("customer") Customer customer,
 				BindingResult result, HttpSession session) {
+			String roles="ROLE_USER";
+		     customer.setRole(roles);
 		    customerService.updateCustomer(customer);
 		    model.addObject("message", env.getProperty("account.profileupupdated"));
 		    String section = "Navbar";

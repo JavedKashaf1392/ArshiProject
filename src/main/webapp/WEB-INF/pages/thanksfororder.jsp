@@ -660,13 +660,13 @@ input[type=submit]:hover {
 									<h1><i class="fa fa-check-circle"
 									 style="font-size:40px; color: green"></i>  Thank You For Order !!!</h1>
 									<h4
-										style="color: #4CAF50; font-size: 85%; margin-top: 2%; text-align: center;">For
-										Shopping with Us</h4>
+										style="color: #4CAF50; font-size: 85%; margin-top: 2%; text-align: center;">Your
+										Order Number is<span style="color:black;font-size:20px;"> ${orders.orderid}</span></h4>
 									<h5 style="color: #4CAF50;">Recieve your order to your
 										pickup location</h5>
 									
 									<h3><i class="fas fa-map-marker-alt"
-									 style="font-size:40px; color: green"></i>${customerModel.cities},${customerModel.location}</h3>	
+									 style="font-size:40px; color: green"></i>${customerModel.cities}, ${customerModel.location}</h3>	
 									
 									   <a href="${pageContext.request.contextPath}/home"
 										style="display: inline-block; padding: 5px 70px; text-align: center; text-decoration: none; color: #ffffff; background-color:#4CAF50; border-radius:50px; outline: none; font-size: 15px;margin-top:15px;margin-bottom:35px;">Continue
@@ -735,7 +735,7 @@ input[type=submit]:hover {
 									<div class="totals-value" id="cart-subtotal">
 										${repee_sign}
 										<fmt:formatNumber type="number" minFractionDigits="2"
-											maxFractionDigits="2" value="${order.orderTotal}" />
+											maxFractionDigits="2" value="${orders.totalBillAmount}" />
 									</div>
 								</div>
 
@@ -744,7 +744,7 @@ input[type=submit]:hover {
 									<div class="totals-value" id="cart-total">
 										${repee_sign}
 										<fmt:formatNumber type="number" minFractionDigits="2"
-											maxFractionDigits="2" value="${order.totalBillAmount}" />
+											maxFractionDigits="2" value="${orders.totalBillAmount}" />
 									</div>
 								</div>
 							</div>

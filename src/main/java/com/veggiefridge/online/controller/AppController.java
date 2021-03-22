@@ -138,7 +138,6 @@ public class AppController {
 		}
 		 
 		 //Sign in
-		
 	    @RequestMapping(value = "/login", method = RequestMethod.GET)
 		public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 				@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
@@ -167,7 +166,7 @@ public class AppController {
 		public ModelAndView signUp(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
 			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
 			model.addObject("listkiosklocation",listkiosklocation);
-			model.setViewName("/signup");
+			model.setViewName("/registered");
 			return model;
 		}
 	    
@@ -264,7 +263,7 @@ public class AppController {
 	
     //addGuestCustomer
 	//save and update customer
-	@RequestMapping(value = "/addguestcustomer", method = RequestMethod.POST)
+	@RequestMapping(value = "/newcustomer", method = RequestMethod.POST)
 	public ModelAndView addGuestCustomer(ModelAndView model,@ModelAttribute("customer")Customer customer,BindingResult result,HttpSession session,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation) {
 			
 		 if (customer.getCustomerid() == 0) { // if customer id is 0 then creating the
@@ -292,6 +291,7 @@ public class AppController {
 			model.addObject("blurimage",VFOnlineConstants.headeblurimage);
 			model.addObject("classvalue", VFOnlineConstants.classvalue);
 			model.addObject("animateimage",VFOnlineConstants.animateimage);
+			model.addObject("msg","Customer Registered Successfully");
 			session.setAttribute("customer", customer);
 			model.setViewName("loginform");
 		}
@@ -331,15 +331,10 @@ public class AppController {
 		}
             
     
-        //PickupAddressPaymrntOption
-  		@RequestMapping(value = "/PickupAddressPaymrntOption", method = RequestMethod.GET)
-  		public String PickupAddressPaymrntOption(ModelMap model) {
-			 return "PickupAddressPaymentOption"; 
-  			
-  		}
+       
  
   		
-  	    //PickupAddressPaymrntOption
+  	        //PickupAddressPaymrntOption
   	  		@RequestMapping(value = "/thankForOrder", method = RequestMethod.GET)
   	  		public String thankForOrder(ModelMap model) {
   	  			return "thanksfororder";
@@ -358,10 +353,8 @@ public class AppController {
   			model.addAttribute("menuLevel1", allMenu);
   	  			return "menu";
   	  		}
-  	  		
-  	  		
-  	  		
-  	  	  //PickupAddressPaymrntOption
+  
+  	  		 //PickupAddressPaymrntOption
   	  		@RequestMapping(value = "/promenu", method = RequestMethod.GET)
   	  		public String promenu(Model model) {
   	  		List<Menu> allMenu = menudao.getMenuAndSubMenu();
@@ -373,10 +366,8 @@ public class AppController {
   			model.addAttribute("menuLevel1", allMenu);
   	  			return "header";
   	  		}
-  	  		
-  	  		
-  	  		
-  	  	       //PickupAddressPaymrntOption
+  
+  	  	 //PickupAddressPaymrntOption
   	    @RequestMapping(value ="/profilemenu", method = RequestMethod.GET)
   	  	public String profilemenu(Model model,ModelAndView mode1 ) {
   	  	String section= "Profile";	
@@ -442,6 +433,126 @@ public class AppController {
 			 return "registered"; 
   			
   		}
+  		
+  		
+
+  		@RequestMapping(value = "/VFAbout", method = RequestMethod.GET)
+		public ModelAndView VFAbout(HttpServletRequest request, HttpServletResponse response,
+				@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
+			String imageSection = "Header";
+			List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+			List<Product> listProduct = productService.getAllProducts();
+			List<Customer> listCustomer = customerservice.getAllCustomers();
+			List<Images> headerImages = menuservice.getImagesBySection(imageSection);
+			String section = "Navbar";
+			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+			model.addObject("listNavbarMenu", listNavbarMenu);
+			model.addObject("headerImages", headerImages);
+			model.addObject("listCustomer", listCustomer);
+			model.addObject("listkiosklocation", listkiosklocation);
+			model.addObject("listProduct", listProduct);
+			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+			model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+			model.addObject("blurimage",VFOnlineConstants.headeblurimage);
+			model.addObject("classvalue", VFOnlineConstants.classvalue);
+			model.addObject("animateimage",VFOnlineConstants.animateimage);
+			/* model.setViewName("registerdhome"); */ 
+			 model.setViewName("VFAbout");
+			return model;
+		}
+	    
+	  		
+	  		
+	  		@RequestMapping(value="/shopNow")
+	  		public ModelAndView shopNow(ModelAndView model,@ModelAttribute("kiosklocation") KioskLocation kiosklocation,BindingResult resultlocation,@ModelAttribute("menu")Menu menu,Model model2) 
+	  		
+	  		{ 
+	  			String imageSection = "Header";
+	  			List<Images> headerImages = menuservice.getImagesBySection(imageSection);
+	  			List<KioskLocation> listkiosklocation =kiosklocationservice.getAllLocation();
+	  			List<Product> listProduct = productService.getAllProducts();
+	  			List<Customer> listCustomer = customerservice.getAllCustomers();
+	  			String section = "Navbar";
+	  			List<Menu> listNavbarMenu = menuservice.getMenu(section);
+	  		    model.addObject("listNavbarMenu",listNavbarMenu);
+	  		    model.addObject("headerImages",headerImages);
+	  			model.addObject("listCustomer", listCustomer);
+	  			model.addObject("listkiosklocation",listkiosklocation);
+	  			model.addObject("listProduct", listProduct);
+	  			model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+	  			model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+	  			/* model.setViewName("registerdhome"); */
+	  		    
+	  			//Profile Menu
+	  			    String section2= "Profile";	
+	  		  		List<Menu> allMenu = menuservice.getmenuandsubMenu(section2);
+	  		  		System.out.println("===================================");
+	  		  		for (Menu menu2 : allMenu) {
+	  		  	    System.out.println("menu"+menu2);
+	  			     }
+	  			model.addObject("menuLevel1", allMenu);
+	  			model.setViewName("home");
+	  			return model;
+	  			}
+	  			
+	  		
+	  		
+	  		
+	  	     //Home Menu Url
+			@RequestMapping(value = "/returnToHome", method = RequestMethod.GET)
+			public ModelAndView returnToHome(HttpServletRequest request, HttpServletResponse response,
+					@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
+				String imageSection = "Header";
+				List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+				List<Product> listProduct = productService.getAllProducts();
+				List<Customer> listCustomer = customerservice.getAllCustomers();
+				List<Images> headerImages = menuservice.getImagesBySection(imageSection);
+				String section = "Navbar";
+				List<Menu> listNavbarMenu = menuservice.getMenu(section);
+				model.addObject("listNavbarMenu", listNavbarMenu);
+				model.addObject("headerImages", headerImages);
+				model.addObject("listCustomer", listCustomer);
+				model.addObject("listkiosklocation", listkiosklocation);
+				model.addObject("listProduct", listProduct);
+				model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+				model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+				model.addObject("blurimage",VFOnlineConstants.headeblurimage);
+				model.addObject("classvalue", VFOnlineConstants.classvalue);
+				model.addObject("animateimage",VFOnlineConstants.animateimage);
+				model.addObject("message",VFOnlineConstants.CART_PRODUCT_ADD);
+				/* model.setViewName("registerdhome"); */ 
+				 model.setViewName("home");
+				return model;
+			}
+			
+			
+			  //PickupAddressPaymrntOption
+  	  		@RequestMapping(value = "/newfooter", method = RequestMethod.GET)
+  	  		public String newfooter(ModelMap model) {
+  	  			return "newfooter";
+  	  		}
+  	    
+  	  		
+  	  		
+  	  	   
+  	  		@RequestMapping(value = "/newhead", method = RequestMethod.GET)
+  	  		public String head(ModelMap model) {
+  	  			return "newhead";
+  	  		}
+  	  		
+  	  		
+  	  	    
+  	  		@RequestMapping(value = "/checkmail", method = RequestMethod.GET)
+  	  		public String checkMail(ModelMap model) {
+  	  			return "checkMail";
+  	  		}
+  	  	    
+  	  	     
+  	  		@RequestMapping(value = "/changepassword", method = RequestMethod.GET)
+  	  		public String changepasswordl(ModelMap model) {
+  	  			return "changePassword";
+  	  		}
+  	    
   	    
     
       

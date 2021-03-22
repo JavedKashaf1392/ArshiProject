@@ -20,13 +20,23 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	charset="utf-8"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-
 @import
 url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
@@ -170,7 +180,7 @@ body {
   }
   header.topbar .auth > div a{
       color:var(--pure);
-      text-decoration: none;
+      text-decoration:none;
   }
   header.topbar .icons a{
     margin-right:0.6rem;
@@ -197,7 +207,7 @@ body {
       width:100%;
   }
   nav .top .contact h5,  nav .top .time h5{
-      font-family:"Raleway-black"; 
+     /*  font-family:"Raleway-black";  */
       margin-bottom:0.25rem;
   }
   nav .top .contact h6, nav .top .time h6{
@@ -213,6 +223,7 @@ nav .top .contact img, nav .top .time img{
 .justify-center{
     justify-content:center;
 }
+
 nav .navbar a{
     text-decoration:none;
     color:var(--secondary);
@@ -233,6 +244,7 @@ nav .navbar a:hover{
     background:var(--primary);
     color:var(--pure); 
 }
+
 .magic-shadow{
     position: relative;
     background:var(--heaven);
@@ -316,10 +328,10 @@ header.hero p{
 .btn{
     padding:0.75rem 0.75rem;
     border-radius:50px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    -ms-border-radius:4px;
-    -o-border-radius:4px;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    -ms-border-radius:50px;
+    -o-border-radius:50px;
     line-height:0.8;
     font-size:1.2rem;
     cursor: pointer;
@@ -695,11 +707,11 @@ section.subscribe .input-wrap button{
     border:none;
     background:var(--primary);
     color:var(--pure);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
     font-size:1rem;
     cursor:pointer;
     transition: all .3s ease;
@@ -991,7 +1003,10 @@ section.contact-us .contact-info > div > div > div span:first-child{
 }
 .product-content{
    /*  background: var(--gray); */
-    padding: 3rem 0.5rem 2rem 0.5rem;
+    /*  padding: 3rem 0.5rem 2rem 0.5rem; */
+   /*  padding: 1rem 0.2rem 1rem 0.2rem; */
+   /*  padding: 0.5rem 0.0rem 0.5rem 0.0rem; */
+    padding:10px 10px;
     cursor: pointer;
     
 }
@@ -1630,7 +1645,67 @@ ul{
  ul li span.rotate{
   transform: rotate(-180deg);
 }
+.alert {
+	padding: 10px;
+	background-color:white;
+	color:green;
+	opacity: 1;
+	transition: opacity 0.6s;
+	margin-bottom: 15px;
+	text-align: center;
+	letter-spacing: 2px;
+	cursor: pointer;
+	font-weight: bold;
+	max-width:1200px;
+	margin: 10px auto;
 
+}
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+}
+
+.alert {
+	background-color:white;
+	color:green;
+	opacity: 1;
+	transition: opacity 0.6s;
+	margin-bottom: 15px;
+	text-align: center;
+	letter-spacing: 2px;
+	cursor: pointer;
+	font-weight: bold;
+	width:100%;
+
+}
+
+.closebtn {
+	margin-left: 15px;
+	color:black;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+}
 </style>
 </head>
 <body>
@@ -1723,10 +1798,22 @@ ul{
                     <line x1="6" y1="20" x2="6" y2="16" /></svg>
                     </div> 
             
-                <div class="site-content"> 
-               
+                <div class="site-content">
+                
+              
+  
                 <div style="position:fixed;z-index:999;width:99%;margin-right:0;">
-      
+                 
+                 
+                 <div id="mydiv">
+                 <c:if test="${not empty message}" > 
+				<div class="alert">
+				<span class="closebtn">&times;</span><strong></strong> ${message}.
+				</div>
+			    </c:if> 
+			    </div>
+                 
+               
                 <header class="topbar">
                 <div class="container flex justify-between items-center">
                         <div class="icons">
@@ -1742,7 +1829,7 @@ ul{
                         </div>
                         <div class="auth flex items-center">
                          
-                            <security:authorize access="isAnonymous()">
+                        <security:authorize access="isAnonymous()">
                             <div>
                             <spring:url value="/images" var="images" />
                             <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
@@ -1884,22 +1971,22 @@ ul{
         var ${menu.jsvar} = '${menu.paramKey}'
     </script>
     </c:forEach> 
-    ${category}
    </div>
    </div>
-                     </security:authorize>
-                      <security:authorize access="hasRole('ADMIN')">
-                     <div class="navbar magic-shadow">
+   </security:authorize>
+                     
+               <security:authorize access="hasRole('ADMIN')">
+               <div class="navbar magic-shadow">
                             <div class="container flex justify-center">
                             <a href="#" class="active">Home</a>
                             <a href="#">Manage Product</a>
                             <a href="#">Manage Location</a>
-                             <a href="#">Manage Kiosk</a>
-                        </div>
-                    </div>
-                     </security:authorize>
-                 </nav>
-                 </div>
+                            <a href="#">Manage Kiosk</a>
+                            </div>
+               </div>
+               </security:authorize>
+               </nav>
+               </div>
             
               <header class="${classvalue}" style="background-image:${blurimage};" id="div1">
                     <div class="container">
@@ -1909,13 +1996,13 @@ ul{
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>  
                           <!--   <img src="./icons/logo-2.svg" alt=""> -->
                         </div>
-                        <h1>The World Best <span>Shoping</span> Website</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the
-                            industry's standard dummy.</p>
+                       <!--  <h1>The World Best <span>Shoping</span> Website</h1> -->
+                        <h1>Identify The True <span>Taste of</span> Nutritions</h1>
+                        <p>VeggieFridge, enhances you  with deep nourishing thoughts of not only being healthy but keeping you contracted against hygienic 
+                             nutritional values. . . . . . .</p>
                         <div>
-                            <button class="btn btn-primary">Read More</button>
-                            <button class="btn btn-secondary">Shop Now</button>
+                            <button class="btn btn-primary" onclick="window.location.href='${pageContext.request.contextPath}/VFAbout'">Read More</button>
+                            <button class="btn btn-secondary" onclick="window.location.href='${pageContext.request.contextPath}/shopNow'">Shop Now</button>
                         </div>
                         <div class="hero-image">
                          <spring:url value="/images" var="images" />
@@ -1927,24 +2014,22 @@ ul{
  
      <!-- Products   -->
      
-     <security:authorize access="isAnonymous() or hasRole('USER')">
-     
-	
-	 <div class = "products">
+<security:authorize access="isAnonymous() or hasRole('USER')">
+
+
+<div class = "products">
             <div class = "container" style="margin: 0 auto;max-width:1388px;">
-                <h1 class = "lg-title">Fresh Vegetables And Milk</h1>
-                <p class ="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
-       
-	
-                <div class = "product-items">
-                    
+            <h1 class = "lg-title">Fresh Vegetables And Milk</h1>
+            <p class ="text-light">Deliver to Your doorstep. All the products at an affordable price, Freshly harvested from local organic farmer , Take Expereince the freshness of healthy vegetables and milk and keep Yourself healthy.</p>
+            
+                   <div class = "product-items">
                     <!--1. single product -->
                    <c:forEach var="product" items="${listProduct}">
                    <div class = "product">
                         <div class = "product-content">
                             <div class = "product-img">
                              <spring:url value="/images" var="images" />
-    <img src="${images}/${product.imageName}"/ width="100%"> 
+    <img src="${images}/${product.imageName}"/ width="100%" style="border-radius: 50%;"> 
     <%-- <spring:url value="/images" var="images" />
 	<img src="${images}/bringal.jpg" width="100%"; /> --%>
                               <!--   <img src = "images/shoe-1.png" alt = "product image"> -->
@@ -1958,26 +2043,22 @@ ul{
                             <span><i class = "fas fa-shopping-cart"></i></span>
                             </button>
                             </form>
-                         
- <!-- <button onclick="increment()" class ="qty">+</button>
-<input id=demoInput type=text min=1 max=9 class = "number" value="1" style="text-align: center;width:35px;">
-<button onclick="decrement()" class = "qty">-</button> -->
-                            <!-- <input type="number" max="9" min="1" value="1" placeholder="Qty" style="text-align:center;
-                            "> -->
-                                <!-- <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button> -->
                             </div>
                         </div>
                         <div class = "product-info" id="myTable" style="line-height:28px;">
-                            <div class = "product-info-top">
-                                <h2 class = "product-title" style="color: black;">${product.productName}</h2>
-                                <div class = "rating" style="color:orange;">
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "fas fa-star"></i></span>
-                                    <span><i class = "far fa-star"></i></span>
+                        <div class = "product-info-top">
+                        <h2 class = "product-title" style="color: black;">${product.productName}</h2>
+                         <div class = "rating" style="color:orange;">
+                         <span><spring:url value="/images" var="images" />
+                         <img src="${images}/star.png" alt="" height="15px" width="15px"/></span>
+                          <span><spring:url value="/images" var="images" />
+                         <img src="${images}/star.png" alt="" height="15px" width="15px"/></span>
+                           <span><spring:url value="/images" var="images" />
+                         <img src="${images}/star.png" alt="" height="15px" width="15px"/></span>
+                           <span><spring:url value="/images" var="images" />
+                         <img src="${images}/star.png" alt="" height="15px" width="15px"/></span>
+                           <span><spring:url value="/images" var="images" />
+                         <img src="${images}/star.png" alt="" height="15px" width="15px"/></span>
                                 </div>
                             </div>
                             <a href = "#" class = "product-name">${product.description}</a>
@@ -2381,6 +2462,7 @@ function playPauseSlides() {
                         </div>
                     </div>
                 </section>
+                
                 <section class="big-deal" id="div2">
                     <div class="container">
                         <h1 class="section-heading text-pure">Big Deals of the Week</h1>
@@ -2411,7 +2493,8 @@ function playPauseSlides() {
                         <div class="article-wrapper">
                             <article class="card magic-shadow-sm">
                                 <div>
-                                    <img src="./images/coffee.jpg" alt="">
+                                    <spring:url value="/images" var="images" />
+                         <img src="${images}/vegetables.jpg" alt=""/>
                                 </div>
                                 <div class="card-content">
                                     <div class="post-meta flex items-center justify-between">
@@ -2432,7 +2515,8 @@ function playPauseSlides() {
                             </article>
                             <article class="card magic-shadow-sm">
                                 <div>
-                                    <img src="./images/donut.jpg" alt="">
+                                   <spring:url value="/images" var="images" />
+                         <img src="${images}/veggieimage6.png" alt=""/>
                                 </div>
                                 <div class="card-content">
                                     <div class="post-meta flex items-center justify-between">
@@ -2461,7 +2545,8 @@ function playPauseSlides() {
                 <section class="subscribe">
                     <div class="container flex items-center">
                         <div>
-                            <img src="./images/rasberry.png" alt="">
+                            <spring:url value="/images" var="images" />
+                         <img src="${images}/veggieimage5.png" alt="" height="220" width="150"/>
                         </div>
                         <div>
                             <h1>Subscribe to your newsletter</h1>
@@ -2683,17 +2768,23 @@ $(document).ready(function(){
 });
    
 </script>
-         
-        <c:if test="${not empty message}">
-		
-		<div class="alert alert-info">
-			<h3 class="text-center">${message}</h3>
-		</div>		
-	
-	</c:if>
-	
-</body>
 
+
+<script>
+  setTimeout(function() {
+           /*  $('#mydiv').fadeOut('fast'); */
+            $('#mydiv').delay(300).fadeOut(100); 
+        }, 1000); 
+        </script>
+        
+        <script>
+$( '.navbar .container a' ).on( 'click', function () {
+	$( '.navbar .container' ).find( 'a.active' ).removeClass( 'active' );
+	$( this ).addClass( 'active' );
+});
+</script>
+ 	
+</body>
 </html>
-<!-- https://stackoverflow.com/questions/39307329/hide-div-onload-in-javascript/39307565 -->
+
  

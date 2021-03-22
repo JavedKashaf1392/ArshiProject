@@ -95,7 +95,7 @@ h2 {
             <form:hidden path="customerid"/>
             <tr>
                 <td>First Name </td>
-                <td><form:input path="firstName"  /><form:errors path="firstName" cssClass="error"/></td>
+                <td><form:input path="firstName"/><form:errors path="firstName" cssClass="error"/></td>
             </tr>
              <tr>
                 <td>Last Name </td>

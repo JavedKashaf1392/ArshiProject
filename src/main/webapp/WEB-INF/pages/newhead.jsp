@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -20,15 +19,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -290,476 +281,6 @@ nav .navbar a:hover{
    /*  box-shadow: 0px 0px 8px 1px #00000078; */
 }
 
-header.hero{
-    height:600px;
-    background-image:url("/images/Blur.png");
-   /*background-image:url("/images/hero.png"); */
-    background-position: 0% 0%;
-    background-repeat: no-repeat;
-    overflow:hidden;
-    margin-top:12%;
-}
-header.hero .container{
-    position: relative;
-    
-}
-header.hero .welcome{
-    margin-bottom:0.25rem;
-}
-header.hero .welcome span{
-    /* font-family:"Raleway-bold"; */
-    color:var(--secondary);
-    margin-right:0.75rem;
-
-}
-header.hero h1{
-    /* font-family:"Raleway-extrabold"; */
-    color:var(--secondary);
-    font-size: 2.5rem;
-    margin-bottom:0.75rem;
-}
-header.hero h1 span{
-    color:var(--primary);
-}
-header.hero p{
-    /* font-family: "Raleway-medium"; */
-    width:50%;
-    line-height:1.5;
-    margin-bottom:1rem;
-}
-.btn{
-    padding:0.75rem 0.75rem;
-    border-radius:50px;
-    -webkit-border-radius:50px;
-    -moz-border-radius:50px;
-    -ms-border-radius:50px;
-    -o-border-radius:50px;
-    line-height:0.8;
-    font-size:1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    border:1px solid transparent;
-}
-
-.btn-primary {
-    background:var(--primary);
-    color:var(--heaven);
-}
-.btn-primary:hover{
-    background:var(--heaven);
-    color:var(--primary); 
-    border:1px solid var(--primary);
-}
-.btn-secondary{
-    background:var(--secondary);
-    color:var(--heaven); 
-}
-.btn-secondary:hover{
-    background:var(--heaven);
-    color:var(--secondary); 
-    border:1px solid var(--secondary);
-}
-
-header.hero button:first-child{
-    margin-right:0.50rem;
-}
-
-header.hero .hero-image{
-    position:absolute;
-    top:-40px;
-    right:40px;
-}
-
-section{
-    padding:4rem 0;
-}
-section.top-products{
-    background:var(--light);
-}
-
-.section-heading{
-    /* font-family:"Raleway-bold"; */
-    text-align:center;
-    Position:relative;
-    margin-bottom:6rem;
-}
-.section-heading:after{
-    content:'';
-    display:block;
-    width: 100%;
-    height:30px;
-    background-image:url(../icons/hr.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    position:absolute;
-    bottom:-40px;
-}
-section.top-products .food-slider .food-card{
-    background:var(--heaven);
-    padding:1.5rem 0;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-}
-section.top-products .food-slider .food-card .product-image img{
-    width:80%;
-    height:200px;
-    object-fit:contain;
-    padding-bottom:1rem;
-}
-hr{
-    border:1px solid var(--light);
-    opacity: 0.8;
-    margin:1rem 0;
-}
-section.top-products .food-slider .food-card h2{
-    /* font-family:"Raleway-bold"; */
-    font-size:1.3rem;
-    margin-bottom:0.25rem;
-}
-.text-center{
-    text-align: center;
-}
-section.top-products .food-slider .food-card .stars{
-    margin-bottom:0.5rem;
-}
-section.top-products .food-slider .food-card .stars img{
-    margin-right:0.25rem;
-}
-section.top-products .food-slider .food-card .price{
-    /* font-family:"Raleway-medium"; */
-    color:var(--danger);
-    margin-bottom: 1rem;
-}
-section.top-products .food-slider .food-card button{
-    /* font-family:"Raleway-medium"; */
-    color:var(--secondary);
-    background:var(--heaven);
-    border:2px solid var(--primary);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    display:flex;
-    align-items: center;
-    width:50%;
-    font-size:1rem;
-    cursor: pointer;
-    transition:all .3s ease;
-    -webkit-transition:all .3s ease;
-    -moz-transition:all .3s ease;
-    -ms-transition:all .3s ease;
-    -o-transition:all .3s ease;
-}
-section.top-products .food-slider .food-card button:hover{
-    background:var(--primary);
-    color:var(--heaven);
-}
-.food-slider .food-card button img{
-    background:var(--primary);
-    padding:0.50rem;
-    height:32px;
-    margin-right:1.2rem;
-}
-
-.slick-slide{
-    margin:0 27px;
-}
-.slick-list{
-    margin:0 -27px;
-}
-.top-products .slider-btn{
-    width: 30px;
-    height:30px;
-    border: none;
-    background:var(--primary);
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    -ms-border-radius:4px;
-    -o-border-radius:4px;
-    cursor:pointer;
-    outline:none;
-}
-
-.prev-btn{
-    position:absolute;
-    top:46%;
-    left:-3rem;
-    z-index: 1;
-}
-.next-btn{
-    position:absolute;
-    top:46%;
-    right:-3rem;
-    z-index: 1;
-}
-.top-products .slider{
-    position: relative;
-}
-.top-products .btn-wrapper{
-    margin-top:2rem;
-}
-.slick-track{
-    padding:1rem 0;
-}
-section.about-meal img{
-    width:85%;
-}
-.flex-1{
-    flex:1;
-}
-section.about-meal h2{
-    /* font-family: "Raleway-bold"; */
-    font-size:1.4rem;
-    color:var(--secondary);
-    margin-bottom:2rem;
-    line-height:1.3;
-}
-section.about-meal p{
-    line-height: 1.7;
-    margin-bottom:4rem;
-}
-
-section.our-services{
-    background:var(--light);
-    position:relative;
-    z-index:0;
-}
-section.our-services .card-wrapper{
-    margin-right:-2rem;
-    margin-top:8rem;
-}
-section.our-services .service-card{
-    background:var(--heaven);
-    text-align: center;
-    padding:2rem;
-    padding-top:4rem;
-    margin-right:2rem;
-    position: relative;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-}
-section.our-services .service-card .icon{
-    position: absolute;
-    top:-45px;
-    left:50%;
-    transform:translateX(-50%);
-    -webkit-transform:translateX(-50%);
-    -moz-transform:translateX(-50%);
-    -ms-transform:translateX(-50%);
-    -o-transform:translateX(-50%);
-} 
-section.our-services .service-card h2{
-    /* font-family: "Raleway-bold"; */
-    font-size: 1.3rem;
-    margin-bottom:1rem;
-}
-section.our-services .service-card p{
-    line-height: 1.6;
-    margin-bottom:1rem;
-}
-.text-primary{
-    color:var(--primary);
-}
-
-section.big-deal {
-    background: linear-gradient(
-        rgba(35,43,56,0.9),
-        rgba(35,43,56,0.9)
-    ), url(../images/food-table.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-section.big-deal .timer{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    margin-right:-2rem;
-    margin-bottom:2rem;
-}
-section.big-deal .timer div{
-    margin-right:2rem;
-    background: var(--primary);
-    width:150px;
-    height:150px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.big-deal .timer div span:first-child{
-    font-family: "Raleway-semibold";
-    font-size:2.5rem;
-    color:var(--heaven);
-    margin-bottom:0.05rem;
-}
-section.big-deal .timer div span:last-child{
-    font-family: "Raleway-medium";
-    color:var(--heaven);
-}
-.text-pure{
-    color:var(--pure);
-}
-
-section.latest-news{
-    background:var(--light);
-    position:relative;
-    z-index:0;
-}
-section.latest-news .article-wrapper{
-    display:flex;
-    margin-right:-2rem;
-
-}
-.latest-news .article-wrapper .card {
-    margin-right:2rem;
-    background:var(--heaven);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-}
-.latest-news .article-wrapper .card img{
-    width:100%;
-}
-.latest-news .article-wrapper .card .card-content{
-    padding:2rem;
-}
-.latest-news .article-wrapper .card .card-content .post-meta{
-    margin-bottom: 1rem;
-}
-.latest-news .article-wrapper .card .card-content .post-meta .comment-count{
-    margin-left:1rem;
-}
-.latest-news .article-wrapper .card .card-content h2{
-    /* font-family: "Raleway-bold"; */
-    font-size: 1.3rem;
-    margin-bottom:1rem;
-}
-.latest-news .article-wrapper .card .card-content p{
-    line-height: 1.6;
-}
-.latest-news .btn-wrapper{
-    margin-top:2rem;
-}
-section.subscribe{
-    background:var(--primary);
-}
-section.subscribe .container > div:first-child img{
-    width:90%;
-}
-section.subscribe .container div:first-child{
-    flex:1;
-}
-section.subscribe .container div:last-child{
-    flex:1;
-}
-
-section.subscribe h1{
-    /* font-family:"Raleway-bold"; */
-    font-size: 1.5rem;
-    margin-bottom:1.5rem;
-}
-section.subscribe p{
-    /* font-family:"Raleway-medium"; */ 
-    font-size: 1rem;
-    margin-bottom:1.5rem;
-    line-height: 1.5;
-}
-section.subscribe .input-wrap{
-    background:var(--heaven);
-    display:flex;
-    padding:0.3rem;
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    -ms-border-radius:4px;
-    -o-border-radius:4px;
-}
-section.subscribe .input-wrap input{
-    width:100%;
-    border:none;
-    padding: 0 1rem;
-    font-size:1rem;
-}
-section.subscribe .input-wrap input:focus{
-    outline:none;
-}
-section.subscribe .input-wrap button{
-    padding:0.8rem 2rem;
-    border:none;
-    background:var(--primary);
-    color:var(--pure);
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    -ms-border-radius: 50px;
-    -o-border-radius: 50px;
-    font-size:1rem;
-    cursor:pointer;
-    transition: all .3s ease;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    outline:none;
-}
-section.subscribe .input-wrap button:hover{
-    background:var(--secondary);
-}
-section.contact-us{
-    padding-top:0;
-    padding-bottom: 0;
-}
-section.contact-us .contact-info-wrapper {
-    padding:4rem 0;
-    flex:1;
-}
-section.contact-us .map{
-    flex:1;
-    filter:grayscale(100%);
-    -webkit-filter:grayscale(100%);
-}
-section.contact-us .contact-info{
-    display:flex;
-    justify-content: center;
-}
-section.contact-us .contact-info > div > div {
-    display:flex;
-    align-items:center;
-    margin-bottom:2rem;
-}
-section.contact-us .contact-info > div > div img{
-    margin-right: 1rem;
-}
-section.contact-us .contact-info > div > div > div{
-    display:flex;
-    flex-direction: column;
-}
-section.contact-us .contact-info > div > div > div span:first-child{
-    /* font-family: "Raleway-bold"; */
-    margin-bottom:0.25rem;
-}
-
 .nav-background .mobile-logo{
     padding:1rem;
 }
@@ -981,166 +502,7 @@ section.contact-us .contact-info > div > div > div span:first-child{
     opacity: 0.5;
     margin: 0.4rem 0;
 }
-/* product section */
-.products{
-    /* background: var(--alice-blue); */
-    padding: 3.2rem 0;
-}
-.products .text-light{
-    text-align: center;
-    width: 70%;
-    margin: 0.9rem auto;
-}
-.product{
-    margin: 2rem;
-    position: relative;
-   /*   background-color: #f9f9f9; */
-   /*   display: grid; */   
-}
-.product-title{
-    font-weight: 300;
-    font-size: 1rem;
-   /*  text-transform:
-     uppercase; */
-}
-.product-content{
-   /*  background: var(--gray); */
-    /*  padding: 3rem 0.5rem 2rem 0.5rem; */
-   /*  padding: 1rem 0.2rem 1rem 0.2rem; */
-   /*  padding: 0.5rem 0.0rem 0.5rem 0.0rem; */
-    padding:10px 10px;
-    cursor: pointer;
-    
-}
-.product-img{
-    background: var(--white-light);
-    box-shadow: 0 0 20px 10px var(--white-light); 
-    /* box-shadow: 0 0 80px 40px var(--white-light); */ 
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    border-radius: 50%;
-    transition: background 0.5s ease;
-}
-.product-btns{
-    display: flex;
-    justify-content: center;
-    margin-top: 1.4rem;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-.btn-cart, .btn-buy{
-    background: transparent;
-    border: 1px solid black;
-    padding: 0.8rem 0;
-    width: 125px;
-    font-family: inherit;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    transition: all 0.6s ease;
-    border-radius:50px;
-}
-.btn-cart{
-    /* background: black; */
-    color: white;
-    background:#4CAF50;
-}
-.btn-cart:hover{
-    background: var(--carribean-green);
-}
-.btn-buy{
-    background: white;
-}
-.btn-buy:hover{
-    background: var(--carribean-green);
-    color: #fff;
-}
-.product-info{
-    background: white;
-    padding: 2rem;
-}
-.product-info-top{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.rating span{
-   /*  color: var(--carribean-green); */
-    /* color:green; */
-    color:orange;
-}
-.product-name{
-    color: black;
-    display: block;
-    text-decoration: none;
-    font-size: 1rem;
-   /*  text-transform: uppercase; */
-    font-weight: bold;
-}
-.product-price{
-    padding-top: 0.6rem;
-    padding-right: 0.6rem;
-    display: inline-block;
-   
-}
-.product-price:first-of-type{
-    text-decoration: line-through;
-   /*  color: var(--carribean-green); */
-    color: #4CAF50;
-}
-.product-size{
-    padding-top: 0.6rem;
-    padding-right: 0.6rem;
-    display: inline-block;
 
-}
-.product-img img{
-    transition: transform 0.6s ease;
-}
-.product:hover .product-img img{
-    transform: scale(1.1);
-}
-.product:hover .product-img{
-    /* background: var(--carribean-green);  */
-    background: white; 
-    
-}
-.product:hover .product-btns{
-    opacity: 1;
-}
-.off-info .sm-title{
- 
-    background-color:#4CAF50;
-    color:white;
-    display: inline-block;
-    padding: 0.5rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    writing-mode: vertical-tb;
-    transform: rotate(360deg); 
-   /*  z-index: 1; */
-    letter-spacing: 3px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* product collection */
-.product-collection{
-  /* padding: 3.2rem 0;   */
-    padding: 0.1rem 0; 
-}
-.product-collection-wrapper{
-  /* padding: 3.2rem 0;  */
-   padding: 0.1rem 0;
-}
-.product-col-left{
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/milk image.jpg") center/cover no-repeat;
-}
-.product-col-r-top{
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url("images/vegetables.jpg") center/cover no-repeat;
-}
 .flexx{
     display: flex;
     justify-content: center;
@@ -1149,28 +511,8 @@ section.contact-us .contact-info > div > div > div span:first-child{
     padding: 2rem 1.5rem 3.2rem;
     margin: 5px;
 }
-.product-col-r-bottom > div:first-child{
-  /*   background: #eaa001; */
-    background: #ABD5BAFF;
-    
-}
-.product-col-r-bottom > div:last-child{
-    /* background: #0090ff; */
-    background:#ff726f; 
-   /* background:#FAE6FA; */
-  
-  
-}
-.product-col-content{
-    text-align: center;
-    color: white;
-}
-.product-collection .text-light{
-    opacity: 1;
-    font-size: 0.8;
-    font-weight: 400;
-    line-height: 1.7;
-}
+
+
 .btn-dark{
     background: white;
     color:green;
@@ -1229,315 +571,6 @@ section.contact-us .contact-info > div > div > div span:first-child{
     }
 }
 
-/* ..........slider......... */
-
-/* Slider Css */
-    .galleryContainer {
-    width: 100%;
-    height:500px;
-    max-width: 1380px;
-    user-select: none;
-    margin:0 auto; 
-    
-}
-.galleryContainer .slideShowContainer{
-    width: 100%;
-    height: 90%;
-    overflow: hidden;
-    background-color: gainsboro;
-    position: relative;
-}
-.galleryContainer .slideShowContainer #playPause{
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    background-image: url(${images}/playpouse.png);
-    background-repeat: no-repeat;
-    z-index: 5;
-    background-size: cover;
-    margin: 5px;
-    cursor: pointer;
-}
-.galleryContainer .slideShowContainer #playPause:hover{
-    opacity: .7;
-}
-.galleryContainer .slideShowContainer .imageHolder{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-   /*  opacity: 0; */
-}
-.galleryContainer .slideShowContainer .imageHolder img{
-    width: 100%;
-    height: 100%;
-}
-.galleryContainer .slideShowContainer .imageHolder .captionText{
-    display: none;
-}
-
-.galleryContainer .slideShowContainer .leftArrow,.galleryContainer .slideShowContainer .rightArrow{
-    width: 50px;
-    background: #00000036;
-    position: absolute;
-    left: 0;
-    z-index: 1;
-    transition: background 0.5s;
-    height: 72px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.galleryContainer .slideShowContainer .rightArrow {
-    left: auto;
-    right: 0;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-.galleryContainer .slideShowContainer .leftArrow:hover,.galleryContainer .slideShowContainer .rightArrow:hover{
-    background: #000000a8;
-    cursor: pointer;
-}
-.galleryContainer .arrow{
-    display: inline-block;
-    border: 3px solid white;
-    width: 10px;
-    height: 10px;
-    border-left: none;
-    border-bottom: none;
-    margin: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-}
-.galleryContainer .arrow.arrowLeft{
-    transform: rotateZ(-135deg);
-}
-.galleryContainer .arrow.arrowRight{
-    transform: rotateZ(45deg);
-}
-
-.galleryContainer .slideShowContainer>.captionTextHolder{
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
-    color: white;
-    font-family: sans-serif;
-    font-size: 20px;
-    text-align: center;
-    width: 100%;
-    background: #00000047;
-    height: 50px;
-    line-height: 50px;
-    overflow: hidden;
-}
-.galleryContainer .slideShowContainer>.captionTextHolder>.captionText{
-    margin: 0;
-}
-
-.galleryContainer #dotsContainer{
-    width: 100%;
-    height: 10%;
-    text-align: center;
-    padding-top: 20px;
-    box-sizing: border-box;
-}
-.galleryContainer #dotsContainer .dots{
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    margin-left: 5px;
-    background-color: #bbb;
-    cursor: pointer;
-    transition:background-color 0.5s;
-}
-.galleryContainer #dotsContainer .dots:first-child{
-    margin-left: 0;
-}
-.galleryContainer #dotsContainer .dots:hover,.galleryContainer #dotsContainer .dots.active{
-    background-color: #717171;;
-}
-
-.galleryContainer .moveLeftCurrentSlide{
-    animation-name: moveLeftCurrent;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-fill-mode:forwards;
-
-}
-.galleryContainer .moveLeftNextSlide{
-    animation-name: moveLeftNext;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-fill-mode:forwards;
-}
-@keyframes moveLeftCurrent {
-    from {margin-left: 0;opacity: 1;}
-    to {margin-left: -100%;opacity: 1;}
-}
-@keyframes moveLeftNext {
-    from {margin-left: 100%;opacity: 1;}
-    to {margin-left: 0%;opacity: 1;}
-}
-.galleryContainer .moveRightCurrentSlide{
-    animation-name: moveRightCurrent;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-fill-mode:forwards;
-}
-.galleryContainer .moveRightPrevSlide{
-    animation-name: moveRightPrev;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-fill-mode:forwards;
-}
-@keyframes moveRightCurrent {
-    from {margin-left: 0;opacity: 1;}
-    to {margin-left: 100%;opacity: 1;}
-}
-@keyframes moveRightPrev {
-    from {margin-left: -100%;opacity: 1;}
-    to {margin-left: 0%;opacity: 1;}
-}
-.slideTextFromBottom {
-    animation-name: slideTextFromBottom;
-    animation-duration: 0.7s;
-    animation-timing-function: ease-out;
-}
-@keyframes slideTextFromBottom {
-    from {opacity: 0;margin-top: 100px}
-    to {opacity: 1;margin-top: 0px;}
-}
-.slideTextFromTop {
-    animation-name: slideTextFromTop;
-    animation-duration: 0.7s;
-    animation-timing-function: ease-out;
-}
- @keyframes slideTextFromTop {
-    from {opacity: 0;margin-top: -100px}
-    to {opacity: 1;margin-top: 0px;}
-}
-
-.closebtn:hover {
-  color: black;
-}
-.qty{
-width:35px;
-}
-.map{
-    flex:1;
-    filter:grayscale(100%);
-    -webkit-filter:grayscale(100%);
-    max-width: 1388px;
-    margin: 0 auto;
-}
-
-/* The Modal (background) */
-
-.Location {
-
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top:40px; /* Location of the box */
-  left:100;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-
-.Location-content {
-
-  background-color: #fefefe;
-  margin: auto;
-  padding:20px;
-  border: 1px solid #888;
-  width:25%;
-  margin-left:49%;
-      
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/*  Responsive Form*/
-select{
-  width: 100%;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-label {
-  padding: 10px 10px 10px 0;
-  display: inline-block;
-}
-
-input[type=submit] {
-
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 110px;
-  border: none;
-  border-radius:50px;
-  cursor: pointer;
-  float: right;
-  margin-top: 10px;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}  
 
 /* .............profile Menu.............. */
 
@@ -1590,7 +623,7 @@ ul{
   left: 70;
   width:20%;
   border-radius: 5px;
-  /* display: none; */
+  display: none;
 }
 [id^=btn]:checked + ul{
   display: block;
@@ -1709,22 +742,6 @@ ul{
 }
 }
 
-#topheader .navbar-nav li > a {
-	text-transform: capitalize;
-	color: #333;
-	transition: background-color .2s, color .2s;
-	
-	&:hover,
-	&:focus {
-		background-color: #333;
-		color: #fff;
-	}
-}
-
-#topheader .navbar-nav li.active > a {
-	background-color: #333;
-	color: #fff;
-}
 </style>
 </head>
 <body>
@@ -1755,7 +772,8 @@ ul{
    </div>
                 </div>
                 <div class="nav-top">
-                    <ul style="">
+                   
+                    <ul>
                     
                         <li>
                             <a href="#">Home</a>
@@ -1818,9 +836,6 @@ ul{
                     </div> 
             
                 <div class="site-content">
-                
-              
-  
                 <div style="position:fixed;z-index:999;width:99%;margin-right:0;">
                  
                  
@@ -1957,8 +972,6 @@ ul{
   left:48%;">
    
   <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
-  <%--  <spring:url value="/images" var="images" />
-   <img src="${images}/searchicon.png"  width="25" height="25" alt=""/> --%>
   <button type="submit" class="search-button">
   </button>
   </form>
@@ -1982,58 +995,47 @@ ul{
                     <div class="container flex justify-center">
                     
                     <a href="${pageContext.request.contextPath}/home" class="active">Home</a>      
-                    <c:forEach var="menu" items="${listNavbarMenu}"> 
+                    <a href="${pageContext.request.contextPath}/ProductsByCatogary" onclick="location.href=this.href+'?param='+v1;return false;showOrHideDiv()">Leafy Vegetables</a>
+                    <a href="${pageContext.request.contextPath}/ProductsByCatogary" onclick="location.href=this.href+'?param='+v2;return false;showOrHideDiv()">Fruit Vegetables</a>
+                    <a href="${pageContext.request.contextPath}/ProductsByCatogary" onclick="location.href=this.href+'?param='+v3;return false;showOrHideDiv()">Milk</a>
+                    <a href="#">Discount</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contact us</a>
+                    <script> 
+        var v1 = 'Leafy Vegetables'
+        var v2 = 'Fruit Vegetables'
+        var v3 = 'Milk'    
+    </script>
+                    
+                    <%-- <c:forEach var="menu" items="${listNavbarMenu}"> 
                     <a href="${menu.url}" onclick="location.href=this.href+'?param='+${menu.jsvar};return false;showOrHideDiv()" id="preview">${menu.menues}</a>
                    
    
      <script> 
         var ${menu.jsvar} = '${menu.paramKey}'
     </script>
-    </c:forEach> 
+    </c:forEach>  --%>
    </div>
    </div>
    </security:authorize>
                      
+              
                <security:authorize access="hasRole('ADMIN')">
                <div class="navbar magic-shadow">
                             <div class="container flex justify-center">
-                            <a href="#"  class="active">Home</a>
-                            <a href="#">Manage Product</a>
+                           <!--  <ul class="navbar-nav"> -->
+                           <!--  <li class="active"> --><a href="#" class="active">Home</a>
+                            <a href="#" >Manage Product</a>
                             <a href="#">Manage Location</a>
                             <a href="#">Manage Kiosk</a>
-                          
+                           <!--  </ul> -->
                             </div>
                            </div>
                </security:authorize>
                </nav>
                </div>
-            
-              
+  
 
-
-
- 
-<script>
-var close = document.getElementsByClassName("closebtn");
-var i;
-
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function(){
-    var div = this.parentElement;
-    div.style.opacity = "0";
-    setTimeout(function(){ div.style.display = "none"; }, 600);
-  }
-}
-</script>
-     
-     <script>
-   function increment() {
-      document.getElementById('demoInput').stepUp();
-   }
-   function decrement() {
-      document.getElementById('demoInput').stepDown();
-   }
-</script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
@@ -2110,69 +1112,13 @@ window.onclick = function(event) {
 }
 </script>
 
-<!-- <script>
-$(document).ready(function() {
-	
-    $('#preview').on('click', function() {
-    	$('#div1').hide();
-    }
-  
-    );
-   
-});    
-</script> -->
+
 
 <script>
-	//$('#preview').on('click', function(){
-	if(${category} == "Leafy Vegetables"){  
-    $('#div1').hide();
-	//});
-	}
-</script>
-
-<script>
-$( 'nav. navbar magic-shadow a' ).on( 'click', function () {
-	$( 'nav. navbar magic-shadow' ).find( 'a.active' ).removeClass( 'active' );
-	$( this ).parent( 'a' ).addClass( 'active' );
+$( '.navbar .container a' ).on( 'click', function () {
+	$( '.navbar .container' ).find( 'a.active' ).removeClass( 'active' );
+	$( this ).addClass( 'active' );
 });
-
-
-</script>
-
-<!-- <script>
-  $(window).load(function() {
-	  $('#div1').hide();
-  });
-</script> -->
-
-<!-- <script>
-$(document).ready(function() {
-	
-	$('#preview').on('click', function() {
-    //alert('page loaded');  // alert to confirm the page is loaded  
-    var cat = ${category}; 
-    if(cat === 'Milk') {
-    	 $('#div1').hide();
-
-        } 
-	});
-	
-});
-</script>-->
-
-<script>
-$(document).ready(function(){
-	$('#preview').on('click', function(){
-     if (${category} == '') {
-    	  $('#div1').hide();
-         //v.style.display = "none";
-      } else {
-    	  $('#div2').hide();
-         //v.style.display = "block";
-      }
-});
-});
-   
 </script>
 
 

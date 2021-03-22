@@ -41,6 +41,12 @@ public class PaytmConstants {
 	public static String callback="CALLBACK_URL";
 	public static String callbackUrl2="http://localhost:8080/wallet/pgres";
 	
+	public static String callbackurl="CALLBACK_URL";
+	public static String callbackUrl3="http://localhost:8080/order/pgResponse";
+	
+	public static String cburl="CALLBACK_URL";
+	public static String callbackUrl4="http://localhost:8080/wallet/pgress";
+	
 	//@Value("#{${details}}")
 	//public static HashMap<String, String> details= new HashMap<String, String>();
      
@@ -78,4 +84,29 @@ public class PaytmConstants {
 	    // ...
 	    detail = Collections.unmodifiableMap(map);
 	}
+	
+	public static final Map<String, String> orderdetails;
+	static {
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put(mid,"dtHXBX68721093259122");
+	    map.put(cid, "WEB");
+	    map.put(industryid,"Retail");
+	    map.put(wsite, "WEBSTAGING");
+	    map.put(callbackurl,"http:localhost:8080/vf-online/order/pgResponse");
+	    // ...
+	    orderdetails = Collections.unmodifiableMap(map);
+	}
+	
+	public static final Map<String, String> orderdetail;
+	static {
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put(mid,"dtHXBX68721093259122");
+	    map.put(cid, "WEB");
+	    map.put(industryid,"Retail");
+	    map.put(wsite, "WEBSTAGING");
+	    map.put(cburl,"http://localhost:8080/wallet/pgress");
+	    // ...
+	    orderdetail = Collections.unmodifiableMap(map);
+	}
+	
 }

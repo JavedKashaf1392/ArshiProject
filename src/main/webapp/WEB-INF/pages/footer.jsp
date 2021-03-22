@@ -307,9 +307,11 @@ color:black;
 			<div class="footer-right" style="text-align:left;">
 				<p class="footer-company-about">
 					<span>About</span>
-					We offer training and skill building courses across Technology, Design, Management, Science and Humanities
-					We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
-				
+					VeggieFridge, enhances you  with deep nourishing thoughts of not only being healthy but keeping you contracted against hygienic nutritional values
+					and Identify The True Taste of Nutritions . . . <button  onclick="window.location.href='${pageContext.request.contextPath}/VFAbout'">Read More</button></p>
+
+				    
+				    
 				
 				<div class="footer-icons">
 				<h4 style="color:black;margin-bottom:2%;">Get Social With Us</h4>

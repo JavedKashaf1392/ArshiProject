@@ -205,7 +205,7 @@ input{
 	letter-spacing: 2px;
 	cursor: pointer;
 	font-weight: bold;
-	max-width:1200px;
+	max-width:1100px;
 	margin: 10px auto;
 
 }
@@ -265,29 +265,10 @@ input{
 										value="${wallet.totalAmountBalance}" /></span>
 							</p>
 						</form>
-						<!-- <div class="btn">Review</div> -->
-						<%-- <form method="post"
-							action="${pageContext.request.contextPath}/wallet/addMoneyInWallet/${customerModel.customerid}"
-							modelAttribute="kioskLocation" style="border 1 px solid black;">
-							<h2 style="color: #4CAF50; text-align: center;">Enter Amount</h2>
-							<h6 style="color: #4CAF50; margin-top: 2%; text-align: center;">Amount
-								will be added in your VeggieFridge Wallet</h6>
-
-							<input type="text" name="TXN_AMOUNT"
-								placeholder="Enter Amount Max Limit &#8377;5000" required
-								style="width: 100%; padding: 12px; margin: 3px 0 12px 0; display: inline-block; border: none; background: #f1f1f1; border-radius: 4px; margin: 5px auto;">
-
-							<input type="submit" value="Continue"
-								style="width: 100%; padding: 12px; background-color: green; margin: 5px auto;"onclick="return confirm('Are you sure to Add Money in Wallet?')" />
-
-						</form> --%>
+					
 					</div>
 					
-					
-				
-			
-			
-			
+		
 			<div class="view_item" style="margin-left:100px;">
 			
 		
@@ -300,7 +281,7 @@ input{
 								will be added in your VeggieFridge Wallet</h6>
 
 							<input type="text" name="TXN_AMOUNT"
-								placeholder="Enter Amount Max Limit &#8377;5000" required
+								placeholder="Enter Amount Max Limit ${repee_sign}5000" required
 								style="width: 100%; padding: 12px; margin: 3px 0 12px 0; display: inline-block; border: none; background: #f1f1f1; border-radius: 4px; margin: 5px auto;">
 
 							<input type="submit" value="Continue"
