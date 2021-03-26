@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -11,34 +12,15 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@page session="false" %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-	charset="utf-8"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-@import
-url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
-
-body {
-    overflow-x: hidden; 
-    z-index:5000;
-    overflow:auto;
-    overflow:initial;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
 *{
 	list-style: none;
@@ -46,9 +28,9 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
+} 
+/* colors */
 
-/* colors  */
 :root {
     --primary:#4CAF50;
     /* --primary:#EEBF00; */
@@ -60,13 +42,14 @@ body {
     --heaven:#FFFFFF;
     --footer:#2D333F;
 }
+/* Reset  */
 
-:root{  
-    --white-light: rgba(255, 255, 255, 0.5);
-    --alice-blue: #f8f9fa;
-    --carribean-green:green;
-    --gray: #ededed;
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
 }
+
 .container {
     width:100%;
     padding:o 15px;
@@ -96,13 +79,12 @@ body {
     }
   }
 
-  .main-wrapper{
-      position:relative;
+   .main-wrapper{
+     /*  position:relative;
       width:100%;
       height:100vh;
-      overflow:hidden;
-  }
-
+      overflow:hidden; */
+  } 
   .nav-background{
       width:100%;
       height:100%;
@@ -121,6 +103,7 @@ body {
       z-index:1;
       padding:15px;
       display:none;
+     
   }
 
   .nav-trigger svg{
@@ -165,15 +148,18 @@ body {
     overflow-x:auto;
 }
   header.topbar{
-     position: relative;   
-     background:#4CAF50;
-     color:var(--pure);
+     width: 100%;
+       /*  position: fixed; */   
+      background:#4CAF50;
+     /*  background:var(--secondary); */
+      color:var(--pure);
+      /* font-family:"Raleway-semibold"; */
       padding:0.75rem 0;
       top: 0; 
   }
   header.topbar .auth > div a{
       color:var(--pure);
-      text-decoration:none;
+      text-decoration: none;
   }
   header.topbar .icons a{
     margin-right:0.6rem;
@@ -195,12 +181,10 @@ body {
   }
   nav .top{
       padding:1.5rem 0;
-      /* margin-top:40px; */
-      background-color: white;
-      width:100%;
+     /*  margin-top:40px;  */
   }
   nav .top .contact h5,  nav .top .time h5{
-     /*  font-family:"Raleway-black";  */
+      /* font-family:"Raleway-black"; */
       margin-bottom:0.25rem;
   }
   nav .top .contact h6, nav .top .time h6{
@@ -216,11 +200,10 @@ nav .top .contact img, nav .top .time img{
 .justify-center{
     justify-content:center;
 }
-
 nav .navbar a{
     text-decoration:none;
     color:var(--secondary);
-   /*  font-family:"Raleway-semibold"; */
+    /* font-family:"Raleway-semibold"; */
     font-size:1rem;
     padding:1rem 1.5rem;
     transition:all .3s ease;
@@ -237,10 +220,10 @@ nav .navbar a:hover{
     background:var(--primary);
     color:var(--pure); 
 }
-
 .magic-shadow{
     position: relative;
     background:var(--heaven);
+    font-family: 'Montserrat', sans-serif;
 }
 .magic-shadow:after{
     content:'';
@@ -248,13 +231,14 @@ nav .navbar a:hover{
     width:100%;
     height:69px;
     /* background-image:url(../images/shadow.svg); */
-    background-image:url("images/shadow.svg");
-    background-repeat: no-repeat;
+   /*  background-image:url("images/shadow.svg");  */
+    background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
     bottom:-22px;
     z-index:-1;
-   /*  box-shadow: 0px 0px 8px 1px #00000078; */
+    box-shadow: 0px 0px 3px 1px #00000078; 
+    font-family: Montserrat;font-weight:300px;" 
     
 }
 .magic-shadow-sm{
@@ -266,8 +250,8 @@ nav .navbar a:hover{
     display:block;
     width:100%;
     height:69px;
-    background-image:url("/images/shadow-sm.svg");
-    background-repeat: no-repeat;
+   /*  background-image:url("/images/shadow-sm.svg");  */
+    background-repeat: no-repeat; 
     background-position: center;
     position: absolute;
     bottom:-20px;
@@ -278,7 +262,7 @@ nav .navbar a:hover{
     -moz-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
     -o-transform:translateX(-50%);
-   /*  box-shadow: 0px 0px 8px 1px #00000078; */
+    box-shadow: 0px 0px 3px 1px #00000078;
 }
 
 .nav-background .mobile-logo{
@@ -296,7 +280,7 @@ nav .navbar a:hover{
 .nav-background .mobile-nav ul li a{
     text-decoration: none;
     color:var(--secondary);
-    /* font-family: "Raleway-medium"; */
+    font-family: "Raleway-medium";
 }
 .nav-background .mobile-nav ul li a:hover{
     color:var(--primary);
@@ -309,7 +293,6 @@ nav .navbar a:hover{
     margin-right:1rem;
 }
 .nav-background .contact h5,.nav-background .time h5{
-  font-family:"Raleway-bold"; 
     margin-bottom:0.25rem;
     font-size:1rem;
 }
@@ -431,12 +414,12 @@ nav .navbar a:hover{
   border: none;
   appearance: none;
   outline: none;
- 
 
   &::-webkit-search-cancel-button {
     appearance: none;
   }
 }
+
 .search-button {
   position: absolute;
   top: 10px;
@@ -449,14 +432,6 @@ nav .navbar a:hover{
   background: none;
   outline: none!important;
   cursor: pointer;
-}
-
-:root{  
-    --white-light: rgba(255, 255, 255, 0.5);
-    --alice-blue: #f8f9fa;
-  /*   --carribean-green: #40c9a2; */
-    --carribean-green:green;
-    --gray: #ededed;
 }
 .lg-title,
 .md-title,
@@ -503,77 +478,18 @@ nav .navbar a:hover{
     margin: 0.4rem 0;
 }
 
-.flexx{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 50vh;
-    padding: 2rem 1.5rem 3.2rem;
-    margin: 5px;
+.qty{
+width:35px;
+}
+.map{
+    flex:1;
+    filter:grayscale(100%);
+    -webkit-filter:grayscale(100%);
+    max-width: 1388px;
+    margin: 0 auto;
 }
 
-
-.btn-dark{
-    background: white;
-    color:green;
-    border:1px solid #ddd;
-    outline: 0;
-    border-radius: 25px;
-    padding: 0.7rem 1rem;
-    border: 0;
-    margin-top: 1rem;
-    cursor: pointer;
-    transition: all 0.6s ease;
-    font-size: 1rem;
-    font-family: inherit;
-}
-.btn-dark:hover{
-    background: var(--carribean-green);
-    /* background:white; */
-}
-/* Media Queries */
-@media screen and (min-width: 992px){
-    .product-items{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .product-col-r-bottom{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media screen and (min-width: 1200px){
-    .product-items{
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .product{
-        margin-right: 1rem;
-        margin-left: 1rem;
-    }
-    .products .text-light{
-        width: 50%;
-    }
-}
-
-@media screen and (min-width: 1336px){
-    .product-items{
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .product-collection-wrapper{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .flexx{
-        height: 60vh;
-    }
-    .product-col-left{
-        height: 121.5vh;
-    }
-}
-
-
-/* .............profile Menu.............. */
-
+/* ........Profile Menu css........... */
 .dropdown {
   position: relative;
   display: inline-block; 
@@ -680,84 +596,24 @@ ul{
  ul li span.rotate{
   transform: rotate(-180deg);
 }
-.alert {
-	padding: 10px;
-	background-color:white;
-	color:green;
-	opacity: 1;
-	transition: opacity 0.6s;
-	margin-bottom: 15px;
-	text-align: center;
-	letter-spacing: 2px;
-	cursor: pointer;
-	font-weight: bold;
-	max-width:1200px;
-	margin: 10px auto;
 
-}
-
-.closebtn {
-	margin-left: 15px;
-	color: white;
-	font-weight: bold;
-	float: right;
-	font-size: 22px;
-	line-height: 20px;
-	cursor: pointer;
-	transition: 0.3s;
-}
-
-.closebtn:hover {
-	color: black;
-}
-}
-
-.alert {
-	background-color:white;
-	color:green;
-	opacity: 1;
-	transition: opacity 0.6s;
-	margin-bottom: 15px;
-	text-align: center;
-	letter-spacing: 2px;
-	cursor: pointer;
-	font-weight: bold;
-	width:100%;
-
-}
-
-.closebtn {
-	margin-left: 15px;
-	color:black;
-	font-weight: bold;
-	float: right;
-	font-size: 22px;
-	line-height: 20px;
-	cursor: pointer;
-	transition: 0.3s;
-}
-
-.closebtn:hover {
-	color: black;
-}
-}
-
+/* ........Profile Menu css Close........... */
 </style>
+
 </head>
+
 <body>
 
 <!-- ......... HeadSection........ -->
 
-<div class="main-wrapper"> 
-
-<div class="nav-background">
-   		
-   <div class="mobile-logo">
+           
+            <div class="nav-background">
+            <div class="mobile-logo">
    <spring:url value="/images" var="images" />
    <img src="${images}/VeggieFridge.ico"  width="150" height="100" alt=""/>
-   </div>
-   
-   <div class="mobile-nav">
+            </div>
+            
+            <div class="mobile-nav">
    <div class="cart">
    <div class="flex items-center">
      <security:authorize access="isAnonymous()">
@@ -772,7 +628,6 @@ ul{
    </div>
                 </div>
                 <div class="nav-top">
-                   
                     <ul>
                     
                         <li>
@@ -817,53 +672,51 @@ ul{
    <img src="${images}/phone2.png"  width="25" height="25" alt=""/>
                     <!-- <img src="./icons/phone.svg" alt=""> -->
                     <div>
-                        <h5>Call us: (+84) 123 456 789</h5>
-                        <h6>E-mail : support@freshmeal.com</h6>
+                      <h5>Call Us: (+91) 982 357 6042  </h5>
+                      <h6>E-mail : support@veggiefridge.com</h6>
                     </div>
                 </div>
+                <%-- <div class="time flex items-center">
+   <spring:url value="/images" var="images" />
+   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                   <!--  <img src="./icons/clock.svg" alt=""> -->
+                    <div>
+                        <h5>Working Hours:</h5>
+                        <h6>Mon - Sat (8.00am - 12.00am)</h6>
+                    </div>
+                </div> --%>
+                
             </div>
         </div>
-  
-      <div class="site-content-wrapper">
         
-                <div class="nav-trigger">
+<!-- .......laptop Screen......... -->
+
+<div class="site-content-wrapper">
+      
+       <div class="nav-trigger">
                 <svg xmlns="" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-   	                 class="feather feather-bar-chart">
+                    class="feather feather-bar-chart">
                     <line x1="12" y1="20" x2="12" y2="10" />
                     <line x1="18" y1="20" x2="18" y2="4" />
                     <line x1="6" y1="20" x2="6" y2="16" /></svg>
-                    </div> 
-            
-                <div class="site-content">
-                <div style="position:fixed;z-index:999;width:99%;margin-right:0;">
-                 
-                 
-                 <div id="mydiv">
-                 <c:if test="${not empty message}" > 
-				<div class="alert">
-				<span class="closebtn">&times;</span><strong></strong> ${message}.
-				</div>
-			    </c:if> 
-			    </div>
-                 
+            </div>
+                
+            <div class="site-content">
                
-                <header class="topbar">
-                <div class="container flex justify-between items-center">
+                <header class="topbar"> 
+                
+                    <div class="container flex justify-between items-center">
                         <div class="icons">
-                            <spring:url value="/images" var="images" />
-                            <img src="${images}/facebook.svg"  width="15" height="15" alt=""/>
-                            <spring:url value="/images" var="images" />
-                            <img src="${images}/twitter.svg"  width="15" height="15" alt=""/>
-                            <spring:url value="/images" var="images" />
-                            <img src="${images}/google.svg"  width="15" height="15" alt=""/>
-                            <spring:url value="/images" var="images" />
-                            <img src="${images}/instagram.svg"  width="15" height="15" alt=""/>
-                          
+                            <a href="#"><img src="./icons/facebook.svg" alt=""></a>
+                            <a href="#"><img src="./icons/twitter.svg" alt=""></a>
+                            <a href="#"><img src="./icons/google.svg" alt=""></a>
+                            <a href="#"><img src="./icons/instagram.svg" alt=""></a>
+                            <a href="#"><img src="./icons/search.svg" alt=""></a>
                         </div>
                         <div class="auth flex items-center">
                          
-                        <security:authorize access="isAnonymous()">
+                            <security:authorize access="isAnonymous()">
                             <div>
                             <spring:url value="/images" var="images" />
                             <img src="${images}/user-icon.svg"  width="15" height="15" alt=""/>
@@ -890,33 +743,47 @@ ul{
 <span class="fas fa-caret-down" style="color: white;"></span>
                           
 <ul class="dropdown-content">
-<li><a href="${pageContext.request.contextPath }/myaccount/editProfile">My Profile</a></li>
-<li><a href="${pageContext.request.contextPath }/cart/listCustomerCartItem">My Cart</a></li>
+<c:forEach var="menu" items="${menuLevel1}">
 <li>
-          <label for="btn-3" class="second" style="color: white;">My Orders
-            <span class="fas fa-caret-down"></span>
+<c:if test="${empty menu.parentMenu}">
+          <label for="btn-3" class="second" style="color: white;">${menu.menues}
+          <span class="fas fa-caret-down"></span>
           </label>
           <input type="checkbox" id="btn-3" style="display: none;">
-<ul>
-<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">Current</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showDeliveredOrders${customerModel.customerid}">Delivered</a></li>
-<li><a href="${pageContext.request.contextPath }/order/showCancelOrders${customerModel.customerid}">Cancelled</a></li>
+          </c:if>
+       
+<c:if test="${menu.childMenu.size() > 0}">          
+<ul class="sub-menu">
+<c:forEach var="menu1" items="${menu.childMenu}">
+<li><a href="${pageContext.request.contextPath }/order/showPendingOrders${customerModel.customerid}">${menu1.menues}</a></li>
+</c:forEach>
 </ul>
+</c:if>
 </li>
-<li><a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}">My Wallet</a></li>
-
-<li><a href="<c:url value="/logout"/>">Log Out</a></li>
+</c:forEach>
 </ul>
- </div>
+</div>
+
 <span class="divider">|</span>  
-</security:authorize>     
-                            <security:authorize access="hasRole('USER')">
+</security:authorize>
+                            
+                            <security:authorize access="isAnonymous()">
                             <div>
                             <spring:url value="/images" var="images" />
                             <img src="${images}/location.png"  width="15" height="15" alt=""/>
                             <!--   <img src="./icons/user-icon.svg" alt=""> -->
-                            <a href="#" id="myBtn">${customerModel.cities}, ${customerModel.location}</a>
-                            <span class="fas fa-caret-down" style="color: white;"></span>
+                            <a href="#">Nagpur,Mihan</a>
+                            </div>
+                             <span class="divider">|</span>
+                            </security:authorize>
+                            
+                            
+                             <security:authorize access="hasRole('USER')">
+                            <div>
+                            <spring:url value="/images" var="images" />
+                            <img src="${images}/location.png"  width="15" height="15" alt=""/>
+                            <!--   <img src="./icons/user-icon.svg" alt=""> -->
+                            <a href="#">${customerModel.cities}, ${customerModel.location}</a>
                             </div>
                              <span class="divider">|</span>
                             </security:authorize>
@@ -931,7 +798,7 @@ ul{
                            </div>
                            </security:authorize>
                            
-                           <security:authorize access="isAnonymous()">
+                            <security:authorize access="isAnonymous()">
                            <div>
                            <spring:url value="/images" var="images" />
                            <img src="${images}/cart.svg"  width="15" height="15" alt=""/>
@@ -942,26 +809,31 @@ ul{
                         </div>
                     </div>
                 </header>
-            
-                <nav>
                 
+                
+                  <nav>                    
                 <div class="top">
-                <div class="container flex justify-between" style="background-color:white;">
-              
-                            <div class="contact flex items-center">
-   <spring:url value="/images" var="images" />
-   <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
+                        <div class="container flex justify-between">
+                           <div class="contact flex items-center">
+                       
+                               <div>
+                      <table>
                       
-   <div>
-   <spring:url value="/images" var="images" />
+					 <th><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
+					</a></th>
+					
+					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
-           <!--  <h5>Call US: (+84) 123 456 789</h5>
-           <h6>E-mail : support@freshmeal.com</h6> -->
+					</a></th>
+				</table>
+   
+                                    <!--  <h5>Call US: (+84) 123 456 789</h5>
+                                    <h6>E-mail : support@freshmeal.com</h6> -->
                               </div>   
                             </div>
                             <div class="branding">
-                            <form class="search-form" 
-  style="position:relative;
+                            <form class="search-form" style="position:relative;
   width: 350px;
   height: 40px;
   border-radius: 40px;
@@ -970,76 +842,63 @@ ul{
   background: #fff;
   transition: all 0.3s ease; top:40%;
   left:48%;">
-   
-  <input type="search" value="" placeholder="Search" class="search-input" id="myInput">
-  <button type="submit" class="search-button">
+  <input type="search" value="" placeholder="Search..." class="search-input" id="myInput">
+ 
   </button>
   </form>
-                              
+                                <!-- <img src="./icons/logo.svg" alt=""> -->
+                                 <%--  <spring:url value="/images" var="images" />
+   <img src="${images}/logo.jpg"  width="165" height="120"/> --%>
                             </div>
                             <div class="time flex items-center">
-                               
+                                <!-- <img src="./icons/clock.svg" alt="">
+                                <div>
+                                    <h5>Working Hours:</h5>
+                                    <h6>Mon - Sat (8.00am - 12.00am)</h6>
+                                </div> -->
                                 <spring:url value="/images" var="images" />
-   <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
+                                <img src="${images}/Phone1.jpg"  width="25" height="25" alt=""/>
                                <!--  <img src="/images/phone.svg" alt=""> -->
                                 <div>
                                     <h5>Call Us: (+91) 982 357 6042  </h5>
                                     <h6>E-mail : support@veggiefridge.com</h6>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    
-                    <security:authorize access="isAnonymous() or hasRole('USER')">
+                    </div>
+                    </div>
+                     <security:authorize access="isAnonymous() or hasRole('USER')">
                     <div class="navbar magic-shadow">
                     <div class="container flex justify-center">
-                    
                     <a href="${pageContext.request.contextPath}/home" class="active">Home</a>      
-                    <a href="${pageContext.request.contextPath}/ProductsByCatogary" onclick="location.href=this.href+'?param='+v1;return false;showOrHideDiv()">Leafy Vegetables</a>
-                    <a href="${pageContext.request.contextPath}/ProductsByCatogary" onclick="location.href=this.href+'?param='+v2;return false;showOrHideDiv()">Fruit Vegetables</a>
-                    <a href="${pageContext.request.contextPath}/ProductsByCatogary" onclick="location.href=this.href+'?param='+v3;return false;showOrHideDiv()">Milk</a>
-                    <a href="#">Discount</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Contact us</a>
-                    <script> 
-        var v1 = 'Leafy Vegetables'
-        var v2 = 'Fruit Vegetables'
-        var v3 = 'Milk'    
-    </script>
-                    
-                    <%-- <c:forEach var="menu" items="${listNavbarMenu}"> 
-                    <a href="${menu.url}" onclick="location.href=this.href+'?param='+${menu.jsvar};return false;showOrHideDiv()" id="preview">${menu.menues}</a>
-                   
+                    <c:forEach var="menu" items="${listNavbarMenu}"> 
+                    <a href="${menu.url}" onclick="location.href=this.href+'?param='+${menu.jsvar};return false;">${menu.menues}</a>
    
-     <script> 
-        var ${menu.jsvar} = '${menu.paramKey}'
-    </script>
-    </c:forEach>  --%>
-   </div>
-   </div>
-   </security:authorize>
+    <script> 
+     var ${menu.jsvar} = '${menu.paramKey}'
+    </script> 
+    
+    </c:forEach> 
+    </div>
+    </div>
+                     </security:authorize>
                      
-              
-               <security:authorize access="hasRole('ADMIN')">
-               <div class="navbar magic-shadow">
+                      <security:authorize access="hasRole('ADMIN')">
+                    <div class="navbar magic-shadow">
                             <div class="container flex justify-center">
-                           <!--  <ul class="navbar-nav"> -->
-                           <!--  <li class="active"> --><a href="#" class="active">Home</a>
-                            <a href="#" >Manage Product</a>
+                            <a href="#" class="active">Home</a>
+                            <a href="#">Manage Product</a>
                             <a href="#">Manage Location</a>
-                            <a href="#">Manage Kiosk</a>
-                           <!--  </ul> -->
-                            </div>
-                           </div>
-               </security:authorize>
-               </nav>
-               </div>
-  
+                             <a href="#">Manage Kiosk</a>
+                        </div>
+                    </div>
+                     </security:authorize>
+                 </nav>
+               
+               
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
-    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   
    <script>
     $(document).ready(function(){
    $('.food-slider').slick({
@@ -1069,67 +928,45 @@ ul{
       $('.site-content-wrapper').toggleClass('scaled');
    })
 });
-       </script>
-       
-       
-      <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable ").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    
+</script>
+
+ <script>
+    $('nav .button').click(function(){
+      $('nav .button span').toggleClass("rotate");
     });
-  });
-});
-</script> 
+      $('nav ul li .first').click(function(){
+        $('nav ul li .first span').toggleClass("rotate");
+      });
+      $('nav ul li .second').click(function(){
+        $('nav ul li .second span').toggleClass("rotate");
+      });
+    </script>
 
+  <!-- This code used to rotate drop icon(-180deg).. -->
+    <script>
+    $('nav .button').click(function(){
+      $('nav .button span').toggleClass("rotate");
+    });
+      $('nav ul li .first').click(function(){
+        $('nav ul li .first span').toggleClass("rotate");
+      });
+      $('nav ul li .second').click(function(){
+        $('nav ul li .second span').toggleClass("rotate");
+      });
+    </script>
+    
+    <script type="text/javascript">
 
-<script>
-// Get the modal
-var modal = document.getElementById("myLocation");
+    $('.sub-menu').hide();
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+    $("li:has(ul)").click(function(){
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    $("ul",this).toggle('slow');
+    });
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-
-
-
-<script>
-$( '.navbar .container a' ).on( 'click', function () {
-	$( '.navbar .container' ).find( 'a.active' ).removeClass( 'active' );
-	$( this ).addClass( 'active' );
-});
-</script>
-
-
-<script>
-  setTimeout(function() {
-           /*  $('#mydiv').fadeOut('fast'); */
-            $('#mydiv').delay(300).fadeOut(100); 
-        }, 1000); 
-        </script>
- 	
-</body>
-</html>
+    </script>
 
  
+</body>
+</html>

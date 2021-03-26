@@ -207,6 +207,8 @@ input {
 		</div>
 	</form>
     
+    <c:choose>
+							<c:when test="${not empty ListCancelOrderByDate}">
 	<c:forEach var="orders" items="${requestScope.ListCancelOrderByDate}">
 		<div class="wrapper">
 
@@ -298,6 +300,29 @@ input {
 
 		</div>
 		 </c:forEach>
+		 </c:when>
+		 <c:otherwise>
+		 <div class="wrapper">
+			<div class="view_main">
+				<div class="view_wrap list-view" style="display: block;">
+				
+						<div class="view_item">
+							<div class="vi_left">
+								
+							</div>
+							<div class="vi_right">
+							<h3  style="font-size:30px;font-weight:300;padding:50px 50px;text-align:center;"> You Have No Past Cancel Orders !!!</h3>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		 
+		 </c:otherwise>
+		 </c:choose>
+		 
+		 
+		 
 	
 
 	<jsp:include page="footer.jsp"></jsp:include>

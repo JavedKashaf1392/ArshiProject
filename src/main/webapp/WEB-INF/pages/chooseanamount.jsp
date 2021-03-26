@@ -34,7 +34,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 20px auto;
+	margin: 0px auto 20px;
 }
 
 .links {
@@ -230,8 +230,8 @@ input{
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
-	<div style="max-width: 1200px; margin: 17px auto;">
+	<jsp:include page="newhead.jsp"></jsp:include>
+	<div style="max-width: 1200px; margin:220px auto 20px;">
 
 		<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My

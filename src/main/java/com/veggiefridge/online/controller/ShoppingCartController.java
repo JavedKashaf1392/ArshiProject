@@ -323,7 +323,6 @@ public class ShoppingCartController {
 			return "cart";
 		
 		}
-			
   		}
 	    
 

@@ -58,7 +58,6 @@ public class MembershipController {
 			msw.setCustomer(customer);
 			msw.setJoiningDate(new Date());
 			msw.setLastUpdateDate(new Date());
-			msw.setTotalAmountBalance(totalAmountBalance);
 			Membershipservice.add(msw);
 			System.out.println("member is adding");
 		}

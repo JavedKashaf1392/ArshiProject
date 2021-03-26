@@ -199,7 +199,7 @@ input {
 <body>
 
 
-	<jsp:include page="newhead.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div style="max-width:1200px; margin:220px auto 20px;">
 		<span
@@ -222,9 +222,10 @@ input {
 			</th>
 		</table>
 	</div>
-   
+     
+     <c:choose>
+							<c:when test="${not empty pendingOrders}">
 	<c:forEach var="orders" items="${requestScope.pendingOrders}">
-
 	<div class="wrapper">
 			<div class="view_main">
 			<a href="${pageContext.request.contextPath}/order/orderdetail/${orders.orderid}">
@@ -268,23 +269,7 @@ input {
 						
 									
 </table>
-				
-				
-				<%-- <div style="margin-left: 10px; line-height: 28px;">
-				<a href="${pageContext.request.contextPath}/order/orderdetail/${orders.orderid}">
-				<span  style="color: green;float:right;margin-right:10px;text-decoration:underline;">Order Detail</span>
-			    </a>
-					<p style="font-weight: 600">Status : ${orders.pickupStatus}</p>
-					<p>
-					<fmt:formatDate value="${orders.orderDate}" pattern= "${dateformatter}"/>
-					</p>
-					<p style="font-weight: 600">
-						Total      : ${repee_sign}
-						<fmt:formatNumber type="number" minFractionDigits="2"
-							maxFractionDigits="2" value="${orders.orderTotal}" />
-					</p>
-				</div>
-				</table> --%>
+			
 				
 				<div class="view_wrap list-view" style="display: block;">
 
@@ -328,6 +313,28 @@ input {
 
 		</div>
 		</c:forEach>
+		</c:when>
+		<c:otherwise>
+		
+		<div class="wrapper">
+			<div class="view_main">
+				<div class="view_wrap list-view" style="display: block;">
+				
+						<div class="view_item">
+							<div class="vi_left">
+								
+							</div>
+							<div class="vi_right">
+							<h3  style="font-size:30px;font-weight:300;padding:50px 50px;text-align:center;"> You Have No Past Current Orders !!!</h3>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		</c:otherwise>
+		</c:choose>
 
 
 	<jsp:include page="footer.jsp"></jsp:include>

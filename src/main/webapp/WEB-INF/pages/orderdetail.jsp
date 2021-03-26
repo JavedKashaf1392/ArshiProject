@@ -23,7 +23,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
@@ -43,7 +42,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 20px auto;
+	margin: 0px auto 20px;
 }
 
 .links {
@@ -474,11 +473,11 @@ label {
 
 <body> 
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="newhead.jsp"></jsp:include>
 
-	<div style="max-width: 1200px; margin: 17px auto;">
+	<div style="max-width: 1200px; margin:220px auto 20px;">
 	<span
-    style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">${OrderDetails}
+    style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">Order Details
 	</span>
 	</div>
 
@@ -612,9 +611,8 @@ label {
 
 				
 				
-				<a
-							href="#"
-							style="display: inline-block; padding: 8px 5px; text-align: center; text-decoration: none; color: #fff; background: #4abd3e; border-radius: 3px; font-weight: 400; width: 125px; margin-left:10px;" id="myBtn">Cancel-Order</a>
+				<a href="${pageContext.request.contextPath}/order/cancelOrder/${orders.orderid}"
+							style="display: inline-block; padding: 8px 5px; text-align: center; text-decoration: none; color: #fff; background:#4CAF50; border-radius:50px; font-weight: 400; width: 125px; margin-left:10px;" id="myBtn">Cancel-Order</a>
 
 				</div>
 		</div>

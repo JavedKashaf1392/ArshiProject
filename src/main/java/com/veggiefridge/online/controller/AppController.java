@@ -157,8 +157,6 @@ public class AppController {
 			model.setViewName("loginform");
 
 			return model;
-			
-
 		}
 	    
 	    //Sign up
@@ -382,7 +380,7 @@ public class AppController {
 			}
   	  	    model.addAttribute("listNavbarMenu",listNavbarMenu);
   			model.addAttribute("menuLevel1", allMenu);
-  	  			return "head";
+  	  			return "newhead";
   	  		}
   
   	  	  //addGuestCustomer
@@ -535,9 +533,9 @@ public class AppController {
   	  		
   	  		
   	  	   
-  	  		@RequestMapping(value = "/newhead", method = RequestMethod.GET)
+  	  		@RequestMapping(value = "/header", method = RequestMethod.GET)
   	  		public String head(ModelMap model) {
-  	  			return "newhead";
+  	  			return "header";
   	  		}
   	  		
   	  		
@@ -553,8 +551,40 @@ public class AppController {
   	  			return "changePassword";
   	  		}
   	    
-  	    
-    
-      
+  	  		
+  	  
+  	  	
+  		@RequestMapping(value = "/cartnew", method = RequestMethod.GET)
+  		public String cartnew(ModelMap model) {
+  			return "cartnew";
+  		}
+  		
+  		
+  	        //Home Menu Url
+  			@RequestMapping(value = "/VeggieFridge", method = RequestMethod.GET)
+  			public ModelAndView VeggieFridge(HttpServletRequest request, HttpServletResponse response,
+  					@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model) {
+  				String imageSection = "Header";
+  				List<KioskLocation> listkiosklocation = kiosklocationservice.getAllLocation();
+  				List<Product> listProduct = productService.getAllProducts();
+  				List<Customer> listCustomer = customerservice.getAllCustomers();
+  				List<Images> headerImages = menuservice.getImagesBySection(imageSection);
+  				String section = "Navbar";
+  				List<Menu> listNavbarMenu = menuservice.getMenu(section);
+  				model.addObject("listNavbarMenu", listNavbarMenu);
+  				model.addObject("headerImages", headerImages);
+  				model.addObject("listCustomer", listCustomer);
+  				model.addObject("listkiosklocation", listkiosklocation);
+  				model.addObject("listProduct", listProduct);
+  				model.addObject("repee_sign",VFOnlineConstants.RUPEE_SIGN);
+  				model.addObject("orderdetails", VFOnlineConstants.ORDERDETIAL_HEADING);
+  				model.addObject("blurimage",VFOnlineConstants.headeblurimage);
+  				model.addObject("classvalue", VFOnlineConstants.classvalue);
+  				model.addObject("animateimage",VFOnlineConstants.animateimage);
+  				/* model.setViewName("registerdhome"); */ 
+  				 model.setViewName("VeggieFridge");
+  				return model;
+  			}
+       
 }
 

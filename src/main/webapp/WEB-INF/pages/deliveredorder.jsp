@@ -34,7 +34,7 @@
 
 .wrapper{
 	width: 1200px;
-	margin: 20px auto;
+	margin: 0px auto 20px;
 	
 }
 
@@ -189,10 +189,10 @@ input {
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="newhead.jsp"></jsp:include>
 
 <form method="post" action="${pageContext.request.contextPath }/showDeliveredOrdersByDate${customerModel.customerid}" modelAttribute="orders">
-<div style="max-width:1200px;margin:17px auto;">
+<div style="max-width:1200px;margin:220px auto 20px;">
 <span style="border:1 px green;background-color:white;font-weight: bold;color: green;font-size:25px;font-weight:500px;">My Orders</span>
 <table style="float:right;cellSpacing:20px);border-spacing:6px 2px"> 
 <th>   
@@ -222,6 +222,8 @@ input {
 </div>
 </form>
 
+ <c:choose>
+							<c:when test="${not empty deliveredOrders}">
 <c:forEach var="orders" items="${requestScope.deliveredOrders}">
 <div class="wrapper">
 	  <div class="view_main">
@@ -308,6 +310,28 @@ input {
 	
 </div>
 </c:forEach>
+</c:when>
+<c:otherwise>
+
+<div class="wrapper">
+			<div class="view_main">
+				<div class="view_wrap list-view" style="display: block;">
+				
+						<div class="view_item">
+							<div class="vi_left">
+								
+							</div>
+							<div class="vi_right">
+							<h3  style="font-size:30px;font-weight:300;padding:50px 50px;text-align:center;"> You Have No Past Deliver Orders !!!</h3>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		
+
+</c:otherwise>
+</c:choose>
 
 
 <jsp:include page="footer.jsp"></jsp:include>

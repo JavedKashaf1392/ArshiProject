@@ -44,7 +44,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 20px auto;
+	margin: 0px auto 20px;
 }
 
 .links {
@@ -475,9 +475,9 @@ label {
 
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="newhead.jsp"></jsp:include>
 
-	<div style="max-width: 1200px; margin: 17px auto;">
+	<div style="max-width: 1200px; margin:220px auto 20px;">
 		<span
 			style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">Cancel
 			Order</span>
@@ -687,7 +687,7 @@ label {
 										style="width: 100%;font-style: italic; font-size: 13px; font-weight: 600; color: #666666; padding: 15px 0;margin-left:170px;">
 										<b style="font-size: 14px;"></b>If you have any questions
 										about your order, please contact us toll free at (+91) 982 357
-										6042. For Refund Money <a href="#" id="myBtn">click here</a>
+										6042. For Refund Money <a href="${pageContext.request.contextPath}/wallet/addRefudMoneyInWallet/${order.orderid}" id="myBtn">click here</a>
 
 									</span>
 									

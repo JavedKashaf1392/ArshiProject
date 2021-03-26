@@ -27,9 +27,7 @@ public class Membership {
 	@Column(name="lastupdatedate")
 	private Date  LastUpdateDate;
 	
-	@Column(name="totalamountbalance")
-	private Double totalAmountBalance;
-
+	
 	public int getMembershipID() {
 		return MembershipID;
 	}
@@ -61,13 +59,5 @@ public class Membership {
 	public void setLastUpdateDate(Date lastUpdateDate) {
 		LastUpdateDate = lastUpdateDate;
 	}
-
-	public Double getTotalAmountBalance() {
-		return totalAmountBalance;
-	}
-
-	public void setTotalAmountBalance(Double totalAmountBalance) {
-		this.totalAmountBalance = totalAmountBalance;
-	} 
 
 }

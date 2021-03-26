@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
+<link href="./static/css/header.css" rel="stylesheet" type="text/css">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -17,16 +19,6 @@
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-	charset="utf-8"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 @import
@@ -282,7 +274,7 @@ label {
 .totals .totals-item label {
 	float: left;
 	clear: both;
-	width:90%;
+	width:80%;
 	text-align: right; 
 }
 
@@ -296,7 +288,6 @@ label {
 }
 
 .checkout {
-
 	float: right;
 	background: transparent;
     border: 1px solid black;
@@ -429,6 +420,48 @@ label {
 	font-weight: 800;
 }
 }
+.magic-shadow{
+    position: relative;
+    background:var(--heaven);
+}
+.magic-shadow:after{
+    content:'';
+    display:block;
+    width:100%;
+    height:69px;
+    /* background-image:url(../images/shadow.svg); */
+    background-image:url("images/shadow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom:-22px;
+    z-index:-1;
+   /*  box-shadow: 0px 0px 8px 1px #00000078; */
+    
+}
+.magic-shadow-sm{
+    position: relative;
+    background:var(--heaven);
+}
+.magic-shadow-sm:after{
+    content:'';
+    display:block;
+    width:100%;
+    height:69px;
+    background-image:url("/images/shadow-sm.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
+    -webkit-transform:translateX(-50%);
+    -moz-transform:translateX(-50%);
+    -ms-transform:translateX(-50%);
+    -o-transform:translateX(-50%);
+   /*  box-shadow: 0px 0px 8px 1px #00000078; */
+}
 </style>
 </head>
 <body>
@@ -438,16 +471,11 @@ label {
 		</div>		
 	    </c:if>
 
-	<jsp:include page="newhead.jsp"></jsp:include>
-   
+	
     <c:set var="availableCount" value="${customerModel.cartpage.cartitem}"/>
 	
-	<!-- <div style="margin-top:30%;">
-	<span
-	style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
-	Cart</span>
-	</div> -->
-
+    <jsp:include page="header.jsp"></jsp:include>
+   
 	<div class="wrapper">
     <div style="margin-top:25px;margin-bottom:20px;">
     <span
@@ -563,8 +591,237 @@ label {
 		</div>
 	</div>
 
-
 	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..........................
+
+
+
+
+
+
+
+
+
+<!--  Slider code js -->
+	
+	<script src="myScript.js">
+		var slideIndex, slides, dots, captionText;
+		function initGallery() {
+			slideIndex = 0;
+			slides = document.getElementsByClassName("imageHolder");
+			slides[slideIndex].style.opacity = 1;
+
+			captionText = document
+					.querySelector(".captionTextHolder .captionText");
+			captionText.innerText = slides[slideIndex]
+					.querySelector(".captionText").innerText;
+
+			//disable nextPrevBtn if slide count is one
+			if (slides.length < 2) {
+				var nextPrevBtns = document
+						.querySelector(".leftArrow,.rightArrow");
+				nextPrevBtns.style.display = "none";
+				for (i = 0; i < nextPrevBtn.length; i++) {
+					nextPrevBtn[i].style.display = "none";
+				}
+			}
+
+			//add dots
+			dots = [];
+			var dotsContainer = document.getElementById("dotsContainer"), i;
+			for (i = 0; i < slides.length; i++) {
+				var dot = document.createElement("span");
+				dot.classList.add("dots");
+				dotsContainer.append(dot);
+				dot.setAttribute("onclick", "moveSlide(" + i + ")");
+				dots.push(dot);
+			}
+			dots[slideIndex].classList.add("active");
+		}
+		initGallery();
+		function plusSlides(n) {
+			moveSlide(slideIndex + n);
+		}
+		function moveSlide(n) {
+			var i;
+			var current, next;
+			var moveSlideAnimClass = {
+				forCurrent : "",
+				forNext : ""
+			};
+			var slideTextAnimClass;
+			if (n > slideIndex) {
+				if (n >= slides.length) {
+					n = 0;
+				}
+				moveSlideAnimClass.forCurrent = "moveLeftCurrentSlide";
+				moveSlideAnimClass.forNext = "moveLeftNextSlide";
+				slideTextAnimClass = "slideTextFromTop";
+			} else if (n < slideIndex) {
+				if (n < 0) {
+					n = slides.length - 1;
+				}
+				moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
+				moveSlideAnimClass.forNext = "moveRightPrevSlide";
+				slideTextAnimClass = "slideTextFromBottom";
+			}
+
+			if (n != slideIndex) {
+				next = slides[n];
+				current = slides[slideIndex];
+				for (i = 0; i < slides.length; i++) {
+					slides[i].className = "imageHolder";
+					slides[i].style.opacity = 0;
+					dots[i].classList.remove("active");
+				}
+				current.classList.add(moveSlideAnimClass.forCurrent);
+				next.classList.add(moveSlideAnimClass.forNext);
+				dots[n].classList.add("active");
+				slideIndex = n;
+				captionText.style.display = "none";
+				captionText.className = "captionText " + slideTextAnimClass;
+				captionText.innerText = slides[n].querySelector(".captionText").innerText;
+				captionText.style.display = "block";
+			}
+
+		}
+		var timer = null;
+		function setTimer() {
+			timer = setInterval(function() {
+				plusSlides(1);
+			}, 3000);
+		}
+		setTimer();
+		function playPauseSlides() {
+			var playPauseBtn = document.getElementById("playPause");
+			if (timer == null) {
+				setTimer();
+				playPauseBtn.style.backgroundPositionY = "0px"
+			} else {
+				clearInterval(timer);
+				timer = null;
+				playPauseBtn.style.backgroundPositionY = "-33px"
+			}
+		}
+	</script>
+</body>
+</html>
+<script>
+	var slideIndex, slides, dots, captionText;
+	function initGallery() {
+		slideIndex = 0;
+		slides = document.getElementsByClassName("imageHolder");
+		slides[slideIndex].style.opacity = 1;
+
+		captionText = document.querySelector(".captionTextHolder .captionText");
+		captionText.innerText = slides[slideIndex]
+				.querySelector(".captionText").innerText;
+
+		//disable nextPrevBtn if slide count is one
+		if (slides.length < 2) {
+			var nextPrevBtns = document.querySelector(".leftArrow,.rightArrow");
+			nextPrevBtns.style.display = "none";
+			for (i = 0; i < nextPrevBtn.length; i++) {
+				nextPrevBtn[i].style.display = "none";
+			}
+		}
+
+		//add dots
+		dots = [];
+		var dotsContainer = document.getElementById("dotsContainer"), i;
+		for (i = 0; i < slides.length; i++) {
+			var dot = document.createElement("span");
+			dot.classList.add("dots");
+			dotsContainer.append(dot);
+			dot.setAttribute("onclick", "moveSlide(" + i + ")");
+			dots.push(dot);
+		}
+		dots[slideIndex].classList.add("active");
+	}
+	initGallery();
+	function plusSlides(n) {
+		moveSlide(slideIndex + n);
+	}
+	function moveSlide(n) {
+		var i;
+		var current, next;
+		var moveSlideAnimClass = {
+			forCurrent : "",
+			forNext : ""
+		};
+		var slideTextAnimClass;
+		if (n > slideIndex) {
+			if (n >= slides.length) {
+				n = 0;
+			}
+			moveSlideAnimClass.forCurrent = "moveLeftCurrentSlide";
+			moveSlideAnimClass.forNext = "moveLeftNextSlide";
+			slideTextAnimClass = "slideTextFromTop";
+		} else if (n < slideIndex) {
+			if (n < 0) {
+				n = slides.length - 1;
+			}
+			moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
+			moveSlideAnimClass.forNext = "moveRightPrevSlide";
+			slideTextAnimClass = "slideTextFromBottom";
+		}
+
+		if (n != slideIndex) {
+			next = slides[n];
+			current = slides[slideIndex];
+			for (i = 0; i < slides.length; i++) {
+				slides[i].className = "imageHolder";
+				slides[i].style.opacity = 0;
+				dots[i].classList.remove("active");
+			}
+			current.classList.add(moveSlideAnimClass.forCurrent);
+			next.classList.add(moveSlideAnimClass.forNext);
+			dots[n].classList.add("active");
+			slideIndex = n;
+			captionText.style.display = "none";
+			captionText.className = "captionText " + slideTextAnimClass;
+			captionText.innerText = slides[n].querySelector(".captionText").innerText;
+			captionText.style.display = "block";
+		}
+
+	}
+	var timer = null;
+	function setTimer() {
+		timer = setInterval(function() {
+			plusSlides(1);
+		}, 3000);
+	}
+	setTimer();
+	function playPauseSlides() {
+		var playPauseBtn = document.getElementById("playPause");
+		if (timer == null) {
+			setTimer();
+			playPauseBtn.style.backgroundPositionY = "0px"
+		} else {
+			clearInterval(timer);
+			timer = null;
+			playPauseBtn.style.backgroundPositionY = "-33px"
+		}
+	}
+</script>

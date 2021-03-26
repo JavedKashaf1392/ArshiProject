@@ -24,7 +24,11 @@
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
 	<mvc:resources mapping="/images/**" location="/WEB-INF/images/" /> 
-	<mvc:resources mapping="/static/**" location="/WEB-INF/static/css"/>
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/css" />
+    <mvc:resources mapping="/static/**" location="/WEB-INF/javascript/myjs" /> 
+    <mvc:resources location="/assest/" mapping="/resources/**" />
+	
+	<!-- <mvc:resources mapping="/javascript/**" location="/WEB-INF/static/javascript" /> -->
 	 
 	 <!-- Spring Email Sender Bean Configuration -->
 	 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -39,11 +43,8 @@
                 <prop key="mail.smtp.starttls.enable">true</prop>
             </props>
         </property>
-    </bean>
-    
-    
-     
-	
+        </bean>
+  
          <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="465" />
@@ -76,7 +77,6 @@
 </bean> -->
     
     <!-- Spring Email Attachment Configuration -->
-    
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- Maximum Upload Size In Bytes -->
         <property name="maxUploadSize" value="20971520" />
@@ -102,7 +102,6 @@
         </bean> 
 
 	<!-- DataSource -->
-	
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
 		<property name="driverClassName" value="${database.driver}"></property>

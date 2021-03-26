@@ -337,7 +337,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
  </head>
  <body>
 
-   <%-- <jsp:include page="newhead.jsp"></jsp:include> --%>
+    <jsp:include page="newhead.jsp"></jsp:include> 
     
   <div style="max-width:1200px; margin:220px auto 0px;">
 	<span

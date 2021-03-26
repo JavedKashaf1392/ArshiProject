@@ -230,7 +230,7 @@ input{
 </head>
 <body>
 
-	<jsp:include page="head.jsp"></jsp:include>
+	<jsp:include page="newhead.jsp"></jsp:include>
 	<!-- <div style="max-width: 1200px; margin:200px auto;">
 
 		<span
