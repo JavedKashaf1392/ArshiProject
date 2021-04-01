@@ -24,6 +24,7 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <spring:url var="css" value="/resources/css"></spring:url>
+
 <link href="${css}/main.css" rel="stylesheet">
 
 
@@ -107,7 +108,7 @@
 										modelAttribute="product">
 										<input type="hidden" value="${product.productid}"
 											name="productid">
-										<button type="submit" class="btn-cart">
+										<button type="submit" class="btn-cart" id="cart">
 											add to cart <span><i class="fas fa-shopping-cart"></i></span>
 										</button>
 									</form>
@@ -692,6 +693,50 @@
 		}
 	}
 </script>
+
+<script>
+// Get the modal
+var modal = document.getElementById("aModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("aclose")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#cart").click(function() {
+		$.ajax({
+			type:'GET',
+			url :'${pageContext.request.contextPath }/cart/addToCartPageItems',
+			success:function(result){
+
+				}
+			});
+	    });
+	});
+	 
+</script>
+
 
 <script type="text/javascript" src="./static/css/main.js"></script>
 </body>

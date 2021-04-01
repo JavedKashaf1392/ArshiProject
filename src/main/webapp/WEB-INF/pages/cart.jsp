@@ -16,9 +16,16 @@
 	prefix="security"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <style>
 @import
@@ -38,7 +45,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 200px auto 20px;
+	margin: 220px auto 20px;
 }
 
 .links {
@@ -419,49 +426,6 @@ label {
 	color: white;
 	font-weight: 800;
 }
-}
-.magic-shadow{
-    position: relative;
-    background:var(--heaven);
-}
-.magic-shadow:after{
-    content:'';
-    display:block;
-    width:100%;
-    height:69px;
-    /* background-image:url(../images/shadow.svg); */
-    background-image:url("images/shadow.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
-    bottom:-22px;
-    z-index:-1;
-   /*  box-shadow: 0px 0px 8px 1px #00000078; */
-    
-}
-.magic-shadow-sm{
-    position: relative;
-    background:var(--heaven);
-}
-.magic-shadow-sm:after{
-    content:'';
-    display:block;
-    width:100%;
-    height:69px;
-    background-image:url("/images/shadow-sm.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
-    bottom:-20px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:-1;
-    -webkit-transform:translateX(-50%);
-    -moz-transform:translateX(-50%);
-    -ms-transform:translateX(-50%);
-    -o-transform:translateX(-50%);
-   /*  box-shadow: 0px 0px 8px 1px #00000078; */
-}
 </style>
 </head>
 <body>
@@ -477,6 +441,7 @@ label {
     <jsp:include page="header.jsp"></jsp:include>
    
 	<div class="wrapper">
+	
     <div style="margin-top:25px;margin-bottom:20px;">
     <span
 	style="border: 1 px green; background-color: white; font-weight: bold; color: green; font-size: 25px; font-weight: 500px;">My
@@ -551,6 +516,7 @@ label {
 													Remove</button>  --%> 
 											</div>
 										</div>
+										
 									</c:forEach>
 									<div class="totals" style="line-height:45px;">
 										<div class="totals-item">
@@ -588,240 +554,40 @@ label {
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 
 	<jsp:include page="footer.jsp"></jsp:include>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-..........................
-
-
-
-
-
-
-
-
-
-<!--  Slider code js -->
+	<script type="text/javascript" src="./static/css/main.js"></script>
 	
-	<script src="myScript.js">
-		var slideIndex, slides, dots, captionText;
-		function initGallery() {
-			slideIndex = 0;
-			slides = document.getElementsByClassName("imageHolder");
-			slides[slideIndex].style.opacity = 1;
+	<script>
+// Get the modal
+var modal = document.getElementById("myLocation");
 
-			captionText = document
-					.querySelector(".captionTextHolder .captionText");
-			captionText.innerText = slides[slideIndex]
-					.querySelector(".captionText").innerText;
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
 
-			//disable nextPrevBtn if slide count is one
-			if (slides.length < 2) {
-				var nextPrevBtns = document
-						.querySelector(".leftArrow,.rightArrow");
-				nextPrevBtns.style.display = "none";
-				for (i = 0; i < nextPrevBtn.length; i++) {
-					nextPrevBtn[i].style.display = "none";
-				}
-			}
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-			//add dots
-			dots = [];
-			var dotsContainer = document.getElementById("dotsContainer"), i;
-			for (i = 0; i < slides.length; i++) {
-				var dot = document.createElement("span");
-				dot.classList.add("dots");
-				dotsContainer.append(dot);
-				dot.setAttribute("onclick", "moveSlide(" + i + ")");
-				dots.push(dot);
-			}
-			dots[slideIndex].classList.add("active");
-		}
-		initGallery();
-		function plusSlides(n) {
-			moveSlide(slideIndex + n);
-		}
-		function moveSlide(n) {
-			var i;
-			var current, next;
-			var moveSlideAnimClass = {
-				forCurrent : "",
-				forNext : ""
-			};
-			var slideTextAnimClass;
-			if (n > slideIndex) {
-				if (n >= slides.length) {
-					n = 0;
-				}
-				moveSlideAnimClass.forCurrent = "moveLeftCurrentSlide";
-				moveSlideAnimClass.forNext = "moveLeftNextSlide";
-				slideTextAnimClass = "slideTextFromTop";
-			} else if (n < slideIndex) {
-				if (n < 0) {
-					n = slides.length - 1;
-				}
-				moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
-				moveSlideAnimClass.forNext = "moveRightPrevSlide";
-				slideTextAnimClass = "slideTextFromBottom";
-			}
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
 
-			if (n != slideIndex) {
-				next = slides[n];
-				current = slides[slideIndex];
-				for (i = 0; i < slides.length; i++) {
-					slides[i].className = "imageHolder";
-					slides[i].style.opacity = 0;
-					dots[i].classList.remove("active");
-				}
-				current.classList.add(moveSlideAnimClass.forCurrent);
-				next.classList.add(moveSlideAnimClass.forNext);
-				dots[n].classList.add("active");
-				slideIndex = n;
-				captionText.style.display = "none";
-				captionText.className = "captionText " + slideTextAnimClass;
-				captionText.innerText = slides[n].querySelector(".captionText").innerText;
-				captionText.style.display = "block";
-			}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
-		}
-		var timer = null;
-		function setTimer() {
-			timer = setInterval(function() {
-				plusSlides(1);
-			}, 3000);
-		}
-		setTimer();
-		function playPauseSlides() {
-			var playPauseBtn = document.getElementById("playPause");
-			if (timer == null) {
-				setTimer();
-				playPauseBtn.style.backgroundPositionY = "0px"
-			} else {
-				clearInterval(timer);
-				timer = null;
-				playPauseBtn.style.backgroundPositionY = "-33px"
-			}
-		}
-	</script>
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
 </body>
 </html>
-<script>
-	var slideIndex, slides, dots, captionText;
-	function initGallery() {
-		slideIndex = 0;
-		slides = document.getElementsByClassName("imageHolder");
-		slides[slideIndex].style.opacity = 1;
-
-		captionText = document.querySelector(".captionTextHolder .captionText");
-		captionText.innerText = slides[slideIndex]
-				.querySelector(".captionText").innerText;
-
-		//disable nextPrevBtn if slide count is one
-		if (slides.length < 2) {
-			var nextPrevBtns = document.querySelector(".leftArrow,.rightArrow");
-			nextPrevBtns.style.display = "none";
-			for (i = 0; i < nextPrevBtn.length; i++) {
-				nextPrevBtn[i].style.display = "none";
-			}
-		}
-
-		//add dots
-		dots = [];
-		var dotsContainer = document.getElementById("dotsContainer"), i;
-		for (i = 0; i < slides.length; i++) {
-			var dot = document.createElement("span");
-			dot.classList.add("dots");
-			dotsContainer.append(dot);
-			dot.setAttribute("onclick", "moveSlide(" + i + ")");
-			dots.push(dot);
-		}
-		dots[slideIndex].classList.add("active");
-	}
-	initGallery();
-	function plusSlides(n) {
-		moveSlide(slideIndex + n);
-	}
-	function moveSlide(n) {
-		var i;
-		var current, next;
-		var moveSlideAnimClass = {
-			forCurrent : "",
-			forNext : ""
-		};
-		var slideTextAnimClass;
-		if (n > slideIndex) {
-			if (n >= slides.length) {
-				n = 0;
-			}
-			moveSlideAnimClass.forCurrent = "moveLeftCurrentSlide";
-			moveSlideAnimClass.forNext = "moveLeftNextSlide";
-			slideTextAnimClass = "slideTextFromTop";
-		} else if (n < slideIndex) {
-			if (n < 0) {
-				n = slides.length - 1;
-			}
-			moveSlideAnimClass.forCurrent = "moveRightCurrentSlide";
-			moveSlideAnimClass.forNext = "moveRightPrevSlide";
-			slideTextAnimClass = "slideTextFromBottom";
-		}
-
-		if (n != slideIndex) {
-			next = slides[n];
-			current = slides[slideIndex];
-			for (i = 0; i < slides.length; i++) {
-				slides[i].className = "imageHolder";
-				slides[i].style.opacity = 0;
-				dots[i].classList.remove("active");
-			}
-			current.classList.add(moveSlideAnimClass.forCurrent);
-			next.classList.add(moveSlideAnimClass.forNext);
-			dots[n].classList.add("active");
-			slideIndex = n;
-			captionText.style.display = "none";
-			captionText.className = "captionText " + slideTextAnimClass;
-			captionText.innerText = slides[n].querySelector(".captionText").innerText;
-			captionText.style.display = "block";
-		}
-
-	}
-	var timer = null;
-	function setTimer() {
-		timer = setInterval(function() {
-			plusSlides(1);
-		}, 3000);
-	}
-	setTimer();
-	function playPauseSlides() {
-		var playPauseBtn = document.getElementById("playPause");
-		if (timer == null) {
-			setTimer();
-			playPauseBtn.style.backgroundPositionY = "0px"
-		} else {
-			clearInterval(timer);
-			timer = null;
-			playPauseBtn.style.backgroundPositionY = "-33px"
-		}
-	}
-</script>

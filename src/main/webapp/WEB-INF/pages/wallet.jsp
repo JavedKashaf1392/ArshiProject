@@ -34,7 +34,7 @@
 
 .wrapper {
 	width: 1200px;
-	margin: 200px auto 20px;
+	margin: 220px auto 20px;
 }
 
 .links {
@@ -230,7 +230,7 @@ input{
 </head>
 <body>
 
-	<jsp:include page="newhead.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<!-- <div style="max-width: 1200px; margin:200px auto;">
 
 		<span
@@ -332,19 +332,12 @@ input{
 
 			</div>
 
-
-
-
-
 		</div>
 
 	</div>
 
-
-
-
-
 	<jsp:include page="footer.jsp"></jsp:include>
+	
 	<script>
 		function myFunction() {
 			var input, filter, table, tr, td, i, txtValue;

@@ -19,7 +19,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<link rel="stylesheet" href="style.css">
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <script
@@ -40,18 +40,17 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 }
 
 .side-bar {
-	
 	width: 290px;
 	height:100vh;
-	position:absolute;
-	top: 0;
+	/*position:absolute;*/
+	top:0;
 	transition: 0.6s ease;
 	transition-property: left;
 	background-color: white;
 	left: 0;
-	margin-top:340px;
-	margin-left:17%;
-	margin-bottom:40px;
+	margin-top:30px;
+	margin-left:40px;
+	margin-bottom:30px;
 }
 
 /*.side-bar.active{
@@ -166,7 +165,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 	/*  box-shadow: 1px 1px 2px rgba(0,0,0,0.125); */
 	padding: 30px;
 	background-color: white;
-	height:740px;
+	height:727px;
 }
 
 .wrapper .title {
@@ -335,7 +334,8 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 }
 </style>
 </head>
-<body>
+    
+    <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
 	
@@ -345,10 +345,12 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 			My Account</span>
 	</div>
 	
+	
 	<div
 		style="background: #f5f5f5;padding: 30px 30px;width:1200px;margin:20px auto;border: 1px solid #e2efe1;border-radius:3px;">
 		
-		<div class="side-bar">
+		<div class="row">
+		<div class="side-bar col-3">
 			<div class="menuprofile">
 				<spring:url value="/images" var="images" />
 				<img src="${images}/profile.jpg" width="60" height="60" alt="" /> <a
@@ -383,9 +385,9 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 					<a href="#"><i class="fas fa-th"></i>Wallet</a>
 				</div>
 				<div class="item">
-					<a class="sub-btn"><i class="fas fa-cogs"></i>My Profile<i
+				<a class="sub-btn"><i class="fas fa-cogs"></i>My Profile<i
 						class="fas fa-angle-right dropdown"
-						style="background-color: gainsboro; border-radius: 50%;; padding: 10px 10px;"></i></a>
+						style="background-color:gainsboro; border-radius: 50%;; padding: 10px 10px;"></i></a>
 					<div class="sub-menu">
 						<a
 							href="${pageContext.request.contextPath }/myaccount/editPassword/${customerModel.email}"
@@ -400,8 +402,10 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 				</div>
 			</div>
 		</div>
-
-		<section class="main" style="margin-left:320px; margin-top:45px;margin-bottom:10px">
+		
+         
+         
+		<section class="main col-8" style="margin-left:310px; margin-top:-762px;margin-bottom:45px">
 		
 			<!--  <h1>Sidebar Menu With<br>Sub-Menus</h1>-->
 			<div class="wrapper">
@@ -502,6 +506,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 				</div>
 			</div>
 		</section>
+		</div>
 	</div>
 
 
@@ -510,6 +515,12 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 
+	
+	
+	
+	
+	<!-- ............Script Code.......... -->
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			//jquery for toggle sub menus
@@ -531,9 +542,6 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 		});
 	</script>
 	
-	
-	
-	<!-- ............Script Code.......... -->
 
 	<script>
 		$(document)
@@ -750,6 +758,6 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 
 						});
 	</script>
-
+	
 </body>
 </html>

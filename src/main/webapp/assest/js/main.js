@@ -1,8 +1,4 @@
 
-
-
-
-
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -12,9 +8,9 @@ $(document).ready(function(){
   });
  
  
- $( '.navbar .container a' ).on( 'click', function () {
+$( '.navbar .container a' ).on( 'click', function () {
 	$( '.navbar .container' ).find( 'a.active' ).removeClass( 'active' );
-	$( this ).addClass( 'active' );
+	$( this ).addClass( 'acti' );
 });
  
  
@@ -24,9 +20,32 @@ setTimeout(function() {
 			$('#mydiv').delay(300).fadeOut(100);
 		}, 500); 
 		
-		
-	 
- 
+
+
+var modal = document.getElementById("myModal");
+
+
+var btn = document.getElementById("myBtn");
+
+
+var span = document.getElementsByClassName("close")[0];
+
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}		
 });
 
 
