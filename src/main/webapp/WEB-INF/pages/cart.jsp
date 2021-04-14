@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" isELIgnored="false"
-	import="com.veggiefridge.online.constants.VFOnlineConstants"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">
-<link href="./static/css/header.css" rel="stylesheet" type="text/css">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -18,16 +16,14 @@
 
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
 <meta charset="UTF-8">
 <title>VeggieFridge</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <style>
+
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
 	;
@@ -157,24 +153,22 @@
 
 .product-price {
 	float: left;
-	width: 12%;
+	width: 13%;
 }
 
 .product-quantity {
 	float: left;
-	width: 10%;
+	width:14%;
 }
 
 .product-removal {
 	float: left;
-	width: 3%;
-	margin-left: 3%;
+	width:6%;
 }
 
 .product-line-price {
 	float: left;
-	width: 12%;
-	text-align: right;
+	width:10%;
 }
 
 /* This is used as the traditional .clearfix class */
@@ -245,7 +239,6 @@ label {
 .product .product-details .product-title {
 	margin-right: 20px;
 	font-weight: 600;
-	/*  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium"; */
 }
 
 .product .product-details .product-description {
@@ -287,11 +280,7 @@ label {
 
 .totals .totals-item .totals-value {
 	float: right;
-	margin-right:90px;
-}
-
-.totals .totals-item-total {
-	
+	margin-right:120px;
 }
 
 .checkout {
@@ -473,8 +462,8 @@ label {
 						<%-- <c:if test="${cartitem.available == false}">
 						<c:set var="availableCount" value="${availableCount - 1}"/>
 					    </c:if>
-								 --%>	
-										<div class="product">
+						--%>	
+										<div class="product" id="javeddonkey">
 											<div class="product-image">
 												<spring:url value="/images" var="images" />
 												<img src="${images}/${cartitem.product.imageName}"
@@ -486,7 +475,6 @@ label {
 													time. Holy crap. Your dog will be begging for these things!
 													I got curious once and ate one myself. I'm a fan.</p>
 											<h4 class = "size" style="color: black;font-weight:300"><span style="color: black;font-weight:400">Size : </span>${cartitem.product.size} ${cartitem.product.unit}</h4>	
-													
 											</div>
 
 											<div class="product-price">${repee_sign}<fmt:formatNumber
@@ -495,11 +483,11 @@ label {
 											</div>
 											<div class="product-quantity">
 												<button 
-												 style="height: 25px; width: 25px;" onclick="window.location.href='${pageContext.request.contextPath}/cart/increase/${cartitem.cartitemid}'">+</button>
+												 style="height: 25px; width: 25px;" onClick="ShowModal2(this)" data-id="${cartitem.cartitemid}">+</button>
 												<span> ${cartitem.productCount} </span>
 													
 													<button 
-														style="height: 25px; width: 25px;"  onclick="window.location.href='${pageContext.request.contextPath}/cart/decrease/${cartitem.cartitemid}'">-</button>
+														style="height: 25px; width: 25px;"  onClick="ShowModal3(this)" data-id="${cartitem.cartitemid}">-</button>
 											
 											</div>
 
@@ -507,17 +495,21 @@ label {
 													type="number" minFractionDigits="2" maxFractionDigits="2"
 													value="${cartitem.total}" />
 											</div>
-											<div class="product-removal">
-				 							<a href="${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}">
-											<i class="fa fa-trash-o " style="color: black;font-size:20px;margin-left:15px;" title="Remov Product"></i></a>
 											
-												<%--  <button class="remove-product"
+											<div class="product-removal">
+				 							
+				 							<a href="#" onClick="ShowModal1(this)" data-id="${cartitem.cartitemid}">
+											
+											<i class="fa fa-trash-o " style="color: black;font-size:20px;margin-left:15px;" title="Remov Product"></i></a>
+
+											<%--  <button class="remove-product"
 													onclick="window.location.href='${pageContext.request.contextPath}/cart/deleteCartItem/${cartitem.cartitemid}'" title="remove item">
 													Remove</button>  --%> 
 											</div>
 										</div>
 										
 									</c:forEach>
+									
 									<div class="totals" style="line-height:45px;">
 										<div class="totals-item">
 											<label>Subtotal : </label>
@@ -531,7 +523,7 @@ label {
 
 									<%--  <button class="checkout"
 										onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddressPaymrntOption'">Checkout</button> --%>
-							  <button class="keepshop"
+							 <button class="keepshop"
 										onclick="window.location.href='${pageContext.request.contextPath}/home'">Keep Shopping</button> 							
 							 <button class="checkout"
 										onclick="window.location.href='${pageContext.request.contextPath}/order/PickupAddressPaymentOption'">Checkout</button>
@@ -586,6 +578,86 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+</script>
+
+<script type="text/javascript">
+
+function ShowModal1(elem){
+  
+    var dataId = $(elem).data("id");
+    alert(dataId); 
+    $.ajax({
+    type: "DELETE",
+    contentType: "application/json",
+    url: "${pageContext.request.contextPath}/cart/delCartItem?cartitemid="+dataId,
+    dataType: 'html',
+    success: function(data) {
+     $('#response').addClass("alert alert-success").html('Your '+data);
+                $('#dataId').trigger("reset");
+                $("#javeddonkey").remove();
+                   alert(data);
+ },
+    error: function (e) {
+     $('#response').addClass("alert alert-success").html('Error:::::'+data);
+                $('#dataId').trigger("reset");
+    },
+     
+});  
+
+}
+
+</script>
+
+<script type="text/javascript">
+function ShowModal2(elem){
+  
+    var dataId = $(elem).data("id");
+    alert(dataId); 
+    $.ajax({
+    type:"POST",
+    contentType:"application/json",
+    
+    url: "${pageContext.request.contextPath}/cart/incrementquantity?cartitemid="+dataId,
+    dataType: 'html',
+    success: function(data) {
+     $('#response').addClass("alert alert-success").html('Your '+data);
+                $('#dataId').trigger("reset");
+                   alert(data);
+ },
+    error: function (e) {
+     $('#response').addClass("alert alert-success").html('Error:::::'+data);
+                $('#dataId').trigger("reset");
+    },
+     
+});  
+
+}
+</script>
+
+<script type="text/javascript">
+function ShowModal3(elem){
+  
+    var dataId = $(elem).data("id");
+    alert(dataId); 
+    $.ajax({
+    type:"POST",
+    contentType:"application/json",
+    
+    url: "${pageContext.request.contextPath}/cart/decrementQuantity?cartitemid="+dataId,
+    dataType: 'html',
+    success: function(data) {
+     $('#response').addClass("alert alert-success").html('Your '+data);
+                $('#dataId').trigger("reset");
+                   alert(data);
+ },
+    error: function (e) {
+     $('#response').addClass("alert alert-success").html('Error:::::'+data);
+                $('#dataId').trigger("reset");
+    },
+     
+});  
+
 }
 </script>
 

@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel = "icon" href = "images/VeggieFridge.ico" type = "image/x-icon">

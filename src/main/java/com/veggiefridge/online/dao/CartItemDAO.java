@@ -34,8 +34,5 @@ import com.veggiefridge.online.model.Product;
 		
 	    public boolean add(CartPage cartpage);
 	    
-	   
-		
-		
-		
+	    public CartPage getCartPage(int cartpageid);
 }

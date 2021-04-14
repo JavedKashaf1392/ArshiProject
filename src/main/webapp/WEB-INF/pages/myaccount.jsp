@@ -3,6 +3,8 @@
 <html lang="en" dir="ltr">
 <head>
 
+
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VeggieFridge</title>
@@ -25,6 +27,234 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 	charset="utf-8"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//jquery for toggle sub menus
+			$('.sub-btn').click(function() {
+				$(this).next('.sub-menu').slideToggle();
+				$(this).find('.dropdown').toggleClass('rotate');
+			});
+		});
+	</script>
+	
+	
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#firstNameError").hide();
+							$("#lastNameError").hide();
+							$("#mobileError").hide();
+							$("#emailError").hide();
+							$("#cityError").hide();
+							$("#locationError").hide();
+						
+
+							var firstNameError = false;
+							var lastNameError = false;
+							var mobileError = false;
+							var emailError = false;
+							var cityError = false;
+							var locationError = false;
+							
+							$("#firstName").keyup(
+									function() {
+										//convert lower to upper case
+										$("#firstName").val(
+												$("#firstName").val()
+														.toUpperCase());
+										validate_firstName();
+									});
+
+							$("#lastName").keyup(
+									function() {
+										//convert lower to upper case
+										$("#lastName").val(
+												$("#lastName").val()
+														.toUpperCase());
+										validate_lastName();
+									});
+
+							$("#mobile").keyup(function() {
+								validate_mobile();
+							});
+
+							$("#email").keyup(function() {
+								validate_email();
+							});
+
+							$("#city").change(function() {
+								validate_city();
+							});
+
+							$("#location").change(function() {
+								validate_location();
+							});
+
+							
+
+							//FirstName validation
+							function validate_firstName() {
+								var val = $("#firstName").val();
+								//only upper/lower case chars atleast 3 char and at max 8 chars
+								var exp = /^[A-Z]{3,8}$/;
+
+								if (val == '') {
+									$("#firstNameError").html(
+											"Enter <b>First Name</b>");
+									$("#firstNameError").css("color", "red");
+									$("#firstNameError").show();
+									firstNameError = false;
+								} else if (!exp.test(val)) {
+									$("#firstNameError").html(
+											"Enter <b>Valid First Name</b>");
+									$("#firstNameError").css("color", "red");
+									$("#firstNameError").show();
+									firstNameError = false;
+								} else {
+									$("#firstNameError").hide();
+									firstNameError = true;
+								}
+								return firstNameError;
+							}
+
+							//lastName validation
+							function validate_lastName() {
+								var val = $("#lastName").val();
+								//only upper/lower case chars atleast 3 char and at max 8 chars
+								var exp = /^[A-Z]{3,8}$/;
+
+								if (val == '') {
+									$("#lastNameError").html(
+											"Enter <b>last Name</b>");
+									$("#lastNameError").css("color", "red");
+									$("#lastNameError").show();
+									lastNameError = false;
+								} else if (!exp.test(val)) {
+									$("#lastNameError").html(
+											"Enter <b>Valid Name</b>");
+									$("#lastNameError").css("color", "red");
+									$("#lastNameError").show();
+									lastNameError = false;
+								} else {
+									$("#lastNameError").hide();
+									lastNameError = true;
+								}
+								return lastNameError;
+							}
+
+							//mobile validation
+							function validate_mobile() {
+								var val = $("#mobile").val();
+								//only digits starts with 1-9 later any digit is OK
+								var exp = /^[1-9][0-9]*$/;
+								if (val == '') {
+									$("#mobileError").html(
+											"Enter <b>Mobile Number</b>");
+									$("#mobileError").css("color", "red");
+									$("#mobileError").show();
+									mobileError = false;
+								} else if (val.length != 10) {
+									$("#mobileError")
+											.html(
+													" Mobile Number must be 10 digits only");
+									$("#mobileError").css("color", "red");
+									$("#mobileError").show();
+									mobileError = false;
+								} else if (!exp.test(val)) {
+									//value not matched with expression
+									$("#mobileError").html(
+											"Enter <b>Valid Mobile Number</b>");
+									$("#mobileError").css("color", "red");
+									$("#mobileError").show();
+									mobileError = false;
+								} else {
+									$("#mobileError").hide();
+									mobileError = true;
+								}
+								return mobileError;
+							}
+
+							//Email Validation
+							function validate_email() {
+								var val = $("#email").val();
+								var exp = /^[A-Za-z0-9\.\-]+\@[a-z]+\.[a-z\.]{2,10}$/;
+								if (val == '') {
+									$("#emailError").html(
+											"Enter <b>EMail ID</b>");
+									$("#emailError").css("color", "red");
+									$("#emailError").show();
+									emailError = false;
+								} else if (!exp.test(val)) {
+									$("#emailError").html(
+											"Enter <b>Valid Mail</b>");
+									$("#emailError").css("color", "red");
+									$("#emailError").show();
+									emailError = false;
+								} else {
+									$("#emailError").hide();
+									emailError = true;
+								}
+								return emailError;
+							}
+
+							//----------city-----------//
+
+							function validate_city() {
+								var val = $("#city").val();
+								if (val == '') {
+									$("#cityError").html("Select <b>City</b>");
+									$("#cityError").css("color", "red");
+									$("#cityError").show();
+									cityError = false;
+								} else {
+									$("#cityError").hide();
+									cityError = true;
+								}
+							}
+
+							//----------location-----------//
+
+							function validate_location() {
+								var val = $("#location").val();
+								if (val == '') {
+									$("#locationError").html(
+											"Select <b>Location</b>");
+									$("#locationError").css("color", "red");
+									$("#locationError").show();
+									locationError = false;
+								} else {
+									$("#locationError").hide();
+									locationError = true;
+								}
+							}
+
+							
+
+							//---------ON SUBMIT--------------//
+							$("#myStudentForm").submit(
+									function() {
+										validate_firstName();
+										validate_lastName();
+										validate_mobile();
+										validate_email();
+										validate_city();
+										validate_location();
+										
+
+										if (firstNameError && lastNameError
+												&& mobileError && emailError
+												&& cityError && passwordError
+												&& txtConfirmPasswordError)
+											return true;
+										else
+											return false;
+									});
+
+						});
+	</script>
+	
 
 <style>
 
@@ -333,6 +563,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 	}
 }
 </style>
+
 </head>
     
     <body>
@@ -382,7 +613,7 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 					</div>
 				</div>
 				<div class="item">
-					<a href="#"><i class="fas fa-th"></i>Wallet</a>
+					<a href="${pageContext.request.contextPath }/wallet/myWallet/${customerModel.customerid}"><i class="fas fa-th"></i>Wallet</a>
 				</div>
 				<div class="item">
 				<a class="sub-btn"><i class="fas fa-cogs"></i>My Profile<i
@@ -486,17 +717,6 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 							<label>zip</label> <input type="text" class="input">
 						</div>
 
-						<!--   <div class="inputfield">
-          <label>zip</label>
-          <input type="text" class="input">
-       </div>  -->
-						<!--  <div class="inputfield terms">
-          <label class="check">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          <p>Agreed to terms and conditions</p>
-       </div>  -->
 						<div class="inputfield">
 						<button style="width:40%; padding: 10px 10px; font-size: 15px; border: 0px; background:#4CAF50; color: #fff; cursor: pointer; border-radius:50px; outline: none; margin-left: 65%;">Save Changes</button>
 							<!-- <input type="submit" value="Save Changes" class="btn"
@@ -509,255 +729,9 @@ url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&displa
 		</div>
 	</div>
 
-
-
 	<div style="margin-top: 50px;">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-
-	
-	
-	
-	
-	<!-- ............Script Code.......... -->
-	
-	<script type="text/javascript">
-		$(document).ready(function() {
-			//jquery for toggle sub menus
-			$('.sub-btn').click(function() {
-				$(this).next('.sub-menu').slideToggle();
-				$(this).find('.dropdown').toggleClass('rotate');
-			});
-
-			/* //jquery for expand and collapse the sidebar
-			 $('.menu-btn').click(function(){
-			   $('.side-bar').addClass('active');
-			   $('.menu-btn').css("visibility", "hidden");
-			 });
-
-			 $('.close-btn').click(function(){
-			   $('.side-bar').removeClass('active');
-			   $('.menu-btn').css("visibility", "visible");
-			 });*/
-		});
-	</script>
-	
-
-	<script>
-		$(document)
-				.ready(
-						function() {
-							$("#firstNameError").hide();
-							$("#lastNameError").hide();
-							$("#mobileError").hide();
-							$("#emailError").hide();
-							$("#cityError").hide();
-							$("#locationError").hide();
-						
-
-							var firstNameError = false;
-							var lastNameError = false;
-							var mobileError = false;
-							var emailError = false;
-							var cityError = false;
-							var locationError = false;
-							
-							$("#firstName").keyup(
-									function() {
-										//convert lower to upper case
-										$("#firstName").val(
-												$("#firstName").val()
-														.toUpperCase());
-										validate_firstName();
-									});
-
-							$("#lastName").keyup(
-									function() {
-										//convert lower to upper case
-										$("#lastName").val(
-												$("#lastName").val()
-														.toUpperCase());
-										validate_lastName();
-									});
-
-							$("#mobile").keyup(function() {
-								validate_mobile();
-							});
-
-							$("#email").keyup(function() {
-								validate_email();
-							});
-
-							$("#city").change(function() {
-								validate_city();
-							});
-
-							$("#location").change(function() {
-								validate_location();
-							});
-
-							
-
-							//FirstName validation
-							function validate_firstName() {
-								var val = $("#firstName").val();
-								//only upper/lower case chars atleast 3 char and at max 8 chars
-								var exp = /^[A-Z]{3,8}$/;
-
-								if (val == '') {
-									$("#firstNameError").html(
-											"Enter <b>First Name</b>");
-									$("#firstNameError").css("color", "red");
-									$("#firstNameError").show();
-									firstNameError = false;
-								} else if (!exp.test(val)) {
-									$("#firstNameError").html(
-											"Enter <b>Valid First Name</b>");
-									$("#firstNameError").css("color", "red");
-									$("#firstNameError").show();
-									firstNameError = false;
-								} else {
-									$("#firstNameError").hide();
-									firstNameError = true;
-								}
-								return firstNameError;
-							}
-
-							//lastName validation
-							function validate_lastName() {
-								var val = $("#lastName").val();
-								//only upper/lower case chars atleast 3 char and at max 8 chars
-								var exp = /^[A-Z]{3,8}$/;
-
-								if (val == '') {
-									$("#lastNameError").html(
-											"Enter <b>last Name</b>");
-									$("#lastNameError").css("color", "red");
-									$("#lastNameError").show();
-									lastNameError = false;
-								} else if (!exp.test(val)) {
-									$("#lastNameError").html(
-											"Enter <b>Valid Name</b>");
-									$("#lastNameError").css("color", "red");
-									$("#lastNameError").show();
-									lastNameError = false;
-								} else {
-									$("#lastNameError").hide();
-									lastNameError = true;
-								}
-								return lastNameError;
-							}
-
-							//mobile validation
-							function validate_mobile() {
-								var val = $("#mobile").val();
-								//only digits starts with 1-9 later any digit is OK
-								var exp = /^[1-9][0-9]*$/;
-								if (val == '') {
-									$("#mobileError").html(
-											"Enter <b>Mobile Number</b>");
-									$("#mobileError").css("color", "red");
-									$("#mobileError").show();
-									mobileError = false;
-								} else if (val.length != 10) {
-									$("#mobileError")
-											.html(
-													" Mobile Number must be 10 digits only");
-									$("#mobileError").css("color", "red");
-									$("#mobileError").show();
-									mobileError = false;
-								} else if (!exp.test(val)) {
-									//value not matched with expression
-									$("#mobileError").html(
-											"Enter <b>Valid Mobile Number</b>");
-									$("#mobileError").css("color", "red");
-									$("#mobileError").show();
-									mobileError = false;
-								} else {
-									$("#mobileError").hide();
-									mobileError = true;
-								}
-								return mobileError;
-							}
-
-							//Email Validation
-							function validate_email() {
-								var val = $("#email").val();
-								var exp = /^[A-Za-z0-9\.\-]+\@[a-z]+\.[a-z\.]{2,10}$/;
-								if (val == '') {
-									$("#emailError").html(
-											"Enter <b>EMail ID</b>");
-									$("#emailError").css("color", "red");
-									$("#emailError").show();
-									emailError = false;
-								} else if (!exp.test(val)) {
-									$("#emailError").html(
-											"Enter <b>Valid Mail</b>");
-									$("#emailError").css("color", "red");
-									$("#emailError").show();
-									emailError = false;
-								} else {
-									$("#emailError").hide();
-									emailError = true;
-								}
-								return emailError;
-							}
-
-							//----------city-----------//
-
-							function validate_city() {
-								var val = $("#city").val();
-								if (val == '') {
-									$("#cityError").html("Select <b>City</b>");
-									$("#cityError").css("color", "red");
-									$("#cityError").show();
-									cityError = false;
-								} else {
-									$("#cityError").hide();
-									cityError = true;
-								}
-							}
-
-							//----------location-----------//
-
-							function validate_location() {
-								var val = $("#location").val();
-								if (val == '') {
-									$("#locationError").html(
-											"Select <b>Location</b>");
-									$("#locationError").css("color", "red");
-									$("#locationError").show();
-									locationError = false;
-								} else {
-									$("#locationError").hide();
-									locationError = true;
-								}
-							}
-
-							
-
-							//---------ON SUBMIT--------------//
-							$("#myStudentForm").submit(
-									function() {
-										validate_firstName();
-										validate_lastName();
-										validate_mobile();
-										validate_email();
-										validate_city();
-										validate_location();
-										
-
-										if (firstNameError && lastNameError
-												&& mobileError && emailError
-												&& cityError && passwordError
-												&& txtConfirmPasswordError)
-											return true;
-										else
-											return false;
-									});
-
-						});
-	</script>
 	
 </body>
 </html>

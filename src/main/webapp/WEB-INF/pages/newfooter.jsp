@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="images/VeggieFridge.ico" type="image/x-icon">
-<!-- <link href="./static/css/main.css" rel="stylesheet" type="text/css"> -->
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -19,8 +18,8 @@
 	prefix="security"%>
 
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
@@ -31,19 +30,17 @@
 $(document).ready(function(){
 	//alert('Welcome to VeggieFridge');
 	$('#id_get_time').click(function(){
-		 alert("ok");
+		 //alert("ok");
 		//alert('button clicked......');
 		$.ajax({
-		    type:'GET',
-			url :'/getServerTime',
-			dataType: 'json',
+		  type:'GET',
+		  url:'${pageContext.request.contextPath }/cart/getServerTime',
+			//url :'/getServerTime',
+		   dataType: 'json',
 			success : function(data){
-				//$('id_time').html(data);
-				 console.log('success',data);
-				},
-				 error:function(exception){
-					 alert('Exeption:'+exception);
-					 }
+				$('id_time').html(data);
+				 //console.log('success',data);
+				}
 			});
 		});
 });

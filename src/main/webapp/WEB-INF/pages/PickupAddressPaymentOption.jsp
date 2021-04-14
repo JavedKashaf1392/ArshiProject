@@ -22,8 +22,39 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
 
+<script>  
+$(document).on("submit", "form1", function(event)
+		alert('click the button');
+		{
+            if(document.getElementById('payatkiosk').checked) {   
+                document.getElementById("disp").innerHTML   
+                    = document.getElementById("payatkiosk").value   
+                    + " radio button is checked";   
+            }   
+            else if(document.getElementById('wallet').checked) {   
+                document.getElementById("disp").innerHTML   
+                    = document.getElementById("wallet").value   
+                    + " radio button is checked";     
+            }   
+            else if(document.getElementById('payonline').checked) {   
+                document.getElementById("disp").innerHTML   
+                    = document.getElementById("payonline").value   
+                    + " radio button is checked";     
+            }   
+            else if(document.getElementById('upi').checked) {   
+                document.getElementById("disp").innerHTML   
+                    = document.getElementById("upi").value   
+                    + " radio button is checked";     
+            }  
+            else {   
+                document.getElementById("error").innerHTML   
+                    = "You have not selected any season";   
+            }   
+        }   
+    </script>  
+     
+<style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap')
 	;
@@ -169,11 +200,11 @@ span.price {
     margin: 20px auto;">
    
    <table>
-   <th><a href="abc.htm"> <spring:url value="/images" var="images" />
+   <th><a href="${pageContext.request.contextPath}/home"> <spring:url value="/images" var="images" />
    <img src="${images}/vf-leaf.png"  width="60" height="60" alt=""/>
 					</a></th>
 					
-					<th><a href="abc.htm">  <spring:url value="/images" var="images" />
+					<th><a href="${pageContext.request.contextPath}/home"><spring:url value="/images" var="images" />
    <img src="${images}/logo2.jpg"  width="200" height="50" alt=""/>
 					</a></th>
 					
@@ -193,7 +224,7 @@ span.price {
     
     <form:form
 						action="${pageContext.request.contextPath}/order/placeOrder"
-						method="post" modelAttribute="customer">
+						method="post" modelAttribute="customer" id="form1">
       
           <div class="row">
           <div class="col-50">
@@ -227,8 +258,8 @@ span.price {
             <label for="ccnum">Mobile</label>
             <form:input path="mobile" class="input" readonly="true" />
             
-            <label for="expmonth">Kiosk Location</label>
-         <form:select path="location" class="select">  
+        <label for="expmonth">Kiosk Location</label>
+        <form:select path="location" class="select">  
         <form:option value="Mihan" label="Mihan"/>  
         <form:option value="Ameerpet" label="Ameerpet"/>  
         <form:option value="Koh-E-Fiza" label="Koh-E-Fiza"/>  
@@ -243,14 +274,13 @@ span.price {
           <div class="col-50">
           <h3>Payment Option</h3><br>
           <div class="row">
-             
-               <table
+          <table
 						style="cellspacing:4%;border-spacing:10px;">
 						<!-- #DCDCDC -->
 						
 						<th
 							style="background-color:white; padding: px px; border-radius: px; border: 1px solid #ddd; height: 20px; width: 180px;">
-							<a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayByWallet"
+							<a href="#"
 							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
 								class='fas fa-wallet' style="font-size: 50px; color: black;"></span></a>
 							
@@ -260,7 +290,7 @@ span.price {
 							style="background-color:white; padding: px px; border-radius: px; text-align: center; border: 1px solid #ddd; font-size: 15px; height: 20px; width: 180px;">
 
 							<a
-							href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayATKiosk"
+							href="#"
 							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
 								class='far fa-credit-card' style="font-size: 50px; color: black"></span></a>
 							<!--  Membership Id:3 -->
@@ -270,7 +300,7 @@ span.price {
 							style="background-color:white; padding: px px; width: %; border-radius: px; border: 1px solid #ddd; height: 20px; width: 180px;">
 							<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
-							<a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderPayOnline"
+							<a href="#"
 							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
 								class="fa fa-bank" style="font-size: 50px; color: black"></span></a>
 							<!--   Card:11 -->
@@ -280,28 +310,26 @@ span.price {
 							style="background-color:white; padding: px px; width: %; border-radipx; border: 1px solid #ddd; height: 100px; width: 180px;">
 							<!-- <div style="background-color:white;margin-left:15%;padding:25px; width:13%;border-radius:8px;"> -->
 
-							<a href="${pageContext.request.contextPath}/order/checkoutAndSaveOrderUPI"
+							<a href="#"
 							style="display: inline-block; padding: 10px 15px; text-align: center; text-decoration: none; color: #ffffff; background-color: white; border-radius: 6px; outline: none; margin-top: 6px"><span
 								class="fa fa-shopping-cart"
-								style="font-size: 50px; color: black"></span></a> <!--  Transaction:0 -->
+								style="font-size: 50px; color: black"></span></a><!--  Transaction:0 -->
 						</th>
-						
 						<tr>
 						    <td style="text-align:center;"><form:radiobutton path="param" value="wallet" id="wallet"/> Wallet</td>
-						    <td style="text-align:center;"><form:radiobutton path="param" value="payatkiosk" id="payatkiosk"/>  
-							Pay AT Kiosk</td>
+						    <td style="text-align:center;"><form:radiobutton path="param" value="payatkiosk" id="payatkiosk"/> Pay AT Kiosk</td>  
 							<td style="text-align:center;"><form:radiobutton path="param" value="payonline" id="payonline"/> Pay Online</td>
 							<td style="text-align:center;"><form:radiobutton path="param" value="upi" id="upi"/> UPI</td>
-							
+
+<h3 id="disp" style= "color:green"></h3>  
+<h4 id="error" style= "color:red"> </h4>  
 						</tr>
-					</table>
-					
-					<!-- <h3 id="disp" style= "color:green"> </h3>  
-					<h4 id="error" style= "color:red"> </h4>  -->
-          </div>
-          </div>
+					    </table>
+		                </div>
+                        </div> 
+         
     
-    </div>
+  </div>
   </div>
   
     <div class="col-25" style="margin-top:25px;">
@@ -315,16 +343,12 @@ span.price {
       <p style="margin-top:5px;">Total <span class="price" style="color:black;"><b>${repee_sign} <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customerModel.cartpage.grandTotal}"/></b></span></p>
     </div>
    
-    <input type="submit" value="Place Order" class="checkout">
-   <!--  <button type="submit" class="checkout">Place Order</button> -->
+    <input type="submit" value="Place Order" class="checkout" onclick="submit">
     </div>
     </form:form>
- 
-</div>
-								
-							</div>
+    </div>
+    </div>
 							<div class="vi_right">
-								
 							</div>
 						</div>
 	
@@ -360,23 +384,6 @@ span.price {
 
 		</div>
 	
-	
-	<script>  
-    function checkButton() {    
-            var getSelectedValue = document.querySelector(   
-                'input[path="param"]:checked');   
-                
-            if(getSelectedValue != null) {   
-                document.getElementById("disp").innerHTML   
-                    = getSelectedValue.value   
-                    + " PaymentOption is selected";   
-            }   
-            else {   
-                document.getElementById("error").innerHTML   
-                    = "*You have not selected any PaymentOption";   
-            }   
-        }    
-    </script>   
 	
 
 

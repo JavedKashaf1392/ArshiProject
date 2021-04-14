@@ -32,5 +32,7 @@ public interface CartService {
       public boolean update(CartItem cartitem);
       
       public String manageCartItem(int cartitemid, int productCount);
+      
+      public CartPage getCartPage(int cartpageid);
     
 }

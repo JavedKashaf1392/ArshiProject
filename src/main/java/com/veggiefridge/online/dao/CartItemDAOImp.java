@@ -187,7 +187,26 @@ public class CartItemDAOImp implements CartItemDAO{
 			return false;
 		}
 	}
-}
+
+
+	@Override
+	@Transactional
+	public CartPage getCartPage(int cartpageid) {
+		String query ="FROM CartPage WHERE cartpageid =:cartpageid";
+		try {
+			System.out.println("cartdaogetByCartPageAndProduct and cartpageid");
+			return (CartPage) sessionFactory.getCurrentSession().createQuery(query).
+					setParameter("cartpageid", cartpageid)
+					.uniqueResult();
+		
+		}catch(Exception ex) {
+			return null;
+				
+		}
+	}
+	
+	}
+
 
 	
 	

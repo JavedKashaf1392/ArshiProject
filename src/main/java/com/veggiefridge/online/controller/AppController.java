@@ -78,7 +78,7 @@ public class AppController {
 	private static final Logger logger = LoggerFactory.logger(MembershipController.class);
 
 	
-	//permitAll acsess url
+	 //permitAll acsess url
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView permitAll(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("kiosklocation") KioskLocation kiosklocation, ModelAndView model,@ModelAttribute("menu") Menu menu) {
@@ -112,9 +112,7 @@ public class AppController {
 		model.setViewName("home");
 		return model;
 	}
-		
-		
-		 
+			 
 		 //Sign in
 	    @RequestMapping(value = "/login", method = RequestMethod.GET)
 		public ModelAndView login(@RequestParam(value = "error", required = false) String error,
@@ -219,7 +217,7 @@ public class AppController {
 		
 	
 
-	// customize the error message
+	//customize the error message
 	private String getErrorMessage(HttpServletRequest request, String key) {
 
 		Exception exception = (Exception) request.getSession().getAttribute(key);
@@ -692,16 +690,14 @@ public class AppController {
    				return model;
   	  		}
   		
-  	  		@RequestMapping(value ="/newfooter", method = RequestMethod.GET)
-  	  		public String newfooter(ModelMap model) {
-  	  			return "newfooter";
-  	  		}
+  	  		
   	    
-  	  		@RequestMapping(value ="/getServerTime", method = RequestMethod.GET)
+  	  		
+  	  		@RequestMapping(value ="/getServerTime")
   	  		@ResponseBody
   	  		public String getServerTime(ModelMap model) {
   	  			Date d= new Date();
-  	  			System.out.println("Exception"+d);
+  	  			System.out.println("API is Calling........" +d);
   	  			return d.toString();
   	  		}
  		 

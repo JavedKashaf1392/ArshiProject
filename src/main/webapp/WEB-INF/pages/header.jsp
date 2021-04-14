@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>VeggieFridge</title> 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,11 +23,11 @@
 <spring:url var="js" value="/resources/js"></spring:url>
 <spring:url var="images" value="/resources/images"></spring:url>
 
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
 	
 <link href="${css}/header.css" rel="stylesheet">
 
@@ -150,11 +152,13 @@ padding: 0px 20px;
 <body>
 
 <!-- ......... HeadSection........ -->
-
+  
 <div class="main-wrapper" style="position:relative;
       width:100%;
       height:100vh;
       overflow:hidden;"> 
+      
+    
       
 <div class="nav-background">
    		
@@ -492,10 +496,10 @@ padding: 0px 20px;
   </div>
   </div>
   
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <!--  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
-  
+   -->
  
    <script>
 // Get the modal

@@ -19,15 +19,20 @@
 	prefix="security"%>
 
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<script
+<!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
 <spring:url var="css" value="/resources/css"></spring:url>
 
 <link href="${css}/main.css" rel="stylesheet">
 
-
+<!-- <script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	 -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style>
 @import
@@ -41,14 +46,45 @@
 
 .product-col-r-top {
 	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
-		url("images/vegetables.jpg") center/cover no-repeat;
+	url("images/vegetables.jpg") center/cover no-repeat;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }
 </style>
 </head>
 <body>
 
+  <div id="myModal" class="modal">
+  Modal content
+  <div class="modal-content">
+  <p id="response"></p>
+  </div>
+  </div>
+
 	<!-- ............ Header.......... -->
 	<jsp:include page="header.jsp"></jsp:include>
+
 
 	<!-- ..........Advertisement image.............. -->
 	<header class="${classvalue}" style="background-image:${blurimage};"
@@ -103,16 +139,16 @@
 								</div>
 								<div class="product-btns">
 
-									<form
-										action="${pageContext.request.contextPath }/cart/addToCartPageItems"
-										modelAttribute="product">
-										<input type="hidden" value="${product.productid}"
-											name="productid">
-										<button type="submit" class="btn-cart" id="cart">
-											add to cart <span><i class="fas fa-shopping-cart"></i></span>
-										</button>
-									</form>
-								</div>
+				<%-- <form method="post" id="form">
+				<input type="hidden" value="${product.productid}" name="productid" id="productid">
+				<button type="submit" class="btn-cart" id="cart">
+				add to cart <span><i class="fas fa-shopping-cart"></i></span>
+				</button>
+				</form> --%>
+				
+<button onClick="ShowModal(this)" data-id="${product.productid}" class="btn-cart">add to cart <span><i class="fas fa-shopping-cart"></i></span></button>		
+				
+							</div>
 							</div>
 							<div class="product-info" id="myTable" style="line-height: 28px;">
 								<div class="product-info-top">
@@ -138,10 +174,14 @@
 										type="number" minFractionDigits="2" maxFractionDigits="2"
 										value="${product.price}" />
 								</p>
+								
+								
+								
 								<p class="product-price">${repee_sign}<fmt:formatNumber
 										type="number" minFractionDigits="2" maxFractionDigits="2"
 										value="${product.price-product.discount * product.price/100}" />
 								</p>
+						    <!-- <p id="response"></p> -->
 							</div>
 
 							<div class="off-info" style="background-color: #4CAF50;">
@@ -153,6 +193,8 @@
 				</div>
 			</div>
 		</div>
+		<div>
+     </div>
 	</security:authorize>
 
 
@@ -370,9 +412,9 @@
 		</section>
 
 		<!--  VeggeiFridge Big-deal section -->
-
 		<section class="big-deal" id="div2">
-			<div class="container">
+		
+		<div class="container">
 				<h1 class="section-heading text-pure">Big Deals of the Week</h1>
 				<div class="timer">
 					<div>
@@ -475,24 +517,9 @@
 
 
 	<!-- .............Java Script..............-->
-	<!--  add to cart msg -->
-	<!-- <script>
-		setTimeout(function() {
-			/*  $('#mydiv').fadeOut('fast'); */
-			$('#mydiv').delay(300).fadeOut(100);
-		}, 500);
-	</script> -->
-
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 	
-<!--  Slider code js -->
-	
+    <!--  Slider code js -->
+    
 	<script src="myScript.js">
 		var slideIndex, slides, dots, captionText;
 		function initGallery() {
@@ -723,21 +750,59 @@ window.onclick = function(event) {
 </script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-	$("#cart").click(function() {
-		$.ajax({
-			type:'GET',
-			url :'${pageContext.request.contextPath }/cart/addToCartPageItems',
-			success:function(result){
 
-				}
-			});
-	    });
-	});
-	 
+function ShowModal(elem) {
+	
+    var dataId = $(elem).data("id");
+    alert(dataId);
+    $.ajax({
+    type: "POST",
+    contentType: "application/json",
+    url: "${pageContext.request.contextPath }/cart/addToCart?productid="+dataId,
+    dataType: 'html',
+    success: function(data) {
+    $('#response').addClass("alert alert-success").html(''+data);
+    $('#dataId').trigger("reset");
+    setTimeout(function() {
+			/*$('#mydiv').fadeOut('fast'); */
+			$('#response').delay(300).show().fadeOut(3000);
+		}, 500); 
+        alert(data);
+                    
+},
+    error: function (e) {
+     $('#response').addClass("alert alert-success").html('Error:::::'+data);
+                $('#dataId').trigger("reset");
+    },
+});  
+}
+
+function ShowModal1(elem){
+  
+    var dataId = $(elem).data("id");
+    alert(dataId); 
+    $.ajax({
+    type: "DELETE",
+    contentType: "application/json",
+    
+    url: "deletebatchs?ids="+dataId,
+    dataType: 'html',
+    success: function(data) {
+     $('#response').addClass("alert alert-success").html('Your '+data);
+                $('#dataId').trigger("reset");
+                 window.location.reload();
+                    alert(data);
+ },
+    error: function (e) {
+     $('#response').addClass("alert alert-success").html('Error:::::'+data);
+                $('#dataId').trigger("reset");
+    },
+     
+});  
+
+}
 </script>
-
-
+ 
 <script type="text/javascript" src="./static/css/main.js"></script>
 </body>
 </html>

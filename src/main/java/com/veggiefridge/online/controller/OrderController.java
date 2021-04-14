@@ -97,7 +97,7 @@ public class OrderController {
 		return ((CustomerModel) session.getAttribute("customerModel")).getCartpage();
 	}
 
-	//checkoutAndSaveOrder PayAtKiosk
+	  //checkoutAndSaveOrder PayAtKiosk
 	@RequestMapping(value = "/checkoutAndSaveOrderPayATKiosk")
 	public ModelAndView checkoutAndSaveOrder(ModelAndView model) {
 		List<CartItem> cartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -157,7 +157,7 @@ public class OrderController {
 		return model;
 	}
 
-	// delivered order item
+	 //delivered order item
 	@RequestMapping(value = "/listOrderItem/{orderid}", method = RequestMethod.GET)
 	public ModelAndView listOrderItem(ModelAndView model, @PathVariable(value = "orderid") int orderid,
 			@ModelAttribute("orders") Orders order, BindingResult resultorder) {
@@ -176,7 +176,7 @@ public class OrderController {
 		return model;
 	}
 
-	// pending Order item
+	 //pending Order item
 	@RequestMapping(value = "/listOrderItems/{orderid}", method = RequestMethod.GET)
 	public ModelAndView listOrderItems(ModelAndView model, @PathVariable(value = "orderid") int orderid) {
 		Orders orders = orderservice.getOrder(orderid);
@@ -192,16 +192,6 @@ public class OrderController {
 		model.setViewName("orderinfo");
 		return model;
 	}
-
-	// get All Information
-	/*
-	 * @RequestMapping(value = "/allOrderItem") public ModelAndView
-	 * allOrderItem(ModelAndView model) { List<OrderItem> listAllOrderitem =
-	 * orderservice.getAllOrderItem(); model.addObject("listAllOrderitem",
-	 * listAllOrderitem); model.setViewName("repeatOrder");
-	 * model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
-	 * model.addObject("repee_sign", VFOnlineConstants.RUPEE_SIGN); return model; }
-	 */
 
 	 //repeat Order
 	@RequestMapping(value = "/repeatOrder{orderid}", method = RequestMethod.GET)
@@ -231,7 +221,7 @@ public class OrderController {
 		return "redirect:/cart/listCustomerCartItem";
 	}
 
-	//PickupAddress
+	 //PickupAddress
 	@RequestMapping(value = "/PickupAddress")
 	public ModelAndView PickupAddress(ModelAndView model) {
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());
@@ -242,7 +232,7 @@ public class OrderController {
 		return model;
 	}
 
-	// Edit profile
+	 //Edit profile
 	@RequestMapping(value = "/editProfile")
 	public ModelAndView editProfile(ModelAndView model) {
 		model.addObject("dateformatter", VFOnlineConstants.DateFormatter);
@@ -251,7 +241,7 @@ public class OrderController {
 		return model;
 	}
 
-	// myCart
+	 //myCart
 	@RequestMapping(value = "/paymentMethod")
 	public ModelAndView myCart(ModelAndView model) {
 		List<CartItem> listcustomercartitem = cartservice.list(this.getCartPage().getCartpageid());

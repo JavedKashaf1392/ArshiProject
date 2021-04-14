@@ -144,6 +144,11 @@ public class CartServiceImpl implements CartService{
 		cartitemdao.updateCartPage(cartpage);
 		return "result=updated";
 	}
+
+	@Override
+	public CartPage getCartPage(int cartpageid) {
+	return cartitemdao.getCartPage(cartpageid);
+	}
 	
 	}
 	
