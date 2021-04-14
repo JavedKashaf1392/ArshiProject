@@ -70,6 +70,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/Hp/Downloads/PaytmChecksum (2).jar"/>
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-sources/test-annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>

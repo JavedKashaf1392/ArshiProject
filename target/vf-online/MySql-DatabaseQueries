@@ -1,0 +1,77 @@
+CREATE TABLE `kiosk` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cities` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `kioskId` varchar(255) DEFAULT NULL,
+  `kioskName` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=107786244 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `kiosklocation` (
+  `locationid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cities` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`locationid`)
+) ENGINE=InnoDB AUTO_INCREMENT=783456250 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `product` (
+  `productid` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `finalPrice` double NOT NULL,
+  `imageName` varchar(255) DEFAULT NULL,
+  `isAvailable` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `quantity` varchar(255) NOT NULL,
+  `size` float NOT NULL,
+  `tax` float NOT NULL,
+  `categ_catgid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`productid`),
+  KEY `FK_2engbkuw7v95wcpa8te5p292h` (`categ_catgid`),
+  CONSTRAINT `FK_2engbkuw7v95wcpa8te5p292h` FOREIGN KEY (`categ_catgid`) REFERENCES `categories` (`catgid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1036 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `cart` (
+  `cartId` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_customerid` int(11) DEFAULT NULL,
+  `item_id` int(11) DEFAULT NULL,
+  `grandtotal` double DEFAULT NULL,
+  `cartitem` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `cartlines` int(11) DEFAULT NULL,
+  PRIMARY KEY (`cartId`),
+  KEY `FK_ow4f4uy2arj92cor20fui797j` (`item_id`),
+  KEY `FK_d3osbpn38l6e3amb9l4lnswcj` (`customer_customerid`),
+  CONSTRAINT `FK_d3osbpn38l6e3amb9l4lnswcj` FOREIGN KEY (`customer_customerid`) REFERENCES `customer` (`customerid`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `cartitem` (
+  `cartitemid` int(11) NOT NULL AUTO_INCREMENT,
+  `isavailable` bit(1) DEFAULT NULL,
+  `buyingprice` double DEFAULT NULL,
+  `cartitemno` int(11) DEFAULT NULL,
+  `cartpageid` int(11) DEFAULT NULL,
+  `productcount` int(11) DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `product_productid` int(11) DEFAULT NULL,
+  `cartId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`cartitemid`),
+  KEY `FK_jwl7nwye5wqwn8w0ff31j8ocy` (`product_productid`),
+  CONSTRAINT `FK_jwl7nwye5wqwn8w0ff31j8ocy` FOREIGN KEY (`product_productid`) REFERENCES `product` (`productid`)
+) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
